@@ -4,8 +4,10 @@ title: Cadena de responsabilidad
 categories: articles
 tags: oop design-patterns
 ---
+
 El patrón Cadena de Responsabilidad (Chain of Responsibility) nos permite manejar una petición que puede ser atendida por varios objetos, sin saber a priori cual de ellos lo hará.
----
+
+----
 Este patrón es uno de los clásicos del libro de [Gang of Four](https://www.amazon.es/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8).
 
 La cadena de responsabilidad puede ejemplificarse de una manera muy sencilla:

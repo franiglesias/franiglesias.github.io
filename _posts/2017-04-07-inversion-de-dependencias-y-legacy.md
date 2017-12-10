@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Buscando trabajo como desarrollador
+title: Inversión de dependencias y legacy
 categories: articles
 tags: coding dependency-inversion legacy
 ---

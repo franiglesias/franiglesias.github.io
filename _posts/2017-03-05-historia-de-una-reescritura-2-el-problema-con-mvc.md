@@ -5,15 +5,16 @@ categories: articles
 tags: misc
 ---
 
-Esta es la segunda parte del relato del proceso que estoy siguiendo para reescribir una aplicación "legacy"</a>.
+Esta es la segunda parte del relato del proceso que estoy siguiendo para reescribir una aplicación "legacy".
 
-La serie **Historia de una reescritura** está compuesta de 5 artículos
+La serie **Historia de una reescritura** está compuesta de los siguientes artículos
 
 [Historia de una reescritura (1):](historia-de-una-reescritura-1.md)  
 [Historia de una reescritura (2): El problema con MVC](historia-de-una-reescritura-2-el-problema-con-mvc.md)  
 [Historia de una reescritura (3): Empezar con la vista](historia-de-una-reescritura-3-empezar-con-la-vista.md)  
 [Historia de una reescritura (4): El código tóxico](historia-de-una-reescritura-4-codigo-toxico.md)  
 [Historia de una reescritura (5): Tests](historia-de-una-reescritura-5-tests.md)  
+[Historia de una reescritura (6): Autoload sin namespaces](historia-de-una-reescritura-6-autoload-sin-namespaces.md)
 
 ¿Por dónde empezar a atacar estar re-escritura?
 

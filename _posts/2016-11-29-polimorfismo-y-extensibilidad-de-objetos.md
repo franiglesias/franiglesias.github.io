@@ -19,6 +19,7 @@ Algunos autores sobre Programación Orientada a Objetos dicen que cuando hacemos
 
 Pongamos por ejemplo la gestión de biblioteca. Supongamos que tenemos las clases Book y Review y que ambas definen el método `lend()` para indicar que son prestadas. Entonces es posible escribir un código similar a éste:
 
+```php
     <?php
         $objects = array(
               new Book('Programar en PHP', 'Pepe Pérez'),
@@ -27,6 +28,7 @@ Pongamos por ejemplo la gestión de biblioteca. Supongamos que tenemos las clase
         foreach($objects as $theObject) {
             $theObject->lend();
         }
+```
 
 Sencillamente, tenemos una lista de objetos que quire retirar un lector. Vamos recorriendo la colección uno por uno invocando el método `lend`, y no tenemos que comprobar su tipo, simplemente les decimos que "sean prestados". Aunque los objetos son distintos ambos pueden responder al mismo mensaje.
 
@@ -36,7 +38,7 @@ Hasta cierto punto, para los programadores en PHP esto no debería resultar muy 
 
 El sistema de tipado de PHP permite que podamos reutilizar una misma variable para distintos tipos de datos. Es decir, comenzamos usando una variable de tipo integer, pero posteriormente podríamos introducir un dato de tipo string. El intérprete se encarga de, sobre la marcha, decidir el tipo de dato que puede manejar y, si es necesario, lo convierte. PHP es lo que se conoce como un lenguaje de **tipado débil**.
 
-Otros lenguajes tienen **tipado estricto**. Esto quiere decir que las variables deben declararse con su tipo para que el intérprete o compilador reserve el espacio de memoria adecuado. Además, una vez definida una variable, ésta sólo puede usarse para almacenar valores de ese tipo o que hayan sido explícitamente convertidos a ese tipo. De este modo, si intentas guardar un string en una variable integer, saltará un error.
+Otros lenguajes tienen **tipado estricto.** Esto quiere decir que las variables deben declararse con su tipo para que el intérprete o compilador reserve el espacio de memoria adecuado. Además, una vez definida una variable, ésta sólo puede usarse para almacenar valores de ese tipo o que hayan sido explícitamente convertidos a ese tipo. De este modo, si intentas guardar un string en una variable integer, saltará un error.
 
 Por esa razón, el polimorfismo en los lenguajes de tipado estricto resulta especialmente llamativo, ya que con el tipado estricto no podríamos declarar una variable de tipo Book para empezar y luego asignarle un valor de tipo Review como se hace en el código anterior. El polimorfismo, por tanto, implica que el sistema de tipos se relaja.
 
@@ -88,6 +90,7 @@ Una clase puede implementar varias interfaces, lo que respondería a esa necesid
 
 Por ejemplo, podríamos tener una interfaz para clases que puedan escribir en un log.
 
+```php
     <?php
 
     interface Loggable {
@@ -147,8 +150,8 @@ Por ejemplo, podríamos tener una interfaz para clases que puedan escribir en un
                 $object->write();
             }
         }
-
     }
+```
 
 Todas las clases que quieran ser `Loggable` deberán implementar un método `log` que espera un parámetro `$message` y un método `write` que escribirá los mensajes existentes en un archivo. El archivo de log concreto en que se escribe es cosa de cada clase, pero al definirlo así las clases están obligados a implementar los métodos cada una según sus necesidades. A la vez, podemos ver que no hay otra vinculación entre las clases, que pueden evolucionar de forma completamente independiente.
 
@@ -156,13 +159,17 @@ Es más, en unos casos el objeto podría escribir el mensaje a un archivo, otro 
 
 Para indicar que una clase implementa una interfaz la declaramos asi:
 
+```php
     class Example implements Interface {}
 
     class Emailer implements Loggable {}
+```
 
 Si se implementan varias interfaces ser haría de la siguiente manera: Por ejemplo, para que la clase Emailer implemente dos hipotéticas interfaces Loggable y Service:
 
+```php
     class Emailer implements Loggable, Service {}
+```
 
 Por otra parte, en el código de ejemplo tenemos una clase `Logger` que puede registrar objetos de tipo `Loggable` y que se encargará de actualizar los logs en una sola pasada. Para ello, sabe que los objetos registrados tendrán un método `write()` para escribir sus mensajes, sin preocuparse para nada de cuántos mensajes o de qué archivo concreto debe ser modificado. De este modo, podemos registrar tantos objetos `Loggable` como nuestra aplicación necesite.
 

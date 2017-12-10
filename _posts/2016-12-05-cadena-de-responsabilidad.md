@@ -193,21 +193,20 @@ Otro nombre para esta propiedad puede ser successor.
 
 
 ```php
-    /**
-     * Chains the next rule that should try to assign the turn.
-     *
-     * @param Rule $delegateTo
-     */
-    public function chain(Rule $delegateTo)
-    {
-        if (!$this->next) {
-            $this->next = $delegateTo;
+/**
+ * Chains the next rule that should try to assign the turn.
+ *
+ * @param Rule $delegateTo
+ */
+public function chain(Rule $delegateTo)
+{
+    if (!$this->next) {
+        $this->next = $delegateTo;
 
-            return;
-        }
-        $this->next->chain($delegateTo);
+        return;
     }
-
+    $this->next->chain($delegateTo);
+}
 ```
 
 Este método podría llamare también setNext o setSuccessor. El nombre <code>chain</code> me ayuda a recordar que se trata de una cadena.
@@ -221,14 +220,14 @@ El objeto que se pasa debe ser del mismo tipo o implmentar la misma interfaz. T
 Como señalábamos al principio, la cadena de responsabilidad se basa en que cada eslabón de la misma puede delegar en otro el procesamiento del mensaje si no puede dar una respuesta por sí mismo.
 
 ```php
-    private function delegate(CantineUser $User, \DateTime $date)
-    {
-        if (!$this->next) {
-            return false;
-        }
-
-        return $this->next->assignsUserToTurn($User, $date);
+private function delegate(CantineUser $User, \DateTime $date)
+{
+    if (!$this->next) {
+        return false;
     }
+
+    return $this->next->assignsUserToTurn($User, $date);
+}
 ```
 
 En nuestro ejemplo, el método privado delegate se encarga de hacer esta delegación, devolviendo `false`, en caso de no tener sucesor (pero lo mismo podría lanzar una excepción, devolver `null` o lo que más nos convenga.)

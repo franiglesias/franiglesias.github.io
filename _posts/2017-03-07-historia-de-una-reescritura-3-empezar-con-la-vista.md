@@ -5,7 +5,7 @@ categories: articles
 tags: misc
 ---
 
-Cuando analizas tu código antiguo es casi como analizar el código de otro desarrollador. En realidad es un poco peor, porque sabes que tú eres el responsable de esa masa de lodo. Esta es la tercera entrega de una <a href="https://talkingbit.wordpress.com/2017/03/05/historia-de-una-reescritura-2-el-problema-con-mvc/">serie sobre mi proyecto para abordar una aplicación legacy</a>.
+Cuando analizas tu código antiguo es casi como analizar el código de otro desarrollador. En realidad es un poco peor, porque sabes que tú eres el responsable de esa masa de lodo. Esta es la tercera entrega de una [serie sobre mi proyecto para abordar una aplicación legacy](https://talkingbit.wordpress.com/2017/03/05/historia-de-una-reescritura-2-el-problema-con-mvc/).
 
 La serie **Historia de una reescritura** está compuesta de los siguientes artículos
 
@@ -46,15 +46,15 @@ Las vistas de mi aplicación empezaron a comportarse como una especie de enferme
 
 Twig es el lenguaje de plantillas de SensioLabs y el recomendado para Symfony. Al principio pensé que iba a ser un mundo integrarlo en un proyecto antiguo de CakePHP pero resultó que no.
 
-Después de intentarlo con un <a href="https://github.com/yappabe/cakephp-twig-view">plugin al efecto que no conseguí hacer funcionar</a>, la forma de integrarlo no sólo fue sencilla, sino que no interfería apenas en el funcionamiento general de la aplicación, es más, con un mínimo de cuidado en realidad no se rompe nada.
+Después de intentarlo con un [plugin al efecto que no conseguí hacer funcionar](https://github.com/yappabe/cakephp-twig-view), la forma de integrarlo no sólo fue sencilla, sino que no interfería apenas en el funcionamiento general de la aplicación, es más, con un mínimo de cuidado en realidad no se rompe nada.
 
 ## Manos a la obra
 
 Para empezar a trabajar, hice un duplicado del estado de la aplicación en la máquina de desarrollo (incluyendo base de datos, archivos de imágenes y demás). A continuación, me aseguré de que podía hacerla funcionar en el servidor web local para desarrollo. Fundamentalmente se trataba de configurar la aplicación para trabajar en esa máquina concreta (en realidad desarrollo en dos ordenadores, por lo que de paso estoy reorganizando cosas para poder mover el proyecto con facilidad).
 
-Una vez conseguido esto, instalé Composer para el proyecto, de modo que pudiese ir añadiendo dependencias (como Twig) de forma sencilla, pero también phpspec y phpunit para cuando tocase, o cualquier otra que llegase a ser necesaria. Posteriormente, creé un <a href="https://github.com/franiglesias/mh13">repositorio en GitHub</a>.
+Una vez conseguido esto, instalé Composer para el proyecto, de modo que pudiese ir añadiendo dependencias (como Twig) de forma sencilla, pero también phpspec y phpunit para cuando tocase, o cualquier otra que llegase a ser necesaria. Posteriormente, creé un [repositorio en GitHub](https://github.com/franiglesias/mh13).
 
-Una vez instalado Twig no tuve más que añadirlo como <a href="http://mh13/app_controller.php">member al AppController</a>, del cual descienden todos los controladores, y crear un Loader apuntando a la carpeta base que contiene las plantillas (en mi caso la carpeta view global del proyecto) y un Environment. No necesitas más para empezar.
+Una vez instalado Twig no tuve más que añadirlo como [member al AppController](http://mh13/app_controller.php), del cual descienden todos los controladores, y crear un Loader apuntando a la carpeta base que contiene las plantillas (en mi caso la carpeta view global del proyecto) y un Environment. No necesitas más para empezar.
 
 En realidad, estoy pudiendo reproducir (y, de paso, mejorar) todo lo que podía hacer con el sistema de plantillas de CakePHP.
 
@@ -118,7 +118,7 @@ El primero y más importante es que cada nueva plantilla convertida es un paso e
 
 Por otro lado, aunque aún es pronto para asegurarlo con certeza, el rendimiento parece haber mejorado de manera significativa.
 
-Finalmente, la reunificación del código relacionado con la vista en un sólo punto permite un mejor modularización del proyecto en el ámbito del desarrollo. La gestión de assets, css y javascript también se ha centralizado en otro punto y automatizado usando Gulp. Estamos utilizando como base el framework Foundation 6 y las hojas de estilos las escribimos en SASS. Nuestro <a href="https://github.com/franiglesias/mh13/blob/master/frontend/gulpfile.js">gulpfile</a> se encarga de mantener al día todo lo necesario.
+Finalmente, la reunificación del código relacionado con la vista en un sólo punto permite un mejor modularización del proyecto en el ámbito del desarrollo. La gestión de assets, css y javascript también se ha centralizado en otro punto y automatizado usando Gulp. Estamos utilizando como base el framework Foundation 6 y las hojas de estilos las escribimos en SASS. Nuestro [gulpfile](https://github.com/franiglesias/mh13/blob/master/frontend/gulpfile.js) se encarga de mantener al día todo lo necesario.
 
 ## Próximos pasos
 

@@ -37,7 +37,7 @@ La solución llevó a través de twitter, gracias a la respuesta de Keyvan Akbar
 
 https://twitter.com/keyvanakbary/status/849015360837779462
 
-Keyvan es coautor del libro <a href="https://leanpub.com/ddd-in-php">DDD in PHP,</a> junto con Carlos Buenosvinos y Christian Soronellas, y como ellos no son generosos, sino lo siguiente, la cosa quedó clara.
+Keyvan es coautor del libro [DDD in PHP,](https://leanpub.com/ddd-in-php) junto con Carlos Buenosvinos y Christian Soronellas, y como ellos no son generosos, sino lo siguiente, la cosa quedó clara.
 
 Voy a intentar explicarlo:
 

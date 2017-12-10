@@ -16,9 +16,9 @@ La serie **Historia de una reescritura** está compuesta de los siguientes artí
 [Historia de una reescritura (5): Tests](/historia-de-una-reescritura-5-tests)  
 [Historia de una reescritura (6): Autoload sin namespaces](/historia-de-una-reescritura-6-autoload-sin-namespaces)
 
-Si has <a href="https://github.com/franiglesias/mh13">echado un vistazo al código de mh13</a>, es posible que te hayas dado cuenta de que no hay tests. Ni uno.
+Si has [echado un vistazo al código de mh13](https://github.com/franiglesias/mh13), es posible que te hayas dado cuenta de que no hay tests. Ni uno.
 
-Esto no quiere decir que el proyecto original no los tuviese. De hecho, los tiene. El problema es que están basados en la test suite de CakePHP, la cual a su vez depende del <a href="http://www.simpletest.org">viejo SimpleTest</a>. Esto no tiene nada de malo en sí mismo, es sólo que estos tests existentes no nos van a ayudar mucho y posiblemente no merezca la pena mantenerlos dentro del proyecto, aunque estarán a mano por si pudiesen ser útiles.
+Esto no quiere decir que el proyecto original no los tuviese. De hecho, los tiene. El problema es que están basados en la test suite de CakePHP, la cual a su vez depende del [viejo SimpleTest](http://www.simpletest.org). Esto no tiene nada de malo en sí mismo, es sólo que estos tests existentes no nos van a ayudar mucho y posiblemente no merezca la pena mantenerlos dentro del proyecto, aunque estarán a mano por si pudiesen ser útiles.
 
 ¿Por qué no van a ser útiles? Pues porque la mayoría de los tests existentes cubren la capa del modelo, y está va a sufrir una reescritura radical para transformarla en otra cosa. Lo que actualmente vive en la caja marcada con una "M" tiene que separarse en:
 
@@ -40,7 +40,7 @@ A partir de aquí, comienza el dominio de los tests.
 
 Es decir, dominio (entidades, agregados y sus relaciones) y aplicación (use cases, comandos, eventos) deben ser testados.
 
-En el caso de una reescritura, nos pueden interesar los <a href="http://garoevans.com/blog/2014/06/14/testing-legacy-php-characterization-tests/">Tests de caracterización</a>. Los tests de caracterización son tests que describen el comportamiento actual de una unidad de software y se consideran una especie de red de seguridad. Ojo, no son una especificación, sino sólo una referencia.
+En el caso de una reescritura, nos pueden interesar los [Tests de caracterización](http://garoevans.com/blog/2014/06/14/testing-legacy-php-characterization-tests/). Los tests de caracterización son tests que describen el comportamiento actual de una unidad de software y se consideran una especie de red de seguridad. Ojo, no son una especificación, sino sólo una referencia.
 
 La idea es simple, preparas uno o varios tests a partir de los resultados que genera actualmente la unidad de software que vas a reescribir. Al decir unidad, puedo referirme a algo relativamente difuso o grande, que posiblemente acumule varias responsabilidades y, por tanto, que acabará troceado en varias partes, cada una de las cuales tendrá sus propios tests o habrá sido diseñada mediante BDD o TDD.
 

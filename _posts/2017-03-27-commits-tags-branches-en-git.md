@@ -7,7 +7,7 @@ tags: git
 
 Trabajar de forma individual hace que, a veces, descuides aspectos del flujo de trabajo que son cruciales en equipos. Uno de estos aspectos es la gestión de versiones y la ramificación de proyectos.
 
-Hasta hace un tiempo llevaba la gestión de versiones con SVN, pero al empezar a desarrollar el proyecto <a href="https://github.com/franiglesias/milhojas">milhojas</a>, decidí hacerlo con Git, que al fin y al cabo se ha convertido prácticamente en el estándar.
+Hasta hace un tiempo llevaba la gestión de versiones con SVN, pero al empezar a desarrollar el proyecto [milhojas](https://github.com/franiglesias/milhojas), decidí hacerlo con Git, que al fin y al cabo se ha convertido prácticamente en el estándar.
 
 La forma en que Git gestiona los proyectos es bastante diferente al modo en que trabaja SVN. Mientras que éste último se centra en los cambios, Git guarda "instantáneas" del repositorio en cada momento. Esto se traduce en una gestión más fácil de las versiones y de las ramificaciones, procesos que en SVN eran muy incómodos y confusos.
 
@@ -33,7 +33,7 @@ A lo largo del desarrollo tendremos un master con diversas tags que nos indican 
 
 ### Versiones semánticas
 
-Al etiquetar es importante tener en cuenta el significado de las versiones. El "<a href="http://semver.org">Semantic versioning</a>" o creación de versiones con significado establece un patrón para etiquetar las versiones, de manera que sea sencillo predecir qué va a pasar con cada actualización.
+Al etiquetar es importante tener en cuenta el significado de las versiones. El "[Semantic versioning](http://semver.org)" o creación de versiones con significado establece un patrón para etiquetar las versiones, de manera que sea sencillo predecir qué va a pasar con cada actualización.
 
 En versiones semánticas el número de versión tiene tres partes, representadas por números naturales:
 <p style="text-align:center;">Major version . Minor version . Patch version</p>

@@ -20,7 +20,7 @@ Una de las señales prácticas de que la separación de responsabilidades está 
 
 Por eso, mientras estoy migrando plantillas .ctp a twig me siento contento cuando no me muevo de la carpeta "views" que contiene todas mis plantillas remozadas. Sin embargo, cuando tengo que ir a ver qué pasa en otras partes me echo a temblar: seguramente me voy a encontrar con <strong>código tóxico</strong>.
 
-He intentado encontrar algo sobre este concepto en Internet, y lo más parecido ha sido <a href="https://erik.doernenburg.com/2008/11/how-toxic-is-your-code/">este artículo de Erik Dörnenburg</a> en el que propone un método para medirlo.
+He intentado encontrar algo sobre este concepto en Internet, y lo más parecido ha sido [este artículo de Erik Dörnenburg](https://erik.doernenburg.com/2008/11/how-toxic-is-your-code/) en el que propone un método para medirlo.
 
 ¿Qué entiendo por <strong>código tóxico</strong>? Pues yo lo definiría como código que escribes para solucionar un problema, pero que acaba provocando más problemas y, generalmente, de una forma difícil de detectar. No se trata únicamente de que sea código mal escrito (podría estar incluso bastante bien escrito), sino que:
 

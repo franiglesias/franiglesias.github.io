@@ -17,7 +17,7 @@ La primera tentación puede ser usarla directamente y pasar **LegacyService** co
 
 Lo primero es definir una interfaz conforme a las necesidades de Consumer y que esté en consonancia con los requisitos y principios que rijan tu nuevo diseño. Da igual si la interfaz pública de **LegacyService** encaja en ello o no porque no la queremos usar directamente y que nos condicione cosas en el futuro.
 
-A lo mejor la nueva interfaz coincide con la de **LegacyService** o no se parece en nada. No importa. Lo que queremos es depender de abstracciones (<a href="https://talkingbit.wordpress.com/2016/11/29/los-principios-solid/">Principio de Inversión de Dependencia</a>) y **LegacyService** en nuestro nuevo código no es más que una implementación concreta de una funcionalidad que vamos a expresar mediante una interfaz. Supongamos que a esa interfaz la llamamos **ServiceNewInterface**.
+A lo mejor la nueva interfaz coincide con la de **LegacyService** o no se parece en nada. No importa. Lo que queremos es depender de abstracciones ([Principio de Inversión de Dependencia](https://talkingbit.wordpress.com/2016/11/29/los-principios-solid/)) y **LegacyService** en nuestro nuevo código no es más que una implementación concreta de una funcionalidad que vamos a expresar mediante una interfaz. Supongamos que a esa interfaz la llamamos **ServiceNewInterface**.
 
 Ahora debes hacer que **Consumer** tome como dependencia un objeto que implemente **ServiceNewInterface**. Ahora **Consumer** depende de una abstracción y no de una implementación específica.
 

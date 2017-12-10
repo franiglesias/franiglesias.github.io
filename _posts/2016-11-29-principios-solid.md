@@ -61,7 +61,7 @@ Otra forma de verlo es decir que las interfaces se han de definir a partir de la
 
 ## Principio de inversión de dependencia
 
-<a href="http://blog.koalite.com/2015/04/la-inversion-de-dependencias-no-es-solo-lo-que-tu-piensas/">La inversión de dependencias no es sólo lo que tú piensas</a>
+[La inversión de dependencias no es sólo lo que tú piensas](http://blog.koalite.com/2015/04/la-inversion-de-dependencias-no-es-solo-lo-que-tu-piensas/)
 
 El principio de inversión de dependencia dice que:
 

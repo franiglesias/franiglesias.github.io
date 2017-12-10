@@ -15,9 +15,9 @@ La serie **Specification: del dominio a la infraestructura** está compuesta de 
 
 Hace tiempo descubrí que tenía una vinculación curiosa con Martin Fowler. Resulta que el colegio para el que trabajaba mantiene intercambios de estudiantes con un colegio inglés del que Fowler es ex-alumno. En fin, una de esas curiosidades que sirve para hacer una introducción a un post.
 
-Aparte de eso, he leído bastantes cosas suyas, como <a href="https://martinfowler.com/books/eaa.html">PoEAA</a> y diversos artículos acerca de patrones de diseño y refactoring. Entre ellos, <a href="https://www.martinfowler.com/apsupp/spec.pdf">este acerca de Specification (PDF) </a>con Eric Evans. El caso es que no encontraba soluciones prácticas para usar el patrón sobre diferentes implementaciones.
+Aparte de eso, he leído bastantes cosas suyas, como [PoEAA](https://martinfowler.com/books/eaa.html) y diversos artículos acerca de patrones de diseño y refactoring. Entre ellos, [este acerca de Specification (PDF) ](https://www.martinfowler.com/apsupp/spec.pdf)con Eric Evans. El caso es que no encontraba soluciones prácticas para usar el patrón sobre diferentes implementaciones.
 
-En el artículo sobre Read Model de hace unos días, comenté que gracias a una respuesta en Twitter de <a href="http://keyvanakbary.com">Keyvan Akbar</a>, llegué a un <a href="https://github.com/dddinphp/repository-examples">ejemplo concreto de cómo implementar Specification en diferentes capas e implementaciones</a>. Y ahora voy a intentar explicarlo lo mejor que pueda.
+En el artículo sobre Read Model de hace unos días, comenté que gracias a una respuesta en Twitter de [Keyvan Akbar](http://keyvanakbary.com), llegué a un [ejemplo concreto de cómo implementar Specification en diferentes capas e implementaciones](https://github.com/dddinphp/repository-examples). Y ahora voy a intentar explicarlo lo mejor que pueda.
 
 ## En resumen
 

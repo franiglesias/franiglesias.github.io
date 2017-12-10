@@ -1,13 +1,11 @@
 ---
 layout: post
-title: Historia de una reescritura (2): el problema con MVC
+title: Historia de una reescritura (2) el problema con MVC
 categories: articles
 tags: misc
 ---
 
 Esta es la segunda parte del relato del proceso que estoy siguiendo para reescribir una aplicación "legacy"</a>.
-
-----
 
 La serie **Historia de una reescritura** está compuesta de 5 artículos
 
@@ -17,7 +15,6 @@ La serie **Historia de una reescritura** está compuesta de 5 artículos
 [Historia de una reescritura (4): El código tóxico](historia-de-una-reescritura-4-codigo-toxico.md)  
 [Historia de una reescritura (5): Tests](historia-de-una-reescritura-5-tests.md)  
 
-----
 ¿Por dónde empezar a atacar estar re-escritura?
 
 CakePHP es un framework que sigue el patrón MVC, esto es: Modelo - Vista - Controlador. Es un patrón habitual en las aplicaciones web, y el propio Martin Fowler lo "bendice" en Patterns of Enterprise Application Architecture. Así que bien, o no.

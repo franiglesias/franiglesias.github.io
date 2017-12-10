@@ -1,13 +1,12 @@
 ---
 layout: post
-title: Historia de una reescritura (4): el código tóxico
+title: Historia de una reescritura (4) el código tóxico
 categories: articles
 tags: misc
 ---
 
 A medida que la primera fase del proyecto avanza voy observando cosas en las que habrá que trabajar más a fondo.
 
-----
 La serie **Historia de una reescritura** está compuesta de 5 artículos
 
 [Historia de una reescritura (1):](historia-de-una-reescritura-1.md)  
@@ -16,7 +15,6 @@ La serie **Historia de una reescritura** está compuesta de 5 artículos
 [Historia de una reescritura (4): El código tóxico](historia-de-una-reescritura-4-codigo-toxico.md)  
 [Historia de una reescritura (5): Tests](historia-de-una-reescritura-5-tests.md)  
 
-----
 Una de las señales prácticas de que la separación de responsabilidades está bien hecha en una aplicación es que cuando trabajas en modificar o corregir alguna característica concreta tocas uno o, como mucho, dos archivos, y si tocas más, normalmente estarán muy cercanos entre sí en el árbol de carpetas.
 
 Por eso, mientras estoy migrando plantillas .ctp a twig me siento contento cuando no me muevo de la carpeta "views" que contiene todas mis plantillas remozadas. Sin embargo, cuando tengo que ir a ver qué pasa en otras partes me echo a temblar: seguramente me voy a encontrar con <strong>código tóxico</strong>.

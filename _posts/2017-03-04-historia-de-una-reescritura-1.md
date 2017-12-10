@@ -7,8 +7,6 @@ tags: misc
 
 Hace unos 15 años comencé a escribir mi primera aplicación seria en PHP. Esta aplicación fue creciendo y sufriendo diversos cambios y prestaciones. Ahora ha llegado el momento de replantearla.
 
-----
-
 La serie **Historia de una reescritura** está compuesta de 5 artículos
 
 [Historia de una reescritura (1):](historia-de-una-reescritura-1.md)  
@@ -17,7 +15,6 @@ La serie **Historia de una reescritura** está compuesta de 5 artículos
 [Historia de una reescritura (4): El código tóxico](historia-de-una-reescritura-4-codigo-toxico.md)  
 [Historia de una reescritura (5): Tests](historia-de-una-reescritura-5-tests.md)  
 
-----
 Cuando eres desarrollador autodidacta y el único miembro de un equipo de desarrollo que se encarga de preparar y gestionar servidores, programar el backend, optimizar el acceso a la base de datos, preparar el diseño gráfico y construir las páginas y plantillas, aprendes mucho, a veces de la manera dura, y a veces de la manera retorcida.
 
 La manera dura es cuando, por ejemplo,  tu aplicación se cae porque el servidor de base de datos no puede atender sus peticiones y tienes que reconstruir todas las queries para reducir la cantidad de datos recuperados o para evitar aquellas que sean innecesarias, cachear los resultados y redefinir los índices para optimizar el tiempo y la cantidad de datos que se transfieren.

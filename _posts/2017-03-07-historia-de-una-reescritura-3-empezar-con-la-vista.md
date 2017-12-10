@@ -1,14 +1,12 @@
 ---
 layout: post
-title: Historia de una reescritura (3): empezar con la vista
+title: Historia de una reescritura (3) empezar con la vista
 categories: articles
 tags: misc
 ---
 
-
 Cuando analizas tu código antiguo es casi como analizar el código de otro desarrollador. En realidad es un poco peor, porque sabes que tú eres el responsable de esa masa de lodo. Esta es la tercera entrega de una <a href="https://talkingbit.wordpress.com/2017/03/05/historia-de-una-reescritura-2-el-problema-con-mvc/">serie sobre mi proyecto para abordar una aplicación legacy</a>.
 
-----
 La serie **Historia de una reescritura** está compuesta de 5 artículos
 
 [Historia de una reescritura (1):](historia-de-una-reescritura-1.md)  
@@ -17,7 +15,6 @@ La serie **Historia de una reescritura** está compuesta de 5 artículos
 [Historia de una reescritura (4): El código tóxico](historia-de-una-reescritura-4-codigo-toxico.md)  
 [Historia de una reescritura (5): Tests](historia-de-una-reescritura-5-tests.md)  
 
-----
 Hay decisiones que tienen sentido tomadas en perspectiva. Por ejemplo, basarse en un framework MVC como CakePHP 1.* era muy razonable en su momento, debido a su orientación práctica, las limitaciones inherentes a la versión 4 de PHP, el boom que estaban experimentando los frameworks MVC (Symfony, CodeIgniter, el componente MVC de Zend, etc) o la proyección aparente que iba a tener el proyecto.
 
 Sin embargo, un par de años después la comunidad alrededor de CakePHP se rompió en dos  y el futuro del proyecto se mantuvo dudoso un tiempo. Pero eso no se podría predecir salvo que tuvieses mucha experiencia en ese campo.

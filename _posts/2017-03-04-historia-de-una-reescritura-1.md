@@ -9,12 +9,12 @@ Hace unos 15 años comencé a escribir mi primera aplicación seria en PHP. Est
 
 La serie **Historia de una reescritura** está compuesta de los siguientes artículos
 
-[Historia de una reescritura (1):](historia-de-una-reescritura-1)  
-[Historia de una reescritura (2): El problema con MVC](historia-de-una-reescritura-2-el-problema-con-mvc)  
-[Historia de una reescritura (3): Empezar con la vista](historia-de-una-reescritura-3-empezar-con-la-vista)  
-[Historia de una reescritura (4): El código tóxico](historia-de-una-reescritura-4-codigo-toxico)  
-[Historia de una reescritura (5): Tests](historia-de-una-reescritura-5-tests)  
-[Historia de una reescritura (6): Autoload sin namespaces](historia-de-una-reescritura-6-autoload-sin-namespaces)
+[Historia de una reescritura (1):](/historia-de-una-reescritura-1)  
+[Historia de una reescritura (2): El problema con MVC](/historia-de-una-reescritura-2-el-problema-con-mvc)  
+[Historia de una reescritura (3): Empezar con la vista](/historia-de-una-reescritura-3-empezar-con-la-vista)  
+[Historia de una reescritura (4): El código tóxico](/historia-de-una-reescritura-4-codigo-toxico)  
+[Historia de una reescritura (5): Tests](/historia-de-una-reescritura-5-tests)  
+[Historia de una reescritura (6): Autoload sin namespaces](/historia-de-una-reescritura-6-autoload-sin-namespaces)
 
 Cuando eres desarrollador autodidacta y el único miembro de un equipo de desarrollo que se encarga de preparar y gestionar servidores, programar el backend, optimizar el acceso a la base de datos, preparar el diseño gráfico y construir las páginas y plantillas, aprendes mucho, a veces de la manera dura, y a veces de la manera retorcida.
 

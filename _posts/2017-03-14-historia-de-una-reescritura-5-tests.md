@@ -9,12 +9,12 @@ Mientras el proceso de reescribir vistas avanza, vamos a darle vueltas a una cu
 
 La serie **Historia de una reescritura** está compuesta de los siguientes artículos
 
-[Historia de una reescritura (1):](historia-de-una-reescritura-1)  
-[Historia de una reescritura (2): El problema con MVC](historia-de-una-reescritura-2-el-problema-con-mvc)  
-[Historia de una reescritura (3): Empezar con la vista](historia-de-una-reescritura-3-empezar-con-la-vista)  
-[Historia de una reescritura (4): El código tóxico](historia-de-una-reescritura-4-codigo-toxico)  
-[Historia de una reescritura (5): Tests](historia-de-una-reescritura-5-tests)  
-[Historia de una reescritura (6): Autoload sin namespaces](historia-de-una-reescritura-6-autoload-sin-namespaces)
+[Historia de una reescritura (1):](/historia-de-una-reescritura-1)  
+[Historia de una reescritura (2): El problema con MVC](/historia-de-una-reescritura-2-el-problema-con-mvc)  
+[Historia de una reescritura (3): Empezar con la vista](/historia-de-una-reescritura-3-empezar-con-la-vista)  
+[Historia de una reescritura (4): El código tóxico](/historia-de-una-reescritura-4-codigo-toxico)  
+[Historia de una reescritura (5): Tests](/historia-de-una-reescritura-5-tests)  
+[Historia de una reescritura (6): Autoload sin namespaces](/historia-de-una-reescritura-6-autoload-sin-namespaces)
 
 Si has <a href="https://github.com/franiglesias/mh13">echado un vistazo al código de mh13</a>, es posible que te hayas dado cuenta de que no hay tests. Ni uno.
 

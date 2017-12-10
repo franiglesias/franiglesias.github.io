@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Hi, I'm Fran Iglesias
 
-### More Information
+I write PHP code focusing on quality. I follow SOLID principles and use Design Patterns. But I also write pretty good HMTL/CSS and acceptable Javascript (work in progress).
 
-A place to include any other types of information that you'd like to include about yourself.
+Currently working and learning at [Atrapalo](http://atrapalo.com) as Developer in the Flights Team in Barcelona.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[franiglesias@mac.com](mailto:franiglesias@mac.com)

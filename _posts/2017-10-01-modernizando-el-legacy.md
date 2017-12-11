@@ -43,7 +43,7 @@ El problema que tenemos en este momento es que, aunque la funcionalidad está im
 
 ## Aplicando patrones
 
-Esta situación encaja claramente en el patrón de cadena de responsabilidad: se han de aplicar una serie de reglas, pero no sabemos a priori cuáles. Para ver más sobre este patrón <a href="https://talkingbit.wordpress.com/2016/12/05/cadena-de-responsabilidad/">tenemos un artículo aquí</a>
+Esta situación encaja claramente en el patrón de cadena de responsabilidad: se han de aplicar una serie de reglas, pero no sabemos a priori cuáles. Para ver más sobre este patrón [tenemos un artículo aquí](https://talkingbit.wordpress.com/2016/12/05/cadena-de-responsabilidad/)
 
 El paso siguiente es extraer las diferentes condiciones a clases que representarán las reglas y como queremos seguir con la metodología TDD, vamos creando tests que las verifican. Estas clases extienden una clase abstracta que proporciona la funcionalidad común necesaria para efectuar tanto el encadenamiento de nuevas reglas, como la delegación y respuesta por defecto.
 

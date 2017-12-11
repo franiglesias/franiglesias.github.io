@@ -169,7 +169,7 @@ kata/Calculator
 Do you want me to create `kata\Calculator` for you?
  [Y/n]
 
-[/code]
+```
 
 Bueno, en tu pantalla saldrá todo más bonito, con colores y eso.
 
@@ -228,7 +228,7 @@ kata/Calculator
  Do you want me to create `kata\Calculator::add()` for you?
  [Y/n]
 
-[/code]
+```
 
 Pero como PHPSpec es así de amable, nos pide permiso para crear al método add, permiso que le damos encantados.
 

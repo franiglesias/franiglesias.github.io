@@ -7,7 +7,7 @@ tags: misc
 
 Mañana miércoles se cumplen dos semanas de mi nueva etapa profesional.
 
-El miércoles 16 de agosto fue mi primer día en <a href="http://www.atrapalo.com">Atrápalo</a>. Es muy difícil resumir en unas pocas líneas todo lo que estoy experimentando en estos días. Para algunas personas que leéis esto, puede no sonar tan especial, pero para mi es un cambio de vida radical.
+El miércoles 16 de agosto fue mi primer día en [Atrápalo](http://www.atrapalo.com). Es muy difícil resumir en unas pocas líneas todo lo que estoy experimentando en estos días. Para algunas personas que leéis esto, puede no sonar tan especial, pero para mi es un cambio de vida radical.
 
 Ha sido empezar de cero. Es un entorno completamente nuevo. No es que te cambies desde un puesto similar en otra empresa, con lo cual podrías tener cierta familiaridad con herramientas, métodos de trabajo, etc. En mi caso, es tener que aprenderlo todo. Hasta los hábitos más cotidianos.
 

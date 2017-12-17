@@ -2,7 +2,7 @@
 layout: post
 title: Ejercicio de refactor (1)
 categories: articles
-tags: refactor class-sprout legacy
+tags: refactor characterization-test legacy
 ---
 
 ¿Qué tal si hablamos de refactor?
@@ -48,7 +48,9 @@ El resultado es un equilibrio razonable entre la entrega de valor actual y la so
 
 Estamos en una tienda online. Hemos detectado que en ciertos pedidos el cliente no recibe la notificación de que el producto solicitado no se ha podido conseguir por alguna razón y se le ha cobrado igualmente. Esto tiene como consecuencia que la tienda debe conseguir el producto para el cliente y debe asumir los costes, o bien devolver el dinero cobrado de más.
 
-Tras leer la historia y consultar algunos detalles con Negocio, hemos determinado que el problema está en el método [Notification::getMessagesByOrderStatus que puedes ver en GitHub](https://github.com/franiglesias/refactoring/blob/master/src/old/Notification.php). 
+Tras leer la historia y consultar algunos detalles con Negocio, hemos determinado que el problema está en el método Notification::getMessagesByOrderStatus que puedes ver en aquí: 
+
+{% gist 5b4fa5d83ac0fb113d4253560dae2bc6 %}
 
 Y esto es lo que nos encontramos, para empezar:
 

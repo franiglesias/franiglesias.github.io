@@ -24,7 +24,7 @@ En primer lugar hay que recordar que hacer refactor es cambiar una implementaci�
 * Mientras hacermos refactoring no podemos mmodificar el comportamiento. Para eso tenemos tests que prueben que durante el proceso el comportamiento no cambia y deben mantenerse pasando.
 * Mientra implementamos funcionalidad no modificamos el diseño, usando nuevos tests o habiendo modificado tests existentes en caso necesario, tests que inicialmente no pasarán y que debemos hacer que pasen con nuestra intervención.
 
-Estos recordatorios son importantes porque 
+Estos recordatorios son importantes porque el refactoring debe ser **seguro** en el sentido de garantizar que la mejora de la calidad del código no altere el comportamiento del software, manteniendo su capacidad productiva sin introducir errores o comportamientos extraños. Un buen refactor, además, puede proporcionar beneficios extra, como mejorar las condiciones del código para detectar y solucionar problemas, así como para introducir nuevas funcionalidades con un fricción cada vez menor.
 
 En muchos entornos de trabajo existe una tensión entre la entrega rápida y frecuente de valor y el mantenimiento de la calidad el código:
 
@@ -604,7 +604,7 @@ Finalmente, después de varios tests y refactor de tests, hemos conseguido cubri
 
 Nuestro test de caracterización va tomando forma, pero empieza a padecer varios problemas. De momento, tenemos 29 tests y aún nos quedan muchos casos por cubrir. Además, hemos tenido que introducir métodos para construir los stubs de algunos objetos, lo que dificulta la lectura del código. Puede ser bueno mover estos builders a sus propias clases, de manera que sean más convenientes para generar nuevos casos. Así que vamos a dedicar un rato a eso antes de continuar.
 
-Para no alargar el ejemplo no voy a incluir esa fase en el artículo, en todo caso puedes ver el código en [este repositorio](https://github.com/franiglesias/refactoring).
+Para no alargar el ejemplo no voy a incluir esa fase en el artículo, en todo caso puedes ver el código evolucionando en [este repositorio](https://github.com/franiglesias/refactoring).
 
 ### Completando la caracterización
 

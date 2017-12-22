@@ -50,9 +50,6 @@ url: http://franiglesias.github.io
 baseurl: ""
 
 
-remote_theme: broccolini/swiss
-theme_color: blue
-
 #
 # !! You don't need to change any of the configuration flags below !!
 #

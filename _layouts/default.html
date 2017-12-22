@@ -19,17 +19,9 @@
 </head>
 <body>
 <div id="header">
+    <li class="title">{{ site.title | default: site.github.repository_name }}</li>
     <nav>
-        <li class="fork"><a href="{{ site.github.repository_url }}">View On GitHub</a></li>
-        {% if site.show_downloads %}
-        <li class="downloads"><a href="{{ site.github.zip_url }}">ZIP</a></li>
-        <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
-        <li class="title">DOWNLOADS</li>
-        {% endif %}
-        {% if site.footerlinks.rss %}
-        <li class="title">{{ site.title | default: site.github.repository_name }}</li>
-        <li class="downloads"><a href="/feed.xml">Feed</a></li>
-        {% endif %}
+        {% include sgv-icons.html %}
     </nav>
 </div><!-- end header -->
 

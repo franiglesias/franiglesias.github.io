@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ejercicio de refactor (1)
+title: Ejercicio de refactor (1) Los tests de caracterización
 categories: articles
 tags: refactor characterization-test legacy
 ---
@@ -19,28 +19,28 @@ Yéndonos a cuestiones de estilo, debes tener también presente que las buenas p
 
 ## Refactor para la vida real
 
-En primer lugar hay que recordar que hacer refactor es cambiar una implementación o diseño de un software sin alterar su funcionalidad. Por tanto:
+En primer lugar hay que recordar que hacer refactor es cambiar la implementación o el diseño de un software sin alterar su funcionalidad. Por tanto:
 
-* Mientras hacermos refactoring no podemos mmodificar el comportamiento. Para eso tenemos tests que prueben que durante el proceso el comportamiento no cambia y deben mantenerse pasando.
-* Mientra implementamos funcionalidad no modificamos el diseño, usando nuevos tests o habiendo modificado tests existentes en caso necesario, tests que inicialmente no pasarán y que debemos hacer que pasen con nuestra intervención.
+* **Mientras hacermos refactoring no podemos mmodificar el comportamiento**. Para eso tenemos tests que prueben que durante el proceso el comportamiento no cambia y deben mantenerse pasando.
+* **Mientras implementamos funcionalidad no modificamos el diseño**, usando nuevos tests o habiendo modificado tests existentes en caso necesario, tests que inicialmente no pasarán y que debemos hacer que pasen con nuestra intervención.
 
-Estos recordatorios son importantes porque el refactoring debe ser **seguro** en el sentido de garantizar que la mejora de la calidad del código no altere el comportamiento del software, manteniendo su capacidad productiva sin introducir errores o comportamientos extraños. Un buen refactor, además, puede proporcionar beneficios extra, como mejorar las condiciones del código para detectar y solucionar problemas, así como para introducir nuevas funcionalidades con un fricción cada vez menor.
+Estos recordatorios son importantes porque el refactoring debe ser **seguro** en el sentido de garantizar que la mejora de la calidad del código no altere el comportamiento del software, manteniendo su capacidad productiva sin introducir errores o comportamientos extraños. Un buen refactor, además, puede proporcionar beneficios extra, como mejorar las condiciones del código para detectar y solucionar problemas, así como para introducir nuevas funcionalidades con una fricción cada vez menor.
 
 En muchos entornos de trabajo existe una tensión entre la entrega rápida y frecuente de valor y el mantenimiento de la calidad el código:
 
 * La primera fuerza impulsa a los equipos para entregar valor lo más rápido posible lo que, en el peor de los casos, puede llevar a implementar soluciones rápidas y chapuceras que incrementen eso que llamamos "deuda técnica" del código, perjudicando la mantanibilidad futura del mismo. Es decir, se da la paradoja de que incrementando en exceso la velocidad en la entrega de valor en el corto plazo podríamos estar ralentizando el proyecto en el medio o largo plazo.
 
-* La segunda fuerza impulsa a los equipos a mejorar la calidad del código aplicando buenas prácticas tanto al código nueo como al existente. En el peor de los casos, el equipo podría estar dedicándose a refactorizar toda la base de código hasta la extenuación sin entregar valor con la suficiente velocidad o sin entregar valor alguno en el corto plazo, aunque se gane velocidad en el medio y largo con un código más legible y fácil de mantener.
+* La segunda fuerza impulsa a los equipos a mejorar la calidad del código aplicando buenas prácticas tanto al código nuevo como al existente. En el peor de los casos, el equipo podría estar dedicándose a refactorizar toda la base de código hasta la extenuación sin entregar valor con la suficiente velocidad o sin entregar valor alguno en el corto plazo, aunque se gane velocidad en el medio y largo con un código más legible y fácil de mantener.
 
-Un libro muy recomendable para encontrar una solución a esta disyuntiva es [The nature of software development, de Ron Jeffreys](https://www.amazon.es/Nature-Software-Development-Simple-Valuable/dp/1941222374). Resumiendo mucho, podríamos decir que la propuesta que hace es aplicar la regla del boy-scout: deja siempre el campamento mejor de lo que lo has encontrado. De este modo cada parte del código recibirá atención proporcional a la cantidad de veces que debamos intervenir sobre ella, y en cada una de esas veces no sólo evolucionará hacia un mejor diseño, sino que será más fácil realizar las modificaciones requeridas por la user story.
+Un libro muy recomendable para encontrar una solución a esta disyuntiva es [The nature of software development, de Ron Jeffreys](https://www.amazon.es/Nature-Software-Development-Simple-Valuable/dp/1941222374). Resumiendo mucho, podríamos decir que la propuesta que hace es aplicar la _regla del boy-scout_: deja siempre el campamento mejor que como lo has encontrado. De este modo cada parte del código recibirá atención proporcional a la cantidad de veces que debamos intervenir sobre ella, y en cada una de esas veces no sólo evolucionará hacia un mejor diseño, sino que será más fácil realizar las modificaciones requeridas por la user story.
 
 Los proyectos de refactor como tales no parecen muy buena idea, salvo que realmente el estado del código sea tan malo que imposibilite una entrega realista de valor. 
 
-Dejando aparte lo feo que nos pueda parecer un fragmento de código en el que tenemos que intervenir yo diría que hay dos momentos importantes para refactorizar un código una vez que hemos decidido que hay que intervenir en él:
+Dejando aparte lo feo que nos pueda parecer un fragmento de código en el que tenemos que intervenir yo diría que hay dos momentos importantes para refactorizar una vez que hemos decidido que hay que intervenir en él:
 
-* Refactor para entender: encuentras un código difícil de leer, en el que cuesta mucho enterarse de lo que ocurre, con condicionales combinadas y anidadas, flujos que se entrecruzan, responsabilidades mal asignadas, etc. Reorganizar ese código, con la ayuda de tests de caracterización si no existen tests que cubran la funcionalidad, puede ser parte del análisis, con lo que dejaríamos el campo preparado para aplicar las modificaciones necesarias y facilitaríamos el análisis en futuras stories que tenga que afrontar otro desarrollador.
+* **Refactor para entender**: encuentras un código difícil de leer, en el que cuesta mucho enterarse de lo que ocurre, con condicionales combinadas y anidadas, flujos que se entrecruzan, responsabilidades mal asignadas, etc. Reorganizar ese código, con la ayuda de tests de caracterización si no existen tests que cubran la funcionalidad, puede ser parte del análisis, con lo que dejaríamos el campo preparado para aplicar las modificaciones necesarias y facilitaríamos el análisis en futuras _stories_ que tenga que afrontar otro desarrollador.
 
-* Refactor para mejorar la calidad: tras desarrollar la solución, adecuadamente cubierta por tests, se procede al refactor para mejorar el diseño del código si lo vemos necesario. 
+* **Refactor para mejorar la calidad**: tras desarrollar la solución, adecuadamente cubierta por tests, se procede al refactor para mejorar el diseño del código si lo vemos necesario. 
 
 El resultado es un equilibrio razonable entre la entrega de valor actual y la sostenibilidad del código para acelararla en el futuro.
 
@@ -51,6 +51,8 @@ Estamos en una tienda online. Hemos detectado que en ciertos pedidos el cliente 
 Tras leer la historia y consultar algunos detalles con Negocio, hemos determinado que el problema está en el método Notification::getMessagesByOrderStatus que puedes ver en aquí: 
 
 {% gist 5b4fa5d83ac0fb113d4253560dae2bc6 %}
+
+La misión de este método sería generar los mensajes adecuados para notificar al usuario el estado del pedido.
 
 Y esto es lo que nos encontramos, para empezar:
 
@@ -66,7 +68,7 @@ Vamos paso por paso.
 
 ### Métodos estáticos
 
-Cuando PHP no tenía namespaces era frecuente utilizar clases con llamadas estáticas para contener diversas funciones relacionadas. Estas clases solían carecer de constructor y no eran especialmente cohesivas. Podría decirse que era una forma de obtener un namespace en un entorno fundamentalmente procedural, no orientado a objetos.
+Cuando PHP no tenía _namespaces_ era frecuente utilizar clases con llamadas estáticas para contener diversas funciones relacionadas. Estas clases solían carecer de constructor y no eran especialmente cohesivas. Podría decirse que era una forma de obtener un _namespace_ en un entorno fundamentalmente procedural, no orientado a objetos.
 
 Un posible enfoque para refactorizar es sacar todo el código a una nueva clase con un método público que contenga la misma funcionalidad. Luego, para no romper el código existente, podemos sustituir el contenido del método estático original por una llamada a ese método en una instancia de la nueva clase. A medida que sea necesario, iremos haciendo lo mismo con el resto de métodos.
 
@@ -80,31 +82,31 @@ Si no podemos determinar la necesidad de capturar una excepción, lo mejor será
  
 ### Niveles de anidación de condicionales
  
-Las condicionales aumentan la complejidad del código y, si están anidadas, mucho más. Aquí tenemos hasta 6 niveles de anidación, con bloques else o elseif incluídos, además de patas de condicionales que incluyen nuevas condicionales. En este caso, parte del problema podría venir del hecho de que se esté aplicando un patrón "single exit point" en lugar de return early, lo que fuerza en parte la complejidad del método.
+Las condicionales aumentan la complejidad del código y, si están anidadas, mucho más. Aquí tenemos hasta 6 niveles de anidación, con bloques `else` o `elseif` incluídos, además de patas de condicionales que incluyen nuevas condicionales. En este caso, parte del problema podría venir del hecho de que se esté aplicando un [patrón _single exit point_](/2017-10-21-lidiando-con-el-patron-single-exit-point) en lugar de _return early_, lo que fuerza en parte la complejidad del método.
  
-Por ejemplo, el primer nivel de condicionales tras el bloque try… catch nos indica que hay tres cursos de acción posibles:
+Por ejemplo, el primer nivel de condicionales tras el bloque `try… catch` nos indica que hay tres cursos de acción posibles:
  
-* En el primero encontramos un nuevo if, en el que tenemos 3 posibilidades.
-* El segundo curso (elseif) sólo tiene un curso posible.
-* El tercer curso (else), nos lleva a un complejo árbol, cuyo primer nivel ya nos ofrece 2 nuevos caminos.
+* En el primero encontramos un nuevo `if`, en el que tenemos 3 posibilidades.
+* El segundo curso (`elseif`) sólo tiene un curso posible.
+* El tercer curso (`else`), nos lleva a un complejo árbol, cuyo primer nivel ya nos ofrece 2 nuevos caminos.
  
-A estas alturas estamos hablando de 6 posibles cursos sólo en los primeros dos niveles de anidación. Puedes imaginar la complejidad del resto. A eso hay que añadir las condiciones combinadas.
+A estas alturas estamos hablando de seis posibles cursos sólo en los primeros dos niveles de anidación. Puedes imaginar la complejidad del resto. A eso hay que añadir las condiciones combinadas.
 
 ### Condiciones combinadas
 
-Las condiciones combinadas pueden añadir mucha complejidad. Para empezar, pueden ser difíciles de leer si hay distintos operadores implicados, como expresiones que incluyen tanto AND como OR.
+Las condiciones combinadas pueden añadir mucha complejidad. Para empezar, pueden ser difíciles de leer si hay distintos operadores implicados, como expresiones que incluyan tanto AND como OR.
 
 Por lo general, es preferible encapsularlas en métodos con nombres significativos que devuelvean el boolean.
 
 ### Dependencias incrustadas
 
-En nuestro ejemplo tenemos un Logger, que resulta ser un singleton, dentro del método que nos ocupa. Las dependencias deberían ser inyectadas.
+En nuestro ejemplo tenemos un `Logger`, que resulta ser un _singleton_, dentro del método que nos ocupa. Las dependencias deberían ser inyectadas y no incrustadas o, como en este caso, llamadas como una global estática.
 
 Hay otras clases que parece que más bien nos aportan constantes y que no deberían suponer problemas especiales, aunque van a necesitar una inspección detallada.
 
 ### El código sabe demasiado sobre el negocio
 
-Negocio tiene un problema serio cuando el código "sabe" cosas que no debería. En nuestro ejemplo se pueden ver condicionales que comprueban si los pedidos corresponden a ciertos Providers o Resellers concretos  esto es algo que no debería ocurrir.
+Negocio tiene un problema serio cuando el código "sabe" cosas que no debería. En nuestro ejemplo se pueden ver condicionales que comprueban si los pedidos corresponden a ciertos Providers o Resellers concretos y esto es algo que no debería ocurrir.
 
 Es malo para Negocio porque cuando necesita aplicar alguna nueva regla todo tiene que pasar por un desarrollador que examine el código, busque el lugar adecuado, aplique las modificiones, testee y suba a producción los cambios. La capacidad de acción de Negocio se ve limitada por esta circunstancia y puede suponer retrasos o costes al no poder reaccionar de forma directa a los cambios.
 
@@ -120,17 +122,17 @@ Pero lo importante, ahora, es tender una red de seguridad para que el refactor n
 
 ## Test de caracterización
 
-Nuestra primera tarea sería generar tests de caracterización, dado que no tenemos tests que prueben la clase. Se trata de algo que podríamos considerar como TDD a la inversa: partiendo del código formulamos hipótesis sobre su funcionamiento y tratamos de probarlas escribiendo tests que pasen.
+Nuestra primera tarea sería generar **tests de caracterización**, dado que no tenemos tests que prueben la clase. Se trata de algo que podríamos considerar como TDD a la inversa: partiendo del código formulamos hipótesis sobre su funcionamiento y tratamos de probarlas escribiendo tests que pasen.
 
 Hasta cierto punto, estos tests de caracterización podrían convertirse en la base de los tests de aceptación que prepararemos para cumplimentar la historia que nos han pedido.
 
-Una forma de abordarlo es ir identificando outputs que correspondan a determinados flujos y, poco a poco, cubrir todos los casos. En algunos casos podremos comenzar a refactorizar aquellos flujos que tengamos bien cubiertos y sólo en ese caso.
+Una forma de abordarlo es ir identificando outputs que correspondan a determinados flujos y, poco a poco, cubrir todos los casos. En algún momento, podremos comenzar a refactorizar aquellos flujos que tengamos bien cubiertos y sólo en ese caso.
 
 ### Primer test y primeros problemas
 
-El primer caso que parece fácil testear es el elseif de la línea 47, que comprueba si el pedido tiene asignado un localizador de proveedor y devuelve un mensaje de que no se ha podido realizar. En el test necesitaremos un stub de Order que devuelva el providerLocator vacío.
+El primer caso que parece fácil testear es el `elseif` de la línea 47, que comprueba si el pedido tiene asignado un localizador de proveedor y devuelve un mensaje de que no se ha podido realizar. En el test necesitaremos un [stub](/2017-05-19-del-ojimetro-al-tdd) de `Order` que devuelva el `providerLocator` vacío.
 
-Dado que nuestras clases existentes no están bajo un namespace tenemos que configurar Composer para autocargarlas. Podemos utilizar la estrategia de classmap, indicando los directorios en los cuales queremos buscar las clases.
+Dado que nuestras clases existentes no están bajo un namespace tenemos que configurar Composer para autocargarlas. Podemos utilizar la estrategia de _classmap_, indicando los directorios en los cuales queremos buscar las clases.
 
 ```json
 {
@@ -273,7 +275,7 @@ Así y todo, esta última parte me preocupa un poco porque es uno de esos moment
 
 La tercera pata del primer nivel del condicional se cierne amenazante sobre nosotros, pero debemos enfrentarla con valor y tests. Nos espera bastante trabajo.
 
-Lo primero que vamos a hacer a continuación es asegurarnos de que creamos un escenario correcto para entrar en esta rama del flujo, que se divide en dos inicialmente en función de si los proveedores están asociados o no. Por lo tanto, necesitaremos crear dos escenarios básicos y luego un test para cada caso.
+Lo primero que vamos a hacer a continuación es asegurarnos de que creamos un escenario correcto para entrar en esta rama del flujo que se divide en dos; inicialmente, en función de si los proveedores están asociados o no. Por lo tanto, necesitaremos crear dos escenarios básicos y luego un test para cada caso.
 
 Lo que haré, de momento, será utilizar el debugger a fin de hacer un seguimiento del flujo mientras construyo los escenarios necesarios. Debería preguntar a Negocio por ejemplos de proveedores asociados pero, por desgracia, ese conocimiento está en el código y sé que Provider3 o Provider4 son asociados. No debería estar ahí, pero ahora no nos podemos meter con eso.
 
@@ -328,7 +330,7 @@ En la rama de proveedores no asociados nos encontraremos seguramente con varios 
 
 Por una parte, nuestros escenarios tienen de momento dos ejes de variación: una es el proveedor (o tipo de proveedor) y otro es el status del pedido. Ahora nos encontraremos con un tercer eje, que será el método de pago, y hasta con un cuarto: el Reseller: hemos podido ver que para ciertos Resellers hay que aplicar un trato especial.
 
-Es posible que, a estas alturas, hayas comenzado a vislumbrar posibles formas de atacar el refactor de este método (esto huele bastante a Chain of Responsibility). Pero no queremos ir demasiado rápido. En primer lugar, tenemos que caracterizar todo el comportamiento del método. En segundo lugar, es conveniente realizar el refactor aplicando el principio de baby-steps. Es decir, en lugar de reescribir el método, que sería lo que iba a ocurrir si intentamos aplicar un patrón CoR sin más dilación, iremos en pasos más cortos, limpiando la implementación actual hasta que el propio código nos revele (o no) que el patrón es aplicable.
+Es posible que, a estas alturas, hayas comenzado a vislumbrar posibles formas de atacar el refactor de este método (esto huele bastante a [Chain of Responsibility](/2016-12-05-cadena-de-responsabilidad) ). Pero no queremos ir demasiado rápido. En primer lugar, tenemos que caracterizar todo el comportamiento del método. En segundo lugar, es conveniente realizar el refactor aplicando el principio de _baby-steps_. Es decir, en lugar de reescribir el método, que sería lo que iba a ocurrir si intentamos aplicar un patrón CoR sin más dilación, iremos en pasos más cortos, limpiando la implementación actual hasta que el propio código nos revele (o no) que el patrón es aplicable.
 
 ### Añadiendo el tercer eje de variación
 
@@ -412,7 +414,7 @@ De momento nuestra tarea avanza bastante bien, pero cada vez resulta más difíc
 
 ## Ayudándonos con Code Coverage
 
-Hasta este momento ha sido relativamente orientarnos en el bosque de ifs que puebla este método, pero está llegando un punto en el que resulta complicado saber qué casos hemos cubierto y cuáles no. Aquí puede ayudarnos mucho la herramienta de cobertura de código de PHPUnit, pero necesitamos algo de configuración para hacerla funcionar.
+Hasta este momento ha sido relativamente fácil orientarnos en el bosque de ifs que puebla este método, pero está llegando un punto en el que resulta complicado saber qué casos hemos cubierto y cuáles no. Aquí puede ayudarnos mucho la herramienta de cobertura de código de PHPUnit, pero necesitamos algo de configuración para hacerla funcionar.
 
 ### Preparar el entorno para disponer de CodeCoverage
 
@@ -430,7 +432,7 @@ Tests directory (relative to path shown above; default: tests):
 Source directory (relative to path shown above; default: src): 
 ```
 
-Lo siguiente será modificar un poco el archivo resultante ya que, por defecto, activa el uso de la anotación @covers y a nosotros no nos interesa. Por tanto, podremos el atributo `forceCoversAnnotion` en `false` . Por lo demás, automáticamente pone en whitelist nuestra carpeta src, lo que hace que se analice la cobertura de nuestro código fuente:
+Lo siguiente será modificar un poco el archivo resultante ya que, por defecto, activa el uso de la anotación @covers y a nosotros no nos interesa. Por tanto, podremos el atributo `forceCoversAnnotion` en `false`. Por lo demás, automáticamente pone en _whitelist_ nuestra carpeta `src`, lo que hace que se analice la cobertura de nuestro código fuente:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -453,7 +455,7 @@ Lo siguiente será modificar un poco el archivo resultante ya que, por defecto, 
 </phpunit>
 ```
 
-Ahora, podemos ejecutar phpunit con el informe de coverage que más nos convenga:
+Ahora, podemos ejecutar `phpunit` con el informe de coverage que más nos convenga:
 
 ```bash
 bin/phpunit --coverage-html ./coverage
@@ -469,18 +471,18 @@ La forma más obvia de utilizar Code Coverage para crear tests de caracterizaci�
 
 Pero, en algunos casos, el hecho de que la línea se haya ejecutado no garantiza que el caso esté bien cubierto. Para eso nos fijamos en el número de **hits**, como los denomina PHPStorm, que no es más que el número de tests que cubre esa línea. En el caso de una línea o bloque cuya ejecución depende de una combinación de condiciones, tenemos que comprobar que el número de hits es, al menos, igual que el número de posibles resultados de la expresión condicional. Para verlo más claro:
 
-* Condicion1 AND Condicion2: para ejecutar el bloque se tiene que dar el caso en el que se cumplen ambas condiciones. 
+* Condicion1 AND Condicion2: para ejecutar el bloque se tiene que dar un caso en el que se cumplen ambas condiciones. 
 * Condicion1 OR Condicion2: como mínimo tenemos que tener dos tests: uno en el que se cumple la Condicion1, pero no la Condicion2, y otro en el que se cumple la Condicion2, pero no la Condicion1.
 
 Seguramente veremos líneas cubiertas por todos o casi todos los tests, lo que es correcto toda vez que serán líneas que se ejecutan en todos los casos. En otras palabras: a partir del mínimo necesario de tests los nuevos tests no añaden mucha información, aunque no en todos los casos.
 
-Otras líneas, controladas por condicionales, estarán cubiertas por más tests de los estrictamente necesarios. Esto podría indicar algún problema con nuestro diseño. Aunque no es un síntoma definitivo, lo cierto es que es un indicador que apunta a un excesivo anidamiento de condicionales. En otras palabras, para poder llegar a cierto fragmento de código, la ejecución tiene que tomar muchas desviaciones del flujo principal. Puedes considerarlo un smell.
+Otras líneas, controladas por condicionales, estarán cubiertas por más tests de los estrictamente necesarios. Esto podría indicar algún problema con nuestro diseño. Aunque no es un síntoma definitivo, lo cierto es que es un indicador que apunta a un excesivo anidamiento de condicionales. En otras palabras: para poder llegar a cierto fragmento de código, la ejecución tiene que tomar muchas desviaciones del flujo principal. Puedes considerarlo un _smell_.
 
 ## Seguimos caracterizando
 
 Como acabamos de ver, la métrica de cobertura es útil para determinar qué ramas del flujo de ejecución no han sido visitadas por los tests, que se visualizan en rojo en los informes.
 
-Así que nuestros próximos tests irán encaminados a cubrir con tests las últimas ramificaciones del flujo que afecta a los llamados Proveedores asociados, para esto necesito modificar ligeramente el builder del stub de PaymentMethods, a fin de permitirme definir respuestas para las llamadas que se van a hacer en el test.
+Así que nuestros próximos tests irán encaminados a cubrir las últimas ramificaciones del flujo que afecta a los llamados Proveedores asociados, para esto necesito modificar ligeramente el builder del stub de `PaymentMethods`, a fin de permitirme definir respuestas para las llamadas que se van a hacer en el test.
 
 ```php
     protected function configurePaymentMethods($selectedMethod, $isDebitCard = false, $requiresAuth = false) : MockObject

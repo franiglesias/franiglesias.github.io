@@ -584,9 +584,9 @@ class AssociatedProviderMessageGenerator implements MessageGenerator
         $productStatus = $order->getProductStatus();
 
         switch ($productStatus) {
-            case $productStatus == OrderStatuses::PROVIDER_PENDING:
-            case $productStatus == OrderStatuses::PENDING:
-            case $productStatus == OrderStatuses::WAITING_FOR_PAYMENT:
+            case OrderStatuses::PROVIDER_PENDING:
+            case OrderStatuses::PENDING:
+            case OrderStatuses::WAITING_FOR_PAYMENT:
                 return $this->generateMessageForPaymentMethod($order, $paymentMethods);
             case OrderStatuses::WAITING_FOR_SHIPMENT:
                 if ($paymentMethods->hasSelectedDebitCard()) {

@@ -9,11 +9,11 @@ En el artículo anterior colé un error en la estrategia de refactoring y, antes
 
 ## El momento de intervenir
 
-Vamos a analizar el problema: inicialmente el motivo por el que teníamos que atacar este código era la necesidad de arreglar un problema: si un producto no estaba disponible en un determinado proveedor no sale la notificación al usuario.
+Vamos a analizar el asunto: inicialmente el motivo por el que teníamos que atacar este código era la necesidad de arreglar un problema: si un producto no estaba disponible en un determinado proveedor no sale la notificación al usuario.
 
-Para intentar localizar el punto preciso que necesitaba atención hemos iniciado un refactor a fin de comprender mejor el código, o de facilitar que el código nos comunique cosas.
+Para intentar localizar el punto preciso que necesitaba atención hemos iniciado un refactor a fin de comprender mejor el código y facilitar que nos comunique cosas.
 
-Pero ¿en qué momento el código está listo para modificar el comportamiento?
+Pero ¿en qué momento el código está listo para modificar su comportamiento?
 
 La respuesta es que no hay una respuesta única, ya que es algo que vamos afinando con la experiencia. La clave es que llegará un momento en el que nuestra comprensión del código a través del refactor nos permitirá identificar que hemos llegado a un estado en el que podemos sentirnos bastante seguros de que es el lugar en el que intervenir.
 
@@ -25,13 +25,13 @@ Pero ahora sí es el momento.
 
 ### Test Driven Bug Smashing
 
-Como decía, necesitamos un test que falle antes de arreglar el bug. Es TDD: antes de escribir código de producción, necesitamos un test que falle (y ahora tenemos un test de caracterización que no falla).
+Como decía, necesitamos un test que falle antes de arreglar el bug. Es simplemente TDD: antes de escribir código de producción, necesitamos un test que falle (y de momento lo que tenemos es un test de caracterización que no falla).
 
-El test describirá el comportamiento deseado y, consecuentemente, la existencia de un error implica que el comportamiento no es el que queremos y el test fallará.
+El test describirá el comportamiento deseado y, consecuentemente, la existencia de un error implica que el comportamiento actual del código no es el que queremos y el test fallará.
 
 Puede ser una buena idea nombrar el test con referencia al error (o story) para el que lo vamos a escribir. O bien hacerlo en los comentarios.
 
-En nuestro ejemplo, el test debe comprobar que para el Proveedor 1, en caso de no haberse logrado obtener localizador del producto el mensaje para la notificación debe ser: "pedido no se pudo realizar"
+En nuestro ejemplo, el test debe comprobar que para el Proveedor 1, en caso de no haberse logrado obtener localizador del producto, el mensaje para la notificación debe ser: "pedido no se pudo realizar"
 
 He aquí el test:
 
@@ -54,7 +54,7 @@ Y el test pasa… WTF!
 Cuando un test que debería fallar no lo hace nos puede indicar lo siguiente:
 
 * El test está mal hecho y no prueba lo que debería demostrar. En el ejemplo, que el test no falle contradice el hecho de que tenemos un problema en producción.
-* Nuestro refactor ha provocado un cambio de comportamiento, el cual no hemos podido controlar precisamente por no contar con un test que caracterizase esa situación.
+* Nuestro refactor ha provocado un cambio de comportamiento, que no hemos podido controlar precisamente por no contar con un test que caracterizase esa situación.
 
 ¿Qué ha ocurrido? En principio el test es correcto. Sin embargo, en la última fase de refactor hemos realizado un cambio que ha generado una alteración no esperada del comportamiento:
 
@@ -79,7 +79,7 @@ Cuando un test que debería fallar no lo hace nos puede indicar lo siguiente:
     }
 ```
 
-Al cambiar el orden en que se ejecutan las condicionales se ha alterado el comportamiento del método, corrigiendo, de hecho, el problema original. Si restauramos el orden de ejecución original el test fallará. Y eso está muy bien.
+Al cambiar el orden en que se ejecutan las condicionales se ha alterado el comportamiento del método, corrigiendo, de hecho, el problema original. Si restauramos el orden de ejecución el test fallará. Y eso está muy bien.
 
 Ahora sí, partiendo de nuestro test en rojo, podemos intervenir en la clase para corregir el error:
 
@@ -99,15 +99,15 @@ En la práctica tenemos un tiempo limitado para el refactor. Una vez que hemos c
 
 La respuesta depende del compromiso de entrega adquirido, de lo clara que tengamos la estrategia de refactor y de la relevancia que pueda tener esa parte del código en concreto.
 
-En cuanto al compromiso de entrega en el sprint la decisión es bastante simple y se reduce a la pregunta: ¿tenemos tiempo para seguir refactorizando o el refactor es lo bastante obvio como para que no consuma demasiado de este tiempo?
+En cuanto al **compromiso de entrega** en el _sprint_ la decisión es bastante simple y se reduce a la pregunta: ¿tenemos tiempo para seguir refactorizando o el refactor es lo bastante obvio como para que no consuma demasiado de este tiempo?
 
-En lo que respecta a la estrategia, cuanto más clara u obvia resulte, menos tiempo nos consumirá y, por tanto, más factible es llevarla a cabo.
+En lo que respecta a **la estrategia**, cuanto más clara u obvia resulte, menos tiempo nos consumirá y, por tanto, más factible es llevarla a cabo.
 
 Finalmente, la relevancia del código puede estar más o menos clara en cada contexto: hay partes del código que son más críticas para nuestro negocio que otras, por tanto, el esfuerzo debería concentrarse en ellas.
 
 Con todo, la regla de dejar el código en mejor estado de cómo lo hemos encontrado siempre es de aplicación. Aunque no emprendamos refactors profundos, el hecho de que mejoremos un poco la calidad del código que revisamos contribuye a la calidad global de nuestro software y facilita la vida de quienes tengan que lidiar con él en el futuro.
 
-Dicho esto, para nuestro ejemplo, en un entorno de trabajo real podríamos parar ahora y dejarlo en el estado actual, ya que hemos conservado el comportamiento, solucionado el problema como se nos pidió y tenemos el código en un estado mejor que el original.
+Dicho esto, para nuestro ejemplo, en un entorno de trabajo real podríamos parar ahora y dejarlo en el estado actual, ya que hemos conservado el comportamiento, hemos solucionado el problema como se nos pidió y tenemos el código en un estado mejor que el original.
 
 Pero como aquí no tenemos otros condicionantes, o suponiendo que aún disponemos de tiempo, vamos a seguir a ver a dónde nos lleva el refactor.
 
@@ -117,6 +117,7 @@ La única forma de asegurarse de que un refactor no cambia el comportamiento es 
 
 Sin embargo, hay unos cuantos refactors que podríamos aplicar dentro de ámbitos bien definidos (una clase, un método, una función) con un riesgo bastante bajo de alterar el comportamiento del código. Por ejemplo:
 
+* **Eliminar código comentado:** ya que no hace nada, mejor quitarlo de ahí.
 * **Sustituir números mágicos por constantes:** cada vez que encontremos un valor mágico (puede ser numérico o no) lo sustituimos por una constante que explique su significado.
 * **Mejores nombres de variables o parámetros:** si un nombre de variable no nos explica qué significa, lo cambiamos para que sea más explícito, especialmente los nombres de una ó dos letras.
 * **Introducir variables explicativas:** poner el resultado de expresiones complejas, o partes de ellas, en variables con un nombre significativo.
@@ -140,46 +141,46 @@ En nuestro ejemplo, podemos ver que los métodos `generateMessageForAssociatedPr
 
 Sin embargo, es cierto que se puede observar que la confusa estructura con la que iniciamos esta serie de artículos ha dejado huella en la forma bastante desordenada que tiene el código y en los muchos casos que parece que podrían llegar a darse pero que no parecen cubiertos. En cualquier caso, el batiburrillo de conceptos que se revela aquí nos indica que este método ha sido construido seguramente a base de parches y añadidos a medida que las situaciones eran detectadas.
 
-El problema que tenemos es que el código no está organizado de una manera suficientemente cohesiva: cosas que deberían estar juntas no lo están, o están intercalados conceptos diferentes.
+El problema que tenemos es que el código no está organizado de una manera suficientemente cohesiva: cosas que deberían estar juntas no lo están, o conceptos diferentes se encuentran intercalados.
 
-Por ejemplo, en los métodos citados `generateMessageForAssociatedProviders` y `generateMessageForNoAssociatedProviders` hay un primer bloque que tiene que ver con que el estado del producto esté pendiente (aparentemente por la forma en que se realiza el pago), de modo que hay un mensaje diferente asociado al medio de pago. Veremos esto más adelante.
+Por ejemplo, en los métodos citados `generateMessageForAssociatedProviders` y `generateMessageForNoAssociatedProviders` hay un primer bloque que tiene que ver con que el estado del producto esté pendiente (aparentemente en relación a la forma en que se realiza el pago), de modo que hay un mensaje diferente asociado al medio de pago. Veremos esto más adelante.
 
 Un segundo grupo de condicionales devuelve un mensaje en función del estado del producto.
 
-Por otra parte, hay un control que se refiere no al estado del producto (`$productStatus`), sino al estado del pedido (`$orderStatus`), mezclado entre el resto de controles que se hacen a `$productStatus`. Curiosamente ese control es el mismo en los dos métodos sólo que está invertido, mostrando ese tipo de duplicación que no es obvia a primera vista:
+Por otra parte, hay un control que no se refiere al estado del producto (`$productStatus`), sino al estado del pedido (`$orderStatus`), mezclado entre el resto de controles que se hacen a `$productStatus`. Curiosamente ese control es el mismo en los dos métodos sólo que está invertido, mostrando ese tipo de duplicación que no es obvia a primera vista:
 
 ```php
 // en generateMessageForAssociatedProviders
 
-        if ($orderStatus == PurchaseStatus::RESERVED ||
-            $orderStatus == PurchaseStatus::SOLD) {
-            if ($order->getResellerCode() == Resellers::RESELLER1) {
-                return ['pedido confirmado con reseller 1'];
-            }
-
-            return ['pedido confirmado'];
+    if ($orderStatus == PurchaseStatus::RESERVED ||
+        $orderStatus == PurchaseStatus::SOLD) {
+        if ($order->getResellerCode() == Resellers::RESELLER1) {
+            return ['pedido confirmado con reseller 1'];
         }
+
+        return ['pedido confirmado'];
+    }
         
 // en generateMessageForNoAssociatedProviders
 
-        if ($orderStatus == PurchaseStatus::RESERVED ||
-            $orderStatus == PurchaseStatus::SOLD
+    if ($orderStatus == PurchaseStatus::RESERVED ||
+        $orderStatus == PurchaseStatus::SOLD
+    ) {
+        if ($order->getResellerCode() == Resellers::RESELLER2 ||
+            $order->getResellerCode() == Resellers::RESELLER3 ||
+            $order->getResellerCode() == Resellers::RESELLER4 ||
+            $order->getResellerCode() == Resellers::RESELLER5
         ) {
-            if ($order->getResellerCode() == Resellers::RESELLER2 ||
-                $order->getResellerCode() == Resellers::RESELLER3 ||
-                $order->getResellerCode() == Resellers::RESELLER4 ||
-                $order->getResellerCode() == Resellers::RESELLER5
-            ) {
-                return ['pedido confirmado'];
-            }
-
-            return ['pedido confirmado reseller 1'];
+            return ['pedido confirmado'];
         }
+
+        return ['pedido confirmado reseller 1'];
+    }
 ```
 
-Este podría ser un buen punto para empezar a reducir duplicación de código, extrayendo el bloque a un método:. Por tanto, lo haremos manteniendo los tests pasando (aunque haya que hacer un pequeño arreglo en el mensaje esperado).
+Este podría ser un buen punto para empezar a reducir duplicación de código, extrayendo el bloque a un método. Lo haremos manteniendo los tests pasando, aunque haya que hacer un pequeño arreglo en el mensaje esperado, como veremos luego.
 
-Primero, vamos a mover el bloque en generateMessageForAssociatedProviders al final de método, asegurándonos de que el test sigue pasando.
+Primero, vamos a mover el bloque en `generateMessageForAssociatedProviders` al final de método, asegurándonos de que el test sigue pasando.
 
 ```php
     if ($productStatus == OrderStatuses::CANCELLED ||
@@ -232,9 +233,9 @@ Y ahora, hacemos la misma sustitución en el método `generateMessageForNoAssoci
     return [];
 ```
 
-Al principio, el test nos fallará porque los textos no coinciden exactamente. Puesto que vemos que quieren transmitir lo mismo, lo que hacemos es retocar los tests para que usen el mismo texto de notificación.
+Al principio, el test fallará porque los textos no coinciden exactamente. Puesto que vemos que quieren transmitir lo mismo, lo que hacemos es retocar los tests para que usen el mismo texto de notificación.
 
-Ahora la pregunta es: si el mismo comportamiento se repite en ambos métodos: ¿no tendría sentido sacarlo de ahí al flujo principal del método `generate`?
+Ahora la pregunta es: si el mismo comportamiento se repite en ambos métodos, ¿no tendría sentido llevarlo al flujo principal del método `generate`?
 
 Pues, ya que tenemos test para estar seguro, no está de más probarlo:
 
@@ -271,7 +272,7 @@ public function generate(Order $order)
 }
 ```
 
-¡Bingo! Al hacer la prueba, todo el test de caracterización sigue pasando. Como beneficio extra nuestro métodos específicos son ahora más cohesivos: todos los if de primer nivel se refieren a la misma variable. Y esto nos indica un buen caso para usar una estructura switch.
+¡Bingo! Al hacer la prueba, todo el test de caracterización sigue pasando. Como beneficio extra nuestros métodos específicos son ahora más cohesivos: todos los if de primer nivel se refieren a la misma variable. Y esto nos indica un buen caso para usar una estructura **switch**.
 
 ## Refactor refactorizado
 
@@ -352,7 +353,7 @@ Así, por ejemplo, en los artículos anteriores, me planteaba que este refactor 
     }
 ```
 
-Aunque switch es una estructura no muy apreciada, en este caso hace que el código sea mucho más limpio y legible y, coo bonus, nos permite cohesionar todo lo que tiene que ver con la variable $paymentMethod. Ese bloque de código tiene toda la pinta de poder refactorizarse en un nuevo switch, pero nosotros no queremos anidarlo, sino que vamos a extraer primero esos bloques a sendos métodos. Luego los reescribimos en forma de switch y éste es el resultado, tras algunos ajustes necesarios para pasar el test:
+Aunque switch es una estructura no muy apreciada, en este caso hace que el código sea mucho más limpio y legible y, coo bonus, nos permite cohesionar todo lo que tiene que ver con la variable `$paymentMethod`. Ese bloque de código tiene toda la pinta de poder refactorizarse en un nuevo **switch**, pero nosotros no queremos anidarlo, sino que vamos a extraer primero esos bloques a sendos métodos. Luego los reescribimos en forma de **switch** y éste es el resultado, tras algunos ajustes necesarios para pasar el test:
 
 
 ```php
@@ -485,9 +486,9 @@ Ahora sustituimos el código por la llamada al nuevo método de la clase: inicia
     }
 ```
 
-Pero al pasar el test surgen problemas. Hasta ahora teníamos un stub de PaymentMethods y ahora necesitamos modificarlo para reconocer la nueva funcionalidad en la clase. Nuestro problema es que hemos llegado tarde a este refactor y nuestro test se ve afectado. La moraleja es que seguramente deberíamos haber encapsulado la funcionalidad mucho antes.
+Pero al pasar el test surgen problemas. Hasta ahora teníamos un _stub_ de `PaymentMethods` y ahora necesitamos modificarlo para reconocer la nueva funcionalidad de la clase. Nuestro problema es que hemos llegado tarde a este refactor y nuestro test se ve afectado. La moraleja es que seguramente deberíamos haber encapsulado la funcionalidad mucho antes.
 
-Pero es interesante es que nuestro método para crear el stub es mucho más sencillo, ya que hemos ocultado un montón de destalles:
+Pero es interesante ver que nuestro método para crear el stub es mucho más sencillo, y eso es bueno ya que hemos ocultado un montón de destalles que realmente sólo importaban a `PaymentMethods`:
 
 ```php
 class PaymentMethodsStubFactory extends TestCase
@@ -522,7 +523,7 @@ class PaymentMethodsStubFactory extends TestCase
 }
 ```
 
-Para poder usar en condiciones PaymentMethods y simplificar el código necesitamos hacer algo con el logeo en caso de que no haya método de pago seleccionado. No cabe la posibilidad de hacer el log desde el propio PaymentMethods. Mi hipótesis es que bastaría comprobarlo al principio, loguear y devolver el mensaje vacío.
+Para poder usar en condiciones `PaymentMethods` y simplificar el código necesitamos hacer algo con el logeo en caso de que no haya método de pago seleccionado. No cabe la posibilidad de hacer el log desde el propio `PaymentMethods`. Mi hipótesis es que bastaría comprobarlo al principio, loguear y devolver el mensaje vacío.
 
 ```php
     public function generate(Order $order)
@@ -546,18 +547,12 @@ Para poder usar en condiciones PaymentMethods y simplificar el código necesitam
     //...
 ```
 
-Pero si hago esto, comienzan a fallar un montón de tests. El problema es que en los tests que fallan no he preparado un stub de Order con un PaymentMethods adecuado. Para arreglar esto, tengo que cambiar los stub de Order que utilizan un PaymentMethod indefinido (en OrderStubFactory se identifican porque usan new PaymentMethods en lugar de un stub de PaymentMethods).
+Pero si hago esto, comienzan a fallar un montón de tests. El problema es que en los tests que fallan no he preparado un _stub_ de `Order` con un `PaymentMethods` adecuado. Para arreglar esto, tengo que cambiar los stub de Order que utilizan un PaymentMethod indefinido (en OrderStubFactory se identifican porque usan `new PaymentMethods` en lugar de un _stub_ de `PaymentMethods`).
 
 Resuelto esto, podemos avanzar en nuestro trabajo, sustituyendo las llamadas al método `getPaymentMethodFromOrder` de la clase `MessagesByOrderStatusGenerator` por el de `PaymentMethods` y eliminando aquél. Ahora estamos en condiciones de extraer los generadores. Para no alargar el artículo, aquí tenemos la interfaz y uno de los generadores extraídos:
 
 ```php
 <?php
-/**
- * Created by PhpStorm.
- * User: frankie
- * Date: 31/12/17
- * Time: 21:09
- */
 
 namespace Refactor;
 
@@ -573,12 +568,6 @@ interface MessageGenerator
 
 ```php
 <?php
-/**
- * Created by PhpStorm.
- * User: frankie
- * Date: 31/12/17
- * Time: 21:11
- */
 
 namespace Refactor;
 
@@ -679,11 +668,6 @@ Finalmente, así queda el método `generate` de `MessagesByOrderStatusGenerator`
     }
 ```
 
-Todavía sería posible profundizar en nuestro refactor pero, de momento, vamos a parar aquí. Puedes ver el código completo en el [repositorio del proyecto](https://github.com/franiglesias/refactoring). Los siguientes pasos serían invertir la dependencia de PaymentMethods lo que nos permitiría hacer que la clase implementase la interfaz que acabamos de definir, extraer los métodos específicos que todavía quedan y algunos otros refinamientos.
+Todavía sería posible profundizar en nuestro refactor pero, de momento, vamos a parar aquí. Puedes ver el código completo en el [repositorio del proyecto](https://github.com/franiglesias/refactoring). Los siguientes pasos serían invertir la dependencia de PaymentMethods lo que nos permitiría hacer que la clase implemente la interfaz que acabamos de definir, extraer los métodos específicos que todavía quedan y algunos otros refinamientos.
 
 Pero esos temas, y algunos otros, los dejaremos para la cuarta y, espero, última entrega de esta serie.
-
-
-
-
-

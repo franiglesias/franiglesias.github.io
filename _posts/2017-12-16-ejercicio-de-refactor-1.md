@@ -7,6 +7,13 @@ tags: [refactor, characterization-test, legacy]
 
 ¿Qué tal si hablamos de refactor?
 
+La serie **Ejercicio de refactoring** consta de los siguientes artículos:
+
+[Ejercicio de refactoring (1): Los test de caracterización](/2017-12-16-ejercicio-de-refactor-1)  
+[Ejercicio de refactoring (2): Extraer hasta la última gota](/2017-12-17-ejercicio-de-refactor-2)  
+[Ejercicio de refactoring (3): Intervenir y seguir o no refactorizando](/2017-12-27-ejercicio-de-refactor-3)  
+[Ejercicio de refactoring (4): Finalizando](/2018-01-05-ejercicio-de-refactor-4)  
+
 Estoy leyendo el libro de referencia sobre estos temas: [Working effectively with legacy code, de Michael Feathers](https://www.amazon.es/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052), y me gustaría ir poniendo en práctica algunas de las técnicas que propone. Para ello, he preparado un ejemplo adaptando ligeramente un caso real.
 
 Por muy espantoso que nos pueda parecer que un código similar al del ejemplo se encuentre en producción en algún lugar recuerda que no debes menospreciarlo. Por varias razones:

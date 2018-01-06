@@ -7,6 +7,13 @@ tags: [refactor, legacy]
 
 Una vez que hemos conseguido describir con tests el comportamiento del método que nos interesa, llega el momento de refactorizar. Queremos cambiar la implementación, pero no alterar el comportamiento público del método. Por lo tanto, los tests han de permanecer en verde tras cada cambio, procurando que la fase roja dure lo menos posible, lo que implica realizar baby-steps y no grandes refactors de una sentada.
 
+La serie **Ejercicio de refactoring** consta de los siguientes artículos:
+
+[Ejercicio de refactoring (1): Los test de caracterización](/2017-12-16-ejercicio-de-refactor-1)  
+[Ejercicio de refactoring (2): Extraer hasta la última gota](/2017-12-17-ejercicio-de-refactor-2)  
+[Ejercicio de refactoring (3): Intervenir y seguir o no refactorizando](/2017-12-27-ejercicio-de-refactor-3)  
+[Ejercicio de refactoring (4): Finalizando](/2018-01-05-ejercicio-de-refactor-4)  
+
 Este es el archivo en cuestión:
 
 {% gist 5b4fa5d83ac0fb113d4253560dae2bc6 %}

@@ -9,10 +9,10 @@ En el artículo anterior quedaron pendientes algunos refactors en nuestro proyec
 
 La serie **Ejercicio de refactoring** consta de los siguientes artículos:
 
-[Ejercicio de refactoring (1): Los test de caracterización](/2017-12-16-ejercicio-de-refactor-1)
-[Ejercicio de refactoring (2): Extraer hasta la última gota](/2017-12-17-ejercicio-de-refactor-2)
-[Ejercicio de refactoring (3): Intervenir y seguir o no refactorizando](/2017-12-27-ejercicio-de-refactor-3)
-[Ejercicio de refactoring (4): Finalizando](/2018-01-05-ejercicio-de-refactor-4)
+[Ejercicio de refactoring (1): Los test de caracterización](/2017-12-16-ejercicio-de-refactor-1)  
+[Ejercicio de refactoring (2): Extraer hasta la última gota](/2017-12-17-ejercicio-de-refactor-2)  
+[Ejercicio de refactoring (3): Intervenir y seguir o no refactorizando](/2017-12-27-ejercicio-de-refactor-3)  
+[Ejercicio de refactoring (4): Finalizando](/2018-01-05-ejercicio-de-refactor-4)  
 
 Pero antes de empezar, debo señalar que la propuesta de refactor que se muestra aquí no tiene que ser ni la única posible, ni la mejor. Lo interesante de esta serie no es tanto el resultado concreto, como el proceso mediante el que se llega al mismo. Y, particularmente, lo que más me llama la atención es el modo en que, a medida que vamos reorganizando el código, vamos refinando los conceptos, descubriendo patrones y abriendo vías para mejores diseños.
 

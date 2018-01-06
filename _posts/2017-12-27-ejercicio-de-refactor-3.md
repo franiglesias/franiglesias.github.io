@@ -7,6 +7,13 @@ tags: [refactor, legacy]
 
 En el artículo anterior colé un error en la estrategia de refactoring y, antes de continuar, voy a detenerme en ese problema porque es realmente interesante.
 
+La serie **Ejercicio de refactoring** consta de los siguientes artículos:
+
+[Ejercicio de refactoring (1): Los test de caracterización](/2017-12-16-ejercicio-de-refactor-1)  
+[Ejercicio de refactoring (2): Extraer hasta la última gota](/2017-12-17-ejercicio-de-refactor-2)  
+[Ejercicio de refactoring (3): Intervenir y seguir o no refactorizando](/2017-12-27-ejercicio-de-refactor-3)  
+[Ejercicio de refactoring (4): Finalizando](/2018-01-05-ejercicio-de-refactor-4)  
+
 ## El momento de intervenir
 
 Vamos a analizar el asunto: inicialmente el motivo por el que teníamos que atacar este código era la necesidad de arreglar un problema: si un producto no estaba disponible en un determinado proveedor no sale la notificación al usuario.

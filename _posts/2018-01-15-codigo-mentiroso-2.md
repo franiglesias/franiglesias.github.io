@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Código mentiroso 2: más ejemplos
+title: Código mentiroso (2) más ejemplos
 categories: articles
 tags: [solid, good-practices, refactor]
 ---

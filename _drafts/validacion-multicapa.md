@@ -39,7 +39,7 @@ class GetGradesUseCase
 	
 	public function __construct(Repository $gradesRepository)
 	{
-		$this->gradesRespository = $gradesRepository;
+		$this->gradesRepository = $gradesRepository;
 	}
 	
 	public function execute($courseId, $studentsGroup, $term)
@@ -84,7 +84,7 @@ Sería responsabilidad del controlador pasar al UseCase un dato correctamente co
 
 Vamos a ver cómo se podría implementar esto:
 
-### Type Hinting
+### Usando *Type Hinting*
 
 Podríamos empezar con un Type Hinting que defina qué tipos son aceptables para el UseCase:
 
@@ -95,7 +95,7 @@ class GetGradesUseCase
 	
 	public function __construct(Repository $gradesRepository)
 	{
-		$this->gradesRespository = $gradesRepository;
+		$this->gradesRepository = $gradesRepository;
 	}
 	
 	public function execute(string $courseId, string $studentsGroup, int $term)
@@ -117,8 +117,97 @@ Al fin y al cabo, los Value Objects representan conceptos importantes de nuestro
 
 Sin embargo, ¿deberían salir los Value Objects a la capa de infraestructura? 
 
-La respuesta más general es que no. La capa de infraestructura es, fundamentalmente, una capa de implementación
+La respuesta más general es que no. La capa de infraestructura no debería saber nada del dominio, aparte de cómo comunicarse con la capa de aplicación, por lo que no tiene mucho sentido usar Value Objects en ella, salvo, quizá, algunos muy genéricos (como Money) que pueden ser compartidos por muchos dominios.
 
+Pero en la capa de aplicación sí que podríamos tener Value Objects ya que la función de ésta es coordinar los elementos del dominio para realizar las operaciones que se solicitan.
 
+Los Value Objects tienen comportamiento, normalmente destinado a proteger sus propias invariantes, y eso incluye su auto validación. Por ejemplo, CourseId sólo nos permite crear Id para cursos que sean formalmente correctos:
 
+```php
+class CourseId {
+
+    private $courseId;
+
+    public function __construct(string $courseId)
+    {
+        $this->isValidCourseIdOrDie($courseId);
+        $this->courseId = $courseId;
+    }
+
+    public function getCourseId() : string
+    {
+        return $this->courseId;
+    }
+
+    private function isValidCourseIdOrDie($courseId)
+    {
+        if (!preg_match('/^[PIL]\d{3,3}$/', $courseId)) {
+            throw new InvalidArgumentException($courseId.' is an invalid Id');
+        }
+    }
+}
+```
+Esto nos permite reescribir el UseCase de una manera un poco distinta, ya que la validación del Value Object descarga al UseCase de esa responsabilidad. Y lo más interesante, es que siempre que construyamos un objeto de estos, siempre será válido.
+
+```php
+class GetGradesUseCase
+{
+	private $gradesRepository;
+	
+	public function __construct(Repository $gradesRepository)
+	{
+		$this->gradesRepository = $gradesRepository;
+	}
+	
+	public function execute(string $id, string $group, int $term)
+	{
+		$courseId = new CourseId($id);
+		$studentsGroup = new StudentsGroup($group);
+		$termId = new Term($term);
+		
+		// Get data from repository
+	}
+}
+```
+
+### Usando un objeto Request
+
+El UseCase espera tres parámetros lo que, sin ser un número exagerado, empieza a ser incómodo. Habrá UseCases que no esperen parámetros en absoluto y otros que trabajen con media docena o más.
+
+Hay varias razones por las que es buena idea refactorizar las listas de varios parámetros por un Parameter Object, que encapsule todos los necesarios para realizar una operación: es fácil de mantener, nos permite hacer type hinting específico del UseCase, es más fácil gestionar cuando hay muchos parámetros y, llegado el caso, nos da pie a modernizar la arquitectura si adoptamos Command Buses.
+
+Evidentemente, la complejidad asociada con el número de parámetros, se traslada del UseCase al objeto Request, pero en realidad es mucho más fácil gestionarla aquí.
+
+Veamos un ejemplo:
+
+```
+class GetGradesRequest
+{
+    private $courseId;
+    private $studentsGroup;
+    private $term;
+
+    public function __construct(string $courseId, string $studentsGroup, int $term)
+    {
+        $this->courseId = $courseId;
+        $this->studentsGroup = $studentsGroup;
+        $this->term = $term;
+    }
+
+    public function getCourseId()
+    {
+        return $this->courseId;
+    }
+
+    public function getStudentsGroup()
+    {
+        return $this->studentsGroup;
+    }
+
+    public function getTerm()
+    {
+        return $this->term;
+    }
+}
+````
 

@@ -109,11 +109,15 @@ class GetGradesUseCase
 
 ```
 
-El type hinting sobre tipos escalares es claramente insuficiente para nuestro objetivo, así que ¿por qué no usar nuestros propios tipos?
+Pero está claro que el type hinting sobre escalares es insuficiente. Es cierto que nos ayuda un poco, pero tiene que haber formas de hacerlo mejor.
 
 ### Usando Value Objects
 
-Al fin y al cabo, los Value Objects representan conceptos importantes de nuestro dominio que nos interesan por su valor y no por su identidad (aunque, en este caso, dos de ellos son, de hecho, identidades).
+Al fin y al cabo, los Value Objects representan conceptos importantes de nuestro dominio que nos interesan por su valor y no por su identidad (aunque, en este caso, dos de ellos son, de hecho, identidades) y en algún momento los datos recibidos serán la base a partir de la cual se generarán. 
+
+Sin embargo, ¿deberían salir los Value Objects a la capa de infraestructura? 
+
+La respuesta más general es que no. La capa de infraestructura es, fundamentalmente, una capa de implementación
 
 
 

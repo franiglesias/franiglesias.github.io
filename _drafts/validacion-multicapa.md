@@ -1,6 +1,6 @@
 Validación
 ==========
-La regla de oro de la validación es que si no lo hemos generado nosotros, debemos desconfiar de cualquier dato que llegue a nuestro código, particularmente los que proporcionan los usuarios, sean seres humanos o consumidores de nuestras apis.
+La regla de oro de la validación dice que, si no lo hemos generado nosotros, debemos desconfiar de cualquier dato que llegue a nuestro código, particularmente si lo proporcionan los usuarios, sean seres humanos o consumidores de nuestras apis.
 
 Esto se traduce en que esos datos deben someterse a una validación, es decir, a un proceso que se asegure que cumplen una serie de condiciones que nos permitan tratarlos con garantías de que no van a suponer un problema. Ejemplos de problemas que queremos evitar son:
 
@@ -12,13 +12,13 @@ En el contexto de una arquitectura en capas, cabe preguntarse cuándo debe reali
 
 Por ejemplo, podríamos posponer la validación hasta el momento en que vayamos a utilizar los datos.
 
-Pongamos, por ejemplo, una aplicación de gestión académica. Ésta expone un endpoint en el que obtener las notas de un grupo de estudiantes, en una asignatura (course), en un trimestre determinado. Algo así como:
+Supongamos una aplicación de gestión académica. Ésta expone un endpoint en el que obtener las notas de un grupo de estudiantes, en una asignatura (course), en un trimestre determinado. Algo así como:
 
 ```
 /course/12345/grades?group=A012&term=2
 ```
 
-Para manejar este endpoint tenemos un controlador y vamos a dar por hecho de que se trata de una capa tonta que simplemente toma los parámetros y se los pasa a un Service o UseCase para obtener, a cambio, la respuesta y pasársela a la vista.
+Para manejar este endpoint tenemos un controlador y vamos a dar por hecho de que se trata de una capa tonta que simplemente toma los parámetros y se los pasa a un UseCase para obtener, la respuesta y pasársela a la vista.
 
 ```php
 function grades($courseId, Request $request)
@@ -26,7 +26,7 @@ function grades($courseId, Request $request)
 	$studentsGroup = $request->get('group', '');
 	$term = $request->get('term', 0);
 	$response = $this->GetGradesUsecase->execute($courseId, $studentsGroup, $term);
-	$this->set($response);
+	$this->setView($response);
 }
 ```
 
@@ -70,7 +70,7 @@ Tomemos, por ejemplo, el parámetro `group`. En el ejemplo vemos que es un strin
 
 Estas reglas reflejan dos tipos de restricciones:
 
-* De implementación: tanto del tipo básico de dato (string) como de su estructura (una letra y tres números). Según estas reglas, el código B301 sería válido, pero el X001 no.
+* De implementación: tanto del tipo básico de dato (string) como de su estructura (una letra y tres números). Según estas reglas, el código B301 sería válido, pero el XM01 no.
 * De dominio: con las reglas de implementación se pueden crear numerosos códigos de grupo, pero no todos son válidos en el dominio ya que no representarían grupos válidos. Según esta reglas el código B301 no puede ser válido (la letra no es ni P, ni I, ni L).
 
 Así que, en realidad, tendría sentido hacer varias validaciones:
@@ -121,7 +121,7 @@ La respuesta más general es que no. La capa de infraestructura no debería sabe
 
 Pero en la capa de aplicación sí que podríamos tener Value Objects ya que la función de ésta es coordinar los elementos del dominio para realizar las operaciones que se solicitan.
 
-Los Value Objects tienen comportamiento, normalmente destinado a proteger sus propias invariantes, y eso incluye su auto validación. Por ejemplo, CourseId sólo nos permite crear Id para cursos que sean formalmente correctos:
+Los Value Objects tienen comportamiento, normalmente destinado a proteger sus propias invariantes, y eso incluye su validación implícita. Por ejemplo, CourseId sólo nos permite crear Id para cursos que sean formalmente correctos:
 
 ```php
 class CourseId {
@@ -165,22 +165,26 @@ class GetGradesUseCase
 		$studentsGroup = new StudentsGroup($group);
 		$termId = new Term($term);
 		
+		// Domain related validation
+		
 		// Get data from repository
 	}
 }
 ```
 
+Si es necesario, en el UseCase podríamos realizar otras validaciones relacionadas con el dominio.
+
 ### Usando un objeto Request
 
 El UseCase espera tres parámetros lo que, sin ser un número exagerado, empieza a ser incómodo. Habrá UseCases que no esperen parámetros en absoluto y otros que trabajen con media docena o más.
 
-Hay varias razones por las que es buena idea refactorizar las listas de varios parámetros por un Parameter Object, que encapsule todos los necesarios para realizar una operación: es fácil de mantener, nos permite hacer type hinting específico del UseCase, es más fácil gestionar cuando hay muchos parámetros y, llegado el caso, nos da pie a modernizar la arquitectura si adoptamos Command Buses.
+Hay varias razones por las que es buena idea refactorizar las listas de varios parámetros por un Parameter Object que encapsule todos los necesarios para realizar una operación: es fácil de mantener, nos permite hacer type hinting específico del UseCase, es más fácil gestionar cuando hay muchos parámetros y, llegado el caso, nos da pie a modernizar la arquitectura si adoptamos Command Buses.
 
 Evidentemente, la complejidad asociada con el número de parámetros, se traslada del UseCase al objeto Request, pero en realidad es mucho más fácil gestionarla aquí.
 
 Veamos un ejemplo:
 
-```
+```php
 class GetGradesRequest
 {
     private $courseId;
@@ -209,5 +213,37 @@ class GetGradesRequest
         return $this->term;
     }
 }
-````
+```
 
+En este caso, nuestro UseCase tendría que quedar así:
+
+```php
+class GetGradesUseCase
+{
+	private $gradesRepository;
+	
+	public function __construct(Repository $gradesRepository)
+	{
+		$this->gradesRepository = $gradesRepository;
+	}
+	
+	public function execute(GetGradesRequest $request)
+	{
+		$courseId = new CourseId($request->getCourseId());
+		$studentsGroup = new StudentsGroup($request->getStudentsGroup());
+		$termId = new Term($request->getTerm());
+		
+		// Domain related validation
+
+		// Get data from repository
+	}
+}
+```
+
+¿Es el objeto Request un DTO? Es decir, ¿es simplemente un objeto tonto con el que pasar datos?
+
+No debería. Un objeto Request puede ser más que un simple DTO.
+
+Para empezar, podemos hacerlo inmutable, de modo que sólo tenga getters públicos, garantizando de este modo que mantiene la integridad de los datos.
+
+Podemos hacer que valide los parámetros que recibe en construcción, 

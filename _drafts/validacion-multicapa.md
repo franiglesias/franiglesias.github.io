@@ -209,5 +209,10 @@ class GetGradesRequest
         return $this->term;
     }
 }
-````
+```
 
+* [Validation in Domain Driven Design](http://gorodinski.com/blog/2012/05/19/validation-in-domain-driven-design-ddd/)
+* [Ddd Domain Validation, Actually Action Validation](http://www.codemozzer.me/domain,validation,action,composable,messages/2015/09/26/domain_validation.html)
+* [Domain-Driven Design (DDD) With F# - Validation](http://gorodinski.com/blog/2013/04/23/domain-driven-design-with-fsharp-validation/)
+* [At the Boundaries, Applications are Not Object-Oriented](http://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Oriented/)
+* 

@@ -1,6 +1,33 @@
-Validación
-==========
-La regla de oro de la validación dice que, si no lo hemos generado nosotros, debemos desconfiar de cualquier dato que llegue a nuestro código, particularmente si lo proporcionan los usuarios, sean seres humanos o consumidores de nuestras apis.
+Validación vs invariantes
+=========================
+
+Este artículo iba a titularse Validación Multicapa, pero después de leer unos cuantos artículos sobre el lugar de la validación en DDD, los engranajes comenzaron a moverse en mi cabeza y, aunque mi idea original no iba desencaminada del todo, la estrucutra general tiene más sentido.
+
+La validación es el proceso mediante el cual nos aseguramos de que los datos introducidos al sistema cumplen ciertas condiciones necesarias para poder ser utilizados sin peligro, sin provocar errores, y que pueden proporcionar resultados, porque están dentro de los límites de tolerancia de los algoritmos que los emplean.
+
+## Planteamiento inicial
+
+Mi reflexión sobre este tema arranca al ver un ejemplo de código en el que los parámetros que recibe el endpoint de un API no se validan hasta que son utilizados dentro de un CommandHandler. Para verlo más en detalle:
+
+* El controlador tras el endpoint recibe los parámetos
+* Construye un objeto Command, que no es más que un DTO con propiedades públicas, sin ningún tipo de comportamiento (más sobre esto más adelante, porque para mí un Command es más que un DTO)
+* El CommandHandler recibe los datos, extrayéndolos del Command, los valida y los sanea antes de utilizarlos
+
+Aunque esto es correcto, observo cosas que no me gustan:
+
+Yo llamaría a esto _validación tardía_ e implica que datos externos al sistema viajan a través de él sin ser controlados has el último momento, cuando ya se van a utilizar.
+
+Lo malo es que entonces puede ser tarde para el feedback.
+
+El principal problema que le veo a este forma de validación es que si en un futuro el Command se pasa a un CommandBus y si, además, éste se ejecuta en asíncrono (por ejemplo, porque se pasa a una cola), entonces el feedback de la validación nunca podrá llegar al consumidor de ese endpoint puesto que cuando se produzca la validación ya habrá sido necesario darle una respuesta, que sólo podrá ser del tipo "hemos cursado tu petición".
+
+No hace falta imaginarse tanto. En realidad, conceptualmente podemos ver que el consumidor del endpoint sólo interacciona con el controlador y éste sólo puede informar con certeza de que la petición se ha realizado a la capa de aplicación y sólo puede esperar a que la capa de aplicación le devuelva algún resultado. Si esta devolución se produce de forma inmediata, perfecto, pero si no es así, la petición puede haber sido cursada, pero no podemos garantizar que se vaya a ejecutar.
+
+Por ese motivo, lo correcto sería validar los datos en el controlador para poder montar el Command y pasarlo al Handler o al CommandBus, devolviendo una respuesta BadRequest (si es un API) o informando al usuario de los errores en la entrada de datos.
+
+
+
+La regla de oro de la validación dice que, cuando no lo hemos generado nosotros, debemos desconfiar de cualquier dato que llegue a nuestro código, particularmente si lo proporcionan los usuarios, sean seres humanos o consumidores de nuestras apis.
 
 Esto se traduce en que esos datos deben someterse a una validación, es decir, a un proceso que se asegure que cumplen una serie de condiciones que nos permitan tratarlos con garantías de que no van a suponer un problema. Ejemplos de problemas que queremos evitar son:
 
@@ -215,12 +242,6 @@ class GetGradesRequest
 }
 ```
 
-* [Validation in Domain Driven Design](http://gorodinski.com/blog/2012/05/19/validation-in-domain-driven-design-ddd/)
-* [Ddd Domain Validation, Actually Action Validation](http://www.codemozzer.me/domain,validation,action,composable,messages/2015/09/26/domain_validation.html)
-* [Domain-Driven Design (DDD) With F# - Validation](http://gorodinski.com/blog/2013/04/23/domain-driven-design-with-fsharp-validation/)
-* [At the Boundaries, Applications are Not Object-Oriented](http://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Oriented/)
-* 
-=======
 
 En este caso, nuestro UseCase tendría que quedar así:
 
@@ -247,10 +268,17 @@ class GetGradesUseCase
 }
 ```
 
-¿Es el objeto Request un DTO? Es decir, ¿es simplemente un objeto tonto con el que pasar datos?
+¿Es el objeto Request un DTO? Es decir, ¿es simplemente un objeto tonto con el que pasar datos o puede ser algo más?
 
-No debería. Un objeto Request puede ser más que un simple DTO.
+Lo cierto es que un objeto Request puede ser más que un simple DTO.
 
 Para empezar, podemos hacerlo inmutable, de modo que sólo tenga getters públicos, garantizando de este modo que mantiene la integridad de los datos.
 
 Podemos hacer que valide los parámetros que recibe en construcción, 
+
+* [Validation in Domain Driven Design](http://gorodinski.com/blog/2012/05/19/validation-in-domain-driven-design-ddd/)
+* [Ddd Domain Validation, Actually Action Validation](http://www.codemozzer.me/domain,validation,action,composable,messages/2015/09/26/domain_validation.html)
+* [Domain-Driven Design (DDD) With F# - Validation](http://gorodinski.com/blog/2013/04/23/domain-driven-design-with-fsharp-validation/)
+* [At the Boundaries, Applications are Not Object-Oriented](http://blog.ploeh.dk/2011/05/31/AttheBoundaries,ApplicationsareNotObject-Oriented/)
+* [Validation and DDD](http://enterprisecraftsmanship.com/2016/09/13/validation-and-ddd/)
+* [C# code contracts vs input validation](http://enterprisecraftsmanship.com/2015/02/14/code-contracts-vs-input-validation/)

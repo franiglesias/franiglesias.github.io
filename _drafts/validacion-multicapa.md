@@ -1,9 +1,90 @@
 Validación vs invariantes
 =========================
 
-Este artículo iba a titularse Validación Multicapa, pero después de leer unos cuantos artículos sobre el lugar de la validación en DDD, los engranajes comenzaron a moverse en mi cabeza y, aunque mi idea original no iba desencaminada del todo, la estrucutra general tiene más sentido.
+Este ladrillo que viene a continuación iba a titularse Validación Multicapa, pero después de leer unos cuantos artículos sobre el lugar de la validación en DDD, los engranajes comenzaron a moverse en mi cabeza y, aunque la idea original no iba desencaminada del todo, la estructura general tiene ahora más sentido.
 
-La validación es el proceso mediante el cual nos aseguramos de que los datos introducidos al sistema cumplen ciertas condiciones necesarias para poder ser utilizados sin peligro, sin provocar errores, y que pueden proporcionar resultados, porque están dentro de los límites de tolerancia de los algoritmos que los emplean.
+La validación es el proceso mediante el cual nos aseguramos de que los datos introducidos al sistema cumplen ciertas condiciones necesarias para que puedan ser utilizados sin peligro, sin provocar errores, y proporcionen resultados, manteniéndose dentro de los límites de tolerancia de los algoritmos que los emplean.
+
+Voy a poner un ejemplo algo chusco, pero creo que bastante claro. Supongamos que tengo un algoritmo que divide dos números entre sí, algo ciertamente complejo y al alcance sólo de un puñado de ninja developers:
+
+```php
+function divide($dividend, $divisor)
+{
+    return $dividend / $divisor;
+} 
+```
+
+Como ya sabemos, si `$divisor` resulta ser `0` tenemos un problema porque va a saltar un Warning de PHP, así que nos interesa validarlo. El objetivo de la validación es que no se llegue a realizar la operación en caso de que $divisor sea 0 y, por tanto, poder reconducir el flujo para que el usuario tenga la oportunidad de introducir nuevos valores o que el programa haga alguna otra cosa al respecto, sin romperse.
+
+Ahora bien, ¿en dónde ponemos ese control?
+
+Podría ser en la propia función o método:
+
+```php
+function divide($dividend, $divisor)
+{
+    if ($divisor === 0) {
+        return null;
+    }
+    return $dividend / $divisor;
+} 
+```
+
+Aunque podría ser así, para que el problema sea capturable (hay otras formas de hacerlo):
+
+```php
+function divide($dividend, $divisor)
+{
+    if ($divisor === 0) {
+        throw new \InvalidArgumentException('Can not divide by zero');
+    }
+    return $dividend / $divisor;
+} 
+
+try {
+    $result = divide($dividend, $divisor);
+} catch (\Exception $exception) {
+    print 'Give me a number other than 0'
+}
+```
+
+O controlarlo fuera, tirando o no una excepción:
+
+```php
+function divide($dividend, $divisor)
+{
+    return $dividend / $divisor;
+} 
+
+if ($divisor !== 0) {
+    $result = divide($dividend, $divisor);
+} else {
+    print('Can not divide by zero');
+}
+```
+
+Obviamente la decisión de cómo tratar esto depende de cada situación particular.
+
+## Primera línea de defensa: ponernos estrictos con los tipos
+
+Examinemos el siguiente escenario:
+
+```php
+function divide(float $dividend, float $divisor)
+{
+    return $dividend / $divisor;
+}
+
+$dividend = 100;
+$divisor = 'samarkanda';
+
+$result = divide($dividend, $divisor);
+print ('Result: '.$result);
+```
+
+Si el input procedente del exterior 
+
+
 
 ## Planteamiento inicial
 

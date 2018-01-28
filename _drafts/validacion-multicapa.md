@@ -1,17 +1,22 @@
+---
+layout: post
+title: A vueltas con la validación
+categories: articles
+tags: [solid, good-practices, validation]
+---
+
 A vueltas con la validación
 ===========================
 
-Este ladrillo que viene a continuación iba a titularse Validación Multicapa, pero después de leer unos cuantos artículos sobre el lugar de la validación en DDD, los engranajes comenzaron a moverse en mi cabeza y, aunque la idea original no iba desencaminada del todo, la estructura general tiene ahora más sentido.
-
-La validación es el proceso mediante el cual nos aseguramos de que los datos introducidos al sistema cumplen ciertas condiciones necesarias para poder utilizarlos sin peligro, sin provocar errores, y pudiendo proporcionar resultados, al mantenerse dentro de los límites de tolerancia de los algoritmos que los emplean.
+La validación es el proceso mediante el cual nos aseguramos de que los datos introducidos al sistema cumplen ciertas condiciones necesarias para poder utilizarlos sin peligro, sin provocar errores, y con la posibilidad de proporcionar resultados, al mantenerse dentro de los límites de tolerancia de los algoritmos que los emplean.
 
 La regla de oro de la validación dice que, cuando no lo hemos generado nosotros, debemos desconfiar de cualquier dato que llegue a nuestro código, particularmente si lo proporcionan los usuarios, sean seres humanos o consumidores de nuestras apis.
 
-Esto se traduce en que esos datos deben someterse a una validación, es decir, a un proceso que se asegure que cumplen una serie de condiciones que nos permitan tratarlos con garantías de que no van a suponer un problema. Ejemplos de problemas que queremos evitar son:
+Esto se traduce en que esos datos deben someterse a una validación, es decir, a un proceso que se asegure que cumplen una serie de condiciones que nos permitan tratarlos con garantías de que no van a suponer un problema. Ejemplos de los problemas que queremos evitar son:
 
 * De seguridad: como que un usuario malicioso pretenda usar la entrada de datos para inyectar algún tipo de código ejecutable, pero también los que buscan utilizar datos no válidos que puedan romper nuestro sistema y dejarlo expuesto de algún modo.
 * De computación: utilizar tipos de datos incorrectos que provoquen errores en el funcionamiento del programa.
-* Consistencia: que los datos no entren en los límites de tolerancia en los algoritmos, provocando resultados sin sentido, inconsistentes, etc.
+* De consistencia: que los datos no entren en los límites de tolerancia en los algoritmos, provocando resultados sin sentido, inconsistentes, etc.
 
 Voy a poner un ejemplo algo chusco, pero creo que bastante claro. Supongamos que tengo un algoritmo que divide dos números entre sí, algo ciertamente complejo y al alcance sólo de un puñado de ninja developers:
 
@@ -22,7 +27,7 @@ function divide($dividend, $divisor)
 } 
 ```
 
-Como ya sabemos, si `$divisor` resulta ser `0` tenemos un problema porque va a saltar un Warning de PHP, así que nos interesa validarlo. El objetivo de la validación es que no se llegue a realizar la operación en caso de que $divisor sea 0 y, por tanto, poder reconducir el flujo para que el usuario tenga la oportunidad de introducir nuevos valores o que el programa haga alguna otra cosa al respecto, sin romperse.
+Como ya sabemos, si `$divisor` resulta ser `0` tenemos un problema porque va a saltar un Warning de PHP, así que nos interesa validarlo. El objetivo de la validación es que no se llegue a realizar la operación en caso de que $divisor sea 0 y, por tanto, poder reconducir el flujo para que el usuario tenga la oportunidad de introducir nuevos valores o que el programa haga alguna otra cosa al respecto sin romperse, como cuando Siri se queja de que intentes freir su núcleo computacional.
 
 Ahora bien, ¿en dónde ponemos ese control?
 
@@ -123,13 +128,11 @@ En último término, lo que estamos haciendo es estableciendo un contrato o inte
 
 ## Validación y capas
 
-En realidad, mi reflexión sobre este tema viene de ver un ejemplo de código en el que los parámetros que recibe el endpoint de un API no se validan hasta que son utilizados dentro de un CommandHandler. Para verlo más en detalle:
+En realidad, mi reflexión sobre este tema viene de ver un ejemplo de código en el que los parámetros que recibe el endpoint de un API no se validan hasta que son utilizados dentro de un UseCase.
 
-* El controlador tras el endpoint recibe los parámetos
-* Construye un objeto Command, que en aquel caso era simple DTO con propiedades públicas, sin constructor ni comportamiento
-* El CommandHandler recibe los datos, extrayéndolos del Command, los valida y los sanea antes de utilizarlos
+Un UseCase puede entenderse como un ejemplo de patrón Command. El UseCase representa un caso de uso de nuestra aplicación, por algo se llama UseCase, pero el patrón subyacente es el Command clásico. Los UseCase residen en la capa de Aplicación y su función es coordinar al dominio para realizar una tarea significativa.
 
-Yo llamaría a esto _validación tardía_ e implica que datos externos al sistema viajan a través de él sin ser controlados has el último momento, cuando ya se van a utilizar. Lo malo es que entonces puede ser tarde para el feedback y la lógica del Commnad/CommandHandler se contamina de cuestiones que no tendría por qué tratar.
+Yo llamaría a esto _validación tardía_ e implica que datos externos al sistema viajan a través de él sin ser controlados has el último momento, cuando ya se van a utilizar. Lo malo es que entonces puede ser tarde para el feedback y la lógica del UseCase se contamina de cuestiones que no tendría por qué tratar.
 
 En fin, veámoslo en código, un poco más detalladamente.
 

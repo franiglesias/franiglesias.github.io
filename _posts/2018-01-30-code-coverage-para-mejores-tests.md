@@ -124,7 +124,7 @@ Por tanto, para garantizar que esté bien cubierto, y sabiendo que el bloque ha 
 
 | Condición 1 | Resultado | ¿Se ejecuta? |
 | :---: | :---: | :---: |
-| true | false | Sí |
+| true | false | No |
 | false | true | Sí |
 
 A partir de aquí, las expresiones condicionales complejas requerirán un número de hits acorde con sus posibles estados. Cubrir sólo dos casos (la expresión se cumple o no se cumple) puede ocultarnos información, particularmente en el caso de expresiones que incluyan operadores OR.

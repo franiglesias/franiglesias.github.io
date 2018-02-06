@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Quotebot Kata: practica el refactoring
+title: Quotebot Kata. practica el refactoring
 categories: articles
 tags: [refactoring, legacy, kata]
 ---

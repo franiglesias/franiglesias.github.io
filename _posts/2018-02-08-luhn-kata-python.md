@@ -19,7 +19,7 @@ Tiene su miga y eso es lo que voy a intentar hacer en este artículo.
 
 ## Preparar el entorno
 
-Un buen IDE para trabajar con Python es [PyCharm, de Jetbrains](https://www.jetbrains.com/pycharm/). Obviamente, viniendo de IDEs de la misma compañía, PyCharm es estar en terreno familiar, lo que facilita mucho las cosas. Además, ofrecen la versión gratuira Community, por lo que tienes todo a favor.
+Un buen IDE para trabajar con Python es [PyCharm, de Jetbrains](https://www.jetbrains.com/pycharm/). Obviamente, viniendo de IDEs de la misma compañía como PHPStorm, usar PyCharm es estar en terreno familiar, lo que facilita mucho las cosas. Además, ofrecen la versión gratuita PyCharm Community, por lo que tienes todo a favor.
 
 Inciar un proyecto nuevo en PyCharm es sencillo, sólo tienes que darle un nombre y escoger el intérprete de Python. Yo he optado por el [virtual environment](https://rukbottoland.com/blog/tutorial-de-python-virtualenv/) que es algo así como crear un entorno controlado para desarrollar un proyecto (*disclaimer*: soy muy novato en esto, así que cualquier comentario se agradece).
 
@@ -29,7 +29,7 @@ Y ya está.
 
 Lo primero es empezar con un test, así que voy a crear un primer archivo que llamaré **luhnvalidatortest.py**.
 
-En este archivo extenderé la clase unittest.TestCase para empezar a escribir mis test unitarios. Esto se hace así:
+En este archivo extenderé la clase `unittest.TestCase` para empezar a escribir mis test unitarios. Esto se hace así:
 
 ```python
 import unittest
@@ -50,9 +50,9 @@ La primera línea reclama el módulo `unittest`, que viene de serie con Python y
 
 La clase `LuhnValidatorTest` extiende la clase `unittest.TestCase` y los dos puntos señalan el final de la declaración y el comienzo del bloque.
 
-Para los que no estamos familiarizados con Python, hay que decir que en este lenguaje la indentación es muy importante pues es la que define los bloques de código. Por tanto, bajo la línea de declaración tenemos las líneas de la implementación con un nivel de indentación y el bloque finaliza cuando volvemos al nivel de indentación anterior.
+Para los que no estamos familiarizados con Python, hay que decir que en este lenguaje la indentación es muy importante pues define los bloques de código. Por tanto, bajo la línea de declaración tenemos las líneas de la implementación con un nivel de indentación y el bloque finaliza cuando volvemos al nivel de indentación anterior.
 
-Un código Python mal indentado no funcionará, al revés de como ocurre en otros lenguajes. Lo bueno de esto es que, la estructura visual del código ayuda a entenderlo, lo hace muy legible y, esto es impresión personal, ayuda a mantener el anidamiento bajo control.
+Un código Python mal indentado no funcionará, al revés de como ocurre en otros lenguajes. Lo bueno de esto es que la estructura visual del código ayuda a entenderlo, lo hace muy legible y, esto es impresión personal, ayuda a mantener el anidamiento bajo control.
 
 `def` es la palabra clave para definir una función, en este caso, un método de la clase LuhnValidatorTest.
 
@@ -68,11 +68,11 @@ En cuanto al test en sí, en este ejercicio es importante pensar en cómo funcio
 * Primero, se invierte la cadena de números.
 * Después se toman los que ocupan las posiciones pares e impares y se tratan por separado.
 * El grupo de los impares simplemente se suma.
-* El grupo de los pares, se multiplica por dos, su suman los dígitos de los resultados entre sí y lo que sale se suma.
+* El grupo de los pares, se multiplica por dos, se suman los dígitos de los resultados entre sí, si son mayores que 10, y lo que sale se acumula.
 * Luego se suma lo obtenido de los números impares y pares.
-* Si el resultado es múltiplo de 10 (acaba en cero) entonces el número de tarjeta ingresado es válido.
+* Si el resultado es múltiplo de 10 (esto es: acaba en cero) entonces el número de tarjeta ingresado es válido.
 
-Al analizar este flujo podemos ver que las operaciones son sumas y productos y, siendo los productos una suma de sumandos iguales, tenemos una cifra interesante para empezar a trabajar que es el 0. Un número de tarjeta compuesto sólo por ceros será válido porque la serie de cálculos realizados dará cero como resultado. Por tanto es ideal como primer test, que nos forzará a crear la clase y el método.
+Al analizar este flujo podemos ver que las operaciones son sumas y productos y, siendo los productos una suma de sumandos iguales, tenemos una cifra interesante para empezar a trabajar que es el 0, elemento neutro de la suma de enteros. Un número de tarjeta compuesto sólo por ceros será válido porque la serie de cálculos realizados dará cero como resultado. Por tanto es ideal como primer test, que nos forzará a crear la clase y el método.
 
 ## Empezando con el código de producción
 
@@ -93,7 +93,7 @@ import luhnvalidator
 class LuhnValidatorTest(unittest.TestCase):
 
     def test_all_zeros_is_valid(self):
-        luhn_validator = LuhnValidator.LuhnValidator()
+        luhn_validator = luhnValidator.LuhnValidator()
         self.assertTrue(luhn_validator.is_valid('00000000000'))
 
 ```
@@ -216,19 +216,19 @@ class LuhnValidator:
         return True
 ```
 
-Este ha sido un primer paso, pero puede que no sea suficiente para demostrar todo lo que queremos. Pero lo interesante es que estamos dando pasos pequeñitos, que es la intención del ejercicio.
+Este ha sido un primer paso, y puede que no sea suficiente para demostrar todo lo que queremos. Pero lo interesante es que estamos avanzando en pequeños pasos, que es la intención del ejercicio.
 
 ## Los tests deben forzar implementaciones
 
-Una premisa de TDD es que cualquier código de producción sólo puede crearse como respuesta a un test que falle. Si ahora escribimos un nuevo test que pase no podríamos modificar la implementación.
+Una premisa de TDD es que cualquier código de producción sólo puede crearse como respuesta a un test que falle. Si ahora escribimos un nuevo test que pase no podríamos modificar la implementación. No es que esté "prohibido", es simplemente que en este momento si escribimos un nuevo test que pasa, no nos dice nada acerca de qué deberíamos implementar. Únicamente nos confirma lo que ya sabemos. En todo caso, este tipo de tests, que recién escrito ya pasa, nos puede servir como test de **regresión**: si algún día falla nos está indicando que algo está alterando el algoritmo. 
 
-Lo que nos interesa ahora mismo es introducir alguna variación en los ejemplos que fuerce un cambio en la implementación para darle cobertura. En concreto queremos sumar los dígitos en las posiciones impares.
+Lo que nos interesa ahora mismo es introducir alguna variación en los ejemplos que fuerce un cambio en la implementación a fin de darle cobertura. En concreto queremos sumar los dígitos en las posiciones impares.
 
 Un enfoque sería añadir un nuevo dígito que caiga en posición impar al invertir la cádena, pero que cambie el resultado de la validación, de modo que el número de tarjeta sea válido. Eso quiere decir que los dígitos que introduzcamos deben sumar diez.
 
 Un ejemplo es "00000000901", pero también valdrían otros como "00000000604", o "00000000208".
 
-Sin embargo, hay un test mucho más sencillo. Bastaría con poner 1 en la siguiente posición que nos interesa: "00000000100". Si el algoritmo no tiene en cuenta la posición el test fallará y para hacerlo pasar habrá que introducirla en el cálculo:
+Sin embargo, hay un test mucho más sencillo. Bastaría con poner 1 en la siguiente posición que nos interesa: "00000000100". Si el algoritmo no tiene en cuenta esa posición el test fallará y para hacerlo pasar habrá que introducirla en el cálculo:
 
 He aquí el test:
 
@@ -270,7 +270,7 @@ class LuhnValidator:
         return True
 ```
 
-Ahora es cuando hago un test que pruebe que dos dígitos que sumen 10 hacen un número de tarjeta válido:
+En otras palabras: el test anterior no me ha forzado a implementar la suma, ya que podría cubrirlo con otro algoritmo. Por eso, ahora es cuando hago un test que pruebe que dos dígitos que sumen 10 hacen un número de tarjeta válido:
 
 ```python
     def test_credit_card_with_two_digit_that_sum_ten_is_valid(self):
@@ -278,7 +278,7 @@ Ahora es cuando hago un test que pruebe que dos dígitos que sumen 10 hacen un n
         self.assertTrue(luhn_validator.is_valid('00000000406'))
 ```
 
-Y el test falla, porque mi algoritmo no suma los dígitos que han caído en posiciones impares. Lo que me interesa es empezar a sumarlos, y lo más fácil es hacerlo directamente. Como puedo ignorar el resto de dígitos al ser cero, no tengo más que ver si el resultado es divisible por 10.
+Y el test falla, porque mi algoritmo no suma los dígitos que han caído en posiciones impares. Lo que me interesa es empezar a sumarlos, y lo más fácil es acumular directamente las dos posiciones que me interesan. Como puedo ignorar el resto de dígitos al ser cero, no tengo más que ver si el resultado es divisible por 10.
 
 ```python
 class LuhnValidator:
@@ -295,7 +295,7 @@ class LuhnValidator:
 
 En este ejemplo, que hace pasar el test, se pueden ver algunos detalles interesantes de Python, como:
 
-* El acceso a caracteres subcadenas dentro de una cadena mayor indicando su posición y teniendo en cuenta que las cadenas son index0, es decir, la primera posición es cero, o que hay que tener en cuenta.
+* El acceso a caracteres dentro de una cadena mayor indicando su posición y teniendo en cuenta que las cadenas son zero-indexed, es decir, la primera posición es cero.
 * La conversión de string a int, con la función `int()`.
 * El hecho de que no necesitamos paréntesis en la estructura if.
 
@@ -303,7 +303,7 @@ En este ejemplo, que hace pasar el test, se pueden ver algunos detalles interesa
 
 Todavía no tenemos mucho para forzarnos a escribir un algoritmo más general. Para eso necesitamos otro test, el cual debe fallar si queremos que nos sirva. El código nos pedirá un algoritmo más general cuando podamos observar repeticiones o algún tipo de regularidad que podamos expresar de otra manera.
 
-Nosotros vamos a proponer el siguiente test, que nos fuerza a considerar un tercer dígito en la validación. Ahora que ya he establecido que el algoritmo se basa en la suma, puedo vovler a mi estrategia minimalista anterior. He aquí el ejemplo (a partir de ahora sólo voy a poner el test específico):
+Nosotros vamos a proponer el siguiente test, que nos fuerza a considerar un tercer dígito en la validación. Ahora que ya he establecido que el algoritmo se basa en la suma, puedo volver a mi estrategia minimalista anterior. He aquí el ejemplo (a partir de ahora sólo voy a poner el test específico):
 
 ```python
     def test_credit_card_with_only_fifth_digit_is_invalid(self):
@@ -326,7 +326,7 @@ class LuhnValidator:
         return False
 ```
 
-Con este cambio, el test ya pasa. Y lo bueno es que ya empezamos a vislumbrar una posibilidad de refactor: el cálculo de la suma de los dígitos impares empieza a ser difícil de leer, además de repetitivo. Podríamos empezar extrayéndolo a un método, para explicitarlo:
+Con este cambio, el test pasa. Y lo bueno es que ya empezamos a vislumbrar una posibilidad de refactor: el cálculo de la suma de los dígitos impares empieza a ser difícil de leer, además de repetitivo. Podríamos empezar extrayéndolo a un método, para explicitarlo:
 
 ```python
 class LuhnValidator:
@@ -345,9 +345,9 @@ class LuhnValidator:
         return even
 ```
 
-En principio, podríamos seguir haciendo baby steps hasta cubrir todas las posiciones impares una a una hasta el total de seis, añadiendo un test para cada posición, pero a estas alturas ya parece obvio que podemos generalizar el método de cálculo con un bucle. En este ejercicio mostraré los tests uno a uno y el código de producción final. En un caso de trabajo real el tamaño de los baby stpes puede modularse en la medida en que tengamos seguridad de cuál es la implementación más obvia en cada momento.
+En principio, podríamos seguir haciendo *baby steps* hasta cubrir todas las posiciones impares una a una hasta el total de seis, añadiendo un test para cada posición, pero a estas alturas ya parece obvio que podemos generalizar el método de cálculo con un bucle. En este ejercicio mostraré los tests uno a uno y el código de producción final. En un caso de trabajo real el tamaño de los *baby steps* puede modularse en la medida en que tengamos seguridad de cuál es la implementación más obvia en cada momento.
 
-He aquí los tests. La clave es que cada test debe hacerse teniendo en cuenta lo que hemos hecho hasta ese momento:
+He aquí los tests. La clave es que cada uno debe hacerse teniendo en cuenta lo que tenemos hasta ese momento:
 
 ```python
     def test_credit_card_with_only_seventh_digit_is_invalid(self):
@@ -537,7 +537,7 @@ class LuhnValidator:
 
 Es un código bastante feo, pero hace su trabajo.
 
-Tenemos 14 tests que prueban pequeñas partes de nuestro algoritmo. Es hora de asegurarnos de que todo funciona correctamente. Podríamos probar con el ejemplo propuesto en la kata. Actuaría como test de aceptación. De hecho, podría haberlo hecho desde el primer momento. Lo voy a poner en otro archivo, en **luhnacceptancetest.py**
+Tenemos 14 tests que prueban pequeñas partes de nuestro algoritmo. Es hora de asegurarnos de que todo funciona correctamente. Podríamos probar con el ejemplo propuesto en la kata. Actuaría como test de aceptación. De hecho, podría haberlo escrito desde el primer momento. Lo voy a poner en otro archivo: **luhnacceptancetest.py**
 
 ```python
 import unittest
@@ -553,6 +553,8 @@ class LuhnAcceptanceTest(unittest.TestCase):
 ```
 
 ¿Y sabes qué? El test pasa.
+
+Y es interesante reflexionar sobre cómo el hecho de desarrollar con TDD y buenos tests de aceptación mejorar el tiempo de desarrollo disminuyendo la necsidad de tratar con defectos del código que se nos podrían haber escapado de no disponer de tests.
 
 ## Recapitulando
 

@@ -13,7 +13,7 @@ Sin embargo, ya sea por comodidad o por tener herramientas más orientadas a cie
 
 A continuación, comento brevemente las que yo estoy utilizando. No digo que sean las mejores de su campo, pero al menos en mi caso me sirven bien.
 
-## Bases de datos
+## Bases de datos
 
 ### SequelPro
 

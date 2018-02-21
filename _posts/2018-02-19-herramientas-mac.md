@@ -59,6 +59,26 @@ Aunque PHPStorm integra un cliente de HTTP muy práctico, en alguna ocasión me 
 
 [HTTP Client](https://itunes.apple.com/es/app/http-client/id418138339?mt=12)
 
+### Postman
+
+Javier Esteban nos recuerda Postman como herramienta para desarrollar APIs, que incluye la capacidad de testearlas enrte otras muchas utilidades.
+
+[Postman](https://app.getpostman.com/app/download/osx64)
+
+## Gestión de versiones
+
+### SourceTree
+
+Félix Gómez comenta SourceTree para gestionar repositorios en proyectos complejos. La verdad es que si tocas el código con diversas herramientas a veces se agradece poder examinarlo en una aplicación dedicada como ésta y no tener que tirar de CLI.
+
+[Sourcetree](https://www.atlassian.com/software/sourcetree)
+
+### Github desktop
+
+El cliente de Github es ligero y va muy bien en bastantes casos en los que no quieres tener un IDE completo.
+
+[Github desktop](https://desktop.github.com)
+
 ## CLI
 
 ### Homebrew

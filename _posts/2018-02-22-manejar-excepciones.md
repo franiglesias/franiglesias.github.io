@@ -9,7 +9,7 @@ Las excepciones son elementos del lenguaje que nos permiten indicar situaciones 
 
 En cierto modo, podemos ver las excepciones como eventos o mensajes que se publican a la espera de que exista algún oyente interesado que pueda ocuparse del mismo. Sin embargo, no deben usarse como forma genérica de comunicación interna de una aplicación, sino únicamene en la gestión de situaciones extraordinarias.
 
-Pongamos por ejemplo el caso de una aplicación que depende de una API remota, Si detectamos que la API no está disponible en un momento dado eso es una situación extraordinaria y sería buena idea lanzar una excepción que indique esa circunstancia particular que, de todos modos, impide que nuestro programa funcione. Por otro lado, nuestro código debería estar pendiente de si esa excepción concreta es lanzada para tomar las medidas adecuadas, ya sea avisar a los usuarios de que la operación no se puede realizar, ya sea para buscar algún tipo de alternativa, etc.
+Pongamos por ejemplo el caso de una aplicación que depende de una API remota. Si detectamos que la API no está disponible en un momento dado eso es una situación extraordinaria y sería buena idea lanzar una excepción que indique esa circunstancia particular que, de todos modos, va a impedir que nuestro programa funcione. Por otro lado, nuestro código debería estar pendiente de si esa excepción concreta es lanzada para tomar las medidas adecuadas, ya sea avisar a los usuarios de que la operación no se puede realizar, ya sea para buscar algún tipo de alternativa, etc.
 
 El lenguaje, por su parte, utiliza este mecanismo para comunicar buena parte de los errores genéricos que pueden ocurrir en un código determinado. Algunos de esos errores son *lógicos*, como por ejemplo llamar a un método que no existe o pasar un argumento de un tipo no válido, mientras que otros son *en tiempo de ejecución*, y no se detectan hasta que ocurren, como cuando una función devuelve un tipo de valor no esperado.
 
@@ -17,7 +17,7 @@ Normalmente esos errores lógicos se pueden detectar analizando el código y req
 
 ## Una familia excepcional
 
-En PHP todas las excepción derivan de la clase base Exception, la cual a su vez implementa la interfaz Throwable (que nosotros no podemos usar directamente). La Biblioteca Estándar de PHP (SPL) propone un árbol de clases con dos ramas principales:
+En PHP todas las excepciones derivan de la clase base Exception, la cual a su vez implementa la interfaz Throwable (que nosotros no podemos usar directamente). La Biblioteca Estándar de PHP (SPL) propone un árbol de clases con dos ramas principales:
 
 * **LogicException**, que agrupa las excepciones que representan errores en la lógica del programa y que, a su vez, se extiende en:  
   * **BadFunctionCallException**: cuando se llama a una función que no existe o con los argumentos incorrectos.
@@ -33,9 +33,9 @@ En PHP todas las excepción derivan de la clase base Exception, la cual a su vez
   * **UnderflowException**: el ejemplo típico es intentar quitar algo de un contenedor que ya está vacío.
   * **UnexpectedValueException**: un valor retornado por una operación no es del tipo esperado.
 
-Cuando queremos indicar una situación problemática en nuestro código, lo suyo sería lanzar una excepción, pero decidir qué excepción concreta lanzar tiene algo de arbitrario. Lo ideal sería escoger una de éstas que acabamos de mostrar o crear tipos propios de excepciones extendiendo la clase que más nos encaje semánticamente.
+Cuando queremos indicar una situación problemática en nuestro código, lo suyo sería lanzar una excepción, aunque decidir qué excepción concreta lanzar tiene algo de arbitrario. Lo ideal sería escoger una de éstas que acabamos de mostrar o crear tipos propios de excepciones extendiendo la clase que más nos encaje semánticamente.
 
-En muchos sentidos, la estructura de las LogicException y las RuntimeException es paralela y en un lenguaje interpretado como PHP es una distinción un poco forzada. El criterio para tirar por una rama o por otra sería si queremos enfatizar que hay que hacer un cambio en el código para evitar el error, o bien si el acento lo ponemos en que el problema se produce durante la ejecución y tenemos que tomar medidas que lidien con circunstancias que no podemos predecir.
+En muchos sentidos, la estructura de las LogicException y las RuntimeException es paralela y en un lenguaje interpretado como PHP es una distinción un poco forzada. El criterio para tirar por una rama o por otra sería si queremos enfatizar que hay que hacer un cambio en el código para que no se produzca el error, o bien si el acento lo ponemos en que el problema se genera durante la ejecución y tenemos que tomar medidas que lidien con circunstancias que no podemos predecir si ocurrirán.
 
 ## La excepción es el mensaje
 
@@ -43,7 +43,7 @@ En último términos las excepciones son mensajes que pueden indicar una diversi
 
 En tanto que mensajes, en el sentido de programación orientada a objetos, es importante que las excepciones aporten un valor semántico por lo que es buena práctica definir excepciones personalizadas cuando representan situaciones importantes en el dominio de nuestra aplicación.
 
-Un buen motivo para definir nuevos tipos de excepiones es el de que podemos capturarlas de forma específica en los bloques `try…catch`, como veremos dentro de un momento, permitiéndonos actuar de manera adecauda a los distintos tipos de problemas.
+Un buen motivo para definir nuevos tipos de excepiones es el de que podemos capturarlas de forma específica en los bloques `try…catch`, como veremos dentro de un momento, permitiéndonos actuar de manera adecuada a los distintos tipos de problemas.
 
 En todo caso, lo importante es que la excepción describa el problema lo mejor posible.
 
@@ -69,7 +69,7 @@ if (abs($longitude) > 180) {
 
 ### Fallar específicamente
 
-Lo ideal, en mi opinión, es fallar de la manera más descriptiva y precisa que se pueda, de modo que sea posible actuar ante tipos de errores concretos si lo deseamos, cosa que es posible hacer disponiendo de bloques de captura específicos para un tipo de excepción.
+Lo ideal, en mi opinión, es fallar de la manera más descriptiva y precisa que se pueda, de modo que sea posible actuar ante tipos de errores concretos si lo deseamos, cosa que es posible hacer disponiendo de bloques de captura específicos para ese tipo de excepción.
 
 Para ello puede ser útil recurrir a excepciones creadas a medida, derivadas de otras estándar o, como poco, de las excepciones base. Pero esto es algo que depende fundamentalmente de nuestras necesidadse.
 
@@ -91,7 +91,7 @@ if (abs($longitude) > 180) {
 
 Para evitar que las excepciones puedan llegar hasta el usuario y romper nuestra aplicación necesitamos algún tipo de gestión de excepciones y para eso tenemos los bloques `try…catch`.
 
-Los bloques `try…catch` separan el happy path (el flujo del programa en caso de que no haya ningún problema) del manejo de las situaciones probleméticas. El ejemplo más básico es el siguiente:
+Los bloques `try…catch` separan el *happy path* (el flujo del programa en caso de que no haya ningún problema) del manejo de las situaciones problemáticas. El ejemplo más básico es el siguiente:
 
 ```php
 try {
@@ -102,7 +102,8 @@ try {
 	// Hey, at least log it
 }
 ```
-Si durante la ejecución del bloque `try` se produce una excepción, se detiene el flujo y se salta al bloque `catch`. A este bloque se le pasa la excepción como parámetro, de la cual se puede extraer información si es el caso y hacer algo adecuado, como podría ser añadir una entrada en el log de errores, redirigir a una página particular, o incluso volver a lanzar la misma excepción u otra para que otra capa de la aplicación la pueda recibir.
+
+Si durante la ejecución del bloque `try` se produce una excepción, se detiene el flujo y se salta al bloque `catch`. A este bloque se le pasa la excepción como parámetro, de la cual se puede extraer información si es el caso y hacer algo adecuado, como podría ser añadir una entrada en el log de errores, redirigir a una página particular, o incluso volver a lanzar la misma excepción u otra para que las siguiente capa de la aplicación la pueda recibir.
 
 El código después de esta estructura sólo se ejecuta si no ha habido excepción, aunque haya sido capturada.
 
@@ -149,7 +150,7 @@ Si necesitamos procesar un tipo de excepción particular de una forma especial n
 ```php
 try {
 	// This is the happy path
-} catch (BadLogitudeException $exception) {
+} catch (InvalidCoordinatesException $exception) {
 	// Do something with this exception
 } catch (Exception $exception) {
 	// Catches all other exceptions
@@ -165,9 +166,9 @@ Y **nunca, nunca**, deberíamos tener bloques `catch` que no hagan nada, silenci
 
 ## Relanzar excepciones
 
-En ocasiones puede ser necesario capturar una excepción para volver a lanzarla. Esto es especialmente conveniente cuando la excepción traspasa una frontera entra las capas de una aplicación.
+En ocasiones puede ser necesario capturar una excepción para volver a lanzarla. Esto es especialmente conveniente cuando la excepción traspasa una frontera entre las capas de una aplicación.
 
-Por ejemplo, podemos tener una capa de infraestructura de un adaptador de base de datos que, en un momento dado, lanza una excepción porque no puede conectarse con el servidor.
+Por ejemplo, podemos tener en la capa de infraestructura un adaptador de base de datos que, en un momento dado, lanza una excepción porque no puede conectarse con el servidor.
 
 Si esta excepción llega al repositorio implementado con la ayuda de dicho adaptador, es preferible relanzar una nueva excepción acorde con la capa del repositorio, Por ejemplo, así:
 
@@ -181,7 +182,7 @@ try {
 	throw new PersistenceException('Data could not be stored', 100, $exception);
 }
 ```
-En este ejemplo, el repositorio maneja excepciones que proceden del adaptador de base datos, pero debe lanzar excepciones que sean significativas para la capa de dominio. En este sentido, al dominio puede interesarse saber que ha habido un problema con la persistencia, pero no tiene que saber nada de la implementación de esa persistencia.
+En este ejemplo, el repositorio maneja excepciones que proceden del adaptador de base datos, pero debe lanzar excepciones que sean significativas para la capa de dominio. En este sentido, al dominio puede interesarse saber que ha habido un problema con la persistencia, pero no tiene que saber nada de la implementación concreta de esa persistencia.
 
 Las excepciones admiten un tercer parámetro que sirve para incluir la excepción capturada previamente, de modo que su información pueda utilizarse.
 
@@ -239,7 +240,7 @@ class InvalidCoordinatesException extends \InvalidArgumentException
     private $longitude;
     private $latitude;
 
-    public function __construct($longitude, $latitude)
+    private function __construct($longitude, $latitude)
     {
         $this->longitude = $longitude;
         $this->latitude = $latitude;

@@ -904,21 +904,39 @@ Como siempre, con los tests en verde podríamos ver si tenemos oportunidades de 
 Y, a continuación, la implementación para que pase el test que, gracias a lo que hicimos para la etapa educativa, ahora es bastante trivial:
 
 ```php
-    public function testlevelIstheThirdFolderLevel()
-    {
-        $classifyDocumentRequest = new ClassifyDocumentRequest(
-            self::DEFAULT_STUDENT_ID,
-            self::DEFAULT_SUBJECT,
-            self::DEFAULT_TYPE,
-            self::DEFAULT_FILE,
-            new DateTime(self::DEFAULT_UPLOAD_DATE)
-        );
+class ClassifyDocument
+{
+    /**
+     * @var SchoolYearCalculator
+     */
+    private $schoolYearCalculator;
+    /**
+     * @var StudentRepository
+     */
+    private $studentRepository;
 
-        $route = $this->classifyDocumentService->execute($classifyDocumentRequest);
-
-        [, , $level] = explode('/', $route);
-        $this->assertEquals('5', $level);
+    /**
+     * ClassifyDocument constructor.
+     */
+    public function __construct(
+        SchoolYearCalculator $schoolYearCalculator,
+        StudentRepository $studentRepository
+    ) {
+        $this->schoolYearCalculator = $schoolYearCalculator;
+        $this->studentRepository = $studentRepository;
     }
+
+    public function execute(ClassifyDocumentRequest $classifyDocumentRequest) : string
+    {
+        $date = $classifyDocumentRequest->dateTime();
+        $schoolYear = $this->schoolYearCalculator->forDate($date);
+
+        $student = $this->studentRepository->byId(
+            $classifyDocumentRequest->studentId()
+        );
+        return $schoolYear.'/'.$student->Stage().'/'.$student->Level();
+    }
+}
 ```
 
 Y ya tenemos el test pasando. 
@@ -926,10 +944,7 @@ Y ya tenemos el test pasando.
 Ahora vemos que lo que queda un poco feo es la concatenación de los fragmentos con el separador de directorios. La verdad es que podemos hacerlo algo mejor y más bonito. Como tenemos los tests pasando, podemos trabajar con tranquilidad:
 
 ```php
-<?php
-
 namespace Dojo\ClassifyDocument;
-
 
 class ClassifyDocument
 {

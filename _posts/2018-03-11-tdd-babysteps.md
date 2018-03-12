@@ -17,7 +17,7 @@ La verdad es que parece más difícil de lo que es. Como veremos, el servicio si
 
 Voy a intentar ilustrar esto con un ejemplo similar pero de otro ámbito.
 
-Supongamos un centro de enseñanza en el que queremos desarrollar una aplicación que permita al alumnado enviar documentos subiéndolos en una web preparada al efecto. La cuestión es que esos documentos se guarden automáticamente en un sistema de archivos con una estructura determinada. Aunque este sistema podría servir para muchas tareas, voy "simplificar":
+Supongamos un centro de enseñanza en el que queremos desarrollar una aplicación que permita al alumnado enviar documentos subiéndolos en una web preparada al efecto. La cuestión es que esos documentos se guarden automáticamente en un sistema de archivos con una estructura determinada. Aunque este sistema podría servir para muchas tareas voy a simplificar:
 
 - Los documentos relacionados con trabajos escolares se guardan en una ubicación específica por curso escolar, etapa, nivel educativo, tutoría, asignatura y alumno.
 - Además, el nombre de archivo se cambiará para refleje un identificador de la tarea y una marca de tiempo.
@@ -53,8 +53,6 @@ Pero veámoslo en forma de código, el cual voy a simplificar evitando usar obje
 Para llamar al servicio usaremos este objeto *Request*, con el que pasamos la información obtenida en el controlador al servicio:
 
 ```php
-<?php
-
 namespace Dojo\ClassifyDocument\Application;
 
 
@@ -89,8 +87,7 @@ class ClassifyDocumentRequest
         string $type,
         string $path,
         DateTime $dateTime
-    )
-    {
+    ) {
         $this->studentId = $studentId;
         $this->subject = $subject;
         $this->type = $type;
@@ -156,7 +153,7 @@ $route = $this->classifyDocument->execute($classifyDocumentRequest);
 
 Al ejecutarlo, debería devolvernos una cadena de este estilo:
 
-```php
+```
 2017-2018/primaria/5/5C/matematicas/5433/2018-03-12-deberes.pdf
 ```
 
@@ -192,24 +189,24 @@ class ClassifyDocumentAcceptanceTest extends TestCase
 }
 ```
 
-– No sé, Rick… Parece bueno.
+– No sé, Rick… Parece bueno.  
 – ¡Pues no lo es!
 
 Veamos. Este test tiene algunos problemas aunque aparentemente es correcto. El principal de ellos es que nos obliga a implementar toda la funcionalidad de una sola tacada y resulta que tenemos que extraer ni más ni menos que nueve fragmentos de información para componer la ruta a partir de cinco datos: ¿no nos convendría ir por partes?
 
 ¿Qué pasa si en el futuro un cambio provoca que el test no pase? Pues que no tenemos forma de saber a través del test qué parte concreta está fallando.
 
-Podríamos considerar éste como un test de aceptación: data una petición válida, devuelve una ruta válida. Así que no vamos a tirar este test, sino que lo vamos como lo que es: un test de aceptación que nos diga si hemos terminado de desarrollar la funcionalidad, así lo pongo en un archivo aparte.
+Podríamos considerar éste como un test de aceptación: dada una petición válida, devuelve una ruta válida. Así que no vamos a tirar este test, sino que lo utilizaremos como lo que es: un test de aceptación que nos diga si hemos terminado de desarrollar la funcionalidad, así que, mientras tanto, lo pongo en un archivo aparte.
 
-Sin embargo, en un enfoque TDD no nos sirve de mucho: no nos dice por dónde empezar o qué hacer a continuación. Cada fragmento de la ruta tiene su propia lógica en tanto que se obtiene de una manera diferente y ocupa una posición específica.
+Sin embargo, en un enfoque TDD esto no nos sirve de mucho: no nos dice por dónde empezar o qué hacer a continuación. Cada fragmento de la ruta tiene su propia lógica en tanto que se obtiene de una manera diferente y ocupa una posición específica.
 
 ¿Y cómo lo reflejamos en el proceso de TDD?
 
 ## El enfoque TDD
 
-En un [artículo anterior](https://franiglesias.github.io/luhn-kata-python/) hice una versión de la Luhn Code Kata, que me vino muy bien precisamente para abordar este problema. Aunque estaba hecha en Python, las ideas que van a orientar este ejercicio son las mismas.
+En un [artículo anterior](https://franiglesias.github.io/luhn-kata-python/) hice una versión de la **Luhn Code Kata**, que me vino muy bien precisamente para abordar este problema. Aunque estaba hecha en Python las ideas que van a orientar este ejercicio son las mismas.
 
-Por cierto, si pensabas que esto de las katas no tiene utilidad en "el mundo real" ya puedes ir cambiando de opinión.
+Por cierto, si pensabas que esto de las *katas* no tiene utilidad *en el mundo real* ya puedes ir cambiando de opinión.
 
 Pero vamos allá y por orden de los elementos en la ruta resultante.
 
@@ -254,15 +251,13 @@ class ClassifyDocumentTest extends TestCase
 }
 ```
 
-Este test fallará, en primer lugar porque no se encuentra la clase ClassifyDocument que aún no hemos creado. Sin embargo y de momento, me interesa resaltar cómo voy a testear la generación de cada fragmento.
+Este test fallará, en primer lugar porque no se encuentra la clase **ClassifyDocument** que aún no hemos creado. Sin embargo y de momento, me interesa resaltar cómo voy a probar la generación de cada fragmento.
 
 De momento, mi ruta sólo va a tener un elemento, por lo que no me preocupo de otra cosa que generarlo.
 
 Para ello, voy resolviendo las cosas que me pide el resultado de pasar cada test. En primer lugar, crear la clase y, luego, el método.
 
 ```php
-<?php
-
 namespace Dojo\ClassifyDocument;
 
 
@@ -282,36 +277,27 @@ class ClassifyDocument
 }
 ```
 
-Y luego, una implementación obvia para hacer que el test pase:
+Y, después, una implementación obvia para hacer que el test pase:
 
 ```php
-<?php
+namespace Dojo\ClassifyDocument;
 
-namespace Tests\Dojo\ClassifyDocument;
 
-use DateTime;
-use Dojo\ClassifyDocument\ClassifyDocument;
-use Dojo\ClassifyDocument\ClassifyDocumentRequest;
-use PHPUnit\Framework\TestCase;
-
-class ClassifyDocumentTest extends TestCase
+class ClassifyDocument
 {
 
-    public function testSchoolYearIsTheFirstElementOfTheRoute()
+    /**
+     * ClassifyDocument constructor.
+     */
+    public function __construct()
     {
-        $classifyDocumentRequest = new ClassifyDocumentRequest(
-            '5433',
-            'Matemáticas',
-            'deberes',
-            'misejercicioschupiguais.pdf',
-            new DateTime('2018-03-12')
-        );
-        $classifyDocumentService = new ClassifyDocument();
-        $route = $classifyDocumentService->execute($classifyDocumentRequest);
-        $this->assertEquals('2017-2018', $route);
+    }
+
+    public function execute(ClassifyDocumentRequest $classifyDocumentRequest) : string
+    {
+    	return '2017-2018';
     }
 }
-
 ```
 
 Bien. Nuestro siguiente paso será probar que generamos la ruta correcta para la fecha de subida del archivo y obligarnos a implementar algo para ello. Así que introducimos un cambio de fechas, de modo que podamos tener un nuevo test que falle. Ese test será el siguiente:
@@ -334,13 +320,11 @@ Bien. Nuestro siguiente paso será probar que generamos la ruta correcta para la
 
 En este test he cambiado la fecha de entrega para el último trimestre del año, de modo que el curso escolar sea 2018-2019. Obviamente falla porque nuestra primera implementación es inflexible.
 
-Sin embargo, el cálculo del curso escolar no es una responsabilidad que incumba a nuestra clase, ya que se ocupa únicamente de generar rutas. Lo ideal sería tener un servicio al que dándole una fecha nos devuelva el curso escolar. Esta funcionalidad la necesitaremos seguramente en un montón de sitios, así que vamos a suponer que lo tenemos aunque no esté todavía implementado, por lo que vamos a introducir un *stub* que nos haga el trabajo.
+Sin embargo, el cálculo del curso escolar no es una responsabilidad que incumba a nuestra clase, ya que se ocupa únicamente de generar rutas. Lo ideal sería tener un servicio al que dándole una fecha nos devuelva el curso escolar. Esta funcionalidad la necesitaremos seguramente en un montón de sitios, así que vamos a suponer que lo tenemos aunque no esté todavía implementado, por lo que introduciremos un *stub* que nos haga el trabajo.
 
 Primero creamos una interfaz:
 
 ```php
-<?php
-
 namespace Dojo\ClassifyDocument;
 
 
@@ -352,9 +336,9 @@ interface SchoolYearCalculator
 }
 ```
 
-Solo para que conste: personalmente no soy partidario de añadir el sufijo Interface. El nombre de las implementaciones reflejaría el tipo concreto de implementación que vaya a realizar. De hecho, podría ocurrir que al ir a implementar decida que sólo va a existir una implementación de ese servicio, con lo cual desaparecería la interfaz y no tendría que cambiar nada más.
+Solo para que conste: personalmente no soy partidario de añadir el sufijo Interface. El nombre de las implementaciones reflejaría el tipo concreto que vaya a realizar. De hecho, podría ocurrir que al ir a implementar decida que sólo va a existir una implementación de ese servicio, con lo cual desaparecería la interfaz y no tendría que cambiar nada más.
 
-Un stub es un test double que tiene una respuesta programada a ciertos mensajes que le enviamos, así que lo introducimos en nuestro test y veremos a qué nos lleva:
+Un *stub* es un test double que tiene una respuesta programada a ciertos mensajes que le enviamos, así que lo introducimos en nuestro test y veremos a qué nos lleva:
 
 ```php
     public function testSchoolYearForFirstQuarterIsTheSameYear()
@@ -378,8 +362,6 @@ Un stub es un test double que tiene una respuesta programada a ciertos mensajes 
 Como este test falla, podemos empezar a implementar lo necesario:
 
 ```php
-<?php
-
 namespace Dojo\ClassifyDocument;
 
 
@@ -414,8 +396,6 @@ Una vez implementado esto vemos que pasan dos cosas:
 Así que arreglamos eso para que pase, cuidando de ajustar los nuevos valores del *stub*.
 
 ```php
-<?php
-
 namespace Tests\Dojo\ClassifyDocument;
 
 use DateTime;
@@ -465,14 +445,12 @@ class ClassifyDocumentTest extends TestCase
 
 Estupendo. Ahora podemos observar varias cosas.
 
-- La construcción del servicio ClassifyDocument estaría mejor en un único lugar.
-- Hay varios valores que se utilizan varias veces, por lo que sería buena idea unificarlos de algún modo, lo que nos daría mayor seguridad de que estamos testeando lo que queremos.
+- La construcción del servicio bajo test **ClassifyDocument** estaría mejor en un único lugar.
+- Hay varios valores que se utilizan repetidas veces, por lo que sería buena idea unificarlos de algún modo, lo que nos daría mayor seguridad de que estamos testeando lo que queremos.
 
 Así que vamos a arreglar eso antes de nada, para que sea más fácil seguir adelante con el desarrollo. Para eso tenemos que mantener los tests en verde, señal de que no hemos roto nada.
 
 ```php
-<?php
-
 namespace Tests\Dojo\ClassifyDocument;
 
 use DateTime;
@@ -543,11 +521,9 @@ En el sistema educativo español hay varias etapas educativas, como son Infantil
 
 Pero no estamos aquí para diseñar aplicaciones educativas sino para explicar TDD. Sin embargo, la parrafada anterior es necesaria para entender que ahora nos toca generar el fragmento de ruta que representa la etapa educativa, y esa información la podremos obtener sabiendo curso en el que se encuentre matriculado nuestro estudiante, Por tanto, necesitaremos obtener un objeto Student al cual preguntarle todos esos datos.
 
-En nuestro diseño, seguramente Student sea un agregado, una Entidad que incluye diversas entidades y value objects relacionados con una determinada identidad. Para obtener nuestro estudiante concreto preguntaremos a un repositorio de estudiantes por aquél cuya identidad viene especificada en la request. Para simplificar, vamos a imaginar que nuestra clase Student es más o menos así (sí, soy consciente de que simplifico mucho):
+En nuestro diseño, seguramente **Student** sea un agregado, una Entidad que incluye diversas entidades y *value objects* relacionados con una determinada identidad. Para obtener nuestro estudiante concreto preguntaremos a un repositorio de estudiantes por aquél cuya identidad viene especificada en la request. Para simplificar, vamos a imaginar que nuestra clase **Student** es más o menos así (sí, soy consciente de que simplifico mucho):
 
 ```php
-<?php
-
 namespace Dojo\ClassifyDocument;
 
 class Student
@@ -624,7 +600,7 @@ class Student
 }
 ```
 
-Además, contamos con un repositorio de Student que tiene esta interfaz, la cual me servirá para generar un nuevo stub:
+Además, contamos con un repositorio de **Student** que tiene esta interfaz, la cual me servirá para generar un nuevo *stub*:
 
 ```php
 <?php
@@ -637,7 +613,7 @@ interface StudentRepository
 }
 ```
 
-Bien, pues dando por supuesto que disponemos de estas clases, vamos a crear un test que falle, asumiendo que nuestro servicio va a necesitar el StudentRepository para obtener un objeto Student a partir de su Id.
+Bien, pues dando por supuesto que disponemos de estas clases, vamos a crear un test que falle, asumiendo que nuestro servicio va a necesitar el **StudentRepository** para obtener un objeto **Student** a partir de su **Id**.
 
 El test va a quedar más o menos así:
 
@@ -663,9 +639,9 @@ El test va a quedar más o menos así:
 
 Por supuesto, no va a pasar.
 
-Ahora tenemos la habitual disyuntiva de hacer la implementación más simple y obvia que es devolver el valor que esperamos y luego escribir un nuevo test que nos obligue a implementar una solución general, o bien ir directamente a esa solución general.
+Ahora tenemos la habitual disyuntiva de hacer la implementación más simple y obvia que es devolver el valor que esperamos y escribir un nuevo test que nos obligue a implementar una solución general; o bien ir directamente a esa solución general.
 
-En esta ocasión me voy a decantar por la primera opción porque, como se puede ver, se van a romper los test anteriores, por lo que prefiero solucionar eso antes. Pero para ello, necesito que este test pase.
+En esta ocasión me voy a decantar por la primera opción porque, como se puede apreciar, se van a romper los test anteriores, por lo que prefiero solucionar eso antes. Pero para ello, necesito que este test pase.
 
 ```php
 class ClassifyDocument
@@ -742,9 +718,9 @@ Fíjate con esta técnica obtengo exactamente el fragmento de la ruta que quiero
     [, $stage] = explode('/', $route);
 ```
 
-Esto es lo que quería señalar, nuestros tests están mirando sólo una parte del algoritmo cada vez. Si en el futuro se rompe alguno, sabré exactamente qué parte ha sido afectada.
+Esto es lo que quería señalar, ahora **nuestros tests están mirando sólo una parte del algoritmo cada vez**. Si en el futuro se rompe alguno, sabré exactamente qué parte ha sido afectada.
 
-Sigamos.
+Sigamos:
 
 Nuestra última implementación inflexible necesita un masaje… quiero decir: necesita un nuevo test que, fallando, nos fuerce a implementar una solución más general:
 
@@ -769,9 +745,9 @@ Nuestra última implementación inflexible necesita un masaje… quiero decir: n
     }
 ```
 
-El test falla y para hacerlo pasar necesitamos obtener de algún sitio la etapa educativa. Como hemos visto antes, podemos averiguarla preguntando a Student el cual, a su vez, podemos obtener pidiéndolo al StudentRepository mediante su ID, el cual conocemos.
+El test falla y para hacerlo pasar necesitamos obtener de algún sitio la etapa educativa. Como hemos visto antes, podemos averiguarla preguntando a **Student** el cual, a su vez, podemos obtener pidiéndolo al **StudentRepository** mediante su **Id**, el cual conocemos.
 
-Para ello, nos vamos al método setUp generamos y montamos el Stub.
+Para ello, nos vamos al método setUp generamos y montamos el *stub*.
 
 ```php
     public function setUp()
@@ -804,9 +780,9 @@ Para ello, nos vamos al método setUp generamos y montamos el Stub.
 
 El *stub* por sí mismo no va hacer que pasemos el test. Necesitaremos implementar algo, pero antes me gustaría llamar tu atención sobre un detalle.
 
-En el setUp programo los *stubs* para que devuelva algunos valores específicos para los datos por defecto. Para probar con otros valores, no tengo más que programar en los métodos de test concretos los nuevos, como se puede ver en el ejemplo anterior.
+En el `setUp` programo los *stubs* para que devuelva algunos valores específicos para los datos por defecto. Para probar con otros valores, no tengo más que programar en los métodos de test concretos los nuevos, como se puede ver en el ejemplo anterior.
 
-De este modo, intento tener siempre un caso "por defecto" y generar otros casos a medida que los necesite. Lo cual quiere decir que en el test, tengo que programar una nueva respuesta en el *stub*, que devuelva un Student que sí pueda cumplir los requisitos del test:
+De este modo, intento tener siempre un caso por defecto y generar otros casos a medida que los necesite. Lo cual quiere decir que en el test, tengo que programar una nueva respuesta en el *stub*, que devuelva un **Student** que sí nos haga cumplir los requisitos del test:
 
 ```php
     public function testStageIstheSecondFolderLevelAndMayVary()
@@ -876,7 +852,7 @@ class ClassifyDocument
 }
 ```
 
-Con esto, el test ya pasa y podemos pasar al siguiente fragmento de la ruta:
+Con esto, el test ya pasa y podemos irnos al siguiente fragmento de la ruta:
 
 ### TDD del nivel educativo
 
@@ -1011,11 +987,9 @@ Lo mismo que hemos dicho antes se aplica a continuación. Primero, test que fall
     }
 ```
 
-Test en rojo: a implementar, se ha dicho, pero ahora ya es muy fácil:
+Test en rojo: a implementar se ha dicho, pero ahora ya es muy fácil:
 
 ```php
-<?php
-
 namespace Dojo\ClassifyDocument;
 
 

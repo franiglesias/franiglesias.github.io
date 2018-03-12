@@ -7,30 +7,34 @@ tags: [tdd, baby-steps]
 
 Ya han pasado más de siete meses desde que llegué a Barcelona, acabo de cumplir mis dos primeras semanas en una [nueva empresa](https://www.holaluz.com) y estoy muy contento en [mi nuevo equipo](https://twitter.com/holaluzeng?lang=es), con quienes ya he empezado a aprender un montón de cosas y, de paso, desoxidarme un poco.
 
-Precisamente en los pocos días que llevo trabajando aquí han empezado a surgir cosas interesantes con el código y me gustaría contar algunas. Hoy le toca el turno a un problema interesante de TDD que no sé muy bien cómo explicar.
+Precisamente en los pocos días que llevo trabajando aquí ya han comenzado a surgir cosas interesantes con el código y me gustaría contar algunas de ellas.
+
+Hoy le toca el turno a un problema interesante de TDD que no sé muy bien cómo explicar.
 
 ## Un problema sencillo, pero con *intríngulis*
 
-El problema concreto era desarrollar un pequeño servicio capaz de clasificar documentos. Recibe el path de un archivo y unos metadatos y, a partir de esa información, decide dónde debe guardarse el documento, devolviendo una nueva ruta al lugar de donde se almacenará de forma definitiva.
+El problema concreto era desarrollar un pequeño servicio capaz de clasificar documentos. Recibe el *path* de un archivo y unos metadatos y, a partir de esa información, decide dónde debe guardarse el documento, devolviendo una ruta al lugar en dónde se almacenará de forma definitiva.
 
-La verdad es que parece más difícil de lo que es. Como veremos, el servicio simplemente entrega un string compuesto a partir de elementos extraídos de la información aportada. Inmediatamente nos damos cuenta de que simplemente hay que obtener los fragmentos necesarios, concatenarlos y devolver el resultado.
+La verdad es que parece más difícil de lo que es. Como veremos, el servicio simplemente entrega un `string` compuesto a partir de elementos extraídos de la información aportada. Inmediatamente nos damos cuenta de que tan solo hay que obtener los fragmentos necesarios, concatenarlos y devolver el resultado.
 
 Voy a intentar ilustrar esto con un ejemplo similar pero de otro ámbito.
 
-Supongamos un centro de enseñanza en el que queremos desarrollar una aplicación que permita al alumnado enviar documentos subiéndolos en una web preparada al efecto. La cuestión es que esos documentos se guarden automáticamente en un sistema de archivos con una estructura determinada. Aunque este sistema podría servir para muchas tareas voy a simplificar:
+Supongamos un centro de enseñanza en el que queremos desarrollar una aplicación que permita al alumnado enviar documentos subiéndolos en una web preparada al efecto. La cuestión es que esos documentos se guarden automáticamente en un sistema de archivos con una estructura determinada. Aunque este sistema podría servir para muchas tareas, voy a simplificar el problema a un único caso:
 
 - Los documentos relacionados con trabajos escolares se guardan en una ubicación específica por curso escolar, etapa, nivel educativo, tutoría, asignatura y alumno.
 - Además, el nombre de archivo se cambiará para refleje un identificador de la tarea y una marca de tiempo.
 
-Es decir, que si alumno con número de matrícula 5433, matrículado en 5º C de Primaria sube el próximo lunes (12-03-2018) el archivo deberes-de-mates.pdf, éste deberá situarse en la ruta:
+Es decir, que si alumno con número de matrícula **5433**, matrículado en **5º C** de **Primaria** sube el próximo lunes (**12-03-2018**) el archivo **deberes-de-mates.pdf**, éste deberá situarse en la ruta:
 
+```
 2017-2018/primaria/5/5C/matematicas/5433/2018-03-12-deberes.pdf
+```
 
 Aunque no forma parte de la tarea concreta que vamos a realizar, se supone que la información necesaria se obtiene a través del formulario de la web, de la identificación del usuario conectado, de datos almacenados en el repositorio de alumnos, y otros se obtienen en el momento.
 
-Así, por ejemplo, el número de matrícula (que sería el ID del alumno) se obtiene de su login. Este dato nos permite obtener la entidad Student del repositorio correspondiente, a la que podemos interrogar sobre su curso, tutoría y etapa.
+Así, por ejemplo, el número de matrícula (que sería el ID del alumno) se obtiene de su login. Este dato nos permite obtener la entidad **Student** del repositorio correspondiente, a la cual podemos interrogar sobre su curso, tutoría y etapa.
 
-Por supuesto, la fecha se obtiene del sistema y, con ella, se puede elaborar el fragmento de curso escolar.
+Por supuesto, la fecha se obtiene del sistema y, con ella, es posible elaborar el fragmento de curso escolar.
 
 La solución es bastante obvia, pero no adelantemos acontecimientos...
 
@@ -40,17 +44,17 @@ La pregunta es: ¿cómo resolvemos este desarrollo utilizando TDD y que los test
 
 Me explico.
 
-La [interfaz](https://dirae.es/palabras/interficie) de este tipo de servicios contiene un único método que devuelve el string que necesitamos. 
+La [interfaz](https://dirae.es/palabras/interficie) de este tipo de servicios contiene un único método que devuelve el `string` que necesitamos. 
 
-En una metodología de **tests a posteriori** podríamos simplemente testear el *happy path* y *santas pascuas*, además de algunas situaciones problemáticas como que no se encuentre el estudiante con ese ID o similares.
+En una metodología de **tests a posteriori** podríamos simplemente testear el *happy path* y santas pascuas, aparte de algunas situaciones problemáticas como que no se encuentre el estudiante con ese ID o similares, en las que podríamos testear que se lance excepción.
 
-Incluso con una metodología **test antes que el código** podríamos plantear lo mismo (y pensar que estamos haciendo TDD).
+Incluso con una metodología **test antes que el código** podríamos plantear lo mismo, y pensar que estamos haciendo TDD.
 
 Y eso no sería TDD, o al menos no sería una forma muy útil de TDD.
 
-Pero veámoslo en forma de código, el cual voy a simplificar evitando usar objetos de dominio para centrarme en el meollo de este caso.
+Veámoslo en forma de código, el cual voy a simplificar evitando usar objetos de dominio para centrarme en el meollo de este caso.
 
-Para llamar al servicio usaremos este objeto *Request*, con el que pasamos la información obtenida en el controlador al servicio:
+Para llamar al servicio usaremos este objeto **ClassifyDocumentRequest**, con el que pasamos la información obtenida en el controlador al servicio:
 
 ```php
 namespace Dojo\ClassifyDocument\Application;
@@ -159,7 +163,6 @@ Al ejecutarlo, debería devolvernos una cadena de este estilo:
 
 ## El enfoque de tests antes que el código pero que no es TDD
 
-
 Veamos: ¿cuál sería un primer test para este problema?. La solución rápida sería algo más o menos como esto:
 
 ```php
@@ -170,7 +173,7 @@ use Dojo\ClassifyDocument\Application\ClassifyDocument;
 use Dojo\ClassifyDocument\Application\ClassifyDocumentRequest;
 use PHPUnit\Framework\TestCase;
 
-class ClassifyDocumentAcceptanceTest extends TestCase
+class ClassifyDocumentTest extends TestCase
 {
     public function testVAlidRequestShouldGenerateRoute()
     {
@@ -194,11 +197,11 @@ class ClassifyDocumentAcceptanceTest extends TestCase
 
 Veamos. Este test tiene algunos problemas aunque aparentemente es correcto. El principal de ellos es que nos obliga a implementar toda la funcionalidad de una sola tacada y resulta que tenemos que extraer ni más ni menos que nueve fragmentos de información para componer la ruta a partir de cinco datos: ¿no nos convendría ir por partes?
 
-¿Qué pasa si en el futuro un cambio provoca que el test no pase? Pues que no tenemos forma de saber a través del test qué parte concreta está fallando.
+¿Qué pasa si en el futuro un cambio provoca que el test no pase? Pues que no tenemos forma de saber a través del test qué parte concreta está fallando. Este caso es bastante simple, pero imagínatelo en desarrollos con algorimos más complejos.
 
-Podríamos considerar éste como un test de aceptación: dada una petición válida, devuelve una ruta válida. Así que no vamos a tirar este test, sino que lo utilizaremos como lo que es: un test de aceptación que nos diga si hemos terminado de desarrollar la funcionalidad, así que, mientras tanto, lo pongo en un archivo aparte.
+Podríamos considerar éste como un **test de aceptación**: dada una petición válida, devuelve una ruta válida. Así que no vamos a tirar este test, sino que lo utilizaremos como lo que es: un test de aceptación que nos diga si hemos terminado de desarrollar la funcionalidad. Así que, mientras tanto, lo pongo en un archivo aparte y ya volveré a él más adelante.
 
-Sin embargo, en un enfoque TDD esto no nos sirve de mucho: no nos dice por dónde empezar o qué hacer a continuación. Cada fragmento de la ruta tiene su propia lógica en tanto que se obtiene de una manera diferente y ocupa una posición específica.
+Como test unitario, en un enfoque TDD, este test no nos sirve de mucho pues no nos dice por dónde empezar o qué hacer a continuación. Cada fragmento de la ruta tiene su propia lógica en tanto que se obtiene de una manera diferente y ocupa una posición específica.
 
 ¿Y cómo lo reflejamos en el proceso de TDD?
 
@@ -208,23 +211,21 @@ En un [artículo anterior](https://franiglesias.github.io/luhn-kata-python/) hic
 
 Por cierto, si pensabas que esto de las *katas* no tiene utilidad *en el mundo real* ya puedes ir cambiando de opinión.
 
-Pero vamos allá y por orden de los elementos en la ruta resultante.
+Pero vamos allá, por orden de los elementos en la ruta resultante.
 
 ### TDD del curso escolar
 
-El primer elemento que tenemos que generar es el curso escolar que es una cadena formada por el año natural en que comienza y el año en que termina, separados por un guión. Por ejemplo:
+El primer elemento que tenemos que generar es el curso escolar, el cual es una cadena formada por el año natural en que comienza y el año en que termina, separados por un guión. Por ejemplo:
 
 ```
 2017-2018
 ```
 
-Calcularlo es relativamente sencillo. Dada una fecha, si el mes es mayor o igual que septiembre, el curso escolar comienza ese año. Si el mes es menor que septiembre el curso escolar ha comenzado el año anterior.
+Calcularlo es relativamente sencillo: dada una fecha, si el mes es mayor o igual que septiembre, el curso escolar comienza ese año. Si el mes es menor que septiembre el curso escolar ha comenzado el año anterior.
 
 Así que empiezo creando un test que falle:
 
 ```php
-<?php
-
 namespace Tests\Dojo\ClassifyDocument;
 
 use DateTime;
@@ -253,7 +254,7 @@ class ClassifyDocumentTest extends TestCase
 
 Este test fallará, en primer lugar porque no se encuentra la clase **ClassifyDocument** que aún no hemos creado. Sin embargo y de momento, me interesa resaltar cómo voy a probar la generación de cada fragmento.
 
-De momento, mi ruta sólo va a tener un elemento, por lo que no me preocupo de otra cosa que generarlo.
+Para empezar a trabajar, mi ruta sólo va a tener un elemento, por lo que no me preocupo de otra cosa que generarlo.
 
 Para ello, voy resolviendo las cosas que me pide el resultado de pasar cada test. En primer lugar, crear la clase y, luego, el método.
 
@@ -336,9 +337,9 @@ interface SchoolYearCalculator
 }
 ```
 
-Solo para que conste: personalmente no soy partidario de añadir el sufijo Interface. El nombre de las implementaciones reflejaría el tipo concreto que vaya a realizar. De hecho, podría ocurrir que al ir a implementar decida que sólo va a existir una implementación de ese servicio, con lo cual desaparecería la interfaz y no tendría que cambiar nada más.
+Solo para que conste: personalmente no soy partidario de añadir el sufijo `Interface`. La interfaz representa el concepto, y las implementaciones serían formas concretas, cuyo nombre podría indicarnos su tipo concreto. Podría ocurrir que sólo tiene sentido una implementación concreta de ese servicio, con lo cual desaparecería la interfaz, la implementación sería genérica y, como *bonus*, no tendría que cambiar nada más.
 
-Un *stub* es un test double que tiene una respuesta programada a ciertos mensajes que le enviamos, así que lo introducimos en nuestro test y veremos a qué nos lleva:
+Un *stub* es un *test double* que tiene una respuesta programada a ciertos mensajes que le enviamos, así que lo introducimos en nuestro test y veremos a qué nos lleva:
 
 ```php
     public function testSchoolYearForFirstQuarterIsTheSameYear()
@@ -388,10 +389,11 @@ class ClassifyDocument
     }
 }
 ```
+
 Una vez implementado esto vemos que pasan dos cosas:
 
 - El nuevo test pasa.
-- El test que ya existía no pasa porque no contempla el hecho de haber introducido el servicio SchoolYearCalculator.
+- El test que ya existía no pasa porque no contempla el hecho de haber introducido el servicio **SchoolYearCalculator**.
 
 Así que arreglamos eso para que pase, cuidando de ajustar los nuevos valores del *stub*.
 
@@ -1117,3 +1119,25 @@ En cualquier caso, puedes ver el código en [este repositorio](https://github.co
 Lo que he tratado de mostrar en este ejercicio es que TDD no consiste sólo en hacer tests antes de escribir el código. 
 
 Para que podamos hablar de TDD, los tests tienen que generarnos la necesidad de implementar, impulsando el desarrollo de cada característica de nuestro software.
+
+## Actualizaciones (13/03/2018)
+
+Ahora que repaso el texto, cambiaría el nombre del servicio **SchoolYearCalculator** por **CalculateSchoolYear**, que da más sentido a su único método: `CalculateSchoolYear::forDate()`. Creo que no hace falta explicar por qué.
+
+[Bernat Borrás](https://twitter.com/lepetitbernat/status/973112721473507329) y [Alfonso Silóniz](https://twitter.com/alfonsosiloniz/status/973117446201724928) comentaban en Twitter sobre si era necesario hacer varios tests sobre el mismo fragmento de ruta. La respuesta es que si haces TDD a ritmo de *baby steps* de manera que cada paso te fuerce a implementar la solución más simple, primero, y a refactorizar en busca de un buen diseño, lo cierto es que puedes tener que hacer bastantes tests:
+
+- El primero para hacer una implementación "tonta" e inflexible: el típico devolver exactamente lo que esperas.
+- El segundo para provocar que la implementación inflexible falle e implementar una solución sencilla, aunque no sea del todo genérica.
+- Un tercer test que ponga en cuestión la solución anterior y nos lleve a una más genérica. n este punto seguramente ya podríamos empezar a refactorizar para mejorar el diseño
+- Además, podrían haber aparecido casos límite que no pueden tratarse con la solución general y tendrían un test específico.
+
+En cualquier caso esto va a depender del tamaño de los *baby steps* que decidamos tomar, que dependen de nuestra experiencia, del conocimiento que tengamos de la tarea, etc.
+
+Ahora, en la práctica creo que es perfectamente válido desechar algunos de estos tests si no aportan información extra con el objetivo de aligerar nuestras *Suites de Tests*. Puedes contemplarlo como un caso de **duplicación**, y ya sabemos que la duplicación hay que eliminarla. Se trataría de dejar los tests que nos funcionarían como **tests de regresión**.
+
+[Alfonso](https://twitter.com/alfonsosiloniz/status/973119323169525760) señalaba muy atinadamente que los tests tendrían que ser idempotentes y, por tanto, no deberíamos cambiarlos, como es el caso de nuestro primer test sobre el curso escolar.
+
+Podemos ver TDD como una metodología iterativa: empezamos con unos requerimientos muy sencillos: que exista una clase, que tenga cierto método, que devuelva un cierto resultado… Cada vez, un nuevo requisito, intentando no ver más allá del problema actual. 
+
+En algún momento esto podría alterar el resultado que necesitamos que devuelva nuestra unidad y, por tanto, podríamos vernos en la necesidad de modificar el test. Pero esto ocurre porque nos forzamos a no adelantar acontecimientos, incluso aunque nosotros "sabemos" que nuestra clase va a necesitar colaboradores o que va a cambiar la forma en que devuelve los resultados. Pero en TDD queremos que esas cosas nos las digan los tests.
+

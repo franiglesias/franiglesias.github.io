@@ -1120,6 +1120,7 @@ Lo que he tratado de mostrar en este ejercicio es que TDD no consiste sólo en h
 
 Para que podamos hablar de TDD, los tests tienen que generarnos la necesidad de implementar, impulsando el desarrollo de cada característica de nuestro software.
 
+
 ## Actualizaciones (13/03/2018)
 
 Ahora que repaso el texto, cambiaría el nombre del servicio **SchoolYearCalculator** por **CalculateSchoolYear**, que da más sentido a su único método: `CalculateSchoolYear::forDate()`. Creo que no hace falta explicar por qué.

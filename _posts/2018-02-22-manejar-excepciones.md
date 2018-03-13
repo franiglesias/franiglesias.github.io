@@ -7,17 +7,17 @@ tags: [good-practices, exceptions]
 
 Las excepciones son elementos del lenguaje que nos permiten indicar situaciones que rompen el flujo normal de un programa. Cuando se lanza una excepción, ésta asciende la pila de llamadas del lenguaje hasta encontrar algún punto en que sea gestionada. Si no lo encuentra, el flujo del programa se detiene y se muestra un error.
 
-En cierto modo, podemos ver las excepciones como eventos o mensajes que se publican a la espera de que exista algún oyente interesado que pueda ocuparse del mismo. Sin embargo, no deben usarse como forma genérica de comunicación interna de una aplicación, sino únicamene en la gestión de situaciones extraordinarias.
+En cierto modo, podemos ver las excepciones como eventos o mensajes que se publican a la espera de que exista algún oyente interesado que pueda ocuparse del mismo. Sin embargo, no deben usarse como forma genérica de comunicación interna de una aplicación, sino únicamente en la gestión de situaciones extraordinarias.
 
 Pongamos por ejemplo el caso de una aplicación que depende de una API remota. Si detectamos que la API no está disponible en un momento dado eso es una situación extraordinaria y sería buena idea lanzar una excepción que indique esa circunstancia particular que, de todos modos, va a impedir que nuestro programa funcione. Por otro lado, nuestro código debería estar pendiente de si esa excepción concreta es lanzada para tomar las medidas adecuadas, ya sea avisar a los usuarios de que la operación no se puede realizar, ya sea para buscar algún tipo de alternativa, etc.
 
 El lenguaje, por su parte, utiliza este mecanismo para comunicar buena parte de los errores genéricos que pueden ocurrir en un código determinado. Algunos de esos errores son *lógicos*, como por ejemplo llamar a un método que no existe o pasar un argumento de un tipo no válido, mientras que otros son *en tiempo de ejecución*, y no se detectan hasta que ocurren, como cuando una función devuelve un tipo de valor no esperado.
 
-Normalmente esos errores lógicos se pueden detectar analizando el código y requieren una reparación del mismo para evitarlos. Por su parte, los errores en tiempo de ejecución no se pueden preveer y pueden requerir técnicas defensivas.
+Normalmente esos errores lógicos se pueden detectar analizando el código y requieren una reparación del mismo para evitarlos. Por su parte, los errores en tiempo de ejecución no se pueden prever y pueden requerir técnicas defensivas.
 
 ## Una familia excepcional
 
-En PHP todas las excepciones derivan de la clase base Exception, la cual a su vez implementa la interfaz Throwable (que nosotros no podemos usar directamente). La Biblioteca Estándar de PHP (SPL) propone un árbol de clases con dos ramas principales:
+En PHP todas las excepciones derivan de la clase base `Exception`, la cual a su vez implementa la interfaz `Throwable` (que nosotros no podemos usar directamente). La Biblioteca Estándar de PHP (SPL) propone un árbol de clases con dos ramas principales:
 
 * **LogicException**, que agrupa las excepciones que representan errores en la lógica del programa y que, a su vez, se extiende en:  
   * **BadFunctionCallException**: cuando se llama a una función que no existe o con los argumentos incorrectos.
@@ -29,13 +29,13 @@ En PHP todas las excepciones derivan de la clase base Exception, la cual a su ve
 * **RuntimeException**, que agrupa las excepciones que representan los errores detectados en tiempo de ejecución. En muchos casos el significado del error es el mismo que en LogicException, pero cuando es detectado en tiempo de ejecución.
   * **OutOfBoundsException**: Equivale a DomainException.
   * **OverflowException**: representa el error de agregar un elemento a un contenedor que ya está lleno.
-  * **RangeException**: es la versión en tiempo de ejecución de la DomainException.
+  * **RangeException**: es la versión en tiempo de ejecución de la `DomainException`.
   * **UnderflowException**: el ejemplo típico es intentar quitar algo de un contenedor que ya está vacío.
   * **UnexpectedValueException**: un valor retornado por una operación no es del tipo esperado.
 
 Cuando queremos indicar una situación problemática en nuestro código, lo suyo sería lanzar una excepción, aunque decidir qué excepción concreta lanzar tiene algo de arbitrario. Lo ideal sería escoger una de éstas que acabamos de mostrar o crear tipos propios de excepciones extendiendo la clase que más nos encaje semánticamente.
 
-En muchos sentidos, la estructura de las LogicException y las RuntimeException es paralela y en un lenguaje interpretado como PHP es una distinción un poco forzada. El criterio para tirar por una rama o por otra sería si queremos enfatizar que hay que hacer un cambio en el código para que no se produzca el error, o bien si el acento lo ponemos en que el problema se genera durante la ejecución y tenemos que tomar medidas que lidien con circunstancias que no podemos predecir si ocurrirán.
+En muchos sentidos, la estructura de las `LogicException` y las `RuntimeException` es paralela y en un lenguaje interpretado como PHP es una distinción un poco forzada. El criterio para tirar por una rama o por otra sería si queremos enfatizar que hay que hacer un cambio en el código para que no se produzca el error, o bien si el acento lo ponemos en que el problema se genera durante la ejecución y tenemos que tomar medidas que lidien con circunstancias que no podemos predecir si ocurrirán.
 
 ## La excepción es el mensaje
 
@@ -43,11 +43,11 @@ En último términos las excepciones son mensajes que pueden indicar una diversi
 
 En tanto que mensajes, en el sentido de programación orientada a objetos, es importante que las excepciones aporten un valor semántico por lo que es buena práctica definir excepciones personalizadas cuando representan situaciones importantes en el dominio de nuestra aplicación.
 
-Un buen motivo para definir nuevos tipos de excepiones es el de que podemos capturarlas de forma específica en los bloques `try…catch`, como veremos dentro de un momento, permitiéndonos actuar de manera adecuada a los distintos tipos de problemas.
+Un buen motivo para definir nuevos tipos de excepciones es el de que podemos capturarlas de forma específica en los bloques `try…catch`, como veremos dentro de un momento, permitiéndonos actuar de manera adecuada a los distintos tipos de problemas.
 
 En todo caso, lo importante es que la excepción describa el problema lo mejor posible.
 
-Por otro lado, la constructora de la clase Exception nos permite definir:
+Por otro lado, la constructora de la clase `Exception` nos permite definir:
 
 * Un mensaje descriptivo de lo ocurrido, destinado normalmente a mostrarse como información al usuario final y que creo que no debería usarse para obtener información sobre el problema acaecido.
 * Un código numérico de error, que nos permitiría matizar el problema descrito por la excepción.
@@ -59,7 +59,7 @@ Por otro lado, la constructora de la clase Exception nos permite definir:
 
 Cuando una parte de nuestro código debe gestionar una situación potencialmente problemática, puede detectar condiciones que señalan ese problema y lanzar una excepción si se cumplen.
 
-Por ejemplo, si estamos manejando coordenadas y uno de los valores que recibimos está fuera del rango -180…180 tendríamos un caso de DomainException (o OutOfBoundsException), por lo que cualquier operación posterior no tendría ningún sentido. Así que podemos hacer, por ejemplo, una clásula de guarda que lo detecte y lance una excepción:
+Por ejemplo, si estamos manejando coordenadas y uno de los valores que recibimos está fuera del rango -180…180 tendríamos un caso de `DomainException` (o `OutOfBoundsException`), por lo que cualquier operación posterior no tendría ningún sentido. Así que podemos hacer, por ejemplo, una cláusula de guarda que lo detecte y lance una excepción:
 
 ```php
 if (abs($longitude) > 180) {
@@ -71,7 +71,7 @@ if (abs($longitude) > 180) {
 
 Lo ideal, en mi opinión, es fallar de la manera más descriptiva y precisa que se pueda, de modo que sea posible actuar ante tipos de errores concretos si lo deseamos, cosa que es posible hacer disponiendo de bloques de captura específicos para ese tipo de excepción.
 
-Para ello puede ser útil recurrir a excepciones creadas a medida, derivadas de otras estándar o, como poco, de las excepciones base. Pero esto es algo que depende fundamentalmente de nuestras necesidadse.
+Para ello puede ser útil recurrir a excepciones creadas a medida, derivadas de otras estándar o, como poco, de las excepciones base. Pero esto es algo que depende fundamentalmente de nuestras necesidades.
 
 Imagínate, por ejemplo, que para tu aplicación es importante tener mucho control sobre datos de geolocalización. En ese caso, podría ser interesante tener excepciones como esta:
 
@@ -103,7 +103,7 @@ try {
 }
 ```
 
-Si durante la ejecución del bloque `try` se produce una excepción, se detiene el flujo y se salta al bloque `catch`. A este bloque se le pasa la excepción como parámetro, de la cual se puede extraer información si es el caso y hacer algo adecuado, como podría ser añadir una entrada en el log de errores, redirigir a una página particular, o incluso volver a lanzar la misma excepción u otra para que las siguiente capa de la aplicación la pueda recibir.
+Si durante la ejecución del bloque `try` se produce una excepción, se detiene el flujo y se salta al bloque `catch`. A este bloque se le pasa la excepción como parámetro, de la cual se puede extraer información si es el caso y hacer algo adecuado, como podría ser añadir una entrada en el *log* de errores, redirigir a una página particular, o incluso volver a lanzar la misma excepción u otra para que las siguiente capa de la aplicación la pueda recibir.
 
 El código después de esta estructura sólo se ejecuta si no ha habido excepción, aunque haya sido capturada.
 
@@ -162,7 +162,7 @@ El problema de usar sólo excepciones genéricas es que si en algún momento nec
 
 Si la propia excepción ya nos dice qué ha pasado, por su tipo, sólo tendríamos que explorar algunos de sus datos para tomar las medidas adecuadas.
 
-Y **nunca, nunca**, deberíamos tener bloques `catch` que no hagan nada, silenciando las excepciones. Como mínimo, si nos interesa que no rompan el flujo del programa, deberíamos crear una entreda en el log, para el caso de que se detecte algún problema y eso nos pueda proporcionar alguna pista en el análisis posterior.
+Y **nunca, nunca**, deberíamos tener bloques `catch` que no hagan nada, silenciando las excepciones. Como mínimo, si nos interesa que no rompan el flujo del programa, deberíamos crear una entrada en el *log*, para el caso de que se detecte algún problema y eso nos pueda proporcionar alguna pista en el análisis posterior.
 
 ## Relanzar excepciones
 
@@ -200,7 +200,7 @@ Sin embargo, sería muy discutible tener unas excepciones como `InvalidLongitude
 
 ### Payload de excepciones
 
-En el caso de crear excepciones personalizadas se recomienda que éstas puedan llevar información extra sobre las circunstancias del error, que luego podría extraerse mediante simples getters. Algo así:
+En el caso de crear excepciones personalizadas se recomienda que éstas puedan llevar información extra sobre las circunstancias del error, que luego podría extraerse mediante simples *getters*. Algo así:
 
 ```php
 class InvalidCoordinatesException extends InvalidArgumentException
@@ -228,11 +228,11 @@ class InvalidCoordinatesException extends InvalidArgumentException
 }
 
 ```
-Aunque estrictamente hablando se viola el principio de sustitución de Liskov, hay que tener en cuenta que la excepción sería capturada en un bloque que espera específicamente ese tipo concreto de excepción mediante type hinting.
+Aunque estrictamente hablando se viola el principio de sustitución de Liskov, hay que tener en cuenta que la excepción sería capturada en un bloque que espera específicamente ese tipo concreto de excepción mediante *type hinting*.
 
 ### Named constructors en excepciones
 
-Una técnica que puede mejorar la expresividad de las excepciones es utilizar métodos factoría (named constructors) de modo que la construcción de estas nuevas excepciones no sólo sea más expresiva sino incluso más coherente. El ejemplo anterior se podría reescribir así:
+Una técnica que puede mejorar la expresividad de las excepciones es utilizar métodos factoría (*named constructors*) de modo que la construcción de estas nuevas excepciones no sólo sea más expresiva sino incluso más coherente. El ejemplo anterior se podría reescribir así:
 
 ```php
 class InvalidCoordinatesException extends \InvalidArgumentException

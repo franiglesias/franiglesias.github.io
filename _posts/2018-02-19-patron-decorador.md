@@ -192,7 +192,7 @@ El negocio va viento en popa. No sólo hemos añadido una tercera técnica de es
 
 Pero esta nueva serie de tamaños se aplica a las tres técnicas de estampación y eso quiere decir que vamos a pasar de ofrecer tres modelos a 12, ni más ni menos: tres tipos de estampación por cuatro tamaños diferentes. ¿Vamos a gestionar eso con herencias?
 
-Es decir. Tengo tres subclases que, a su vez, tienen que extenderse cada una en cuatro subclases más, o bien crear 12 subclases a partir de TShirt. Esto empieza a apestar.
+Es decir. Tengo tres subclases que, a su vez, tienen que extenderse cada una en cuatro subclases más, o bien crear 12 subclases a partir de `TShirt`. Esto empieza a apestar.
 
 Si añadimos una nueva opción en cualquiera de los dos ejes de cambio se multiplican las opciones. ¿Y si añadimos un tercer eje? Pues peor me lo pones: dos opciones en un tercer eje nos proporcionan 24 posibilidades.
 
@@ -219,7 +219,7 @@ interface TShirtPriceDecorator {
 }
 ```
 
-Podremos prescindir del método getPricePrinted porque en cada decoración vamos a recalcular el precio de la camiseta añadiendo el coste de la opción aplicada.
+Podremos prescindir del método `getPricePrinted` porque en cada decoración vamos a recalcular el precio de la camiseta añadiendo el coste de la opción aplicada.
 
 Tanto el objeto base como los "decoradores" implementan la interface que acabamos de definir, esto hace posible usarlos de manera combinada pues nos obliga a implementar los métodos en los que tenemos interés.
 
@@ -539,7 +539,11 @@ class TaxDecorator implements TShirtPriceDecorator
 Lo cual nos permitiría hacer lo siguiente:
 
 ```php
-$anotherTShirt = new PrintingOptionDecorator(new PrintingOptionDecorator(new TShirt(20.50)));
+$anotherTShirt = new PrintingOptionDecorator(
+	new PrintingOptionDecorator(
+		new TShirt(20.50),
+		3.5),
+	4.5);
 
 $withVAT = new TaxDecorator($anotherTShirt, 1.21);
 ```

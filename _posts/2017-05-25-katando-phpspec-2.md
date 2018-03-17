@@ -9,10 +9,10 @@ Continuamos con la kata iniciada en el artículo anterior.
 
 La serie **Katando PHPSpec** consta de los siguientes artículos:
 
-[Katando PHPSpec (1)](/katando-phpspec-1.md)  
-[Katando PHPSpec (2)](/katando-phpspec-2.md)  
-[Katando PHPSpec (3)](/katando-phpspec-3.md)  
-[Katando PHPSpec (4)](/katando-phpspec-4.md)
+[Katando PHPSpec (1)](/katando-phpspec-1)  
+[Katando PHPSpec (2)](/katando-phpspec-2)  
+[Katando PHPSpec (3)](/katando-phpspec-3)  
+[Katando PHPSpec (4)](/katando-phpspec-4)
 
 El siguiente requisito que vamos a implementar en nuestra Calculator es:
 

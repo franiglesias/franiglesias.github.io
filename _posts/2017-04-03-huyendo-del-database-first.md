@@ -15,7 +15,6 @@ Pero… esto no es aplicable al conjunto de la aplicación. La base de datos es 
 
 Al contrario, es la capa de persistencia la que debe arreglárselas con lo que viene del dominio.
 
-
 ## Un problema cada vez
 
 Al trabajar en un paradigma database-first o database-centric surgen varios problemas. El primero es la dependencia errónea que hace que crees primero las tablas de base de datos y luego los modelos a partir de ellas. Entonces el dominio está más pendiente de ajustarse a las necesidades de la base de datos que al revés y se genera una dependencia técnica. Una de las consecuencias es que cada vez que haces un cambio en uno de los dos extremos, tienes que hacer cambios en toda la cadena.

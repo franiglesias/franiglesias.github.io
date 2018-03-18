@@ -1,13 +1,11 @@
 ---
 layout: post
-title: El visitante
+title: El patrón visitante
 categories: articles
 tags: oop design-patterns
 ---
 
 El patrón visitante es uno de los que más difícil me ha resultado entender y aplicar, así que voy a escribir sobre él para afianzar el concepto.
-
-----
 
 En esencia, el patrón Visitante sirve para resolver un problema como el siguiente:
 
@@ -58,28 +56,241 @@ El método `visitRecord` es más específico, ya que debe recabar distintos dato
 
 Aquí tenemos la clase abstracta base de nuestro Visitor `CantineListReporter`.
 
-{% gist 245066d105ef0961d24e87dcbf9e9f05 %}
+```php
+namespace Milhojas\Domain\Cantine\CantineList;
+
+use Milhojas\Domain\Cantine\CantineList\CantineListUserRecord;
+
+abstract class CantineListReporter
+{
+    abstract public function visitRecord(CantineListUserRecord $cantineListUserRecord);
+}
+```
 
 Podríamos haberla definido como interface, pero queremos dejar abierta la posibilidad de que haya código compartido.
 
 ### Visitante concreto
 
-{% gist 97c88126a386a1eecbeda90ed4907a83 %}
+```php
+namespace Milhojas\Domain\Cantine\CantineList;
+
+class TurnStageCantineListReporter extends CantineListReporter
+{
+    private $counters;
+    private $totals;
+    /**
+     * Reset counters
+     */
+    public function __construct()
+    {
+        $this->counters = [];
+        $this->totals = [];
+    }
+
+    /**
+     * @param CantineListUserRecord $cantineListUserRecord
+     */
+    public function visitRecord(CantineListUserRecord $cantineListUserRecord)
+    {
+        $turn = $cantineListUserRecord->getTurnName();
+        $stage = $cantineListUserRecord->getStageName();
+        $this->initCounters($turn, $stage);
+        ++$this->counters[$turn][$stage];
+        ++$this->counters[$turn]['total'];
+        ++$this->totals['all'];
+        ++$this->totals[$stage];
+    }
+
+    /**
+     * Get the counters
+     * @return array
+     */
+    public function getReport()
+    {
+        return $this->counters;
+    }
+
+    /**
+     * Get totals
+     * @return array
+     */
+    public function getTotal()
+    {
+        return $this->totals;
+    }
+
+    /**
+     * Starts the counters
+     * @param mixed $turn
+     * @param mixed $stage
+     */
+    private function initCounters($turn, $stage)
+    {
+        if (!isset($this->counters[$turn])) {
+            $this->counters[$turn]['total'] = 0;
+        }
+        if (!isset($this->counters[$turn][$stage])) {
+            $this->counters[$turn][$stage] = 0;
+        }
+        if (!isset($this->totals['all'])) {
+            $this->totals['all'] = 0;
+        }
+        if (!isset($this->totals[$stage])) {
+            $this->totals[$stage] = 0;
+        }
+    }
+}
+```
 
 ### El anfitrión
 
 En realidad tenemos dos anfitriones. En primer lugar, CantineList, que es la que contiene los registros y debe guiar al visitante por ellos.
 
-{% gist 91c751172c50c2fd7d7ea9b2f89d1e8a %}
+```php
+namespace Milhojas\Domain\Cantine\CantineList;
+use Milhojas\Domain\Cantine\CantineList\CantineListReporter;
+
+/**
+ * Represents the list of CantineUsers eating on a date, assigned to a Turn
+ * The list is ordered by Turn and User List Name.
+ */
+class CantineList extends \SplMinHeap
+{
+    private $date;
+    /**
+     * @param \DateTimeInterface $date
+     */
+    public function __construct(\DateTimeInterface $date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function compare($a, $b)
+    {
+        return -1 * $a->compare($b);
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Accepts a CantineListReporter visitor to generate reports about the list itself
+     *
+     * @param CantineListReporter $cantineListReporter
+     */
+    public function accept(CantineListReporter $cantineListReporter)
+    {
+        foreach ($this as $record ) {
+            $record->accept($cantineListReporter);
+        }
+    }
+}
+```
 
 Y, finalmente, la clase visitada:
 
-{% gist f5bb4dadf09859f4be103bca6d8fd690 %}
+```php
+namespace Milhojas\Domain\Cantine\CantineList;
+
+use Milhojas\Library\Sortable\Sortable;
+use Milhojas\Domain\Cantine\CantineList\CantineListReporter;
+use Milhojas\Domain\Cantine\CantineUser;
+use Milhojas\Domain\Cantine\Turn;
+/**
+ * A Data Transport Object to hold the representation of a Cantine User in a CantineList.
+ */
+class CantineListUserRecord implements Sortable
+{
+    private $date;
+    private $turn;
+    private $cantineUser;
+
+    public function __construct($date, Turn $turn, CantineUser $cantineUser)
+    {
+        $this->date = $date;
+        $this->turn = $turn;
+        $this->cantineUser = $cantineUser;
+    }
+
+    public static function createFromUserTurnAndDate(CantineUser $cantineUser, Turn $turn, \DateTimeInterface $date)
+    {
+        $cantineListUserRecord = new CantineListUserRecord($date, $turn, $cantineUser);
+        return $cantineListUserRecord;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function compare($object)
+    {
+        $compareTurns = $this->turn->compare($object->getTurn());
+        if ($compareTurns != Sortable::EQUAL) {
+            return $compareTurns;
+        }
+
+        return $this->cantineUser->compare($object->getUser());
+    }
+
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    public function getTurn()
+    {
+        return $this->turn;
+    }
+
+
+    public function getUser()
+    {
+        return $this->cantineUser;
+    }
+
+    public function getTurnName()
+    {
+        return $this->turn->getName();
+    }
+
+    public function getUserListName()
+    {
+        return $this->cantineUser->getListName();
+    }
+
+    public function getClassGroupName()
+    {
+        return $this->cantineUser->getClassGroupName();
+    }
+
+    public function getStageName()
+    {
+        return $this->cantineUser->getStageName();
+    }
+
+    public function getRemarks()
+    {
+        return $this->cantineUser->getRemarks();
+    }
+
+    public function accept(CantineListReporter $cantineListReporter)
+    {
+        $cantineListReporter->visitRecord($this);
+    }
+}
+```
 
 El método `accept` se limita a llamar al método `visitRecord` del Visitante y el objeto se pasa a sí mismo como argumento. De este modo, un objeto privado se convierte en accesible al visitante.
 
 ## Acoplamiento
 
-El patrón Visitor implica aceptar un alto acoplamiento en los visitantes respecto a las clases anfitrionas, aunque es un coste asumible. Esto es debido a que Visitor necesita conocer algunas cosas de los objetos visitados, sus métodos públicos, pero también es cierto que normalmente los visitantes están específicamente interesados en unas clases muy concretas.
+El patrón **Visitor** implica aceptar un alto acoplamiento en los visitantes respecto a las clases anfitrionas, aunque es un coste asumible. Esto es debido a que **Visitor** necesita conocer algunas cosas de los objetos visitados, sus métodos públicos, pero también es cierto que normalmente los visitantes están específicamente interesados en unas clases muy concretas.
 
 A cambio, tenemos la flexibilidad de crear tantos tipos de visitantes como necesitemos sin tener que alterar las clases anfitrionas. En nuestro ejemplo, podremos añadir nuevos informes extendiendo `CantineListReport`.

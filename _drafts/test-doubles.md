@@ -122,17 +122,53 @@ En resumen, un mock:
 
 #### Fake
 
-Un Fake es una implementación de la interfaz específica para ser usada en situaciones de test. Como tal tiene comportamiento de negocio y, en realidad, necesita sus propios tests para asegurarnos de que este es correcto.
+Un Fake es una implementación de la interfaz que se crea específicamente para ser utilizada en situaciones de test. Como tal tiene comportamiento de negocio y, en realidad, necesita sus propios tests para asegurarnos de que este es correcto.
+
+Las razones para crear Fakes son varias. Quizá la principal pueda ser la de realizar pruebas de integración sin las limitaciones de las implementaciones de producción, como puede ser el acceso a bases de datos y otros recursos remotos, que son lentos y pueden fallar, por ejemplo un repositorio implementado en memoria.
 
 ## Alternativas para generar test doubles
 
 ### Usar las clases reales
 
+Hay muchas ocasiones en las que no tiene sentido utilizar test doubles. En su lugar utilizaremos las clases reales en los tests:
+
+* Value Objects: los VO, por definición, no pueden tener side effects ni dependencias, así que al utilizarlos en los tests podemos tener la seguridad de que su efecto sobre el SUT es el esperado.
+* DTO: no dejan de se objetos sin comportamiento, por lo que podemos usarlos sin problema.
+* Requests, Commands (cuando son mensajes), Events: los objetos que son mensajes y no contienen lógica no necesitan ser doblados.
+* Cualquier otra clase que que no tenga side-effects ni dependencias.
+
+### Implementación directa
+
+Fundamentalmente se trata de crear objetos implementando la interfaz deseada y con un comportamiento limitado a lo que necesitemos para usarlo como test double en cualquiera de sus tipos.
+
+No estamos hablando de Fakes, los cuales tendrían lógica de negocio real.
+
 ### Self-shunt
+
+El self-shunt es una técnica bastante curiosa que consiste en que el propio TestCase sea el test double haciendo que implemente la interfaz que necesitamos reproducir, lo que nos permite recoger información al estilo de un Spy.
+
+Obviamente no es una técnica para usar de forma habitual, pero puede ser práctica en los primeros estadios de desarrollo, cuando no hemos creado todavía el colaborador y queremos ir haciéndonos una idea de su interfaz, o cuando ésta es muy simple y tiene sólo uno ó dos métodos.
+
+A la larga, los self-shunts los iremos eliminando a medida que desarrollamos y que, consecuentemente, vamos refactorizando los tests.
+
+Michael Feathers [describe el self-shunt en este artículo](https://www.yumpu.com/en/document/view/47929352/the-self-shunt-unit-testing-pattern-object-mentor).
+También es interesante echar un vistazo a [este artículo que compara](https://8thlight.com/blog/paul-pagel/2006/09/11/self-shunt.html)
 
 ### Clases anónimas
 
+A partir de PHP 7.1 podemos utilizar clases anónimas. Esto es útil en los tests cuando necesitamos objetos sencillos 
+
+### Generadores de test doubles
+
 ### Test doubles y fragilidad de tests
+
+## Test doubles y principios SOLID
+
+### Single responsibility
+
+### Liskov substitution
+
+### Interface segregation
 
 ## Referencias
 

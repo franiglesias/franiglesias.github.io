@@ -70,5 +70,4 @@ El principio Yagni nos recuerda que no deberíamos desarrollar aquello que no ne
 
 Por lo tanto, nuestros tests doubles tienen que responder a la necesidad específica que tengamos en el momento de crearlo. Un test double puede comenzar siendo un simple dummy en un test para pasar a ser un Mock en otro.
 
-Por el mismo motivo, nuestra técnica concreta de creación podría varias en función de los que nos interesa lograr en ese momento concreto.
 

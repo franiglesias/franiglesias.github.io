@@ -11,23 +11,23 @@ tags: [tdd, test-doubles]
 
 Hace algunos años, cuando trabajaba en un colegio, tenía que crear cuentas para los usuarios de varias aplicaciones. Una queja habitual era la dificultad de recordar e incluso transcribir las contraseñas y todo el mundo quería cambiarlas por alguna más fácil de memorizar. Y por una buena razón:
 
-Desempolvo aquí alguno de mis libros de Psicología General, en concreto [el artículo de George A. Miller sobre el mágico número siete](http://www.musanim.com/miller1956/).
+Para explicarla, desempolvo aquí alguno de mis libros de Psicología General, en concreto [el artículo clásico de George A. Miller sobre el mágico número siete](http://www.musanim.com/miller1956/).
 
 Resumiendo mucho: nuestro cerebro puede procesar una media de siete unidades de información a la vez. Por ejemplo, es posible recordar 6 ó 7 letras al azar sin cometer errores. Si aumentamos el número de letras, el recuerdo empeora.
 
-Ahora bien, si podemos agrupar esas letras en sílabas de modo que se mantenga el límite de 6 ó 7 unidades de información, podríamos llegar a recordar 21 letras suponiendo sílabas de tres letras. Y si esas letras pueden formar palabras, son más memorables todavía.
+Ahora bien, si podemos agrupar esas letras en sílabas de modo que se mantenga el límite de 6 ó 7 unidades o *chunks* de información, podríamos llegar a recordar 21 letras suponiendo sílabas de tres letras. Y si esas letras pueden formar palabras, son más memorables todavía.
 
 Por ejemplo, cuando memorizamos números de teléfono lo hacemos organizándolos en grupos de dos ó tres. De este modo, un número que tiene 9 dígitos, se reduce a 3 unidades de información, mucho más fácil de recordar.
 
 Así que, volviendo al caso de las contraseñas, en lugar de tener que recordar una serie de 8 ó 9 símbolos al azar, lo ideal sería poder agruparlos en algún tipo de unidad de orden superior cuyo recuerdo sea más económico. 
 
-Una palabra es muchísimo más fácil de recordar pues agrupa esos 8 o más caracteres es una única unidad, sin embargo lo descartamos porque tiene el problema de ser fácil de adivinar.
+Una palabra es muchísimo más fácil de recordar pues agrupa esos 8 o más caracteres es una única unidad, sin embargo la descartamos como contraseña porque tiene el problema de ser fácil de adivinar.
 
-Sin embargo, podemos combinar letras para formar palabras que sin tener significado sean pronunciables (*bilitri, carbinacho…*), lo que permite a nuestro cerebro tratarlas como una unidad. Al no estar en un diccionario son más difíciles de adivinar que las palabras reales.
+En cambio, podemos combinar letras para formar palabras que sin tener significado sean pronunciables (*bilitri, carbinacho…*), lo que permite a nuestro cerebro tratarlas como una unidad. Al no estar en un diccionario son más difíciles de adivinar que las palabras reales.
 
-Investigué un poco y encontré algunos generadores de contraseñas legibles o pronunciables por humanos.
+Así que en su día, investigué un poco y encontré algunos generadores de contraseñas legibles o pronunciables por humanos.
 
-La idea básica es que en lugar de formar las contraseñas mezclando caracteres al azar, hacerlo con sílabas, creando palabras posibles en el idioma aunque no tengan ningún significado. De este modo las contraseñas mantienen un compromiso aceptable entre ser fáciles de recordar pero difíciles de adivinar.
+La idea básica es que en lugar de formar las contraseñas mezclando caracteres al azar, lo que hacemos es mezclar sílabas, creando palabras posibles en el idioma aunque no tengan ningún significado. De este modo las contraseñas mantienen un compromiso aceptable entre ser fáciles de recordar pero difíciles de adivinar.
 
 Con esta idea en la cabeza escribí un generador de contraseñas legibles que me resultó bastante útil durante algunos años. Recientemente lo hemos rescatado, con algunas modificaciones, para introducirlo *de tapadillo* (ejem…) en un proyecto del trabajo en el que justamente necesitábamos proporcionar credenciales a un conjunto de usuarios.
 
@@ -43,9 +43,11 @@ Cuando un algoritmo ofrece unos resultados que podemos predecir a partir de los 
 
 Hay operaciones, sin embargo, que no tienen el mismo resultado cada vez. Por ejemplo: si consultamos la hora del sistema la lectura será siempre diferente, asumiendo que la consulta se hace con la precisión necesaria. Por tanto, si un algoritmo depende de la hora del sistema no podríamos predecir su resultado a no ser que supiésemos exactamente el momento en que se consulta.
 
-La hora del sistema no es aleatoria en sí misma, pero normalmente no podemos saber qué valor vamos a encontrar cuando la consultemos. Sí podemos saber algunas de sus características, por ejemplo que ese valor siempre será mayor que el que tenía al iniciarse nuestro algoritmo, pero poco más. 
+Una manera más formal de expresar esto mismo es decir que el algoritmo en cuestión depende del estado global, como puede ser el tiempo transcurrido en el mundo.
 
-Otro ejemplo es el siguiente. Si nuestro algoritmo necesita valores al azar necesitamos recurrir a un generador de números aleatorios, o al menos pseudoaleatorios. Un ordenador es una máquina determinista pero tenemos algoritmos capaces de generar valores que sin ser estrictamente aleatorios son suficientemente difíciles de predecir.
+La hora del sistema no es aleatoria en sí misma, pero normalmente no podemos saber qué valor vamos a encontrar cuando la consultemos. Sí estaremos en condiciones de conocer algunas de sus características, por ejemplo que ese valor siempre será mayor que el que tenía al iniciarse nuestro algoritmo, pero poco más. 
+
+Otro ejemplo es el siguiente. Si nuestro algoritmo necesita valores al azar necesitamos recurrir a un generador de números aleatorios, o al menos pseudoaleatorios. Un ordenador es una máquina determinista pero tenemos algoritmos capaces de generar valores que sin ser estrictamente aleatorios son suficientemente difíciles de predecir como para funcionar como tales.
 
 Así que, cuando tenemos que escribir código que necesita tratar con el tiempo o el azar, ¿cómo podemos testearlo?
 
@@ -57,7 +59,7 @@ Además, introduciremos una metodología de test basada en propiedades, [como la
 
 El primer problema a la hora de testear un método que devuelve valores generados de forma aleatoria es justamente no tener ni idea de lo que va a salir.
 
-Una posibilidad es centrarnos en propiedades que describan el resultado que esperamos, las cuales podríamos enunciar como *reglas de negocio* de nuestro generador.
+Una posibilidad es centrarnos en propiedades que describan el resultado que esperamos, las cuales podríamos enunciar como *reglas de negocio* de nuestro generador de contraseñas.
 
 Por ejemplo:
 
@@ -101,7 +103,7 @@ class PasswordGenerator
 }
 ```
 
-El *return type* en `generate` hace que el test sea redundante porque nos obliga a devolver el tipo correcto sí o sí. Por tanto lo podremos eliminar aunque nos ha permitido generar la primera implementación.
+El *return type* en `generate` hace que el test sea redundante porque nos obliga a devolver el tipo correcto sí o sí. Por tanto lo podremos eliminar aunque nos ha permitido escribir la primera implementación.
 
 ### Lo que hay en un nombre
 
@@ -175,7 +177,7 @@ Y ahora podríamos cambiar el test conforme a lo anterior:
 
 Por el momento no tenemos gran cosa ya que nuestra implementación realmente no hace nada, aunque sí cumpla las primeras especificaciones. El problema es que ninguna de ellas nos fuerza a implementar algo más.
 
-### Introduciendo aleatoridad
+### Introduciendo el azar
 
 La siguiente especificación nos pide un `string` de al menos seis símbolos al azar. No nos especifica qué tipo de símbolos, aunque podemos hacer algunas suposiciones con cierto fundamento como usar números, letras y algunos otros símbolos.
 
@@ -521,7 +523,58 @@ En nuestras especificaciones tenemos que las sílabas pueden comenzar, o no, por
 
 En total, tenemos 33 opciones, a las que hay que sumar la posibilidad de que la sílaba no comience por consonante, lo que daría un total de 34 posibilidades.
 
-En último término podemos seguir la misma estrategia que usamos con las vocales, con la salvedad de que no es obligatorio que la sílaba comience por consonante.
+En último término podemos seguir la misma estrategia que usamos con las vocales, con la salvedad de que no es obligatorio que la sílaba comience por consonante. Como siempre, necesitamos enunciarlo en forma de test.
+
+En esta ocasión el salto será un poco más grande de lo habitual, ya que he refactorizado para que sea todo más legible, de modo que aquí va todo el test case:
+
+```php
+namespace Tests\TalkingBit\Readable;
+
+use PHPUnit\Framework\TestCase;
+use TalkingBit\Readable\RandomEngine;
+use TalkingBit\Readable\RandomSyllableGenerator;
+
+class RandomSyllableGeneratorTest extends TestCase
+{
+
+    const VOWEL_GROUP_PATTERN = '[aeiou]|ai|au|ei|eu|ia|ie|io|iu|oi|ou|ua|ue|ui|uo';
+    const CONSONANT_GROUP_PATTERN = '[^aeiou]|bl|br|ch|cl|cr|fl|fr|ll|pr|pl|tr';
+
+    public function testASyllableHasOneVowelGroup()
+    {
+        $engineProphecy = $this->prophesize(RandomEngine::class);
+        $engineProphecy->pickIntegerBetween(0, 18)->willReturn(4);
+		 $engineProphecy->pickIntegerBetween(0, 33)->willReturn(0);
+
+        $generator = new RandomSyllableGenerator($engineProphecy->reveal());
+        $this->assertValidVowelGroup($generator->generate());
+    }
+
+    public function testASyllableCanStartWithOneConsonantGroup()
+    {
+        $engineProphecy = $this->prophesize(RandomEngine::class);
+        $engineProphecy->pickIntegerBetween(0, 18)->willReturn(0);
+        $engineProphecy->pickIntegerBetween(0, 33)->willReturn(0);
+        
+        $generator = new RandomSyllableGenerator($engineProphecy->reveal());
+        $this->assertStartsWithConsonantGroup($generator->generate());
+    }
+
+    public function assertValidVowelGroup(string $syllable): void
+    {
+        $this->assertRegExp(sprintf('/%s/', self::VOWEL_GROUP_PATTERN), $syllable);
+    }
+
+    private function assertStartsWithConsonantGroup(string $syllable): void
+    {
+        $pattern = sprintf('/^(%s)%s/', self::CONSONANT_GROUP_PATTERN, self::VOWEL_GROUP_PATTERN);
+        $this->assertRegExp($pattern, $syllable);
+    }
+}
+```
+
+
+En cuanto a la implementación, la sílaba que no empieza consonante puede puede simularse incluyendo un "grupo vacío", sin letras, aunque otra posibilidad sería
 
 
 

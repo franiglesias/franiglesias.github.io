@@ -525,7 +525,7 @@ En total, tenemos 33 opciones, a las que hay que sumar la posibilidad de que la 
 
 En último término podemos seguir la misma estrategia que usamos con las vocales, con la salvedad de que no es obligatorio que la sílaba comience por consonante. Como siempre, necesitamos enunciarlo en forma de test.
 
-En esta ocasión el salto será un poco más grande de lo habitual, ya que he refactorizado para que sea todo más legible, de modo que aquí va todo el test case:
+En esta ocasión el salto será un poco más grande de lo habitual, de modo que aquí va todo el test case, bastante arreglado:
 
 ```php
 namespace Tests\TalkingBit\Readable;
@@ -544,8 +544,7 @@ class RandomSyllableGeneratorTest extends TestCase
     {
         $engineProphecy = $this->prophesize(RandomEngine::class);
         $engineProphecy->pickIntegerBetween(0, 18)->willReturn(4);
-		 $engineProphecy->pickIntegerBetween(0, 33)->willReturn(0);
-
+        $engineProphecy->pickIntegerBetween(0, 33)->willReturn(0);
         $generator = new RandomSyllableGenerator($engineProphecy->reveal());
         $this->assertValidVowelGroup($generator->generate());
     }
@@ -555,7 +554,6 @@ class RandomSyllableGeneratorTest extends TestCase
         $engineProphecy = $this->prophesize(RandomEngine::class);
         $engineProphecy->pickIntegerBetween(0, 18)->willReturn(0);
         $engineProphecy->pickIntegerBetween(0, 33)->willReturn(0);
-        
         $generator = new RandomSyllableGenerator($engineProphecy->reveal());
         $this->assertStartsWithConsonantGroup($generator->generate());
     }
@@ -571,13 +569,106 @@ class RandomSyllableGeneratorTest extends TestCase
         $this->assertRegExp($pattern, $syllable);
     }
 }
+
+```
+En cuanto a la implementación, la sílaba que no empieza consonante puede puede simularse incluyendo un "grupo vacío", aunque hay otras posibilidades bastante obvias.
+
+```php
+namespace TalkingBit\Readable;
+
+class RandomSyllableGenerator implements RandomGenerator
+{
+    private const VOWEL_GROUP = [
+        'a',
+        'e',
+        'i',
+        'o',
+        'u',
+        'ai',
+        'au',
+        'ei',
+        'eu',
+        'ia',
+        'ie',
+        'io',
+        'iu',
+        'oi',
+        'ou',
+        'ua',
+        'ue',
+        'ui',
+        'uo'
+    ];
+
+    private const CONSONANT_GROUP = [
+        'b',
+        'c',
+        'd',
+        'f',
+        'g',
+        'h',
+        'j',
+        'k',
+        'l',
+        'm',
+        'n',
+        'ñ',
+        'p',
+        'q',
+        'r',
+        's',
+        't',
+        'v',
+        'w',
+        'x',
+        'y',
+        'z',
+        'bl',
+        'br',
+        'ch',
+        'cl',
+        'cr',
+        'fl',
+        'fr',
+        'll',
+        'pr',
+        'pl',
+        'tr',
+        ''
+    ];
+
+    /** @var RandomEngine */
+    private $randomEngine;
+
+    public function __construct(RandomEngine $randomEngine)
+    {
+        $this->randomEngine = $randomEngine;
+    }
+
+    public function generate(): string
+    {
+        return $this->pickAConsonant() . $this->pickAVowel();
+    }
+
+    private function pickAVowel(): string
+    {
+        $pick = $this->randomEngine->pickIntegerBetween(0, count(self::VOWEL_GROUP) - 1);
+
+        return self::VOWEL_GROUP[$pick];
+    }
+    
+    private function pickAConsonant(): string
+    {
+        $pick = $this->randomEngine->pickIntegerBetween(0, count(self::CONSONANT_GROUP));
+
+        return self::CONSONANT_GROUP[$pick];
+    }
+}
 ```
 
+### Y ahora, sílabas terminadas en consonante
 
-En cuanto a la implementación, la sílaba que no empieza consonante puede puede simularse incluyendo un "grupo vacío", sin letras, aunque otra posibilidad sería
-
-
-
+Para terminar la generación de sílabas, seguiremos un procedimiento parecido
 
 
 

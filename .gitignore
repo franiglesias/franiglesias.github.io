@@ -11,14 +11,5 @@ package.json
 
 *.iml
 
-.idea/workspace.xml
+.idea/
 
-.idea/vcs.xml
-
-.idea/php.xml
-
-.idea/modules.xml
-
-.idea/markdown-navigator/profiles_settings.xml
-
-.idea/markdown-navigator.xml

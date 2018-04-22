@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Commits, tags y branches en git
-categories: articles
+categories: git,articles
 tags: git
 ---
 

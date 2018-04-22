@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Huyendo del database-first
-categories: articles
+categories: php, articles
 tags: coding
 ---
 

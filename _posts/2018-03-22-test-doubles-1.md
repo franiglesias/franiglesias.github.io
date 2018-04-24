@@ -264,11 +264,11 @@ class ServiceTest extends TestCase implements Mailer
 A la larga, los self-shunts los iremos eliminando a medida que desarrollamos y que, consecuentemente, vamos refactorizando los tests.
 
 Michael Feathers [describe el self-shunt en este artículo](https://www.yumpu.com/en/document/view/47929352/the-self-shunt-unit-testing-pattern-object-mentor).
-También es interesante echar un vistazo a [este artículo que compara](https://8thlight.com/blog/paul-pagel/2006/09/11/self-shunt.html)
+También es interesante echar un vistazo a [este artículo que compara los tres métodos básicos de mocking](https://8thlight.com/blog/paul-pagel/2006/09/11/self-shunt.html), escrito por Paul Pagel.
 
 ### Clases anónimas
 
-Desde PHP 7.1 podemos utilizar clases anónimas. Esto es útil en los tests cuando necesitamos objetos sencillos que no se van a reutilizar fuera de ese test.
+Desde PHP 7 podemos utilizar clases anónimas. Esto es útil en los tests cuando necesitamos objetos sencillos que no se van a reutilizar fuera de ese test.
 
 He aquí el anterior ejemplo de Mailer con esta técnica:
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: TDD de un validador de NIF
-published: false
+published: true
 categories: articles
 tags: [php, tdd, testing]
 ---

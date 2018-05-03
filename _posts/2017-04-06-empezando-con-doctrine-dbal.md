@@ -2,7 +2,7 @@
 layout: post
 title: Empezando con Doctrine DBAL
 categories: articles
-tags: doctrine dbal
+tags: bbdd
 ---
 
 Cuando hablamos de Doctrine casi siempre pensamos en su ORM. Sin embargo, su capa de acceso a la base de datos es una gran herramienta poco conocida, de la que hay poca información aparte de la documentación oficial.

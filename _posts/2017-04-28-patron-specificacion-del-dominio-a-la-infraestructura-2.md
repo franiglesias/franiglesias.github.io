@@ -3,7 +3,7 @@ layout: post
 title: El patrón Specification del dominio a la infraestructura (2)
 published: true
 categories: articles
-tags: php design-patterns specification
+tags: php design-patterns
 ---
 
 En esta entrega veremos como usar el patrón Abstract Factory para poder tener Specification adecuadas a diferentes capas e implementaciones.

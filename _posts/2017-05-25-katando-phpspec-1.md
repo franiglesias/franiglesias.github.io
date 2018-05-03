@@ -2,7 +2,7 @@
 layout: post
 title: Katando phpSpec 1
 categories: articles
-tags: tdd bdd phpspec
+tags: tdd bdd
 ---
 
 Voy intentar explicar cómo empezar a hacer BDD/TDD con PHPSpec.

@@ -2,7 +2,7 @@
 layout: post
 title: Usar el code coverage para mejorar los tests
 categories: articles
-tags: [tdd, good-practices]
+tags: testing
 ---
 
 El code coverage es una métrica que conviene coger con pinzas y examinar con mucho cuidado.

@@ -2,7 +2,7 @@
 layout: post
 title: Sirviendo API rest (1)
 categories: articles
-tags: api api-rest
+tags: api
 ---
 
 Voy a hacer un ejemplo de controlador que responde a peticiones por [API Rest](/api-rest/) distribuido en varias entregas. Me voy a limitar a lo más básico y en futuros artículos iré añadiendo los elementos de seguridad, etc. En la primera parte, quiero centrarme en la parte de diseño.

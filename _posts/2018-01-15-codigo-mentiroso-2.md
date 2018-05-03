@@ -2,7 +2,7 @@
 layout: post
 title: Código mentiroso (2) más ejemplos
 categories: articles
-tags: [solid, good-practices, refactor]
+tags: design-principles refactoring php
 ---
 
 Este artículo es una continuación del anterior sobre [Código mentiroso](/codigo_mentiroso), y en él tocaremos algunos problemas derivados del uso insuficiente de las posibilidades expresivas del lenguaje.

@@ -2,7 +2,7 @@
 layout: post
 title: TDD no es sólo testear antes de escribir código
 categories: articles
-tags: [tdd, baby-steps]
+tags: tdd php
 ---
 
 Ya han pasado más de siete meses desde que llegué a Barcelona, acabo de cumplir mis dos primeras semanas en una [nueva empresa](https://www.holaluz.com) y estoy muy contento en [mi nuevo equipo](https://twitter.com/holaluzeng?lang=es), con quienes ya he empezado a aprender un montón de cosas y, de paso, desoxidarme un poco.

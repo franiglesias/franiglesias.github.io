@@ -2,7 +2,7 @@
 layout: post
 title: Experimentos con read-model
 categories: articles
-tags: readmodel
+tags: design-patterns
 ---
 
 En los últimos días he estado trabajando ya en módulos específicos de la aplicación. En concreto la parte del CMS por ser la más visible y conceptualmente bastante sencilla. Así puedo hacer algunos experimentos interesantes en la separación de responsabilidades entre capas.

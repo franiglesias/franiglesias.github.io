@@ -3,7 +3,7 @@ layout: post
 title: TDD de un validador de NIF
 published: true
 categories: articles
-tags: [php, tdd, testing]
+tags: php tdd
 ---
 
 Hay validadores de NIF a espuertas, pero escribir uno con TDD resulta ser un interesante ejercicio con el que desarrollar algunas estrategias de test.

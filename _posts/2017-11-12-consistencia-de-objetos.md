@@ -2,7 +2,7 @@
 layout: post
 title: Consistencia de objetos
 categories: articles
-tags: oop consistencia value-objects entities
+tags: oop design-principles
 ---
 
 El último artículo me dejó con un poco de mal sabor de boca porque la solución propuesta al problema de tratar casos especiales en una colección de objetos que estábamos construyendo a partir de datos obtenidos de una API externa cojea en algún punto.

@@ -2,7 +2,7 @@
 layout: post
 title: Builder pattern
 categories: articles
-tags: [oop, design-patterns, creational]
+tags: php design-patterns
 ---
 
 Estos últimos días he trabajado bastante con el patrón Builder, así que toca escribir algo sobre su utilidad para la creación de objetos complicados.

@@ -2,7 +2,7 @@
 layout: post
 title: Los principios SOLID
 categories: articles
-tags: [oop, solid]
+tags: oop design-principles
 ---
 
 Los principios SOLID son cinco principios en el diseño orientado a objetos compilados por Robert C. Martin.

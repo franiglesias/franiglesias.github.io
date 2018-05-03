@@ -2,7 +2,7 @@
 layout: post
 title: Sobre la expresividad del código
 categories: articles
-tags: [php, good-practices, naming]
+tags: php good-practices
 ---
 
 Al hablar de código expresivo queremos decir no sólo que el código debería indicar con claridad su intención, también queremos que el código revele más cosas de sí mismo.

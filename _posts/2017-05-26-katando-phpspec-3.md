@@ -2,7 +2,7 @@
 layout: post
 title: Katando phpSpec 3
 categories: articles
-tags: tdd bdd phpspec
+tags: tdd bdd
 ---
 
 En esta tercera entrega, vamos a examinar cómo los nuevos requisitos nos pueden llevar a refactorizar una solución existente y discutiremos lo que define la sobreingeniería.

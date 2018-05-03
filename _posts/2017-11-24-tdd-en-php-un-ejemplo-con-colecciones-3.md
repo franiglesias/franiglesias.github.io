@@ -2,7 +2,7 @@
 layout: post
 title: TDD en PHP. Un ejemplo con colecciones (3)
 categories: articles
-tags: tdd oop collections
+tags:  tdd php 
 ---
 
 La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:

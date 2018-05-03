@@ -2,7 +2,7 @@
 layout: post
 title: Psicología del testing
 categories: articles
-tags: [php, testing, tdd]
+tags: tdd testing
 ---
 
 Mi primer contacto con los tests, con el propio concepto de test para ser precisos, fue de todo menos una epifanía.

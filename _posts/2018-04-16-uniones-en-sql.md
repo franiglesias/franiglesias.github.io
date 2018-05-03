@@ -2,7 +2,7 @@
 layout: post
 title: Uniones de tablas en SQL
 categories: articles
-tags: [bbdd, join]
+tags: bbdd sql
 ---
 
 Este es un artículo rescatado del olvido. Lo escribí en 2010, como forma de aprender el funcionamiento de las uniones de tablas en SQL.

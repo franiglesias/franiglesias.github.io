@@ -2,7 +2,7 @@
 layout: post
 title: Katando phpSpec 2
 categories: articles
-tags: tdd bdd phpspec
+tags: tdd bdd
 ---
 
 Continuamos con la kata iniciada en el artículo anterior.

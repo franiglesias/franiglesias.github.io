@@ -2,7 +2,7 @@
 layout: post
 title: Mudando el blog de The Talking Bit
 categories: articles
-tags: meta
+tags: misc
 ---
 
 ## Hello (again)

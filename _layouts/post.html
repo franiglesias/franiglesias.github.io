@@ -1,24 +1,22 @@
 ---
-layout: default
+layout: basic
 ---
 
 <article class="post">
   <h1>{{ page.title }}</h1>
-  <div>
-  <span>[
-  {% for tag in page.tags %}
-    {% capture tag_name %}{{ tag }}{% endcapture %}
-    <a href="/tag/{{ tag_name }}"><code class="highligher-rouge"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
-  {% endfor %}
-]</span>
-  </div>
 
   <div class="entry">
     {{ content }}
   </div>
 
   <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
+    <p>Escrito el {{ page.date | date: "%B %e, %Y" }}</p>
+    <p>[Etiquetas:
+      {% for tag in page.tags %}
+      {% capture tag_name %}{{ tag }}{% endcapture %}
+      <a href="/tag/{{ tag_name }}"><code class="highligher-rouge"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
+      {% endfor %}
+      ]</p>
   </div>
 
 </article>

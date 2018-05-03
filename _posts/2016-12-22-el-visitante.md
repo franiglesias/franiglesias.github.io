@@ -2,7 +2,7 @@
 layout: post
 title: El patrón visitante
 categories: articles
-tags: oop design-patterns
+tags: php design-patterns
 ---
 
 El patrón visitante es uno de los que más difícil me ha resultado entender y aplicar, así que voy a escribir sobre él para afianzar el concepto.

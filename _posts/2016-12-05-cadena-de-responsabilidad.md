@@ -2,7 +2,7 @@
 layout: post
 title: Cadena de responsabilidad
 categories: articles
-tags: oop, design-patterns
+tags: php design-patterns
 ---
 
 El patrón Cadena de Responsabilidad (Chain of Responsibility) nos permite manejar una petición que puede ser atendida por varios objetos, sin saber a priori cual de ellos lo hará.

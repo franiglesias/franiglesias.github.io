@@ -11,12 +11,12 @@ layout: basic
 
   <div class="date">
     <p>Escrito el {{ page.date | date: "%B %e, %Y" }}</p>
-    <p>[Etiquetas:
+    <p>Etiquetas:
       {% for tag in page.tags %}
       {% capture tag_name %}{{ tag }}{% endcapture %}
-      <a href="/tag/{{ tag_name }}"><code class="highligher-rouge"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
+      <a href="/tag/{{ tag_name }}"><code class="highlighter-rouge"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
       {% endfor %}
-      ]</p>
+      </p>
   </div>
 
 </article>

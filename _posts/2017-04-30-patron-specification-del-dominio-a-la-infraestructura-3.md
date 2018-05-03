@@ -1,11 +1,12 @@
 ---
 layout: post
 title: El patrón Specification del dominio a la infraestructura (3)
+published: true
 categories: articles
-tags: oop design-pattern specification
+tags: php oop design-patterns specification
 ---
 
-En las entregas anteriores hemos hablado del patrón Specification y cómo implementarlo en las diversas capas de arquitectura con la ayuda de **Abstract Factory**. Ahora toca ver cómo combinar Specification mediante el patrón **Composite** para construir especificaciones complejas a partir de otras más simples.
+En las entregas anteriores hemos hablado del patrón **Specification** y cómo implementarlo en las diversas capas de arquitectura con la ayuda de **Abstract Factory**. Ahora toca ver cómo combinar **Specification** mediante el patrón **Composite** para construir especificaciones complejas a partir de otras más simples.
 
 La serie **Specification: del dominio a la infraestructura** está compuesta de los siguientes artículos
 
@@ -28,10 +29,10 @@ Pues usando el patrón Composite.
 ## Patrón Composite
 
 Para entender bien el patrón Composite hay que hacer explícita una distinción que a veces pasamos por alto (yo el primero): clases y objetos no son la misma cosa.
-<ul>
-	* Una clase es una definición, describe cómo es y se comporta un tipo de objetos. Es una entidad abstracta.
-	* Un objeto es una instancia concreta de una clase y la que actúa efectivamente en el código.
-</ul>
+
+* Una clase es una definición, describe cómo es y se comporta un tipo de objetos. Es una entidad abstracta.
+* Un objeto es una instancia concreta de una clase y la que actúa efectivamente en el código.
+
 En OOP tratamos con objetos, aunque necesitamos las clases para definir su comportamiento y propiedades. Son los objetos los que interactúan entre sí, los que colaboran y pueden, en su caso, combinarse. La base de los patrones de diseño no serían tanto las clases como los objetos y sus interfaces.
 
 El patrón Composite es un patrón en el que combinamos objetos para que actúen como si fuesen uno. No se trata de combinar clases, pero tenemos que hacer que las clases nos permitan combinar los objetos entre sí para actuar como uno sólo.
@@ -55,17 +56,99 @@ Por otro lado, nuestro composite tomará como argumentos del constructor un núm
 
 ## Composite Specification en el dominio
 
-Asumiendo que las Specification en el dominio tienen un método isSatisfiedBy que devuelve bool, y que queremos que se puedan combinar con operadores lógicos, un enfoque sería el siguiente.
+Asumiendo que las Specification en el dominio tienen un método `isSatisfiedBy` que devuelve bool, y que queremos que se puedan combinar con operadores lógicos, un enfoque sería el siguiente.
 
-Supongamos que tenemos una interfaz genérica Specification, con un método isSatisfiedBy que devuelve boolean. Podemos crear una clase AndSpecification que represente dos Specification combinadas usando el operador AND.
+Supongamos que tenemos una interfaz genérica Specification, con un método isSatisfiedBy que devuelve `bool`. Podemos crear una clase `AndSpecification` que represente dos Specification combinadas usando el operador AND.
 
-{% gist c01556e8499e4b8d4ba0d461d9959b59 %}
+```php
+interface Specification {
+    public function isSatisfiedBy($article) : bool;
+}
+
+class ArticleIsAvailable implements Specification {
+
+    public function isSatisfiedBy($article): bool
+    {
+        return $article->isMarkedAsPublished() and $article->isVisibleAtCurrentDate();
+    }
+}
+
+class ArticleHasId implements  Specification {
+
+    private $id;
+
+    public function __construct($id)
+    {
+
+        $this->id = $id;
+    }
+    public function isSatisfiedBy($article): bool
+    {
+        return $article->getId() = $this->id;
+    }
+}
+
+class AndSpecification implements Specification {
+
+    /**
+     * @var Specification
+     */
+    private $left;
+    /**
+     * @var Specification
+     */
+    private $right;
+
+    public function __construct(Specification $left, Specification $right)
+    {
+        $this->left = $left;
+        $this->right = $right;
+    }
+    public function isSatisfiedBy($article): bool
+    {
+        return $this->left->isSatisfiedBy($article) && $this->right->isSatisfiedBy($article);
+    }
+}
+
+// Usage example
+
+$compositeSpecification = new AndSpecification(new ArticleIsAvailable(), new ArticleHasId('article-id'));
+```
 
 En la última línea del ejemplo anterior podemos ver cómo crear una Specification combinada.
 
 Podemos hacer lo mismo para la una ORSpecification, la única diferencia será el operador lógico con el combinamos los resultados de las Specification que pasamos en la construcción:
 
-{% gist e79b11843b975dc886bc72e0357b59bb %}
+```php
+<?php
+
+
+class OrSpecification implements Specification {
+
+    /**
+     * @var Specification
+     */
+    private $left;
+    /**
+     * @var Specification
+     */
+    private $right;
+
+    public function __construct(Specification $left, Specification $right)
+    {
+        $this->left = $left;
+        $this->right = $right;
+    }
+    public function isSatisfiedBy($article): bool
+    {
+        return $this->left->isSatisfiedBy($article) || $this->right->isSatisfiedBy($article);
+    }
+}
+
+// Usage example
+
+$compositeSpecification = new OrSpecification(new ArticleIsAvailable(), new ArticleHasId('article-id'));
+```
 
 Como hemos señalado antes, podríamos pasar estas especificaciones combinadas para combinarlas a su vez, creando así objetos Specification muy complejos a partir de otros más simples.
 
@@ -75,9 +158,90 @@ Aunque podemos usar AndSpecification y OrSpecification para crear CompositeSpeci
 
 Veamos el ejemplo aumentado, lo interesante está en las líneas 7 a 17:
 
-{% gist 002a0ef15f9eba917c0afed49bdb9e77 %}
+```php
+interface Specification {
+    public function isSatisfiedBy($article) : bool;
+}
 
-Lo interesante está en la línea 7: introducimos la clase abstracta base ComposableSpecification que añade los métodos <code>and()</code>​ y <code>or()</code> que son métodos factoría para crear Composite Specification del tipo AndSpecification y OrSpecification, respectivamente.
+abstract class ComposableSpecification implements Specification {
+    public function and(Specification $right)
+    {
+        return new AndSpecification($this, $right);
+    }
+
+    public function or(Specification $left)
+    {
+        return new OrSpecification($this, $left);
+    }
+}
+
+class ArticleIsAvailable extends ComposableSpecification {
+    public function isSatisfiedBy($article): bool
+    {
+        return $article->isMarkedAsPublished() and $article->isVisibleAtCurrentDate();
+    }
+}
+
+class ArticleHasId implements  Specification {
+    private $id;
+    public function __construct($id)
+    {
+        $this->id = $id;
+    }
+    public function isSatisfiedBy($article): bool
+    {
+        return $article->getId() = $this->id;
+    }
+}
+
+class AndSpecification extends ComposableSpecification {
+    /**
+     * @var Specification
+     */
+    private $left;
+    /**
+     * @var Specification
+     */
+    private $right;
+    public function __construct(Specification $left, Specification $right)
+    {
+        $this->left = $left;
+        $this->right = $right;
+    }
+    public function isSatisfiedBy($article): bool
+    {
+        return $this->left->isSatisfiedBy($article) && $this->right->isSatisfiedBy($article);
+    }
+}
+
+class OrSpecification extends ComposableSpecification {
+
+    /**
+     * @var Specification
+     */
+    private $left;
+    /**
+     * @var Specification
+     */
+    private $right;
+
+    public function __construct(Specification $left, Specification $right)
+    {
+        $this->left = $left;
+        $this->right = $right;
+    }
+    public function isSatisfiedBy($article): bool
+    {
+        return $this->left->isSatisfiedBy($article) || $this->right->isSatisfiedBy($article);
+    }
+}
+
+
+$articleSpecification = new ArticleHasId('article-id');
+$articleSpecification = $articleSpecification->and(new ArticleIsAvailable());
+```
+
+Lo interesante está en la línea 7: introducimos la clase abstracta base ComposableSpecification que añade los métodos `and()` y `or()` que son métodos factoría para crear Composite Specification del tipo AndSpecification y OrSpecification, respectivamente.
 
 El beneficio es un código más explícito, como se puede ver en la líneas finales.
 
@@ -88,14 +252,105 @@ En la [entrega anterior](/patron-specification-del-dominio-a-la-infraestructura-
 
 En líneas generales, la composición de especificaciones en esta capa funciona exactamente igual. Obviamente hay diferencias. En este caso, la especificación combinada es el resultado de combinar las cláusulas WHERE de cada una de las especificaciones que se combinan.
 
-En el siguiente ejemplo, uso el ExpressionBuilder de Doctrine para hacerlo (tal como se veía en el otro artículo). Aunque seguramente en la práctica llegue a prescindir de él, me pareció interesante añadir esta complicación para mostrar que el patrón es muy flexible. Veamos como se define el Composite AndSpecification (OrSpecification es similar):
+En el siguiente ejemplo, uso el `ExpressionBuilder` de Doctrine para hacerlo (tal como se veía en el otro artículo). Aunque seguramente en la práctica llegue a prescindir de él, me pareció interesante añadir esta complicación para mostrar que el patrón es muy flexible. Veamos como se define el Composite AndSpecification (OrSpecification es similar):
 
-{% gist 7263c5fab08057f35a1f23e0b58bef17 %}
+```php
+namespace Mh13\plugins\contents\infrastructure\persistence\dbal\specification;
 
-(Nota: el uso del método addParameters en el constructor es irrelevante para este tema, simplemente es un medio de poder introducir parámetros en la query).
+
+use Doctrine\DBAL\Query\Expression\ExpressionBuilder;
+
+
+class AndSpecification extends CompositeDbalSpecification
+{
+    protected $left;
+    protected $right;
+
+    public function __construct(
+        ExpressionBuilder $expressionBuilder,
+        CompositeDbalSpecification $left,
+        CompositeDbalSpecification $right
+    ) {
+        $this->left = $left;
+        $this->right = $right;
+        $this->addParameters($left);
+        $this->addParameters($right);
+        parent::__construct($expressionBuilder);
+    }
+
+    public function getConditions()
+    {
+        return $this->expressionBuilder->andX($this->left->getConditions(), $this->right->getConditions());
+    }
+}
+```
+
+(Nota: el uso del método `addParameters` en el constructor es irrelevante para este tema, simplemente es un medio de poder introducir parámetros en la query).
 
 Esta es la definición de la clase base:
 
-{% gist 58fbfba9936650730ce1ffa4caf2b857 %}
+```php
+namespace Mh13\plugins\contents\infrastructure\persistence\dbal\specification;
 
-Y, con esto, termino esta serie sobre Specification y sus implementaciones en distintas capas de la aplicación.
+
+use Doctrine\DBAL\Query\Expression\ExpressionBuilder;
+
+
+abstract class CompositeDbalSpecification implements DbalSpecification
+{
+    /**
+     * @var ExpressionBuilder
+     */
+    protected $expressionBuilder;
+    protected $parameters = [];
+    protected $types = [];
+
+    public function __construct(ExpressionBuilder $expressionBuilder)
+    {
+        $this->expressionBuilder = $expressionBuilder;
+    }
+
+    abstract public function getConditions();
+
+    public function and (CompositeDbalSpecification $specification)
+    {
+        return new AndSpecification($this->expressionBuilder, $this, $specification);
+    }
+
+    public function or (CompositeDbalSpecification $specification)
+    {
+        return new OrSpecification($this->expressionBuilder, $this, $specification);
+    }
+
+    protected function addParameters(CompositeDbalSpecification $specification)
+    {
+        $types = $specification->getTypes();
+        foreach ($specification->getParameters() as $key => $value) {
+            $this->setParameter($key, $value, $types[$key]);
+
+        }
+    }
+
+    public function getTypes()
+    {
+        return $this->types;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
+
+    protected function setParameter($key, $value, $type = null)
+    {
+        $this->parameters[$key] = $value;
+
+        $this->types[$key] = $type;
+    }
+}
+```
+
+Y, con esto, termino esta serie sobre **Specification** y sus implementaciones en distintas capas de la aplicación.

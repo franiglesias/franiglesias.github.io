@@ -1,8 +1,9 @@
 ---
 layout: post
 title: El patrón Specification del dominio a la infraestructura (1)
+published: true
 categories: articles
-tags: oop design-pattern specification
+tags: php oop design-patterns specification
 ---
 
 El patrón specification es sumamente útil, pero implementarlo tiene su intríngulis. Este artículo tiene tres partes:
@@ -132,6 +133,7 @@ Gracias al uso de Specification, además, los Repositorios no tienen que tener u
 
 Ahora bien, seguro que estás pensando lo siguiente:
 <blockquote>¡Pero <em>pringao</em>! Si tengo 800.000 registros en la base de datos, ¿cómo #@]]# quieres que cargue todo en memoria y vaya mirando uno por uno si cumplen la especificación?</blockquote>
+
 Este es uno de los problemas que tenemos que solucionar en la implementación del patrón dependiendo de nuestra infraestructura y que a mí me traía de cabeza hasta hace poco.
 
 ¿La solución? Para la solución tendremos que introducir el patrón Abstract Factory, y para un ejemplo completo tendrás que esperar a la próxima entrega. Pero te lo explico a grandes rasgos:

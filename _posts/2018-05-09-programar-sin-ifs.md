@@ -5,21 +5,21 @@ published: true
 categories: articles
 tags: php good-practices 
 ---
-If/then es una de las estructuras de control básicas de la programación, pero su abuso puede multiplicar la complejidad de un algoritmo y su dificultad para mantenerlo. En este artículo exploraremos alguna estrategias para usar los if con cabeza.
+If/then es una de las estructuras de control básicas de la programación, pero su abuso puede multiplicar la complejidad de un algoritmo y la dificultad de mantenerlo. En este artículo exploraremos alguna estrategias para usar los if con cabeza.
 
 Para explicar la idea central de este artículo voy a poner un ejemplo un poco extremo.
 
-Imagina una persona vegana que va a un restaurante a comer. Entra, estudia la carta y hace el pedido. Al rato llegar el primer plato: alitas de pollo, así que no lo come (recuerda, es vegana). De segundo, entrecot de ternera, que también devuelve sin tocar. Finalmente, el postre, flan de huevo, es también un plato que una vegana estricta no puede comer. Paga la cuenta y se va.
+Imagina una persona vegana que va a un restaurante a comer. Entra, estudia la carta y hace el pedido. Al rato llega el primer plato: alitas de pollo, así que no lo come (recuerda, es vegana). De segundo, entrecot de ternera, que también devuelve sin tocar. Finalmente, el postre, flan de huevo, es también un plato que una vegana estricta no puede comer. Paga la cuenta y se va.
 
-¿Te parece un patrón razonable? La verdad es que no lo parece.
+¿Te parece un patrón razonable? La verdad es que no.
 
 ¿Dónde está el problema?
 
-En una primera respuesta diríamos que. para ser una persona vegana, su comportamiento no tiene sentido y lo que hace es tirar el dinero, aunque al no comer ninguno de los platos seleccionados ha sido coherente con sus ideas.
+En una primera respuesta diríamos que. para ser una persona vegana, su comportamiento no tiene sentido y lo que hace es tirar el dinero, aunque al no comer ninguno de los platos seleccionados ha sido coherente con sus ideas. En otras palabras: ha hecho lo que cabía esperar, pero ha sido de una forma muy rebuscada.
 
 Otra forma de verlo es decir que esta persona podría haber tomado sus decisiones sobre la comida mucho antes, teniendo en cuenta su preferencia vegana.
 
-Así de haber escogido un restaurante vegano para empezar podría haber comido cualquier plato de la carta sin dudar. Incluso, de haber entrado en un restaurante no vegano, podría haber escogido platos aceptables.
+Así, de haber escogido un restaurante vegano para empezar, podría haber comido cualquier plato de la carta sin dudar. Incluso, de haber entrado en un restaurante no vegano, podría haber escogido platos aceptables.
 
 Sin embargo es como si no tomase en cuenta su rasgo vegano hasta el último momento, al decidir se ese plato de comida es adecuado para comer o no.
 
@@ -46,7 +46,7 @@ De hecho, este antipatrón [tiene un refactor](https://refactoring.guru/replace-
 
 Veamos el problema.
 
-Es frecuente que un concepto tenga tipos. Siguiendo con el ejemplo inicial, as personas podrían clasificarse en varios grupos con respecto a la dieta: omnívoras, vegetarianas, veganas y otros en base a las diversas alergias alimentarias que puedan padecer.
+Es frecuente que un concepto tenga tipos. Siguiendo con el ejemplo inicial, as personas podrían clasificarse en varios grupos con respecto a la dieta: omnívoras, vegetarianas, veganas y otros en base a las diversas alergias alimentarias o condiciones médicas que puedan padecer.
 
 Inicialmente, podríamos modelar esto con un campo, suponiendo que Diet es definido como un Value Object:
 
@@ -70,7 +70,7 @@ class Person
 }
 ```
 
-Por supuesto, es una manera de modelarlo.
+Por supuesto, es una manera de modelarlo, como podría haber otras.
 
 Ahora, imaginemos que algún comportamiento de `Person` tiene alguna relación con su `diet`, por ejemplo, `eat`.
 
@@ -79,10 +79,11 @@ Podemos tratarlo así, como hicimos antes:
 ```php
 // ...
 
-$someFood = 'vegetables';
+$someFood = new Food('vegetables');
 
-if (($person->diet() === new Diet('vegan') || $person->diet() === new Diet('veggie')) && $someFood === 'vegetables') {
-    $person->eat($someFood);
+if (($person->diet() === new Diet('vegan') || $person->diet() === new Diet('veggie')) 
+    && $someFood->equals(new Food('vegetables'))) {
+        $person->eat($someFood);
 } else {
     //...
 }
@@ -99,10 +100,10 @@ class Person
 {
 	//...
 	
-    public function eat(string $food)
+    public function eat(Food $food)
     {
         if (($this->diet() === new Diet('vegan') || $this->diet() === new Diet('veggie'))
-            && $food !== 'vegetables') {
+            && !$food->equals(new Food('vegetables'))) {
             throw new InvalidFood('vegetables');
         } else {
             //...
@@ -111,7 +112,7 @@ class Person
 	//...
 }
 
-$someFood = 'vegetables';
+$someFood = new Food('vegetables');
 $person->eat($someFood);
 ```
 
@@ -130,9 +131,9 @@ Por ejemplo:
 ```php
 class Vegan extends Person
 {
-    public function eat($food)
+    public function eat(Food $food)
     {
-        if ($food !== 'vegatables') {
+        if (!$food->equals(new Food('vegatables'))) {
             throw new InvalidFood('Vegans only eat vegetables.');
         }
         parent::eat($food);
@@ -141,7 +142,7 @@ class Vegan extends Person
 
 class Celiac extends Person
 {
-    public function eat($food)
+    public function eat(Food $food)
     {
         if ($food->has('gluten')) {
             throw new InvalidFood('Celiacs can't eat foot containing gluten.');
@@ -206,7 +207,7 @@ Esta interfaz será implementada tanto por nuestra clase base como por [los deco
 class Person implements CanEat
 {
     //...
-    public function eat($food)
+    public function eat(Food $food)
     {
         //...
     }
@@ -221,9 +222,9 @@ class Vegan implements CanEat
         $this->person = $person;
     }
     
-    public function eat($food)
+    public function eat(Food $food)
     {
-        if ($food !== 'vegatables') {
+        if (!$food->equals(new Food('vegatables'))) {
             throw new InvalidFood('Vegans only eat vegetables.');
         }
         $this->person->eat($food);
@@ -239,7 +240,7 @@ class Celiac implements CanEat
         $this->person = $person;
     }
     
-    public function eat($food)
+    public function eat(Food $food)
     {
         if ($food->has('gluten')) {
             throw new InvalidFood('Celiacs can't eat foot containing gluten.');
@@ -282,6 +283,6 @@ Según nuestras necesidades podríamos hacer que los decoradores implementasen l
 
 ## Es posible programar sin if
 
-Bueno, realmente no es posible programar sin if. Todos los programas útiles conllevan algún tipo de toma de decisión, pero cuando se trata de programación orientada a objetos, lo ideal es que esas decisiones vayan implícitas en la naturaleza de cada objeto.
+Bueno, realmente no es posible programar sin if. Todos los programas útiles conllevan algún tipo de toma de decisión, pero cuando se trata de programación orientada a objetos, lo ideal es que esas decisiones vayan implícitas en la naturaleza de cada objeto en la medida de lo posible.
 
 Al hacerlo así, reducimos la complejidad del código, a la vez que se vuelve más fácil de mantener, más extensible y más fácilmente testeable.

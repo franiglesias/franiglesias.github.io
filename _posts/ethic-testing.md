@@ -1,8 +1,23 @@
-## Ética y moral
+#La ética de las buenas prácticas
 
-La ética es la rama de la filosofía que se ocupa de "cómo debemos vivir". 
 
-La moral es su construcción social de la respuesta a esa pregunta, su vertiente práctica por así decir. Mientras que la ética trata de llegar a definirse a través de la razón, la moral se construye en los grupos sociales. 
+La ética es la rama de la filosofía que se ocupa del "buen vivir". Pero no en el sentido hedonista, sino en el sentido de lo que es correcto.
+
+Esto es, dado que las personas estamos dotadas de libre albedrío: ¿qué criterios debemos seguir cuando decidimos qué comportamientos adoptar? ¿De dónde salen esos criterios? ¿Cómo se aplican?
+
+Ninguna actividad humana puede ser ajena a su consideración desde un punto de vista ético. Y eso incluye, por supuesto, el desarrollo de software, tanto más si tenemos en cuenta su presencia en casi todos los aspectos de nuestra vida.
+
+[El software no es un agente neutral](https://lemire.me/blog/2016/04/29/is-software-a-neutral-agent/), pues el código puede expresar ideas de sus diseñadores acerca de cómo debería funcionar un algoritmo determinado y qué resultados obtendrán las personas que lo utilicen. Pero si esto se aplica al software más o menos determinista, en el que podríamos predecir el resultado a través del análisis del código, imagina las implicaciones para los algoritmos comprendidos dentro del ámbito de la Inteligencia Artificial y el Machine Learning. Incluso se ha propuesto la [creación de organismos que lo supervisen](https://poseidon01.ssrn.com/delivery.php?ID=544017099074095117027117107028070011027055029016031058025073017064120028095093096074110122119106047059058116072123126120080030102009075041077096104024120106068024006031016046086011126113004112114127127104029106108121019120098088088006127113007101084105&EXT=pdf).
+
+No hace falta irse tan lejos para empezar a reflexionar sobre la ética del desarrollo de software.
+
+Cuando ofrecemos un servicio a través de un programa de ordenador generamos ciertas expectativas en la persona que lo utiliza. Entre otras, podríamos pensar en:
+
+* El programa hace aquello que se supone que debe hacer.
+* El programa no tiene fallos que den lugar a resultados erróneos.
+* El programa no tiene fallos 
+
+La moral es la construcción social de la respuesta a esa pregunta, su vertiente práctica por así decir. Mientras que la ética trata de llegar a definirse a través de la razón, la moral se construye en los grupos sociales. 
 
 La ética aspira a ser universal, es decir, a definir valores que puedan ser compartidos por cualquier persona.
 

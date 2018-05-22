@@ -21,7 +21,7 @@ Otra forma de verlo es decir que esta persona podría haber tomado sus decisione
 
 Así, de haber escogido un restaurante vegano para empezar, podría haber comido cualquier plato de la carta sin dudar. Incluso, de haber entrado en un restaurante no vegano, podría haber escogido platos aceptables.
 
-Sin embargo es como si no tomase en cuenta su rasgo vegano hasta el último momento, al decidir se ese plato de comida es adecuado para comer o no.
+Sin embargo es como si no tomase en cuenta su rasgo vegano hasta el último momento, al decidir si ese plato de comida es adecuado para comer o no sólo cuando lo tiene delante.
 
 ## El tipo como antipatrón
 
@@ -46,7 +46,7 @@ De hecho, este antipatrón [tiene un refactor](https://refactoring.guru/replace-
 
 Veamos el problema.
 
-Es frecuente que un concepto tenga tipos. Siguiendo con el ejemplo inicial, as personas podrían clasificarse en varios grupos con respecto a la dieta: omnívoras, vegetarianas, veganas y otros en base a las diversas alergias alimentarias o condiciones médicas que puedan padecer.
+Es frecuente que un concepto tenga tipos. Siguiendo con el ejemplo inicial, las personas podrían clasificarse en varios grupos con respecto a la dieta: omnívoras, vegetarianas, veganas y otros en base a las diversas alergias alimentarias o condiciones médicas que puedan padecer.
 
 Inicialmente, podríamos modelar esto con un campo, suponiendo que Diet es definido como un Value Object:
 
@@ -145,7 +145,7 @@ class Celiac extends Person
     public function eat(Food $food)
     {
         if ($food->has('gluten')) {
-            throw new InvalidFood('Celiacs can't eat foot containing gluten.');
+            throw new InvalidFood('Celiacs can\'t eat foot containing gluten.');
         }
         parent::eat($food);
     }
@@ -243,7 +243,7 @@ class Celiac implements CanEat
     public function eat(Food $food)
     {
         if ($food->has('gluten')) {
-            throw new InvalidFood('Celiacs can't eat foot containing gluten.');
+            throw new InvalidFood('Celiacs can\'t eat foot containing gluten.');
         }
         $this->person->eat($food);
     }

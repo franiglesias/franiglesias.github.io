@@ -6,8 +6,6 @@ categories: articles
 tags: tools
 ---
 
-## Some key concepts on Git
-
 Some key concepts explained to know what's happening when you work with this VCS.
 
 ### Repository

@@ -2,7 +2,7 @@
 layout: post
 title: Herramientas más allá del IDE para Mac OS X
 categories: articles
-tags: misc
+tags: tools
 ---
 
 Si trabajas con un buen IDE puede que te quedes con la sensación de que no necesitas nada más, pero todo ayuda.

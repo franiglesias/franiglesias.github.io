@@ -2,7 +2,7 @@
 layout: post
 title: Historia de una reescritura (4) el código tóxico
 categories: articles
-tags: misc
+tags: legacy
 ---
 
 A medida que la primera fase del proyecto avanza voy observando cosas en las que habrá que trabajar más a fondo.

@@ -2,7 +2,7 @@
 layout: post
 title: Habilidades sociales para desarrolladores
 categories: articles
-tags: misc
+tags: soft-skills
 ---
 
 Tuve la suerte de asistir a la [Vª Software Craftmanship de Barcelona](http://scbcn.github.io), encuentro en el que he disfrutado y aprendido mucho y de dónde he podido sacar unas cuantas ideas interesantes.

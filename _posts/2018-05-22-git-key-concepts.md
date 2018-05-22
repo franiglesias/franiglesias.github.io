@@ -264,5 +264,3 @@ git merge branch
 ```
 m1--m2--m3--m4--m5--m6--b1--b2--b3
 ```
-
-

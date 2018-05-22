@@ -37,7 +37,7 @@ En la lista de criterios de más arriba nos centramos en cuestiones que afectan 
 
 Podemos aplicar estas consideraciones a cualquier software, pero parecen más evidentes todavía para aquellos programas que tienen o pueden tener un impacto en la vida de las personas.
 
-Por ejemplo, el funcionamiento incorrecto de un supermercado online puede tener consecuencias tanto para la empresa como para los usuarios, pero muy probablemente estas consecuencias no sean inabordables o irreversibles, más allá de molestias y quizá pérdidas económicas para alguna de las partes. En realidad las consecuencias podrían ser bastante graves, pero ahora querría centrarme en otro aspecto de la cuestión.
+Por ejemplo, el funcionamiento incorrecto de un supermercado online puede tener consecuencias tanto para la empresa como para los usuarios, pero muy probablemente estas consecuencias no sean inabordables o irreversibles, más allá de molestias y quizá pérdidas económicas para alguna de las partes. En realidad las consecuencias podrían ser bastante graves, pero ahora querríamos centrarnos en otro aspecto de la cuestión.
 
 Existen diversos ejemplos de software que afectan a cuestiones críticas de la vida de las personas, o cuyo mal funcionamiento podría tener consecuencias graves e irreversibles.
 
@@ -45,7 +45,11 @@ Pensemos, por ejemplo, en un software de ayuda al diagnostico médico o de monit
 
 En este tipo de software garantizar su correcto funcionamiento, así como sus límites, se convierte en algo crucial. Incluso sería necesario auditar sus algoritmo en busca de posibles sesgos.
 
-Por ejemplo, Joy Buolamwini ha analizado [los problemas que tienen algunos algoritmos de reconocimiento facial al tratar con personas de piel oscura](https://hackernoon.com/algorithms-arent-racist-your-skin-is-just-too-dark-4ed31a7304b8), destacando cómo las ideas previas pueden condicionar tanto las elecciones tecnológicas (sensores capaces de recoger la información necesaria con independencia del tono de piel) como la selección de las muestras con las que se entrena a estos sistemas.
+Por ejemplo, Joy Buolamwini ha analizado [los problemas que tienen algunos algoritmos de reconocimiento facial al tratar con personas de piel oscura](https://hackernoon.com/algorithms-arent-racist-your-skin-is-just-too-dark-4ed31a7304b8), destacando cómo las ideas previas pueden condicionar tanto las elecciones tecnológicas (sensores capaces de recoger la información necesaria con independencia del tono de piel dentro de similares condiciones de luz) como la selección de las muestras con las que se entrena a estos sistemas.
+
+Otro tema tiene que ver con el software creado intencionadamente para comportarse de manera no ética o ilegal, de modo que no sólo
+
+Surgen muchísimas cuestiones en torno a la ética en el desarrollo de software, pero en este trabajo nos centraremos en el aspecto ético de las buenas prácticas en general, y del testing en particular.
 
 ## Referencias
 

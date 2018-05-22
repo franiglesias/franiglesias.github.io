@@ -1,4 +1,10 @@
-phpspec
+---
+layout: post
+title: Introducción a PHPSpec
+published: true
+categories: articles
+tags: php bdd tdd 
+---
 
 Phpspec es un framework para BDD (Behavior Driven Design). Se trata de una variante de TDD que se centra en la descripción del comportamiento de los objetos mediante ejemplos.
 

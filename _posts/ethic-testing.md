@@ -49,7 +49,54 @@ Por ejemplo, Joy Buolamwini ha analizado [los problemas que tienen algunos algor
 
 Otro tema tiene que ver con el software creado intencionadamente para comportarse de manera no ética o ilegal, de modo que no sólo
 
-Surgen muchísimas cuestiones en torno a la ética en el desarrollo de software, pero en este trabajo nos centraremos en el aspecto ético de las buenas prácticas en general, y del testing en particular.
+Surgen muchísimas cuestiones en torno a la ética en el desarrollo de software, pero en este trabajo nos centraremos en el aspecto ético de las buenas prácticas en general, y del testing en particular. Y para ello abordaremos en un aspecto del código que obvio y, sin embargo, es terriblemente complejo: su propósito.
+
+## ¿Qué hace tu código?
+
+¿Te has preguntado alguna vez qué hace el código en el que trabajas? Parece una pregunta con una respuesta evidente. Sin embargo, no es así.
+
+Esa respuesta puede darse en diferentes niveles:
+
+Globalmente, una aplicación tiene un propósito amplio, que a veces puede describirse brevemente. Por ejemplo: usando esta aplicación podrás comprar comida desde tu ordenador. Es una sencilla descripción que apela a conocimientos que ya tenemos para hacernos una idea de cómo funcionaría y qué obtendríamos interactuando con ella.
+
+Sin embargo, para que eso ocurra tienen que darse una serie de procesos y movimientos de información. Sin entrar en muchos detalles, diríamos que la aplicación permite a un usuario elegir productos de un catálogo, y pagar por ellos usando una tarjeta de crédito. Para ello, la información de los productos se recopila y almacena, y se actualizan sus precios y disponibilidad según los movimientos de almacén y ventas. También se almacena y gestiona la información de proveedores y agentes, por no hablar la información de los compradores y su actividad en la tienda en línea, que se registra para poder elaborar un perfil de consumo y realizar ofertas personalizadas, además de la recoger la información necesaria para efectuar la compra y gestionar los pedidos, entregas, reclamaciones y otros muchos detalles.
+
+Si bajamos a un nivel más técnico hablaríamos de tecnologías subyacentes para implementar cada una de las funciones y podríamos extendernos durante decenas de páginas.
+
+La verdad es que no es tan fácil decir qué es lo que hace nuestro código.
+
+La persona que utiliza nuestro programa ejecuta un acto de fe, de confianza ciega en que sabemos lo que estamos haciendo y en que las expectativas que tiene sobre lo que el software ejecuta se cumplirán, sin mayores inconvenientes ni riesgos.
+
+¿Cómo asegurarnos de que es así?
+
+### La inteligibilidad del código
+
+Teóricamente el código se puede leer y deducir qué es lo que hace interpretándolo.
+
+Es decir, si el programa es lo bastante sencillo y específico, leer el código permite hacernos una idea de cómo funciona y qué es lo que hace. Pero para eso hay que entender su lenguaje.
+
+Pero eso no ocurre en aplicaciones mínimamente complejas en las que operan distintos niveles de organización, desde la representación de los conceptos y procesos del dominio a la implementación técnica de los mismos. O, al menos, no es práctico.
+
+¿Cómo podemos entonces asegurar que el código hace lo que decimos que hace?
+
+Fundamentalmente a través de dos vías:
+
+* **Aumentando su legibilidad**: aunque sea una tarea ímproba leer el código de una aplicación para entender lo que hace, lo cierto es que un código escrito con la legibilidad en mente facilita, además de su mantenimiento, su auditoría. De este modo, se podrían examinar secciones de código para que personas externas puedan hacerse una idea de cómo funciona. Aquí es donde intervienen las buenas prácticas de programación.
+
+* **Aumentando su credibilidad** mediante tests. Los tests nos permiten realizar afirmaciones objetivas y reproducibles sobre las capacidades de nuestro software. Además, los distintos niveles de tests nos habilitan para hacerlo en los distintos niveles de la organización del código: desde las unidades de software a los tests de aceptación, que hablan el lenguaje del dominio y, por tanto, del usuario.
+
+### Código mentiroso
+
+Código mentiroso es el código que no hace lo que dice que hace. Y, como en todo, hay grados:
+
+* El código mal escrito, que tiene errores o no funciona y, por tanto, no hace lo que dice.
+* El código que no representa correctamente los conceptos, invariantes y procesos del dominio para el que pretende ser una herramienta.
+* El código que, simplemente, no hace lo que se supone que debe hacer.
+* El código que hace cosas de manera oculta, además de lo que dice que hace.
+* El código que pretende, directamente, engañarnos.
+
+
+
 
 ## Referencias
 

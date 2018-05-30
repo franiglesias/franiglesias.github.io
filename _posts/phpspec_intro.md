@@ -6,9 +6,9 @@ categories: articles
 tags: php bdd tdd 
 ---
 
-Phpspec es un framework para BDD (Behavior Driven Design). Se trata de una variante de TDD que se centra en la descripción del comportamiento de los objetos mediante ejemplos.
+[Phpspec](http://www.phpspec.net/en/stable/) es un framework para BDD (Behavior Driven Design). Se trata de una variante de TDD que se centra en la descripción del comportamiento de los objetos mediante ejemplos.
 
-Principalmente es una herramienta de diseño, no tanto de testing, aunque es válida para test unitarios, y en cualquier caso no puede usarse para test de integración o de aceptación. Para esos casos utilizaríamos behat, una herramienta de la misma familia.
+Principalmente es una herramienta de diseño, y no tanto de testing, aunque es válida para test unitarios, y en cualquier caso no puede usarse para test de integración o de aceptación. Para esos casos utilizaríamos [behat](http://behat.org/en/latest/), una herramienta de la misma familia.
 
 ## Instalación y configuración
 
@@ -96,13 +96,57 @@ class %name% extends ObjectBehavior
 
 ```
 
+## Specification by example
+En el fondo, las especificaciones mediante ejemplos son equivalentes a los asserts de PHPUnit, pero la forma particular de realizarlas nos ayuda a ver la clase en cuanto a su comportamiento.
+
+Por ejemplo, en PHPUnit escribiríamos un test como este:
+
+```php
+public function testShouldCalculateThePriceWithDiscount()
+{
+    $price = new Price(100);
+    $discountedPrice = $price->minusDiscountPercent(15);
+    $this->assertEquals(85, $discountedPrice);
+}
+```
+
+En phpspec, lo equivalente sería escribir el siguiente ejemplo:
+
+```php
+public function it_should_calculate_the_price_with_discount()
+{
+    $this->beConstructedWith(100);
+    $this->$price->minusDiscountPercent(15)->shouldBe(85);
+}
+```
+
+Veamos las diferencias una a una:
+
+En phpspec
+
+* Los TestCase se llaman Specification.
+* Los tests se llaman ejemplos.
+* En una Specification $this es un proxy a nuestro Subject Under Test.
+* En lugar de assertions usamos matchers, que verifican lo que devuelve el método probado.
+
+Además de estas diferencias que se pueden observar, en phpspec:
+
+* No se pueden aplicar matchers sobre otra cosa que no sean los métodos del Subject Under Tests, dado que $this es un proxy que captura la salida del método original y nos permite testearla.
+* 
+
 ## Primera especificación
 
-Para ahorrarnos un poco de trabajo phpspec se maneja con dos comandos principales.
+Para ahorrarnos un poco de trabajo `phpspec` se maneja con dos comandos principales:
+
+* **describe**: con el que inicializamos la descripción o spec de una clase.
+* **run**: con el que ejecutamos los tests.
 
 ### Describe
 
-El primero es **describe** y nos permite iniciar la descripción de un clase a través de ejemplos. Tomando como punto de partida la configuración que acabamos de hacer, vamos a imaginar que queremos describir una clase Dojo\Domain\Customer\Customer. Lo haríamos así:
+El primero es **describe** y nos permite iniciar la descripción de un clase a través de ejemplos.
+
+
+Tomando como punto de partida la configuración que acabamos de hacer, vamos a imaginar que queremos describir una clase Dojo\Domain\Customer\Customer. Lo haríamos así:
 
 ```bash
 bin/phpspec describe Dojo/Domain/Customer/Customer

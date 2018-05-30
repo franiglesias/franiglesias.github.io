@@ -31,9 +31,11 @@ La moral es la construcción social de la respuesta a la pregunta de qué es lo 
 
 Mientras que la moral se construye en los grupos sociales, la ética trata de llegar a definirse a través de la razón, aspirando a ser universal, es decir, a definir valores que puedan ser compartidos por cualquier persona.
 
+Podríamos decir que escribir software que funcione es un deber moral.
+
 ## Más allá de que funcione el código
 
-En la lista de criterios de más arriba nos centramos en cuestiones que afectan a cómo funciona el software. Podríamos ver esta lista como una forma de evaluar la funcionalidad del software, pero en el fondo es una evaluación ética: ¿es honesto este software o miente?
+En la lista de criterios de más arriba nos centramos en cuestiones que afectan a cómo funciona el software. Podríamos ver esta lista como una forma de evaluar la funcionalidad técnica del software, pero en el fondo es una evaluación ética: ¿es honesto este software o, por el contrario, miente?
 
 Podemos aplicar estas consideraciones a cualquier software, pero parecen más evidentes todavía para aquellos programas que tienen o pueden tener un impacto en la vida de las personas.
 
@@ -43,11 +45,13 @@ Existen diversos ejemplos de software que afectan a cuestiones críticas de la v
 
 Pensemos, por ejemplo, en un software de ayuda al diagnostico médico o de monitorización de enfermos. ¿Cuáles podrían ser las consecuencias en el caso de que falle o no detecte alguna condición importante? Aquí no estamos hablando de una molestia, un retraso o un perjuicio económico, estamos hablando de la salud o incluso la vida de una persona.
 
-En este tipo de software garantizar su correcto funcionamiento, así como sus límites, se convierte en algo crucial. Incluso sería necesario auditar sus algoritmo en busca de posibles sesgos.
+En este tipo de software garantizar su correcto funcionamiento, así como sus límites, se convierte en algo crucial. Incluso sería necesario auditar sus algoritmos en busca de posibles sesgos a favor o en contra de ciertas condiciones.
 
 Por ejemplo, Joy Buolamwini ha analizado [los problemas que tienen algunos algoritmos de reconocimiento facial al tratar con personas de piel oscura](https://hackernoon.com/algorithms-arent-racist-your-skin-is-just-too-dark-4ed31a7304b8), destacando cómo las ideas previas pueden condicionar tanto las elecciones tecnológicas (sensores capaces de recoger la información necesaria con independencia del tono de piel dentro de similares condiciones de luz) como la selección de las muestras con las que se entrena a estos sistemas.
 
-Otro tema tiene que ver con el software creado intencionadamente para comportarse de manera no ética o ilegal, de modo que no sólo
+Es decir, si entrenamos un sistema de reconocimiento con ejemplos de personas de piel blanca y rasgos caucásicos, desarrollará un sesgo a favor de este tipo de rostros, teniendo problemas para reconocer los que tienen otro tono de piel o rasgos.
+
+Otro tema tiene que ver con el software creado intencionadamente para comportarse de manera no ética o ilegal, Los ejemplos más evidentes proceden del campo del llamado "malware": virus, troyanos, sniffers y todo un abanico de herramientas diseñadas para causar algún tipo de daño.
 
 Surgen muchísimas cuestiones en torno a la ética en el desarrollo de software, pero en este trabajo nos centraremos en el aspecto ético de las buenas prácticas en general, y del testing en particular. Y para ello abordaremos en un aspecto del código que obvio y, sin embargo, es terriblemente complejo: su propósito.
 
@@ -84,6 +88,12 @@ Fundamentalmente a través de dos vías:
 * **Aumentando su legibilidad**: aunque sea una tarea ímproba leer el código de una aplicación para entender lo que hace, lo cierto es que un código escrito con la legibilidad en mente facilita, además de su mantenimiento, su auditoría. De este modo, se podrían examinar secciones de código para que personas externas puedan hacerse una idea de cómo funciona. Aquí es donde intervienen las buenas prácticas de programación.
 
 * **Aumentando su credibilidad** mediante tests. Los tests nos permiten realizar afirmaciones objetivas y reproducibles sobre las capacidades de nuestro software. Además, los distintos niveles de tests nos habilitan para hacerlo en los distintos niveles de la organización del código: desde las unidades de software a los tests de aceptación, que hablan el lenguaje del dominio y, por tanto, del usuario.
+
+Si tenemos la voluntad de escribir código que sea honesto, las buenas prácticas y el testing son nuestras herramientas. ¿Cómo operan cada una de ellas?
+
+## Naming
+
+
 
 ### Código mentiroso
 

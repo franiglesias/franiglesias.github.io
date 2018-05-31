@@ -1,7 +1,7 @@
 # La ética de las buenas prácticas
 
 
-La ética es la rama de la filosofía que se ocupa del "buen vivir". Pero no en el sentido hedonista que podrías imaginar a primera vista, sino en el sentido de lo que es correcto.
+La ética es la rama de la filosofía que se ocupa del "buen vivir". Pero no en el sentido hedonista que podrías imaginar a primera vista, sino en el sentido de la manera correcta de vivir.
 
 Esto es, dado que las personas estamos dotadas de libre albedrío: ¿qué criterios debemos seguir cuando decidimos qué comportamientos adoptar? ¿De dónde salen esos criterios? ¿Cómo se aplican?
 
@@ -9,7 +9,7 @@ Esto es, dado que las personas estamos dotadas de libre albedrío: ¿qué criter
 
 Ninguna actividad humana puede ser ajena a su consideración desde un punto de vista ético. Y eso incluye, por supuesto, el desarrollo de software, tanto más si tenemos en cuenta su presencia en casi todos los aspectos de nuestra vida.
 
-[El software no es un agente neutral](https://lemire.me/blog/2016/04/29/is-software-a-neutral-agent/), pues el código puede expresar ideas de sus diseñadores acerca de cómo debería funcionar un algoritmo determinado y qué resultados obtendrán las personas que lo utilicen. Pero si esto se aplica al software más o menos determinista, en el que podríamos predecir el resultado a través del análisis del código y juzgar su parcialidad o sesgos, imagina las implicaciones para los algoritmos comprendidos dentro del ámbito de la Inteligencia Artificial y el Machine Learning. Incluso hay quien propone la [creación de organismos que supervisen los algoritmos](https://poseidon01.ssrn.com/delivery.php?ID=544017099074095117027117107028070011027055029016031058025073017064120028095093096074110122119106047059058116072123126120080030102009075041077096104024120106068024006031016046086011126113004112114127127104029106108121019120098088088006127113007101084105&EXT=pdf).
+[El software no es un agente neutral](https://lemire.me/blog/2016/04/29/is-software-a-neutral-agent/), pues el código puede expresar ideas de sus diseñadores acerca de cómo debería funcionar un algoritmo determinado y qué resultados obtendrán las personas que lo utilicen. Pero si esto se aplica al software más o menos determinista, en el que podríamos predecir el resultado a través del análisis del código y juzgar su parcialidad o sesgos, imagina las implicaciones para los algoritmos comprendidos dentro del ámbito de la Inteligencia Artificial y el Machine Learning. Incluso hay quien propone la [creación de agencias oficiales que los supervisen](https://poseidon01.ssrn.com/delivery.php?ID=544017099074095117027117107028070011027055029016031058025073017064120028095093096074110122119106047059058116072123126120080030102009075041077096104024120106068024006031016046086011126113004112114127127104029106108121019120098088088006127113007101084105&EXT=pdf).
 
 La verdad es que no hace falta irse tan lejos para empezar a reflexionar sobre la ética del desarrollo de software.
 
@@ -21,7 +21,7 @@ Cuando ofrecemos un servicio a través de un programa de ordenador generamos cie
 * El programa no tiene fallos que impidan obtener el servicio que proporciona.
 * El programa no hace cosas que no deseo que haga, particularmente sin que lo sepa o lo autorice.
 
-Creo que todas las personas que nos dedicamos al desarrollo de software estaríamos de acuerdo en que estos puntos son exigibles a cualquier aplicación, incluso sin hablar explícitamente de ética.
+Creemos que todas las personas que nos dedicamos al desarrollo de software estaríamos de acuerdo en que estos puntos son exigibles a cualquier aplicación, incluso sin hablar explícitamente de ética.
 
 Podríamos considerar la lista anterior como un conjunto de criterios que definen un software funcional. ¿De dónde han salido?
 
@@ -71,16 +71,6 @@ La verdad es que no es tan fácil decir qué es lo que hace nuestro código.
 
 La persona que utiliza nuestro programa ejecuta un acto de fe, de confianza ciega en que sabemos lo que estamos haciendo y en que las expectativas que tiene sobre lo que el software ejecuta se cumplirán, sin mayores inconvenientes ni riesgos.
 
-¿Cómo asegurarnos de que es así?
-
-### La inteligibilidad del código
-
-Teóricamente el código se puede leer y deducir qué es lo que hace interpretándolo.
-
-Es decir, si el programa es lo bastante sencillo y específico, leer el código permite hacernos una idea de cómo funciona y qué es lo que hace. Pero para eso hay que entender su lenguaje.
-
-Pero eso no ocurre en aplicaciones mínimamente complejas en las que operan distintos niveles de organización, desde la representación de los conceptos y procesos del dominio a la implementación técnica de los mismos. O, al menos, no es práctico.
-
 ¿Cómo podemos entonces asegurar que el código hace lo que decimos que hace?
 
 Fundamentalmente a través de dos vías:
@@ -91,7 +81,55 @@ Fundamentalmente a través de dos vías:
 
 Si tenemos la voluntad de escribir código que sea honesto, las buenas prácticas y el testing son nuestras herramientas. ¿Cómo operan cada una de ellas?
 
-## Naming
+## Legibilidad
+
+Teóricamente el código se puede leer y deducir qué es lo que hace interpretándolo.
+
+Para que eso sea posible, el código debe representar el problema que resuelve, los conceptos y operaciones implicados en los diferentes niveles de abstracción.
+
+Volviendo a la idea de la honestidad del código, la forma que tendríamos de evaluarla sería leyéndolo. Escribir código honesto implica adoptar una serie de prácticas. 
+
+Los compiladores e intérpretes pueden entender y hacer funcionar los códigos más enrevesados e ilegibles. De hecho, esta estrategia ha sido usada para ocultar el funcionamiento del mismo a miradas curiosas. Precisamente por esa capacidad podemos decidir escribir un código que se pueda leer por personas ya sean éstas otras programadoras que han de trabajar con él, ya sea auditoras que deban certificar qué es lo que el código hace.
+
+Y para empezar, deberíamos llamar a las cosas por su nombre.
+
+### Naming
+
+Es un hecho conocido que una de las cosas más difíciles en programación es [poner nombres] (https://geekytheory.com/las-9-cosas-mas-dificiles-que-tienen-que-hacer-los-desarrolladores/).
+
+Los nombres representan conceptos y los usamos para razonar y comunicarnos acerca de esos conceptos. Poner y usar los nombres adecuados es un primer caso para que el código sea, no sólo comprensible, sino también fiel reflejo del problema que trata de resolver.
+
+### Principios de diseño
+
+Los principios de diseño nos proporcionan criterios para evaluar y tomar decisiones sobre cómo escribimos el código, Los principios de diseño se orientan a al creación de un código inteligible y sostenible, por lo que contribuyen a generar un código honesto.
+
+### Patrones de diseño
+
+Los patrones de diseño nos proporcionan dos elementos principales.
+
+Por una parte, constituyen un vocabulario con el que identificar, describir y resolver problemas de programación que, en esencia, son problemas de cómo describimos las cosas.
+
+Por otro lado, son soluciones eficaces y probadas siempre que se apliquen a los problemas correctas, con lo cual contribuyen a que el software ofrezca la mejor respuesta posible.
+
+## Credibilidad
+
+Las buenas prácticas nos ayudan a escribir código que refleje lo mejor posible nuestros objetivos, intenciones y visión del problema. El código se convierte en un relato.
+
+La honestidad que demuestra un código bien escrito necesita ser apoyada por pruebas que aporte credibilidad. Si de la lectura del código podemos extraer "lo que el código dice que hace", ahora debemos asegurar que "el código hace lo que dice".
+
+Y para eso tenemos el testing.
+
+Tendemos a ver el testing desde la perspectiva de la calidad del software, pero no desde el punto de vista de su credibilidad. Un test puede decirnos si el software bajo prueba funciona correctamente. Pero otra manera de verlo es decir que el test certifica o confirma lo que el código dice.
+
+Hace unos párrafos mencionábamos los distintos niveles de abstracción que tiene el código. De hecho, podemos hacer tests sobre estos distintos niveles que, en conjunto, nos proporcionan una visión de lo creíble que es lo que nuestro código dice.
+
+Así, los tests unitarios nos hablan de la credibilidad de nuestras unidades de software. Podría decirse que demuestran si los conceptos que manejamos están correctamente representados.
+
+Los tests de integración nos demostrarían que las relaciones entre los conceptos en nuestro modelo están adecuadamente descritas en nuestro código.
+
+Finalmente, los tests de aceptación acreditan el funcionamiento del software como solución de un problema de las personas que lo usarán.
+
+Otros tipos de tests no funcionales, como los de velocidad, carga, rendimiento, etc, contribuyen a esta credibilidad midiendo la eficiencia con la que el software da respuesta a esas necesidades que dice resolver.
 
 
 

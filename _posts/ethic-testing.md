@@ -132,20 +132,6 @@ Finalmente, los tests de aceptación acreditan el funcionamiento del software co
 Otros tipos de tests no funcionales, como los de velocidad, carga, rendimiento, etc, contribuyen a esta credibilidad midiendo la eficiencia con la que el software da respuesta a esas necesidades que dice resolver.
 
 
-
-### Código mentiroso
-
-Código mentiroso es el código que no hace lo que dice que hace. Y, como en todo, hay grados:
-
-* El código mal escrito, que tiene errores o no funciona y, por tanto, no hace lo que dice.
-* El código que no representa correctamente los conceptos, invariantes y procesos del dominio para el que pretende ser una herramienta.
-* El código que, simplemente, no hace lo que se supone que debe hacer.
-* El código que hace cosas de manera oculta, además de lo que dice que hace.
-* El código que pretende, directamente, engañarnos.
-
-
-
-
 ## Referencias
 
 
@@ -157,6 +143,16 @@ Código mentiroso es el código que no hace lo que dice que hace. Y, como en tod
 
 
 # Más ideas para explorar
+
+## Código mentiroso
+
+Código mentiroso es el código que no hace lo que dice que hace. Y, como en todo, hay grados:
+
+* El código mal escrito, que tiene errores o no funciona y, por tanto, no hace lo que dice.
+* El código que no representa correctamente los conceptos, invariantes y procesos del dominio para el que pretende ser una herramienta.
+* El código que, simplemente, no hace lo que se supone que debe hacer.
+* El código que hace cosas de manera oculta, además de lo que dice que hace.
+* El código que pretende, directamente, engañarnos.
 
 
 ## ¿Cuál es el coste de realizar un mal trabajo?

@@ -95,7 +95,7 @@ Y para empezar, deberíamos llamar a las cosas por su nombre.
 
 ### Naming
 
-Es un hecho conocido que una de las cosas más difíciles en programación es [poner nombres] (https://geekytheory.com/las-9-cosas-mas-dificiles-que-tienen-que-hacer-los-desarrolladores/).
+Es un hecho conocido que una de las cosas consideradas más difíciles en programación es [poner nombres](https://geekytheory.com/las-9-cosas-mas-dificiles-que-tienen-que-hacer-los-desarrolladores/).
 
 Los nombres representan conceptos y los usamos para razonar y comunicarnos acerca de esos conceptos. Poner y usar los nombres adecuados es un primer caso para que el código sea, no sólo comprensible, sino también fiel reflejo del problema que trata de resolver.
 

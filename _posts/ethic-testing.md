@@ -99,6 +99,12 @@ Es un hecho conocido que una de las cosas consideradas más difíciles en progra
 
 Los nombres representan conceptos y los usamos para razonar y comunicarnos acerca de esos conceptos. Poner y usar los nombres adecuados es un primer caso para que el código sea, no sólo comprensible, sino también fiel reflejo del problema que trata de resolver.
 
+En ese sentido, los nombres siempre deberían ser:
+
+* **Unívocos**: el mismo concepto se representa siempre con el mismo nombre. Una misma denominación no debe tener varios significados en ningún caso.
+* **Ubicuos**: los nombres definidos en dominio de la aplicación están presentes en todos los niveles del código: nombres de clases, variables, métodos, funciones.
+* **Precisos**: los nombres deberían describir con precisión los conceptos, intenciones o efectos.
+
 ### Principios de diseño
 
 Los principios de diseño nos proporcionan criterios para evaluar y tomar decisiones sobre cómo escribimos el código, Los principios de diseño se orientan a al creación de un código inteligible y sostenible, por lo que contribuyen a generar un código honesto.

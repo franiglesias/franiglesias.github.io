@@ -356,11 +356,18 @@ public function testShouldNotAllowTooLongStrings()
 El punto en contra, sobre el que no tengo una opinión del todo consolidada, es dónde poner esa expectativa. Con las anotaciones se sitúa al principio del test, pero la estructura Given->When->Then nos dice que debería estar al final:
 
 ```php
-public function testShouldNotAllowTooLongStrings()
+public function testShouldFailIfStudentDoesNotExist()
 {
-    $nif = new NIF(self::TOO_LONG_STRING);
+    $studentsRepository = $this->prepareStudentRepository();
+
+    $getStudentByName = new GetStudentByName(
+        $studentsRepository
+    );
     
-    $this->expectException(InvalidArgumentException::class);
+    $request = new GetStudentByNameRequest('Student Name');
+    
+    $this->expectException(StudentDoesNotExistException::class);
+    $student = $getStudentByName->execute($request);
 }
 ```
 
@@ -392,6 +399,6 @@ protected function assertValidCommercial(Commercial $commercial)
 
 ## Concluyendo
 
-Hasta aquí una tanta de ideas para escribir tests más limpios, legibles y mantenibles.
+Y hasta aquí una tanda de ideas para escribir tests más limpios, legibles y mantenibles.
 
 Happy testing! (But don't forget test the sad paths, too.)

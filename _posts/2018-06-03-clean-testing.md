@@ -394,4 +394,4 @@ protected function assertValidCommercial(Commercial $commercial)
 
 Hasta aquí una tanta de ideas para escribir tests más limpios, legibles y mantenibles.
 
-Happy testing! (But don't forget test de sad paths, too.)
+Happy testing! (But don't forget test the sad paths, too.)

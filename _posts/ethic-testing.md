@@ -53,7 +53,7 @@ Es decir, si entrenamos un sistema de reconocimiento con ejemplos de personas de
 
 Otro tema tiene que ver con el software creado intencionadamente para comportarse de manera no ética o ilegal, Los ejemplos más evidentes proceden del campo del llamado "malware": virus, troyanos, sniffers y todo un abanico de herramientas diseñadas para causar algún tipo de daño.
 
-Surgen muchísimas cuestiones en torno a la ética en el desarrollo de software, pero en este trabajo nos centraremos en el aspecto ético de las buenas prácticas en general, y del testing en particular. Y para ello abordaremos en un aspecto del código que obvio y, sin embargo, es terriblemente complejo: su propósito.
+Surgen muchísimas cuestiones en torno a la ética en el desarrollo de software, pero en este trabajo nos centraremos en el aspecto ético de las buenas prácticas en general, y del testing en particular. Y para ello abordaremos un aspecto del código que es obvio y, sin embargo, es terriblemente complejo: su propósito.
 
 ## ¿Qué hace tu código?
 
@@ -77,7 +77,7 @@ Fundamentalmente a través de dos vías:
 
 * **Aumentando su legibilidad**: aunque sea una tarea ímproba leer el código de una aplicación para entender lo que hace, lo cierto es que un código escrito con la legibilidad en mente facilita, además de su mantenimiento, su auditoría. De este modo, se podrían examinar secciones de código para que personas externas puedan hacerse una idea de cómo funciona. Aquí es donde intervienen las buenas prácticas de programación.
 
-* **Aumentando su credibilidad** mediante tests. Los tests nos permiten realizar afirmaciones objetivas y reproducibles sobre las capacidades de nuestro software. Además, los distintos niveles de tests nos habilitan para hacerlo en los distintos niveles de la organización del código: desde las unidades de software a los tests de aceptación, que hablan el lenguaje del dominio y, por tanto, del usuario.
+* **Aumentando su credibilidad** mediante tests. Los tests nos permiten realizar afirmaciones objetivas y reproducibles sobre las capacidades de nuestro software. Además, los distintos niveles de tests nos habilitan para hacerlo en los diferentes niveles de la organización del código: desde las unidades de software a los tests de aceptación, que hablan el lenguaje del dominio y, por tanto, del usuario.
 
 Si tenemos la voluntad de escribir código que sea honesto, las buenas prácticas y el testing son nuestras herramientas. ¿Cómo operan cada una de ellas?
 
@@ -91,7 +91,7 @@ Volviendo a la idea de la honestidad del código, la forma que tendríamos de ev
 
 Los compiladores e intérpretes pueden entender y hacer funcionar los códigos más enrevesados e ilegibles. De hecho, esta estrategia ha sido usada para ocultar el funcionamiento del mismo a miradas curiosas. Precisamente por esa capacidad podemos decidir escribir un código que se pueda leer por personas ya sean éstas otras programadoras que han de trabajar con él, ya sea auditoras que deban certificar qué es lo que el código hace.
 
-Y para empezar, deberíamos llamar a las cosas por su nombre.
+Y, para empezar, deberíamos llamar a las cosas por su nombre.
 
 ### Naming
 
@@ -102,7 +102,7 @@ Los nombres representan conceptos y los usamos para razonar y comunicarnos acerc
 En ese sentido, los nombres siempre deberían ser:
 
 * **Unívocos**: el mismo concepto se representa siempre con el mismo nombre. Una misma denominación no debe tener varios significados en ningún caso.
-* **Ubicuos**: los nombres definidos en dominio de la aplicación están presentes en todos los niveles del código: nombres de clases, variables, métodos, funciones.
+* **Ubicuos**: los nombres definidos en el dominio de la aplicación están presentes en todos los niveles del código: nombres de clases, variables, métodos, funciones.
 * **Precisos**: los nombres deberían describir con precisión los conceptos, intenciones o efectos.
 
 ### Principios de diseño
@@ -133,7 +133,7 @@ Así, los tests unitarios nos hablan de la credibilidad de nuestras unidades de 
 
 Los tests de integración nos demostrarían que las relaciones entre los conceptos en nuestro modelo están adecuadamente descritas en nuestro código.
 
-Finalmente, los tests de aceptación acreditan el funcionamiento del software como solución de un problema de las personas que lo usarán.
+Finalmente, los tests de aceptación acreditan el funcionamiento del software como solución a un problema o necesidad que tienen las personas que lo usarán.
 
 Otros tipos de tests no funcionales, como los de velocidad, carga, rendimiento, etc, contribuyen a esta credibilidad midiendo la eficiencia con la que el software da respuesta a esas necesidades que dice resolver.
 

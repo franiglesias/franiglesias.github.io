@@ -17,6 +17,12 @@ article {
 			}
 	
 			.entry {
+				div.footnotes ol li p:first-child {
+					text-align: left !important;
+					font-size: small !important;
+					margin: 0rem 0rem 1rem 0rem !important;
+				}	
+
 				p:first-child {
 				    color: #ccc;
 				    font-size: 130%;

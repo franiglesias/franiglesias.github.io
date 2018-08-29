@@ -1,17 +1,23 @@
-# Crear y usar un canal de log en Symfony
-
+---
+layout: post
+title: Crear y usar un canal de log en Symfony
+categories: articles
+tags: tools tips
+--- 
 De vez en cuando nos puede interesar disponer de un log específico para una parte concreta de una aplicación. Fundamentalmente lo que pretendemos es aislar esos mensajes para poder analizarlos con facilidad.
+
+Aquí tienes la receta:
 
 ## Configuración del canal y el handler en monolog
 
-En `config.yml`, o en el archivo de configuración de enviroment que nos interese (config_dev.yml o config_prod.yml).
+En `config.yml`, o en el archivo de configuración de enviroment que nos interese (config\_dev.yml o config\_prod.yml).
 
 ```yaml
 monolog:
 	channels: ['my_channel', ...]
 	handlers:
 		my_channel:
-			type:			 stream
+			type:         stream
 			action_level: info
 			path:         "%kernel.logs_dir%/my-channel.log"
 			formatter:    monolog.formatter.logstash

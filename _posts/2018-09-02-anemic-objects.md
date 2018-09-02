@@ -17,7 +17,7 @@ Por otra parte, este tipo de situaciones no ocurre sólo en el dominio. Podemos 
 
 Pero empecemos por el principio.
 
-## Objetos anémicos y cómo encontrarlos
+## Objetos anémicos y cómo encontrarlos
 
 Podríamos disponer todos los objetos de una aplicación en una escala que va desde aquellos que sólo contienen estado hasta aquellos que sólo contienen comportamiento.
 
@@ -107,9 +107,9 @@ class DecreasePlayerScore(Player $player, Attack $attack)
 
 Como puedes ver, empieza a definirse un patrón: nuestro Score es un objeto anémico (y puede que también nuestro Player, pero vayamos por partes). Veamos por qué:
 
-### Apesta a Data Class
+### Apesta a Data Class
 
-El smell [Data Class](https://refactoring.guru/smells/data-class) podría ser de aplicación aquí. Simplemente, ocurre que nuestra clase no tiene comportamientos, sólo lleva datos, y para cambiar su estado tenemos que acceder al mismo, y volverlo a ajustar con un setter.
+El *smell* [Data Class](https://refactoring.guru/smells/data-class) podría ser de aplicación aquí. Simplemente, ocurre que nuestra clase no tiene comportamientos, sólo lleva datos, y para cambiar su estado tenemos que acceder al mismo, y volverlo a ajustar con un setter.
 
 Lo podemos saber porque el código que usa el objeto primero pregunta por el estado y luego lo cambia.
 

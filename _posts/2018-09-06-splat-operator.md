@@ -7,20 +7,22 @@ tags: php tips
 
 Aunque está entre nosotros desde la versión 5.6 de PHP, splat operator es relativamente desconocido y su uso no deja de ser un poco confuso.
 
-Splat operator se expresa con el símbolo ... y tiene dos utilidades principales:
+*Splat operator* se expresa con el símbolo `...` y tiene dos utilidades principales:
 
-* Ayudarnos en la creación de funciones variádicas
-* Argument unpacking o desempaquetado de argumentos
+* Ayudarnos en la creación de funciones variádicas.
+* *Argument unpacking* o desempaquetado de argumentos.
 
 Veamos esto más en detalle.
 
 ## Funciones variádicas
 
-La primera utilidad de splat operator tiene que ver con la creación de funciones variádicas.
+La primera utilidad de *splat operator* tiene que ver con la creación de funciones variádicas.
 
-Las funciones variádicas son funciones a las que podemos pasar un número variable de parámetros (variádicas, variable… lo pillas, ¿no?). No era un concepto nuevo de PHP en la versión 5.6, en la que se introdujo el operador, pero es ciertamente más cómodo.
+Las funciones variádicas son funciones a las que podemos pasar un número variable de parámetros (variádicas, variable… lo pillas, ¿no?). No era un concepto nuevo de PHP en la versión 5.6, en la que se introdujo el operador, pero éste es ciertamente más cómodo.
 
-La utilidad de las funciones variádicas es la de poder tener funciones o métodos que acepten una cantidad indeterminada de argumentos, con frecuencia del mismo tipo aunque no necesariamente. Intentaré poner un par de ejemplos que se me han ocurrido, pero antes veamos qué aporta el operador al respecto de la forma tradicional de hacerlo.
+La utilidad de las funciones variádicas es la de poder tener funciones o métodos que acepten una cantidad de argumentos que no podemos anticipar, con frecuencia del mismo tipo aunque no necesariamente.
+
+Intentaré poner un par de ejemplos que se me han ocurrido, pero antes veamos qué aporta el operador al respecto de la forma tradicional de hacerlo.
 
 ### Old school
 
@@ -54,6 +56,8 @@ function old_style_variadic_function ()
 {
     printf('%s -> %s'.PHP_EOL, 1, func_get_arg(1));
 }
+
+old_style_variadic_function ('one', 'two', 'three');
 ```
 
 Que devuelve:
@@ -73,6 +77,8 @@ function old_style_variadic_function (...$arguments)
         printf('%s -> %s'.PHP_EOL, $key, $argument);
     }
 }
+
+old_style_variadic_function ('one', 'two', 'three');
 ```
 
 El resultado es el mismo:
@@ -83,7 +89,7 @@ El resultado es el mismo:
 2 -> three
 ```
 
-Pero es que además admite type hinting, por lo que si uno de los argumentos no es del tipo indicado la función fallará:
+Pero es que además admite *type hinting*, por lo que si uno de los argumentos no es del tipo indicado la función fallará:
 
 ```php
 declare(strict_types=1);
@@ -100,9 +106,9 @@ old_style_variadic_function ('one', 3, 'three');
 
 Que da como resultado un Fatal error: Uncaught TypeError. En el ejemplo he declarado tipado estricto para evitar que PHP convierta al vuelo los tipos escalares.
 
-### Ideas para usar variádicas
+### Ideas para usar funciones variádicas
 
-Concatena un número indefinido de cadenas de componer textos largos de una sola tacada:
+Concatena un número indefinido de cadenas para componer textos largos de una sola tacada:
 
 ```php
 declare(strict_types=1);
@@ -132,7 +138,7 @@ Mejor programadora PHP del año 2018
 Reciba un cordial saludo.
 ```
 
-Para opciones a una función de modo que no importe ni el orden ni la cantidad de argumentos:
+Para pasar opciones a una función de modo que no importe ni el orden ni la cantidad de argumentos:
 
 ```php
 declare(strict_types=1);
@@ -158,28 +164,24 @@ function draw(string $shape, string ...$arguments)
 }
 
 print(draw('Square', 'border', '3'));
+// --> Draw a Square with  border 3 px thick
 
 print(draw('Square', 'color', 'red'));
+// --> Draw a Square with  colored with red
 
 print(draw('Square', 'color', 'red', 'border', '1'));
+// --> Draw a Square with  colored with red border 1 px thick
 
 print(draw('Square', 'border', '2', 'color', 'green'));
-```
+// --> Draw a Square with  border 2 px thick colored with green
 
-Dará como resultado lo siguiente:
-
-```
-Draw a Square with  border 3 px thick
-Draw a Square with  colored with red
-Draw a Square with  colored with red border 1 px thick
-Draw a Square with  border 2 px thick colored with green
 ```
 
 Si esto te suena a los argumentos posicionales de bash, estás en lo cierto.
 
 ## Argument unpacking
 
-El desempaquetado de argumentos actúa más o menos en el sentido inverso. Con el splat operator podemos hacer que un array se mapee contra los argumentos de una función. En este caso usamos el operador para actuar sobre el array que pasamos como argumento.
+El desempaquetado de argumentos actúa más o menos en el sentido inverso. Con el splat operator podemos hacer que un array se mapee contra los argumentos de una función. En este caso, usamos el operador para actuar sobre el array que pasamos como argumento.
 
 ```php
 declare(strict_types=1);
@@ -190,20 +192,15 @@ function pass_me_two_arguments(string $shape, string $color)
 }
 
 print(pass_me_two_arguments('Square', 'blue'));
+// Draw a Square with color blue.
 
 print(pass_me_two_arguments(...['Triangle', 'yellow']));
-```
-
-El resultado será:
-
-```
-Draw a Square with color blue.
-Draw a Triangle with color yellow
+// Draw a Triangle with color yellow.
 ```
 
 Si el array tiene menos elementos que el número de argumentos se lanzará un error.
 
-En cambio, si pasamos array con más argumentos de los necesarios, los que sobren serán ignorados.
+En cambio, si pasamos array con más argumentos de los necesarios, los que sobren serán ignorados. Sin embargo, me he encontrado algún ejemplo en el que también se lanza error, porque la función espera un número exacto de parámetros.
 
 ## Referencias
 

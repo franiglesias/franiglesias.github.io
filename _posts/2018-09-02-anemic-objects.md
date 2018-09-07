@@ -54,15 +54,18 @@ class Score
 A primera vista todo parece en orden. Veámosla en funcionamiento:
 
 ```php
-class IncreasePlayerScore(Player $player, Goal $goal)
+class IncreasePlayerScore
 {
-    $score = $player->score();
-    
-    $points = $goal->value();
-    
-    $currentScore = $score->score();
-    $newScore = $currentScore + $points;
-    $score->setScore($newScore);
+    public function execute(Player $player, Goal $goal)
+    {
+        $score = $player->score();
+        
+        $points = $goal->value();
+        
+        $currentScore = $score->score();
+        $newScore = $currentScore + $points;
+        $score->setScore($newScore);
+    }
 }
 ```
 
@@ -71,9 +74,12 @@ Really uggggly.
 A lo mejor, podemos escribirlo de otra manera:
 
 ```php
-class IncreasePlayerScore(Player $player, Goal $goal)
+class IncreasePlayerScore
 {
-    $player->score()->setScore($player->score()->score() + $goal->value());
+    public function execute (Player $player, Goal $goal)
+        {
+            $player->score()->setScore($player->score()->score() + $goal->value());
+        }
 }
 ```
 
@@ -84,9 +90,12 @@ Los dos ejemplos de código funcionan, pero ambos lo consiguen de una forma alam
 Imagina que, aparte de conseguir logros, la jugadora obtiene puntos cada cierto tiempo porque en nuestro juego se reciben puntos por sobrevivir. Hummm:
 
 ```php
-class IncreasePlayerScoreByTime(Player $player, PlayTime $playtime)
+class IncreasePlayerScoreByTime
 {
-    $player->score()->setScore($player->score()->score() + $playtime->bonus());
+    public function execute(Player $player, PlayTime $playtime)
+    {
+        $player->score()->setScore($player->score()->score() + $playtime->bonus());
+    }
 }
 ```
 
@@ -95,13 +104,16 @@ class IncreasePlayerScoreByTime(Player $player, PlayTime $playtime)
 ¿No puede pasar que también se pierdan puntos? Por supuesto, imaginemos que podemos recibir ataques que causan  un cierto daño y reducen nuestra puntuación:
 
 ```php
-class DecreasePlayerScore(Player $player, Attack $attack)
+class DecreasePlayerScore
 {
-    $player->score()->setScore($player->score()->score() - $attack->damage());
-    
-    if($player->score()->score() < 0) {
-        $player->die();
-    } 
+    public function execute(Player $player, Attack $attack)
+    {
+        $player->score()->setScore($player->score()->score() - $attack->damage());
+        
+        if($player->score()->score() < 0) {
+            $player->die();
+        } 
+    }
 }
 ```
 
@@ -181,23 +193,32 @@ class Score
 Ahora Score encapsula los dos comportamientos básicos que puede tener: incrementarse y decrementarse. De este modo, arreglamos ya algunos problemas pues ahora podemos decirle a Score que cambie su estado, sin tener que preguntárselo antes. De hecho, hemos ocultado `setScore` para que nadie pueda fijar el estado de Score directamente.
 
 ```php
-class IncreasePlayerScore(Player $player, Goal $goal)
+class IncreasePlayerScore
 {
-    $player->score()->increase($goal->value());
+    public function execute(Player $player, Goal $goal)
+    {
+        $player->score()->increase($goal->value());
+    }
 }
 
-class IncreasePlayerScoreByTime(Player $player, PlayTime $playtime)
+class IncreasePlayerScoreByTime
 {
-    $player->score()->increase($playtime->bonus());
+    public function execute (Player $player, PlayTime $playtime)
+    {
+        $player->score()->increase($playtime->bonus());
+    }
 }
 
-class DecreasePlayerScore(Player $player, Attack $attack)
+class DecreasePlayerScore
 {
-    $player->score()->decrease($attack->damage());
-    
-    if($player->score()->score() < 0) {
-        $player->die();
-    } 
+    public function execute(Player $player, Attack $attack)
+    {
+        $player->score()->decrease($attack->damage());
+        
+        if($player->score()->score() < 0) {
+            $player->die();
+        } 
+    }
 }
 ```
 
@@ -241,9 +262,12 @@ Vayamos con Player, no sabemos mucho de esta clase pero en lo que respecta a Sco
 Esto nos fuerza a saltarnos la ley de Demeter en los servicios, haciendo una cadena de mensajes y eso que ahora ha mejorado bastante:
 
 ```php
-class IncreasePlayerScore(Player $player, Goal $goal)
+class IncreasePlayerScore
 {
-    $player->score()->increase($goal->value());
+    public function execute(Player $player, Goal $goal)
+    {
+        $player->score()->increase($goal->value());
+    }
 }
 ```
 
@@ -274,23 +298,32 @@ class Player
 Y esto mejora mucho las cosas:
 
 ```php
-class IncreasePlayerScore(Player $player, Goal $goal)
+class IncreasePlayerScore
 {
-    $player->increaseScore($goal->value());
+    public function execute(Player $player, Goal $goal)
+    {
+        $player->increaseScore($goal->value());
+    }
 }
 
-class IncreasePlayerScoreByTime(Player $player, PlayTime $playtime)
+class IncreasePlayerScoreByTime
 {
-    $player->increaseScore($playtime->bonus());
+    public function execute(Player $player, PlayTime $playtime)
+    {
+        $player->increaseScore($playtime->bonus());
+    }
 }
 
-class DecreasePlayerScore(Player $player, Attack $attack)
+class DecreasePlayerScore
 {
-    $player->decreaseScore($attack->damage());
-    
-    if($player->score() < 0) {
-        $player->die();
-    } 
+    public function execute(Player $player, Attack $attack)
+    {
+        $player->decreaseScore($attack->damage());
+        
+        if($player->score() < 0) {
+            $player->die();
+        } 
+    }
 }
 ```
 
@@ -338,19 +371,27 @@ class Player
 Así que ahora tenemos:
 
 ```php
-class IncreasePlayerScore(Player $player, Goal $goal)
+class IncreasePlayerScore
 {
-    $player->increaseScore($goal->value());
+    public function execute(Player $player, Goal $goal)
+    {
+        $player->increaseScore($goal->value());
+    }
 }
 
-class IncreasePlayerScoreByTime(Player $player, PlayTime $playtime)
+class IncreasePlayerScoreByTime
 {
-    $player->increaseScore($playtime->bonus());
+    public function execute(Player $player, PlayTime $playtime)
+    {
+        $player->increaseScore($playtime->bonus());
+    }
 }
-
-class DecreasePlayerScore(Player $player, Attack $attack)
+class DecreasePlayerScore
 {
-    $player->decreaseScore($attack->damage());
+    public function execute(Player $player, Attack $attack)
+    {
+        $player->decreaseScore($attack->damage());
+    }
 }
 ```
 
@@ -409,18 +450,24 @@ class Attack implements AffectScoreInterface
 Ahora podemos sustituir tres servicios por uno solo:
 
 ```php
-class ChangePlayerScore(Player $player, AffectScoreInterface $scoreChanger)
+class ChangePlayerScore
 {
-    $player->increaseScore($scoreChanger->points());
+    public function execute(Player $player, AffectScoreInterface $scoreChanger)
+    {
+        $player->increaseScore($scoreChanger->points());
+    }
 }
 ```
 
 Podríamos incluso eliminar los métodos `Player::decreaseScore` (aunque habría que mover parte de su funcionalidad al método `increaseScore`) y `Score::decrease`, y renombrar `Player::increaseScore` de modo que refleje mejor la intención, como `Player::changeScore`. Esto nos dejaría el servicio así:
 
- ```php
-class ChangePlayerScore(Player $player, AffectScoreInterface $scoreChanger)
+```php
+class ChangePlayerScore
 {
-    $player->changeScore($scoreChanger->points());
+    public function execute(Player $player, AffectScoreInterface $scoreChanger)
+    {
+        $player->changeScore($scoreChanger->points());
+    }
 }
 ```
 

@@ -127,7 +127,7 @@ Las capas de orden superior definen mediante Interfaces cómo quieren usar los c
 
 Este principio está en la base de la llamada [Arquitectura Hexagonal, o Ports and Adapters](http://alistair.cockburn.us/Hexagonal+architecture), aunque [llamarla arquitectura podría ser un poco exagerado](http://www.javiervelezreyes.com/ni-nueva-ni-arquitectura-ni-hexagonal/). La capa de dominio define un puerto (interfaz) y en la infraestructura se crea un adaptador que puede interactuar con ese puerto.
 
-Por ejemplo, cuando la capa de aplicación guarda un objeto de dominio en un repositorio, sólo sabe que el repositorio es el lugar en el que puede guardar objetos de dominio y no debe haber ninguna diferencia entre el mecanismo concreto de persistencia que se vaya a utilizar, así como ninguna consideración o detalle de tal mecanismo debe influenciar en nada lo que ocurre en esta capa.
+Por ejemplo, cuando la capa de aplicación guarda un objeto de dominio en un repositorio, sólo sabe que el repositorio es el lugar en el que puede guardar objetos de dominio y no debe haber ninguna diferencia debida al mecanismo concreto de persistencia que se vaya a utilizar, así como ninguna consideración o detalle de tal mecanismo debe influenciar en nada lo que ocurre en esta capa.
 
 ## ¿Qué va en cada capa?
 
@@ -151,7 +151,7 @@ class Student
 }
 ```
 
-Normalmente, modelamos la identidad mediante un identificador único (Id), aunque en el mundo real pueda resultar difícil definir el propio concepto de identidad.
+Normalmente, modelamos la identidad mediante un identificador único (Id). En el mundo real es difícil definir el propio concepto de identidad, pero la podemos representar con un atributo que haga única a cada instancia de una Entidad.
 
 ```php
 
@@ -185,7 +185,7 @@ class Calification
 
 **Agregados**. Los agregados son entidades compuestas por otras entidades y value objects formando unidades significativas.
 
-**Reglas de dominio**. Las entidades de dominio representan elementos del mundo real que tienen comportamientos e interaccionan conforme a una seri de reglas. Estas reglas y comportamientos se representan en el código de diferentes maneras.
+**Reglas de dominio**. Las entidades de dominio representan elementos del mundo real que tienen comportamientos e interaccionan conforme a una serie de reglas. Estas reglas y comportamientos se representan en el código de diferentes maneras.
 
 Por ejemplo, una regla general aplicable a cualquier dominio es que todas las entidades deben tener identidad, así que en el momento de su creación debe asignársele.
 
@@ -224,11 +224,11 @@ Otro ejemplo es que un alumno menor de edad debe ser representado por, al menos,
 **Objetos de transporte de datos**. En este grupo incluyo diversos tipos de objetos que nos permiten mover información entre diversas capas o sistemas. Aquí encontramos, por ejemplo:
 
 * **DTOs**, que son objetos sencillos con los que podemos comunicarnos con sistemas externos o dependencias de terceras partes, permitiéndonos representar nuestros objetos de una forma que éstos pueden entender y también manejar lo que nos entregan.
-* **Requests**, son objetos inmutables que utilizamos encapsulan los parámetros con los que llamamos a los Use Cases y Servicios.
+* **Requests**, son objetos inmutables que utilizamos para encapsular los parámetros con los que llamamos a los Use Cases y Servicios.
 
 **Eventos de aplicación**. Al igual que los eventos de dominio, son mensajes que representan cosas interesantes que han pasado en el nivel de la aplicación.
 
-**Bus de mensajes**, el bus de mensajes es el que se encarga de enviar los eventos y, en su caso, las peticiones o requests a los objetos que pueden gestionarlos. El uso de un bus de mensajes nos permite actúa de forma desacoplada cuando ocurre algo (evento) que interesa a muchas otras partes de la aplicación.
+**Bus de mensajes**, el bus de mensajes es el que se encarga de enviar los eventos y, en su caso, las peticiones o requests a los objetos que pueden gestionarlos. El uso de un bus de mensajes nos permite actúar de forma desacoplada cuando ocurre algo (evento) que interesa a muchas otras partes de la aplicación.
 
 ### Capa de Infraestructura
 
@@ -395,7 +395,8 @@ project
 
 Para lo cual aplicamos el principio de Covariación:
 
-### Principio de covariación
+
+### Principio de covariación
 
 Una de las preguntas que nos hacemos con frecuencia es ¿dónde va cada unidad de software en esta estructura? Es relativamente fácil situar los elementos en las grandes capas, pero ¿cómo organizarlos dentro de cada una de ellas? El principio de covariación nos puede ayudar a hacerlo.
 

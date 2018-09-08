@@ -10,7 +10,7 @@ layout: basic
   </div>
 
   <div class="date">
-    <p>Escrito el {{ page.date | date: "%B %e, %Y" }}</p>
+    <p>{{ page.date | date: "%B %e, %Y" }}</p>
     <p>Etiquetas:
       {% for tag in page.tags %}
       {% capture tag_name %}{{ tag }}{% endcapture %}

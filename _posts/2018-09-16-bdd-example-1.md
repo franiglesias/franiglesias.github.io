@@ -11,21 +11,21 @@ Como desarrolladores nos gusta que las historias de usuario que definen nuestros
 
 ¿Por dónde empezar trabajar? Obviamente por un test.
 
-Si tenemos una User Story bien definida, teenemos bastante clara qué comportamiento queremos obtener, pero otra cosa es el cómo vamos a lograrlo. Desde el exterior, nosotros vamos a ver un objeto que nos ofrecerá cierta funcionalidad, y eso es exactamente lo que vamos a describir mediante un test.
+Si tenemos una User Story bien definida, tendremos bastante clara qué comportamiento queremos obtener, pero otra cosa muy distinta es el cómo vamos a lograrlo. Desde el exterior, nosotros vamos a ver un objeto (o varios) que nos ofrecerá cierta funcionalidad, y eso es exactamente lo que vamos a describir mediante un test. Sin embargo, ¿con qué objeto empezamos?
 
-Pero esta vez, para crear nuestros tests vamos a adoptar un enfoque un poco diferente. Lo haremos practicando Behavior Driven Design o BDD.
+Esta vez, para crear nuestros tests vamos a adoptar un enfoque un poco diferente. Lo haremos practicando Behavior Driven Design o BDD y aprenderemos cómo eso nos lleva a encontrar un punto de partida.
 
 BDD es una variedad de TDD que pone el foco en el comportamiento de los sistemas de software. 
 
-Uno de las dificultades que tiene TDD es precisamente cómo empezar y qué testear. Es relativamente fácil si tenemos una cierta idea de qué unidades de software vamos a desarrollar, como es el caso de este artículo en el que todo parece indicar que vamos a crear una clase que haga la tares. Pero se complica tremendamente en otras circunstancias. En especial, cuando las especificaciones no son técnicas, sino que son de negocio.
+Uno de las dificultades que tiene TDD es precisamente cómo empezar y qué testear. Es relativamente fácil si tenemos una cierta idea de qué unidades de software vamos a desarrollar, como es el caso de este artículo en el que todo parece indicar que vamos a crear una clase que haga la tarea. Pero se complica tremendamente en otras circunstancias. En especial, cuando las especificaciones no son técnicas, sino que son de negocio.
 
-Desde el negocio es relativamente fácil definir el comportamiento esperado de un software. Supongamos que trabajamos en una empresa que ofrece un servicio de limpieza doméstica. Un requisito de negocio será que los potenciales clientes puedan contratar el servicio y configurar los diversos aspectos, como la periodicidad y las tareas que desea que se realicen, para lo cual se calculará una cuota o presupuesto.
+Desde el negocio es bastante fácil definir el comportamiento esperado de un software. Supongamos que trabajamos en una empresa que ofrece un servicio de limpieza doméstica. Un requisito de negocio será que los potenciales clientes puedan contratar el servicio y configurar los diversos aspectos, como la periodicidad y las tareas que desea que se realicen, para lo cual se calculará una cuota o presupuesto.
 
 Traducir esto a un sistema de software no es trivial, y no es trivial el problema de responder a la pregunta: ¿por dónde empezamos? Y aquí es donde entra en juego el BDD.
 
 ## Features
 
-Lo que negocio espera del software es que tenga unas ciertas prestaciones o features. Siguiendo con el ejemplo anterior, una feature es que un usuario pueda contratar el servicio, pero también son features que pueda registrarse, que pueda configurar detalles del servicio contratado, que pueda pagarlo y un largo etcétera. Negocio decide qué features necesita el producto de software aunque no tenga ni idea de cómo lo vamos a implementar.
+Lo que negocio espera del software es que tenga unas ciertas prestaciones o *features*. Siguiendo con el ejemplo anterior, una feature es que un usuario pueda contratar el servicio, pero también son features que pueda registrarse, que pueda configurar detalles del servicio contratado, que pueda pagarlo y un largo etcétera. Negocio decide qué features necesita el producto de software aunque no tenga ni idea de cómo lo vamos a implementar.
 
 El conjunto de features define el comportamiento del producto de software.
 

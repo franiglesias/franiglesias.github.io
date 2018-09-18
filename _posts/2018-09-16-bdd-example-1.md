@@ -151,7 +151,7 @@ mkdir src
 mkdir tests
 ```
 
-Iniciamos el proyecto mediante composer init y como primera dependencia requerimos `phpunit`.
+Iniciamos el proyecto mediante `composer init` y como primera dependencia requerimos `phpunit`.
 
 ```bash
 composer init
@@ -165,7 +165,7 @@ También queremos tener `behat`.
 composer require --dev behat/behat
 ```
 
-Por último, configuraremos los namespaces del proyecto en composer.json, que quedará más o menos así:
+Por último, configuraremos los namespaces del proyecto en `composer.json`, que quedará más o menos así:
 
 ```json
 {
@@ -200,7 +200,7 @@ Por último, configuraremos los namespaces del proyecto en composer.json, que qu
 }
 ```
 
-También hemos añadido la clave config, con bin-dir, de este modo, los paquetes como `phpunit` y `behat` crearán un alias de su ejecutable en la carpeta bin, con lo que podremos ejecutarlos fácilmente con `bin/phpunit` y `bin/behat`.
+También hemos añadido la clave `config`, con `bin-dir`, de este modo, los paquetes como `phpunit` y `behat` crearán un alias de su ejecutable en la carpeta `bin`, con lo que podremos lanzarlos fácilmente con `bin/phpunit` y `bin/behat`, respectivamente.
 
 Después de este cambio puedes hacer un `composer install` o un `composer dump-autoload`, para ponerte en marcha.
 
@@ -254,7 +254,7 @@ git init
 
 Y con esto, podemos empezar.
 
-### Ahora sí, vamos a escribir código
+### Ahora sí, vamos a escribir código
 
 Vamos a ver un ejemplo an acción. Supongamos que tenemos la feature definida así, en el archivo `features/massiveUpdate.feature`.
 
@@ -271,7 +271,7 @@ Feature: Massive data update
     Then Changes are applied to the current prices
 ```
 
-Ahora ejecutamos Behat:
+Ahora ejecutamos `behat`:
 
 ```bash
 bin/behat
@@ -302,13 +302,13 @@ Feature: Massive data update
  > 
 ```
 
-Como se puede ver, las primeras líneas nos muestras la feature tal como la hemos escrito. El único cambio es un comentario en la línea de Scenario, que indica que se encuentra en la línea 6 del archivo.
+Como se puede ver, las primeras líneas nos muestran la feature tal como la hemos escrito. El único cambio es un comentario en la línea de **Scenario**, que indica que se encuentra en la línea 6 del archivo.
 
-Debajo nos señala que hemos escrito 1 escenario y que ha detectado 4 pasos. Todos están sin definir, lo que quiere decir que no hay un test escrito que represente ninguno de los pasos y, por tanto el escenario.
+Debajo nos informa de que hemos escrito 1 escenario y que ha detectado 4 pasos. Todos están sin definir, lo que quiere decir que no hay un test escrito que represente ninguno de los pasos y, consecuentemente, el escenario no se ejecuta.
 
-Por último, nos pide que elijamos el contexto para generar los snippets de código necesarios, de modo que no los tengamos que escribir nosotros. La opción [0] None no hará nada, la opción [1] FeatureContext generará los snippets necesarios para añadirlos a la clase FeatureContext que se encuentra en el archivo `features/bootstrap/FeatureContext.php`.
+Por último, nos pide que elijamos el contexto para generar los snippets de código necesarios, de modo que no los tengamos que escribir nosotros. La opción `[0] None` no hará nada, la opción `[1] FeatureContext` generará los snippets necesarios para añadirlos a la clase `FeatureContext` que se encuentra en el archivo `features/bootstrap/FeatureContext.php`.
 
-Sin embargo, no los añadirá automáticamente, sino que los mostrará por pantalla, con lo cual podemos copiarlos y pegarlos a mano. En alguna ocasión tendremos que hacer esto, pero ahora mismo podemos aprender a generarlos de forma automática.
+Sin embargo, no los añadirá automáticamente, sino que los mostrará por pantalla, con lo cual podremos copiarlos y pegarlos a mano. En alguna ocasión tendremos que hacer esto, pero ahora mismo podemos aprender a generarlos de forma automática.
 
 Para ello, volvemos a ejecutar `behat`, con la opción `--append-snippets`
 
@@ -345,6 +345,7 @@ u features/bootstrap/FeatureContext.php - `I have a file named "prices_update.cs
 u features/bootstrap/FeatureContext.php - `I upload the file` definition added
 u features/bootstrap/FeatureContext.php - `Changes are applied to the current prices` definition added
 ```
+
 Si vamos a mirar el archivo `features/bootstrap/FeatureContext.php`, veremos que tiene lo siguiente:
 
 ```php
@@ -431,11 +432,11 @@ Feature: Massive data update
 0m0.03s (7.09Mb)
 ```
 
-Ahora podemos ver que cada paso del escenario aparece asociada a un método de la clase FeatureContext. Esta clase equivale más o menos a un TestCase en phpunit, por mencionar un concepto que ya nos es familiar.
+Ahora podemos ver que cada paso del escenario aparece asociada a un método de la clase `FeatureContext`. Esta clase equivale más o menos a un `TestCase` en `phpunit`, por mencionar un concepto que ya nos es familiar.
 
-La línea Given aparece con un mensaje TODO: write pending definition. Esto nos está diciendo que tenemos que escribir algo en este método que, obviamente, debería consistir en poner el sistema en el estado indicado. En nuestro ejemplo, tal vez sea tener un repositorio de precios o productos con algún contenido representativo.
+La línea **Given** aparece con un mensaje `TODO: write pending definition`. Esto nos está diciendo que tenemos que escribir algo en este método que, obviamente, debería consistir en poner el sistema en el estado indicado. En nuestro ejemplo, tal vez sea tener un repositorio de precios o productos con algún contenido representativo.
 
-Si nos vamos al código de FeatureContext.php podremos ver lo siguiente:
+Si nos vamos al código de `FeatureContext.php` podremos ver lo siguiente:
 
 ```php
     /**
@@ -447,9 +448,9 @@ Si nos vamos al código de FeatureContext.php podremos ver lo siguiente:
     }
 ```
 
-La anotación @Given nos remite exactamente al primer paso del escenario. Cada vez que la expresión indicada encaja con algún paso de algún escenario se ejecutará el método thereAreCurrentPricesInTheSystem.
+La anotación `@Given` nos remite exactamente al primer paso del escenario. Cada vez que la expresión indicada encaja con algún paso de algún escenario se ejecutará el método `thereAreCurrentPricesInTheSystem`.
 
-Modificando esa anotación para convertirla en una expresión regular podemos hacer que encaje con otras definiciones similares. Por ejemplo, la siguiente expresión nos encajará con 'Thera are current prices in the system' y con 'There are prices in the system':
+Modificando esa anotación para convertirla en una expresión regular podemos hacer que encaje con otras definiciones similares. Por ejemplo, la siguiente expresión nos encajará con 'There are current prices in the system' y con 'There are prices in the system':
 
 ```php
     /**
@@ -461,9 +462,9 @@ Modificando esa anotación para convertirla en una expresión regular podemos ha
     }
 ```
 
-Lo siguiente en lo que nos vamos a detener es en el cuerpo del método. En este caso simplemente lanza una excepción propia de Behat llamada `PendingException` que se refleja en el resultado de la ejecución del test con el mensaje TODO que vimos antes.
+Lo siguiente en lo que nos vamos a detener es en el cuerpo del método. En este caso simplemente lanza una excepción propia de `behat` llamada `PendingException` que se refleja en el resultado de la ejecución del test con el mensaje TODO que vimos antes.
 
-Si pruebas a quitar esa excepción y lanzar de nuevo behat, verás que la utilidad da el test como pasado y nos indica que deberíamos implementar el siguiente paso. Esto también nos indica que para hacer fallar el test de aceptación no tenemos más que lanzar una excepción.
+Si pruebas a quitar esa excepción y lanzar de nuevo `behat`, verás que la utilidad da el test como pasado y nos indica que deberíamos implementar el siguiente paso. Esto también nos está diciendo que para hacer fallar el test de aceptación no tenemos más que lanzar una excepción.
 
 Obviamente, la idea es que comencemos a escribir código para implementar este primer paso y no limitarnos a quitar la excepción sin escribir ningún código.
 
@@ -507,7 +508,7 @@ class FeatureContext implements Context
 //...
 ```
 
-Obviamente no tenemos escrita ninguna de estas clases, por lo que al ejecutar el test veremos que falla.
+Obviamente no tenemos escrita ninguna de estas clases por lo que al ejecutar el test veremos que falla.
 
 ```
 Feature: Massive data update
@@ -521,7 +522,7 @@ Fatal error: Uncaught Error: Class 'ProductRepository' not found in /Users/frank
 
 Como podemos ver, estamos ya en modo TDD: tenemos tests que fallan y tenemos que escribir código para que pasen.
 
-Por supuesto, podría ser que ya tuviésemos esas clases y tuviesen funcionalidad. En esa situación, nuestro primer paso habría sido cumplido y podríamos escribir el código necesario para pasar el siguiente.
+Por supuesto, podría ser que ya tuviésemos esas clases y tuviesen funcionalidad. En esa situación, nuestro primer paso habría sido cumplido y podríamos escribir el código necesario para pasar al siguiente.
 
 En cualquier caso, nuestra tarea en este momento es escribir código para ejecutar todos los pasos. Volveremos a eso en un momento, pero antes vamos a fijarnos un detalle importante:
 
@@ -539,11 +540,11 @@ Nuestro segundo paso es 'And I have a file named "prices_update.csv" with the ne
     }
 ```
 
-El texto entre comillas ha sido identificado por behat como un argumento para el paso. Es decir, que podríamos utilizar la misma definición cambiando el nombre de archivo para probar distintos escenarios o ejemplos.
+El texto entre comillas ha sido identificado por `behat` como un argumento para el paso. Es decir, que podríamos utilizar la misma definición cambiando el nombre de archivo para probar distintos escenarios o ejemplos.
 
-El nombre de archivo ha sido sustituido por :arg en la anotación y el método iHaveAFileNamedWithTheNewPrices. Behat es capaz de identificar los textos entre comillas como argumentos, así como los números. Si queremos forzar que Behat identifique un fragmento del paso como argumento no tenemos más que añadir el nombre del mismo con dos puntos en la expresión.
+El nombre de archivo ha sido sustituido por :arg en la anotación y el método `iHaveAFileNamedWithTheNewPrices`. `Behat` es capaz de identificar los textos entre comillas como argumentos, así como los números. Si queremos forzar que `behat` identifique un fragmento del paso como argumento no tenemos más que añadir el nombre del mismo con dos puntos en la expresión.
 
-Del mismo modo, podemos mejorar la legibilidad de esta definición cambiando el nombre por defecto del argumento y añadiendo type hinting:
+Del mismo modo, podemos mejorar la legibilidad de esta definición cambiando el nombre por defecto del argumento y añadiendo *type hinting*:
 
 ```php
     /**
@@ -555,7 +556,7 @@ Del mismo modo, podemos mejorar la legibilidad de esta definición cambiando el 
     }
 ```
 
-Y podemos probarlo (tendrás que eliminar o comentar el código del paso anterior para permitir a behat llegar hasta ese paso):
+Y podemos probarlo (tendrás que eliminar o comentar el código del paso anterior para permitir a `behat` llegar hasta ese paso):
 
 ```php
     /**
@@ -653,7 +654,7 @@ EOD;
 
 Nuestra posible solución a esta feature pasa por definir un UseCase (`UpdatePricesFromUploadedFile`) que utilizará un repositorio (`ProductRepository`), así como un servicio para leer el archivo CSV (`ReadCSVFile`).
 
-Ahora mismo nuestro test de aceptación no pasará, puesto que no tenemos definidos ningunos de los actores que intervienen en la feature. Eso es algo que veremos en la próxima entrega. Antes me gustaría llamar la atención sobre el último paso.
+Ahora mismo nuestro test de aceptación no pasará, puesto que no tenemos definidos ningunos de los actores que intervienen en la feature. Eso es algo que veremos en la próxima entrega. Pero antes, me gustaría llamar la atención sobre el último paso.
 
 ### Cómo saber que el test pasa
 
@@ -675,7 +676,7 @@ El último paso queda definido así:
 
 La mejor manera de saber si los precios se han actualizado es comprobar que el precio de los productos tras realizar la actualización ha cambiado al indicado en el archivo.
 
-Una buena forma de hacer esto es aprovechar las Asserts de PHPUnit pues si fallan lanzarán una excepción que, como hemos visto, es la manera que tiene Behat de hacer que los pasos del escenario fallen. En caso de pasar, nuestras líneas aparecerán en verde y, cuando todas lo hagan, tanto negocio como nosotros estaremos contentos.
+Una buena forma de hacer esto es aprovechar las *Asserts* de `phpunit` pues si fallan lanzarán una excepción que, como hemos visto, es la manera que tiene `behat` de hacer que los pasos del escenario fallen. En caso de pasar, nuestras líneas aparecerán en verde y, cuando todas lo hagan, tanto negocio como nosotros estaremos contentos.
 
 Pero nos queda bastante trabajo por hacer.
 
@@ -683,7 +684,7 @@ Pero nos queda bastante trabajo por hacer.
 
 Tenemos un test de aceptación que falla porque realmente no tenemos ninguna funcionalidad implementada. Sin embargo, ya hemos tomado algunas decisiones de diseño y ya empezamos a tener una idea de qué es lo que necesitamos escribir. Ya no partimos de cero, sino que tenemos un objetivo definido.
 
-En nuestra próxima entrega veremos cómo seguir adelante, moviéndonos desde el test de aceptación al nivel unitario con herramientas BDD, recurriendo a phpspec, [del cual ya hemos hablado alguna vez en este blog](https://franiglesias.github.io/katando-phpspec-1/).
+En nuestra próxima entrega veremos cómo seguir adelante, moviéndonos desde el test de aceptación al nivel unitario con herramientas BDD, recurriendo a `phpspec`, [del cual ya hemos hablado alguna vez en este blog](https://franiglesias.github.io/katando-phpspec-1/).
 
 Así que nos vemos dentro de unos días aquí mismo :-)
 

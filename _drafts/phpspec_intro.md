@@ -27,6 +27,9 @@ En cuanto a la configuración, este sería un buen **composer.json** mínimo par
 ```json
 {
   "autoload": {
+    "psr-0": {
+      "": "src/"
+    },
     "psr-4": {
       "Dojo\\": ["src/"]
     }
@@ -125,14 +128,14 @@ Veamos las diferencias una a una:
 En phpspec
 
 * Los TestCase se llaman Specification.
-* Los tests se llaman ejemplos.
+* Los tests se llaman ejemplos y se nombrar comenzando por it_ o its_.
 * En una Specification $this es un proxy a nuestro Subject Under Test.
 * En lugar de assertions usamos matchers, que verifican lo que devuelve el método probado.
 
 Además de estas diferencias que se pueden observar, en phpspec:
 
-* No se pueden aplicar matchers sobre otra cosa que no sean los métodos del Subject Under Tests, dado que $this es un proxy que captura la salida del método original y nos permite testearla.
-* 
+* No se pueden aplicar matchers sobre otra cosa que no sean los métodos del Subject Under Test, dado que $this es un proxy que captura la salida del método original y nos permite testearla.
+* Se pueden definir TestDoubles de forma muy sencilla que son generados mediante el framework Prophecy. Basta indicarlos como parámetros en los ejemplos, tipados con la interfaz o clase que queremos doblar.
 
 ## Primera especificación
 
@@ -143,8 +146,7 @@ Para ahorrarnos un poco de trabajo `phpspec` se maneja con dos comandos principa
 
 ### Describe
 
-El primero es **describe** y nos permite iniciar la descripción de un clase a través de ejemplos.
-
+El primero es **describe** y nos permite iniciar la descripción de una clase a través de ejemplos.
 
 Tomando como punto de partida la configuración que acabamos de hacer, vamos a imaginar que queremos describir una clase Dojo\Domain\Customer\Customer. Lo haríamos así:
 
@@ -190,7 +192,7 @@ class CustomerSpec extends ObjectBehavior
 
 Cosas interesantes:
 
-+ La clase `CustomerSpec` viene a ser el equivalente de un TestSuite de PHPUnit, pero está creado de tal manera que `$this` puede usarse como proxy a la clase `Customer` que es la que estamos especificando. Dicho de otra forma: $this es nuestro SUT (Subject Under Test).
++ La clase `CustomerSpec` viene a ser el equivalente de un TestSuite de PHPUnit, pero está creado de tal manera que `$this` es usado como proxy a la clase `Customer` que es la que estamos especificando. Dicho de otra forma: $this es nuestro SUT (Subject Under Test).
 + El método `it_is_initializable` es un ejemplo. Equivale a un test. Se escriben en *snake_case* y deben comenzar por `it` o `its`.
 + En el método podemos ver un **matcher**, un concepto similar a una aserción, y que, en este caso es `shouldHaveType` (el equivalente assertInstanceOf).
 

@@ -265,10 +265,10 @@ Y con esto, podemos empezar.
 Vamos a ver un ejemplo an acción. Supongamos que tenemos la *feature* definida así, en el archivo `features/massiveUpdate.feature`.
 
 ```gherkin
-Feature: Massive data update
+Feature: Massively update product prices when needed
   As Sales Manager
-  I want to be able to upload csv files
-  In order to massive update product prices
+  I want to be able to massively update product prices
+  In order to invoice our customers with the latest prices
 
   Scenario: Update uploading a csv file with new prices
     Given There are current prices in the system
@@ -286,12 +286,12 @@ bin/behat
 Con lo que obtenemos el siguiente resultado:
 
 ```
-Feature: Massive data update
+Feature: Massively update product prices when needed
   As Sales Manager
-  I want to be able to upload csv files
-  In order to massive update product prices
+  I want to be able to massively update product prices
+  In order to invoice our customers with the latest prices
 
-  Scenario: Update uploading a csv file with new prices             # *features*/massiveUpdate.Feature:6
+  Scenario: Update uploading a csv file with new prices             # features/massiveUpdate.Feature:6
     Given There are current prices in the system
     And I have a file named "prices_update.csv" with the new prices
     When I upload the file
@@ -325,12 +325,12 @@ bin/behat --append-snippets
 Escogemos la opción 1 cuando nos lo pida y el resultado es:
 
 ```
-Feature: Massive data update
+Feature: Massively update product prices when needed
   As Sales Manager
-  I want to be able to upload csv files
-  In order to massive update product prices
+  I want to be able to massively update product prices
+  In order to invoice our customers with the latest prices
 
-  Scenario: Update uploading a csv file with new prices             # *features*/massiveUpdate.Feature:6
+  Scenario: Update uploading a csv file with new prices             # features/massiveUpdate.Feature:6
     Given There are current prices in the system
     And I have a file named "prices_update.csv" with the new prices
     When I upload the file
@@ -421,12 +421,12 @@ bin/behat
 Este es el resultado:
 
 ```
-Feature: Massive data update
+Feature: Massively update product prices when needed
   As Sales Manager
-  I want to be able to upload csv files
-  In order to massive update product prices
+  I want to be able to massively update product prices
+  In order to invoice our customers with the latest prices
 
-  Scenario: Update uploading a csv file with new prices             # *features*/massiveUpdate.Feature:6
+  Scenario: Update uploading a csv file with new prices             # features/massiveUpdate.Feature:6
     Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
       TODO: write pending definition
     And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
@@ -517,10 +517,10 @@ class FeatureContext implements Context
 Obviamente no tenemos escrita ninguna de estas clases por lo que al ejecutar el test veremos que falla.
 
 ```
-Feature: Massive data update
+Feature: Massively update product prices when needed
   As Sales Manager
-  I want to be able to upload csv files
-  In order to massive update product prices
+  I want to be able to massively update product prices
+  In order to invoice our customers with the latest prices
 
 
 Fatal error: Uncaught Error: Class 'ProductRepository' not found in /Users/frankie/Sites/csvrepo/features/bootstrap/FeatureContext.php:23

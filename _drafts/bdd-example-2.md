@@ -27,57 +27,161 @@ Y con esto, termina este inciso y volvemos al trabajo.
 
 ## Recuperando el hilo
 
-El artículo anterior finalizaba con el siguiente test:
+El artículo anterior finalizaba con un test que planteaba una solución posible a nuestra Feature. Tal como estaba, tendría mucho sentido en una situación en la cual ya tuviésemos algunos elementos implementados, como repositorio de productos y el lector de CSV. Eso nos permitiría centrarnos en el desarrollo del Use Case `UpdatePricesFromUploadedFile`.
 
-```php
+Pero vamos a intentar algo un poco más difícil, vamos a suponer que se trata de una feature completamente nueva. Así que tiramos lo que tenemos del artículo anterior y comenzamos con un FeatureContext recién sacado de behat.
+
+Y, para complicarlo un poco más, nos damos cuenta de que la feature no está completamente definida y tenemos que profundizar más en ella con negocio.
+
+
+## Ampliando la feature
+
+En el diálogo entre negocio y desarrollo normalmente surgirán los escenarios más comunes, incluyendo estos que hemos detectado ahora que incluyen los escenarios en los que las cosas no acaban bien. La definición de una feature debe incluir tanto los happy paths, como diversos sad paths.
+
+Sin embargo, la visión desde negocio no es la misma que desde desarrollo. La definición de la feature no debería incluir elementos técnicos que supongan una cierta implementación los cuales, sin embargo, habrá que desarrollar y testear a través de la especificación.
+
+Por ejemplo. Desde el punto de vista de desarrollador se nos pueden ocurrir varios motivos por los que la feature en la que estamos trabajando pueda funcionar mal:
+
+* El usuario aporta un archivo que no es válido.
+* Falla la comunicación en algún momento y no se puede subir al sistema.
+* Hay algún error que impide que el archivo se pueda utilizar.
+* El sistema de almacenamiento se satura e impide realizar la operación.
+* Otras razones técnicas.
+
+Negocio, sin embargo, vería probablemente lo siguiente:
+
+* Se ha subido el archivo equivocado (error del usuario).
+* Algo no funciona a nivel técnico (error del sistema).
+
+Por la tanto, añadiríamos estos dos escenarios a la feature: uno en el que el usuario sube un archivo que no vale y otro en el que el sistema falla, indicando en ambos cómo se espera informar al usuario de lo que ha pasado y qué puede hacer.
+
+Sin embargo, al desarrollar tendremos de contemplar las diferentes causas de fallo para poder detectarlas e implementar las medidas adecuadas para gestionarlas.
+
+### Añadir nuevos escenarios a una feature
+
+Para añadir nuevos escenarios a una feature no tenemos más que ir al documento Gherkin correspondiente y añadirlos. En nuestro caso, podría quedar así:
+
+```gherkin
+Feature: Massive data update
+  As Sales Manager
+  I want to be able to upload csv files
+  In order to massive update product prices
+
+  Scenario: Update uploading a csv file with new prices
+    Given There are current prices in the system
+    And I have a file named "prices_update.csv" with the new prices
+    When I upload the file
+    Then Changes are applied to the current prices
+    
+  Scenario: Update fails because an invalid file
+    Given There are current prices in the system
+    And I have a file named "invalid_data.csv" with invalid data
+    When I upload the file
+    Then A message is shown explaining the problem
+    And Changes are not applied to the current prices
+
+  Scenario: Update fails because a system error
+    Given There are current prices in the system
+    And I have a file named "prices_update.csv" with the new prices
+    When I upload the file
+    And There is an error in the system
+    Then A message is shown explaining the problem
+    And Changes are not applied to the current prices
+```
+
+Vamos a fijarnos en algunos detalles:
+
+* La estructura de cada escenario es siempre la misma, con secciones para Given, When y Then.
+* La clave And se utiliza como sinónimo de la sección en la que aparece, lo que facilita la lectura.
+* Hemos procurado repetir la formulación de los pasos en la medida de lo posible. Por lo general, muchos pasos podrán reutilizarse, pero para eso necesitamos que puedan ser encontrados por la misma expresión regular asociada a cada definición en la clase FeatureContext.
+
+¿Qué nos toca hacer ahora? Tendríamos que escribir las definiciones necesarias en FeatureContext para cubrir todos los nuevos pasos que componen el escenario. Pero también podemos dejar que sea behat quien lo haga, aunque para eso necesitaríamos que los tests actuales se ejecutan. Ahora fallan porque no tenemos ninguno de los elementos necesarios, pero podemos resolver eso de varias formas:
+
+* Seguir desarrollando el primer escenario hasta que lo podamos ejecutar por completo.
+* Comentar el código para que behat pueda ejecutarse y añadir las nuevas definiciones.
+
+```bash
+bin/behat --append-snippets
+```
+
+De momento he optado por símplemente comentar el código para que behat pueda ejecutar la feature completa y generar pasos nuevos:
+
+```
+Feature: Massive data update
+  As Sales Manager
+  I want to be able to upload csv files
+  In order to massive update product prices
+
+  Scenario: Update uploading a csv file with new prices             # features/massiveUpdate.feature:6
+    Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
+    And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
+    When I upload the file                                          # FeatureContext::iUploadTheFile()
+    Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
+
+  Scenario: Update fails because an invalid file                 # features/massiveUpdate.feature:12
+    Given There are current prices in the system                 # FeatureContext::thereAreCurrentPricesInTheSystem()
+    And I have a file named "invalid_data.csv" with invalid data
+    When I upload the file                                       # FeatureContext::iUploadTheFile()
+    Then A message is shown explaining the problem
+    And Changes are not applied to the current prices
+
+  Scenario: Update fails because a system error                     # features/massiveUpdate.feature:19
+    Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
+    And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
+    When I upload the file                                          # FeatureContext::iUploadTheFile()
+    And There is an error in the system
+    Then A message is shown explaining the problem
+    And Changes are not applied to the current prices
+
+3 scenarios (1 passed, 2 undefined)
+15 steps (8 passed, 6 undefined, 1 skipped)
+0m0.13s (7.11Mb)
+
+ >> default suite has undefined steps. Please choose the context to generate snippets:
+
+  [0] None
+  [1] FeatureContext
+ > 1
+```
+
+Y nos informa de que se han creado estos pasos:
+
+```
+u features/bootstrap/FeatureContext.php - `I have a file named "invalid_data.csv" with invalid data` definition added
+u features/bootstrap/FeatureContext.php - `A message is shown explaining the problem` definition added
+u features/bootstrap/FeatureContext.php - `Changes are not applied to the current prices` definition added
+u features/bootstrap/FeatureContext.php - `There is an error in the system` definition added
+```
+
+FeatureContext ha quedado así:
+
+```
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+use Behat\Behat\Tester\Exception\PendingException;
 
 /**
  * Defines application features from the specific context.
  */
 class FeatureContext implements Context
 {
-    private $productRepository;
-    private $updatePricesFromUploadedFile;
-    private $readCSVFile;
-    private $filename;
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-        $this->productRepository = new ProductRepository();
-        $this->readCSVFile = new ReadCSVFile();
-        $this->updatePricesFromUploadedFile = new UpdatePricesFromUploadedFile(
-            $this->productRepository,
-            $this->readCSVFile
-        );
-    }
+
 
     /**
-     * @Given /There are (current )?prices in the system/
+     * @Given There are current prices in the system
      */
     public function thereAreCurrentPricesInTheSystem()
     {
-        $this->productRepository->addProduct(new Product('Product 1', 15));
-        $this->productRepository->addProduct(new Product('Product 2', 20));
+        throw new PendingException();
     }
 
     /**
-     * @Given I have a file named :filename with the new prices
+     * @Given I have a file named :arg1 with the new prices
      */
-    public function iHaveAFileNamedWithTheNewPrices(string $filename)
+    public function iHaveAFileNamedWithTheNewPrices($arg1)
     {
-        $this->filename = '/var/tmp/'.$filename;
+        throw new PendingException();
     }
 
     /**
@@ -85,14 +189,7 @@ class FeatureContext implements Context
      */
     public function iUploadTheFile()
     {
-        $newPrices = <<<EOD
-product,price
-"Product 1",17
-"Product 2",23
-EOD;
-        file_put_contents($this->filename, $newPrices);
-        $request = new UpdatePricesFromUploadedFileRequest($this->filename);
-        $this->updatePricesFromUploadedFile()->execute($request);
+        throw new PendingException();
     }
 
     /**
@@ -100,23 +197,53 @@ EOD;
      */
     public function changesAreAppliedToTheCurrentPrices()
     {
-        $product1 = $this->productRepository->getByName('Product 1');
-        Assert::assertEquals(17, $product1->price());
-        $product2 = $this->productRepository->getByName('Product 2');
-        Assert::assertEquals(23, $product2->price());
+        throw new PendingException();
+    }
+
+    /**
+     * @Given I have a file named :arg1 with invalid data
+     */
+    public function iHaveAFileNamedWithInvalidData($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then A message is shown explaining the problem
+     */
+    public function aMessageIsShownExplainingTheProblem()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then Changes are not applied to the current prices
+     */
+    public function changesAreNotAppliedToTheCurrentPrices()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When There is an error in the system
+     */
+    public function thereIsAnErrorInTheSystem()
+    {
+        throw new PendingException();
     }
 }
+
 ```
 
-Este test tiene muchos detalles mejorables, incluyendo el diseño de la solución.
+Si lo ejecutamos, éste será el resultado:
 
-Sin embargo, me gustaría partir de este ejemplo tal como está y hacer un ejercicio completo de desarrollo en BDD. En entregas futuras sí me gustaría introducir mejoras en el test que nos sirvan para aprender cómo expresar una serie de elementos en Gherkin, cómo introducirlo en el test y otras cuestiones. Pero creo que será más fácil si conocemos el proceso completo.
+
 
 Y ahora, sí:
 
 ## Del test de aceptación a la especificación mediante ejemplos
 
-Tenemos el test de aceptación, pero pretendemos ejecutarlo con elementos que no existen todavía. Podríamos empezar a escribir código sin más, pero queremos ser más rigurosos y desarrollar las clases implicadas mediante TDD, pero sin salirnos del enfoque BDD.
+Tenemos el test de aceptación, pero pretendemos ejecutarlo con elementos que no existen todavía. Podríamos empezar a escribir código sin más, pero queremos ser más rigurosos y desarrollar las clases implicadas mediante TDD sin salirnos del enfoque BDD.
 
 Para ello usaremos una metodología conocida como especificación mediante ejemplos.
 
@@ -173,7 +300,36 @@ Nuestro composer.json necesitará la adición de una clave para autoload con psr
 }
 ```
 
-Al igual que con behat, de momento no nos vamos a preocupar de los detalles de configuración pues para empezar ya nos va bien con su comportamiento por defecto.
+Al igual que con behat, de momento no nos vamos a preocupar de los detalles de configuración pues para empezar ya nos va bien con su comportamiento por defecto. Excepto por una cosa: el informe.
+
+### Embelleciendo el informe del test
+
+Aunque el reporte por omisión del phpspec funciona bien por lo general, queda muy mal si la presentación del mismo es en monocromática, como en este artículo, por lo que para tener un mejor visión de lo que ocurre con nuestra especificación vamos a cambiar su formato con esta opción:
+
+```bash
+bin/phpspec run --format pretty
+```
+
+La cual podemos fijar como opción por defecto mediante un archivo de configuración `phpspec.yml` que se sitúa en la raíz del proyecto y que más adelante usaremos para añadir más opciones:
+
+```yaml
+formatter.name: pretty
+```
+
+De esta manera es más fácil saber qué ocurre, como se puede ver en este ejemplo:
+
+```
+      TalkingBit\CSVRepo\UpdatePricesFromUploadedFile
+
+  11  ✔ is initializable (94ms)
+  16  ✔ should receieve a path to a file
+  21  ✔ should fail if empty path
+
+
+1 specs
+3 examples (3 passed)
+97ms
+```
 
 ### Nuestro primer ejemplo
 
@@ -370,260 +526,9 @@ Pero hay circunstancias que producen un efecto visible. Supongamos que el path q
 
 Sin embargo, esto nos debería llevar a darnos cuenta que nuestro test de aceptación no contempla el escenario de que el archivo de datos no pueda proporcionar datos válidos a la aplicación. En este punto, deberíamos volver a la feature y hablar con negocio acerca de posibles nuevos escenarios.
 
-## Ampliando la feature
-
-En el diálogo entre negocio y desarrollo normalmente surgirán los escenarios más comunes, incluyendo estos que hemos detectado ahora que incluyen los escenarios en los que las cosas no acaban bien. La definición de una feature debe incluir tanto los happy paths, como diversos sad paths.
-
-Sin embargo, la visión desde negocio no es la misma que desde desarrollo. La definición de la feature no debería incluir elementos técnicos que supongan una cierta implementación los cuales, sin embargo, habrá que desarrollar y testear a través de la especificación.
-
-Por ejemplo. Desde el punto de vista de desarrollador se nos pueden ocurrir varios motivos por los que la feature en la que estamos trabajando pueda funcionar mal:
-
-* El usuario aporta un archivo que no es válido.
-* Falla la comunicación en algún momento y no se puede subir al sistema.
-* Hay algún error que impide que el archivo se pueda utilizar.
-* El sistema de almacenamiento se satura e impide realizar la operación.
-* Otras razones técnicas.
-
-Negocio, sin embargo, vería probablemente lo siguiente:
-
-* Se ha subido el archivo equivocado (error del usuario).
-* Algo no funciona a nivel técnico (error del sistema).
-
-Por la tanto, añadiríamos estos dos escenarios a la feature: uno en el que el usuario sube un archivo que no vale y otro en el que el sistema falla, indicando en ambos cómo se espera informar al usuario de lo que ha pasado y qué puede hacer.
-
-Sin embargo, al desarrollar tendremos de contemplar las diferentes causas de fallo para poder detectarlas e implementar las medidas adecuadas para gestionarlas.
-
-### Añadir nuevos escenarios a una feature
-
-Para añadir nuevos escenarios a una feature no tenemos más que ir al documento Gherkin correspondiente y añadirlos. En nuestro caso, podría quedar así:
-
-```gherkin
-Feature: Massive data update
-  As Sales Manager
-  I want to be able to upload csv files
-  In order to massive update product prices
-
-  Scenario: Update uploading a csv file with new prices
-    Given There are current prices in the system
-    And I have a file named "prices_update.csv" with the new prices
-    When I upload the file
-    Then Changes are applied to the current prices
-    
-  Scenario: Update fails because an invalid file
-    Given There are current prices in the system
-    And I have a file named "invalid_data.csv" with invalid data
-    When I upload the file
-    Then A message is shown explaining the problem
-    And Changes are not applied to the current prices
-
-  Scenario: Update fails because a system error
-    Given There are current prices in the system
-    And I have a file named "prices_update.csv" with the new prices
-    When I upload the file
-    And There is an error in the system
-    Then A message is shown explaining the problem
-    And Changes are not applied to the current prices
-```
-
-Vamos a fijarnos en algunos detalles:
-
-* La estructura de cada escenario es siempre la misma, con secciones para Given, When y Then.
-* La clave And se utiliza como sinónimo de la sección en la que aparece, lo que facilita la lectura.
-* Hemos procurado repetir la formulación de los pasos en la medida de lo posible. Por lo general, muchos pasos podrán reutilizarse, pero para eso necesitamos que puedan ser encontrados por la misma expresión regular asociada a cada definición en la clase FeatureContext.
-
-¿Qué nos toca hacer ahora? Tendríamos que escribir las definiciones necesarias en FeatureContext para cubrir todos los nuevos pasos que componen el escenario. Pero también podemos dejar que sea behat quien lo haga, aunque para eso necesitaríamos que los tests actuales se ejecutan. Ahora fallan porque no tenemos ninguno de los elementos necesarios, pero podemos resolver eso de varias formas:
-
-* Seguir desarrollando el primer escenario hasta que lo podamos ejecutar por completo.
-* Comentar el código para que behat pueda ejecutarse y añadir las nuevas definiciones.
-
-```bash
-bin/behat --append-snippets
-```
-
-De momento he optado por símplemente comentar el código para que behat pueda ejecutar la feature completa y generar pasos nuevos:
-
-```
-Feature: Massive data update
-  As Sales Manager
-  I want to be able to upload csv files
-  In order to massive update product prices
-
-  Scenario: Update uploading a csv file with new prices             # features/massiveUpdate.feature:6
-    Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
-    And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
-    When I upload the file                                          # FeatureContext::iUploadTheFile()
-    Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
-
-  Scenario: Update fails because an invalid file                 # features/massiveUpdate.feature:12
-    Given There are current prices in the system                 # FeatureContext::thereAreCurrentPricesInTheSystem()
-    And I have a file named "invalid_data.csv" with invalid data
-    When I upload the file                                       # FeatureContext::iUploadTheFile()
-    Then A message is shown explaining the problem
-    And Changes are not applied to the current prices
-
-  Scenario: Update fails because a system error                     # features/massiveUpdate.feature:19
-    Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
-    And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
-    When I upload the file                                          # FeatureContext::iUploadTheFile()
-    And There is an error in the system
-    Then A message is shown explaining the problem
-    And Changes are not applied to the current prices
-
-3 scenarios (1 passed, 2 undefined)
-15 steps (8 passed, 6 undefined, 1 skipped)
-0m0.13s (7.11Mb)
-
- >> default suite has undefined steps. Please choose the context to generate snippets:
-
-  [0] None
-  [1] FeatureContext
- > 1
-```
-
-Y nos informa de que se han creado estos pasos:
-
-```
-u features/bootstrap/FeatureContext.php - `I have a file named "invalid_data.csv" with invalid data` definition added
-u features/bootstrap/FeatureContext.php - `A message is shown explaining the problem` definition added
-u features/bootstrap/FeatureContext.php - `Changes are not applied to the current prices` definition added
-u features/bootstrap/FeatureContext.php - `There is an error in the system` definition added
-```
-
-Vuelvo a descomentar el código y este es el resultado, FeatureContext ha quedado así:
-
-```php
-<?php
-
-use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
-
-/**
- * Defines application features from the specific context.
- */
-class FeatureContext implements Context
-{
-    private $productRepository;
-    private $updatePricesFromUploadedFile;
-    private $readCSVFile;
-    private $filename;
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-        $this->productRepository = new ProductRepository();
-        $this->readCSVFile = new ReadCSVFile();
-        $this->updatePricesFromUploadedFile = new UpdatePricesFromUploadedFile(
-            $this->productRepository,
-            $this->readCSVFile
-        );
-    }
-
-    /**
-     * @Given /There are (current )?prices in the system/
-     */
-    public function thereAreCurrentPricesInTheSystem()
-    {
-        $this->productRepository->addProduct(new Product('Product 1', 15));
-        $this->productRepository->addProduct(new Product('Product 2', 20));
-    }
-
-    /**
-     * @Given I have a file named :filename with the new prices
-     */
-    public function iHaveAFileNamedWithTheNewPrices(string $filename)
-    {
-        $this->filename = '/var/tmp/'.$filename;
-    }
-
-    /**
-     * @When I upload the file
-     */
-    public function iUploadTheFile()
-    {
-        $newPrices = <<<EOD
-product,price
-"Product 1",17
-"Product 2",23
-EOD;
-        file_put_contents($this->filename, $newPrices);
-        $request = new UpdatePricesFromUploadedFileRequest($this->filename);
-        $this->updatePricesFromUploadedFile()->execute($request);
-    }
-
-    /**
-     * @Then Changes are applied to the current prices
-     */
-    public function changesAreAppliedToTheCurrentPrices()
-    {
-        $product1 = $this->productRepository->getByName('Product 1');
-        Assert::assertEquals(17, $product1->price());
-        $product2 = $this->productRepository->getByName('Product 2');
-        Assert::assertEquals(23, $product2->price());
-    }
-
-    /**
-     * @Given I have a file named :arg1 with invalid data
-     */
-    public function iHaveAFileNamedWithInvalidData($arg1)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then A message is shown explaining the problem
-     */
-    public function aMessageIsShownExplainingTheProblem()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then Changes are not applied to the current prices
-     */
-    public function changesAreNotAppliedToTheCurrentPrices()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When There is an error in the system
-     */
-    public function thereIsAnErrorInTheSystem()
-    {
-        throw new PendingException();
-    }
-}
-```
 
 ## Volviendo a la especificación
 
-### Embelleciendo el informe del test
-
-Antes de volver allí y para tener un mejor visión de lo que ocurre con nuestra especificación vamos a cambiar el formato del informe con esta opción:
-
-```bash
-bin/phpspec run --format pretty
-```
-
-De esta manera es más fácil saber qué ocurre:
-
-```
-      TalkingBit\CSVRepo\UpdatePricesFromUploadedFile
-
-  11  ✔ is initializable (94ms)
-  16  ✔ should receieve a path to a file
-  21  ✔ should fail if empty path
-
-
-1 specs
-3 examples (3 passed)
-97ms
-```
 
 Ahora sí, ahora volvemos con la especificación.
 

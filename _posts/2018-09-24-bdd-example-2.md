@@ -1059,7 +1059,7 @@ class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
 }
 ```
 
-Estamos de acuerdo en que no es la mejor manera de garantizar la existencia de un archivo en un test (es mejor usar sistemas de archivo virtuales para eso), pero para no desviarme mucho del tema prefiero plantearlo así. Lo que me interesa es lo que ocurre ahora con `FilePath`. Este es el resultado de ejecutar la Spec. El ejemplop está roto, pero tiene arreglo:
+Estamos de acuerdo en que no es la mejor manera de garantizar la existencia de un archivo en un test (es mejor usar sistemas de archivo virtuales para eso), pero para no desviarme mucho del tema prefiero plantearlo así. Lo que me interesa es lo que ocurre ahora con `FilePath`. Este es el resultado de ejecutar la Spec. El ejemplo está roto, pero tiene arreglo:
 
 ```
 
@@ -1262,7 +1262,7 @@ En este caso, lo que hacemos es inicializar nuestro *subject under specification
 
 Por supuesto, podrías usar `beConstructedWith` en cualquier ejemplo de la Spec para inicializar el *subject under specification* para un caso particular.
 
-### FilePath ya no es lo que era
+### FilePath ya no es lo que era
 
 Recuerda que `FilePath` es un value object para representar la ruta a un archivo. Dado que `UpdatePricesFromUploadedFile` ya no va a manejar directamente el archivo, se lo pasará a `FileReader` sin más. Lo cierto es que no necesitamos siquiera que su método `path()` devuelva valor alguno: ahora nos basta con un *dummy*. Por tanto, nuestra Spec ya no necesita crear archivos ni nada por el estilo, un problema menos.
 
@@ -1339,7 +1339,7 @@ class UpdatePricesFromUploadedFile
 
 Y, efectivamente, ahora la Spec pasa. Hemos simulado que `FileReader` fallará y la excepción "sube", de modo que nuestro ejemplo, que se aplica sobre `UpdatePricesFromUploadedFile`, pasa correctamente.
 
-### Momento Refactor
+### Momento Refactor
 
 Resulta curioso pensar que aún no hemos otorgado nada de funcionalidad a `UpdatePricesFromUploadedFile` sino que más bien le hemos ido quitando de encima responsabilidades que no le corresponden. Antes de continuar, vamos a revisar las interfaces que `phpspec` ha ido creando, ya que necesitarán un poco de cariño en forma de *Type Hinting* y *Return Type*.
 
@@ -1421,7 +1421,7 @@ Por tanto, escribiremos un ejemplo que describa justamente eso:
     }
 ```
 
-Desgraciadamente, el ejemplo pasa, lo que es malo porque no hemos implementado nada que explique que pasa. Nos faltan unas cuantas cosas. Para empezar, necesitamos una forma de saber que `UpdatePricesFromUploadedFile` hace su trabajo, pasando la nueva información a `ProductRepository`, al cual no hemos invitado todavía a participar.
+Desgraciadamente, el ejemplo pasa, lo que es malo porque no hemos implementado nada que explique que pase. Nos faltan unas cuantas cosas. Para empezar, necesitamos una forma de saber que `UpdatePricesFromUploadedFile` hace su trabajo, pasando la nueva información a `ProductRepository`, al cual no hemos invitado todavía a participar.
 
 `ProductRepository` es un colaborador que debería pasarse en construcción y debemos simular algunos comportamientos. Concretamente, para poder asumir que `UpdatePricesFromUploadedFile` hace lo que debe, debemos fijar unas expectativas en `ProductRepository`, convirtiéndolo en un **Mock**.
 

@@ -592,10 +592,11 @@ namespace TalkingBit\BddExample;
 
 class UpdatePricesFromUploadedFile
 {
+}
 
 ```
 
-No es que sea una clase con mucho contenido, pero ya nos vale para hacer funcionar el test de aceptación. ¿Lo probamos? Sólo tenemos que añadir la línea:
+No es que sea una clase con mucho contenido, pero ya nos vale para hacer funcionar el test de aceptación. ¿Lo probamos? Sólo tenemos que añadir la siguiente línea a FeatureContext:
 
 ```php
 use TalkingBit\BddExample\UpdatePricesFromUploadedFile;
@@ -652,7 +653,7 @@ class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
 
     function it_should_receieve_a_path_to_a_file()
     {
-        $this-> usingFile('/var/tmp/new_prices.csv');
+        $this->usingFile('/var/tmp/new_prices.csv');
     }
 }
 ```
@@ -736,7 +737,7 @@ Resulta curioso testear sobre algo que no devuelve nada, ¿verdad?
 
 Pero hay circunstancias que producen un efecto visible. Supongamos que el path que recibe nuestro *Use Case* está vacío, o que el archivo no contenga datos o estén en un formato ilegible o inválido. Parece lógico que falle arrojando una excepción.
 
-### Describiendo lo que puede salir mal
+### Describiendo lo que puede salir mal
 
 Empezaremos pensando que por alguna razón pueda llegar un path vacío
 

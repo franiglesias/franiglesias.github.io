@@ -569,6 +569,7 @@ Con esto conseguimos que el primer paso de los escenarios se ejecute. Vamos con 
      */
     public function iHaveAFileNamedWithTheNewPrices(string $pathToFile)
     {
+        $pathToFile = '/var/tmp/'.$pathToFile;
         $data = <<<EOD
 product_id,price
 101,17
@@ -589,9 +590,146 @@ Vamos a ver la respuesta a ambas preguntas:
 
 ### Tablas de datos en una Feature
 
+El lenguaje Gherkin nos permite definir ejemplos de colecciones de datos en forma de tablas y behat nos proporciona herramientas para utilizar esos ejemplos en el test. En realidad lo único que tenemos que hacer es añadir la tabla delimitando las columnas con el carácter pipe (|). La primera línea debería darnos los nombres de las columnas. Por lo tanto, cambiaremos el escenario para hacerlo así
 
+```gherkin
+  Scenario: Update uploading a csv file with new prices
+    Given There are current prices in the system
+    And I have a file named "prices_update.csv" with the new prices
+    | product_id | price |
+    | 101        | 17    |
+    | 103        | 23    |
+    When I upload the file
+    Then Changes are applied to the current prices
+```
+
+Si ejecutamos ahora behat no observaremos ningún cambio ya que nada altera el modo en que se reconoce el paso. Ahora vamos a ver cómo recogemos los datos de la tabla en la definición del paso:
+
+```php
+    /**
+     * @Given I have a file named :pathToFile with the new prices
+     */
+    public function iHaveAFileNamedWithTheNewPrices(string $pathToFile, TableNode $table)
+    {
+        $this->pathToFile = new FilePath('/var/tmp/'.$pathToFile);
+
+        $file = fopen('/var/tmp/'.$pathToFile, 'w');
+ 
+        $header = true;
+        foreach ($table as $row) {
+            if ($header) {
+                fputcsv($file, array_keys($row));
+                $header = false;
+            }
+            fputcsv($file, $row);
+        }
+        fclose($file);
+    }
+```
+
+Si ahora ejecutas:
+
+```
+bin/behat
+```
+Veras que el paso se ejecuta y que el archivo se ha creado en la ubicación especificada:
+
+```
+cat /var/tmp/prices_update.csv
+```
+
+También descubrirás que hay un paso del tercer escenario que falla ya que usa la misma definición pero no hemos especificado datos en el ejemplo, por lo que no hay `$tabla` que se pueda generar.
+
+```
+  Scenario: Update fails because a system error                     # features/massiveUpdate.feature:22
+    Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
+    And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
+      Can not find a matching value for an argument `$table` of the method `FeatureContext::iHaveAFileNamedWithTheNewPrices()`.
+    When I upload the file                                          # FeatureContext::iUploadTheFile()
+    And There is an error in the system                             # FeatureContext::thereIsAnErrorInTheSystem()
+    Then A message is shown explaining the problem                  # FeatureContext::aMessageIsShownExplainingTheProblem()
+    And Changes are not applied to the current prices               # FeatureContext::changesAreNotAppliedToTheCurrentPrices()
+```
+
+Esto nos lleva a pensar que deberíamos modificar otros pasos en el mismo sentido. Cuando nuestros escenarios dicen que existen datos de productos, no estaría de más, definir ejemplos de esos datos.
+
+Además de las tablas, también es posible introducir textos largos como argumentos mediante las llamadas pystrings, que veremos en otro momento.
 
 ### Parámetros que son objetos
+
+Como estamos viendo, los tipos de parámetros que podemos pasar son bastante simples. Puede ocurrir que nos interese construir objetos a partir de ellos o hacer un type casting para asegurarnos de que son del tipo necesario para usarlos.
+
+La cuestión es que podemos extraer la transformación necesaria a un método y definirlo como Transformación de modo que behat sabe que al recibir un parámetro debe pasarlo antes al método indicado.
+
+Para ver un ejemplo sencillo, usaremos el caso del parámetro `$pathToFile` que vamos a transformar en un objeto FilePath.
+
+Primero extraemos el método:
+
+```php
+    public function getFilePath(string $pathToFile): FilePath
+    {
+        return new FilePath('/var/tmp/'.$pathToFile);
+    }
+```
+
+Y luego, le añadimos una anotación que haga un match con el argumento que queremos transformar, ya sea por nombre o mediante una expresión regular:
+
+E indicamos en la signatura de la definición del paso el nuevo tipo que esperamos:
+
+```php
+    /**
+     * @Given I have a file named :pathToFile with the new prices
+     */
+    public function iHaveAFileNamedWithTheNewPrices(FilePath $pathToFile, TableNode $table)
+    {
+        $this->pathToFile = $pathToFile;
+        $file = fopen($this->pathToFile->path(), 'w');
+
+        $header = true;
+        foreach ($table as $row) {
+            if ($header) {
+                fputcsv($file, array_keys($row));
+                $header = false;
+            }
+            fputcsv($file, $row);
+        }
+        fclose($file);
+    }
+```
+
+Este paso va a fallar porque no hemos implementado `path()` todavía. Pero es una buena noticia ya que ese error nos confirma que `$pathToFile` es ahora un objeto FilePath.
+
+Para poder continuar hacemos una implementación mínima que nos permita hacer pasar el test:
+
+```php
+<?php
+
+namespace TalkingBit\BddExample\VO;
+
+class FilePath
+{
+    /** @var string */
+    private $path;
+
+    public function __construct(string $path)
+    {
+        $this->path = $path;
+    }
+    public function path(): string
+    {
+        return $this->path;
+    }
+}
+```
+
+Con este cambio el paso se ejecuta y vemos que también pasa el siguiente, que ya habíamos implementado. Así que ahora podemos retomar el problema de la falta de ejemplos en el repositorio de productos que, por lo demás, también nos ayudará a preparar el próximo paso.
+
+### Cómo llenar un repositorio con ejemplos
+    
+
+
+
+
 
 
 

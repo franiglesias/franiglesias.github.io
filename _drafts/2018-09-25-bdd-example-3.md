@@ -922,10 +922,389 @@ El error ya nos dice qué hay que hacer a continuación:
 
 ```
 
-Nos dice que no podemos devolver siempre el mismo producto, sino el que toca. Por tanto, ha llegado de implementar un repositorio que sea funcional.
+Nos dice que no podemos devolver siempre el mismo producto. Por tanto, ha llegado de implementar un repositorio que sea funcional.
+
+### Volvamos a describir comportamiento
+
+La implementación de un repositorio, aunque sea de tipo in memory, no es tan trivial como las que hemos tenido que hacer hasta ahora. Por esa razón retomaremos `phpspec` a fin de desarrollarlo. Esto es un buen ejemplo del uso combinado de las dos herramientas. Behat nos permite ir de la historia de usuario y descubrir los elementos que necesitamos, mientas que phpspec nos ayuda en el desarrollo de los mismos.
+
+Como recordarás (espero) tenemos una Spec muy simple que demuestra que nuestro repositorio se puede instanciar, pero nada más. Lo que sí sabemos, gracias a lo que hemos estado haciendo hasta ahora, es que queremos describir dos comportamientos:
+
+* Guardar productos
+* Recuperar productos conociendo su id
+
+Así que vamos a ello.
+
+#### Guardar productos 
+
+Podríamos describir así este comportamiento:
+
+```php
+    public function it_should_store_products(Product $product)
+    {
+        $this->store($product);
+    }
+```
+
+Pero claro: esto no demuestra gran cosa y, de hecho, no nos obliga a implementar nada. Necesitamos saber que efectivamente se guardan productos a través de un método de la interfaz ProductRepository. Parece bastante razonable utilizar `getById()` para comprobarlo.
+
+```php
+
+      TalkingBit\BddExample\Persistence\InMemoryProductRepository
+
+  13  ✔ is initializable (141ms)
+  18  ! should store products (58ms)
+        method `Double\TalkingBit\BddExample\Product\P1::id()` is not defined.
+
+----  broken examples
+
+        TalkingBit/BddExample/Persistence/InMemoryProductRepository
+  18  ! should store products (58ms)
+        method `Double\TalkingBit\BddExample\Product\P1::id()` is not defined.
 
 
+1 specs
+2 examples (1 passed, 1 broken)
+200ms
+```
 
+Todavía no habíamos implementado un método `id()` con el que obtener el id de `Product`, así que lo hacemos ahora para poder ejecutar el test. Una vez hecho esto, volvemos a ejecutar la *Spec*, que esta vez falla porque no se está devolviendo el objeto `Product` que debería estar almacenado.
+
+```php
+
+      TalkingBit\BddExample\Persistence\InMemoryProductRepository
+
+  13  ✔ is initializable
+  18  ✘ should store products (54ms)
+        expected [obj:Double\TalkingBit\BddExample\Product\P1], but got
+        [obj:TalkingBit\BddExample\Product].
+
+----  failed examples
+
+        TalkingBit/BddExample/Persistence/InMemoryProductRepository
+  18  ✘ should store products (54ms)
+        expected [obj:Double\TalkingBit\BddExample\Product\P1], but got
+        [obj:TalkingBit\BddExample\Product].
+
+
+1 specs
+2 examples (1 passed, 1 failed)
+61ms
+```
+
+Obviamente esto nos lleva a implementar algo para que la Spec pueda pasar completa:
+
+```php
+<?php
+
+namespace TalkingBit\BddExample\Persistence;
+
+use TalkingBit\BddExample\Product;
+use TalkingBit\BddExample\ProductRepository;
+
+class InMemoryProductRepository implements ProductRepository
+{
+    private $product;
+
+    public function getById(string $productId): Product
+    {
+        return $this->product;
+    }
+
+    public function store(Product $product): void
+    {
+        $this->product = $product;
+    }
+}
+```
+
+Con esto la Spec pasa:
+
+```
+
+      TalkingBit\BddExample\Persistence\InMemoryProductRepository
+
+  13  ✔ is initializable
+  18  ✔ should store products
+
+
+1 specs
+2 examples (2 passed)
+12ms
+```
+
+Pero, ¿qué ocurriría con nuestra *feature*?. Lancemos `behat`, que devuelve esto:
+
+```
+Feature: Massively update product prices when needed
+  As Sales Manager
+  I want to be able to massively update product prices
+  In order to invoice our customers with the latest prices
+
+  Scenario: Update uploading a csv file with new prices             # features/massiveUpdate.feature:6
+    Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
+      | product_id | new_price |
+      | 101        | 17        |
+      | 103        | 23        |
+    When I upload the file                                          # FeatureContext::iUploadTheFile()
+    Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 17.00 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 23.00 |
+      Failed asserting that 21.75 matches expected '17.00'.
+```
+
+Pues que sigue fallando, pero de una manera distinta. 
+
+#### Recuperar precios
+
+Nuestro repositorio sólo está almacenando el último `Product` que introducimos, por lo que deberíamos describir mejor su comportamiento. Volvamos a `phpspec`, porque aunque lo hemos usado no hemos descrito el comportamiento que esperamos de `getById()`:
+
+
+```php
+    public function it_should_retrieve_a_product_specified_by_its_id(Product $product1, Product $product2)
+    {
+        $product1->id()->willReturn(1);
+        $product2->id()->willReturn(2);
+        
+        $this->store($product1);
+        $this->store($product2);
+        
+        $this->getById(1)->shouldBe($product1);
+        $this->getById(2)->shouldBe($product2);
+    }
+```
+
+La Spec fallará, como era de esperar:
+
+```
+
+      TalkingBit\BddExample\Persistence\InMemoryProductRepository
+
+  13  ✔ is initializable
+  18  ✔ should store products
+  25  ✘ should retrieve a product specified by its id
+        expected [obj:Double\TalkingBit\BddExample\Product\P2], but got
+        [obj:Double\TalkingBit\BddExample\Product\P3].
+
+----  failed examples
+
+        TalkingBit/BddExample/Persistence/InMemoryProductRepository
+  25  ✘ should retrieve a product specified by its id
+        expected [obj:Double\TalkingBit\BddExample\Product\P2], but got
+        [obj:Double\TalkingBit\BddExample\Product\P3].
+
+
+1 specs
+3 examples (2 passed, 1 failed)
+14ms
+```
+
+Así que implementamos una solución de lo más sencilla:
+
+```php
+<?php
+
+namespace TalkingBit\BddExample\Persistence;
+
+use TalkingBit\BddExample\Product;
+use TalkingBit\BddExample\ProductRepository;
+
+class InMemoryProductRepository implements ProductRepository
+{
+    private $products;
+
+    public function getById(string $productId): Product
+    {
+        return $this->products[$productId];
+    }
+
+    public function store(Product $product): void
+    {
+        $this->products[$product->id()] = $product;
+    }
+}
+```
+
+Que nos permite hacer que pase la Spec:
+
+```
+
+      TalkingBit\BddExample\Persistence\InMemoryProductRepository
+
+  13  ✔ is initializable
+  18  ✔ should store products
+  25  ✔ should retrieve a product specified by its id
+
+
+1 specs
+3 examples (3 passed)
+31ms
+```
+
+Volvamos a ejecutar la feature con behat, a ver qué hemos logrado:
+
+```
+  Scenario: Update uploading a csv file with new prices             # features/massiveUpdate.feature:6
+    Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
+      | product_id | new_price |
+      | 101        | 17        |
+      | 103        | 23        |
+    When I upload the file                                          # FeatureContext::iUploadTheFile()
+    Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 17.00 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 23.00 |
+      Failed asserting that 10.25 matches expected '17.00'.
+```
+
+Por supuesto, sigue fallando, pero ahora no podemos atribuir ese fallo al comportamiento de `InMemoryProductRepository` porque gracias a la Spec sabemos que es el deseable, aunque no hay duda de que puede mejorar.
+
+La conclusión que podemos sacar es que los precios no se están actualizando y eso es debido, como cabría esperar, a que que `CSVFileReader` no implementa ningún comportamiento.
+
+### El comportamiento de CSVFileReader
+
+¿Qué ocurre con `CSVFileReader`? Pues fundamentalmente ocurre que no hace lo que dice que hace. Esto es: no lee archivos.
+
+Como puedes imaginar, volveremos con phpspec para describir el comportamiento de CSVFileReader e implementarlo.
+
+```php
+<?php
+
+namespace spec\TalkingBit\BddExample\FileReader;
+
+use TalkingBit\BddExample\FileReader\CSVFileReader;
+use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
+use TalkingBit\BddExample\FileReader\FileReader;
+use TalkingBit\BddExample\VO\FilePath;
+
+class CSVFileReaderSpec extends ObjectBehavior
+{
+    function it_is_initializable()
+    {
+        $this->shouldHaveType(FileReader::class);
+    }
+
+    public function it_should_read_a_file_with_one_line(FilePath $filePath)
+    {
+        $pathToFile = '/var/tmp/one_line_file.csv';
+        $data = <<< EOD
+101, 10
+EOD;
+
+        touch('' . $pathToFile);
+        file_put_contents($pathToFile, $data);
+        $filePath->path()->willReturn($pathToFile);
+        $this->readFrom($filePath)->shouldHaveCount(1);
+        unlink($pathToFile);
+    }
+}
+```
+
+Esta primera Spec fallará, por lo que vamos a implementarla:
+
+```php
+<?php
+
+namespace TalkingBit\BddExample\FileReader;
+
+use TalkingBit\BddExample\VO\FilePath;
+
+class CSVFileReader implements FileReader
+{
+    public function readFrom(FilePath $filePath): array
+    {
+        return [
+            'data'
+        ];
+    }
+}
+```
+
+Con esto ya pasa, pero quizá no sea suficiente.
+
+Describir el comportamiento de CSVFileReader va a requerir algo más de esfuerzo:
+
+```php
+<?php
+
+namespace spec\TalkingBit\BddExample\FileReader;
+
+use TalkingBit\BddExample\FileReader\CSVFileReader;
+use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
+use TalkingBit\BddExample\FileReader\FileReader;
+use TalkingBit\BddExample\VO\FilePath;
+
+class CSVFileReaderSpec extends ObjectBehavior
+{
+    function it_is_initializable()
+    {
+        $this->shouldHaveType(FileReader::class);
+    }
+
+    public function it_should_read_a_file_with_one_line(FilePath $filePath)
+    {
+        $pathToFile = '/var/tmp/one_line_file.csv';
+        $data = <<< EOD
+101, 10
+EOD;
+
+        touch('' . $pathToFile);
+        file_put_contents($pathToFile, $data);
+        $filePath->path()->willReturn($pathToFile);
+        $this->readFrom($filePath)->shouldHaveCount(1);
+        unlink($pathToFile);
+    }
+
+    public function it_should_read_csv_files_with_headers_and_data(FilePath $filePath)
+    {
+        $pathToFile = '/var/tmp/headers_and_data_file.csv';
+        $data = <<< EOD
+id, price
+101, 10
+102, 14
+EOD;
+
+        $expected = [
+            [
+                'id' => 101,
+                'price' => 10
+            ],
+            [
+                'id' => 102,
+                'price' => 14
+            ]
+        ];
+
+        touch($pathToFile);
+        file_put_contents($pathToFile, $data);
+        $filePath->path()->willReturn($pathToFile);
+        $this->readFrom($filePath)->shouldHaveCount(2);
+        $this->readFrom($filePath)->shouldBe($expected);
+        unlink($pathToFile);
+    }
+}
+```
+
+Esto ya requiere algo más de implementación. Vamos a ello:
+
+```php
+
+```
 
 ## Doble check
 

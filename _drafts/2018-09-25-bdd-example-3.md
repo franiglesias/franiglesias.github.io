@@ -596,9 +596,9 @@ El lenguaje Gherkin nos permite definir ejemplos de colecciones de datos en form
   Scenario: Update uploading a csv file with new prices
     Given There are current prices in the system
     And I have a file named "prices_update.csv" with the new prices
-    | product_id | price |
-    | 101        | 17    |
-    | 103        | 23    |
+    | product_id | new_price |
+    | 101        | 17        |
+    | 103        | 23        |
     When I upload the file
     Then Changes are applied to the current prices
 ```
@@ -715,6 +715,7 @@ class FilePath
     {
         $this->path = $path;
     }
+    
     public function path(): string
     {
         return $this->path;
@@ -722,12 +723,213 @@ class FilePath
 }
 ```
 
-Con este cambio el paso se ejecuta y vemos que también pasa el siguiente, que ya habíamos implementado. Así que ahora podemos retomar el problema de la falta de ejemplos en el repositorio de productos que, por lo demás, también nos ayudará a preparar el próximo paso.
+Con este cambio el paso se ejecuta y vemos que también pasa el siguiente, que ya habíamos implementado. Así que ahora podemos retomar el problema de la falta de ejemplos en el repositorio de productos que, por lo demás, también nos ayudará a preparar el último paso de nuestro primer escenario.
 
-### Cómo llenar un repositorio con ejemplos
+### Llenar un repositorio con ejemplos
     
+Los pasos inicial y final del primer escenario requieren datos de ejemplo que no han sido especificados en la Feature. Por tanto, hemos incrustado algunos en el código. Al margen de que sean buenos ejemplos o no, deberían estar en la *Feature*. Y deberían estar porque es Negocio quien debería tener la última palabra sobre qué ejemplos son relevantes y cuáles no  y porque es la *Feature* el documento compartido sobre el que trabajamos tanto Negocio como Desarrollo. Por lo tanto, deberíamos volver a hablar con Negocio para corregir esa situación.
+
+*Nota al margen*: en un caso real medianamente bien definido los ejemplos estarían o deberían estar desde el principio en el documento de la Feature, pero para estos artículos prefiero adoptar este enfoque aparentemente más errático. Por un lado, me permite avanzar desde lo más básico a temas avanzados, pero también hace que lo podamos ver en el contexto de una necesidad y, por tanto, entender cuándo tiene sentido aplicarlos. Fin de la nota.
+
+Por tanto, añadiremos ejemplos en la feature, de esta manera:
+
+```gherkin
+Feature: Massively update product prices when needed
+  As Sales Manager
+  I want to be able to massively update product prices
+  In order to invoice our customers with the latest prices
+
+  Scenario: Update uploading a csv file with new prices
+    Given There are current prices in the system
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "prices_update.csv" with the new prices
+      | product_id | new_price |
+      | 101        | 17        |
+      | 103        | 23        |
+    When I upload the file
+    Then Changes are applied to the current prices
+      | id  | name      | price |
+      | 101 | Product 1 | 17.00 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 23.00 |
+
+  Scenario: Update fails because an invalid file
+    Given There are current prices in the system
+    And I have a file named "invalid_data.csv" with invalid data
+    When I upload the file
+    Then A message is shown explaining the problem
+    And Changes are not applied to the current prices
+
+  Scenario: Update fails because a system error
+    Given There are current prices in the system
+    And I have a file named "prices_update.csv" with the new prices
+    When I upload the file
+    And There is an error in the system
+    Then A message is shown explaining the problem
+    And Changes are not applied to the current prices
+```
+
+Para no complicarnos, de momento no he añadido los ejemplos a los otros escenarios y me centraré en el primero de ellos. Más adelante terminaremos la feature completa.
+
+En principio, este cambio no afectará al resultado de ejecutar behat ya que no hemos cambiado ni el paso en sí, ni su definición.
+
+Ahora, para poder almacenar productos en el repositorio tenemos que esperar en la definición por la tabla de datos y recorrerla instanciando los productos:
+
+```php
+    /**
+     * @Given There are current prices in the system
+     */
+    public function thereAreCurrentPricesInTheSystem(TableNode $productTable)
+    {
+        foreach ($productTable as $productRow) {
+            $product = new Product(
+                $productRow['id'],
+                $productRow['name'],
+                $productRow['price']
+            );
+            $this->productRepository->store($product);
+        }
+    }
+```
+
+Ahora, si ejecutamos Behat el resultado sigue siendo el mismo. Nosotros sabemos que no hay nada implementado en `InMemoryProductRepository`, pero el test pasa y eso es lo que nos importa en este momento. Hacemos las cosas a medida que las necesitamos.
+
+Esto nos lleva al último paso, en el que debemos comprobar que el Use Case ha producido un efecto en nuestra aplicación.
+
+## Llega el verdadero test
+
+Los pasos **Then** son los pasos en los que debemos asegurar que se ha producido el resultado esperado. En este ejemplo, esperamos que los productos tengan el nuevo precio, así que parece bastante razonable consultar cada producto y ver si su precio es el que esperábamos tener.
+
+En la feature hemos puesto una tabla de los productos existentes y cómo deberían haber quedado tras la actualización. Este paso podemos definirlo así:
+
+```php
+    /**
+     * @Then Changes are applied to the current prices
+     */
+    public function changesAreAppliedToTheCurrentPrices(TableNode $productTable)
+    {
+        foreach ($productTable as $productRow) {
+            $product = $this->productRepository->getById($productRow['id']);
+            Assert::assertEquals($productRow['price'], $product->price());
+        }
+    }
+```
+
+Al ejecutar behat vemos que el test no pasa.
+
+En primer lugar, nos dice que el método price() de Product no existe, así que deberíamos implementarlo. Por otra parte, podemos ver que tampoco tenemos constructor en Product y que esperamos pasarle tres parámetros inicialmente. Como es una implementación bastante trivial la hacemos:
+
+```php
+<?php
+
+namespace TalkingBit\BddExample;
+
+class Product
+{
+    /** @var int */
+    private $id;
+    /** @var string */
+    private $name;
+    /** @var float */
+    private $price;
+
+    public function __construct(int $id, string $name, float $price)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->price = $price;
+    }
+    
+    public function setPrice(float $price): void
+    {
+    }
+
+    /**
+     * @return float
+     */
+    public function price(): float
+    {
+        return $this->price;
+    }
+}
+```
+
+Volvemos a lanzar behat para que nos diga por dónde seguir:
+
+```
+    Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 17.00 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 23.00 |
+      Type error: Too few arguments to function TalkingBit\BddExample\Product::__construct(), 2 passed in src/TalkingBit/BddExample/Persistence/InMemoryProductRepository.php on line 12 and exactly 3 expected (Behat\Testwork\Call\Exception\FatalThrowableError)
+```
+
+Este mensaje nos dice que tenemos una implementación incorrecta en InMemoryProductRepository. Recuerda que, de momento, habíamos puesto una implementación mínima, pero ahora tenemos que hacer algo más elaborado. Este es el código problemático:
+
+```
+    public function getById(string $productId): Product
+    {
+        return new Product(101, 10);
+    }
+```
+
+El mínimo para hacer pasar el test es construir un Product correctamente. 
+
+```php
+    public function getById(string $productId): Product
+    {
+        return new Product(101, 'Product 1', 10);
+    }
+```
+
+No es la implementación definitiva, ni muchísimo menos, pero nos permitirá seguir adelante y conseguir "mejores errores" al ejecutar `behat`. Mejores errores como éste:
+
+```
+    Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 17.00 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 23.00 |
+      Failed asserting that 10.0 matches expected '17.00'.
+```
+
+Esto ya suena a test que no pasa. En parte, gracias a que hemos utilizado las asserts de `phpunit` pues lanzan excepciones en caso de que no se cumplan. No es necesario usarlas ya que basta lanzar una excepción si observamos que el resultado obtenido no es el esperado, pero nos ahorran mucho trabajo.
+
+La cuestión es que este mensaje nos está diciendo que ya es la hora de implementar ProductRepository.
+
+Podemos empezar haciendo un cambio mínimo en ProductRepository, haciendo que el producto que devuelve tenga un precio de 17.00. Parece algo tonto, pero es bueno para nosotros:
+
+```php
+    public function getById(string $productId): Product
+    {
+        return new Product(101, 'Product 1', 17);
+    }
+```
+
+El error ya nos dice qué hay que hacer a continuación:
+
+```
+    Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 17.00 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 23.00 |
+      Failed asserting that 17.0 matches expected '14.95'.
+
+```
+
+Nos dice que no podemos devolver siempre el mismo producto, sino el que toca. Por tanto, ha llegado de implementar un repositorio que sea funcional.
 
 
+
+
+## Doble check
+
+ 
 
 
 

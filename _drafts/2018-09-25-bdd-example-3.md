@@ -1243,9 +1243,7 @@ Describir el comportamiento de CSVFileReader va a requerir algo más de esfuerzo
 
 namespace spec\TalkingBit\BddExample\FileReader;
 
-use TalkingBit\BddExample\FileReader\CSVFileReader;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use TalkingBit\BddExample\FileReader\FileReader;
 use TalkingBit\BddExample\VO\FilePath;
 
@@ -1260,7 +1258,7 @@ class CSVFileReaderSpec extends ObjectBehavior
     {
         $pathToFile = '/var/tmp/one_line_file.csv';
         $data = <<< EOD
-101, 10
+101,10
 EOD;
 
         touch('' . $pathToFile);
@@ -1274,19 +1272,19 @@ EOD;
     {
         $pathToFile = '/var/tmp/headers_and_data_file.csv';
         $data = <<< EOD
-id, price
-101, 10
-102, 14
+id,price
+101,10
+102,14
 EOD;
 
         $expected = [
             [
-                'id' => 101,
-                'price' => 10
+                'id' => '101',
+                'price' => '10'
             ],
             [
-                'id' => 102,
-                'price' => 14
+                'id' => '102',
+                'price' => '14'
             ]
         ];
 
@@ -1303,288 +1301,320 @@ EOD;
 Esto ya requiere algo más de implementación. Vamos a ello:
 
 ```php
-
-```
-
-## Doble check
-
- 
-
-
-
-
-
-## Implementaciones completas
-
-**phpspec** nos ha permitido descubrir las interfaces de los colaboradores de `UpdatePricesFromUploadedFile` a partir de lo que éste necesita de ellos. Pero para poder usarlos tendremos que desarrollar una implementación.
-
-Vayamos uno por uno:
-
-### FilePath
-
-```php
 <?php
 
-namespace TalkingBit\BddExample\VO;
+namespace spec\TalkingBit\BddExample\FileReader;
 
-interface FilePath
-{
-    public function path();
-}
-```
-
-Hemos dicho que FilePath es un value object que se encarga de representar una ruta a un archivo existente en el sistema de archivos. Al tratarse de un Value Object no tiene mucho sentido mantener la interfaz y una clase concreta, puesto que va a tener una única implementación. Por tanto, convertiremos la interfaz en clase y la escribiremos con la ayuda de phpspec.
-
-```php
-<?php
-
-namespace TalkingBit\BddExample\VO;
-
-class FilePath
-{
-    public function path(): string 
-    {
-        
-    }
-}
-```
-
-Para empezar le diremos a `phpspec` que queremos describir la clase `FilePath`:
-
-```
-bin/phpspec describe 'TalkingBit\BddExample\VO\FilePath'
-```
-
-Lo que genera la Spec:
-
-```php
-<?php
-
-namespace spec\TalkingBit\BddExample\VO;
-
-use TalkingBit\BddExample\VO\FilePath;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use TalkingBit\BddExample\FileReader\FileReader;
+use TalkingBit\BddExample\VO\FilePath;
 
-class FilePathSpec extends ObjectBehavior
+class CSVFileReaderSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(FilePath::class);
+        $this->shouldHaveType(FileReader::class);
+    }
+
+    public function it_should_read_a_file_with_one_line(FilePath $filePath)
+    {
+        $pathToFile = '/var/tmp/one_line_file.csv';
+        $data = <<< EOD
+101,10
+EOD;
+
+        touch('' . $pathToFile);
+        file_put_contents($pathToFile, $data);
+        $filePath->path()->willReturn($pathToFile);
+        $this->readFrom($filePath)->shouldHaveCount(1);
+        unlink($pathToFile);
+    }
+
+    public function it_should_read_csv_files_with_headers_and_data(FilePath $filePath)
+    {
+        $pathToFile = '/var/tmp/headers_and_data_file.csv';
+        $data = <<< EOD
+id,price
+101,10
+102,14
+EOD;
+
+        $expected = [
+            [
+                'id' => '101',
+                'price' => '10'
+            ],
+            [
+                'id' => '102',
+                'price' => '14'
+            ]
+        ];
+
+        touch($pathToFile);
+        file_put_contents($pathToFile, $data);
+        $filePath->path()->willReturn($pathToFile);
+        $this->readFrom($filePath)->shouldHaveCount(2);
+        $this->readFrom($filePath)->shouldBe($expected);
+        unlink($pathToFile);
     }
 }
 ```
 
-Si la ejecutamos, como ya existe el archivo y puede cargar la clase se ejecutarán las Spec encontradas, con el resultado de que la clase FilePath se puede inicializar:
-
-```
-
-      TalkingBit\BddExample\UpdatePricesFromUploadedFile
-
-  22  ✔ is initializable (275ms)
-  27  ✔ should receieve a path to a file
-  32  ✔ should fail if file is empty
-  39  ✔ should update prices for the products in file
-
-      TalkingBit\BddExample\VO\FilePath
-
-  11  ✔ is initializable
-
-
-2 specs
-5 examples (5 passed)
-302ms
-```
-
-Al ejecutar `phpspec` sin indicar una ruta o una Spec determinada se ejecutarán todas las que se encuentren bajo el directorio `spec`. Ahora bien, si queremos podemos especificar que se ejecute sólo aquella con la que estamos trabajando:
-
-```
-bin/phpspec run 'TalkingBit\BddExample\VO\FilePath'
-```
-
-Esto nos permite mantener el foco:
-
-```
-
-      TalkingBit\BddExample\VO\FilePath
-
-  11  ✔ is initializable (85ms)
-
-
-1 specs
-1 examples (1 passed)
-86ms
-```
-
-Hemos dicho que FilePath contendrá la ruta de un archivo existente, fallando si no existe. Vamos a empezar describiendo el *sad path*, es decir, que el archivo no existe y esperando una excepción.
-
-Y eso, ¿por qué? Porque queremos un test que, fallando, nos obligue a implementar precisamente que `FilePath` compruebe si el archivo existe. Ya hemos visto cómo esperar excepciones, y aquí podemos ver cómo se esperan en el momento de la instanciación.
+Esta implementación hará fallar el anterior ejemplo, en el cual probábamos un csv sin cabeceras. Lo podemos solucionar de forma relativamente fácil, mediante una "basurita" que nos permita hacer pasar el test:
 
 ```php
-<?php
-
-namespace spec\TalkingBit\BddExample\VO;
-
-use InvalidArgumentException;
-use TalkingBit\BddExample\VO\FilePath;
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
-
-class FilePathSpec extends ObjectBehavior
-{
-    function it_should_fail_with_non_existent_file()
+    public function readFrom(FilePath $filePath): array
     {
-        $path = '/var/tmp/invalid_file.data';
-
-        $this->beConstructedWith($path);
-        $this->shouldThrow(InvalidArgumentException::class)
-             ->duringInstantiation();
-    }
-}
-```
-
-Al ejecutarla nos propondrá crear un constructor para `FilePath`.
-
-```
-
-      TalkingBit\BddExample\VO\FilePath
-
-  12  ! should fail with non existent file (118ms)
-        method TalkingBit\BddExample\VO\FilePath::__construct not found.
-
-----  broken examples
-
-        TalkingBit/BddExample/VO/FilePath
-  12  ! should fail with non existent file (118ms)
-        method TalkingBit\BddExample\VO\FilePath::__construct not found.
-
-
-1 specs
-1 examples (1 broken)
-120ms
-                                                                                
-  Do you want me to create `TalkingBit\BddExample\VO\FilePath::__construct()`   
-  for you?                                                                      
-                                                                         [Y/n] 
-```
-
-Aceptamos y comprobamos que el ejemplo falla porque no se lanza la excepción:
-
-```
-  
-
-      TalkingBit\BddExample\VO\FilePath
-
-  12  ✘ should fail with non existent file (85ms)
-        expected to get exception / throwable, none got.
-
-----  failed examples
-
-        TalkingBit/BddExample/VO/FilePath
-  12  ✘ should fail with non existent file (85ms)
-        expected to get exception / throwable, none got.
-
-
-1 specs
-1 examples (1 failed)
-86ms
-```
-
-Así que hacemos una implementación mínima para que el ejemplo se cumpla:
-
-
-```php
-<?php
-
-namespace TalkingBit\BddExample\VO;
-
-class FilePath
-{
-    public function __construct(string $path)
-    {
-        throw new \InvalidArgumentException(sprintf('%s should be an existent file', $path));
-    }
-
-    public function path(): string
-    {
-
-    }
-}
-```
-
-Con éste código tenemos la Spec en verde, pero aún nos falta describir el comportamiento bueno. Vamos a ello:
-
-```php
-    public function it_should_initialize_with_path_to_existent_file(): void
-    {
-        $path = '/var/tmp/valid_file.data';
-
-        file_put_contents($path, 'some data');
-
-        $this->beConstructedWith($path);
-        $this->path()->shouldBe($path);
-
-        unlink($path);
-    }
-```
-
-El ejemplo falla:
-
-```
-
-      TalkingBit\BddExample\VO\FilePath
-
-  12  ✔ should fail with non existent file (182ms)
-  21  ! should initialize with path to existent file
-        exception [exc:InvalidArgumentException("/var/tmp/valid_file.data should be an existent file")] has been thrown.
-
-----  broken examples
-
-        TalkingBit/BddExample/VO/FilePath
-  21  ! should initialize with path to existent file
-        exception [exc:InvalidArgumentException("/var/tmp/valid_file.data should be an existent file")] has been thrown.
-
-
-1 specs
-2 examples (1 passed, 1 broken)
-214ms
-```
-
-Lo que nos pide una implementación como la siguiente:
-
-```php
-<?php
-
-namespace TalkingBit\BddExample\VO;
-
-use InvalidArgumentException;
-
-class FilePath
-{
-    /** @var string */
-    private $path;
-
-    public function __construct(string $path)
-    {
-        if (!file_exists($path)) {
-            throw new InvalidArgumentException(sprintf('%s should be an existent file', $path));
+        $data = [];
+        $csvFile = fopen($filePath->path(), 'r');
+        $headers = fgetcsv($csvFile);
+        while ($row = fgetcsv($csvFile)) {
+            $data[] = array_combine($headers, $row);
         }
-        $this->path = $path;
+        if (empty($data) && $headers) {
+            return [$headers];
+        }
+        return $data;
+    }
+```
+
+Sin embargo, debemos hacer una reflexión aquí: ¿hemos elegido ejemplos adecuados? No hay nada en la definición de la *feature* que nos diga que CSVFileReader deba manejar este tipo de situaciones. En realidad nos dice que debería fallar si encuentra un archivo vacío o no válido, aunque no hayamos llegado todavía a desarrollar para cumplir esos escenarios.
+
+Un problema cuando necesitamos implementar clases de utilidad como parte de una historia de usuario es que es fácil caer en la tentación de abstraernos de esa historia y tratar de desarrollar esas clases para cubrir toda la casuística, aunque no la necesitemos para el compromiso que hemos adquirido en ese momento.
+
+Este no quiere decir que no debamos hacerlo bajo ningún concepto, sino que deberíamos priorizarlo correctamente: primero, cubriendo las especificaciones derivadas de la historia de usuario, a medida que se plantean, haciendo evolucionar el código para adaptarse a los requisitos que se van introduciendo. Eso es lo que nos permite llegar al MVP y a garantizar la entrega.
+
+## Cumpliendo el primer escenario
+
+Si ejecutamos behat ahora, comprobaremos que el último paso del escenario sigue sin pasar. Eso indica que nos falta implementar algo. De nuevo, podemos observar que el mensaje cambia:
+
+```
+    Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 17.00 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 23.00 |
+      Failed asserting that 10.25 matches expected '17.00'.
+```
+
+Nos dice que vuelve a fallar en el primer producto de la tabla. Recuerda que siempre que estamos haciendo implementación estamos buscando la mínima que nos permita pasar cada test, por lo que es posible que este último paso haya generado un cambio que revela que nos falta algo por escribir.
+
+Sabemos que las implementaciones de `InMemoryProductRepository` y de `CSVFileReader` son suficientemente completas como para no ser la causa de este fallo. Así que vamos a mirar de nuevo el código del UseCase `UpdatePricesFromUploadedFile` para ver cuál es la ficha que aún no hemos colocado:
+
+```php
+    public function usingFile(FilePath $pathToFile)
+    {
+        $data = $this->fileReader->readFrom($pathToFile);
+        foreach ($data as $row) {
+            $product = $this->productRepository->getById($row['product_id']);
+            $product->setPrice($row['new_price']);
+        }
+    }
+```
+
+¿Hemos implementado `setPrice()` en `Product`? La respuesta es no, pero hacerlo es trivial:
+
+```php
+<?php
+
+namespace TalkingBit\BddExample;
+
+class Product
+{
+    /** @var int */
+    private $id;
+    /** @var string */
+    private $name;
+    /** @var float */
+    private $price;
+
+    public function __construct(int $id, string $name, float $price)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->price = $price;
     }
 
-    public function path(): string
+    public function setPrice(float $price): void
     {
-        return $this->path;
+        $this->price = $price;
+    }
+
+    public function price(): float
+    {
+        return $this->price;
+    }
+
+    public function id(): int
+    {
+        return $this->id;
     }
 }
 ```
 
-Podemos ejecutar `phpspec` para ver que no hemos roto la especificación de `UpdatePricesFromUploadedFile` con el código que hemos introducido.
+Finalmente:
 
 ```
-bin/phpspec run
+  Scenario: Update uploading a csv file with new prices             # features/massiveUpdate.feature:6
+    Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
+      | product_id | new_price |
+      | 101        | 17        |
+      | 103        | 23        |
+    When I upload the file                                          # FeatureContext::iUploadTheFile()
+    Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 17.00 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 23.00 |
 ```
 
-Con esto podemos dar por terminada la implementación de `FilePath`, al menos por lo que respecta a lo que necesitamos.
+Y con esto, por fin hemos hecho que nuestro escenario pase.
 
-### 
+## Qué hemos logrado
+
+Hemos comenzado el viaje con una historia de usuario, más o menos representativa, pero definida con la ayuda del lenguaje Gherkin, expresada tanto en valor de negocio como en una serie de escenarios ejecutables que definen criterios observables que podemos comprobar programáticamente en un test, cuyo esqueleto hemos generado con la ayuda de `behat`.
+
+A continuación, hemos convertido la historia en un Use Case y lo hemos introducido en el test, de modo que hemos podido decidir cómo querríamos que funcionase, lo cual nos ha llevado a utilizar `phpspec` para especificar el comportamiento del propio Use Case.
+
+Esto nos ha llevado a descubrir las entidades, value objects y colaboradores que iban siendo necesarios para que el Use Case pudiese producir efectos en el sistema, combinando el uso de `behat` y `phpspec` para lanzar pruebas cuyos fallos nos fuesen indicando qué pasos seguir a continuación: qué teníamos que desarrollar.
+
+Finalmente, tenemos un Use Case implementado que coordina diversos actores para producir el efecto deseado. Todo este comportamiento se encuentra bajo un test que negocio puede validar, así como bajo una serie de test unitarios en forma de Spec que garantizan que el software que acabamos de escribir hace lo que dice que hace.
+
+Nos quedan por completar dos escenarios, así como tener en cuenta varias consideraciones interesantes.
+
+## Avanzando con los escenarios
+
+Para poder seguir probando escenarios tenemos que arreglar los documentos Gherkin del mismo modo que hemos hecho antes. Lo primero es añadir datos de ejemplo, ya que el primer paso de ambos escenarios no se podrá ejecutar sin ellos.
+
+He aquí la feature con todos los datos de ejemplo:
+
+```php
+Feature: Massively update product prices when needed
+  As Sales Manager
+  I want to be able to massively update product prices
+  In order to invoice our customers with the latest prices
+
+  Scenario: Update uploading a csv file with new prices
+    Given There are current prices in the system
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "prices_update.csv" with the new prices
+      | product_id | new_price |
+      | 101        | 17        |
+      | 103        | 23        |
+    When I upload the file
+    Then Changes are applied to the current prices
+      | id  | name      | price |
+      | 101 | Product 1 | 17.00 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 23.00 |
+
+  Scenario: Update fails because an invalid file
+    Given There are current prices in the system
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "invalid_data.csv" with invalid data
+      | product_id | product_name|
+      | 101        | Product 1   |
+      | 103        | Product 2   |
+    When I upload the file
+    Then A message is shown explaining the problem
+      """
+      The file doesn't contain valid data to update prices
+      """
+    And Changes are not applied to the current prices
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+
+  Scenario: Update fails because a system error
+    Given There are current prices in the system
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "prices_update.csv" with the new prices
+      | product_id | new_price |
+      | 101        | 17        |
+      | 103        | 23        |
+    When I upload the file
+    And There is an error in the system
+    Then A message is shown explaining the problem
+      """
+      Something went wrong and it was not possible to update prices
+      """
+    And Changes are not applied to the current prices
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+```
+
+¿Qué ocurrirá cuando la ejecutemos?
+
+Pues lo que ocurre es que alguno de los pasos del segundo y tercer escenario se ejecutan y pasan, mientras que nos indica que hay pasos que no tienen implementación.
+
+Por ejemplo, esto es lo que pasa con el segundo escenario:
+
+```
+  Scenario: Update fails because an invalid file                 # features/massiveUpdate.feature:23
+    Given There are current prices in the system                 # FeatureContext::thereAreCurrentPricesInTheSystem()
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "invalid_data.csv" with invalid data # FeatureContext::iHaveAFileNamedWithInvalidData()
+      | product_id | product_name |
+      | 101        | Product 1    |
+      | 103        | Product 2    |
+      TODO: write pending definition
+    When I upload the file                                       # FeatureContext::iUploadTheFile()
+    Then A message is shown explaining the problem               # FeatureContext::aMessageIsShownExplainingTheProblem()
+      """
+      The file doesn't contain valid data to update prices
+      """
+    And Changes are not applied to the current prices            # FeatureContext::changesAreNotAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+```
+
+El segundo paso está pendiente y tendríamos que escribir su definición, así que buscamos el método de `FeatureContext` asociado con ese paso y lo implementamos:
+
+```php
+    /**
+     * @Given I have a file named :pathToFile with invalid data
+     */
+    public function iHaveAFileNamedWithInvalidData(FilePath $pathToFile, TableNode $table)
+    {
+        $this->pathToFile = $pathToFile;
+        $file = fopen($this->pathToFile->path(), 'w');
+
+        $header = true;
+        foreach ($table as $row) {
+            if ($header) {
+                fputcsv($file, array_keys($row));
+                $header = false;
+            }
+            fputcsv($file, $row);
+        }
+        fclose($file);
+    }
+```
+
+Resulta que es la misma implementación que el paso equivalente del escenario anterior.
+
+Por otro lado, el paso siguiente (subir el archivo) falla puesto que al intentar utilizar los datos del mismo, no cuadran con lo que espera recibir. Tenemos varios temas interesantes aquí, así que vayamos por partes.
+
+Empecemos por considerar que tenemos código idéntico en dos pasos. Esta repetición nos daría pie a un refactor, ya que ambos pasos están en verde, consistente en extraer el método que monta el archivo csv.

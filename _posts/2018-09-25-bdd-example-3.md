@@ -9,7 +9,7 @@ En el [primer artículo de la serie](/2018-09-16-bdd-example-1) comenzamos intro
 
 Al final de la fase anterior conseguimos desarrollar el *Use Case* `UpdatePricesFromUploadedFile` y descubrimos las interfaces de sus colaboradores. Es un buen momento para volver a `FeatureContext` y completar el test de aceptación. Para eso, tenemos que revisar las interfaces generadas, implementar varias cosas y tomar algunas decisiones.
 
-## Por dónde seguimos ahora
+## Por dónde seguimos
 
 Para decidir que empezaríamos por `UpdatePricesFromUploadedFile` lo hicimos sobre la base de que este `Use Case` representa el núcleo de la *Feature* que estamos desarrollando. Ahora nos toca implementar sus colaboradores para poder pasar el test de aceptación.
 
@@ -44,13 +44,13 @@ Comenzamos diciéndole a phpspec que vamos a describir la clase FilePath:
 bin/phpspec describe 'TalkingBit\BddExample\VO\FilePath'
 ```
 
-Y ejecutamos la Spec. Para no tener que ejecutar todas las Specs que tengamos definidas podemos apuntar a la que nos interesa:
+Y ejecutamos la *Spec*. Para no tener que ejecutar todas las Specs que tengamos definidas podemos apuntar a la que nos interesa:
 
 ```
 bin/phpspec run 'TalkingBit\BddExample\VO\FilePath'
 ```
 
-phpspec detectará que no existe la clase, aunque existe la interfaz, por lo que nos pide permiso para crearla:
+`phpspec` detectará que no existe la clase, aunque existe la interfaz, por lo que nos pide permiso para crearla:
 
 ```
 
@@ -99,9 +99,9 @@ bin/phpspec run
 
 ## Product
 
-En nuestra hipotética aplicación, Product sería una entidad de dominio, por lo que tampoco tiene mucho sentido que la dualidad entre interfaz y clase. De nuevo, tan sólo queremos tener una una clase instanciable que ya desarrollaremos después.
+En nuestra hipotética aplicación, `Product` sería una entidad de dominio, por lo que tampoco tiene mucho sentido mantener la dualidad interfaz-clase. De nuevo, tan sólo queremos tener una una clase instanciable que ya desarrollaremos después.
 
-Seguiremos el mismo proceso que con FilePath, por lo que no voy a repetirlo aquí. La interfaz que tenemos es:
+Seguiremos el mismo proceso que con `FilePath`, por lo que no voy a repetirlo aquí. La interfaz que tenemos es:
 
 ```php
 <?php
@@ -114,8 +114,7 @@ interface Product
 }
 ```
 
-Refactorizamos un poco:
-
+Reescribimos un poco:
 
 ```php
 <?php
@@ -473,7 +472,7 @@ Así es como queremos usarlo:
     }
 ```
 
-Si ejecutamos behat vemos que esto empieza a ponerse interesante:
+Si ejecutamos `behat` vemos que esto empieza a ponerse interesante:
 
 ```
 bin/behat
@@ -590,7 +589,7 @@ Vamos a ver la respuesta a ambas preguntas:
 
 ### Tablas de datos en una Feature
 
-El lenguaje Gherkin nos permite definir ejemplos de colecciones de datos en forma de tablas y behat nos proporciona herramientas para utilizar esos ejemplos en el test. En realidad lo único que tenemos que hacer es añadir la tabla delimitando las columnas con el carácter pipe (|). La primera línea debería darnos los nombres de las columnas. Por lo tanto, cambiaremos el escenario para hacerlo así
+El lenguaje Gherkin nos permite definir ejemplos de colecciones de datos en forma de tablas y `behat` nos proporciona herramientas para utilizar esos ejemplos en el test. En realidad lo único que tenemos que hacer es añadir la tabla delimitando las columnas con el carácter pipe (|). La primera línea debería darnos los nombres de las columnas. Por lo tanto, cambiaremos el escenario para hacerlo así
 
 ```gherkin
   Scenario: Update uploading a csv file with new prices
@@ -603,7 +602,7 @@ El lenguaje Gherkin nos permite definir ejemplos de colecciones de datos en form
     Then Changes are applied to the current prices
 ```
 
-Si ejecutamos ahora behat no observaremos ningún cambio ya que nada altera el modo en que se reconoce el paso. Ahora vamos a ver cómo recogemos los datos de la tabla en la definición del paso:
+Si ejecutamos ahora `behat` no observaremos ningún cambio ya que nada altera el modo en que se reconoce el paso. Ahora vamos a ver cómo recogemos los datos de la tabla en la definición del paso:
 
 ```php
     /**
@@ -659,7 +658,7 @@ Además de las tablas, también es posible introducir textos largos como argumen
 
 Como estamos viendo, los tipos de parámetros que podemos pasar son bastante simples. Puede ocurrir que nos interese construir objetos a partir de ellos o hacer un type casting para asegurarnos de que son del tipo necesario para usarlos.
 
-La cuestión es que podemos extraer la transformación necesaria a un método y definirlo como Transformación de modo que behat sabe que al recibir un parámetro debe pasarlo antes al método indicado.
+La cuestión es que podemos extraer la transformación necesaria a un método y definirlo como Transformación de modo que `behat` sabe que al recibir un parámetro debe pasarlo antes al método indicado.
 
 Para ver un ejemplo sencillo, usaremos el caso del parámetro `$pathToFile` que vamos a transformar en un objeto FilePath.
 
@@ -774,7 +773,7 @@ Feature: Massively update product prices when needed
 
 Para no complicarnos, de momento no he añadido los ejemplos a los otros escenarios y me centraré en el primero de ellos. Más adelante terminaremos la feature completa.
 
-En principio, este cambio no afectará al resultado de ejecutar behat ya que no hemos cambiado ni el paso en sí, ni su definición.
+En principio, este cambio no afectará al resultado de ejecutar `behat` ya que no hemos cambiado ni el paso en sí, ni su definición.
 
 Ahora, para poder almacenar productos en el repositorio tenemos que esperar en la definición por la tabla de datos y recorrerla instanciando los productos:
 
@@ -795,7 +794,7 @@ Ahora, para poder almacenar productos en el repositorio tenemos que esperar en l
     }
 ```
 
-Ahora, si ejecutamos Behat el resultado sigue siendo el mismo. Nosotros sabemos que no hay nada implementado en `InMemoryProductRepository`, pero el test pasa y eso es lo que nos importa en este momento. Hacemos las cosas a medida que las necesitamos.
+Ahora, si ejecutamos `behat` el resultado sigue siendo el mismo. Nosotros sabemos que no hay nada implementado en `InMemoryProductRepository`, pero el test pasa y eso es lo que nos importa en este momento. Hacemos las cosas a medida que las necesitamos.
 
 Esto nos lleva al último paso, en el que debemos comprobar que el Use Case ha producido un efecto en nuestra aplicación.
 
@@ -818,7 +817,7 @@ En la feature hemos puesto una tabla de los productos existentes y cómo deberí
     }
 ```
 
-Al ejecutar behat vemos que el test no pasa.
+Al ejecutar `behat` vemos que el test no pasa.
 
 En primer lugar, nos dice que el método price() de Product no existe, así que deberíamos implementarlo. Por otra parte, podemos ver que tampoco tenemos constructor en Product y que esperamos pasarle tres parámetros inicialmente. Como es una implementación bastante trivial la hacemos:
 
@@ -857,7 +856,7 @@ class Product
 }
 ```
 
-Volvemos a lanzar behat para que nos diga por dónde seguir:
+Volvemos a lanzar `behat` para que nos diga por dónde seguir:
 
 ```
     Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
@@ -926,7 +925,7 @@ Nos dice que no podemos devolver siempre el mismo producto. Por tanto, ha llegad
 
 ### Volvamos a describir comportamiento
 
-La implementación de un repositorio, aunque sea de tipo in memory, no es tan trivial como las que hemos tenido que hacer hasta ahora. Por esa razón retomaremos `phpspec` a fin de desarrollarlo. Esto es un buen ejemplo del uso combinado de las dos herramientas. Behat nos permite ir de la historia de usuario y descubrir los elementos que necesitamos, mientas que phpspec nos ayuda en el desarrollo de los mismos.
+La implementación de un repositorio, aunque sea de tipo in memory, no es tan trivial como las que hemos tenido que hacer hasta ahora. Por esa razón retomaremos `phpspec` a fin de desarrollarlo. Esto es un buen ejemplo del uso combinado de las dos herramientas. `behat` nos permite ir de la historia de usuario y descubrir los elementos que necesitamos, mientas que phpspec nos ayuda en el desarrollo de los mismos.
 
 Como recordarás (espero) tenemos una Spec muy simple que demuestra que nuestro repositorio se puede instanciar, pero nada más. Lo que sí sabemos, gracias a lo que hemos estado haciendo hasta ahora, es que queremos describir dos comportamientos:
 
@@ -1386,7 +1385,7 @@ Este no quiere decir que no debamos hacerlo bajo ningún concepto, sino que debe
 
 ## Cumpliendo el primer escenario
 
-Si ejecutamos behat ahora, comprobaremos que el último paso del escenario sigue sin pasar. Eso indica que nos falta implementar algo. De nuevo, podemos observar que el mensaje cambia:
+Si ejecutamos `behat` ahora, comprobaremos que el último paso del escenario sigue sin pasar. Eso indica que nos falta implementar algo. De nuevo, podemos observar que el mensaje cambia:
 
 ```
     Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
@@ -1681,7 +1680,7 @@ Eso se maneja en `FeatureContext` con un tipo `PyStringNode`, el cual nos permit
     }
 ```
 
-Ahora, al ejecutar behat obtenemos un mensaje más interesante que nos dice que aunque ha fallado la importación de los datos no obtenemos el error esperado.
+Ahora, al ejecutar `behat` obtenemos un mensaje más interesante que nos dice que aunque ha fallado la importación de los datos no obtenemos el error esperado.
 
 ```
   Scenario: Update fails because an invalid file                 # features/massiveUpdate.feature:23
@@ -1986,6 +1985,7 @@ class FilePathSpec extends ObjectBehavior
     }
 }
 ```
+
 Y esta sería la implementación:
 
 ```php
@@ -2014,9 +2014,9 @@ class FilePath
 }
 ```
 
-Si lanzamos behat vemos que se produce una regresión, por lo que debemos cambiar el Transformer mediante el que se que obtiene FilePath, a fin de asegurarnos de que cuando se crea el objeto, hay un archivo en el path:
+Si lanzamos `behat` vemos que se produce una regresión, por lo que debemos cambiar la transformación `getFilePath()` mediante el que se que obtiene un `FilePath`, a fin de asegurarnos de que cuando se crea el objeto, hay un archivo en el path:
 
-```
+```php  
     /** @Transform :pathToFile */
     public function getFilePath(string $pathToFile): FilePath
     {
@@ -2026,13 +2026,152 @@ Si lanzamos behat vemos que se produce una regresión, por lo que debemos cambia
     }
 ```
 
-De este modo conseguimos que el paso avance, lo que nos revela que la implementación que tenemos no es suficiente para completar el test. Es necesario detectar el problema en algún lugar y generar la excepción adecuada.
+De este modo conseguimos que el paso avance, y obtenemos un test que falla, lo que nos revela que la implementación que tenemos no es suficiente para hacerlo pasar. Fundamentalmente lo que tenemos que hacer es capturar el problema en el lugar adecuado y lanzar una nueva excepción.
 
-## Doble check
+Como siempre vamos de fuera hacia adentro buscando el lugar que nos resulta más adecuado. De nuevo, nuestro candidato inicial podría ser el *Use Case* `UpdatePricesFromUploadedFile`. Su tarea consistiría en capturar cualquier error que venga de sus colaboradores y devolver una respuesta adecuada, en este caso lanzar una excepción con el mensaje adecuado.
 
+Esta sería la Spec:
 
-## Limpiar el entorno de test
+```php
+    public function it_should_fail_if_file_does_not_exist(
+        FileReader $fileReader,
+        FilePath $filePath
+    ) {
+        $fileReader
+            ->readFrom($filePath)
+            ->willThrow(RuntimeException::class);
 
+        $exception = new RuntimeException('Something went wrong and it was not possible to update prices');
+        $this->shouldThrow($exception)->duringUsingFile($filePath);
+    }
+```
 
-## Revisando Spec
+Lo más interesante de la misma es cómo tratamos las excepciones:
 
+* Primero, simulamos que `FileReader` lanzará una excepción de tipo RuntimeException, la cual en el código lanzaría realmente `FilePath`. Sin embargo, puesto que `FileReader` no la captura, la excepción subiría. Para `UpdatePricesFromUploadedFile` es como si la lanzase `FileReader`, por eso simulamos que la lanza este servicio.
+* Segundo, esperamos que `UpdatePricesFromUploadedFile` relance una excepción con un mensaje distinto. Así en lugar de esperar la clase de excepción, definimos una excepción pero con el mensaje que queremos verificar.
+
+Y su ejecución arrojaría el siguiente fallo, ya que no hay nada implementado:
+
+```
+
+      TalkingBit\BddExample\UpdatePricesFromUploadedFile
+
+  21  ✔ is initializable
+  26  ✔ should receieve a path to a file
+  31  ✔ should fail if file is empty
+  38  ✔ should update prices for the products in file
+  58  ✔ should fail if file has not the right structure
+  73  ✘ should fail if file does not exist
+        expected exception `message` to be "Something went wrong and ...", but it is "".
+```
+
+El ejemplo pasa con estos cambios, tras un poco de refactor:
+
+```php
+<?php
+
+namespace TalkingBit\BddExample;
+
+use RuntimeException;
+use TalkingBit\BddExample\FileReader\FileReader;
+use TalkingBit\BddExample\VO\FilePath;
+use UnexpectedValueException;
+
+class UpdatePricesFromUploadedFile
+{
+    /** @var FileReader */
+    private $fileReader;
+    /** @var ProductRepository */
+    private $productRepository;
+
+    public function __construct(ProductRepository $productRepository, FileReader $fileReader)
+    {
+        $this->fileReader = $fileReader;
+        $this->productRepository = $productRepository;
+    }
+
+    public function usingFile(FilePath $pathToFile): void
+    {
+        try {
+            $data = $this->fileReader->readFrom($pathToFile);
+            foreach ($data as $row) {
+                $this->checkIsAValidDataStructure($row);
+                $product = $this->productRepository->getById($row['product_id']);
+                $product->setPrice($row['new_price']);
+            }
+        } catch (UnexpectedValueException $exception) {
+            throw $exception;
+        } catch (RuntimeException $exception) {
+            throw new RuntimeException('Something went wrong and it was not possible to update prices');
+        }
+    }
+
+    private function checkIsAValidDataStructure($row): void
+    {
+        if (! isset($row['product_id']) || ! isset($row['new_price'])) {
+            throw new UnexpectedValueException('The file doesn\'t contain valid data to update prices');
+        }
+    }
+}
+```
+
+Pero aquí pasa algo raro. Al volver a ejecutar `behat` vuelve a darse el mismo error que antes y no se produce ningún cambio.
+
+Un análisis del flujo de pasos de escenarios nos indica que nunca provocamos que se produzca el error porque el paso "And There is an error in the system", en el que simulamos el error del sistema eliminando el archivo, ocurre después de haberlo leído, con lo cual nunca se lanza.
+
+Esto nos indica que hemos situado mal este paso ya que debería estar en **Given** y no en **When**. Es un tipo de error que nos señala la importancia de definir los escenarios correctamente.
+
+Basta colocarlo en el orden adecuado:
+
+```gherkin
+  Scenario: Update fails because a system error
+    Given There are current prices in the system
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "prices_update.csv" with the new prices
+      | product_id | new_price |
+      | 101        | 17        |
+      | 103        | 23        |
+    And There is an error in the system
+    When I upload the file
+    Then A message is shown explaining the problem
+      """
+      Something went wrong and it was not possible to update prices
+      """
+    And Changes are not applied to the current prices
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+```
+
+Ahora, ejecutamos `behat` y, por fin, hemos conseguido implementar la historia de usuario que negocio nos ha pedido:
+
+```
+3 scenarios (3 passed)
+15 steps (15 passed)
+0m0.04s (7.80Mb)
+```
+
+## Qué hemos conseguido
+
+En estos tres capítulos hemos aprendido a definir una historia de usuario mediante el lenguaje Gherkin, generando un documento en el que podemos trabajar tanto desde negocio como desde desarrollo, a través de un diálogo en el cual desarrollamos los conceptos del lenguaje ubicuo del dominio y, además, reducimos la ambigüedad y la imprecisión a través de ejemplos que definen el comportamiento del software.
+
+Hemos aprendido también a convertir, con la ayuda de `behat`, la definición de la historia de usuario en un test funcional de aceptación, de modo que pueda dirigir nuestro desarrollo de fuera hacia adentro (por así decir).
+
+Este test, nos ayuda a decidir por dónde comenzaremos a desarrollar el software necesario para satisfacer la historia de usuario. Recurriendo a la especificación por ejemplos y la herramienta `phpspec`, hemos ido descubriendo las interfaces de los colaboradores necesarios e implementándolos a medida que la ejecución de los tests nos lo reclamaba.
+
+Finalmente, este proceso nos ha permitido completar la `feature`, que no sólo es plenamente funcional, en los términos definidos en el documento Gherkin, sino que está totalmente cubierta por tests unitarios y un test de aceptación.
+
+## Hacia dónde vamos ahora
+
+En el próximo capítulo de esta serie intentaremos resolver algunas cuestiones que han quedado pendientes, como pueden ser:
+
+* Cómo asegurar que nuestro tests de aceptación prueba lo que dice que prueba
+* Refinar los comportamientos de los objetos participantes usando `phpspec` y el test de aceptación como red de seguridad
+* Cómo mejorar los test de aceptación y configurar `behat` para adaptarlo a nuestros entornos particulares: cambiar la ubicación de features, tests, nombres, etc.
+
+Además, en los siguientes capítulos veremos cómo realizar tests end-to-end, tanto para interfaces web como API. 

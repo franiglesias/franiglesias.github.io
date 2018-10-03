@@ -1617,4 +1617,422 @@ Resulta que es la misma implementación que el paso equivalente del escenario an
 
 Por otro lado, el paso siguiente (subir el archivo) falla puesto que al intentar utilizar los datos del mismo, no cuadran con lo que espera recibir. Tenemos varios temas interesantes aquí, así que vayamos por partes.
 
-Empecemos por considerar que tenemos código idéntico en dos pasos. Esta repetición nos daría pie a un refactor, ya que ambos pasos están en verde, consistente en extraer el método que monta el archivo csv.
+Empecemos por considerar que tenemos código idéntico en dos pasos. Esta repetición nos daría pie a un refactor consistente en extraer el método que monta el archivo csv, aprovechando que los pasos implicados están en verde.
+
+Es decir, la definición anterior quedaría así, lo que nos podría ayudar a entender mejor esta definición y apartar de nuestro foco el código auxiliar:
+
+```php
+    /**
+     * @Given I have a file named :pathToFile with invalid data
+     */
+    public function iHaveAFileNamedWithInvalidData(FilePath $pathToFile, TableNode $table)
+    {
+        $this->pathToFile = $pathToFile;
+        $this->createCsvFileWithDataFromTable($this->pathToFile->path(), $table);
+    }
+```
+
+## Implementando pasos que fallan
+
+El paso "**When** I upload the file" debería generar un fallo pero, a la vez, el paso como tal debe ejecutarse y ponerse en verde. Parece un poco contradictorio. Vamos a intentar desentrañar esto:
+
+* El paso simula que el archivo csv ha sido subido al sistema por el usuario.
+* El problema surge porque el contenido del archivo no está estructurado como el Use Case espera.
+* Tenemos un servicio CSVFileReader que lee los archivos CSV tengan el formato que tengan y los convierte en arrays. Sin embargo, este servicio no puede validarlo como tal.
+* Nos falta que el Use Case valide la estructura de datos leída y, en caso de que no sea la esperada, arroje una excepción que informe del error.
+
+En FeatureContext vamos a hacer que si ocurre una excepción durante el paso se guarde y se procese en el siguiente paso:
+
+```php
+    /**
+     * @When I upload the file
+     */
+    public function iUploadTheFile()
+    {
+        try {
+            $this->updatePricesFromUploadedFile->usingFile($this->pathToFile);
+        } catch (Throwable $exception) {
+            $this->lastException = $exception;
+        }
+    }
+```
+
+Esto permite que el paso se ejecute incluso si el UseCase falla, de modo que se guarda la excepción recibida en una propiedad de FeatureContext y se avanza al siguiente paso, donde compararemos el mensaje de la excepción con el mensaje esperado. No especificamos una excepción concreta porque no la vamos a tratar aquí de forma diferente. Si fuese necesario lo haremos en otro método.
+
+El mensaje esperado lo hemos definido en la feature en un formato denominado *pystring*, delimitando el texto entre comillas triples:
+
+```gherkin
+    Then A message is shown explaining the problem
+      """
+      The file doesn't contain valid data to update prices
+      """
+```
+
+Eso se maneja en `FeatureContext` con un tipo `PyStringNode`, el cual nos permite obtener el texto con el método `getRaw()`, así de simple:
+
+```php
+    /**
+     * @Then A message is shown explaining the problem
+     */
+    public function aMessageIsShownExplainingTheProblem(PyStringNode $expectedMessage)
+    {
+        $message = $this->lastException->getMessage();
+        Assert::assertEquals($expectedMessage->getRaw(), $message);
+    }
+```
+
+Ahora, al ejecutar behat obtenemos un mensaje más interesante que nos dice que aunque ha fallado la importación de los datos no obtenemos el error esperado.
+
+```
+  Scenario: Update fails because an invalid file                 # features/massiveUpdate.feature:23
+    Given There are current prices in the system                 # FeatureContext::thereAreCurrentPricesInTheSystem()
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "invalid_data.csv" with invalid data # FeatureContext::iHaveAFileNamedWithInvalidData()
+      | product_id | product_name |
+      | 101        | Product 1    |
+      | 103        | Product 2    |
+    When I upload the file                                       # FeatureContext::iUploadTheFile()
+    Then A message is shown explaining the problem               # FeatureContext::aMessageIsShownExplainingTheProblem()
+      """
+      The file doesn't contain valid data to update prices
+      """
+      Failed asserting that two strings are equal.
+      --- Expected
+      +++ Actual
+      @@ @@
+      -'The file doesn't contain valid data to update prices'
+      +'Argument 1 passed to TalkingBit\BddExample\Product::setPrice() must be of the type float, null given, called in src/TalkingBit/BddExample/UpdatePricesFromUploadedFile.php on line 28'
+    And Changes are not applied to the current prices            # FeatureContext::changesAreNotAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+```
+
+Este mensaje ya es un mensaje de test que falla. Implementar lo necesario para hacerlo pasar nos va a llevar a volver otra vez a `phpspec`.
+
+El objeto que va a lanzar la excepción en último término es `UpdatePricesFromUploadedFile`, así que empezaremos a trabajar con su Spec, añadiendo este ejemplo:
+
+```php
+    public function it_should_fail_if_file_has_not_the_right_structure(
+        FileReader $fileReader,
+        FilePath $filePath
+    ) {
+        $fileReader
+            ->readFrom($filePath)
+            ->willReturn(
+                [
+                    ['product_id' => 101, 'product_name' => 'Product 1']
+                ]
+            );
+
+        $this->shouldThrow(\UnexpectedValueException::class)->duringUsingFile($filePath);
+    }
+```
+
+Al ejecutar phpspec:
+
+```
+bin/phpspec run 'TalkingBit\BddExample\UpdatePricesFromUploadedFile'
+```
+
+Obtenemos este resultado:
+
+```
+
+      TalkingBit\BddExample\UpdatePricesFromUploadedFile
+
+  22  ✔ is initializable
+  27  ✔ should receieve a path to a file
+  32  ✔ should fail if file is empty
+  39  ✔ should update prices for the products in file
+  59  ✘ should fail if file has not the right structure
+        expected exception of class "UnexpectedValueException", but got [obj:TypeError] with the
+        message: "Return value of Double\ProductRepository\P16::getById() must be an instance of TalkingBit\BddExample\Product,
+        null returned"
+
+----  failed examples
+
+        TalkingBit/BddExample/UpdatePricesFromUploadedFile
+  59  ✘ should fail if file has not the right structure
+        expected exception of class "UnexpectedValueException", but got [obj:TypeError] with the
+        message: "Return value of Double\ProductRepository\P16::getById() must be an instance of TalkingBit\BddExample\Product,
+        null returned"
+
+
+1 specs
+5 examples (4 passed, 1 failed)
+19ms
+```
+
+Lo que nos fuerza a implementar en `UpdatePricesFromUploadedFile`:
+
+```php
+    public function usingFile(FilePath $pathToFile)
+    {
+        $data = $this->fileReader->readFrom($pathToFile);
+        foreach ($data as $row) {
+            if (!isset($row['product_id']) || !isset($row['new_price'])) {
+                throw new \UnexpectedValueException('The file doesn\'t contain valid data to update prices');
+            }
+            $product = $this->productRepository->getById($row['product_id']);
+            $product->setPrice($row['new_price']);
+        }
+    }
+```
+
+Y con esto hacemos que la Spec pase, lo que debería hacer que la feature también avance hasta el siguiente paso del escenario, cosa que ocurre.
+
+Es buen momento para refactorizar, ya que la validación del formato del archivo no es precisamente fácil de leer. A mí me gusta extraer este tipo de validaciones como cláusulas de guarda:
+
+```php
+<?php
+
+namespace TalkingBit\BddExample;
+
+use TalkingBit\BddExample\FileReader\FileReader;
+use TalkingBit\BddExample\VO\FilePath;
+use UnexpectedValueException;
+
+class UpdatePricesFromUploadedFile
+{
+    /** @var FileReader */
+    private $fileReader;
+    /** @var ProductRepository */
+    private $productRepository;
+
+    public function __construct(ProductRepository $productRepository, FileReader $fileReader)
+    {
+        $this->fileReader = $fileReader;
+        $this->productRepository = $productRepository;
+    }
+
+    public function usingFile(FilePath $pathToFile): void
+    {
+        $data = $this->fileReader->readFrom($pathToFile);
+        foreach ($data as $row) {
+            $this->checkIsAValidDataStructure($row);
+            $product = $this->productRepository->getById($row['product_id']);
+            $product->setPrice($row['new_price']);
+        }
+    }
+
+    private function checkIsAValidDataStructure($row): void
+    {
+        if (! isset($row['product_id']) || ! isset($row['new_price'])) {
+            throw new UnexpectedValueException('The file doesn\'t contain valid data to update prices');
+        }
+    }
+}
+```
+
+## Implementando el último paso
+
+En el segundo escenario nos queda por implementar el último paso, mediante el que comprobamos que los precios no han sufrido cambios. 
+
+```gherkin
+    And Changes are not applied to the current prices
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+```
+
+En realidad, es un paso similar al último del primer escenario, que definimos de esta manera:
+
+```
+    /**
+     * @Then Changes are applied to the current prices
+     */
+    public function changesAreAppliedToTheCurrentPrices(TableNode $productTable)
+    {
+        foreach ($productTable as $productRow) {
+            $product = $this->productRepository->getById($productRow['id']);
+            Assert::assertEquals($productRow['price'], $product->price());
+        }
+    }
+```
+
+Así que podríamos copiar el código:
+
+```php
+    /**
+     * @Then Changes are not applied to the current prices
+     */
+    public function changesAreNotAppliedToTheCurrentPrices(TableNode $productTable)
+    {
+        foreach ($productTable as $productRow) {
+            $product = $this->productRepository->getById($productRow['id']);
+            Assert::assertEquals($productRow['price'], $product->price());
+        }
+    }
+```
+
+Y así lograr que el segundo escenario quede completo.
+
+```
+3 scenarios (2 passed, 1 pending)
+15 steps (12 passed, 1 pending, 2 skipped)
+0m0.25s (7.77Mb)
+```
+
+## Cerrando el último escenario
+
+Nos queda un escenario por terminar, uno en el que un error del sistema impide que un archivo correcto se pueda utilizar para actualizar los precios. En realidad, sólo tenemos un paso por implementar, el que nos indica la condición de que ocurre el error del sistema.
+
+Una forma sencilla de provocar este error sería eliminar el archivo que hemos simulado subir, de este modo, el UseCase fallará al no tener nada de dónde leer.
+
+```php
+
+```
+
+Al ejecutar este último escenario se produce un error que no puede ser capturado de la forma deseada.
+
+```
+  Scenario: Update fails because a system error                     # features/massiveUpdate.feature:44
+    Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+    And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
+      | product_id | new_price |
+      | 101        | 17        |
+      | 103        | 23        |
+    When I upload the file                                          # FeatureContext::iUploadTheFile()
+    And There is an error in the system                             # FeatureContext::thereIsAnErrorInTheSystem()
+    Then A message is shown explaining the problem                  # FeatureContext::aMessageIsShownExplainingTheProblem()
+      """
+      Something went wrong and it was not possible to update prices
+      """
+      Fatal error: Call to a member function getMessage() on null (Behat\Testwork\Call\Exception\FatalThrowableError)
+    And Changes are not applied to the current prices               # FeatureContext::changesAreNotAppliedToTheCurrentPrices()
+      | id  | name      | price |
+      | 101 | Product 1 | 10.25 |
+      | 102 | Product 2 | 14.95 |
+      | 103 | Product 3 | 21.75 |
+```
+
+Veamos dónde trabajar ese error. En principio `UpdatePricesFromUploadedFile` es el candidato, pero en nuestro desarrollo inicial habíamos decidido que no se ocuparía de los detalles de gestión del archivo, asumiendo un path correcto (al menos en el momento de creación de FilePath) por lo que la circunstancia extraordinaria de que el archivo se hubiese vuelto inaccesible por algún motivo debería recaer en `CsvFileReader` que lanzará una excepción si no encuentra el archivo que debería leer.
+
+De hecho, no hemos descrito todavía esa situación, así que preparamos un ejemplo en `CSVFileReaderSpec`:
+
+```php
+    public function it_should_fail_if_file_does_not_exist(FilePath $filePath)
+    {
+        $pathToFile = '/var/tmp/non_existent_file.csv';
+        $filePath->path()->willReturn($pathToFile);
+        $this->shouldThrow(RuntimeException::class)->duringReadFrom($filePath);
+    }
+```
+
+Al escribir este ejemplo es fácil ver que tendría mucha lógica que fuese `FilePath` el objeto responsable de lanzar la excepción en caso de que el archivo ya no exista cuando se solicita el path. Así que nos llevamos un ejemplo parecido a la la `FilePathSpec`.
+
+```php
+    public function it_should_fail_if_there_is_not_file_in_the_path()
+    {
+        $path = '/var/tmp/no_existent.data';
+        touch($path);
+        $this->beConstructedWith($path);
+        unlink($path);
+        $this->shouldThrow(\RuntimeException::class)->duringPath();
+    }
+```
+
+Al ejecutarlo nos encontramos con un fallo, no del todo inesperado:
+
+```
+
+      TalkingBit\BddExample\VO\FilePath
+
+  11  ! is initializable (73ms)
+        exception [err:ArgumentCountError("Too few arguments to function TalkingBit\BddExample\VO\FilePath::__construct(), 0 passed and exactly 1 expected")] has been thrown.
+  16  ✘ should fail if there is not file in the path
+        expected to get exception / throwable, none got.
+```
+
+Así que arreglamos primero la Spec y luego implementamos lo que nos falta:
+
+```php
+<?php
+
+namespace spec\TalkingBit\BddExample\VO;
+
+use TalkingBit\BddExample\VO\FilePath;
+use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
+
+class FilePathSpec extends ObjectBehavior
+{
+    function it_is_initializable()
+    {
+        $path = '/var/tmp/file_with.data';
+        touch($path);
+        $this->beConstructedWith($path);
+        $this->shouldHaveType(FilePath::class);
+        $this->path()->shouldEqual($path);
+    }
+
+    public function it_should_fail_if_there_is_not_file_in_the_path()
+    {
+        $path = '/var/tmp/no_existent.data';
+        touch($path);
+        $this->beConstructedWith($path);
+        unlink($path);
+        $this->shouldThrow(\RuntimeException::class)->duringPath();
+    }
+}
+```
+Y esta sería la implementación:
+
+```php
+<?php
+
+namespace TalkingBit\BddExample\VO;
+
+use \RuntimeException;
+
+class FilePath
+{
+    /** @var string */
+    private $path;
+
+    public function __construct(string $path)
+    {
+        $this->path = $path;
+    }
+    public function path(): string
+    {
+        if (!file_exists($this->path)) {
+            throw new RuntimeException('File not found at '.$this->path);
+        }
+        return $this->path;
+    }
+}
+```
+
+Si lanzamos behat vemos que se produce una regresión, por lo que debemos cambiar el Transformer mediante el que se que obtiene FilePath, a fin de asegurarnos de que cuando se crea el objeto, hay un archivo en el path:
+
+```
+    /** @Transform :pathToFile */
+    public function getFilePath(string $pathToFile): FilePath
+    {
+        $fullPathToFile = '/var/tmp/' . $pathToFile;
+        touch($fullPathToFile);
+        return new FilePath($fullPathToFile);
+    }
+```
+
+De este modo conseguimos que el paso avance, lo que nos revela que la implementación que tenemos no es suficiente para completar el test. Es necesario detectar el problema en algún lugar y generar la excepción adecuada.
+
+## Doble check
+
+
+## Limpiar el entorno de test
+
+
+## Revisando Spec
+

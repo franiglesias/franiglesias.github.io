@@ -52,7 +52,17 @@ pre {
 	    margin-left: -$margin;
 	    padding-left: $margin;
 	    margin-right: -$margin;
-	    padding-right: $margin;
+		padding-right: $margin;
+		
+		&.cp {
+			color: #555;
+		}
+		
+	code {
+		font: {
+			family: 'Fira Mono', Monaco, Terminal, Courier, monospace;
+			}
+		}
 	}
 }
 

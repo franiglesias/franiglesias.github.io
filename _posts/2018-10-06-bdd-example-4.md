@@ -446,7 +446,7 @@ tests
 
 Así que comencemos con `behat`. Lo primero es crear archivo `behat.yml` en la raíz del proyecto, con este contenido:
 
-```
+```yaml
 default:
 ```
 
@@ -456,7 +456,7 @@ Dentro de un perfil se pueden definir varias suites o conjuntos de tests. Vamos 
 
 Vamos a empezar moviendo nuestras *features* a una carpeta particular, para lo que definimos la siguiente suite en **behat.yml**:
 
-```
+```yaml
 default:
   suites:
     product:
@@ -470,31 +470,18 @@ Una vez que tenemos esto, movemos el archivo `features/massiveUpdate.feature` a 
 
 Ahora vamos a mover y cambiar el nombre de FeatureContext.php para mantener la coherencia.
 
-Modificaremos **behat.yml** para indicar el archivo o archivos de test que se corresponden con esta suite:
+Modificaremos **behat.yml** para indicar el archivo o archivos de test que se corresponden con esta suite. Para eso también tenemos que ayudar al autoloader de `behat`:
 
-```php
+```yaml
 default:
+  autoload:
+    '': '%paths.base%/tests'
   suites:
     product:
       paths:
       - '%paths.base%/tests/Acceptance/Product/Features'
       contexts:
-      - Tests\TalkingBit\BddExample\Acceptance\Product\Context\MassiveUpdateContext
-```
-
-Vamos por partes:
-
-En la definición vamos a utilizar el *namespace* para test que definimos al principio en `composer.json`:
-
-```json
-  "autoload-dev": {
-    "psr-0": {
-      "": "src/"
-    },
-    "psr-4": {
-      "Tests\\TalkingBit\\BddExample\\": "tests/"
-    }
-  }
+      - Acceptance\Product\Context\MassiveUpdateContext
 ```
 
 También hemos aprovechado para cambiar el nombre de la clase y moverla a su ubicación definitiva. En la clase, por cierto, añadimos el *namespace* y nos aseguramos de que todo lo necesario esté correctamente importado.
@@ -502,7 +489,7 @@ También hemos aprovechado para cambiar el nombre de la clase y moverla a su ubi
 ```php
 <?php
 
-namespace Tests\TalkingBit\BddExample\Acceptance\Product\Context;
+namespace Acceptance\Product\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
@@ -520,9 +507,58 @@ use Throwable;
 
 Una vez que hemos movido la clase, podemos borrar la carpeta features original y lanzar `behat` para comprobar que los tests siguen pasando.
 
+Si conoces el formato **YAML** seguramente no se te ha escapado que definimos las features y contexts en la suite como un array. Esto quiere decir que es posible tener en una suite varias *features* y varios *contexts*. Cuando ejecutas `behat` para generar las definiciones de los pasos puede resultar un poquito lioso al principio ya que tienes la opción de enviar dichas definiciones a cualquier de los *contexts*. En cualquier caso, basta con cortar y pegar para mover definiciones entre contextos.
+
+### BDD on steroids: test de la feature en diferentes capas
+
+Una cosa interesante que nos permite esta forma de configuración es la posibilidad de utilizar la misma *feature* en Gherkin para escribir distintos tests de aceptación. En el ejemplo de esta serie de artículos hemos estado haciendo el test al nivel del UseCase, algo que lo caracterizaría más bien como un test de integración. Pero jugando con los perfiles y las suites es posible generar nuevos tests que podrían ser de tipo end-to-end y probar el mismo comportamiento llamando a un API o navegando la página que da acceso a esa característica.
+
+Por ejemplo, modificando el archivo **behat.yml**:
+
+```yaml
+default:
+  autoload:
+    '': '%paths.base%/tests'
+  suites:
+    products:
+      paths:
+      - '%paths.base%/tests/Acceptance/Product/Features'
+      contexts:
+      - Acceptance\Product\Context\MassiveUpdateContext
+
+    end_to_end:
+      paths:
+      - '%paths.base%/tests/Acceptance/Product/Features'
+      contexts:
+      - Acceptance\EndToEnd\Context\MassiveUpdateContext
+```
+
+y ejecutando `bin/behat --init`, se generará la clase context necesaria:
+
+```
++d tests/Acceptance/EndToEnd/Context - place your context classes here
++f tests/Acceptance/EndToEnd/Context/MassiveUpdateContext.php - place your definitions, transformations and hooks here
+```
+
+Y podemos ejecutar la suite especificándola mediante el parámetro `--suite`:
+
+```
+bin\behat --suite end_to_end
+```
+
+Lo que nos dará como resultado que el test indica que hay que definir los pasos pendientes, que son todos y que podemos hacer que se añadan a `MassiveUpdateContext` mediante el flag `--append-snippets`
+
+```
+bin\behat --suite end_to_end --append-snippets
+```
+
+De este modo, podemos hacer tests de aceptación en dos niveles diferentes, o en tantos como consideremos necesario, a partir de una única historia de usuario. En un futuro no muy lejano exploraremos cómo testear tanto web como api desde aquí.
+
 ### Moviendo las *Specs*
 
-Toca el turno a las especificaciones de `phpspec`. Mi mayor duda en este momento es cómo considerarlas en el contexto de un proyecto. Por un lado, no dejan de ser tests unitarios y tendría sentido ponerlas directamente bajo la carpeta tests/Unit. Sin embargo, hay equipos que podrían preferir mantener separados estos tests, de los realizados con phpunit.
+Toca el turno a las especificaciones de `phpspec`. Mi mayor duda en este momento es cómo considerarlas en el contexto de un proyecto. Por un lado, no dejan de ser tests unitarios y tendría sentido ponerlas directamente bajo la carpeta `tests/Unit`. Sin embargo, hay equipos que podrían preferir mantener separados estos tests de los realizados con `phpunit`.
+
+Por un lado, sintonizo con esta última idea: usar `phpspec` para el diseño y `phpunit` para tests unitarios más orientados al control de calidad, ya que `phpspec` fuerza algunas limitaciones como la de no poder usar *Data Providers* o las dificultades que puede tener para testear código *legacy* o, en general, código existente con defectos de diseño.
 
 En cualquier caso, la diferencia para configurarlo sería nada más que un nombre de carpeta.
 
@@ -584,10 +620,34 @@ use Prophecy\Argument;
 
 class %name% extends ObjectBehavior
 {
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(%subject_class%::class);
     }
 }
 
 ```
+
+Puedes sobreescribir cualquier plantilla de estas para adaptarla a tus preferencias de estilo de código:
+
+* class.template
+* interface.template
+* interface_method_signature.template
+* method.template
+* named_constructor_create_object.template
+* named_constructor_exception.template
+* private-constructor.template
+* returnconstant.template
+* specification.template
+
+Puedes ver las originales en la carpeta buscando en el `vendor/phpspec` de tu proyecto `src/PhpSpec/CodeGenerator/Generator/templates`.
+
+Una cosa que no podemos hacer es cambiar la convención de nombres de de ejemplos de `phpspec` que usa *snake_case* en lugar de la recomendación PSR de usar *camelCase*, y [y aquí puedes leer una discusión bastante profunda sobre las razones](https://github.com/phpspec/phpspec/issues/608).
+
+Se trata de una herramienta con [opiniones muy marcadas acerca de cómo programar y cómo hacer TDD](https://inviqa.com/blog/my-top-ten-favourite-phpspec-limitations). Me gustaría hablar de eso más a fondo en un futuro artículo, aunque te puedo adelantar que ha sido clave en mi aprendizaje personal sobre TDD.
+
+## Y ahora… ¿qué?
+
+En estos cuatro primeros capítulos hemos explorado las bases del BDD con las herramientas `behat` y `phpspec`, con lo que ya estaríamos listos para empezar a aplicar este enfoque en nuestros proyectos.
+
+Ahora querríamos seguir esta serie de artículos con dos enfoques: uno más teórico que nos sirva para desarrollar la idea del Behavior Driven Development y su aplicación en la interacción con negocio y otro más aplicado, orientado a la realización de distintos tipos de tests usando las herramientas disponibles.

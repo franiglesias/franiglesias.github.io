@@ -7,6 +7,18 @@
 
 $margin: 25%;
 
+p code {
+	font: {
+		size: inherit;
+		family: 'Fira Mono', Monaco, Terminal, Courier, monospace;	
+	};
+	color: #efefef;
+	margin: 0 4px;
+	padding: 4px 6px;
+	border-radius: 2px;
+	background-color: rgba(255,255,255,.2);
+}
+
 article {
 	&.post {
 		margin-bottom: 4.5rem;

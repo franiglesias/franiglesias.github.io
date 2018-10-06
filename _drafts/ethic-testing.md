@@ -21,7 +21,7 @@ Cuando ofrecemos un servicio a través de un programa de ordenador generamos cie
 * El programa no tiene fallos que impidan obtener el servicio que proporciona.
 * El programa no hace cosas que no deseo que haga, particularmente sin que lo sepa o lo autorice.
 
-Creemos que todas las personas que nos dedicamos al desarrollo de software estaríamos de acuerdo en que estos puntos son exigibles a cualquier aplicación, incluso sin hablar explícitamente de ética.
+Creemos que todas las personas que nos dedicamos al desarrollo de software estaríamos de acuerdo en que estos puntos son exigibles a cualquier aplicación, incluso sin hablar explícitamente de ética. Más aún, creemos que incluso las personas que no se dedican directamente al desarrollo de software, pero que sí son usuarias del mismo, podrían también aceptar esta lista como una serie de pautas que ese software debería respetar para que pueda decirse que funciona correctamente.
 
 Podríamos considerar la lista anterior como un conjunto de criterios que definen un software funcional. ¿De dónde han salido?
 
@@ -43,7 +43,7 @@ Por ejemplo, el funcionamiento incorrecto de un supermercado online puede tener 
 
 Existen diversos ejemplos de software que afectan a cuestiones críticas de la vida de las personas, o cuyo mal funcionamiento podría tener consecuencias graves e irreversibles.
 
-Pensemos, por ejemplo, en un software de ayuda al diagnostico médico o de monitorización de enfermos. ¿Cuáles podrían ser las consecuencias en el caso de que falle o no detecte alguna condición importante? Aquí no estamos hablando de una molestia, un retraso o un perjuicio económico, estamos hablando de la salud o incluso la vida de una persona.
+Pensemos, por ejemplo, en un software de ayuda al diagnóstico médico o de monitorización de enfermos. ¿Cuáles podrían ser las consecuencias en el caso de que falle o no detecte alguna condición importante? Aquí no estamos hablando de una molestia, un retraso o un perjuicio económico, estamos hablando de la salud o incluso la vida de una persona.
 
 En este tipo de software garantizar su correcto funcionamiento, así como sus límites, se convierte en algo crucial. Incluso sería necesario auditar sus algoritmos en busca de posibles sesgos a favor o en contra de ciertas condiciones.
 
@@ -51,7 +51,7 @@ Por ejemplo, Joy Buolamwini ha analizado [los problemas que tienen algunos algor
 
 Es decir, si entrenamos un sistema de reconocimiento con ejemplos de personas de piel blanca y rasgos caucásicos, desarrollará un sesgo a favor de este tipo de rostros, teniendo problemas para reconocer los que tienen otro tono de piel o rasgos.
 
-Otro tema tiene que ver con el software creado intencionadamente para comportarse de manera no ética o ilegal, Los ejemplos más evidentes proceden del campo del llamado "malware": virus, troyanos, sniffers y todo un abanico de herramientas diseñadas para causar algún tipo de daño.
+No estamos entrando a discutir software creado intencionadamente para comportarse de manera no ética o ilegal: "malware", virus, troyanos, sniffers y todo un abanico de herramientas diseñadas para causar algún tipo de daño. Entendemos que en este caso, ya se ha traspasado la barrera de la ética, y  no lo consideramos software plenamente funcional en el sentido de que se comporta de manera oculta al usuario, que no está obteniendo lo que espera de él.
 
 Surgen muchísimas cuestiones en torno a la ética en el desarrollo de software, pero en este trabajo nos centraremos en el aspecto ético de las buenas prácticas en general, y del testing en particular. Y para ello abordaremos un aspecto del código que es obvio y, sin embargo, es terriblemente complejo: su propósito.
 
@@ -63,7 +63,7 @@ Esa respuesta puede darse en diferentes niveles:
 
 Globalmente, una aplicación tiene un propósito amplio, que a veces puede describirse brevemente. Por ejemplo: usando esta aplicación podrás comprar comida desde tu ordenador. Es una sencilla descripción que apela a conocimientos que ya tenemos para hacernos una idea de cómo funcionaría y qué obtendríamos interactuando con ella.
 
-Sin embargo, para que eso ocurra tienen que darse una serie de procesos y movimientos de información. Sin entrar en muchos detalles, diríamos que la aplicación permite a un usuario elegir productos de un catálogo, y pagar por ellos usando una tarjeta de crédito. Para ello, la información de los productos se recopila y almacena, y se actualizan sus precios y disponibilidad según los movimientos de almacén y ventas. También se almacena y gestiona la información de proveedores y agentes, por no hablar la información de los compradores y su actividad en la tienda en línea, que se registra para poder elaborar un perfil de consumo y realizar ofertas personalizadas, además de la recoger la información necesaria para efectuar la compra y gestionar los pedidos, entregas, reclamaciones y otros muchos detalles.
+Sin embargo, para que eso ocurra tienen que darse una serie de procesos y movimientos de información. Sin entrar en muchos detalles, diríamos que la aplicación permite a un usuario elegir productos de un catálogo, y pagar por ellos usando una tarjeta de crédito. Para ello, la información de los productos se recopila y almacena, y se actualizan sus precios y disponibilidad según los movimientos de almacén y ventas. También se almacena y gestiona la información de proveedores y agentes, por no hablar de la información de los compradores y su actividad en la tienda en línea, que se registra para poder elaborar un perfil de consumo y realizar ofertas personalizadas, además de la recoger la información necesaria para efectuar la compra y gestionar los pedidos, entregas, reclamaciones y otros muchos detalles.
 
 Si bajamos a un nivel más técnico hablaríamos de tecnologías subyacentes para implementar cada una de las funciones y podríamos extendernos durante decenas de páginas.
 
@@ -105,9 +105,11 @@ En ese sentido, los nombres siempre deberían ser:
 * **Ubicuos**: los nombres definidos en el dominio de la aplicación están presentes en todos los niveles del código: nombres de clases, variables, métodos, funciones.
 * **Precisos**: los nombres deberían describir con precisión los conceptos, intenciones o efectos.
 
+Nombres imprecisos o inconsistentes pueden llevar a la introducción posterior de errores en el código, al perderse el sentido semántico de lo que nuestro software debería estar haciendo. Una base de código crece más rápido de lo que cualquier desarolladora puede mantener en mente en un momento dado. En cada instante, trabajamos sólo en una pequeña parte, una faceta del todo, y es fácil olvidar qué función cumple con respecto al resto del código. Un uso inconsistente de la nomenclatura podría inducirnos a error en cuanto a la función que cumple la pequeña parte en la que estamos trabajando.
+
 ### Principios de diseño
 
-Los principios de diseño nos proporcionan criterios para evaluar y tomar decisiones sobre cómo escribimos el código, Los principios de diseño se orientan a al creación de un código inteligible y sostenible, por lo que contribuyen a generar un código honesto.
+Los principios de diseño nos proporcionan criterios para evaluar y tomar decisiones sobre cómo escribimos el código, Los principios de diseño se orientan a la creación de un código inteligible y sostenible, por lo que contribuyen a generar un código honesto.
 
 ### Patrones de diseño
 
@@ -117,11 +119,14 @@ Por una parte, constituyen un vocabulario con el que identificar, describir y re
 
 Por otro lado, son soluciones eficaces y probadas siempre que se apliquen a los problemas correctas, con lo cual contribuyen a que el software ofrezca la mejor respuesta posible.
 
+
+No debemos olvidar que rara vez una sola persona escribe una pieza completa de software. Lo más habitual es que varias personas participen en la creación de este software (y quizá también en su auditoría) a lo largo de un período de tiempo relativamente largo. Mantener  patrones consistentes y una buena nomenclatura facilita la legibilidad posterior, y por tanto, el trabajo de cada persona que tenga que ayudar a construir sobre esas bases previas. De la misma manera, como desarrolladores de software, lo mejor que podemos esperar al zambullirnos en un proyecto es que todo el desarrollo anterior se haya llevado a cabo con esta idea en mente, facilitando así nuestra tarea.
+
 ## Credibilidad
 
 Las buenas prácticas nos ayudan a escribir código que refleje lo mejor posible nuestros objetivos, intenciones y visión del problema. El código se convierte en un relato.
 
-La honestidad que demuestra un código bien escrito necesita ser apoyada por pruebas que aporte credibilidad. Si de la lectura del código podemos extraer "lo que el código dice que hace", ahora debemos asegurar que "el código hace lo que dice".
+La honestidad que demuestra un código bien escrito necesita ser apoyada por pruebas que aporten credibilidad. Si de la lectura del código podemos extraer "lo que el código dice que hace", ahora debemos asegurar que "el código hace lo que dice".
 
 Y para eso tenemos el testing.
 
@@ -137,6 +142,11 @@ Finalmente, los tests de aceptación acreditan el funcionamiento del software co
 
 Otros tipos de tests no funcionales, como los de velocidad, carga, rendimiento, etc, contribuyen a esta credibilidad midiendo la eficiencia con la que el software da respuesta a esas necesidades que dice resolver.
 
+Los tests automáticos tienen una doble vertiente, tienen dos caras. Si bien nos ayudan a garantizar la veracidad del código, no podemos olvidar que son también, en sí mismos, código. Y por tanto, deberán seguir las mismas estrictas normas de desarrollo de código expresadas arriba. Deberían ser legibles en su narrativa, mantener un uso coherente y consistente de los nombres, que además deberá coincidir con el utilizado en el desarrollo bajo prueba. Deberán respetar patrones de diseño que los hagan mantenibles. Y deberán estar disponibles siempre que sea necesario.
+
+En este sentido, la realidad de los tests alcanza una profundidad quizá todavía más compleja que la de su contrapartida el software bajo prueba, puesto que deben ser a la vez buen software, una herramienta de desarrollo más, y la clave de la credibilidad del software desarrollado.
+
+De ahí que una de las fortalezas del diseño de software basado en tests sea que, una vez que somos capaces de aprender a escribir los tests que necesitamos, escribir la funcionalidad, es en realidad, una tarea más sencilla. 
 
 ## Referencias
 
@@ -160,12 +170,13 @@ Código mentiroso es el código que no hace lo que dice que hace. Y, como en tod
 * El código que hace cosas de manera oculta, además de lo que dice que hace.
 * El código que pretende, directamente, engañarnos.
 
+Cabe destacar que en esta lista se intenta tan solo describir el concepto del código mentiroso, como contrapartida del código funcional presentado más arriba. Claramente, la intencionalidad de la persona que escribe el código es clave en cada uno de estos puntos, pero no entraremos ahora a evaluarla.
 
 ## ¿Cuál es el coste de realizar un mal trabajo?
 
 Definir lo que es un buen o mal trabajo implica haber establecido un conjunto de criterios, un sistema de valores.
 
-En buena parte esta definición tiene que ver con los efectos que produce un buen o mal trabajo, algo que puede ser o no cuantificable, pero que también depende de los efectos que produce.
+En buena parte esta definición tiene que ver con los efectos que produce un buen o mal trabajo, algo que puede ser cuantificable o no, pero que también depende de los efectos que produce.
 
 Veamos algunos ejemplos:
 
@@ -175,6 +186,8 @@ El código difícil de mantener puede implicar diferentes costes:
 
 * Si en el futuro es necesario cambiarlo, requerirá más tiempo que si estuviese diseñado para la mantenibilidad. Este tiempo tiene un coste en horas de desarrollo que se puede cuantificar.
 * Si ese código tiene fallos, puede ser difícil encontrarlos y subsanarlos. De nuevo, coste de horas de trabajo.
+
+Este efecto, sin embargo, podría considerarse a parte de los presentados arriba, en el sentido de que no afecta tanto a las personas que utilizan este software, sino a quienes lo crean. Quizá no sea código mentiroso, quizá se trate de software funcional. Sin embargo, la falta de atención a un diseño mantenible, pueden llevar a esta situación que genera un sobrecoste y bastante frustración a la hora de trabajar con esta base de código.
 
 ### Software con errores
 
@@ -203,6 +216,9 @@ Los motivos prácticos
 * Demostración formal de cómo funciona el código y qué hace
 
 Los motivos éticos
+* Escribir la narrativa necesaria nos ayuda a entender y dar respuesta a la pregunta sobre qué hace el software que vamos a escribir.
+* Entender esta narrativa, nos da la capacidad de preguntarnos si este software tiene carencias, o es en sí mismo ético o no como producto final.
+* A día de hoy, el software ya no es tan sólo un reflejo, un modelo de la realidad. En muchos casos, es el software el que modela la realidad. Un claro ejemplo de esto es el sistema bancario. La realidad de nuestra situación económica depende de una base de código y su correspondiente base de datos. Como creadores de algunas de estas dimensiones, tenemos la obligación de garantizar que actúan como se espera.
 
 
 

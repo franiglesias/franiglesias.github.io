@@ -5,7 +5,7 @@ categories: articles
 tags: php bdd testing
 ---
 
-En el [primer artículo de la serie](/2018-09-16-bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta Behat. En el [segundo](2018-09-16-bdd-example-2), utilizamos phpspec para comenzar a desarrollar nuestra feature, partiendo de un *Use Case* y descubriendo las clases colaboradoras necesarias a medida que identificamos responsabilidades. En esta tercera entrega pretendemos a empezar a unir las piezas.
+En el [primer artículo de la serie](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta Behat. En el [segundo](/bdd-example-2), utilizamos `phpspec` para comenzar a desarrollar nuestra feature, partiendo de un *Use Case* y descubriendo las clases colaboradoras necesarias a medida que identificamos responsabilidades. En esta tercera entrega pretendemos a empezar a unir las piezas.
 
 Al final de la fase anterior conseguimos desarrollar el *Use Case* `UpdatePricesFromUploadedFile` y descubrimos las interfaces de sus colaboradores. Es un buen momento para volver a `FeatureContext` y completar el test de aceptación. Para eso, tenemos que revisar las interfaces generadas, implementar varias cosas y tomar algunas decisiones.
 
@@ -2174,4 +2174,4 @@ En el próximo capítulo de esta serie intentaremos resolver algunas cuestiones 
 * Refinar los comportamientos de los objetos participantes usando `phpspec` y el test de aceptación como red de seguridad
 * Cómo mejorar los test de aceptación y configurar `behat` para adaptarlo a nuestros entornos particulares: cambiar la ubicación de features, tests, nombres, etc.
 
-Además, en los siguientes capítulos veremos cómo realizar tests end-to-end, tanto para interfaces web como API. 
+Además, en [los siguientes capítulos](/bdd-example-4) veremos cómo realizar tests end-to-end, tanto para interfaces web como API. 

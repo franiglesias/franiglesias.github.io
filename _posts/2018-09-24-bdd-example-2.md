@@ -5,7 +5,7 @@ categories: articles
 tags: php bdd testing
 ---
 
-En el [artículo anterior](/2018-09-16-bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta Behat. Al final del mismo, nos habíamos quedado con una feature escrita en Gherkin y un test de aceptación vinculado fallando.
+En el [artículo anterior](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta Behat. Al final del mismo, nos habíamos quedado con una feature escrita en Gherkin y un test de aceptación vinculado fallando.
 
 Antes de continuar me gustaría puntualizar algunas cosas cuya ausencia podríais haber notado.
 
@@ -1559,8 +1559,6 @@ No vamos a programar ahora a los colaboradores, sino que vamos a imaginarnos có
 
 De hecho, hemos podido desarrollar la funcionalidad básica del *Use Case*, con el mínimo código posible y todo razonablemente bien diseñado y desacoplado, respetando los principios de diseño desde el primer momento.
 
-En el próximo capítulo de esta serie, seguiremos avanzando en el desarrollo de la *feature* explorando diversos enfoques, aprendiendo cómo podemos ampliarla con nuevas demandas de negocio y viendo cómo el diálogo entre desarrollo y negocio puede ayudar a ambas partes a crear mejores productos.
+En el [próximo capítulo](/bdd-example-3) de esta serie, seguiremos avanzando en el desarrollo de la *feature* explorando diversos enfoques, aprendiendo cómo podemos ampliarla con nuevas demandas de negocio y viendo cómo el diálogo entre desarrollo y negocio puede ayudar a ambas partes a crear mejores productos.
 
 Veremos también cómo podemos escribir los colaboradores de manera independiente y también algunas capacidades interesantes tanto de `behat` como de `phpspec`.
-
-[Introducción a Behavior Driven Development en PHP (1)](/2018-09-16-bdd-example-1)

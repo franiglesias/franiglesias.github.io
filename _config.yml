@@ -17,20 +17,29 @@ avatar: https://avatars2.githubusercontent.com/u/16079996?s=460&v=4
 
 # Includes an icon in the footer for each username you enter
 footerlinks:
-  dribbble:
   email: franiglesias@mac.com
   github: franiglesias
   linkedin: francisco-iglesias-gómez-090287139
   rss: yes
   twitter: talkingbit1
-  facebook:
-  flickr:
-  instagram:
-  pinterest:
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
-  googleplus: # anything in your profile username that comes after plus.google.com/
 
+authors:
+  fran:
+    name: Fran Iglesias
+    display_name: Fran Iglesias
+    email: franiglesias@mac.com
+    github: franiglesias
+    linkedin: francisco-iglesias-gómez-090287139
+    twitter: talkingbit1
+  paula:
+    name: Paula Julve
+    display_name: Paula Julve
+    email: 
+    github: paulajulve
+    linkedin: paula-julve-2736b430
+    twitter: PaulaJulve
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account

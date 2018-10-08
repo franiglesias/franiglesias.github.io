@@ -20,6 +20,16 @@ p code {
 }
 
 article {
+	div.authors {
+		p {
+			font: {
+				size: 14px;
+				style: oblique
+			}
+			text-align: center;
+		}
+	}
+
 	&.post {
 		margin-bottom: 4.5rem;
 	

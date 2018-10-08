@@ -2,6 +2,7 @@
 layout: post
 title: Polimorfismo y extensibilidad de objetos
 categories: articles
+authors: [Fran Iglesias]
 tags: design-principles
 ---
 

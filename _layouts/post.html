@@ -1,10 +1,17 @@
 ---
 layout: basic
 ---
-
 <article class="post full-post">
   <h1>{{ page.title }}</h1>
-
+  <div class="authors">
+	  <p>
+  {% if page.authors %}
+	  {{ page.authors | join: ", " }}
+  {% else %}
+	  {{ authors.fran.name }}
+  {% endif %}
+		</p>
+    </div>
   <div class="entry">
     {{ content }}
   </div>

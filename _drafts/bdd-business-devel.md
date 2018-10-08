@@ -39,4 +39,108 @@ Por resumir, la metodología de desarrollo ágil tiene como objetivo obtener fee
 
 ## La comunicación en el desarrollo de software
 
+En un proyecto agile la comunicación debe fluir entre los interesados (stakeholders) en el software y el equipo de desarrollo.
+
+En un primer momento, los stakeholders expresan sus necesidades, requisitos y objetivos sobre el software que se pretende crear. El equipo de desarrollo tiene que ocuparse de hacer preguntas para reducir las lagunas de información y reducir la ambigüedad y la imprecisión.
+
+A medida que se hacen entregas, los stakeholders deben proporcionar feedback sobre las mismas, para que el equipo de desarrollo sepa si está entregando el producto deseado o debe realizar modificaciones. A su vez, el equipo tiene que expresar dudas y dificultades que hayan surgido para recabar información que le ayude a resolverlas.
+
+Además, el equipo tiene que coordinarse internamente, comunicando su nivel de progreso, las posibles fuentes de bloqueo o faltas de información y llegar a acuerdos para lograr la interoperabilidad entre diversas partes.
+
+Pero tener feedback de los stakeholders (o de los propios integrantes del equipo) al final de cada sprint no es suficiente. Al fin y al cabo tenemos los requisitos definidos al comienzo de cada sprint y con ellos podemos diseñar tests que nos digan si el software los cumple, tests que podemos escribir y ejecutar cada vez que realizamos un cambio, lo que nos proporciona un feedback mucho más frecuente y, además, replicadble.
+
+Así que también tenemos un espacio de comunicación que está basado en el propio código: los tests.
+
+Pero, puesto que tenemos los requisitos o especificaciones antes de escribir el código, ¿por que no escribir los tests antes del código y de este modo programar para llegar a cumplir con los tests y, en consecuencia, con los requisitos?
+
+Esta es, básicamente, la definición de Test Driven Development en el contexto del desarrollo ágil. El testing no sólo como una forma de verificar que el código que implementamos se ajusta a las demandas de los stakeholders, sino como una guía para escribirlo.
+
+Y esto nos lleva al Bahavior Driven Design (y al artículo de Dan North)
+
+## Comunicación a través de tests: el origen del BDD
+
+[Lo que expone Dan North](https://dannorth.net/introducing-bdd/) es algo que muchas personas descubren cuando intentan introducir la metodología TDD y que se puede resumir en unas pocas preguntas, entre otras:
+
+* ¿Por dónde empiezo?
+* ¿Cuánto testing necesito?
+* ¿Cómo nombrar los tests?
+* ¿Qué es hacer que un test falle?
+
+La respuesta de North a estas preguntas comienza de forma progresiva y es lo que vamos a resumir a continuación:
+
+### Tests como documentación
+
+**Los nombres de los tests deberían ser frases**. De hecho, usando herramientas adecuadas, los nombres de los métodos de los tests sirven como documentación inicial del código:
+
+```php
+public function testsFailsIfFileNotFound()
+```
+
+se puede convertir en:
+
+```
+Fails is file not found
+```
+
+Este cambio puede tener un gran efecto, hasta el punto de llevarnos a escribir los nombres de los métodos de los tests como frases que describen lo que esperamos que pase:
+
+```php
+public function testsItFailsIfExpectedFileIsNotFound()
+```
+
+se puede convertir en:
+
+```
+It fails is expected file is not found
+```
+
+### Test enfocados
+
+Usar una plantilla para los nombres de los métodos como **ShouldDoThisThing** puede provocar un efecto de enfoque sobre un único tests. North sugiere también que si resulta complicado nombrar el test con esa plantilla nos podría estar indicando que comportamiento pertenece a otra clase.
+
+### Los tests expresivos ayudan cuando fallan
+
+En general, los tests nos ayudan más cuando fallan, porque nos dicen cosas que no sabíamos. Si un test falla lo podemos identificar fácilmente por su nombres y nos puede dar tres tipos de información:
+
+* Que hemos cometido un error y dónde, por lo que podemos corregirlo.
+* El comportamiento que estamos testeando está en otra parte, así que movemos el test.
+* El comportamiento que estamos testeando ya no es relevante, así que borramos el test.
+
+### Hablemos de comportamientos y no de tests
+
+Al ir introduciendo estas ideas el concepto mismo de test resulta cuestionable. Un test se asocia con comprobar si se cumple algo, mientras que Test Driven Development busca más bien definir los comportamientos de la unidad de software que estamos desarrollando. En cierto sentido, no podemos testear lo que no existe, sino que podemos describir cómo queremos que funcione.
+
+### Una herramienta para describir comportamiento
+
+A finales de 2003, Dan North comenzó a desarrollar JBehave, como alternativa a JUnit. Es decir, quería crear una herramienta para hacer TDD desde el planteamiento centrado de comportamientos que acabamos de definir.
+
+En PHP, la herramienta equivalente es **phpspec**.
+
+### Comportamiento y valor de negocio
+
+La conexión entre código y valor de negocio es una de las claves del desarrollo ágil y lo interesante es que al adoptar este enfoque de TDD basado en el comportamiento surge de forma bastante natural una pregunta que reemplaza a la que nos hacíamos al principio. En lugar de "¿por dónde empiezo a testear?", la pregunta que nos hacemos es: "¿cuál es el siguiente comportamiento más importante que el sistema no tiene?".
+
+O lo que es casi lo mismo: ¿cuál es la siguiente característica que aportará más valor?
+
+### BDD se encuentra con DDD
+
+Poco a poco, una herramienta técnica se va convirtiendo en una herramienta para hablar sobre el negocio. Si los nombres de los métodos de los tests son frases que expresan lo que la unidad de software debería hacer en términos de negocio, ¿no estamos hablando de usar el lenguaje ubicuo sugerido por Eric Evans en su propuesta de Domain Driven Design?
+
+Así que, por una parte, el BDD podría ser una herramienta que ayude a desarrollar el lenguaje ubicuo en un dominio. Pero para ello, se necesita también un cierto lenguaje ubicuo del proceso de análisis, un vocabulario y estructuras de uso común que faciliten la comunicación entre el equipo de desarrollo y los stakeholders.
+
+Este lenguaje es Gherkin y con él se describen las historias de usuario en BDD, junto los criterios de aceptación que definen su comportamiento.
+
+Como Gherkin es un lenguaje natural, sólo que cuenta con una cierta estructura y un vocabulario preciso, puede ser hablado tanto por desarrolladores como por negocio. Las historias pueden ser construidas en conversación.
+
+### Historias de Usuario ejecutables
+
+El último paso del desarrollo de BDD llega con las historias de usuario ejecutables. Los criterios de aceptación de las historias se definen como escenarios en los que se describen las condiciones de partida, la acción que se aplica al sistema y los resultados que esperamos obtener.
+
+Si representamos con código esos pasos y los vinculamos con su formulación en Gherkin tenemos un tests de aceptación de la historia, que ha sido definido por negocio.
+
+
+
+## Gherkin a fondo
+
+
 

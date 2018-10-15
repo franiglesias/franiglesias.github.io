@@ -25,22 +25,6 @@ footerlinks:
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
 
-site.data.authors:
-  fran:
-    name: Fran Iglesias
-    display_name: Fran Iglesias
-    email: franiglesias@mac.com
-    github: franiglesias
-    linkedin: francisco-iglesias-gómez-090287139
-    twitter: talkingbit1
-  paula:
-    name: Paula Julve
-    display_name: Paula Julve
-    email: 
-    github: paulajulve
-    linkedin: paula-julve-2736b430
-    twitter: PaulaJulve
-
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
 disqus: the-talking-bit

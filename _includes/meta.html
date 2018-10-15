@@ -10,8 +10,8 @@
     <meta name="description" content="{{ site.description }}">
     <meta property="og:description" content="{{ site.description }}" />
     {% endif %}
-    <meta name="author" content="{% if page.authors %}{{ page.authors | join: ', ' }}{% else %}{{ site.authors.fran.name }}{% endif %}" />
-	<meta property="og:author" content="{% if page.authors %}{{ page.authors | join: ', ' }}{% else %}{{ site.authors.fran.name }}{% endif %}" />	
+    <meta name="author" content="{% if page.author %}{{ page.author | join: ', ' }}{% else %}{{ site.authors.fran.name }}{% endif %}" />
+	<meta property="og:author" content="{% if page.author %}{{ page.author | join: ', ' }}{% else %}{{ site.authors.fran.name }}{% endif %}" />
     {% if page.title %}	
     <meta property="og:title" content="{{ page.title }}" />
     <meta property="twitter:title" content="{{ page.title }}" />

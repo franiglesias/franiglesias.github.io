@@ -2,7 +2,7 @@
 layout: post
 title: La ética de las buenas prácticas (1)
 categories: articles
-authors: [Paula Julve, Fran Iglesias]
+authors: [paula, fran]
 tags: testing soft-skills ethics
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: La ética de las buenas prácticas (1)
 categories: articles
-authors: [paula, fran]
+author: [paula, fran]
 tags: testing soft-skills ethics
 ---
 

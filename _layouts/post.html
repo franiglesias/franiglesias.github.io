@@ -7,7 +7,7 @@ layout: basic
 	  <p>por 
   {% if page.author %}
         {% for author in page.author %}
-        {{ site.data.authors.[author].name }}
+        {{ site.data.authors[author].name }}
         {% endfor %}
   {% else %}
 	  {{ site.data.authors.fran.name }}

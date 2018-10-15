@@ -2,8 +2,8 @@
 layout: post
 title: La ética de las buenas prácticas (1)
 categories: articles
-authors: [Paula Julve, Fran Iglesias]
-tags: design-principles
+authors: [paula, fran]
+tags: testing soft-skills ethics
 ---
 
 La ética es la rama de la filosofía que se ocupa del "buen vivir". Pero no en el sentido hedonista que podrías imaginar a por la expresión, sino en el sentido de la manera correcta de vivir.
@@ -58,7 +58,30 @@ Es decir, si entrenamos un sistema de reconocimiento con ejemplos de personas de
 
 No estamos entrando a discutir software creado intencionadamente para comportarse de manera no ética o ilegal: "malware", virus, troyanos, sniffers y todo un abanico de herramientas diseñadas para causar algún tipo de daño. Entendemos que en este caso, ya se ha traspasado la barrera de la ética, y  no lo consideramos software plenamente funcional en el sentido de que se comporta de manera oculta al usuario, que no está obteniendo lo que espera de él.
 
-Surgen muchísimas cuestiones en torno a la ética en el desarrollo de software, pero en este trabajo nos centraremos en el aspecto ético de las buenas prácticas en general, y del testing en particular. Y para ello abordaremos un aspecto del código que es obvio y, sin embargo, es terriblemente complejo: su propósito.
+
+## Software desde el punto de vista del usuario ##
+
+Como desarrolladores pocas veces pensamos de igual a igual en los usuarios del código que escribimos. La idea de estos usuarios como seres completamente al margen de nuestro desarrollo y destructores en potencia del mismo está mucho más extendida de lo que nos gustaría admitir aquí. Sin embargo, hay varios puntos sobre los que queremos reflexionar.
+
+* **No existe software sin usuarios.** El software sin usuarios está destinado a la muerte y al olvido. Los usuarios son la razón de la propia existencia de cualquiera de estas herramientas.
+* **Todos somos usuarios.** A día de hoy, vivimos rodeados de software. Desde nuestros ordenadores y teléfonos móviles hasta nuestros coches, lavadoras, nuestro sistema bancario, las máquinas de diagnóstico médico, y un largo etcétera. Pocas cosas más complejas que un columpio quedan a día de hoy libres de algún tipo de software. Y nadie en nuestra sociedad puede ya vivir por completo al margen de él.
+* **Como desarrolladores, no confiamos en nuestros usuarios. Como usuarios, no tenemos elección.** Por más desconfiados que queramos ser como usuarios, no podemos sino confiar en los semáforos para regular el tráfico de la ciudad. Confiar en el software de la máquina de rayos X que utiliza un profesional médico para determinar nuestro tratamiento. Confiar en que el software del banco que utilicemos no nos cargará dos veces un recibo o perderá nuestros ingresos. No podemos elegir no confiar, porque sencillamente, necesitamos utilizar estos servicios, y no hay ninguna otra alternativa real.
+
+Dentro de este marco, surge la posibilidad de rediseñar la idea que tenemos de los principios de desarrollo de buen software, de nuevo, no ya desde el punto de vista de la desarrolladora, sino de la usuaria del mismo. Así, hemos establecido estos cinco principios:
+
+* **S**tandard behavior
+* **M**anageability
+* **A**vailability
+* **R**eliability
+* **T**ruthfulness
+
+* **Standard behavior** Como usuarios, esperamos que nuestro softare se comporte de la misma manera a lo largo del tiempo. No se trata de que todo el software que se escribe se comporte de alguna manera específica, sino de que cada pieza de software con la que interactuamos, mantenga siempre un comportamiento igual o suficientemente similar como para ser reconocible y predecible. Necesitamos poder confiar en que el software que utilizamos se comportará hoy igual que lo hizo ayer.
+* **Manageability** Como usuarios, necesitamos ser capaces de manejar el software con el que interactuamos. Aquí hay toda una gama de niveles, desde el software que debe ser más o menos obvio de manera intuiva para nosotros para poder funcionar, como sería el caso de la mayor parte de aplicaciones de móvil, hasta software altamente complejo que requiere un aprendizaje especializado, donde englobaríamos actividades como el uso de maquinaria de diagnóstico médico. El camino puede ser diferente, pero el objetivo es común. La persona usuaria de ese software tiene que poder manejarlo de manera totalmente independiente a las personas desarrolladoras del mismo.
+* **Availability** Este concepto engloba también una situación bastante amplia, pero la idea es que como usuarios, necesitamos poder obtener en todo momento el servicio que se supone que el software ofrece. Esto va desde la garantía de que el software está operativo (que las máquinas arranquen el programa debidamente, que no tenga bugs que impidan su funcionamiento, que los servidores estén disponibles), hasta problemas tan complejos como accesibilidad para personas con discapacidad (páginas web con soporte para personas ciegas), o sesgos que como en el caso de Joy, le impiden obtener el servicio de reconocimiento facial por una clara carencia en el algoritmo utilizado.
+* **Reliability** Como usuarios, de nuevo, necesitamos poder confiar en que nuestro software hará lo que dice que hace. Si compramos un billete de avión a través de una página web, esperamos que la reserva se registre correctamente y el cobro se realice también de la misma manera. Esperamos que el sistema de frenado electrónico de nuestros coches funcione cuando lo necesitamos. Esperamos que un algoritmo de reconocimiento facial, reconozca nuestro rostro y nos permita interactuar. La falta de fiabilidad del código puede generar todo tipo de consecuencias, desde las más inocuas hasta las más graves, desde no reservar una entrada de cine en la sesión adecuada, a un fallo en un diagnóstico médico con todas las consecuencias que eso pudiera acarrear, o un fallo en el sistema de dirección de un automóvil.
+* **Truthfulness** Como usuarios, esperamos que el software que utilizamos no nos mienta. Así de sencillo. Esperamos no estar utilizando malware, claro. Pero también esperamos que grandes empresas como Google, Facebook o Amazon respeten el uso de la información que consiguen de nosotros al utilizar sus servicios. Esperamos que fabricantes como Volkswagen no nos esté engañando con el rendimiento de sus motores. Esperamos que el software haga lo que dice que hace.
+
+Y volviendo a nuestra piel de desarrolladores, pero manteniendo en mente que somos también usuarios, queremos instar a todxs los desarrolladorxs de software a que mantengan los principios que han venido utilizando hasta ahora (SOLID, DRY, etc), a la vez que introducimos esta nueva idea de escribir código **SMART**.
 
 ## ¿Qué hace tu código?
 
@@ -78,13 +101,8 @@ La persona que utiliza nuestro programa ejecuta un acto de fe, de confianza cieg
 
 ¿Cómo podemos entonces asegurar que el código hace lo que decimos que hace?
 
-Fundamentalmente a través de dos vías:
+Fundamentalmente hay dos vías que nos lo permiten. La primera consiste en **aumentar la legibilidad del código**.Aunque sea una tarea ímproba leer el código de una aplicación para entender lo que hace, lo cierto es que un código escrito con la legibilidad en mente facilita, además de su mantenimiento, su auditoría. De este modo, se podrían examinar secciones de código para que personas externas puedan hacerse una idea de cómo funciona. Aquí es donde intervienen las buenas prácticas de programación.
 
-* **Aumentando su legibilidad**: aunque sea una tarea ímproba leer el código de una aplicación para entender lo que hace, lo cierto es que un código escrito con la legibilidad en mente facilita, además de su mantenimiento, su auditoría. De este modo, se podrían examinar secciones de código para que personas externas puedan hacerse una idea de cómo funciona. Aquí es donde intervienen las buenas prácticas de programación.
-
-* **Aumentando su credibilidad** mediante tests. Los tests nos permiten realizar afirmaciones objetivas y reproducibles sobre las capacidades de nuestro software. Además, los distintos niveles de tests nos habilitan para hacerlo en los diferentes niveles de la organización del código: desde las unidades de software a los tests de aceptación, que hablan el lenguaje del dominio y, por tanto, del usuario.
-
-Si tenemos la voluntad de escribir código que sea honesto, las buenas prácticas y el testing son nuestras herramientas. ¿Cómo operan cada una de ellas?
 
 ## Legibilidad
 
@@ -92,7 +110,7 @@ Teóricamente el código se puede leer y deducir qué es lo que hace interpretá
 
 Para que eso sea posible, el código debe representar el problema que resuelve, los conceptos y operaciones implicados en los diferentes niveles de abstracción.
 
-Volviendo a la idea de la honestidad del código, la forma que tendríamos de evaluarla sería leyéndolo. Escribir código honesto implica adoptar una serie de prácticas. 
+Volviendo a la idea de la honestidad del código, la forma que tendríamos de evaluarla sería leyéndolo. Escribir código honesto implica adoptar una serie de prácticas.
 
 Los compiladores e intérpretes pueden entender y hacer funcionar los códigos más enrevesados e ilegibles. De hecho, esta estrategia ha sido usada para ocultar el funcionamiento del mismo a miradas curiosas. Precisamente por esa capacidad podemos decidir escribir un código que se pueda leer por personas ya sean éstas otras programadoras que han de trabajar con él, ya sea auditoras que deban certificar qué es lo que el código hace.
 
@@ -127,103 +145,12 @@ Por otro lado, son soluciones eficaces y probadas siempre que se apliquen a los 
 
 No debemos olvidar que rara vez una sola persona escribe una pieza completa de software. Lo más habitual es que varias personas participen en la creación de este software (y quizá también en su auditoría) a lo largo de un período de tiempo relativamente largo. Mantener  patrones consistentes y una buena nomenclatura facilita la legibilidad posterior, y por tanto, el trabajo de cada persona que tenga que ayudar a construir sobre esas bases previas. De la misma manera, como desarrolladores de software, lo mejor que podemos esperar al zambullirnos en un proyecto es que todo el desarrollo anterior se haya llevado a cabo con esta idea en mente, facilitando así nuestra tarea.
 
-## Credibilidad
 
-Las buenas prácticas nos ayudan a escribir código que refleje lo mejor posible nuestros objetivos, intenciones y visión del problema. El código se convierte en un relato.
-
-La honestidad que demuestra un código bien escrito necesita ser apoyada por pruebas que aporten credibilidad. Si de la lectura del código podemos extraer "lo que el código dice que hace", ahora debemos asegurar que "el código hace lo que dice".
-
-Y para eso tenemos el testing.
-
-Tendemos a ver el testing desde la perspectiva de la calidad del software, pero no desde el punto de vista de su credibilidad. Un test puede decirnos si el software bajo prueba funciona correctamente. Pero otra manera de verlo es decir que el test certifica o confirma lo que el código dice.
-
-Hace unos párrafos mencionábamos los distintos niveles de abstracción que tiene el código. De hecho, podemos hacer tests sobre estos distintos niveles que, en conjunto, nos proporcionan una visión de lo creíble que es lo que nuestro código dice.
-
-Así, los tests unitarios nos hablan de la credibilidad de nuestras unidades de software. Podría decirse que demuestran si los conceptos que manejamos están correctamente representados.
-
-Los tests de integración nos demostrarían que las relaciones entre los conceptos en nuestro modelo están adecuadamente descritas en nuestro código.
-
-Finalmente, los tests de aceptación acreditan el funcionamiento del software como solución a un problema o necesidad que tienen las personas que lo usarán.
-
-Otros tipos de tests no funcionales, como los de velocidad, carga, rendimiento, etc, contribuyen a esta credibilidad midiendo la eficiencia con la que el software da respuesta a esas necesidades que dice resolver.
-
-Los tests automáticos tienen una doble vertiente, tienen dos caras. Si bien nos ayudan a garantizar la veracidad del código, no podemos olvidar que son también, en sí mismos, código. Y por tanto, deberán seguir las mismas estrictas normas de desarrollo de código expresadas arriba. Deberían ser legibles en su narrativa, mantener un uso coherente y consistente de los nombres, que además deberá coincidir con el utilizado en el desarrollo bajo prueba. Deberán respetar patrones de diseño que los hagan mantenibles. Y deberán estar disponibles siempre que sea necesario.
-
-En este sentido, la realidad de los tests alcanza una profundidad quizá todavía más compleja que la de su contrapartida el software bajo prueba, puesto que deben ser a la vez buen software, una herramienta de desarrollo más, y la clave de la credibilidad del software desarrollado.
-
-De ahí que una de las fortalezas del diseño de software basado en tests sea que, una vez que somos capaces de aprender a escribir los tests que necesitamos, escribir la funcionalidad, es en realidad, una tarea más sencilla. 
+## Continuará... ##
+Más adelante exploraremos la segunda vía para dar respuesta a la pregunta "qué hace tu código", la credibilidad del mismo. Stay tuned!
 
 ## Referencias
 
-
 * [Scott Altman: Ethical Issues in software testing](https://es.slideshare.net/ScottAllman2/ethical-issues-in-software-testing-v4)
-* [Michael Stahl: Ethics in Software Testing](https://www.stickyminds.com/article/ethics-software-testing)
-* [Bonnie Bailey: Do Software Testers Have Special Ethical Obligations?](https://www.techwell.com/techwell-insights/2013/05/do-software-testers-have-special-ethical-obligations)
 * [Rick Scott: The case for Ethics in Software Ethics](https://www.stickyminds.com/article/case-ethics-software-testing)
-* [Joe Edelman: Is anything worth maximiizing](https://medium.com/what-to-build/is-anything-worth-maximizing-d11e648eb56f)
-
-
-# Más ideas para explorar
-
-## Código mentiroso
-
-Código mentiroso es el código que no hace lo que dice que hace. Y, como en todo, hay grados:
-
-* El código mal escrito, que tiene errores o no funciona y, por tanto, no hace lo que dice.
-* El código que no representa correctamente los conceptos, invariantes y procesos del dominio para el que pretende ser una herramienta.
-* El código que, simplemente, no hace lo que se supone que debe hacer.
-* El código que hace cosas de manera oculta, además de lo que dice que hace.
-* El código que pretende, directamente, engañarnos.
-
-Cabe destacar que en esta lista se intenta tan solo describir el concepto del código mentiroso, como contrapartida del código funcional presentado más arriba. Claramente, la intencionalidad de la persona que escribe el código es clave en cada uno de estos puntos, pero no entraremos ahora a evaluarla.
-
-## ¿Cuál es el coste de realizar un mal trabajo?
-
-Definir lo que es un buen o mal trabajo implica haber establecido un conjunto de criterios, un sistema de valores.
-
-En buena parte esta definición tiene que ver con los efectos que produce un buen o mal trabajo, algo que puede ser cuantificable o no, pero que también depende de los efectos que produce.
-
-Veamos algunos ejemplos:
-
-### Código difícil de mantener
-
-El código difícil de mantener puede implicar diferentes costes:
-
-* Si en el futuro es necesario cambiarlo, requerirá más tiempo que si estuviese diseñado para la mantenibilidad. Este tiempo tiene un coste en horas de desarrollo que se puede cuantificar.
-* Si ese código tiene fallos, puede ser difícil encontrarlos y subsanarlos. De nuevo, coste de horas de trabajo.
-
-Este efecto, sin embargo, podría considerarse a parte de los presentados arriba, en el sentido de que no afecta tanto a las personas que utilizan este software, sino a quienes lo crean. Quizá no sea código mentiroso, quizá se trate de software funcional. Sin embargo, la falta de atención a un diseño mantenible, pueden llevar a esta situación que genera un sobrecoste y bastante frustración a la hora de trabajar con esta base de código.
-
-### Software con errores
-
-El software tiene errores.
-
-* Los fallos del software generan problemas a los usuarios del mismo que pueden suponer desde pequeñas molestias a grandes pérdidas, que tienen costes cuantificables pero también intangibles que no podemos prever.
-* Los fallos del software pueden generar desconfianza en los usuarios, que podrían decidir utilizar otro producto. Esto tiene un coste directo para nuestra empresa.
-
-### Software mentiroso
-
-El código no hace lo que se espera o no hace lo que dice que hace.
-
-* El código oculta errores que suceden y que, en último término, provocan que el producto o servicio que se espera nunca llegue al usuario.
-* El código realiza operaciones de forma oculta para registrar conocimiento sobre el usuario.
-* El código se aprovecha de la actividad del usuario para obtener algún tipo de beneficio sin su consentimiento.
-
-
- 
-
-## Por qué testear
-
-Los motivos prácticos
-
-* Evitar/prevenir errores
-* Poder razonar sobre el código y su adecuación a la demanda
-* Demostración formal de cómo funciona el código y qué hace
-
-Los motivos éticos
-* Escribir la narrativa necesaria nos ayuda a entender y dar respuesta a la pregunta sobre qué hace el software que vamos a escribir.
-* Entender esta narrativa, nos da la capacidad de preguntarnos si este software tiene carencias, o es en sí mismo ético o no como producto final.
-* A día de hoy, el software ya no es tan sólo un reflejo, un modelo de la realidad. En muchos casos, es el software el que modela la realidad. Un claro ejemplo de esto es el sistema bancario. La realidad de nuestra situación económica depende de una base de código y su correspondiente base de datos. Como creadores de algunas de estas dimensiones, tenemos la obligación de garantizar que actúan como se espera.
-
-
-
+* [Joe Edelman: Is anything worth maximizing](https://medium.com/what-to-build/is-anything-worth-maximizing-d11e648eb56f)

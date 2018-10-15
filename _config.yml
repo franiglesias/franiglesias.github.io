@@ -25,7 +25,7 @@ footerlinks:
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
 
-site.data.authors:
+data.authors:
   fran:
     name: fran
     display_name: Fran Iglesias

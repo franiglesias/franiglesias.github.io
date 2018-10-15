@@ -2,35 +2,33 @@
 layout: basic
 ---
 <article class="post full-post">
-  <h1>{{ page.title }}</h1>
-  <div class="authors">
-	  <p>por 
-  {% if page.author %}
-        {% for source in site.data.authors %}
+    <h1>{{ page.title }}</h1>
+    <div class="authors">
+        <p>por
+            {% if page.author %}
             {% for author in page.author %}
-                {% if author == source.name %}
-                    > {{ source.display_name }}
-                {% endif %}
+            > {{ site.data.authors[author].display_name }}
             {% endfor %}
-        {% endfor %}
-  {% else %}
-	  {{ site.data.authors.fran.name }}
-  {% endif %}
-		</p>
+            {% else %}
+            {{ site.data.authors.fran.name }}
+            {% endif %}
+        </p>
     </div>
-  <div class="entry">
-    {{ content }}
-  </div>
+    <div class="entry">
+        {{ content }}
+    </div>
 
-  <div class="date">
-    <p>{{ page.date | date: "%B %e, %Y" }}</p>
-    <p>Etiquetas:
-      {% for tag in page.tags %}
-      {% capture tag_name %}{{ tag }}{% endcapture %}
-      <a href="/tag/{{ tag_name }}"><code class="highlighter-rouge"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
-      {% endfor %}
-      </p>
-  </div>
+    <div class="date">
+        <p>{{ page.date | date: "%B %e, %Y" }}</p>
+        <p>Etiquetas:
+            {% for tag in page.tags %}
+            {% capture tag_name %}{{ tag }}{% endcapture %}
+            <a href="/tag/{{ tag_name }}"><code class="highlighter-rouge">
+                <nobr>{{ tag_name }}</nobr>
+            </code>&nbsp;</a>
+            {% endfor %}
+        </p>
+    </div>
 
 </article>
 {% include disqus.html %}

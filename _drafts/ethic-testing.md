@@ -3,7 +3,7 @@ layout: post
 title: La ética de las buenas prácticas (1)
 categories: articles
 authors: [Paula Julve, Fran Iglesias]
-tags: design-principles
+tags: testing soft-skills ethics
 ---
 
 La ética es la rama de la filosofía que se ocupa del "buen vivir". Pero no en el sentido hedonista que podrías imaginar a por la expresión, sino en el sentido de la manera correcta de vivir.
@@ -62,17 +62,18 @@ No estamos entrando a discutir software creado intencionadamente para comportars
 ## Software desde el punto de vista del usuario ##
 
 Como desarrolladores pocas veces pensamos de igual a igual en los usuarios del código que escribimos. La idea de estos usuarios como seres completamente al margen de nuestro desarrollo y destructores en potencia del mismo está mucho más extendida de lo que nos gustaría admitir aquí. Sin embargo, hay varios puntos sobre los que queremos reflexionar.
+
 * **No existe software sin usuarios.** El software sin usuarios está destinado a la muerte y al olvido. Los usuarios son la razón de la propia existencia de cualquiera de estas herramientas.
 * **Todos somos usuarios.** A día de hoy, vivimos rodeados de software. Desde nuestros ordenadores y teléfonos móviles hasta nuestros coches, lavadoras, nuestro sistema bancario, las máquinas de diagnóstico médico, y un largo etcétera. Pocas cosas más complejas que un columpio quedan a día de hoy libres de algún tipo de software. Y nadie en nuestra sociedad puede ya vivir por completo al margen de él.
 * **Como desarrolladores, no confiamos en nuestros usuarios. Como usuarios, no tenemos elección.** Por más desconfiados que queramos ser como usuarios, no podemos sino confiar en los semáforos para regular el tráfico de la ciudad. Confiar en el software de la máquina de rayos X que utiliza un profesional médico para determinar nuestro tratamiento. Confiar en que el software del banco que utilicemos no nos cargará dos veces un recibo o perderá nuestros ingresos. No podemos elegir no confiar, porque sencillamente, necesitamos utilizar estos servicios, y no hay ninguna otra alternativa real.
 
 Dentro de este marco, surge la posibilidad de rediseñar la idea que tenemos de los principios de desarrollo de buen software, de nuevo, no ya desde el punto de vista de la desarrolladora, sino de la usuaria del mismo. Así, hemos establecido estos cinco principios:
 
-* ** S**tandard behavior
-* ** M**anageability
-* ** A**vailability
-* ** R**eliability
-* ** T**ruthfulness
+* **S**tandard behavior
+* **M**anageability
+* **A**vailability
+* **R**eliability
+* **T**ruthfulness
 
 * **Standard behavior** Como usuarios, esperamos que nuestro softare se comporte de la misma manera a lo largo del tiempo. No se trata de que todo el software que se escribe se comporte de alguna manera específica, sino de que cada pieza de software con la que interactuamos, mantenga siempre un comportamiento igual o suficientemente similar como para ser reconocible y predecible. Necesitamos poder confiar en que el software que utilizamos se comportará hoy igual que lo hizo ayer.
 * **Manageability** Como usuarios, necesitamos ser capaces de manejar el software con el que interactuamos. Aquí hay toda una gama de niveles, desde el software que debe ser más o menos obvio de manera intuiva para nosotros para poder funcionar, como sería el caso de la mayor parte de aplicaciones de móvil, hasta software altamente complejo que requiere un aprendizaje especializado, donde englobaríamos actividades como el uso de maquinaria de diagnóstico médico. El camino puede ser diferente, pero el objetivo es común. La persona usuaria de ese software tiene que poder manejarlo de manera totalmente independiente a las personas desarrolladoras del mismo.
@@ -80,7 +81,7 @@ Dentro de este marco, surge la posibilidad de rediseñar la idea que tenemos de 
 * **Reliability** Como usuarios, de nuevo, necesitamos poder confiar en que nuestro software hará lo que dice que hace. Si compramos un billete de avión a través de una página web, esperamos que la reserva se registre correctamente y el cobro se realice también de la misma manera. Esperamos que el sistema de frenado electrónico de nuestros coches funcione cuando lo necesitamos. Esperamos que un algoritmo de reconocimiento facial, reconozca nuestro rostro y nos permita interactuar. La falta de fiabilidad del código puede generar todo tipo de consecuencias, desde las más inocuas hasta las más graves, desde no reservar una entrada de cine en la sesión adecuada, a un fallo en un diagnóstico médico con todas las consecuencias que eso pudiera acarrear, o un fallo en el sistema de dirección de un automóvil.
 * **Truthfulness** Como usuarios, esperamos que el software que utilizamos no nos mienta. Así de sencillo. Esperamos no estar utilizando malware, claro. Pero también esperamos que grandes empresas como Google, Facebook o Amazon respeten el uso de la información que consiguen de nosotros al utilizar sus servicios. Esperamos que fabricantes como Volkswagen no nos esté engañando con el rendimiento de sus motores. Esperamos que el software haga lo que dice que hace.
 
-Y volviendo a nuestra piel de desarrolladores, pero manteniendo en mente que somos también usuarios, queremos instar a todxs los desarrolladorxs de software a que mantengan los principios que han venido utilizando hasta ahora (SOLID, DRY, etc), a la vez que introducimos esta nueva idea de escribir código SMART.
+Y volviendo a nuestra piel de desarrolladores, pero manteniendo en mente que somos también usuarios, queremos instar a todxs los desarrolladorxs de software a que mantengan los principios que han venido utilizando hasta ahora (SOLID, DRY, etc), a la vez que introducimos esta nueva idea de escribir código **SMART**.
 
 ## ¿Qué hace tu código?
 

@@ -27,14 +27,14 @@ footerlinks:
 
 site.data.authors:
   fran:
-    name: Fran Iglesias
+    name: fran
     display_name: Fran Iglesias
     email: franiglesias@mac.com
     github: franiglesias
     linkedin: francisco-iglesias-gómez-090287139
     twitter: talkingbit1
   paula:
-    name: Paula Julve
+    name: paula
     display_name: Paula Julve
     email: 
     github: paulajulve

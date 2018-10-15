@@ -6,8 +6,12 @@ layout: basic
   <div class="authors">
 	  <p>por 
   {% if page.author %}
-        {% for author in page.author %}
-        {{ site.data.authors[author].name }}
+        {% for source in site.data.authors %}
+            {% for author in page.author %}
+                {% if author = source.name %}
+                    {{ source.display_name }}
+                {% endif %}
+            {% endfor %}
         {% endfor %}
   {% else %}
 	  {{ site.data.authors.fran.name }}

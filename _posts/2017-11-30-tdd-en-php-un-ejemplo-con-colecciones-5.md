@@ -7,17 +7,6 @@ tags:  tdd php
 
 Terminamos con esta serie sobre la disciplina TDD en la que he aprendido un montón de cosas.
 
-Los anteriores artículos de la serie son:
-
-La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
-
-[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
-[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
-[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
-[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
-[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)
-
-
 Todavía nos quedan unas cuentas cosas pendientes en nuestra lista:
 
 * Que pueda agregar la Collection (reduce)
@@ -55,11 +44,11 @@ Y también alguna técnica organizativa útil:
 
 ## Reduciendo colecciones
 
-El primer elemento de la lista de tareas es implementar el método <code>reduce</code>. El concepto de reduce consiste en "resumir" la colección en un valor que agregue de algún modo sus elementos por medio de la función que le pasemos. Para ello, <code>reduce</code> tiene que poder arrastrar un acumulador que sea actualizado y devuelto por la función reductora. También podemos necesitar un valor para iniciar ese acumulador.
+El primer elemento de la lista de tareas es implementar el método `reduce`. El concepto de reduce consiste en "resumir" la colección en un valor que agregue de algún modo sus elementos por medio de la función que le pasemos. Para ello, `reduce` tiene que poder arrastrar un acumulador que sea actualizado y devuelto por la función reductora. También podemos necesitar un valor para iniciar ese acumulador.
 
-<code>reduce</code> puede devolver cualquier cosa, desde un número a un array o incluso algún objeto. No hay limitaciones aquí. Lo más importante es que aquello que devuelva la función de reducción debe pasársele como parámetro, junto con el elemento actual.
+`reduce` puede devolver cualquier cosa, desde un número a un array o incluso algún objeto. No hay limitaciones aquí. Lo más importante es que aquello que devuelva la función de reducción debe pasársele como parámetro, junto con el elemento actual.
 
-En fin, ¿cuál podría ser el test más sencillo que falle para este método? Pues siguiendo la línea de los artículos anteriores podemos empezar por el test de la colección vacía. Una colección vacía no acumularía nada ni podría reducirse a nada, así que parece bastante razonable esperar que nos devuelva <code>null</code>. Lo malo es que ese test va a pasar a la primera puesto que cualquier método que no devuelva nada explícitamente devolverá <code>null</code>.
+En fin, ¿cuál podría ser el test más sencillo que falle para este método? Pues siguiendo la línea de los artículos anteriores podemos empezar por el test de la colección vacía. Una colección vacía no acumularía nada ni podría reducirse a nada, así que parece bastante razonable esperar que nos devuelva `null`. Lo malo es que ese test va a pasar a la primera puesto que cualquier método que no devuelva nada explícitamente devolverá `null`.
 
 Por lo tanto, este test no nos vale. ¿Qué podríamos hacer entonces? Resulta que hemos mencionado que podríamos pasar un valor inicial del acumulador, por lo que en el caso de la lista vacía podríamos devolver ese mismo valor ya que al no tener elementos que iterar no se podría aplicar la función de reducción.
 
@@ -74,7 +63,7 @@ Por lo tanto, este test no nos vale. ¿Qué podríamos hacer entonces? Resulta q
     }
 ```
 
-El test fallará por razones obvias y nos pide crear el método <code>reduce</code>, cosa que ya podemos hacer con la implementación obvia devolviendo <code>0</code>, es decir, el mínimo código para que el test pase.
+El test fallará por razones obvias y nos pide crear el método `reduce`, cosa que ya podemos hacer con la implementación obvia devolviendo `0`, es decir, el mínimo código para que el test pase.
 
 ```php
     public function reduce(Callable $function, $initial)
@@ -83,11 +72,11 @@ El test fallará por razones obvias y nos pide crear el método <code>reduce</co
     }
 ```
 
-Bien, ¿y por qué no devolver directamente el valor que pasamos en <code>$initial</code>?
+Bien, ¿y por qué no devolver directamente el valor que pasamos en `$initial`?
 
-Después de un tiempo practicando TDD puedes pensar que este _baby step_ es demasiado _baby_ y que puedes lidiar con confianza con algunos pasos más grandes. Y no te equivocarías. Como he mencionado en algún momento de la serie, estos pasos se van adaptando a las circunstancias y los puedes ampliar o reducir dependendiendo, precisamente, de tu confianza en lo que estás haciendo.
+Después de un tiempo practicando TDD puedes pensar que este _baby step_ es demasiado _baby_ y que puedes lidiar con confianza con algunos pasos más grandes. Y no te equivocarías. Como he mencionado en algún momento de la serie, estos pasos se van adaptando a las circunstancias y los puedes ampliar o reducir depen diendo, precisamente, de tu confianza en lo que estás haciendo.
 
-Pero yo ahora prefiero hacer que los tests me vayan marcando el camino. Así, en lugar de dar un paso grande, voy a dar uno más pequeño, que además me servirá para probar que <code>$initial</code> puede ser cualquier tipo de valor. Crearé otro test.
+Pero yo ahora prefiero hacer que los tests me vayan marcando el camino. Así, en lugar de dar un paso grande, voy a dar uno más pequeño, que además me servirá para probar que `$initial` puede ser cualquier tipo de valor. Crearé otro test.
 
 ```php
     public function test_Reduce_initial_can_be_any_type()
@@ -113,7 +102,7 @@ En este caso, la implementación más sencilla para eso es devolver el propio pa
     }
 ```
 
-Hemos dicho que <code>reduce</code> puede devolver cualquier cosa, pero pasando un valor inicial es bastante lógico suponer que el tipo devuelto por reduce es el mismo que el del valor inicial que se pasa. Debería ser obvio que probar esto, en este momento, es inútil puesto que al devolver lo mismo que recibimos el test no nos va a aportar nada. Por tanto, deberíamos buscar otra cosa para probar.
+Hemos dicho que `reduce` puede devolver cualquier cosa, pero pasando un valor inicial es bastante lógico suponer que el tipo devuelto por reduce es el mismo que el del valor inicial que se pasa. Debería ser obvio que probar esto, en este momento, es inútil puesto que al devolver lo mismo que recibimos el test no nos va a aportar nada. Por tanto, deberíamos buscar otra cosa para probar.
 
 Por ejemplo, podríamos probar que la función de reducción se aplica para una colección de un elemento.
 
@@ -154,7 +143,7 @@ Y, aunque el nuevo test pasa, se nos rompen los dos test anteriores. Nuestra imp
 
 Y con esta implementación volvemos a verde.
 
-He mecionado varias veces que la colección vacía es un caso límite, pero no he explicado cómo podemos decir esto. Aprovecho ahora:
+He mencionado varias veces que la colección vacía es un caso límite, pero no he explicado cómo podemos decir esto. Aprovecho ahora:
 
 La colección vacía es un caso límite porque no puede ser tratado por el algoritmo general. Es una situación especial que no cumple los supuestos que asumimos respecto a las situaciones cubiertas por el algoritmo. Normalmente podemos detectar estos casos con TDD cuando falla un test anterior a la implementación de una solución general.
 
@@ -201,7 +190,7 @@ La razón es que no estamos iterando:
     }
 ```
 
-Y con esto resulta que hemos conseguido implementar <code>reduce</code>. Algo que podemos tachar de la lista de tareas.
+Y con esto resulta que hemos conseguido implementar `reduce`. Algo que podemos tachar de la lista de tareas.
 
 * Poder crear una Collection a partir de un array de objetos
 * Método toArray y/o mapToArray que devuelva los elementos de Collection como un array
@@ -214,7 +203,7 @@ En nuestra lista nos quedan varios métodos que pueden ser de utilidad para crea
 
 El primero de ellos tiene que ver con la posibilidad de crear una colección a partir de un array, se supone que de objetos.
 
-En este caso, parece buena idea usar un <em>named constructor</em>, que instancie una nueva colección a partir de un array que contenga al menos un objeto. Si el array estuviese vacío no podríamos instanciar <code>Collection</code> porque no sabríamos el tipo de objetos que contiene, salvo que se lo indicásemos explícitamente, que es lo que hacemos con <code>Collection::of</code>.
+En este caso, parece buena idea usar un **named constructor**, que instancie una nueva colección a partir de un array que contenga al menos un objeto. Si el array estuviese vacío no podríamos instanciar `Collection` porque no sabríamos el tipo de objetos que contiene, salvo que se lo indicásemos explícitamente, que es lo que hacemos con `Collection::of`.
 
 Por otra parte, pueden existir arrays no válidos, aparte del vacío, como aquellos que no contengan objetos o que lleven mezclados objetos de distinto tipo, con elementos que no sean objetos.
 
@@ -240,7 +229,7 @@ Particularmente no me gusta comenzar por un caso que lanza una excepción, se ll
     }
 ```
 
-El test falla porque no existe el método <code>collect</code>. Lo creamos y observamos que vuelve a fallar porque no devolvemos nada y es, por tanto, momento de implementar alguna solución.
+El test falla porque no existe el método `collect`. Lo creamos y observamos que vuelve a fallar porque no devolvemos nada y es, por tanto, momento de implementar alguna solución.
 
 La implementación más sencilla podría ser esta:
 
@@ -263,7 +252,7 @@ Ahora quiero probar que el método toma en cuenta el array que le pasamos para i
     }
 ```
 
-Y como falla, me obliga a implementar. Si ahora forzase a crear una <code>Collection</code> con <code>CollectionTest::class</code> el test anterior fallaría, por lo que debo implementar una solución más general.
+Y como falla, me obliga a implementar. Si ahora forzase a crear una `Collection` con `CollectionTest::class` el test anterior fallaría, por lo que debo implementar una solución más general.
 
 ```php
     public static function collect(array $elements)
@@ -275,7 +264,7 @@ Y como falla, me obliga a implementar. Si ahora forzase a crear una <code>Collec
 
 Este test pasa, pero falla el anterior. Como hemos visto antes, un test anterior que falla suele implicar un caso límite que aparece al intentar generalizar un algoritmo. Pero es que este caso coincide con uno de los casos que queríamos controlar en particular, el array vacío que iba a generar una excepción.
 
-Necesitamos un test que compruebe específicamente este caso. Con esto me doy cuenta de que he comenzado por un test que no sirve, lo que me muestra que siguiendo la metodología TDD los tests parecen cudidarse a sí mismos. Es decir: incluso no teniendo las cosas muy claras al principio, TDD nos va llevando hacia un camino productivo.
+Necesitamos un test que compruebe específicamente este caso. Con esto me doy cuenta de que he comenzado por un test que no sirve, lo que me muestra que siguiendo la metodología TDD los tests parecen cuidarse a sí mismos. Es decir: incluso no teniendo las cosas muy claras al principio, TDD nos va llevando hacia un camino productivo.
 
 En resumidas cuentas, eliminamos el test malo y preparamos un test adecuado a lo que queremos probar ahora:
 
@@ -300,7 +289,7 @@ Hay que implementar para volver a verde:
     }
 ```
 
-Ahora tenemos que probar que <code>collect</code> es capaz de llenar la colección con los objetos que se encuentran en el array. El test mínimo que lo demuestra podría ser este:
+Ahora tenemos que probar que `collect` es capaz de llenar la colección con los objetos que se encuentran en el array. El test mínimo que lo demuestra podría ser este:
 
 ```php
     public function test_Collect_array_with_one_element_populates_collection()
@@ -370,9 +359,9 @@ La siguiente tarea que tenemos es lanzar una excepción si algún elemento del a
     }
 ```
 
-Esto era de esperar porque ya estaba contemplado en el método <code>append</code>, al que recurrimos para añadir los elementos del array a la colección en vez de incluirlos a mano en el almacén interno. Este patrón se llama <em>self-encapsulation</em> y consiste precisamente en que una clase utiliza internamente métodos para alterar sus propiedades, en vez de manejarlas directamente, de tal manera que estos métodos pueden encapsular guardas, saneamientos y otras operaciones.
+Esto era de esperar porque ya estaba contemplado en el método `append`, al que recurrimos para añadir los elementos del array a la colección en vez de incluirlos a mano en el almacén interno. Este patrón se llama *self-encapsulation* y consiste precisamente en que una clase utiliza internamente métodos para alterar sus propiedades, en vez de manejarlas directamente, de tal manera que estos métodos pueden encapsular guardas, saneamientos y otras operaciones.
 
-Ahora podemos considerar que hemos terminado de implementar el método <code>collect</code>. Es momento de refactorizarlo.
+Ahora podemos considerar que hemos terminado de implementar el método `collect`. Es momento de refactorizarlo.
 
 Los tests nos protegen contra problemas derivados de los cambios que hagamos. Al refactorizar sólo estamos cambiando la implementación, no la interfaz ni el comportamiento público, y eso es lo que nos aseguran los tests en este momento.
 
@@ -453,7 +442,7 @@ Así que hay que contemplar el caso límite, cosa que no nos debería sorprender
 
 No merece la pena probar nuevos tamaños de colección, cualquier test que se nos ocurra al respecto pasará y, por tanto, no aportará ninguna información que nos fuerce a realizar cambios en la implementación.
 
-Pero lo cierto es que también planteamos un método <code>mapToArray</code>. La idea es la siguiente: 
+Pero lo cierto es que también planteamos un método `mapToArray`. La idea es la siguiente: 
 
 En algunas ocasiones nos interesa convertir nuestros objetos a una estructura de array asociativo (diversos mecanismos de persistencia nos piden esto). Por desgracia nuestra definición de Collection impide que podamos mapear los objetos como array para generar una "colección de arrays", aunque existe un atajo:
 
@@ -463,7 +452,7 @@ En algunas ocasiones nos interesa convertir nuestros objetos a una estructura de
 	}, array());
 ```
 
-Esta solución funciona, pero sería intersante encapsularla, de modo que fuese más fácil de usar. Una posibilidad es crear un método <code>mapToArray</code>, pero ¿por qué no encapsularla en <code>toArray</code> pasando la función de conversión a array como un parámetro opcional? Al fin y al cabo, generar un array a partir de la colección es el caso más simple de mapeo.
+Esta solución funciona, pero sería interesante encapsularla, de modo que fuese más fácil de usar. Una posibilidad es crear un método `mapToArray`, pero ¿por qué no encapsularla en `toArray` pasando la función de conversión a array como un parámetro opcional? Al fin y al cabo, generar un array a partir de la colección es el caso más simple de mapeo.
 
 Por supuesto, debemos probar esto con un test.
 
@@ -494,7 +483,7 @@ La forma de hacerlo pasar es sencilla:
     }
 ```
 
-Con esto, el test pasa, pero rompemos un test anterior, el de la definición actual del método <code>toArray</code>. Es buena cosa, porque nos obliga a implementar algo diferente.
+Con esto, el test pasa, pero rompemos un test anterior, el de la definición actual del método `toArray`. Es buena cosa, porque nos obliga a implementar algo diferente.
 
 Por ejemplo, esto:
 
@@ -620,7 +609,7 @@ La implementación es obvia:
     }
 ```
 
-Por último, <code>isEmpty</code> tiene un poco más de comportamiento. Es un método de utilidad para encapsular una información que podemos obtener de otra manera, aunque un poco más alambicada:
+Por último, `isEmpty` tiene un poco más de comportamiento. Es un método de utilidad para encapsular una información que podemos obtener de otra manera, aunque un poco más alambicada:
 
 ```php
 	if ($collection->count() === 0) { // Collection is empty }
@@ -1264,6 +1253,16 @@ class MappedObject
 
 Por supuesto, se admiten sugerencias de mejora. [Puedes comentar en el repositorio](https://github.com/franiglesias/collections).
 
-Como he comentado en alguna ocasion, el objetivo de esta serie de artículos no es hablar sobre colecciones, sino sobre cómo desarrollar usando la disciplina TDD.
+Como he comentado en alguna ocasión, el objetivo de esta serie de artículos no es hablar sobre colecciones, sino sobre cómo desarrollar usando la disciplina TDD.
 
 Y eso es todo.
+
+Los anteriores artículos de la serie son:
+
+La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
+
+[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
+[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
+[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
+[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
+[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)

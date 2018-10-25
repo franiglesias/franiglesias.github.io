@@ -8,15 +8,6 @@ tags:  tdd php
 
 Con lo pequeñita que es la clase Collection y está dando para un montón de artículos. En esta cuarta entrega voy a intentar desarrollar el método `filter`, el cual también nos dará un punto de partida para otros métodos.
 
-La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
-
-[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
-[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
-[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
-[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
-[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)
-
-
 Y nuestra lista de tareas había quedado así:
 
 * Que pueda devolver una Collection de objetos filtrados conforme a un criterio (filter)
@@ -31,7 +22,7 @@ Y nuestra lista de tareas había quedado así:
 
 Antes de nada, voy a hacer un poco de limpieza en la lista.
 
-Los puntos de devolver la colección para hacer pipelines y el tema de la inmutabilidad están más o menos recogidos en las implementaciones que hemos hecho hasta ahora y lo cierto es que la que vamos a afrontar ahora (la del método filter) lo implica claramente, así que las voy a tachar de la lista.
+Los puntos de devolver la colección para hacer pipelines y el tema de la inmutabilidad están más o menos recogidos en las implementaciones que hemos hecho hasta ahora y lo cierto es que la que vamos a afrontar ahora (la del método `filter`) lo implica claramente, así que las voy a tachar de la lista.
 
 Por otro lado, voy a reorganizarla un poco para poner cerca cuestiones que son similares. Finalmente, la lista queda así:
 
@@ -114,7 +105,7 @@ De momento, nos bastará retornar la propia Collection para volver a verde. Sí,
 
 Ahora que estamos en verde y que no hay implementación más sencilla posible, vayamos al siguiente punto, que es el que trata sobre el tipo de objeto de la lista. Nos damos cuenta de que ese test no nos va a servir de nada, al menos no en este momento, así que lo dejaremos para el final. ¿Por qué sabemos que no nos va a servir de nada? Pues porque ese test va a pasar a la primera ya que estamos devolviendo el mismo objeto Collection sobre el que operamos. Y lo mismo ocurre con el siguiente (la colección devuelta está vacía).
 
-Lo que necesitamos siempre para avanzar es un test que falle y eso nos lleva al punto cuatro: la Collection no es la misma que la original. Este tests sí va a fallar, obligándonos a introducir un cambio en la implementación suficiente para pasar:
+Lo que necesitamos siempre para avanzar es un test que falle y eso nos lleva al punto cuatro: la Collection no es la misma que la original. Este test sí va a fallar, obligándonos a introducir un cambio en la implementación suficiente para pasar:
 
 ```php
     public function test_Filter_returns_a_Collection_that_is_not_the_same()
@@ -481,7 +472,7 @@ Pero si el objeto está en la colección no debe saltar ninguna excepción y el 
     }
 ```
 
-Y el test falla porque tira la excepción. No está pidiendo a gritos implementar algo, ¿no? La implementación pasa por tener en cuenta el resultado de la función pasada.
+Y el test falla porque tira la excepción. Nos está pidiendo a gritos implementar algo, ¿no? La implementación pasa por tener en cuenta el resultado de la función pasada.
 
 ```php
     public function getBy(Callable $function)
@@ -552,3 +543,11 @@ Nuestra lista queda como sigue:
 Todavía nos quedan por desarrollar unos cuantos métodos interesantes, pero los dejaremos para la próxima entrega.
 
 Recuerda que el [código del proyecto puedes verlo en github](https://github.com/franiglesias/collections).
+
+La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
+
+[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
+[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
+[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
+[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
+[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)

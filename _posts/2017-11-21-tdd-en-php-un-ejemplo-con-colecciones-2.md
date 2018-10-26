@@ -5,15 +5,6 @@ categories: articles
 tags:  tdd php 
 ---
 
-La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
-
-[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
-[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
-[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
-[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
-[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)
-
-
 Ahora que tenemos una clase Collection a la que podemos añadir objetos de un tipo determinado o sus descendientes, vamos a desarrollar algo de comportamiento. Al fin y al cabo, queremos nuestras colecciones para hacer algo con sus elementos, no sólo para admirarlas… (ejem!).
 
 ## Testing dirigido por Checklist
@@ -26,7 +17,7 @@ El mejor soporte para esto es papel y lápiz. En último término es una especie
 
 Además, si nos surge alguna idea de algo que deberíamos probar, lo anotamos y nos olvidamos temporalmente del asunto. Lo mismo si, al repasar la lista, observamos que hay algún asunto que podríamos reformular de algún modo.
 
-Esta era nuestra lista incial:
+Esta era nuestra lista inicial:
 
 * Poder añadir elementos a la colección
 * Que estos elementos sean objetos
@@ -47,7 +38,7 @@ Y esta es la lista al final del artículo anterior:
 
 ## Filosofía de las colecciones
 
-LLegados a este punto debo hablar un poco de lo que tengo en mente sobre las colecciones.
+Llegados a este punto debo hablar un poco de lo que tengo en mente sobre las colecciones.
 
 Un primer enfoque tiene que ver con las estructuras de datos tradicionales. Algunas librerías de Colecciones ofrecen colas, pilas, heaps y demás. Sin embargo, de momento no estoy interesado en usarlas, ya que mi objetivo es más bien el manejo de colecciones con las que pueda:
 
@@ -274,7 +265,7 @@ Ahora bien, al examinar el último punto me vienen a la cabeza algunas cuestione
 
 En otros métodos en los que nos interesa devolver otro objeto Collection con los elementos seleccionados o transformados, es posible que nos interese poder alimentar la colección mediante un array de objetos adecuados.
 
-Además, existen una serie de método que podrían ser útiles para conocer el estado de la lista (isEmpty), para comprobar si cierto elemento existe en ella o incluso para obtener un elemento según ciertos criterios. Así que nuestro checklist vuelve a crecer:
+Además, existen una serie de métodos que podrían ser útiles para conocer el estado de la lista (isEmpty), para comprobar si cierto elemento existe en ella o incluso para obtener un elemento según ciertos criterios. Así que nuestro checklist vuelve a crecer:
 
 * Que pueda devolver un array de transformaciones de los objetos (map)
 * Que pueda devolver una Collection de objetos filtrados conforme a un criterio (filter)
@@ -286,3 +277,11 @@ Además, existen una serie de método que podrían ser útiles para conocer el e
 * Método isEmpty que nos diga si la colección está vacía
 
 Pero, por hoy ya ha sido bastante. [Puedes ver el proyecto en Github](https://github.com/franiglesias/collections).
+
+La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
+
+[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
+[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
+[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
+[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
+[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)

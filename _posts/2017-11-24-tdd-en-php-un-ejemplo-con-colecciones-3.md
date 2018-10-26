@@ -5,14 +5,7 @@ categories: articles
 tags:  tdd php 
 ---
 
-La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
-
-[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
-[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
-[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
-[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
-[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)
-
+Ahora implementaremos *pipelining*, para encadenar operaciones en una colección.
 
 Veamos como está nuestra lista de tareas:
 
@@ -25,7 +18,7 @@ Veamos como está nuestra lista de tareas:
 * Alimentar una lista a partir de un array
 * Método isEmpty que nos diga si la colección está vacía
 
-Una cosa que no he reflejado en esta lista es que deberia poder pedirle objetos concretos a Collection, bien sea por un criterio, bien por su posición. Así que añado estas tareas.
+Una cosa que no he reflejado en esta lista es que debería poder pedirle objetos concretos a Collection, bien sea por un criterio, bien por su posición. Así que añado estas tareas.
 
 * Que pueda devolver un array de transformaciones de los objetos (map)
 * Que pueda devolver una Collection de objetos filtrados conforme a un criterio (filter)
@@ -92,7 +85,7 @@ Pero, ¿y si la colección está vacía?
     }
 ```
 
-Pues pasa que el test falla dado que estamos devolviendo null. Hacer algo con una colección vacía no tiene mucho sentido, pero tal vez no nos interese romper el pipeline, por lo que simplemente devolvemos la misma colección.
+Pues pasa que el test falla dado que estamos devolviendo `null`. Hacer algo con una colección vacía no tiene mucho sentido, pero tal vez no nos interese romper el pipeline, por lo que simplemente devolvemos la misma colección.
 
 ```php
     public function each(Callable $function)
@@ -111,9 +104,9 @@ En esta ocasión, al "saltarnos" la situación de colección vacía no hemos det
 
 De momento, no voy a tachar nada de mi lista para recordar este tema al implementar otros métodos.
 
-## Una disgresión: mutable, modificable o todo lo contrario
+## Una digresión: mutable, modificable o todo lo contrario
 
-La verdad es que llevo un buen rato dándole vueltas a este tema. En algunos lenguajes, como Scala, se ofrecen colecciones inmutables y mutables. Cada tipo tiene sus ventajas e inconvenientes. El que una colección sea inmutable no implica que no podamos realizar operaciones con ella, pero estas operaciones devovlerán una colección nueva, que es copia de la original y a la cual se le aplica la transformación. De este modo, la colección original permanece inalterada.
+La verdad es que llevo un buen rato dándole vueltas a este tema. En algunos lenguajes, como Scala, se ofrecen colecciones inmutables y mutables. Cada tipo tiene sus ventajas e inconvenientes. El que una colección sea inmutable no implica que no podamos realizar operaciones con ella, pero estas operaciones devolverán una colección nueva, que es copia de la original y a la cual se le aplica la transformación. De este modo, la colección original permanece inalterada.
 
 La modificabilidad o inmutabilidad no afecta a la interfaz. Sencillamente en una colección inmutable los métodos clonan la colección actual y aplican la transformación sobre ella.
 
@@ -123,13 +116,13 @@ Hay varias cuestiones con respecto a la mutabilidad y la modificabilidad de la c
 * Que ciertas operaciones devuelvan la colección transformada o bien una colección nueva con la transformación. Una operación de filtrado siempre debería devolvernos una colección nueva, dejando la original intacta, para poder realizar nuevas búsquedas o selecciones en ella.
 * Que se puedan modificar elementos o no, en el sentido de cambiar el estado de los elementos, pero no la colección como tal. El hecho de que la colección no pueda variar el número de elementos no implica que éstos no puedan cambiar de algún modo. El método each, implementado en el artículo anterior, encaja aquí.
 
-Es buena idea leerse [este artículo de Martin Fowler sobre las colection pipelines](https://martinfowler.com/articles/collection-pipeline/). Además, nos da un montón de pistas sobre qué funcionalidad añadir en ella.
+Es buena idea leerse [este artículo de Martin Fowler sobre las collection pipelines](https://martinfowler.com/articles/collection-pipeline/). Además, nos da un montón de pistas sobre qué funcionalidad añadir en ella.
 
-Fin de la disgresión.
+Fin de la digresión.
 
 ## Antes de implementar el método map
 
-La idea de `map` es aplicar una transformación a cada elemento de la colección actual y creando una nueva colección con los resultados de esa tranformación. Collection es inmutable con respecto a `map` y tampoco los objetos deberían ver su estado cambiado.
+La idea de `map` es aplicar una transformación a cada elemento de la colección actual y creando una nueva colección con los resultados de esa transformación. Collection es inmutable con respecto a `map` y tampoco los objetos deberían ver su estado cambiado.
 
 En cierto modo, `map` es lo mismo que `each`, pero devolviendo resultados.
 
@@ -139,7 +132,7 @@ Además, me estoy fijando que hay algunas ideas que no están bien expresadas y 
 
 Sin embargo, hay una cuestión que me preocupa: ¿y si no devuelvo objetos en la función de mapeo? Por ejemplo, a lo mejor sólo quiero obtener una lista simple de nombres a partir de una colección de objetos.
 
-Una solución es forzar que todas las transformacion den como resultado objetos, que no tienen que ser del mismo tipo que los de la colección original, de modo que pueda coleccionarlos sin más. Eso me lleva a pensar en que podría ser necesario un método `mapToArray` o `toArray` (o ambos), con el que mapear una colección a un array y que sería el punto final de un pipeline.
+Una solución es forzar que todas las transformaciones den como resultado objetos, que no tienen que ser del mismo tipo que los de la colección original, de modo que pueda coleccionarlos sin más. Eso me lleva a pensar en que podría ser necesario un método `mapToArray` o `toArray` (o ambos), con el que mapear una colección a un array y que sería el punto final de un pipeline.
 
 Otra solución sería generalizar Collection para permitir cualquier tipo de dato, de modo que pueda coleccionar cualquier cosa. Esta idea es correcta y es interesante. Podríamos poder seguir especificando el tipo para garantizar que la lista se mantenga coherente. Aún siguiendo este desarrollo, sigue siendo interesante incluir el método `mapToArray` para poder obtener la colección en ese formato que suele ser útil para interactuar con otro código existente.
 
@@ -155,15 +148,15 @@ Otra solución sería generalizar Collection para permitir cualquier tipo de dat
 * Método para obtener uno o más objetos de la lista, por criterio, posición, etc.
 * Método toArray y/o mapToArray que devuelva los elementos de Collection como un array
 
-Ahora sí, ahora vamos con map
+Ahora sí, ahora vamos con `map`
 
-## Implementando map
+## Implementando `map`
 
 Repasemos lo que sabemos sobre map:
 
 * Tiene que devolver Collection
 * Tiene que aceptar un callable
-* Este callable tiene que devolver objetos coleccionables, que no tienen por qué ser del mismo tipo que los coleccionables
+* Este callable tiene que devolver objetos coleccionables, que no tienen por qué ser del mismo tipo que los coleccionados.
 
 Así que tendremos que probar eso.
 
@@ -251,7 +244,7 @@ Y cambiamos el test:
     }
 ```
 
-Estamos chequeando un estado privado del objeto $result, que sabenos que es del tipo Collection por los tests anteriores. Siendo estrictos no deberíamos chequear propiedades privadas, aunque creo que hay situaciones en las que por pragmatismo es mejor hacerlo. Por otro lado, poder obtener el tipo de objeto de una colección sería razonable, así que podríamos añadir a la lista esa característica.
+Estamos chequeando un estado privado del objeto `$result,` que sabemos que es del tipo Collection por los tests anteriores. Siendo estrictos no deberíamos chequear propiedades privadas, aunque creo que hay situaciones en las que por pragmatismo es mejor hacerlo. Por otro lado, poder obtener el tipo de objeto de una colección sería razonable, así que podríamos añadir a la lista esa característica.
 
 * Que pueda devolver una Collection de transformaciones de los objetos (map)
 * Que pueda devolver una Collection de objetos filtrados conforme a un criterio (filter)
@@ -273,7 +266,7 @@ En cualquier caso, ahora hemos conseguido un test que falla, con lo que estamos 
     }
 ```
 
-Ahora el test pasa, pero no prueba que estemos mapeando, sólo prueba que devolvemos una Collection con el tipo MappedObject, el objeto resultado del mapeo. Nuestro test necesita una cierta <strong>triangulación</strong>, es decir, varias aserciones que, juntas, prueben lo que queremos mostrar con el test. Debemos volver al rojo, retomando un test que descartamos antes:
+Ahora el test pasa, pero no prueba que estemos mapeando, sólo prueba que devolvemos una Collection con el tipo MappedObject, el objeto resultado del mapeo. Nuestro test necesita una cierta **triangulación**, es decir, varias aserciones que, juntas, prueben lo que queremos mostrar con el test. Debemos volver al rojo, retomando un test que descartamos antes:
 
 ```php
     public function test_Map_can_map_one_element()
@@ -299,7 +292,7 @@ Ahora ya tenemos mejor información. La implementación mínima es la siguiente:
     }
 ```
 
-Hemos vuelto a verde, pero hay una cosa que me enciende una pequeña luz de alarma. Los tests con colecciones vacías no fallan aunque nuestra implementación actual fuerza a devolver una colección con un objeto. Necsitamos un test que verifique que devolvemos una nueva colección vacía:
+Hemos vuelto a verde, pero hay una cosa que me enciende una pequeña luz de alarma. Los tests con colecciones vacías no fallan aunque nuestra implementación actual fuerza a devolver una colección con un objeto. Necesitamos un test que verifique que devolvemos una nueva colección vacía:
 
 ```php
     public function test_Map_method_on_empty_Collection_returns_empty_collection()
@@ -404,3 +397,11 @@ Nos quedan unas cuantas cosas pendientes en la lista de tareas, pero las afronta
 * Método getType devuelve tipo de la colección
 
 Recuerda que el [código del proyecto puedes verlo en github](https://github.com/franiglesias/collections).
+
+La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
+
+[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
+[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
+[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
+[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
+[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)

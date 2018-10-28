@@ -3,6 +3,7 @@ layout: post
 title: Null coalescence operator
 published: true
 categories: articles
+author: [paula, fran]
 tags: php tips
 ---
 
@@ -102,6 +103,88 @@ $aField = $tryThis ?? $thenThis ?? $thenThat ?? 'default';
 ```
 
 
+## Entrando al detalle
+
+### Operador ternario
+
+Ambas funcionalidades no dejan de ser atajos para escribir de una manera más clara funcionalidades que ya tiene PHP. Siendo así, la clave es entender exactamente cuál es esa funcionalidad que está operando por debajo.
 
 
+El operador ternario es el más fácil de traducir, porque la funcionalidad es más acotada. No deja de ser una manera corta de escribir una estructura if/else.
+
+```php
+if (!is_null($value)) {
+    $field = $value;
+} else {
+    $field = 'default';
+}
+```
+
+Esta estructura básica de if/else puede empezar a acortarse utilizando una cláusula de guarda.
+
+```php
+$field = $value;
+
+if (is_null($field)) {
+    $field = 'default';
+}
+```
+
+Queda algo más limpio y más fácil de leer. Pero aún así, el operador ternario es todavía más fácil de leer.
+
+````php
+$field = !is_null($value) ? $value : 'default';
+````
+
+La potencia del operador ternario es que la parte de la condición puede evaluar cualquier condición, tan compleja como sea necesaria. Puede contener exactamente lo mismo que cualquier if statement. Y en algunos casos, puede utilizar la potencia de los falsy values de PHP para acortarlo aún más.
+
+````php
+$field = $value ?: 'default';
+````
+
+Esto sería equivalente a comprobar que $value contenga algún valor de los que PHP considera truthy, y si es así, lo asigna a $field. En caso contrario, asignará ‘default’. Sería exactamente equivalente a esto:
+
+```php
+$field = $value ? $value : 'default';
+```
+
+De nuevo, al tratarse de una condición libre, el operador ternario puede aprovechar la potencia de los truthy y falsy values de PHP, o caer en sus trampas. ¡Cuidado con ellos! Un string vacío, un array vacío, o un boolean false saltarán al segundo valor de los dos posibles, y quizá no es lo que necesitábamos.
+
+
+### null coalesce
+
+Por el contratio, el null coalesce agrupa una sucesión indeterminada de if/else if/else statements. Es más potente en el sentido de que puedes añadirle más opciones, pero mucho menos en el sentido en que la condición es fija, siempre evalúa lo mismo.
+
+```php
+if (isset($value1)) {
+    $field = $value1;
+} else if (isset($value2)) {
+    $field = $value2;
+} else if (isset($value3)) {
+    $field = $value3;
+} else {
+    $field = null;
+}
+```
+
+Un bloque de estas características resulta muy molesto tanto de escribir como de leer. y en ese sentido el null coalesce nos permite mantener un código más limpio. Además de eso, null coalesce siempre efectua la misma comparación que la función isset de php, lo que implica que podríamos pasarle variables sin definir sin que eso resulte en una excepción en tiempo de ejecución. Recordemos que isset devuelve true en caso de que la variable exista y sea diferente de null, y false en caso contrario. No lanza ninguna excepción, pero esto hace que un null coalesce se comporte de manera diferente a un ternario en el caso de falsy values.
+
+```php
+$value = '';
+$field = $value ?: 'default';   // $field cogería el valor 'default'
+$field = $value ?? 'default';   // $field cogería el valor string vacío
+```
+
+Además de esto, el null coalesce te permite asumir que si ninguno de los valores proporcionados en la lista es distinto de null, simplemente $field tomará el valor null. Por supuesto, también puedes poner un valor por defecto, igual que haríamos con el ternario.
+
+```php
+$field = $value1 ?? $value2 ?? $value3 ?? 'default';
+```
+
+Un null coalesce de este tipo no devolverá nunca null sino ‘default’, puesto que al menos este último valor no será nunca null.
+
+
+## Complejidad ciclomática
+
+Si utilizas algún tipo de herramienta para evaluar la complejidad de tu código, deberás tener en cuenta que, aunque sea poco intuitivo, la complejidad ciclomática de un operador ternario se evalúa dos puntos por encima de la de un bloque if/else estándar. A día de hoy no resulta especialmente fácil encontrar explicación a esta situación, que sigue discutiéndose en varios hilos como [este](https://stackoverflow.com/questions/24197973/why-is-the-ternary-operator-more-complex-than-if-else).
 

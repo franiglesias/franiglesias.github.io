@@ -81,7 +81,7 @@ Usando Equivalence Class Partitioning seleccionamos un valor cualquiera dentro d
 |   10-49   |       49       |   10%     | 
 |   50-99   |       50       |   15%     |
 |   50-99   |       99       |   15%     |
-|   100+    |      120       |   20%     |
+|   100+    |      100       |   20%     |
 
 Los dos valores escogidos para la prueba son válidos dentro de la definición de Equivalence Class Partitioning, con la particularidad de que al ser los extremos de los intervalos nos permiten chequear condiciones del tipo "igual o mayor".
 

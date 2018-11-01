@@ -64,7 +64,7 @@ El caso *Better* ataca ambos problemas:
 
 ### Los tests dicen lo que debería ocurrir
 
-El uso de Should como elemento del nombre del test merece su mención. De hecho me gustaría poder eliminar el prefijo test, que es lo que hace que los ~~test frameworks~~ PHPUnit identifique los métodos que se tienen que ejecutar. Hay un par de soluciones:
+El uso de Should como elemento del nombre del test merece su mención. De hecho me gustaría poder eliminar el prefijo test, que es lo que hace que el ~~test framework~~ PHPUnit identifique los métodos que se tienen que ejecutar. Hay un par de soluciones:
 
 Usar anotaciones, que no me gusta:
 
@@ -324,9 +324,9 @@ public function prepareClassRepository()
 }
 ```
 
-Lo que hemos hecho ha sido extraer la preparación de los dobles de los repositorios a sus propios métodos, lo que nos permite escribir el test de una forma más concisa y clara.
+Lo que hemos hecho ha sido extraer la preparación de los dobles de los repositorios a sus propios métodos y eso nos permite escribir el test de una forma más concisa y clara.
 
-Obviamente, en un proyecto real, es posible que pudiésemos extraer gran parte de la preparación a métodos setUp, incluyendo la instanciación del servicio, o incluso parametrizar de algún modo los métodos `prepare*`, pero creo que la idea queda clara en cuanto a que el cuerpo del test tenga líneas con un mismo nivel de abstracción.
+Obviamente, en un proyecto real, es posible que pudiésemos extraer gran parte de la preparación a métodos `setUp`, incluyendo la instanciación del servicio, o incluso parametrizar de algún modo los métodos `prepare*`, pero creo que la idea queda clara en cuanto a que el cuerpo del test tenga líneas con un mismo nivel de abstracción.
 
 En fin, los Double Builders merecerían un artículo por sí mismos, que quizá escriba algún día [^2].
 

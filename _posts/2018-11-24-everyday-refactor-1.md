@@ -191,7 +191,7 @@ public function calculateFee(Request $dataToCalculate)
 public function calculateFee(Request $dataToCalculate)
 {
     $this->normalizeAmountsToTheSameCurrency($dataToCalculate);
-    $initialCalculation = $this->performInitialCalculation($dataToCalculate)M
+    $initialCalculation = $this->performInitialCalculation($dataToCalculate);
     $transformedResponse = $this->applyTransformation($initialCalculation);
 }
 

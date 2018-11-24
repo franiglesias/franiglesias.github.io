@@ -22,7 +22,7 @@ Así que vayamos por partes:
 
 ## Mejorar la velocidad de ejecución de la suite de test
 
-### De Prophecy a mocks de PHPUnit
+### De Prophecy a mocks de PHPUnit
 
 Los tests deberían ser rápidos, particularmente los unitarios. Tener tests muy lentos en la capa de unitarios es un problema y nosotros teníamos algunos tests con duraciones realmente exageradas. Así que empezamos a examinarlos.
 
@@ -72,7 +72,7 @@ En este caso, la diferencia en rendimiento entre ambos métodos no es muy grande
 
 Por cierto, otro punto que debería contribuir a un mejor rendimiento de la suite de tests es cargar un juego de fixtures ajustado exactamente a las necesidades del test.
 
-## Mejoras en el código de los tests
+## Mejoras en el código de los tests
 
 Los dobles que se generan con **phpunit** son *dummies* y, por definición, cualquier llamada a sus métodos devuelve `null` (ocurre lo mismo en **prophecy**). Para hacer un `stub` o un `mock` hay que definirlo explícitamente:
 
@@ -135,7 +135,7 @@ Como decíamos antes, los dobles nacen como *dummies*, por lo que todos los mét
 
 Por cierto que eso nos llevará seguramente a encontrarnos con un montón de violaciones de la Ley de Demeter.
 
-### Lo que pasa en el doble se queda en el doble
+### Lo que pasa en el doble se queda en el doble
 
 Los dobles de tests se utilizan para simular el comportamiento de objetos colaboradores de aquel que estemos probando. Con frecuencia, debido a la naturaleza del comportamiento testeado no es posible hacer aserciones sobre la respuesta del *subject under test* o de sus efectos en el sistema. Por esa razón, establecemos expectativas sobre los dobles: esperamos que sean usados por nuestro *SUT* de cierta manera, lo que los convierte en *mocks* y son la base para que nuestro test nos aporte alguna información.
 

@@ -68,7 +68,7 @@ Y esto nos lleva al Bahavior Driven Design (y al artículo de Dan North)
 
 La respuesta de North a estas preguntas comienza de forma progresiva y es lo que vamos a resumir a continuación:
 
-### Tests como documentación
+### Tests como documentación
 
 **Los nombres de los tests deberían ser frases**. De hecho, usando herramientas adecuadas, los nombres de los métodos de los tests sirven como documentación inicial del código:
 
@@ -138,7 +138,7 @@ O lo que es casi lo mismo: ¿cuál es la siguiente característica que aportará
 
 Sobre la relación entre desarrollo de software y valor de negocio te recomendaría leer [The Nature of Software Development, de Ron Jeffries](https://pragprog.com/book/rjnsd/the-nature-of-software-development).
 
-### BDD se encuentra con DDD
+### BDD se encuentra con DDD
 
 Poco a poco, lo que parecía una herramienta técnica se va convirtiendo en otra que es útil para dialogar sobre el negocio. Si los nombres de los métodos de los tests son frases que expresan lo que la unidad de software debería hacer en términos de negocio, ¿no estamos hablando de usar el lenguaje ubicuo sugerido por Eric Evans en su propuesta de Domain Driven Design?
 
@@ -197,7 +197,7 @@ A su vez, nos fuerza como equipo a llegar a acuerdo concretos sobre qué es lo q
 
 Ya no se trata sólo de indicaciones más o menos concretas sobre cómo debería comportarse el software, sino que podemos programar contra ellas y verificar en todo momento si las estamos cumpliendo o no. Es decir, inicialmente son tests de aceptación que fallan y, por tanto, nos obligan a realizar la implementación mínima y necesaria para pasen. Y así, a medida que vamos implementando escenarios, terminamos por desarrollar la prestación solicitada, lo que podemos demostrar porque los escenarios se ejecutan completamente.
 
-### Un ejemplo
+### Un ejemplo
 
 En artículos anteriores hemos estado trabajando con una historia de usuario en la que están presentes todos los elementos citados. En esos artículos hemos podido ver cómo la redacción definitiva de la historia forma parte del diálogo de todo el equipo y cómo pasamos de esta definición a una implementación.
 

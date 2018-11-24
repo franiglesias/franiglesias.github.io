@@ -36,7 +36,7 @@ En cualquier caso, se trata de conseguir dos cosas en primer lugar:
 * Que el código se pueda ejecutar, evitando las excepciones que lanza inicialmente.
 * Controlar las dependencias para poder hacer tests
 
-## Tests de caracterización
+## Tests de caracterización
 
 Una vez que hemos conseguido eliminar las limitaciones anteriores, es posible comenzar a desarrollar tests de caracterización que describan el comportamiento del código y nos sirvan de colchón para empezar a refactorizar. Aquí nos encontramos con varios problemas:
 

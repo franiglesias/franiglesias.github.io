@@ -72,7 +72,7 @@ Si un objeto A usa otro objeto B que, a su vez, utiliza internamente un tercer o
 
 En el caso de los test esto significa que por muchas dependencias que pueda tener una clase doblada, no las necesitamos para crear el double ya que sólo nos interesa su interfaz o su comportamiento, no su estructura. Y si las necesitásemos entonces es que tenemos un problema con el diseño.
 
-### DRY: Evita las repeticiones
+### DRY: Evita las repeticiones
 
 Cualquier repetición en el código debería llevarnos a un refactor con el objetivo de reducirla o eliminarla.
 

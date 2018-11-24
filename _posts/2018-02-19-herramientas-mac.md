@@ -110,7 +110,7 @@ En el enlace puedes acceder a una colección de plugins interesantes para desarr
 
 [Quick Look Plugins](https://github.com/sindresorhus/quick-look-plugins)
 
-### The Unarchiver
+### The Unarchiver
 
 Gestiona automáticamente en el Finder todo tipo de archivos comprimidos.
 

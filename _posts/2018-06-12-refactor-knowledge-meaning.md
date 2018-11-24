@@ -34,7 +34,7 @@ En ese momento podemos refactorizar para conseguir dos objetivos principales:
 * Reflejar nuestro conocimiento creciente de cómo funciona el código, reescribiéndolo de una forma más inteligible.
 * Poner el sistema en un estado testeable.
 
-## Refactor como reflejo del conocimiento sobre el código
+## Refactor como reflejo del conocimiento sobre el código
 
 A medida que leemos código nos vamos haciendo una idea de cómo funciona y qué representa cada uno de los símbolos que nos encontramos en él. La cuestión es ¿dónde se guarda ese conocimiento? ¿Sólo en nuestra cabeza?
 

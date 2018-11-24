@@ -19,7 +19,7 @@ En este artículo no trataremos todas las formas normales y llegaremos hasta la 
 
 Empecemos, pues.
 
-## Primera forma normal
+## Primera forma normal
 
 La primera forma normal es la más básica de todas e implica cumplir cinco condiciones:
 

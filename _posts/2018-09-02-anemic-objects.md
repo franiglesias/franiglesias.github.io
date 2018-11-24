@@ -152,7 +152,7 @@ La lógica así montada presenta complicaciones para el testing. Para poder test
 
 En último término estos tests son tremendamente frágiles, complicados de montar y realmente no nos aportan información. Puedes encontrar una buena explicación de este problema en [este artículo de Samuele Lilli](https://labs.madisoft.it/about-testing-entity-state-changes-in-phpspec/).
 
-## Quién tiene la responsabilidad
+## Quién tiene la responsabilidad
 
 En el fondo tenemos un problema de asignación de responsabilidad. ¿Qué objeto debería ocuparse de mantener el estado de Score? ¡Pues el propio Score! Veamos cómo:
 

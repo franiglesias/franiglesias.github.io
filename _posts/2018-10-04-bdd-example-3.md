@@ -166,7 +166,7 @@ En aplicación del principio de Inversión de Dependencia, la interfaz de `Produ
 
 En ambos casos, de momento vamos a hacer la implementación más simple posible, para poder instanciarlas.
 
-### Product Repository
+### Product Repository
 
 Como preparación, arreglamos la interfaz:
 

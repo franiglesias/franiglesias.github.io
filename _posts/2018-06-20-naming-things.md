@@ -225,7 +225,7 @@ El nombre de un método debería describir dos cosas:
 * Su propósito.
 * Sus consecuencias.
 
-### Propósito
+### Propósito
 
 Supongamos un repositorio de estudiantes:
 
@@ -320,7 +320,7 @@ Ahora la signatura completa nos está diciendo que el método puede devolver un 
 
 Eso sí, es muy discutible que este método pueda devolver un null.
 
-### Setters y mutators
+### Setters y mutators
 
 En general, los métodos *setters* y *mutators* cambian el estado de un objeto. Los *setters* inician un estado (o una parte de él) y los *mutators* lo cambian. Es relativamente fácil mezclar estos significados y usar *setters* para cambiar el estado de un objeto.
 
@@ -375,7 +375,7 @@ class Book
 }
 ```
 
-#### Por qué lo llaman fijar cuando quieren decir añadir
+#### Por qué lo llaman fijar cuando quieren decir añadir
 
 Veamos ahora el caso de los autores. Muchos libros tienen varios autores por lo que sería correcto que al crear un objeto Book pasemos un array o una colección de autores. Por supuesto, puede ocurrir que no dispongamos de todos los autores en el momento de creación del objeto y que necesitemos añadir más luego.
 

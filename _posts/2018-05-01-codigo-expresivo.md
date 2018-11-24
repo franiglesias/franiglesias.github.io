@@ -254,7 +254,7 @@ class Document
 }
 ```
 
-### Métodos que explican lo que hacen
+### Métodos que explican lo que hacen
 
 Por lo general, los métodos no deberían revelar detalles de implementación, pero eso no impide que puedan aporta alguna información que describa de forma más precisa su comportamiento.
 

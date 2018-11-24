@@ -29,11 +29,11 @@ Las principales razones para borrar comentarios son:
 
 ## Refactor de comentarios
 
-### Básico
+### Básico
 
 Simplemente eliminamos los comentarios que no necesitamos. Es un refactor completamente seguro ya que no afecta de ningún modo al código.
 
-### Reemplazar comentarios por mejores nombres
+### Reemplazar comentarios por mejores nombres
 
 Eliminamos comentarios obvios, redundantes o innecesarios, cambiando el nombre de los símbolos que tratan de explicar.
 
@@ -191,7 +191,7 @@ public function calculateFee(Request $dataToCalculate)
 public function calculateFee(Request $dataToCalculate)
 {
     $this->normalizeAmountsToTheSameCurrency($dataToCalculate);
-    $initialCalculation = $this->performInitialCalculation($dataToCalculate)M
+    $initialCalculation = $this->performInitialCalculation($dataToCalculate);
     $transformedResponse = $this->applyTransformation($initialCalculation);
 }
 
@@ -261,9 +261,9 @@ Si es necesario recuperarlo (spoiler: no lo será) siempre nos queda el control 
 
 **Excepciones**: dentro de un límite temporal estricto, puede ser una manera de explorar los efectos de suprimir un fragmento de código o desactivar una característica en tanto no se pueda tomar una decisión firme sobre ella. Pero debería desaparecer enseguida, antes de integrarse en el master.
 
-## Comentarios que podemos conservar… o no
+## Comentarios que podríamos conservar… o no
 
-### Comentarios que explican decisiones
+### Comentarios que explican decisiones
 
 Los buenos comentarios deberían explicar por qué tomamos alguna decisión que no podemos expresar mediante el propio código y que, por su naturaleza, podríamos considerar como independientes de la implementación concreta que el código realiza. Es decir, no deberíamos escribir comentarios que expliquen cómo es el código (algo que ya podemos ver), sino que explique por qué es así.
 

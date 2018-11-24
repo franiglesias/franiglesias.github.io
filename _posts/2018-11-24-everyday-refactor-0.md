@@ -21,7 +21,7 @@ Como ya hemos mencionado en otras ocasiones, [el refactor trata principalmente s
 
 Por esa razón, se nos ha ocurrido que podría ser buena idea iniciar una especie de curso o guía para aprender sobre cómo hacer "refactor cotidiano".
 
-## Refactor cotidiano
+## Refactor cotidiano
 
 La idea del refactor cotidiano es muy simple:
 

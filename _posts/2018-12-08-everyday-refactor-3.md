@@ -222,7 +222,7 @@ private function legacyOrdersWithDestinationFrance($order)
 
 Del singleton que tenemos por ahí no hablaremos en esta ocasión.
 
-## Encapsula ramas en métodos o funciones
+## Encapsula ramas en métodos o funciones
 
 Consiste en encapsular todo el bloque de código de cada rama de ejecución en su propio método, de modo que el nombre nos indique qué hace. Esto nos deja las ramas de la estructura condicional al mismo nivel y expresando lo que hacen de manera explícita y global. En los métodos extraídos podemos seguir aplicando refactors progresivos hasta que ya no sea necesario.
 
@@ -285,7 +285,7 @@ De ese modo, la complejidad queda oculta en los métodos y el cuerpo principal s
 
 Si hacemos esto en todas las ramas de una condicional o de un switch las dejaremos todas al mismo nivel, lo que facilita su lectura.
 
-## Reemplaza if…else if sucesivos con switch
+## Reemplaza if…else if sucesivos con switch
 
 En muchos casos, sucesiones de `if` o `if…else` quedarán  mejor expresados mediante una estructura `switch`. Por ejemplo, siguiendo con el ejemplo anterior, este método que hemos extraído:
 
@@ -329,7 +329,7 @@ private function reportForProductInPendingStatus(paymentMethod)
 }
 ```
 
-## Sustituir if por el operador ternario
+## Sustituir if por el operador ternario
 
 A veces, un operador ternario puede ser más legible que una condicional:
 

@@ -25,7 +25,7 @@ Dijkstra es conocido como fundador de la llamada "Programación estructurada", u
 
 https://es.wikipedia.org/wiki/Programación_estructurada
 
-La programación estructurada surgió como reacción a estilos de programación desorganizados que movían libremente la ejecuación de un punto a otro arbitrario del código mediante el uso de sentencias GOTO, aprovechando la posibilidad de saltar directamente a un punto dentro de una subrutina (algo posible en ensamblador, por ejemplo) o incluso retornar a un lugar distinto desde el cual la subrutina hubiese sido llamada (como en FORTRAN). Estamos hablando del año 1968:
+La programación estructurada surgió como reacción a estilos de programación desorganizados que movían libremente la ejecución de un punto a otro arbitrario del código mediante el uso de sentencias GOTO, aprovechando la posibilidad de saltar directamente a un punto dentro de una subrutina (algo posible en ensamblador, por ejemplo) o incluso retornar a un lugar distinto desde el cual la subrutina hubiese sido llamada (como en FORTRAN). Estamos hablando del año 1968:
 
 https://www.cs.utexas.edu/users/EWD/transcriptions/EWD02xx/EWD215.html
 
@@ -45,7 +45,7 @@ Ahora que hemos visto que hace mucho tiempo que no tiene sentido mantener este p
 
 https://www.tomdalling.com/blog/coding-tips/coding-tip-have-a-single-exit-point/
 
-El ejemplo, como señalan algunos comentarios, tiene que ver con una situación muy específica como es la gestión de recursos y la asginación y liberación de manejadores, que podrían quedar abiertos de forma incorrecta si salimos prematuramente de la función que los emplea. Por ejemplo: abrir un archivo para buscar algo en él y retornar el resultado sin cerrarlo adecuadamente.
+El ejemplo, como señalan algunos comentarios, tiene que ver con una situación muy específica como es la gestión de recursos y la asignación y liberación de manejadores, que podrían quedar abiertos de forma incorrecta si salimos prematuramente de la función que los emplea. Por ejemplo: abrir un archivo para buscar algo en él y retornar el resultado sin cerrarlo adecuadamente.
 
 Tengo la sensación de que, por un lado, esta idea del único punto de salida es una simplificación de un principio más general que tiene que ver con el Single Responsibility Principle y con la necesidad de que las funciones y métodos devuelvan un único tipo de resultados, algo que se puede explicitar mediante el **return type**.
 
@@ -148,9 +148,9 @@ function selectElement($criteria, $desirability)
 
 Seguramente estarás pensando que hoy por hoy nadie mínimamente competente escribiría un código como el que se muestra, pero la verdad es que si tienes que trabajar con legacy de cierta edad te lo vas a encontrar con bastante frecuencia.
 
-No se trata de falta de competencia. Ocurre que, por un lado, lo que consideramos buenas prácticas ha ido cambiando con el tiempo, que se han interpretado mal ciertos principios de diseño o patrones de programación, y que se encuentran limitaciones en los lenguajes de programación en un momento dao. Por ejemplo: los déficits de PHP en versiones como la 4 o incluso la 5, especialmente en cuestiones como el manejo de errores y excepciones o la falta de type hinting o return type.
+No se trata de falta de competencia. Ocurre que, por un lado, lo que consideramos buenas prácticas ha ido cambiando con el tiempo, que se han interpretado mal ciertos principios de diseño o patrones de programación, y que se encuentran limitaciones en los lenguajes de programación en un momento dado. Por ejemplo: los déficits de PHP en versiones como la 4 o incluso la 5, especialmente en cuestiones como el manejo de errores y excepciones o la falta de type hinting o return type.
 
-Este conjunto de circunstacias hace que el código que no haya sido actualizado desde hace varios años muestre problemas de este tipo.
+Este conjunto de circunstancias hace que el código que no haya sido actualizado desde hace varios años muestre problemas de este tipo.
 
 ## Refactoring de single exit point
 
@@ -182,7 +182,7 @@ function selectElement($criteria, $desirability)
 }
 ```
 
-Cuando nos encontrarmos códigos así escritos es buena idea refactorizar para entender. Es decir, reescribir el código para que sea más legible, poner de relieve posibles problemas y facilitar la introducción de nuevas funcionalidades o modificar las existentes.
+Cuando nos encontrarnos códigos así escritos es buena idea refactorizar para entender. Es decir, reescribir el código para que sea más legible, poner de relieve posibles problemas y facilitar la introducción de nuevas funcionalidades o modificar las existentes.
 
 Una primera aproximación es aclarar el terreno usando cláusulas de guarda para reducir el anidamiento de condicionales. Para esto hay que invertir las condiciones, lo que puede tener su miga si son complejas.
 
@@ -218,7 +218,7 @@ Si las condiciones son muy complejas, puede ser buena idea extraerlas a un méto
 ```php
 function selectElement($criteria, $desirability)
 {
-	if (!bothArgumentsAreValid($criteria, $desirability)) {
+	if (! bothArgumentsHaveValues($criteria, $desirability)) {
 		return null;
 	}
 

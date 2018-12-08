@@ -9,7 +9,7 @@ La segunda entrega de la guía del refactor cotidiano trata de los nombres y có
 
 Probablemente en ningún lugar como el código los nombres configuran la realidad. De hecho, escribir código implica establecer decenas de nombres cada día, para identificar conceptos y procesos. Una mala elección de nombre puede condicionar nuestra forma de ver un problema de negocio. Un nombre ambiguo puede llevarnos a entrar en un callejón sin salida, ahora o en un futuro no muy lejano. Un nombre bien escogido puede ahorrarnos tiempo, dinero y dificultades.
 
-## Símbolos con nombres
+## Símbolos con nombres
 
 Un trozo de código debería poder leerse como una especie de narrativa, en la cual cada palabra expresase de forma unívoca un significado. También de forma ubicua y coherente, es decir, el mismo símbolo debería representar el mismo concepto en todas partes del código.
 

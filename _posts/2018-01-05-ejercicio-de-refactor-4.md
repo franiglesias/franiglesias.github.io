@@ -255,7 +255,7 @@ class Notification
 
 ```
 
-Lo suyo es comenzar a reemplazar los usos de los parámetros $order y $paymentMethods por el nuevo $reportableOrder. De momento no eliminaremos los parámetros. Una vez que hemos dejado de usarlos y **con el test pasando correctamente**, los eliminamos de la definción de la interfaz MessageGenerator. Esto hará que falle de nuevo el test, indicándonos que tenemos que arreglar las llamadas a los métodos.
+Lo suyo es comenzar a reemplazar los usos de los parámetros `$order` y `$paymentMethods` por el nuevo `$reportableOrder`. De momento no eliminaremos los parámetros. Una vez que hemos dejado de usarlos y **con el test pasando correctamente**, los eliminamos de la definición de la interfaz `MessageGenerator`. Esto hará que falle de nuevo el test, indicándonos que tenemos que arreglar las llamadas a los métodos.
 
 ```php
 <?php
@@ -272,7 +272,7 @@ interface MessageGenerator
 }
 ```
 
-De paso que hacemos esto y manteniendo los test en verde aprovecharmos para hacer algunos refactors sencillos como eliminar algunas variables temporales y alguna dependencia que nos había quedado olvidada.
+De paso que hacemos esto y manteniendo los test en verde aprovecharnos para hacer algunos refactors sencillos como eliminar algunas variables temporales y alguna dependencia que nos había quedado olvidada.
 
 ## Hasta el infinito, y más acá
 
@@ -364,9 +364,9 @@ class MessagesByOrderStatusGenerator implements MessageGenerator
 
 Se podría decir que la sombra de la cadena de responsabilidad ha estado planeando durante todo el proceso de refactor, pero es ahora cuando estamos en mejores condiciones para aplicar el patrón.
 
-La pega, hasta cierto punto, es que ya tenemos cuatro generators y podríamos tener uno ó dos más y prefiriríamos no tocarlos. ¿Qué podemos hacer?
+La pega, hasta cierto punto, es que ya tenemos cuatro generators y podríamos tener uno ó dos más y preferiríamos no tocarlos. ¿Qué podemos hacer?
 
-La respuesta está en la sobre-ingeniería. Ciertamente, lo que voy a proponer ahora puede considerarse demasiado complejo para un simple generador de mensajes pero, por otra parte, creo que el resultado final resultará intersante. Si bien nuestro ejemplo actual es sencillo, puedo imaginar proyectos más complejos en los que necesitaremos la flexibilidad y sostenibilidad que vamos a conseguir.
+La respuesta está en la sobre-ingeniería. Ciertamente, lo que voy a proponer ahora puede considerarse demasiado complejo para un simple generador de mensajes pero, por otra parte, creo que el resultado final resultará interesante. Si bien nuestro ejemplo actual es sencillo, puedo imaginar proyectos más complejos en los que necesitaremos la flexibilidad y sostenibilidad que vamos a conseguir.
 
 Fundamentalmente, mi intención es combinar Specifications con sus correspondientes MessageGenerators usando Mediators que formarán una ChainOfResponsibility.
 
@@ -421,7 +421,7 @@ class IsSoldOrReservedOrderSpecification implements Specification
 
 Aunque hasta ahora no le habíamos prestado mucha atención, si te fijas en `IsSoldOrReservedOrderSpecification` parece que tenemos un pequeño caso de código mentiroso. El método `getOrderStatus` devuelve estados de un concepto `Purchase` y eso debería quedar mejor reflejado en el nombre del propio método, así que lo cambio en la clase ReportableOrder, de modo que el problema (que ya venía de Order) quede controlado de aquí en adelante:
 
- ```php
+```php
 class IsSoldOrReservedOrderSpecification implements Specification
 {
 
@@ -441,7 +441,7 @@ El resto de Specifications siguen el mismo patrón. Para construirlas usando TDD
 
 ### TDD del patrón Specification
 
-Una dificultad cuando hacemos TDD de clases cuyo comportamiento y estructura tenemos ya muy claros y que, por otra parte, cuya integración ya está cubierta por algún test de caracterización o de integración, es que cuesta bastante escoger un primer test y procecer, a continuación, en baby steps. Sencillamente: ya sabemos mucho de la clase que vamos a escribir y el cuerpo nos pide ir rápido.
+Una dificultad cuando hacemos TDD de clases cuyo comportamiento y estructura tenemos ya muy claros y que, por otra parte, cuya integración ya está cubierta por algún test de caracterización o de integración, es que cuesta bastante escoger un primer test y proceder, a continuación, en `baby steps`. Sencillamente: ya sabemos mucho de la clase que vamos a escribir y el cuerpo nos pide ir rápido.
 
 En el caso de las Specification tenemos dos posibles estados: o bien la condición se cumple, o bien no se cumple. Además, los objetos de los que controlamos que la cumplan pueden ser varios. Mi enfoque ha sido el siguiente:
 
@@ -813,7 +813,7 @@ Por tanto, tenemos que probar que encadenando un nuevo Generador a uno existente
     }
 ```
 
-Implementamos el método chain y la delegación para que el test pueda pasar.
+Implementamos el método `chain` y la delegación para que el test pueda pasar.
 
 ```php
 class ChainableMessageGenerator implements MessageGenerator
@@ -953,7 +953,7 @@ Así, podríamos diseñar Specification más genéricas, que expresan reglas del
 Por ejemplo, `IsProvider1Specification` podría reemplazarse por algo así:
 
 ```php
-class ProvideIdentifiedBySpecification implements Specification
+class ProviderIdentifiedBySpecification implements Specification
 {
 
     private $provider;
@@ -976,7 +976,7 @@ Por otro lado, sería posible seguir extendiendo el refactor aplicando los mismo
 
 ## Final del trayecto (ahora, sí)
 
-Este refactoring, aunque grande, no lleva tanto tiempo de trabajo como puede parecer. Lo más importante es disponer de tests que documenten el comportamiento del código que estamos refactorizando y proceder en pasos seguros, manteniéndo los tests pasando. De este modo, podemos entregar siempre que tengamos los tests en verde, dejándolo en buenas condiciones modificar el código y seguir mejorando su calidad en futuras intervenciones.
+Este refactoring, aunque grande, no lleva tanto tiempo de trabajo como puede parecer. Lo más importante es disponer de tests que documenten el comportamiento del código que estamos refactorizando y proceder en pasos seguros, manteniendo los tests pasando. De este modo, podemos entregar siempre que tengamos los tests en verde, dejándolo en buenas condiciones modificar el código y seguir mejorando su calidad en futuras intervenciones.
 
 El esfuerzo de mejorar el código compensa en términos de legibilidad y sostenibilidad. Gracias a la mejor legibilidad es más fácil retomar el código en otro momento o por otro programador, de modo que las intervenciones futuras sean menos costosas. Pero además de legible, el código es más sostenible porque el nuevo diseño es más flexible y fácil de modificar, lo que contribuye igualmente a reducir el conste de la intervención.
 

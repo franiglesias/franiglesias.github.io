@@ -128,9 +128,31 @@ Un uso habitual de esta técnica es la de tratar casos particulares o que sean o
 En muchas ocasiones, cuando los datos tienen que ser validados antes de operar con ellos, podemos encapsular esas condiciones que dan lugar a excepciones en forma de cláusulas de guarda. Estas cláusulas de guarda, también se conocen como aserciones, o precondiciones. Si los parámetros no las cumplen, el método o función falla lanzando excepciones.
 
 ```php
-$this->checkTheParameterIsInRange($parameter);
+    if ($parameter > 100 || $parameter < 0) {
+        throw new OutOfRangeException(sprintf('Parameter should be between 0 and 100 (inc), %s provided.', $parameter));
+    }
+
+// further processing
 ```
 
+Extraemos toda la estructura a un método privado:
+
+```php
+$this->checkTheParameterIsInRange($parameter);
+
+// further processing
+
+private function checkTheParameterIsInRange(int $parameter)
+{
+    if ($parameter > 100 || $parameter < 0) {
+        throw new OutOfRangeException(sprintf('Parameter should be between 0 and 100 (inc), %s provided.', $parameter));
+    }
+}
+```
+
+La lógica bajo este tipo de cláusulas es que si no salta ninguna excepción, quiere decir que `$parameter` ha superado todas las validaciones y lo puedes usar con confianza.
+
+La ventaja es que las reglas de validación resultan muy expresivas, ocultando los detalles técnicos en los métodos extraídos.
 
 ## Preferir condiciones afirmativas
 
@@ -312,19 +334,19 @@ Podría convertirse en algo así:
 ```php
 private function reportForProductInPendingStatus(paymentMethod)
 {
-    if ($this->paymentMethods->hasSelectedDebitCard()) {
-        return 'pago a débito';
-    }
-    if (!$this->paymentMethods->requiresAuthorization()) {
-        return 'pago no requiere autorización';
-    }
-    
     switch $paymentMethod {
         case PaymentTypes::BANK_TRANSFER:
             return 'pendiente de transferencia';
         case PaymentTypes::PAYPAL:
         case PaymentTypes::CREDIT_CARD:
             return 'pago a crédito';
+    }
+    
+    if ($this->paymentMethods->hasSelectedDebitCard()) {
+        return 'pago a débito';
+    }
+    if (!$this->paymentMethods->requiresAuthorization()) {
+        return 'pago no requiere autorización';
     }
 }
 ```

@@ -6,7 +6,7 @@ categories: articles
 tags: php design-patterns
 ---
 
-En esta entrega veremos como usar el patrón Abstract Factory para poder tener Specification adecuadas a diferentes capas e implementaciones.
+En esta entrega veremos como usar el patrón Abstract Factory para poder tener Specification adecuadas a diferentes capas e implementaciones.
 
 La serie **Specification: del dominio a la infraestructura** está compuesta de los siguientes artículos
 
@@ -14,22 +14,22 @@ La serie **Specification: del dominio a la infraestructura** está compuesta de 
 [Patrón Specification: del dominio a la infraestructura (2)](/patron-specificacion-del-dominio-a-la-infraestructura-2)  
 [Patrón Specification: del dominio a la infraestructura (3)](/patron-specification-del-dominio-a-la-infraestructura-3)
 
-Hace tiempo descubrí que tenía una vinculación curiosa con Martin Fowler. Resulta que el colegio para el que trabajaba mantiene intercambios de estudiantes con un colegio inglés del que Fowler es ex-alumno. En fin, una de esas curiosidades que sirve para hacer una introducción a un post.
+Hace tiempo descubrí que tenía una vinculación curiosa con Martin Fowler. Resulta que el colegio para el que trabajaba mantiene intercambios de estudiantes con un colegio inglés del que Fowler es ex-alumno. En fin, una de esas curiosidades que sirve para hacer una introducción a un post.
 
-Aparte de eso, he leído bastantes cosas suyas, como [PoEAA](https://martinfowler.com/books/eaa.html) y diversos artículos acerca de patrones de diseño y *refactoring*. Entre ellos, [este acerca de Specification (PDF) ](https://www.martinfowler.com/apsupp/spec.pdf)con Eric Evans. El caso es que no encontraba soluciones prácticas para usar el patrón sobre diferentes implementaciones.
+Aparte de eso, he leído bastantes cosas suyas, como [PoEAA](https://martinfowler.com/books/eaa.html) y diversos artículos acerca de patrones de diseño y *refactoring*. Entre ellos, [este acerca de Specification (PDF) ](https://www.martinfowler.com/apsupp/spec.pdf)con Eric Evans. El caso es que no encontraba soluciones prácticas para usar el patrón sobre diferentes implementaciones.
 
-En el artículo sobre Read Model de hace unos días, comenté que gracias a una respuesta en Twitter de [Keyvan Akbar](http://keyvanakbary.com), llegué a un [ejemplo concreto de cómo implementar Specification en diferentes capas e implementaciones](https://github.com/dddinphp/repository-examples). Y ahora voy a intentar explicarlo lo mejor que pueda.
+En el artículo sobre Read Model de hace unos días, comenté que gracias a una respuesta en Twitter de [Keyvan Akbar](http://keyvanakbary.com), llegué a un [ejemplo concreto de cómo implementar Specification en diferentes capas e implementaciones](https://github.com/dddinphp/repository-examples). Y ahora voy a intentar explicarlo lo mejor que pueda.
 
 ## En resumen
 
-* Las specification se instancian mediante factorías, las cuales tienen métodos que construyen y devuelven las specification que necesites. No las instancias mediante new para no depender de la implementación concreta.
+* Las specification se instancian mediante factorías, las cuales tienen métodos que construyen y devuelven las specification que necesites. No las instancias mediante new para no depender de la implementación concreta.
 * Necesitas implementaciones concretas de la factoría dependiendo de la infraestructura de persistencia. Exactamente igual que con los repositorios.
 * Para poder intercambiar factorías, necesitas una interfaz común para las SpecificationFactories, lo que se llama una Abstract Factory. De este modo, utilizas la implementación de factoría que necesites allí donde estés, pues ella te proporcionará las Specification adecuadas.
 * Y, por supuesto, necesitas las Specification.
 
 ## Factoría de Specification
 
-En lugar de instanciar Specification con `new`, usaremos una factoría. La factoría tiene métodos que devuelven una instancia de los diversos tipos de Specification que definas.
+En lugar de instanciar Specification con `new`, usaremos una factoría. La factoría tiene métodos que devuelven una instancia de los diversos tipos de Specification que definas.
 
 Pero, como he señalado antes, para garantizar que cada Factoría concreta tiene métodos equivalentes necesitamos usar el patrón Abstract Factory, que fundamentalmente consiste en una interfaz. Algo así:
 
@@ -60,7 +60,7 @@ interface ArticleSpecificationFactory
 
 Las factorías concretas de Specification tienen que implementar esos métodos, lo que quiere decir que van a devolver Specifications adecuadas para la capa o infraestructura concreta.
 
-He aquí un ejemplo algo más sencillo (aunque con una complicación de la que hablaré en la siguiente entrega, como son las Composite Specification):
+He aquí un ejemplo algo más sencillo (aunque con una complicación de la que hablaré en la siguiente entrega, como son las Composite Specification):
 
 ```php
 namespace Mh13\plugins\contents\infrastructure\persistence\dbal;
@@ -96,17 +96,17 @@ class DbalBlogSpecificationFactory implements BlogSpecificationFactory
 
 En este ejemplo, podemos ver una factoría que genera Specification para DoctrineDBAL.
 
-Y de eso voy a hablar a continuación.
+Y de eso voy a hablar a continuación.
 
 ## Specifications con Doctrine DBAL
 
-Como vimos en el artículo anterior, crear specification concretas para la capa de dominio y repositorios *in memory* es realmente bastante fácil, ya que se trata fundamentalmente de encapsular las condiciones que debe cumplir el objeto pasado al método `isSatisfiedBy` (o equivalente), el cual devuelve un bool.
+Como vimos en el artículo anterior, crear specification concretas para la capa de dominio y repositorios *in memory* es realmente bastante fácil, ya que se trata fundamentalmente de encapsular las condiciones que debe cumplir el objeto pasado al método `isSatisfiedBy` (o equivalente), el cual devuelve un bool.
 
 Pero las specification "estándar" no son muy útiles en la práctica si tenemos que hacer consultas a una base de datos. En ese caso, preferimos obtener las cláusulas `WHERE` de un SQL que nos devuelva el conjunto seleccionado de datos que necesitamos de una tacada (o en el peor de los casos una preselección más manejable que podamos filtrar).
 
 En mi caso, la infraestructura de persistencia es MySQL con Doctrine DBal, así que vamos a ver cómo me las estoy apañando. De hecho creo que en los ejemplos se van a ver cosas que tendría que afinar, pero creo que se va a entender.
 
-Para empezar, voy a considerar que lo que necesito de la Specification es el SQL de las cláusulas WHERE, y para indicar eso voy a llamar al método `getConditions`, algo más o menos así:
+Para empezar, voy a considerar que lo que necesito de la Specification es el SQL de las cláusulas WHERE, y para indicar eso voy a llamar al método `getConditions`, algo más o menos así:
 
 ```php
 namespace Mh13\plugins\contents\infrastructure\persistence\dbal\specification\blog;
@@ -157,17 +157,17 @@ class BlogWithSlug extends CompositeDbalSpecification
 ```
 
 
-El parámetro `$slug` es el nombre simplificado del blog y se pasa a la Specification en el constructor. Observa que también paso un ExpressionBuilder, que es una clase de Doctrine con la que montar expresiones para las Queries.
+El parámetro `$slug` es el nombre simplificado del blog y se pasa a la Specification en el constructor. Observa que también paso un ExpressionBuilder, que es una clase de Doctrine con la que montar expresiones para las Queries.
 
 ¿Por qué lo hago así? En este caso, me interesa por varias razones. En primer lugar, porque es un ejemplo de que podemos pasar a la Specification cualquier dependencia que necesite para desempeñar su función. En el ejemplo no sería realmente necesario ya que la expresión es bien sencilla (`'blog.slug = :slug'`), pero hay algunas expresiones para las que ExpressionBuilder es mejor solución que hacerlas a mano.
 
-De todos modos, BlogWithSlug desciende de una clase abstracta llamada CompositeDbalSpecification que sí necesita ExpressionBuilder para sus funciones. Pero no voy a meterme en eso ahora.
+De todos modos, BlogWithSlug desciende de una clase abstracta llamada CompositeDbalSpecification que sí necesita ExpressionBuilder para sus funciones. Pero no voy a meterme en eso ahora.
 
 ## Cositas específicas de Doctrine DBAL
 
-Si tienes familiaridad con el QueryBuilder de Doctrine conocerás los parámetros posicionales y los parámetros con nombre. Se utilizan para evitar problemas de seguridad al crear las SQL con información procedente del usuario en queries y prevenir los ataques de SQL injection.
+Si tienes familiaridad con el QueryBuilder de Doctrine conocerás los parámetros posicionales y los parámetros con nombre. Se utilizan para evitar problemas de seguridad al crear las SQL con información procedente del usuario en queries y prevenir los ataques de SQL injection.
 
-Una solución sería hacer la limpieza necesaria al construir la cláusula en la Specification, pero ya que QueryBuilder la va a hacer cuando se genere el SQL y se ejecute, parece más interesante delegarle un trabajo que hace muy bien.
+Una solución sería hacer la limpieza necesaria al construir la cláusula en la Specification, pero ya que QueryBuilder la va a hacer cuando se genere el SQL y se ejecute, parece más interesante delegarle un trabajo que hace muy bien.
 
 Así que lo que se me ha ocurrido es que la Specification pueda recoger los parámetros y pasárselo a QueryBuilder cuando éste los necesita. Por eso, he puesto unos métodos de utilidad en la clase abstracta de la que descienden las Specifications. Os presento a **CompositeDbalSpecification**:
 
@@ -285,7 +285,7 @@ class DbalBlogReadModel implements BlogReadModel
 
 A este código le falta una mano de lija, pero creo que la idea se ve clara.
 
-La chicha está en las líneas 25 a 29. Construyo la Query con QueryBuilder y le paso las cláusulas de la Specification a través del método <code>where</code>. Si hay parámetros, los paso por <code>setParameter</code>. Luego no hay más que generar la Statement con <code>execute</code> y recoger los datos.
+La chicha está en las líneas 25 a 29. Construyo la Query con QueryBuilder y le paso las cláusulas de la Specification a través del método <code>where</code>. Si hay parámetros, los paso por <code>setParameter</code>. Luego no hay más que generar la Statement con <code>execute</code> y recoger los datos.
 
 Ahora bien, ¿cómo uso el ReadModel y la DbalBlogSpecificationFactory? Me alegro de que me hagas esa pregunta.
 
@@ -327,7 +327,7 @@ class BlogService
 }
 ```
 
-Al construir BlogService (cosa que ocurre en el Contenedor de Inyección de Dependencias) le pasamos las implementaciones para DBal tanto del ReadModel (o de un repositorio) como de BlogSpecificationFactory. Pero podrían ser otras y no necesitaríamos cambiar BlogService para nada.
+Al construir BlogService (cosa que ocurre en el Contenedor de Inyección de Dependencias) le pasamos las implementaciones para DBal tanto del ReadModel (o de un repositorio) como de BlogSpecificationFactory. Pero podrían ser otras y no necesitaríamos cambiar BlogService para nada.
 
 En mi caso concreto, BlogService es usando por varios controladores web.
 

@@ -72,4 +72,4 @@ No es el ejemplo más hermoso de la kata FizzBuzz del mundo, pero algo es algo.
 
 Y estas son algunas de las cosas que he ido aprendiendo estos días. Pronto entraré en el mundo de los objetos Javascript, que también tiene sus peculiaridades.
 
- 
+ 

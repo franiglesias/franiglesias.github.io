@@ -16,11 +16,11 @@ La instalación en un proyecto es bien sencilla:
 composer require doctrine/dbal
 ```
 
-En principio, si tenemos composer y su autoloader no necesitamos más. No hace falta decir que nos hace falta tener activo un servidor de bases de datos y las credenciales necesarias.
+En principio, si tenemos composer y su autoloader no necesitamos más. No hace falta decir que nos hace falta tener activo un servidor de bases de datos y las credenciales necesarias.
 
 ## Obtener una conexión
 
-Para empezar a trabajar necesitamos establecer la conexión con el servidor, por lo que nos harán falta credenciales y pasárselas a Doctrine DBAL. Algo así como esto:
+Para empezar a trabajar necesitamos establecer la conexión con el servidor, por lo que nos harán falta credenciales y pasárselas a Doctrine DBAL. Algo así como esto:
 
 ```php
 <?php
@@ -43,7 +43,7 @@ Lo anterior es un método de una clase DBALClass que accede a la base de datos. 
 
 Lo primero es un LazyLoading, si ya tenemos la conexión no la volvemos a establecer.
 
-La línea 9 utiliza el Yaml Component de Symfony para interpretar un archivo de configuración en el que describimos la conexión. El archivo viene siendo como sigue, la ruta concreta queda como ejercicio para el lector:
+La línea 9 utiliza el Yaml Component de Symfony para interpretar un archivo de configuración en el que describimos la conexión. El archivo viene siendo como sigue, la ruta concreta queda como ejercicio para el lector:
 
 ```yaml
 doctrine:
@@ -60,9 +60,9 @@ El componente Yaml se instala con composer:
 composer require symphony/yaml
 ```
 
-He usado una clave `default_connection` para definir el nombre de la conexión a usar por defecto si hubiese varias, cosa que podría ser necesaria para poder usar distintos servidores para diversos propósitos.
+He usado una clave `default_connection` para definir el nombre de la conexión a usar por defecto si hubiese varias, cosa que podría ser necesaria para poder usar distintos servidores para diversos propósitos.
 
-Debajo de la clave `connections` van cada una de las conexiones definidas. En el ejemplo, sólo he creado `default`. He puesto la configuración en formato UrlSchema, que es conciso y fácil de escribir. Se pueden poner claves para cada componente (consulta la documentación).
+Debajo de la clave `connections` van cada una de las conexiones definidas. En el ejemplo, sólo he creado `default`. He puesto la configuración en formato UrlSchema, que es conciso y fácil de escribir. Se pueden poner claves para cada componente (consulta la documentación).
 
 Las líneas 10 y 11 simplemente obtienen los datos de conexión del array leído del archivo `config.yml`.
 
@@ -76,9 +76,9 @@ Ahora con una llamada a `getConnection` en nuestra clase ya podemos obtener una 
 $this->getConnection()->exec($query);
 ```
 
-En realidad, podemos hacer de todo con nuestras bases de datos, como crear o alterar el esquema, ejecutar SQL y lo que se te ocurra. En futuros artículos espero explicar algunas de estas tareas.
+En realidad, podemos hacer de todo con nuestras bases de datos, como crear o alterar el esquema, ejecutar SQL y lo que se te ocurra. En futuros artículos espero explicar algunas de estas tareas.
 
-Para terminar, pongo un ejemplo en el que estoy trabajando de un comando de consola para actualizar la base de datos de la aplicación que estoy migrando. El comando añade columnas a varias tablas y mueve datos que estaban en otras.
+Para terminar, pongo un ejemplo en el que estoy trabajando de un comando de consola para actualizar la base de datos de la aplicación que estoy migrando. El comando añade columnas a varias tablas y mueve datos que estaban en otras.
 
 En la línea 169 está comentado un comando para eliminar las tablas sobrantes.
 

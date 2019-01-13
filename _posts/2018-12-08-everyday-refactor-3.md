@@ -401,3 +401,4 @@ El operador ternario tiene sus problemas pero, en general, es una buena solució
 ## Resumen del capítulo
 
 Las expresiones y estructuras condicionales pueden hacer que seguir el flujo de un código sea especialmente difícil, particularmente cuando están anidadas o son muy complejas. Mediante técnicas de extracción podemos simplificarlas, aplanarlas y hacerlas más expresivas.
+everyday

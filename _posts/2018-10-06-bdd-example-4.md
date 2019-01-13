@@ -434,9 +434,9 @@ Por otro lado, queremos organizar nuestra carpeta de acceptance test en base a d
 ```
 tests
 ├── Acceptance
-│   └── Product
-│       ├── Context
-│       └── Features
+│   └── Product
+│       ├── Context
+│       └── Features
 ├── Integration
 └── Unit
 
@@ -579,15 +579,15 @@ Para hacer funcionar la configuración, moveremos la actual carpeta `specs` dent
 ```
 tests
 ├── Acceptance
-│   └── Product
-│       ├── Context
-│       └── Features
+│   └── Product
+│       ├── Context
+│       └── Features
 ├── Spec
-│   └── TalkingBit
-│       └── BddExample
-│           ├── FileReader
-│           ├── Persistence
-│           └── VO
+│   └── TalkingBit
+│       └── BddExample
+│           ├── FileReader
+│           ├── Persistence
+│           └── VO
 └── Unit
 ```
 

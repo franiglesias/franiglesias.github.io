@@ -128,7 +128,7 @@ Un uso habitual de esta técnica es la de tratar casos particulares o que sean o
 En muchas ocasiones, cuando los datos tienen que ser validados antes de operar con ellos, podemos encapsular esas condiciones que dan lugar a excepciones en forma de cláusulas de guarda. Estas cláusulas de guarda, también se conocen como aserciones, o precondiciones. Si los parámetros no las cumplen, el método o función falla lanzando excepciones.
 
 ```php
-    if ($parameter > 100 || $parameter < 0) {
+    if ($parameter > 100 || $parameter < 0) {
         throw new OutOfRangeException(sprintf('Parameter should be between 0 and 100 (inc), %s provided.', $parameter));
     }
 
@@ -144,7 +144,7 @@ $this->checkTheParameterIsInRange($parameter);
 
 private function checkTheParameterIsInRange(int $parameter)
 {
-    if ($parameter > 100 || $parameter < 0) {
+    if ($parameter > 100 || $parameter < 0) {
         throw new OutOfRangeException(sprintf('Parameter should be between 0 and 100 (inc), %s provided.', $parameter));
     }
 }

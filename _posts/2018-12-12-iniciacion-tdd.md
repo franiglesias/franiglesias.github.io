@@ -427,7 +427,7 @@ Aplicamos este cambio y ejecutamos los testa para comprobar que siguen pasando.
 
 Otra duplicación la podemos ver en las dos condicionales que controlan la longitud de la cadena. Lo cierto es que nos bastaría con lanzar la excepción si la longitud es distinta de nueve. Por ejemplo, así:
 
-```
+```php
 <?php
 declare(strict_types=1);
 
@@ -1449,11 +1449,11 @@ class Dni
 
 Los tests siguen pasando y con esto tenemos casi terminado nuestro Value Object. 
 
-## El curioso problema de los tests que pasan a la primera
+# El curioso problema de los tests que pasan a la primera
 
 Aún nos quedan unos casos que tratar: los DNI especiales que empiezan con los caracteres X, Y, Z. Hagamos un test para tratarlos.
 
-```
+```php
 public function testShouldConstructValidNIEStartingWithX() : void
 {
     $dni = new Dni('X0000000T');
@@ -1476,7 +1476,7 @@ Seguramente nuestro problema está en la línea:
 $number = (int)substr($dni, 0, - 1);
 ```
 
-Que convierte la parte numérica de la cadena en un entero, con lo cual la X es ignorada y se obtiene el número 0 que, por otra parte, es lo que queríamos conseguir.
+Que convierte la parte numérica de la cadena en un entero, con lo cual la "X" es ignorada y se obtiene el número 0 que, por otra parte, es lo que queríamos conseguir.
 
 Pero lo que necesitamos para hacer cambios es un test que falle, así que probamos con un ejemplo que sí debería fallar por la razón correcta que es el no tener implementado nada que maneje esa situación:
 
@@ -1537,7 +1537,7 @@ class Dni
 }
 ```
 
-La verdad es que no es necesario hacer un nuevo test para implementar lo que queda, que es añadir las dos transformaciones que nos quedan. Hacemos eso y, manteniendo los tests en verde, refactorizamos un poco, extrayendo el método para el cálculo del resto, así como nos deshacemos de todos los números mágicos convirtiéndolos en constantes:
+La verdad es que no es necesario hacer un nuevo test para implementar lo que falta, que es añadir las dos transformaciones que nos quedan. Hacemos eso y, manteniendo los tests en verde, refactorizamos un poco, extrayendo el método para el cálculo del resto, así como nos deshacemos de todos los números mágicos convirtiéndolos en constantes:
 
 ```php
 <?php

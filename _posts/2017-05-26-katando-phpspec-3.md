@@ -26,7 +26,7 @@ En nuestro ejemplo nos encontramos ante una encrucijada a pequeña escala. Aunqu
 
 La encrucijada es la siguiente:
 
-De momento, mientras no tenemos que cumplir más requisitos, nuestro código funciona, superando las pruebas que le hemos puesto. Por consiguiente, no hay razón para seguir tocándolo. No sabemos qué nos van a pedir a continuación, así que no tiene mucho sentido hacer suposiciones y tratar de evolucionar el código para dar soporte a esas demandas que aún desconocemos.
+De momento, mientras no tenemos que cumplir más requisitos, nuestro código funciona, superando las pruebas que le hemos puesto. Por consiguiente, no hay razón para seguir tocándolo. No sabemos qué nos van a pedir a continuación, así que no tiene mucho sentido hacer suposiciones y tratar de evolucionar el código para dar soporte a esas demandas que aún desconocemos.
 
 Pero por otro lado, tenemos un par de inicios de *smell* en forma de duplicación y valores *hardcoded*. Atacar esos problemas, que ahora mismo no son importantes, nos va a facilitar dos cosas: que en el futuro el código sea más fácil de entender y que, llegado el caso, sea más fácil de mantener y modificar.
 
@@ -42,13 +42,13 @@ Lo que no es conveniente de ningún modo es intentar anticiparnos a demandas des
 
 En el capítulo anterior nos quedamos en un punto en el que empezaban a asomar algunos *smells* de código, así que puede ser conveniente revisarlos antes de pasar a implementar los nuevos requisitos que nos van a pedir.
 
-Consideremos nuestro separador: la coma. Como puedes ver, aparece repetida hasta en tres ocasiones. Además, es un valor arbitrario *hardcoded*, ¿quién nos asegura de que dentro de dos semanas nos acordaremos de su significado? Y, si en el futuro tengo que cambiar el separador, ¿tendría que cambiar la clase y violar el principio abierto/cerrado?
+Consideremos nuestro separador: la coma. Como puedes ver, aparece repetida hasta en tres ocasiones. Además, es un valor arbitrario *hardcoded*, ¿quién nos asegura de que dentro de dos semanas nos acordaremos de su significado? Y, si en el futuro tengo que cambiar el separador, ¿tendría que cambiar la clase y violar el principio abierto/cerrado?
 
-Una solución sería convertirlo en una variable, en una constante de clase, o en una propiedad, añadiendo incluso un método para poder definirla o pasarlo en el constructor. Pero, ¿qué es mejor?
+Una solución sería convertirlo en una variable, en una constante de clase, o en una propiedad, añadiendo incluso un método para poder definirla o pasarlo en el constructor. Pero, ¿qué es mejor?
 
 Pues depende, pero como no podemos adivinar el futuro podría darnos un poco igual una solución que otra. Todas nos permiten reducir el *smell* de duplicación al establecer el valor en un sólo punto, así como el *smell* de hardcoding al darle un nombre significativo. Con cualquiera de las opciones atacamos este problema específico que tenemos ahora.
 
-Pero si en la próxima ronda de requisitos necesitamos hacerlo, y mientras no demos por terminado el desarrollo, podemos cambiarlo de nuevo.
+Pero si en la próxima ronda de requisitos necesitamos hacerlo, y mientras no demos por terminado el desarrollo, podemos cambiarlo de nuevo.
 
 Como tenemos ya unos cuantos tests estamos protegidos para hacer ese cambio en cualquier momento. Recuerda: el refactor no modifica el comportamiento. De momento, voy a poner el separador como una variable de clase o propiedad.
 
@@ -80,9 +80,9 @@ class Calculator
 
 Otro posible punto de refactoring es la normalización de separadores que hacemos en la primera línea del método. En la entrega anterior vimos que una buena razón para extraer un fragmento de código a un método era justamente ser más explícitos acerca de qué está haciendo y no tener que llevar a cabo una ejecución mental del código para entender su finalidad.
 
-A decir verdad, podríamos seguir extrayendo métodos en cada línea de código a fin de lograr que cada una fuese autoexplicativa, separando cada una de las fases del procesamiento. Así tendríamos un método para descomponer el `$inputString` en números y otro para obtener el resultado de su suma.
+A decir verdad, podríamos seguir extrayendo métodos en cada línea de código a fin de lograr que cada una fuese autoexplicativa, separando cada una de las fases del procesamiento. Así tendríamos un método para descomponer el `$inputString` en números y otro para obtener el resultado de su suma.
 
-Lo voy a hacer para ilustrar ese punto. Vuelvo a decir, puede que en este ejemplo podamos verlo como un caso de "sobreingeniería", pero en un proyecto más complejo sería la opción más oportuna.
+Lo voy a hacer para ilustrar ese punto. Vuelvo a decir, puede que en este ejemplo podamos verlo como un caso de "sobreingeniería", pero en un proyecto más complejo sería la opción más oportuna.
 
 De nuevo, como no modificamos el comportamiento, los test nos mantienen protegidos de cualquier consecuencia indeseada del cambio. La clase nos quedaría así:
 
@@ -161,7 +161,7 @@ El nuevo requisito que nos piden es la posibilidad de definir un separador alter
     - Esta línea es opcional
 ```
 
-Nuestro refactor anterior nos facilita implementar esta nueva demanda, lo que es una buena ilustración de los beneficios del refactoring temprano. Aunque en este ejemplo sea casi trivial, hay muchas situaciones en las que agradeceremos que el trabajo ya esté hecho, tanto si retomamos código nuestro como si el código viene de otras manos.
+Nuestro refactor anterior nos facilita implementar esta nueva demanda, lo que es una buena ilustración de los beneficios del refactoring temprano. Aunque en este ejemplo sea casi trivial, hay muchas situaciones en las que agradeceremos que el trabajo ya esté hecho, tanto si retomamos código nuestro como si el código viene de otras manos.
 
 En cualquier caso, necesitamos un nuevo test que describa un ejemplo de lo que nos piden:
 
@@ -306,10 +306,10 @@ No. Todavía podemos refactorizar la solución. Al fin y al cabo, las *regexp* s
 
 ## Recapitulemos
 
-A la espera de encontrar una mejor solución para nuestro problema actual podemos refactorizar a fin de extraer el código que acabamos de añadir en sus propios métodos. De este modo, la clase será mucho más legible y, seguramente, será más fácil aún arreglar el desaguisado que acabamos de cometer.
+A la espera de encontrar una mejor solución para nuestro problema actual podemos refactorizar a fin de extraer el código que acabamos de añadir en sus propios métodos. De este modo, la clase será mucho más legible y, seguramente, será más fácil aún arreglar el desaguisado que acabamos de cometer.
 
 Pero eso lo dejamos [para más adelante](/katando-phpspec-4).
 
- 
+ 
 
- 
+ 

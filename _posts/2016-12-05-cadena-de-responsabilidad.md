@@ -5,7 +5,7 @@ categories: articles
 tags: php design-patterns
 ---
 
-El patrón Cadena de Responsabilidad (Chain of Responsibility) nos permite manejar una petición que puede ser atendida por varios objetos, sin saber a priori cual de ellos lo hará.
+El patrón Cadena de Responsabilidad (Chain of Responsibility) nos permite manejar una petición que puede ser atendida por varios objetos, sin saber a priori cual de ellos lo hará.
 
 ----
 Este patrón es uno de los clásicos del libro de [Gang of Four](https://www.amazon.es/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8).
@@ -19,35 +19,35 @@ La cadena de responsabilidad puede ejemplificarse de una manera muy sencilla:
 – Sí, por supuesto. Esta es la respuesta.  
 – Gracias.
 
-El problema que la Cadena de Responsabilidad resuelve es el de que tenemos un conjunto de objetos que podrían atender una petición, pero no sabemos a priori cuál de ellos lo hará. Por lo tanto, lo que hacemos es probar con uno de los objetos, si éste no lo puede manejar, se lo pedimos al siguiente, y así sucesivamente hasta que uno de ellos nos puede dar la respuesta.
+El problema que la Cadena de Responsabilidad resuelve es el de que tenemos un conjunto de objetos que podrían atender una petición, pero no sabemos a priori cuál de ellos lo hará. Por lo tanto, lo que hacemos es probar con uno de los objetos, si éste no lo puede manejar, se lo pedimos al siguiente, y así sucesivamente hasta que uno de ellos nos puede dar la respuesta.
 
-Los elementos de este patrón son:
+Los elementos de este patrón son:
 
 * El cliente, que hace la petición
 * Los objetos candidatos que pueden responderla
 
-Cada uno de los objetos candidatos, mantiene un puntero (o referencia) a otro objeto, de modo que el primero que recibe la petición puede: o bien responderla, o bien delegársela al siguiente.
+Cada uno de los objetos candidatos, mantiene un puntero (o referencia) a otro objeto, de modo que el primero que recibe la petición puede: o bien responderla, o bien delegársela al siguiente.
 
 Esta estructura es una lista enlazada (linked list) de tipo FIFO (First In - First Out).
 
 Hay que contemplar la situación de que ninguno de los objetos pueda responderla, o dicho de otro modo, que el último de los objetos consultados no tenga respuesta y no pueda delegar.
 
-Para hacer esto, todos los objetos deben cumplir con una interfaz y ofrecer algunas funcionalidades comunes:
+Para hacer esto, todos los objetos deben cumplir con una interfaz y ofrecer algunas funcionalidades comunes:
 
 * El método que responde al mensaje.
-* Un método para establecer el siguiente objeto de la cadena.
+* Un método para establecer el siguiente objeto de la cadena.
 * Un método para delegar la respuesta en el siguiente objeto de la cadena.
 * Una respuesta por defecto en caso de que ningún objeto pueda procesar la petición.
 
-Si los objetos van a ser de la misma clase o de una familia de clases, puede ser buena idea sustituir la interfaz por una clase abstracta que proporcione la funcionalidad común
+Si los objetos van a ser de la misma clase o de una familia de clases, puede ser buena idea sustituir la interfaz por una clase abstracta que proporcione la funcionalidad común
 
-Si los objetos no van a ser de la misma clase, entonces nos interesa definir una interfaz, implementando la funcionalidad común en cada clase o bien mediante traits.
+Si los objetos no van a ser de la misma clase, entonces nos interesa definir una interfaz, implementando la funcionalidad común en cada clase o bien mediante traits.
 
 ## Ejemplo
 
-El servicio de comedor de un colegio tiene que atender a un gran número de estudiantes, por lo que es necesario organizarlos en varios turnos. Los criterios para realizar la asignación de cada estudiante a su turno dependen de varios factores: curso que estudia, día de la semana o participación en actividades extra escolares. El turno se debe asignar cada día, porque hay muchos estudiantes que usan el servicio sólo en determinados días. En resumen: no podemos saber con antelación qué regla se aplicará para cada estudiante concreto.
+El servicio de comedor de un colegio tiene que atender a un gran número de estudiantes, por lo que es necesario organizarlos en varios turnos. Los criterios para realizar la asignación de cada estudiante a su turno dependen de varios factores: curso que estudia, día de la semana o participación en actividades extra escolares. El turno se debe asignar cada día, porque hay muchos estudiantes que usan el servicio sólo en determinados días. En resumen: no podemos saber con antelación qué regla se aplicará para cada estudiante concreto.
 
-En este caso he optado por utilizar el patrón de Cadena de Responsabilidad para realizar la asignación de turnos de comedor. Para cada estudiante se recorre la cadena de reglas hasta que una de ellas le asigna el turno.
+En este caso he optado por utilizar el patrón de Cadena de Responsabilidad para realizar la asignación de turnos de comedor. Para cada estudiante se recorre la cadena de reglas hasta que una de ellas le asigna el turno.
 
 
 ```php
@@ -181,7 +181,7 @@ Las reglas se cargan a partir de un archivo de configuración. Veamos en detalle
 
 ## Mantener una referencia al siguiente elemento de la cadena
 
-El método de <code>Rule</code> en el que estamos interesados es <code>assignsUserToTurn</code>, el cual es el que realiza la asignación de turno del usuario del comedor que se le pasa. Si la primera<code>Rule</code> que recibe el mensaje lo puede asignar, lo hace, y si no, lo delega a la siguiente de la cadena, hasta llegar a una que lo pueda asignar o hasta agotar todas las reglas.
+El método de <code>Rule</code> en el que estamos interesados es <code>assignsUserToTurn</code>, el cual es el que realiza la asignación de turno del usuario del comedor que se le pasa. Si la primera<code>Rule</code> que recibe el mensaje lo puede asignar, lo hace, y si no, lo delega a la siguiente de la cadena, hasta llegar a una que lo pueda asignar o hasta agotar todas las reglas.
 
 ### Rule::next
 
@@ -211,7 +211,7 @@ public function chain(Rule $delegateTo)
 
 Este método podría llamare también setNext o setSuccessor. El nombre <code>chain</code> me ayuda a recordar que se trata de una cadena.
 
-El objeto que se pasa debe ser del mismo tipo o implmentar la misma interfaz. Tenemos que contemplar el caso de que el actual eslabón de la cadena ya tenga un "sucesor", en cuyo caso, le pasamos el nuevo eslabón para que sea su sucesor. Los demás eslabones irán pasándoselo hasta encontrar uno que no tenga sucesor, que será el que lo enlace.
+El objeto que se pasa debe ser del mismo tipo o implmentar la misma interfaz. Tenemos que contemplar el caso de que el actual eslabón de la cadena ya tenga un "sucesor", en cuyo caso, le pasamos el nuevo eslabón para que sea su sucesor. Los demás eslabones irán pasándoselo hasta encontrar uno que no tenga sucesor, que será el que lo enlace.
 
 ## Delegar en el sucesor
 
@@ -230,7 +230,7 @@ private function delegate(CantineUser $User, \DateTime $date)
 }
 ```
 
-En nuestro ejemplo, el método privado delegate se encarga de hacer esta delegación, devolviendo `false`, en caso de no tener sucesor (pero lo mismo podría lanzar una excepción, devolver `null` o lo que más nos convenga.)
+En nuestro ejemplo, el método privado delegate se encarga de hacer esta delegación, devolviendo `false`, en caso de no tener sucesor (pero lo mismo podría lanzar una excepción, devolver `null` o lo que más nos convenga.)
 
 No es necesario tener este método <code>delegate</code>. En mi caso, creo que hace más legible el método principal (`Rule::assignsUserToTurn`), encapsulando todo lo necesario para la delegación.
 
@@ -242,8 +242,8 @@ Una señal de que podemos querer aplicar una Cadena de Responsabilidad es aquell
 
 Si tenemos que pasar necesariamente por todos, el array puede ser una solución suficiente, recorriéndola con un bucle `foreach` o bien con `array_map` o `array_walk`.
 
- 
+ 
 
- 
+ 
 
- 
+ 

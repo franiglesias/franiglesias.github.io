@@ -1,9 +1,9 @@
 
 Mejorando la test suite
 
-En Holaluz Eng seguimos una metodología de integración y despliegue contínuos. A lo largo de un día de trabajo podemos llegar a realizar veinte o treinta despliegues a producción entre los diversos proyectos en los que estamos trabajando. ¡Ah! Y también desplegamos en viernes, a no ser que se trate de alguna *feature* para la que necesitemos mantener un seguimiento especialmente exhaustivo.
+En Holaluz seguimos una metodología de integración y despliegue continuos. A lo largo de un día de trabajo podemos llegar a realizar veinte o treinta despliegues a producción entre los diversos proyectos en los que estamos trabajando. ¡Ah! Y también desplegamos en viernes, a no ser que se trate de alguna *feature* para la que necesitemos mantener un seguimiento especialmente exhaustivo.
 
-Para poder llegar a esto hace falta un trabajo importante en el área **devops** en cuanto al diseño y montaje de los entornos (producción, *staging*) y a la infraestructura de integración contínua.
+Para poder llegar a esto hace falta un trabajo importante en el área **devops** en cuanto al diseño y montaje de los entornos (producción, *staging*) y a la infraestructura de integración continua.
 
 Pero además es necesario tener confianza en el código, y esa confianza la genera una buena suite de tests.
 
@@ -11,9 +11,9 @@ Por ejemplo, en uno de nuestros proyectos principales tenemos a día de hoy más
 
 El problema obvio que surge es que cuanto mayor es la cantidad de tests más tiempo tarda en ejecutarse la suite completa, lo que ralentiza el proceso de desarrollo retrasando el feedback, la generación de pull request y su despliegue.
 
-Así que no hemos planteado mejorar la performance de nuestros tests. ¿En qué aspectos podemos intervenir entonces?
+Así que nos hemos planteado mejorar la performance de nuestros tests. ¿En qué aspectos podemos intervenir entonces?
 
-* **Mejorar la velocidad de ejecución de la suite**. Tenemos tests que tienen tiempos de ejecución enormes que no están justificados por el tipo de proceso bajo test. En este caso hemos comprobado usar **prophecy** como framework para generar *test doubles* es el principal cuello de botella. Utilizar los *doubles* "nativos" de **phpunit** mejora el rendimiento de una forma espectacular. Esta es la medida principal, ya que nos permite mejorar tiempos en saltos muy significativos.
+* **Mejorar la velocidad de ejecución de la suite**. Tenemos tests que tienen tiempos de ejecución enormes que no están justificados por el tipo de proceso bajo test. En este caso hemos comprobado que usar **prophecy** como framework para generar *test doubles* es el principal cuello de botella. Utilizar los *doubles* "nativos" de **phpunit** mejora el rendimiento de una forma espectacular. Esta es la medida principal, ya que nos permite mejorar tiempos en saltos muy significativos.
 * **Mejorar el código de los tests**. En algunos casos se podría decir que nuestro testing arrastra deuda técnica. Dicho de otro modo, no todos nuestros tests están lo bastante bien escritos como para ejecutarse con agilidad, por lo que cada test que toquemos debería ser refactorizado a fin de ser más útil y más eficiente. Las ganancias en performance en este caso son más pequeñas, pero también resultan útiles ya que, en general, nos permiten consumir menos recursos.
 * **Optimizar la cantidad de tests**. Hay áreas de código sobradamente testeadas y si su tiempo de ejecución pasa de cierto umbral quizá nos está dando una indicación de que podríamos reducir la cantidad de tests sin perder la fiabilidad de la suite.
 * **Entorno de ejecución**. Tras haber *dockerizado* el entorno de desarrollo (anteriormente lo teníamos en **vagrant**) la velocidad de ejecución de los tests en la combinación macOs/docker ha bajado sustancialmente, por lo que debemos investigar posibles mejoras en este aspecto.

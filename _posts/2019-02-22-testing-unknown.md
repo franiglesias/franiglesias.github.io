@@ -200,7 +200,7 @@ Por otro lado, como veremos en otro momento, los dobles nos permiten trabajar m�
 
 Para crear un DomainEvent de prueba utilizaré una clase anónima. 
 
-PHP no permite implementar la interfaz `DateTimeInterface`, por lo que ell generador de doubles de **phpunit** no puede hacer un double de nuestro `DomainEvent` pues éste devuelve un objeto DateTimeInterface en el método `occurredOn` y no puede doblarlo.
+PHP no permite implementar la interfaz `DateTimeInterface`, por lo que el generador de doubles de **phpunit** no puede hacer un double de nuestro `DomainEvent` pues éste devuelve un objeto DateTimeInterface en el método `occurredOn` y no puede doblarlo.
 
 ```php
 <?php

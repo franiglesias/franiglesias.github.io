@@ -508,13 +508,11 @@ class ContractStatus
 En esencia, el método `changeTo` valida que el estado se pueda cambiar teniendo en cuenta el estado actual. La idea de fondo es aplicar el principio `Tell, don't ask`, de modo que no le preguntemos al contrato por su estado, ni a `ContractStatus` por su valor, si no que le decimos que cambie a un nuevo estado si es posible. En caso de fallo, ya tomaremos nosotros las medidas necesarias.
 
 ```php
-```
 try {
     $this->contractStatus = $this->contractStatus->changeTo();
 } catch (DomainException $exception) {
     // Do the right thing to manage exception
 }
-```
 ```
 
 

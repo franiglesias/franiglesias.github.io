@@ -9,7 +9,7 @@ En el blog ya hemos hablado del patrón clásico [Single Exit Point](/lidiando-c
 
 Lo primero será saber de qué estamos hablando:
 
-## Single return
+## Single return
 
 Se trata de que en cada método o función sólo tengamos un único `return`, a pesar de que el código pueda tener diversos caminos que nos permitirían finalizar en otros momentos.
 

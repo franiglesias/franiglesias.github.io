@@ -11,11 +11,11 @@ Todo empezó por un twit que desgraciadamente olvidé guardar, pero al que no de
 
 La idea es la siguiente: como bien sabemos, los tests se estructuran en tres partes principales:
 
-* Given o Arrange: donde definimos el escenario y las condiciones de la prueba.
-* When o Act: donde ejecutamos la unidad de software bajo test.
-* Then o Assert: donde comparamos el resultado esperado con el que obtenemos.
+* **Given o Arrange**: donde definimos el escenario y las condiciones de la prueba.
+* **When o Act**: donde ejecutamos la unidad de software bajo test.
+* **Then o Assert**: donde comparamos el resultado esperado con el que obtenemos.
 
-Cuando escribimos un tests, normalmente usaremos esta estructura de manera implícita:
+Cuando escribimos un test, normalmente usaremos esta estructura de manera implícita:
 
 ```php
 public function testShouldAddAProduct(): void
@@ -46,7 +46,7 @@ public function testShouldAddAProduct(): void
 }
 ```
 
-Pero como ya sabréis de artículos anteriores de este blog, muchos comentarios pueden eliminarse si hacemos explícito en el código lo que este hace, algo que normalmente podemos conseguir extrayendo bloques de código a métodos privados.
+Pero como ya sabréis de artículos anteriores de este blog, muchos comentarios pueden eliminarse si hacemos explícito en el código lo que éste hace, algo que normalmente podemos conseguir extrayendo bloques de código a métodos privados con nombres expresivos.
 
 ```php
 public function testShouldAddAProduct(): void
@@ -102,7 +102,7 @@ public function testShouldAddAProduct(): void
 }
 ```
 
-¿Qué te parece? En este ejemplo, el código del test original es bastante sencillo y bastante fácil de interpretar. Sin embargo, yo diría que su versión expresiva es imbatible en cuanto a legibilidad.
+¿Qué te parece? En este ejemplo, el código del test original es bastante sencillo y bastante fácil de interpretar. Sin embargo, yo diría que su versión *expresiva* es imbatible en cuanto a legibilidad.
 
 Tanto es así, que podrías enseñarle el código un una persona que no sea desarrolladora y entendería lo que se intenta probar con el test.
 

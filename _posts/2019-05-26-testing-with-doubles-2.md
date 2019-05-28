@@ -9,11 +9,11 @@ En esta continuación hablaremos de los *mocks* y los *spies*.
 
 En la entrega anterior decíamos que *mocks* y *spies* son exactamente iguales a los *dummies* y *stubs* en lo que respecta al comportamiento. La diferencia estriba en que podemos verificar si *mocks* y *spies* han sido usados de tal o cual manera por la unidad bajo test.
 
-## Mocks y spies acoplan el test a la implementación de la unidad bajo test
+## *Mocks* y *spies* acoplan el test a la implementación de la unidad bajo test
 
-La principal característica de los mocks y los spies es llevar un registro del modo en que han sido utilizados. Esto es: qué llamadas han recibido, cuántas veces y con qué parámetros.
+La principal característica de los *mocks* y los *spies* es llevar un registro del modo en que han sido utilizados. Esto es: qué llamadas han recibido, cuántas veces y con qué parámetros.
 
-Esto parece muy útil, y lo es, pero es también muy comprometedor para la calidad del test. Los *mocks* y *spies* no se limitan a ser *dummies* o *stubs*, simulando comportamientos de los colaboradores.
+Esto parece muy útil, y lo es, pero es también muy comprometedor para la calidad del test. Los *mocks* y *spies* no se limitan a ser *dummies* o *stubs*, simulando comportamientos de los colaboradores, sino que esperan que la unidad bajo test tenga una implementación concreta.
 
 ### Mocks
 
@@ -40,7 +40,7 @@ $this->feeCalculator
 
 En este caso, además de establecer la expectativa, el mock, que sigue siendo un stub, simula una respuesta específica.
 
-Es posible, aunque no siempre merece la pena, definir los parámetros de la llamada. Siguiendo con el ejemplo anterior, vamos a suponer que esperamos el método `calculate` sea llamado con el parámetro `2`, que se referiría a las horas de las que queremos obtener la cuota o precio.
+Es posible, aunque no siempre merece la pena, definir los parámetros esperados en la llamada. Siguiendo con el ejemplo anterior, vamos a suponer que esperamos el método `calculate` sea llamado con el parámetro `2`, que se referiría a las horas de las que queremos obtener la cuota o precio.
 
 ```php
 $this->feeCalculator
@@ -50,7 +50,7 @@ $this->feeCalculator
     ->willReturn(self::EXPECTED_FEE_FOR_TWO_HOURS);
 ```
 
-Un inconveniente de los mocks es que mezclan las tres fases del test: [mientras que la simulación del comportamiento forma parte del Given o Arrange, la expectativa es claramente parte del Then o Assert](https://adamwathan.me/2016/10/12/replacing-mocks-with-spies/) y, de hecho, debes definir la expectativa antes de la fase When o Act, es decir, antes de ejecutar la unidad bajo test.
+Un inconveniente de los mocks es que mezclan las tres fases del test: [mientras que la simulación del comportamiento forma parte del Given o Arrange, la expectativa es claramente parte del Then o Assert](https://adamwathan.me/2016/10/12/replacing-mocks-with-spies/) y, además, debes definir la expectativa antes de la fase When o Act, es decir, antes de ejecutar la unidad bajo test.
 
 ### Spies
 
@@ -195,5 +195,4 @@ $this->contractRepository
 El ámbito de un test es la unidad que testeamos, los colaboradores garantizan su comportamiento mediante sus propios tests, por lo que tenemos que asumir es el que esperamos. 
 
 No necesitamos testearlo de nuevo.
-
 

@@ -5,9 +5,9 @@ categories: articles
 tags: testing
 ---
 
-Hace algunos meses estuve haciendo algunos análisis sobre la performance de los diversos métodos para crear test doubles y cómo impactan en nuestras suites de tests.
+Hace algunos meses estuve haciendo análisis sobre la performance de los diversos métodos para crear test doubles y cómo impactan en nuestras suites de tests. Ahora lo he retomado con mejores herramientas.
 
-La suite de tests de Holaluz ha crecido mucho y me preocupa un poco cómo compaginar el crecimiento en número de tests y cobertura, manteniendo un tiempo de ejecución razonable.
+La suite de tests de Holaluz ha crecido mucho y me preocupa un poco cómo compaginar su crecimiento en número de tests y cobertura, manteniendo un tiempo de ejecución razonable.
 
 Una suite de test que tarda mucho en ejecutarse pierde utilidad porque el feedback no llega tan rápido como se desea y comienza a verse como un estorbo más que una herramienta necesaria en el trabajo.
 
@@ -15,7 +15,7 @@ Una suite de test que tarda mucho en ejecutarse pierde utilidad porque el feedba
 
 Son muchos los factores que influyen en el tiempo de ejecución de una suite de tests y, de momento, voy a centrarme en un aspecto concreto: los métodos para generar test doubles. En varios artículos del blog hemos hablado de ellos. Fundamentalmente me interesaba comprar los dobles generados con librerías de mocking frente a usar las clases originales o instanciar clases anónimas como dobles.
 
-Después de unos primeros análisis un tanto improvisados, los resultados fueron un tanto inesperados, ya que el método más eficiente resultó ser la creación de dobles nativos de **phpunit** (los que se obtienen con `createMock`), con bastante diferencia sobre usar las clases originales y sobre los dobles usando la librería **prophecy**.
+Después de unos primeros análisis bastante simples, los resultados fueron un tanto inesperados ya que el método más eficiente resultó ser la creación de dobles nativos de **phpunit** (los que se obtienen con `createMock`), con bastante diferencia sobre usar las clases originales y sobre los dobles usando la librería **prophecy**, integrada también en **phpunit**.
 
 Un ejemplo de los resultados obtenidos fue este:
 
@@ -26,7 +26,9 @@ Un ejemplo de los resultados obtenidos fue este:
 | testRealObjectExample     |       269 |        26.00 | 
 | testAnonymousClassExample |       287 |        26.00 |
 
-Para alguien bastante fan de **prophecy** fueron resultados bastante sorprendentes y un tanto decepcionantes. Sin embargo, reescribí algunos tests que eran particularmente lentos en mi entorno para ver qué efecto tendría cambiar el framework de mocking:
+Para alguien bastante fan de **prophecy** fueron resultados sorprendentes y un tanto decepcionantes. Particularmente me sorprendió que la clase original fuese más lenta que que alguno de los *frameworks*. En principio, eso me hizo sospechar que la metodología no era suficientemente buena.
+
+Sin embargo, reescribí algunos tests que eran particularmente lentos en mi entorno para ver qué efecto tendría cambiar el *framework* de dobles:
 
 | TestCase   | Prophecy (ms) | Phpunit (ms)|
 |:-----------|--------------:|------------:|
@@ -34,11 +36,11 @@ Para alguien bastante fan de **prophecy** fueron resultados bastante sorprendent
 | TestCase 2 |         35774 |         860 |
 | TestCase 3 |         74899 |       11682 |
 
-La mejora es muy grande, en algunos casos escandalosamente grande, por lo que empezamos a escribir los tests con los dobles nativos, así como a migrarlos de un framework a otro cuando teníamos oportunidad.
+La mejora es muy grande, y en algunos casos escandalosamente grande, por lo que empezamos a escribir los tests con los dobles nativos, así como a migrarlos de un *framework* a otro cuando teníamos oportunidad. De hecho, en alguno de los TestCase reescritos pudimos añadir aún más tests y mantener una velocidad alta.
 
 ## Un análisis más profundo
 
-Con todo, no quedé muy convencido de este primer análisis. No me cuadraba del todo que crear dobles con una librería fuera más eficiente que las clases originales, por lo menos en casos de Value Objects y otros objetos sin comportamiento. Seguramente en objetos con comportamiento o cuya ejecución pudiese ser lenta, como repositorios, habría ganancias usando dobles, pero no en objetos que residen en memoria.
+Con todo, no quedé muy convencido de este primer análisis. No me cuadraba del todo que crear dobles con una librería fuera más eficiente que las clases originales, por lo menos en casos de Value Objects y otros objetos sin comportamiento. Seguramente en objetos con comportamiento o cuya ejecución pudiese ser lenta, como repositorios, habría ganancias usando dobles, al menos a partir de un cierto tiempo de ejecución, pero no en objetos que residen en memoria y hacen muy poquitas cosas.
 
 Finalmente, he tenido tiempo para preparar un entorno más robusto y flexible con el que poder comparar la velocidad de ejecución y consumo de memoria de un conjunto de TestCases arbitrario. [Este entorno lo puedes examinar en github](https://github.com/franiglesias/tb-doubles). No voy a entrar en detalles, que se pueden ver en el código, pero la idea es poder ejecutar repetidas veces varios TestCases y comparar el tiempo necesario para ejecutarlos, así como el consumo de recursos o, al menos, una aproximación. En principio, los tests para probar deben llamarse 'test', aunque es algo que espero cambiar en una próxima iteración.
 
@@ -47,6 +49,24 @@ Por tanto, he podido reproducir mi análisis original, obteniendo nuevos resulta
 ### Clases simples
 
 El primer ejemplo que probé es una clase simple que almacena un valor, una especie de value object, sin apenas comportamiento.
+
+```php
+class Sample
+{
+    /** @var string */
+    private $data;
+
+    public function __construct(string $data)
+    {
+        $this->data = $data;
+    }
+
+    public function data(): string
+    {
+        return $this->data;
+    }
+}
+```
 
 Las clases testeadas y los tests pueden verse en el [repositorio](https://github.com/franiglesias/tb-doubles).
 
@@ -59,23 +79,25 @@ Test Doubles creation methods (250 times)
  Method                              Time (s)  Memory (KB)
 
 -----------------------------------------------------------
- AnonymousClassTest.................   0.1980         2.61
- OriginalClassTest..................   0.2008         2.28
- NativeMockTest.....................   0.5319       421.48
- ProphecyMockTest...................   4.0248      4759.34
+ AnonymousClassTest::test...........   0.1966         2.61
+ OriginalClassTest::test............   0.1974         2.28
+ NativeMockTest::test...............   0.6295       534.75
+ ProphecyMockTest::test.............   4.1519      4827.34
 ```
 
-Para empezar, los resultados parecen más consistentes con lo esperado. La instanciación de la clase bajo test es el método más eficaz, mientras que la instanciación de una clase anónima que extiende de ella es marginalmente más lenta y consume un poco más de memoria. Pero, en términos de ejecución, serían intercambiables.
+Para empezar, los resultados parecen más consistentes con lo esperado. La instanciación de la clase bajo test es el método más eficaz, mientras que la instanciación de una clase anónima que extiende de ella es marginalmente más rápida y consume un poco más de memoria (en este ejemplo). Pero, en términos de ejecución, serían intercambiables.
 
-A cierta distancia, pero no demasiada, los dobles nativos de **phpunit** son un poco más lentos y consumen más recursos. Sin embargo, ofrecen un buen compromiso entre el coste en performance y la complejidad que puede suponer en no pocas ocasiones instanciar la clase real, especialmente si la necesitamos como dummy o sólo necesitamos hacer stub de uno o dos métodos.
+A cierta distancia, pero no demasiada, los dobles nativos de **phpunit** son un poco más lentos y consumen más recursos. Sin embargo, ofrecen un buen compromiso entre el coste en performance y la complejidad que puede suponer en no pocas ocasiones instanciar la clase real, especialmente si la necesitamos como dummy o sólo se nos requiere hacer stub de uno o dos de sus métodos.
 
 Finalmente, generar los dobles con **prophecy** parece ser el método más costoso en tiempo y en memoria. Lo sorprendente es la gran diferencia con respecto a cualquiera de los otros métodos.
+
+En general, para objetos que no tengan comportamiento, o este es muy simple, o que no tengan dependencias, utilizar la clase original de un colaborador de la unidad bajo test es el método más eficiente. Si se trata de una clase abstracta o incluso una interfaz, la clase anónima es también una buena alternativa.
 
 ### Simulando comportamiento
 
 Para simular comportamiento he puesto una clase bastante sencilla con un cálculo muy simple.
 
-Los resultados están en la línea de los anteriores, siendo el método más eficiente el de usar una instancia de la clase nativa como doble. Por su parte, el doble creado con **prophecy** sigue siendo el menos eficiente.
+Los resultados están en la línea de los anteriores, siendo el método más eficiente usar una instancia de la clase nativa como doble. Por su parte, el doble creado con **prophecy** sigue siendo el menos eficiente.
 
 ```php
 Test Doubles with behaviour creation methods (250 times)
@@ -91,9 +113,11 @@ Test Doubles with behaviour creation methods (250 times)
 
 ```
 
-En este ejemplo, hemos añadido un `sleep` de 1 segundo para simular un comportamiento complejo, que requiere mucho más tiempo.
+Pero si el comportamiento es complejo o existen dependencias que provocan un tiempo de ejecución alto de la unidad bajo test encontramos unos resultados diferentes.
 
-Los resultados son los esperables y, en esta ocasión, los frameworks de creación de dobles ganan la partida con gran diferencia, mientras que la instancia real de la clase requiere una cantidad desorbitada de tiempo para un test. Los dobles creados con la un framework no ejecutan el comportamiento lento, por eso los usamos.
+Por ejemplo: hemos añadido un `sleep` de 1 segundo para simular un comportamiento complejo, que requiere mucho más tiempo. Imagina que la dependencia sea un repositorio que accede a una base de datos con una query relativamente pesada.
+
+Los resultados son los esperables y, en esta ocasión, los *frameworks* de creación de dobles ganan la partida con gran diferencia, mientras que la instancia real de la clase requiere una cantidad desorbitada de tiempo para un test. Los dobles creados con algún *framework* no ejecutan el comportamiento lento con lo que se libran de la penalización de tiempo, y es por esa razón que los usamos.
 
 ```
 Test Doubles with behaviour creation methods (250 times)
@@ -108,11 +132,11 @@ Test Doubles with behaviour creation methods (250 times)
  AnonymousSampleBehaviourTest....... 251.3103       189.60
 ```
 
-Comparando los dos frameworks que hemos probado, se puede ver que **prophecy** es menos eficiente que el mock builder nativo de **phpunit**, tanto en velocidad, pues tarda casi siete veces más, como en consumo de memoria, pues require unas seis veces más.
+Comparando los dos *frameworks* que hemos probado, se puede ver que **prophecy** es menos eficiente que el *mock builder* nativo de **phpunit**, tanto en velocidad, pues tarda casi siete veces más, como en consumo de memoria, pues require unas seis veces más.
 
 Por supuesto, una forma alternativa y económica de generar dobles usando las clases nativas es mediante clases anónimas sobreescribiendo los métodos implicados en el test para que no ejecuten el comportamiento original. En ese caso, las cosas cambian bastante, ya que la clase anónima con los métodos sobreescritos vence a todos los demás métodos.
 
-Los datos no son comparables a los de las otras tablas porque en este ejemplo hemos repetido los test sólo 50 veces en lugar de 250.
+Los datos no son comparables a los de las otras tablas porque en este ejemplo hemos repetido los test sólo 50 veces en lugar de 250, pero lo que importa son los resultados relativos.
 
 ```
 Test Doubles with behaviour creation methods (50 times)
@@ -133,13 +157,15 @@ Aunque todavía quedan muchas mejoras para este entorno de análisis, creo que p
 
 De entrada, hay que destacar las ventajas de usar instancias de las clases nativas en lugar de dobles: conforman la opción más rápida y la que menos memoria consume. Esto aplica perfectamente para Value Objects, DTO, Events, Commands, objetos-parámetro y también Entidades.
 
-Cuando necesitamos doblar clases abstractas podemos usar fácilmente clases anónimas con casi la misma eficiencia.
+Cuando necesitamos doblar clases abstractas o interfaces podemos usar fácilmente clases anónimas con prácticamente la misma eficiencia.
 
 Si hay comportamiento y este es especialmente complejo o lento, como pueden ser las clases de acceso a bases de datos, servicios de terceros a través de apis, sistemas de archivos, etc. la mejor opción en eficiencia podrían ser las clases anónimas.
 
-Sin embargo, la ventaja de las clases anónimas se diluye un poco ante la conveniencia de los frameworks de dobles, ya que no tenemos que preocuparnos por muchas cuestiones a la hora de doblar, como pueden ser sobreescribir el contructor para eliminar las dependencias o sobreescribir todos los métodos implicados en el test.
+Sin embargo, la ventaja de las clases anónimas se diluye un poco ante la conveniencia de los *frameworks* de dobles, ya que no tenemos que preocuparnos por muchas cuestiones a la hora de doblar, como pueden ser sobreescribir el contructor para eliminar las dependencias o sobreescribir todos los métodos implicados en el test. Es decir, nos ahorran trabajo y la penalización en velocidad de ejecución puede compensarse con un esfuerzo de programación menor.
 
-Por otro lado, cuando la complejidad de construir las clases nativas es alta resulta más conveniente utilizar los frameworks de test. En general, diría que para todo tipo de servicios, command handlers, etc, que tengan dependencias lo mejor es utilizar un framework.
+Además, hay que tener en cuenta que podemos tener que utilizar muchas variantes de la misma clase para definir los distintos escenarios de test, lo que suele resultar más cómodo usando un *framework*.
+
+Por otro lado, cuando la complejidad de construir las clases nativas, o incluso su versión anónima, es alta resulta más conveniente utilizar los *frameworks* de test. En general, diría que para todo tipo de servicios, command handlers, etc, que tengan comportamientos complejos y dependencias lo mejor es utilizar un *framework* para obtener sus dobles.
 
 Y en caso de utilizarlo, la opción más eficiente en el *mock builder* nativo de **phpunit**.
 

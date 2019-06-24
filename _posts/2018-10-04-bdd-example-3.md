@@ -521,7 +521,7 @@ Feature: Massively update product prices when needed
 
 La utilidad nos informa de que hay varios escenarios que fallan. ¿Varios? Sí. Todos los escenarios comparten el paso **Given There are current prices in the system**, que falla porque `InMemoryProductRepository` no tiene un método `store`. 
 
-Ahora podríamos escribir el código mínimo que haga pasar el escenario, aunque no tenga comportamiento, dejando para más tarde implementarlo. La otra opción, por supuesto, es hacerlo ahora con la ayuda de phpspec.
+Ahora podríamos escribir el código mínimo que haga pasar el escenario, aunque no tenga comportamiento, dejando para más tarde implementarlo. La otra opción, por supuesto, es hacerlo ahora con la ayuda de **phpspec**.
 
 Nosotros vamos a optar por la primera posibilidad y hacer una implementación mínima del método `store()`, el cual debemos añadir a la interfaz ProductRepository.
 

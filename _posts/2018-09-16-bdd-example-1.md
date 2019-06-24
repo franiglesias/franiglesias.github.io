@@ -11,7 +11,7 @@ Behavior Driven Development comenzó siendo una variedad de TDD que ponía el fo
 
 ## El problema de qué testear, desde el punto de vista del equipo de desarrollo
 
-¿Por dónde empezar trabajar? Obviamente por un test.
+¿Por dónde empezar a trabajar? Obviamente por un test.
 
 Si tenemos una User Story bien definida, tendremos bastante claro qué comportamiento queremos obtener del software. Pero otra cosa muy distinta es el cómo vamos a lograrlo. Desde el exterior, nosotros vamos a ver un objeto (o varios) que nos ofrecerá cierta funcionalidad, y eso es exactamente lo que vamos a describir mediante un test. Sin embargo, ¿con qué objeto empezamos?
 
@@ -529,7 +529,7 @@ Fatal error: Uncaught Error: Class 'ProductRepository' not found in /Users/frank
 Como podemos ver, estamos ya en modo TDD: tenemos tests que fallan y debemos escribir el mínimo código necesario para que pasen.
 
 Por supuesto, podría ser que ya tuviésemos esas clases y previamente implementadas. En esa situación, nuestro primer paso habría sido cumplido y podríamos escribir el código necesario para pasar al siguiente.
-å
+
 En cualquier caso, nuestra tarea en este momento es escribir código para ejecutar todos los pasos. Volveremos a eso en un momento, pero antes vamos a fijarnos un detalle importante:
 
 ### Parametrizar los pasos

@@ -1549,7 +1549,7 @@ Yo diría que es un buen momento para detenerse y reflexionar sobre lo que hemos
 
 ## Recapitulando
 
-Hemos comenzado el artículo con una feature en lenguaje Gherkin que todavía tenemos que validar con un test de aceptación. El esqueleto del test ha sido generado con Behat y ahora estamos desarrollando a los actores que van a intervenir en él.
+Hemos comenzado el artículo con una *feature* en lenguaje Gherkin que todavía tenemos que validar con un test de aceptación. El esqueleto del test ha sido generado con Behat y ahora estamos desarrollando a los actores que van a intervenir en él.
 
 Hemos comenzado partiendo de un *Use Case*. En las arquitecturas limpias los *Use Case* suelen representar las acciones que el sistema de software realiza en respuesta a las demandas de los usuarios por lo que tiene mucho sentido empezar por ahí y ver qué es lo que necesitamos.
 

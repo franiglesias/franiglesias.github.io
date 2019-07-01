@@ -39,7 +39,7 @@ Ahora queremos verificar que el servicio utiliza el repositorio correctamente y 
 
 ### Doblar lo que es costoso
 
-Como hemos visto, una clase puede utilizar colaboradores que tienen condicionantes fuera de nuestro control o perjudiciales para elaborar tests rápidos y sólidos, como pueden ser: tener sus propias dependencias, tener un alto coste de ejecución, tener fallos no predecibles o que estar sujetos a condiciones que no podemos controlar, como es el caso de sistemas de bases de datos, Apis o servicios web, sistemas remotos, adaptadores a microservicios, etc. 
+Como hemos visto, una clase puede utilizar colaboradores que tienen condicionantes fuera de nuestro control o perjudiciales para elaborar tests rápidos y sólidos, como pueden ser: tener sus propias dependencias, tener un alto coste de ejecución, tener fallos no predecibles o que están sujetos a condiciones que no podemos controlar, como es el caso de sistemas de bases de datos, Apis o servicios web, sistemas remotos, adaptadores a microservicios, etc. 
 
 En esos casos, que además suelen ser difíciles de instanciar y necesitan configuración para funcionar, nos interesará doblar esos colaboradores para simular las diversas condiciones del servicio: que funciona correctamente, que esté caído, que responda con demasiada latencia o lentitud, etc.
 
@@ -207,6 +207,7 @@ class PrintBookCommandHandlerTest extends TestCase
     }
 }
 ```
+
 
 
 Así que, en esos casos, podemos permitirnos doblar objetos en lugar de instanciarlos en beneficio de la velocidad de desarrollo y la expresividad del test. En Test Driven Development, usar dobles nos permite ir descubriendo las interfaces que necesitamos, utilizándolos como *placeholders* mientras no nos detenemos a desarrollar las clases colaboradores.
@@ -803,23 +804,12 @@ El problema viene cuando esa dependencia necesita ser doblada, como en este ejem
 
 El primer paso sería intentar aislar la instanciación de la dependencia en un método de la clase en la que corresponda. No siempre tendremos acceso a ella para modificarla o no siempre será posible aislarla limpiamente.
 
-En **phpunit** puedes hacer algo que suena contraintuitivo, doblando la clase bajo test pero diciendo que doble el método que instancia la dependencia.
+En **phpunit** puedes hacer algo que suena contraintuitivo, doblando la clase bajo test pero diciendo que doble el método que instancia la dependencia. En este caso, la librería Guzzle proporciona un `MockHandler` para poder simular llamadas fácilmente.
 
 ```php
-<?php
-
-namespace App\Repositories\Electricity;
-
-use App\Models\Electricity\Referee;
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
-use PHPUnit\Framework\TestCase;
-
 class ClientRepositoryTest extends TestCase
 {
-    private const CLIENT_REFEREES_RESPONSE = '[{"child_name":"Referee name","contract_validation_date":"2019-06-18T07:33:35+00:00","parent_amount":{"amount":17,"currency":{"code":"EUR"},"scale":4}}]';
+    private const CLIENT_REFEREES_RESPONSE = '[...]';
 
     public function testGetClientReferees()
     {
@@ -836,15 +826,7 @@ class ClientRepositoryTest extends TestCase
                 self::CLIENT_REFEREES_RESPONSE)
             );
 
-        $clientReferees = $clientRepository->refereesByClientId('clientId');
-        /** @var Referee $firstReferee */
-        $firstReferee = reset($clientReferees);
-
-        $this->assertCount(1, $clientReferees);
-        $this->assertInstanceOf(Referee::class, $firstReferee);
-        $this->assertEquals('Referee Name', $firstReferee->childName());
-        $this->assertEquals(17, $firstReferee->parentAmount()->amount());
-        $this->assertEquals('18/06/2019', $firstReferee->contractValidationDate()->format('d/m/Y'));
+        //...
     }
 
     private function getGuzzleMock(int $httpResponseCode, string $jsonResponse): Client
@@ -895,3 +877,7 @@ class ClientRepositoryTest extends TestCase
 ```
 
 **Prophecy** está diseñado de modo que prohibe específicamente este tipo de arreglos para favorecer que siempre se inyecten las dependencias. Por eso, no siempre resulta fácil utilizarlo cuando trabajamos con legacy o código basado en ciertos frameworks.
+
+## Puede que continúe
+
+En este artículo hemos mostrado varios patrones que pueden ser útiles cuando necesitas dobles en un test. No descarto añadir algunos más en el futuro.

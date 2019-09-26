@@ -174,6 +174,21 @@ Nos queda `array_reduce`. Suele utilizarse para acumular valores. En el caso de 
     }
 ```
 
+## Más propuestas
+
+[Manuel Canga](https://twitter.com/trasweb), nos propone esta solución basada en Regex:
+
+```php
+    private function atLeastOneStartingWith(string $initial, array $cheeseNames): bool
+    {
+        $atLeastOneList = preg_grep("/^{$initial}/i", $cheeseNames);
+
+        return ! empty($atLeastOneList);
+    }
+```
+
+Las expresiones regulares son una herramienta muy potente que puede resolver infinidad de problemas en una línea de código, pero recurrir a ellas normalmente es algo que proporciona la experiencia.
+
 ## Algunas reflexiones
 
 ¿Es alguna de las soluciones propuestas mejor que las otras?

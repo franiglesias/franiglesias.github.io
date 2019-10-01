@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Blogtober 2019
+title: Blogtober 2019)
 categories: articles
 tags: blogtober19
 ---
@@ -9,7 +9,9 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 Estas son las palabras:
 
-1. Commit
+1. [Commit](blogtober19-commit)
+
+
 * Gopher
 * Bravery
 * Junior

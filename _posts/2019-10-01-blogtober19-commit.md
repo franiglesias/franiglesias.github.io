@@ -9,6 +9,8 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 ## Commit
 
+<blockquote class="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="en" dir="ltr">1. Commit <a href="https://twitter.com/viscat88?ref_src=twsrc%5Etfw">@viscat88</a> <a href="https://t.co/up6Jcx49tm">pic.twitter.com/up6Jcx49tm</a></p>&mdash; Maybe (@Linkita) <a href="https://twitter.com/Linkita/status/1179122564846821377?ref_src=twsrc%5Etfw">October 1, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 Un **commit** es ese conjunto de cambios de código que agrupamos en una unidad. Los commits marcan, o deberían marcar, hitos en el camino de un desarrollo. Digo deberían, porque… ¡cuántas veces habré hecho commits con un surtido de cambios inconexos, pero que necesitaba aplicar!.
 
 Hay una de esas reglas no escritas que dice que un commit debería referirse a un concepto o a una característica de tu software, de tal manera que añadiendo o quitando ese commit puedas activarla o desactivarla. Se le suele llamar "commit atómico"

@@ -42,7 +42,7 @@ git add .
 git commit --amend -m "Nuevo mensaje"
 ```
 
-### Arreglando más commits
+### Arreglando más commits
 
 El problema viene cuando pasan otros dos o tres commits, o más, y te das cuenta de que tienes uno o varios problemas:
 

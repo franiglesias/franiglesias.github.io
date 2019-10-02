@@ -10,9 +10,9 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 Estas son las palabras:
 
 1. [Commit](https://franiglesias.github.io/blogtober19-commit/)
+2. [Gopher](/blogtober19-gopher)
 
 
-* Gopher
 * Bravery
 * Junior
 * Ninja

@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Gopher #Blogtober2019
+title: Gopher (Blogtober2019)
 categories: articles
 tags: blogtober19
 ---
 
-Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) va a hacer un dibujo cada día del mes sobre una palabra propuesta en twitter. Y aquí vamos a intentar escribir un post por cada una de ellas.
+Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) va a hacer un dibujo cada día del mes sobre una palabra propuesta en twitter. Y aquí vamos a intentar escribir [un post por cada una de ellas](https://franiglesias.github.io/blogtober19-status/).
 
 <blockquote class="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="en" dir="ltr">2. Gopher <a href="https://twitter.com/gonzaloserrano?ref_src=twsrc%5Etfw">@gonzaloserrano</a> <a href="https://twitter.com/hashtag/Inktober2019?src=hash&amp;ref_src=twsrc%5Etfw">#Inktober2019</a> <a href="https://twitter.com/hashtag/linkitober2019?src=hash&amp;ref_src=twsrc%5Etfw">#linkitober2019</a> <a href="https://t.co/24Cne94WB7">pic.twitter.com/24Cne94WB7</a></p>&mdash; Maybe (@Linkita) <a href="https://twitter.com/Linkita/status/1179492009939263488?ref_src=twsrc%5Etfw">October 2, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 

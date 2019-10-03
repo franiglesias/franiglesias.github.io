@@ -11,9 +11,9 @@ Estas son las palabras:
 
 1. [Commit](https://franiglesias.github.io/blogtober19-commit/)
 2. [Gopher](/blogtober19-gopher)
+3. [Bravery](/blogtober19-bravery)
 
 
-* Bravery
 * Junior
 * Ninja
 * Teenager

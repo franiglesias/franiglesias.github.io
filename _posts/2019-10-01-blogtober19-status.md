@@ -13,9 +13,9 @@ Estas son las palabras:
 2. [Gopher](/blogtober19-gopher)
 3. [Bravery](/blogtober19-bravery)
 4. [Junior](/blogtober19-junior)
-5. [Ninja]((/blogtober19-ninja))
+5. [Ninja](/blogtober19-ninja)
+6. [Teenager](/blogtober19-teenager)
 
-* Teenager
 * Bug
 * Exception
 * Mock

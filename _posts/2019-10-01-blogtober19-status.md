@@ -15,8 +15,9 @@ Estas son las palabras:
 4. [Junior](/blogtober19-junior)
 5. [Ninja](/blogtober19-ninja)
 6. [Teenager](/blogtober19-teenager)
+7. [Bug](/blogtober19-bug)
 
-* Bug
+
 * Exception
 * Mock
 * Testing

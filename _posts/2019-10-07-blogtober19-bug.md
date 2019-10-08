@@ -7,6 +7,8 @@ tags: blogtober19
 
 Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) va a hacer un dibujo cada día del mes sobre una palabra propuesta en twitter. Y aquí vamos a intentar escribir [un post por cada una de ellas](https://franiglesias.github.io/blogtober19-status/).
 
+<blockquote class="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="und" dir="ltr">7. Bug <a href="https://twitter.com/dei_biz?ref_src=twsrc%5Etfw">@dei_biz</a> <a href="https://twitter.com/hashtag/Inktober?src=hash&amp;ref_src=twsrc%5Etfw">#Inktober</a> <a href="https://twitter.com/hashtag/inktoberDay7?src=hash&amp;ref_src=twsrc%5Etfw">#inktoberDay7</a> <a href="https://twitter.com/hashtag/linkitober?src=hash&amp;ref_src=twsrc%5Etfw">#linkitober</a> <a href="https://t.co/XdeaSZpaR6">pic.twitter.com/XdeaSZpaR6</a></p>&mdash; Maybe (@Linkita) <a href="https://twitter.com/Linkita/status/1181326480191770625?ref_src=twsrc%5Etfw">October 7, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 ## Bug
 
 La primera idea que me viene a la cabeza sobre *bugs* es el famoso informe de [Grace Hooper](https://en.wikipedia.org/wiki/Grace_Hopper#Legacy) sobre la polilla que había atascado el relé 70 del panel F del Mark II. A partir de esta anécdota comenzó a utilizarse el término *bug* para referirse a errores en los sistemas y programas.

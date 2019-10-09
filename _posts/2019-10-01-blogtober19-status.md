@@ -17,8 +17,7 @@ Estas son las palabras:
 6. [Teenager](/blogtober19-teenager)
 7. [Bug](/blogtober19-bug)
 8. [Exception](/blogtober19-exception)
-
-* Mock
+9. [Mock](/blogtober19-mock)
 * Testing
 * Overflow
 * Troll

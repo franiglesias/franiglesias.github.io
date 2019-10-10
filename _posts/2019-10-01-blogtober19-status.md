@@ -18,7 +18,7 @@ Estas son las palabras:
 7. [Bug](/blogtober19-bug)
 8. [Exception](/blogtober19-exception)
 9. [Mock](/blogtober19-mock)
-* Testing
+10. [Testing](/blogtober19-testing)
 * Overflow
 * Troll
 * Semicolon

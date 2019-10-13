@@ -21,9 +21,8 @@ Estas son las palabras:
 10. [Testing](/blogtober19-testing)
 11. [Overflow](/blogtober19-overflow)
 12. [Troll](/blogtober19-troll)
+13. [Semicolon](/blogtober-19-semicolon)
 
-
-* Semicolon
 * Glutton
 * Estimation
 * Toxic
@@ -41,4 +40,5 @@ Estas son las palabras:
 * Deprecated
 * Legacy
 * Rollback
-* 
+
+

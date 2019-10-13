@@ -7,7 +7,7 @@ tags: blogtober19
 
 Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) va a hacer un dibujo cada día del mes sobre una palabra propuesta en twitter. Y aquí vamos a intentar escribir [un post por cada una de ellas](https://franiglesias.github.io/blogtober19-status/).
 
-
+<blockquote class="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="en" dir="ltr">11. Overflow <a href="https://twitter.com/gootyfer?ref_src=twsrc%5Etfw">@gootyfer</a> <a href="https://twitter.com/hashtag/inktober?src=hash&amp;ref_src=twsrc%5Etfw">#inktober</a> <a href="https://twitter.com/hashtag/linkitober?src=hash&amp;ref_src=twsrc%5Etfw">#linkitober</a> <a href="https://t.co/xqKBCF6hOb">pic.twitter.com/xqKBCF6hOb</a></p>&mdash; Maybe (@Linkita) <a href="https://twitter.com/Linkita/status/1183445330790096896?ref_src=twsrc%5Etfw">October 13, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Overflow
 

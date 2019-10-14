@@ -22,8 +22,9 @@ Estas son las palabras:
 11. [Overflow](/blogtober19-overflow)
 12. [Troll](/blogtober19-troll)
 13. [Semicolon](/blogtober-19-semicolon)
+14. [Glutton](/blogtober-19-glutton)
 
-* Glutton
+
 * Estimation
 * Toxic
 * Fume

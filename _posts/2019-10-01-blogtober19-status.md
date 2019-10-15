@@ -23,9 +23,8 @@ Estas son las palabras:
 12. [Troll](/blogtober19-troll)
 13. [Semicolon](/blogtober-19-semicolon)
 14. [Glutton](/blogtober-19-glutton)
-
-
-* Estimation
+15. [Estimation](/blogtober-19-estimate)
+ 
 * Toxic
 * Fume
 * Smell

@@ -25,9 +25,8 @@ Estas son las palabras:
 14. [Glutton](/blogtober-19-glutton)
 15. [Estimation](/blogtober-19-estimate)
 16. [Toxic](/blogtober-19-toxic)
+17. [Fume](/blogtober-19-fume)
 
-
-* Fume
 * Smell
 * Alcohol
 * Sleep

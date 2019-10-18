@@ -26,8 +26,8 @@ Estas son las palabras:
 15. [Estimation](/blogtober-19-estimate)
 16. [Toxic](/blogtober-19-toxic)
 17. [Fume](/blogtober-19-fume)
+18. [Smell](/blogtober-19-smell)
 
-* Smell
 * Alcohol
 * Sleep
 * Web

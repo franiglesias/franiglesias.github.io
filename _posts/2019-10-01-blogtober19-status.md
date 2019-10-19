@@ -23,12 +23,12 @@ Estas son las palabras:
 12. [Troll](/blogtober19-troll)
 13. [Semicolon](/blogtober-19-semicolon)
 14. [Glutton](/blogtober-19-glutton)
-15. [Estimation](/blogtober-19-estimate)
+15. [Estimation](/blogtober19-estimate)
 16. [Toxic](/blogtober-19-toxic)
 17. [Fume](/blogtober-19-fume)
 18. [Smell](/blogtober-19-smell)
+19. [Alcohol](/blogtober-19-alcohol)
 
-* Alcohol
 * Sleep
 * Web
 * Woman

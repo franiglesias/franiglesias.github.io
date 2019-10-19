@@ -53,7 +53,9 @@ En general, diría que es un *smell* que se puede prevenir usando buenos nombres
 
 ## Couplers
 
-Los **couplers** son *smells* que se pueden descubrir muy bien en tests unitarios con dobles ya que complican enormemente cualquier test. Uno de los más fáciles de detectar es *Message Chains*, en el que un objeto, llama a otro que está dentro de otro que, a su vez, están dentro de otro. Una violación de la Ley de Demeter de libro: `$object->collaboratorA->collaboratorB->doSomething()`. Es un problema porque hace que la clase que usa $object tenga que saber mucho sobre las otras que participan.
+Los **couplers** son *smells* que se pueden descubrir muy bien en tests unitarios con dobles ya que complican enormemente cualquier test. 
+
+Uno de los más fáciles de detectar es *Message Chains*. En este *smell* un objeto llama a otro que está dentro de otro que, a su vez, está dentro de otro. Una violación de la Ley de Demeter de libro: `$object->collaboratorA->collaboratorB->doSomething()`. Es un problema porque hace que la clase que usa `$object` tenga que saber mucho sobre las otras que participan.
 
 A veces el acoplamiento se produce justo por lo contrario. Encapsulamos esa funcionalidad dentro de una clase que acaba siendo nada más que una concha vacía que delega en otras. Es un patrón que en ciertos contextos es válido (por ejemplo, **Adapter** o **Façade**).
 

@@ -7,7 +7,7 @@ tags: blogtober19
 
 Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) va a hacer un dibujo cada día del mes sobre una palabra propuesta en twitter. Y aquí vamos a intentar escribir [un post por cada una de ellas](https://franiglesias.github.io/blogtober19-status/).
 
-
+<blockquote class="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="en" dir="ltr">16. Toxic <a href="https://twitter.com/juditnile?ref_src=twsrc%5Etfw">@juditnile</a> <a href="https://twitter.com/hashtag/Inktober?src=hash&amp;ref_src=twsrc%5Etfw">#Inktober</a> <a href="https://twitter.com/hashtag/linkitober?src=hash&amp;ref_src=twsrc%5Etfw">#linkitober</a> <a href="https://t.co/s91TW0itZw">pic.twitter.com/s91TW0itZw</a></p>&mdash; Maybe (@Linkita) <a href="https://twitter.com/Linkita/status/1185292915024809984?ref_src=twsrc%5Etfw">October 18, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Toxic
 

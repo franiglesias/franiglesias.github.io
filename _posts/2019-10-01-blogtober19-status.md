@@ -28,8 +28,8 @@ Estas son las palabras:
 17. [Fume](/blogtober-19-fume)
 18. [Smell](/blogtober-19-smell)
 19. [Alcohol](/blogtober-19-alcohol)
+20. [Sleep](/blogtober-20-sleep)
 
-* Sleep
 * Web
 * Woman
 * Parameter

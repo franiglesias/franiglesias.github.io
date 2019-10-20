@@ -1,3 +1,12 @@
+---
+layout: post
+title: Object Calisthenics para mejorar el diseño de las clases
+categories: articles
+tags: good-practices refactoring
+---
+
+En este artículo presentamos un ejercicio que puede servir para adquirir soltura a la hora de reconocer patrones que nos permitan organizar objetos complejos mediante value objects.
+
 Un problema típico para una aplicación de *e-commerce* es el de requerir una **dirección de envío** y una **dirección de facturación** para cada pedido. Ambas son muy similares estructuralmente, pero diferentes en cuanto a significado. La dirección de envío es relevante para el sistema logístico y puede requerir un extra de instrucciones especiales, mientras que las de facturación es relevante en términos de legalidad fiscal.
 
 Representar una dirección es un problema aparentemente simple pero en cuanto empiezas a escarbar un poco empiezan a salir todo tipo de inconveniencias. ¿Cuán complicada puede ser una dirección? Pues aparentemente mucho y eso ciñéndonos sólo a direcciones postales españolas y sin considerar problemas de formato, simplemente intentando representarlas correctamente en nuestro dominio. 
@@ -80,7 +89,8 @@ Mucho mejor, ¿no? Al fin y al cabo, la dirección se puede expresar en un sólo
 
 Estos problemas, y otros muchos similares, hacen que necesitemos que los clientes nos proporciones sus direcciones de una manera precisa y que no se olviden de ningún dato. Por eso, presentamos formularios con todos esos espacios para que el cliente sea consciente de todo lo que necesita decirnos para poder entregarle su pedido con el mínimo posible de demoras e inconvenientes. Así que en vez de lidiar con siete manejables campos nos toca hacerlo con quince por dirección, lo que hace un total de treinta campos sin contar el resto de los que necesita el pedido.
 
-La siguiente restricción que quiero introducir viene de las [Object Calisthenics](https://williamdurand.fr/2013/06/03/object-calisthenics/). La Calistenia es un sistema de ejercicios destinados a [conseguir gracia y belleza en el movimiento](https://es.wikipedia.org/wiki/Calistenia). En nuestro caso son ejercicios que nos pueden servir para automatizar ciertas buenas prácticas. Su aplicación contribuye a que el código se ajuste a mejores principios, como SOLID, Demeter o DRY, y, como mínimo, nos obliga a reflexionar.
+La siguiente restricción que quiero introducir viene de las [Object Calisthenics](https://williamdurand.fr/2013/06/03/object-calisthenics/). La Calistenia es un sistema de ejercicios destinados a [conseguir gracia y belleza en el movimiento](https://es.wikipedia.org/wiki/Calistenia). En nuestro caso son ejercicios que nos pueden servir para automatizar ciertas buenas prácticas. Su aplicación [contribuye a que el código se ajuste a mejores principios](https://keyvanakbary.com/object-calisthenics-mejora-tu-diseno-orientado-a-objetos/
+), como SOLID, Demeter o DRY, y, como mínimo, nos obliga a reflexionar.
 
 En este caso vamos a aplicar dos de las reglas:
 
@@ -456,6 +466,5 @@ Dirección de facturación
             Provincia
 ```
 
-Estamos forzando mucho las cosas, pero también estamos consiguiendo el objetivo de tener sólo dos variables en cada objeto.
+Hemos forzado mucho las cosas, pero casi hemos conseguido hacer que cada objeto contenga tan solo dos atributos. Podríamos seguir, pero lo voy a dejar aquí en parte para que hagas el ejercicio de intentar dar este último paso.
 
-https://keyvanakbary.com/object-calisthenics-mejora-tu-diseno-orientado-a-objetos/

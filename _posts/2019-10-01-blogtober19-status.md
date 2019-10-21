@@ -28,9 +28,9 @@ Estas son las palabras:
 17. [Fume](/blogtober-19-fume)
 18. [Smell](/blogtober-19-smell)
 19. [Alcohol](/blogtober-19-alcohol)
-20. [Sleep](/blogtober-20-sleep)
+20. [Sleep](/blogtober-19-sleep)
+21. [Web](/blogtober-19-web)
 
-* Web
 * Woman
 * Parameter
 * Void

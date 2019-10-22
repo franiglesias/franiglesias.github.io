@@ -30,8 +30,9 @@ Estas son las palabras:
 19. [Alcohol](/blogtober-19-alcohol)
 20. [Sleep](/blogtober-19-sleep)
 21. [Web](/blogtober-19-web)
+22. [Woman](/blogtober-19-woman)
 
-* Woman
+
 * Parameter
 * Void
 * Coverage

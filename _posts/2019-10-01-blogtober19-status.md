@@ -21,19 +21,18 @@ Estas son las palabras:
 10. [Testing](/blogtober19-testing)
 11. [Overflow](/blogtober19-overflow)
 12. [Troll](/blogtober19-troll)
-13. [Semicolon](/blogtober-19-semicolon)
-14. [Glutton](/blogtober-19-glutton)
+13. [Semicolon](/blogtober19-semicolon)
+14. [Glutton](/blogtober19-glutton)
 15. [Estimation](/blogtober19-estimate)
-16. [Toxic](/blogtober-19-toxic)
-17. [Fume](/blogtober-19-fume)
-18. [Smell](/blogtober-19-smell)
-19. [Alcohol](/blogtober-19-alcohol)
-20. [Sleep](/blogtober-19-sleep)
-21. [Web](/blogtober-19-web)
-22. [Woman](/blogtober-19-woman)
+16. [Toxic](/blogtober19-toxic)
+17. [Fume](/blogtober19-fume)
+18. [Smell](/blogtober19-smell)
+19. [Alcohol](/blogtober19-alcohol)
+20. [Sleep](/blogtober19-sleep)
+21. [Web](/blogtober19-web)
+22. [Woman](/blogtober19-woman)
+23. [Parameter](/blogtober19-parameter)
 
-
-* Parameter
 * Void
 * Coverage
 * Hope

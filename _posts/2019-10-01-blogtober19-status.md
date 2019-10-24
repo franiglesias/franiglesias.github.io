@@ -9,7 +9,7 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 Estas son las palabras:
 
-1. [Commit](https://franiglesias.github.io/blogtober19-commit/)
+1. [Commit](/blogtober19-commit)
 2. [Gopher](/blogtober19-gopher)
 3. [Bravery](/blogtober19-bravery)
 4. [Junior](/blogtober19-junior)
@@ -32,8 +32,8 @@ Estas son las palabras:
 21. [Web](/blogtober19-web)
 22. [Woman](/blogtober19-woman)
 23. [Parameter](/blogtober19-parameter)
+24. [Void](/blogtober19-void)
 
-* Void
 * Coverage
 * Hope
 * Monolith

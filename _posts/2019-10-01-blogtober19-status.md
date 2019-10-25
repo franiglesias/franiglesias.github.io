@@ -33,8 +33,8 @@ Estas son las palabras:
 22. [Woman](/blogtober19-woman)
 23. [Parameter](/blogtober19-parameter)
 24. [Void](/blogtober19-void)
+25. [Coverage](/blogtober19-coverage)
 
-* Coverage
 * Hope
 * Monolith
 * Deprecated

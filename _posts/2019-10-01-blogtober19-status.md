@@ -35,8 +35,8 @@ Estas son las palabras:
 24. [Void](/blogtober19-void)
 25. [Coverage](/blogtober19-coverage)
 26. [Hope](/blogtober19-hope)
+27. [Monolith](/blogtober19-monolith)
 
-* Monolith
 * Deprecated
 * Legacy
 * Rollback

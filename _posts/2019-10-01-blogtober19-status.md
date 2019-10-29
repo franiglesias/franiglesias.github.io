@@ -37,8 +37,8 @@ Estas son las palabras:
 26. [Hope](/blogtober19-hope)
 27. [Monolith](/blogtober19-monolith)
 28. [Deprecated](/blogtober19-deprecated)
+29. [Legacy](/blogtober19-legacy)
 
-* Legacy
 * Rollback
 
 

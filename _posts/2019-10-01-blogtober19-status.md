@@ -39,5 +39,6 @@ Estas son las palabras:
 28. [Deprecated](/blogtober19-deprecated)
 29. [Legacy](/blogtober19-legacy)
 30. [Rollback](/blogtober19-rollback)
+31. [End](/blogtober19-end)
 
 

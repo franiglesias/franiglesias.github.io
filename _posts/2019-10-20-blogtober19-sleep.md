@@ -74,7 +74,7 @@ El método `now()` nos entrega la fecha y hora del sistema, mientras que `thisTi
 
 ¿Cómo lo usaríamos? Cuando sea necesario, lo pasaríamos como colaborador a la clase que lo necesite.
 
-```
+```php
 <?php
 
 declare(strict_types=1);
@@ -232,7 +232,7 @@ class TimerServiceForTest
 
 De este modo, el test no tendrá demora independientemente de la que necesites fijar para el código de producción.
 
-### Alternativas a dormir
+### Alternativas a dormir
 
 Cuando tenemos procesos que se ejecutan, por así decir, en paralelo y uno tiene que esperar el resultado de otro hacer una pausa puede ser un problema. No sólo en el aspecto de testing, sino que tal vez el contexto lo haga desaconsejable.
 

@@ -2,7 +2,7 @@
 layout: post
 title: DDD, identificando el dominio y los subdominios
 categories: articles
-tags: good-practices design-principles
+tags: good-practices design-principles ddd
 ---
 
 Domain Driven Design no puede tomarse como una guía con instrucciones para ir de un punto a otro siguiendo una ruta determinada. Es más bien, un conjunto de estrategias, métodos y tácticas para orientarse en un territorio desconocido y moverse hacia un objetivo deseado que, para mayor dificultad, es móvil.

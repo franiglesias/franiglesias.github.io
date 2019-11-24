@@ -2,7 +2,7 @@
 layout: post
 title: DDD, el lenguaje ubicuo
 categories: articles
-tags: good-practices design-principles
+tags: good-practices design-principles ddd
 ---
 
 Creo que una de las cosas que provocan que se *haga bola* la parte estratégica del DDD tiene que ver con que se trata de una metodología muy orgánica. Es difícil incluso definir un principio y un final del proceso. De hecho, diría que el DDD bien entendido no termina nunca mientras el negocio evoluciona.
@@ -131,20 +131,61 @@ Aquí nos surge una situación interesante: un mismo término que estaría refir
 
 – Hum. Es verdad. Ahora que sale el tema es verdad que muchas veces llamamos curso al grupo. Es habitual que una tutora diga "mi curso" refiriéndose a su grupo de tutoría, o que alguien diga "el curso de 3º B", por ejemplo.
 
-Tenemos tres significados para una misma palabra y en un mismo contexto, por tanto, tenemos un problema.
+Tenemos tres significados para una misma palabra y en un mismo contexto, por tanto, tenemos un problema. Para resolverlo, tenemos que ver si es posible utilizar sinónimos que tengan sentido para el dominio:
 
+* Curso escolar: Año escolar
+* Curso: Nivel educativo
+* Curso: Cada agrupación de alumnos matriculados en el mismo nivel educativo.
 
+Después de aclarar los puntos anteriores, seguimos avanzando en la conversación.
 
+– Una vez que el alumno se ha matriculado, ¿cómo se le identifica dentro del sistema?
 
+– Se le asigna un número de matrícula aunque realmente sólo se usa para algunos trámites ya que normalmente identificamos al alumno por su nombre y apellidos o, dentro de un año escolar, por su nivel, grupo y número de clase, que viene dado por su posición en la lista por orden alfabético del apellido.
 
+– De acuerdo. Sin embargo, necesitaremos un identificador único. Entiendo que cabe la posibilidad de que haya alguna coincidencia de nombres y apellidos de vez en cuando.
 
+– Sí, podría pasar, aunque es raro que ocurra dentro del mismo nivel y grupo.
+
+– Ya. Sin embargo, el número de matrícula podría ser suficiente y así el sistema podría ser compatible con los registros que existan ahora.
+
+– De acuerdo.
+
+– Entiendo que es un número que se incrementa con cada matrícula. ¿es necesario ocupar todos los números o pueden quedar huecos de números no usados?
+
+– En principio no hay problema en dejar números sin usar.
+
+Aquí surge otra regla de negocio: cada alumno tiene un identificador único para su vida escolar, pero también se menciona que tiene otros identificadores, como el número de clase que lo identifica dentro de un grupo de alumnos concreto durante un año escolar e, incluso, junto la identificación de su grupo, lo identifica dentro del centro durante ese mismo año escolar. En otras palabras, nos están mencionando distintos contextos.
+
+Se nos aclara que estos identificadores no se usan en el día a día realmente, pero no hay duda de que son necesarios para otorgar identidad a cada alumno individual en el sistema.
+
+– Y con esto, entonces, quedaría terminado el proceso de matrícula.
+
+– Básicamente sí. 
+
+De momento, la conversación termina aquí.
+
+## Recopilar la información recogida
+
+El *setup* ideal para estas conversaciones sería contar con una pizarra blanca o similar en la que poder ir anotando conceptos y dibujando esquemas de forma que todos los participantes puedan aportar. Los acuerdos de significado a los que vamos llegando se registran en forma de documentos que los transcriban, fotos de la pizarra en los momentos en que llegamos a un acuerdo, esquemas que se hayan dibujado, etc.
+
+No es necesario seguir un protocolo formal, sino recoger la información generada de la forma más fidedigna, pero también la más práctica y más a mano para los participantes. Si alguien sabe de UML puede crear diseños simplificados de los conceptos identificados y sus relaciones. Algunos procesos podrán representarse en diagramas de flujo, otros podrían quedar bien resueltos con simples esquemas de cajas y flechas.
+
+También es recomendable incorporar a las notas formularios impresos y plantillas que puedan estar utilizándose para el mismo proceso en la actualidad. Estos documentos nos proporcionan un punto de partida para entender la estructura de los datos que se solicitan o cómo se registran. Podemos hablar sobre cuáles se utilizan realmente, cuáles acaban ignorándose, etc.
+
+Otra forma de iniciar y mantener esta conversación es a través del [Event Storming](https://techbeacon.com/devops/introduction-event-storming-easy-way-achieve-domain-driven-design). Es una técnica en la que se parte de los eventos o sucesos interesantes que suceden en el dominio, buscando todos los conceptos, comandos, servicios, etc, relacionados con lo que se llega a identificar agregados y contextos acotados. 
+
+Incluso la metodología Behavior Driven Design nos facilita una forma de hablar sobre el dominio y registrar el lenguaje ubicuo en forma de una documentación dinámica, pero esto quizá nos acerca demasiado a la implementación.
+
+En todo caso, será el tema de otro artículo.
+
+## Más información
+
+Un par de artículos más sobre lenguaje ubicuo:
 
 https://blog.carbonfive.com/2016/10/04/ubiquitous-language-the-joy-of-naming/
 
-
 https://arne-mertz.de/2017/07/ubiquitous-language/
-
-
 
 
 ## Postdata
@@ -155,7 +196,7 @@ Curiosamente, justo estaba empezando a escribir este artículo cuando me encontr
 
 Esto me recordó que Eric Evans se define a sí mismo como un *Domain Linguist* y su consultora se llama [Domain Language](http://domainlanguage.com). Algo querrá decir, ¿no?
 
-Es más, el Blue Book apenas incluye ejemplos de código o menciones muy explícitas. Se podría decir que es un libro que trata acerca de cómo conversar productivamente acerca del dominio.
+Es más, el Blue Book apenas incluye ejemplos de código o menciones muy explícitas. Se podría decir que es un libro que **trata acerca de cómo conversar productivamente acerca del dominio**.
 
 
 

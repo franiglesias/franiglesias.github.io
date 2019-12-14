@@ -1,19 +1,19 @@
 ---
 layout: post
-title: Null coalescence operator
+title: Null coalesce operator
 published: true
 categories: articles
 author: [paula, fran]
 tags: php tips
 ---
 
-El operador ternario comparte con null coalescence el símbolo de la interrogación, pero ahí se acaba el parecido.
+El operador ternario comparte con null coalesce el símbolo de la interrogación, pero ahí se acaba el parecido.
 
 El tema nos ha dado para alguna discusión por lo que me arriesgo a que nos acusen de escribir sobre nuestros dramas técnicos ;), pero creo que el tema lo merece.
 
 ## Asignando valores que pueden ser `null`
 
-¿Exactamente que es el **null coalescence operator (??)**? Para explicarlo vamos a tomar un pequeño rodeo.
+¿Exactamente que es el **null coalesce operator (??)**? Para explicarlo vamos a tomar un pequeño rodeo.
 
 Supongamos un código así:
 
@@ -41,7 +41,7 @@ function doSomething(?string $aValue)
 }
 ```
 
-Pero nosotros hemos venido a hablar de **null coalescence operator**, así que lo haremos a partir de su diferencias con **ternary**.
+Pero nosotros hemos venido a hablar de **null coalesce operator**, así que lo haremos a partir de su diferencias con **ternary**.
 
 Fundamentalmente, **ternary operator** nos permite elegir entre dos posibles valores dependiendo de si se cumple o no una condición cualquiera. La condición se pone al principio, seguida de la opción en caso de que se cumple y la opción en caso de que no se cumpla.
 
@@ -49,11 +49,11 @@ Fundamentalmente, **ternary operator** nos permite elegir entre dos posibles val
 $aVariable = $aCondition ? $valueIfAConditionIsTrue : $valueIfAConditionIsFalse;
 ```
 
-## Null Coalescence operator
+## Null coalesce operator
 
-Por contra, **null coalescence operator** nos va a permitir definir 'una lista priorizada de valores entre los que se escoge el primero que no sea `null`', como bien definió Paula Julve.
+Por contra, **null coalesce operator** nos va a permitir definir 'una lista priorizada de valores entre los que se escoge el primero que no sea `null`', como bien definió Paula Julve.
 
-Por tanto, la función anterior se podría reescribir usando **null coalescence**:
+Por tanto, la función anterior se podría reescribir usando **null coalesce**:
 
 ```php
 function doSomething(?string $aValue)
@@ -83,7 +83,7 @@ Es decir: `$aField` recibirá el primer valor de la lista que no sea `null`. Si 
 
 ## Usos
 
-Tal como se muestra en el ejemplo usado, puedes usar null coalescence para asignar un valor por defecto a una variable en caso de que la expresión de la que toma valor pueda ser `null`.
+Tal como se muestra en el ejemplo usado, puedes usar null coalesce para asignar un valor por defecto a una variable en caso de que la expresión de la que toma valor pueda ser `null`.
 
 También se aplica con variables que no han sido inicializadas, como en este ejemplo:
 
@@ -96,7 +96,7 @@ function doSomething(?string $aValue)
 doSomething(null); // -> 'default'
 ```
 
-Lo cierto es que **null coalescence** nos proporciona un mecanismo de *fallback* para asignar valores obtenidos de diversas fuentes que no sabemos si han sido inicializadas o no:
+Lo cierto es que **null coalesce** nos proporciona un mecanismo de *fallback* para asignar valores obtenidos de diversas fuentes que no sabemos si han sido inicializadas o no:
 
 ```php
 $aField = $tryThis ?? $thenThis ?? $thenThat ?? 'default';

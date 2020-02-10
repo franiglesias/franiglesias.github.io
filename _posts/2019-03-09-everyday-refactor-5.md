@@ -227,14 +227,14 @@ class Status
         $this->status = $status;
     }
 
-    public function value(): string 
+    public function status(): string 
     {
         return $this->status;
     }
     
     public function equals(Status $anotherStatus): bool
     {
-        return $this->status === $anotherStatus->status;
+        return $this->status === $anotherStatus->status();
     }
 
     public function __toString(): string
@@ -310,14 +310,14 @@ class Status
         return new self(self::CANCELLED);
     }
 
-    public function value(): string
+    public function status(): string
     {
         return $this->status;
     }
 
     public function equals(Status $anotherStatus): bool
     {
-        return $this->status === $anotherStatus->status;
+        return $this->status === $anotherStatus->status();
     }
 
     public function __toString(): string

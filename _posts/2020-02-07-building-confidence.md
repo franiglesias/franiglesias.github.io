@@ -2,7 +2,7 @@
 layout: post
 title: Construir confianza en el código, test a test
 categories: articles
-tags: testing good-pratices
+tags: testing, good-practices
 ---
 
 En general, cuando creamos software, confiamos en que haga aquello para lo cual lo hemos programado. Es un poco de perogrullo, pero es también evidente que necesitamos poder tener esa confianza.

@@ -15,7 +15,7 @@ Para lograrlo están organizadas. Tienen una estructura, que en las empresas se 
 
 Y, de un tiempo a esta parte, las empresas tienen **cultura**.
 
-Se suele llamar cultura de una empresa a la manera particular que tiene de hacer las cosas. La cultura es algo inmaterial, pero es frecuente que aparezca codificada de alguna manera. La cultura se sustenta en valores, a pueden ser llamados *core values*, que muchas veces se declaran de forma explícita en forma de lemas fáciles de recordar, o de *hashtags* como signo de los tiempos.
+Se suele llamar cultura de una empresa a la manera particular que tiene de hacer las cosas. La cultura es algo inmaterial, pero es frecuente que aparezca codificada de alguna manera. La cultura se sustenta en valores, en ocasiones llamados *core values*, que muchas veces se declaran de forma explícita en forma de lemas fáciles de recordar, o de *hashtags* como signo de los tiempos.
 
 Una de las ideas acerca del valor de la cultura de las empresas es que sí esta es fuerte, y fuertemente compartida por todas las personas que integran la organización, puedes confiar en que todo el mundo hará lo correcto:
 
@@ -56,4 +56,3 @@ En último término las empresas no tienen cultura per se. La cultura de una emp
 * [Bianca Bartz: Here’s What ‘Don’t Fuck Up the Culture’ Means to Airbnb’s Mark Levy](https://hazelhq.com/blog/mark-levy-airbnb-culture/)
 * [Did Peter Drucker actually say "culture eats strategy for breakfast" - and if so, where/when?](https://www.quora.com/Did-Peter-Drucker-actually-say-culture-eats-strategy-for-breakfast-and-if-so-where-when)
 * [Your Company Culture is Who You Hire, Fire, and Promote](https://medium.com/s/company-culture/your-companys-culture-is-who-you-hire-fire-and-promote-c69f84902983)
-

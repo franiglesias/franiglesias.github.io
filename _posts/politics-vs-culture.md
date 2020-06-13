@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Cuando la política entra por la puerta la cultura salta por la ventana
+title: Cuando el poder entra por la puerta la cultura salta por la ventana
 categories: articles
 tags: misc
 ---
 
 Muchas empresas presumen de su cultura, pero ¿qué es la cultura y cuáles son sus límites?
 
-**Cuando la política entra por la puerta la cultura salta por la ventana.** Por mucho que una empresa saque pecho sobre sus valores, la política está por encima de todo. Hablo de la política entendida como la forma en que se abordan los asuntos comunes de la organización y las relaciones de poder que se establecen y que pueden coincidir o no con el organigrama.
+**Cuando ~~la política~~ el poder entra por la puerta la cultura salta por la ventana.** Por mucho que una empresa saque pecho sobre sus valores, la política está por encima de todo. Hablo de la política entendida como la forma en que se abordan los asuntos comunes de la organización y las relaciones de poder que se establecen y que pueden coincidir o no con el organigrama.
 
 Las empresas son organizaciones humanas, como pueden serlo las familias, los vecindarios o los países. Están formadas por personas que comparten y colaboran en un objetivo. O al menos eso se espera.
 

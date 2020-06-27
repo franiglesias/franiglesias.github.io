@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cuando el poder entra por la puerta la cultura salta por la ventana
+title: Acerca de la cultura
 categories: articles
 tags: misc
 ---
@@ -11,7 +11,7 @@ Muchas empresas presumen de su cultura, pero ¿qué es la cultura y cuáles son 
 
 Las empresas son organizaciones humanas, como pueden serlo las familias, los vecindarios o los países. Están formadas por personas que comparten y colaboran en un objetivo. O al menos eso se espera.
 
-Para lograrlo están organizadas. Tienen una estructura, que en las empresas se materializa en forma de organigramas que definen los roles de cada persona, las divisiones y equipos, y las relaciones de dependencia: qué haces y a quién informas. También tienen un sistema de normas, un conjunto de reglas y procesos que dicen cómo se hacen las cosas y que las supervisan. Incluso, deseablemente, tienen un sistema para evaluar el cumplimiento de las normas y las sanciones que podría conllevar no hacerlo.
+Para lograrlo están organizadas. Tienen una estructura que en las empresas se materializa en forma de organigramas que definen los roles de cada persona, las divisiones y equipos, y las relaciones de dependencia: qué haces y a quién informas. También tienen un sistema de normas, un conjunto de reglas y procesos que dicen cómo se hacen las cosas y que las supervisan. Incluso, deseablemente, tienen un sistema para evaluar el cumplimiento de las normas y las sanciones que podría conllevar no hacerlo.
 
 Y, de un tiempo a esta parte, las empresas tienen **cultura**.
 
@@ -29,7 +29,7 @@ La jerarquía y la asimetría en la relación de poder hacen que en una empresa 
 
 Tomando un ejemplo extremo: el recepcionista y la CEO no tienen que tener el mismo poder de decisión, simplemente porque sus atribuciones son distintas, así como sus capacitaciones. Cada una de estas personas es especialista en su área y, muy probablemente, si intercambiasen sus puestos ambas lo harían fatal.
 
-En último término la cultura es lo que decide el CEO (Berkun), por mucho que la empresa haya editado un bonito folleto desarrollando los valores, o se pronuncien cada semana discursos motivacionales, plagados de inspiradoras citas fuera de contexto. Al final, lo que define de forma efectiva la cultura es : ¿a quién se premia y a quién se expulsa?
+En último término la cultura es lo que decide el CEO (Berkun), por mucho que la empresa haya editado un bonito folleto desarrollando los valores, o se pronuncien cada semana discursos motivacionales, plagados de inspiradoras citas fuera de contexto. Al final, lo que define de forma efectiva la cultura es: ¿a quién se premia y a quién se expulsa?
 
 > Many companies have value statements, but often these written values are vague and ignored. The real values of a firm are shown by who gets rewarded or let go. [Netflix](https://jobs.netflix.com/culture)
 
@@ -43,7 +43,7 @@ De hecho, puede darse la paradoja de que una persona que se ajuste escrupulosame
 
 Por ejemplo, si una persona cuestiona una decisión con argumentos técnicos y es despedida, puede que el mensaje oficial sea "esta persona incumplió la cultura", pero el mensaje real es "no aceptamos el cuestionamiento de las decisiones".
 
-En estas situaciones la política se come a la cultura a cualquier hora del día y las veces que haga falta, por dejar caer la frase atribuida, por lo visto falsamente, a Peter Drucker.
+En estas situaciones la política se come a la cultura a cualquier hora del día y las veces que haga falta, por parafrasear la cita atribuida, por lo visto falsamente, a Peter Drucker.
 
 Con el tiempo los individuos que activamente cuestionan las relaciones de poder acaban saliendo de la compañía, bien por despidos, bien porque deciden salir por su propio pie. La empresa los irá reemplazando por otras personas que posiblemente serán más acordes con la cultura efectiva de la empresa (la que decide el CEO), reduciendo la diversidad y reforzando la uniformidad.
 

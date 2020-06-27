@@ -17,13 +17,13 @@ Y, de un tiempo a esta parte, las empresas tienen **cultura**.
 
 Se suele llamar cultura de una empresa a la manera particular que tiene de hacer las cosas. La cultura es algo inmaterial, pero es frecuente que aparezca codificada de alguna manera. La cultura se sustenta en valores, en ocasiones llamados *core values*, que muchas veces se declaran de forma explícita en forma de lemas fáciles de recordar, o de *hashtags* como signo de los tiempos.
 
-Una de las ideas acerca del valor de la cultura de las empresas es que sí esta es fuerte, y fuertemente compartida por todas las personas que integran la organización, puedes confiar en que todo el mundo hará lo correcto:
+Una de las ideas acerca del valor de la cultura de las empresas es que si esta es fuerte, y fuertemente compartida por todas las personas que integran la organización, puedes confiar en que todo el mundo hará lo correcto:
 
 > The stronger the culture, the less corporate process a company needs. When the culture is strong, you can trust everyone to do the right thing. People can be independent and autonomous. (Brian Chesky, AirBnb)
 
-Es decir, si todos las personas de la empresa comparten de forma inequívoca la cultura, no serán necesarias normas o procedimientos para que todo el mundo sepa qué es lo que tiene que hacer, o no hacer, en una situación determinada. 
+Es decir, si todas las personas de la empresa comparten de forma inequívoca la cultura, no serán necesarias normas o procedimientos para que todo el mundo sepa qué es lo que tiene que hacer, o no hacer, en una situación determinada. 
 
-Las empresas se estructuran jerárquicamente, con una dirección muy definida y habitualmente personalizada en la figura de CEO que sólo rinde cuentas ante el consejo de administración y la única persona de la organización con el poder de decisión final sobre normas y, sobre todo, despidos. El despido es la pena capital en la empresa. Cuando te despiden, desapareces de la organización. Ese poder absoluto sobre la *vida* y la *muerte* dentro la empresa hace que ese concepto de cultura al que hace referencia Chesky no suela tener valor en la práctica.
+Las empresas se estructuran jerárquicamente, con una dirección muy definida y habitualmente personalizada en la figura de CEO que sólo rinde cuentas ante el consejo de administración y que es la única persona de la organización con el poder de decisión final sobre normas y, sobre todo, despidos. El despido es la pena capital en la empresa. Cuando te despiden, desapareces de la organización. Ese poder absoluto sobre la *vida* y la *muerte* dentro la empresa hace que ese concepto de cultura al que hace referencia Chesky no suela tener valor en la práctica.
 
 La jerarquía y la asimetría en la relación de poder hacen que en una empresa no pueda existir una igualdad ante la cultura. Eso no es necesariamente malo o cuestionable. Es lo que es. Y la mayor parte de empresas lo necesitan para ser mínimamente eficientes y productivas. 
 

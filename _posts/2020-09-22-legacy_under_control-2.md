@@ -1405,7 +1405,7 @@ src
 
 Nos queda aún trabajo. Tenemos un concepto que no hemos reflejado, como es el de `Blog` o `AdSpace`. De hecho, tenemos que introducir un filtro en el `AdSpaceProvider` para poder usar sólo los espacios que cumplen algunas condiciones.
 
-También nos podría interesar replantear el modo en que se expresan las acciones que realizan `AutomaticQuoteBot` y `BlogAuctionTask` ya que nos podría interesar introducir el patrón `Command`.
+También nos podría interesar replantear el modo en que se expresan las acciones que realizan `AutomaticQuoteBot` y `BlogAuctionTask` ya que querríamos introducir el patrón `Command` para mejorar este punto.
 
 Y luego, veremos que con la nueva organización del código, es posible detectar algunas áreas de mejora.
 

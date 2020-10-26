@@ -934,37 +934,37 @@ Esta es la estructura de la aplicación después de todo el trabajo que hemos ll
 ```
 src
 ├── Application
-│   ├── GenerateAllQuotes.php
-│   └── GenerateAllQuotesCommandHandler.php
+│   ├── GenerateAllQuotes.php
+│   └── GenerateAllQuotesCommandHandler.php
 ├── Domain
-│   ├── AdSpace
-│   │   ├── AdSpace.php
-│   │   └── Blog.php
-│   ├── AdSpaceProvider.php
-│   ├── MarketData
-│   │   ├── MarketDataRetriever.php
-│   │   └── Price.php
-│   ├── Proposal
-│   │   ├── CalculateProposal.php
-│   │   ├── GenerateProposal.php
-│   │   ├── Mode.php
-│   │   ├── Proposal.php
-│   │   └── TimeService.php
-│   └── ProposalPublisher.php
+│   ├── AdSpace
+│   │   ├── AdSpace.php
+│   │   └── Blog.php
+│   ├── AdSpaceProvider.php
+│   ├── MarketData
+│   │   ├── MarketDataRetriever.php
+│   │   └── Price.php
+│   ├── Proposal
+│   │   ├── CalculateProposal.php
+│   │   ├── GenerateProposal.php
+│   │   ├── Mode.php
+│   │   ├── Proposal.php
+│   │   └── TimeService.php
+│   └── ProposalPublisher.php
 └── Infrastructure
     ├── AdSpaceProvider
-    │   ├── AdSpacesCache.php
-    │   ├── BlogAdSpaceProvider.php
-    │   ├── LocalAdSpaceProvider.php
-    │   └── TechBlogs.php
+    │   ├── AdSpacesCache.php
+    │   ├── BlogAdSpaceProvider.php
+    │   ├── LocalAdSpaceProvider.php
+    │   └── TechBlogs.php
     ├── EntryPoint
-    │   └── Application.php
+    │   └── Application.php
     ├── MarketDataRetriever
-    │   ├── LocalMarketDataRetriever.php
-    │   └── VendorDataRetriever.php
+    │   ├── LocalMarketDataRetriever.php
+    │   └── VendorDataRetriever.php
     ├── ProposalPublisher
-    │   ├── LocalQuoteProposalPublisher.php
-    │   └── QuoteProposalPublisher.php
+    │   ├── LocalQuoteProposalPublisher.php
+    │   └── QuoteProposalPublisher.php
     └── SystemTimeService.php
 ```
 

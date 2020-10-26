@@ -303,18 +303,18 @@ src
 ├── AutomaticQuoteBot.php
 ├── BlogAuctionTask.php
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── MarketDataRetriever.php
-│   ├── ProposalPublisher.php
-│   └── TimeService.php
+│   ├── AdSpaceProvider.php
+│   ├── MarketDataRetriever.php
+│   ├── ProposalPublisher.php
+│   └── TimeService.php
 ├── Infrastructure
-│   ├── BlogAdSpaceProvider.php
-│   ├── LocalAdSpaceProvider.php
-│   ├── LocalMarketDataRetriever.php
-│   ├── LocalQuoteProposalPublisher.php
-│   ├── QuoteProposalPublisher.php
-│   ├── SystemTimeService.php
-│   └── VendorDataRetriever.php
+│   ├── BlogAdSpaceProvider.php
+│   ├── LocalAdSpaceProvider.php
+│   ├── LocalMarketDataRetriever.php
+│   ├── LocalQuoteProposalPublisher.php
+│   ├── QuoteProposalPublisher.php
+│   ├── SystemTimeService.php
+│   └── VendorDataRetriever.php
 └── TechBlogs.php
 ```
 
@@ -342,20 +342,20 @@ src
 ├── AutomaticQuoteBot.php
 ├── BlogAuctionTask.php
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── MarketDataRetriever.php
-│   ├── ProposalPublisher.php
-│   └── TimeService.php
+│   ├── AdSpaceProvider.php
+│   ├── MarketDataRetriever.php
+│   ├── ProposalPublisher.php
+│   └── TimeService.php
 ├── Infrastructure
-│   ├── BlogAdSpaceProvider.php
-│   ├── EntryPoint
-│   │   └── Application.php
-│   ├── LocalAdSpaceProvider.php
-│   ├── LocalMarketDataRetriever.php
-│   ├── LocalQuoteProposalPublisher.php
-│   ├── QuoteProposalPublisher.php
-│   ├── SystemTimeService.php
-│   └── VendorDataRetriever.php
+│   ├── BlogAdSpaceProvider.php
+│   ├── EntryPoint
+│   │   └── Application.php
+│   ├── LocalAdSpaceProvider.php
+│   ├── LocalMarketDataRetriever.php
+│   ├── LocalQuoteProposalPublisher.php
+│   ├── QuoteProposalPublisher.php
+│   ├── SystemTimeService.php
+│   └── VendorDataRetriever.php
 └── TechBlogs.php
 ```
 
@@ -433,22 +433,22 @@ Por ahora me llevaré a `Domain` tanto a `AutomaticQuoteBot` como a `BlogAuction
 src
 ├── AdSpace.php
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── AutomaticQuoteBot.php
-│   ├── BlogAuctionTask.php
-│   ├── MarketDataRetriever.php
-│   ├── ProposalPublisher.php
-│   └── TimeService.php
+│   ├── AdSpaceProvider.php
+│   ├── AutomaticQuoteBot.php
+│   ├── BlogAuctionTask.php
+│   ├── MarketDataRetriever.php
+│   ├── ProposalPublisher.php
+│   └── TimeService.php
 ├── Infrastructure
-│   ├── BlogAdSpaceProvider.php
-│   ├── EntryPoint
-│   │   └── Application.php
-│   ├── LocalAdSpaceProvider.php
-│   ├── LocalMarketDataRetriever.php
-│   ├── LocalQuoteProposalPublisher.php
-│   ├── QuoteProposalPublisher.php
-│   ├── SystemTimeService.php
-│   └── VendorDataRetriever.php
+│   ├── BlogAdSpaceProvider.php
+│   ├── EntryPoint
+│   │   └── Application.php
+│   ├── LocalAdSpaceProvider.php
+│   ├── LocalMarketDataRetriever.php
+│   ├── LocalQuoteProposalPublisher.php
+│   ├── QuoteProposalPublisher.php
+│   ├── SystemTimeService.php
+│   └── VendorDataRetriever.php
 └── TechBlogs.php
 ```
 
@@ -457,17 +457,17 @@ Nos quedan `AdSpace` y `TechBlogs`, que dependen entre ellos y que, examinando s
 ```
 src
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── AutomaticQuoteBot.php
-│   ├── BlogAuctionTask.php
-│   ├── MarketDataRetriever.php
-│   ├── ProposalPublisher.php
-│   └── TimeService.php
+│   ├── AdSpaceProvider.php
+│   ├── AutomaticQuoteBot.php
+│   ├── BlogAuctionTask.php
+│   ├── MarketDataRetriever.php
+│   ├── ProposalPublisher.php
+│   └── TimeService.php
 └── Infrastructure
     ├── AdSpace.php
     ├── BlogAdSpaceProvider.php
     ├── EntryPoint
-    │   └── Application.php
+    │   └── Application.php
     ├── LocalAdSpaceProvider.php
     ├── LocalMarketDataRetriever.php
     ├── LocalQuoteProposalPublisher.php
@@ -496,20 +496,20 @@ En infraestructura vamos a agrupar en función del servicio o concepto al que da
 ```
 src
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── AutomaticQuoteBot.php
-│   ├── BlogAuctionTask.php
-│   ├── MarketDataRetriever.php
-│   ├── ProposalPublisher.php
-│   └── TimeService.php
+│   ├── AdSpaceProvider.php
+│   ├── AutomaticQuoteBot.php
+│   ├── BlogAuctionTask.php
+│   ├── MarketDataRetriever.php
+│   ├── ProposalPublisher.php
+│   └── TimeService.php
 └── Infrastructure
     ├── AdSpaceProvider
-    │   ├── AdSpace.php
-    │   ├── BlogAdSpaceProvider.php
-    │   ├── LocalAdSpaceProvider.php
-    │   └── TechBlogs.php
+    │   ├── AdSpace.php
+    │   ├── BlogAdSpaceProvider.php
+    │   ├── LocalAdSpaceProvider.php
+    │   └── TechBlogs.php
     ├── EntryPoint
-    │   └── Application.php
+    │   └── Application.php
     ├── LocalMarketDataRetriever.php
     ├── LocalQuoteProposalPublisher.php
     ├── QuoteProposalPublisher.php
@@ -522,24 +522,24 @@ Otro concepto es el de `MarketDataRetriever`. Agruparemos con este criterio:
 ```
 src
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── AutomaticQuoteBot.php
-│   ├── BlogAuctionTask.php
-│   ├── MarketDataRetriever.php
-│   ├── ProposalPublisher.php
-│   └── TimeService.php
+│   ├── AdSpaceProvider.php
+│   ├── AutomaticQuoteBot.php
+│   ├── BlogAuctionTask.php
+│   ├── MarketDataRetriever.php
+│   ├── ProposalPublisher.php
+│   └── TimeService.php
 └── Infrastructure
     ├── AdSpaceProvider
-    │   ├── AdSpace.php
-    │   ├── BlogAdSpaceProvider.php
-    │   ├── LocalAdSpaceProvider.php
-    │   └── TechBlogs.php
+    │   ├── AdSpace.php
+    │   ├── BlogAdSpaceProvider.php
+    │   ├── LocalAdSpaceProvider.php
+    │   └── TechBlogs.php
     ├── EntryPoint
-    │   └── Application.php
+    │   └── Application.php
     ├── LocalQuoteProposalPublisher.php
     ├── MarketDataRetriever
-    │   ├── LocalMarketDataRetriever.php
-    │   └── VendorDataRetriever.php
+    │   ├── LocalMarketDataRetriever.php
+    │   └── VendorDataRetriever.php
     ├── QuoteProposalPublisher.php
     └── SystemTimeService.php
 ```
@@ -549,26 +549,26 @@ Y, finalmente `ProposalPublisher`:
 ```
 src
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── AutomaticQuoteBot.php
-│   ├── BlogAuctionTask.php
-│   ├── MarketDataRetriever.php
-│   ├── ProposalPublisher.php
-│   └── TimeService.php
+│   ├── AdSpaceProvider.php
+│   ├── AutomaticQuoteBot.php
+│   ├── BlogAuctionTask.php
+│   ├── MarketDataRetriever.php
+│   ├── ProposalPublisher.php
+│   └── TimeService.php
 └── Infrastructure
     ├── AdSpaceProvider
-    │   ├── AdSpace.php
-    │   ├── BlogAdSpaceProvider.php
-    │   ├── LocalAdSpaceProvider.php
-    │   └── TechBlogs.php
+    │   ├── AdSpace.php
+    │   ├── BlogAdSpaceProvider.php
+    │   ├── LocalAdSpaceProvider.php
+    │   └── TechBlogs.php
     ├── EntryPoint
-    │   └── Application.php
+    │   └── Application.php
     ├── MarketDataRetriever
-    │   ├── LocalMarketDataRetriever.php
-    │   └── VendorDataRetriever.php
+    │   ├── LocalMarketDataRetriever.php
+    │   └── VendorDataRetriever.php
     ├── ProposalPublisher
-    │   ├── LocalQuoteProposalPublisher.php
-    │   └── QuoteProposalPublisher.php
+    │   ├── LocalQuoteProposalPublisher.php
+    │   └── QuoteProposalPublisher.php
     └── SystemTimeService.php
 ```
 
@@ -1271,30 +1271,30 @@ Al extraer conceptos la capa de dominio aparece ahora más desorganizada. Puede 
 ```
 src
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── AutomaticQuoteBot.php
-│   ├── BlogAuctionTask.php
-│   ├── CalculateProposal.php
-│   ├── MarketDataRetriever.php
-│   ├── Mode.php
-│   ├── Price.php
-│   ├── Proposal.php
-│   ├── ProposalPublisher.php
-│   └── TimeService.php
+│   ├── AdSpaceProvider.php
+│   ├── AutomaticQuoteBot.php
+│   ├── BlogAuctionTask.php
+│   ├── CalculateProposal.php
+│   ├── MarketDataRetriever.php
+│   ├── Mode.php
+│   ├── Price.php
+│   ├── Proposal.php
+│   ├── ProposalPublisher.php
+│   └── TimeService.php
 └── Infrastructure
     ├── AdSpaceProvider
-    │   ├── AdSpace.php
-    │   ├── BlogAdSpaceProvider.php
-    │   ├── LocalAdSpaceProvider.php
-    │   └── TechBlogs.php
+    │   ├── AdSpace.php
+    │   ├── BlogAdSpaceProvider.php
+    │   ├── LocalAdSpaceProvider.php
+    │   └── TechBlogs.php
     ├── EntryPoint
-    │   └── Application.php
+    │   └── Application.php
     ├── MarketDataRetriever
-    │   ├── LocalMarketDataRetriever.php
-    │   └── VendorDataRetriever.php
+    │   ├── LocalMarketDataRetriever.php
+    │   └── VendorDataRetriever.php
     ├── ProposalPublisher
-    │   ├── LocalQuoteProposalPublisher.php
-    │   └── QuoteProposalPublisher.php
+    │   ├── LocalQuoteProposalPublisher.php
+    │   └── QuoteProposalPublisher.php
     └── SystemTimeService.php
 ```
 
@@ -1303,31 +1303,31 @@ Así, por ejemplo, `MarketDataRetriever` está estrechamente vinculado con `Pric
 ```
 src
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── AutomaticQuoteBot.php
-│   ├── BlogAuctionTask.php
-│   ├── CalculateProposal.php
-│   ├── MarketData
-│   │   ├── MarketDataRetriever.php
-│   │   └── Price.php
-│   ├── Mode.php
-│   ├── Proposal.php
-│   ├── ProposalPublisher.php
-│   └── TimeService.php
+│   ├── AdSpaceProvider.php
+│   ├── AutomaticQuoteBot.php
+│   ├── BlogAuctionTask.php
+│   ├── CalculateProposal.php
+│   ├── MarketData
+│   │   ├── MarketDataRetriever.php
+│   │   └── Price.php
+│   ├── Mode.php
+│   ├── Proposal.php
+│   ├── ProposalPublisher.php
+│   └── TimeService.php
 └── Infrastructure
     ├── AdSpaceProvider
-    │   ├── AdSpace.php
-    │   ├── BlogAdSpaceProvider.php
-    │   ├── LocalAdSpaceProvider.php
-    │   └── TechBlogs.php
+    │   ├── AdSpace.php
+    │   ├── BlogAdSpaceProvider.php
+    │   ├── LocalAdSpaceProvider.php
+    │   └── TechBlogs.php
     ├── EntryPoint
-    │   └── Application.php
+    │   └── Application.php
     ├── MarketDataRetriever
-    │   ├── LocalMarketDataRetriever.php
-    │   └── VendorDataRetriever.php
+    │   ├── LocalMarketDataRetriever.php
+    │   └── VendorDataRetriever.php
     ├── ProposalPublisher
-    │   ├── LocalQuoteProposalPublisher.php
-    │   └── QuoteProposalPublisher.php
+    │   ├── LocalQuoteProposalPublisher.php
+    │   └── QuoteProposalPublisher.php
     └── SystemTimeService.php
 ```
 
@@ -1336,32 +1336,32 @@ Por otro lado, `CalculateProposal` y `TimeService` también van juntos. Puede te
 ```
 src
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── AutomaticQuoteBot.php
-│   ├── BlogAuctionTask.php
-│   ├── MarketData
-│   │   ├── MarketDataRetriever.php
-│   │   └── Price.php
-│   ├── Proposal
-│   │   ├── CalculateProposal.php
-│   │   ├── Mode.php
-│   │   ├── Proposal.php
-│   │   └── TimeService.php
-│   └── ProposalPublisher.php
+│   ├── AdSpaceProvider.php
+│   ├── AutomaticQuoteBot.php
+│   ├── BlogAuctionTask.php
+│   ├── MarketData
+│   │   ├── MarketDataRetriever.php
+│   │   └── Price.php
+│   ├── Proposal
+│   │   ├── CalculateProposal.php
+│   │   ├── Mode.php
+│   │   ├── Proposal.php
+│   │   └── TimeService.php
+│   └── ProposalPublisher.php
 └── Infrastructure
     ├── AdSpaceProvider
-    │   ├── AdSpace.php
-    │   ├── BlogAdSpaceProvider.php
-    │   ├── LocalAdSpaceProvider.php
-    │   └── TechBlogs.php
+    │   ├── AdSpace.php
+    │   ├── BlogAdSpaceProvider.php
+    │   ├── LocalAdSpaceProvider.php
+    │   └── TechBlogs.php
     ├── EntryPoint
-    │   └── Application.php
+    │   └── Application.php
     ├── MarketDataRetriever
-    │   ├── LocalMarketDataRetriever.php
-    │   └── VendorDataRetriever.php
+    │   ├── LocalMarketDataRetriever.php
+    │   └── VendorDataRetriever.php
     ├── ProposalPublisher
-    │   ├── LocalQuoteProposalPublisher.php
-    │   └── QuoteProposalPublisher.php
+    │   ├── LocalQuoteProposalPublisher.php
+    │   └── QuoteProposalPublisher.php
     └── SystemTimeService.php
 ```
 
@@ -1370,33 +1370,33 @@ Esto nos deja con un par de clases, `AutomaticQuoteBot` y `BlogAuctionTask` que 
 ```
 src
 ├── Application
-│   ├── AutomaticQuoteBot.php
-│   └── BlogAuctionTask.php
+│   ├── AutomaticQuoteBot.php
+│   └── BlogAuctionTask.php
 ├── Domain
-│   ├── AdSpaceProvider.php
-│   ├── MarketData
-│   │   ├── MarketDataRetriever.php
-│   │   └── Price.php
-│   ├── Proposal
-│   │   ├── CalculateProposal.php
-│   │   ├── Mode.php
-│   │   ├── Proposal.php
-│   │   └── TimeService.php
-│   └── ProposalPublisher.php
+│   ├── AdSpaceProvider.php
+│   ├── MarketData
+│   │   ├── MarketDataRetriever.php
+│   │   └── Price.php
+│   ├── Proposal
+│   │   ├── CalculateProposal.php
+│   │   ├── Mode.php
+│   │   ├── Proposal.php
+│   │   └── TimeService.php
+│   └── ProposalPublisher.php
 └── Infrastructure
     ├── AdSpaceProvider
-    │   ├── AdSpace.php
-    │   ├── BlogAdSpaceProvider.php
-    │   ├── LocalAdSpaceProvider.php
-    │   └── TechBlogs.php
+    │   ├── AdSpace.php
+    │   ├── BlogAdSpaceProvider.php
+    │   ├── LocalAdSpaceProvider.php
+    │   └── TechBlogs.php
     ├── EntryPoint
-    │   └── Application.php
+    │   └── Application.php
     ├── MarketDataRetriever
-    │   ├── LocalMarketDataRetriever.php
-    │   └── VendorDataRetriever.php
+    │   ├── LocalMarketDataRetriever.php
+    │   └── VendorDataRetriever.php
     ├── ProposalPublisher
-    │   ├── LocalQuoteProposalPublisher.php
-    │   └── QuoteProposalPublisher.php
+    │   ├── LocalQuoteProposalPublisher.php
+    │   └── QuoteProposalPublisher.php
     └── SystemTimeService.php
 
 ```

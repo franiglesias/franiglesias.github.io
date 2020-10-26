@@ -224,7 +224,7 @@ class Journey
 ```
 
 
-### Ejemplo
+### Ejemplo
 
 Una buena parte de los elementos del DDD pueden ser vistos como límites de consistencia, en los que las reglas de negocio e invariantes deben protegerse a distinta escala, por así decir:
 

@@ -51,9 +51,9 @@ Supongamos que nos centramos en el sub dominio académico, en el core domain (o 
 
 – Sí, cada nuevo **estudiante** aporta sus datos personales. Como es menor, debe ser **representado por un adulto**. Normalmente serán los **padres**, pero también hay familias monoparentales o chicos en situación de acogida, con un **tutor o tutora** legal, etc.
 
-– Vale. O sea que cada nuevo **estudiante tiene al menos un representante adulto**. ¿Podrían ser más de dos?
+– Vale. O sea que cada nuevo **estudiante tiene al menos un representante adulto**. ¿Podrían ser más de dos?
 
-– No es habitual, pero realmente tampoco hay nada que lo impida.
+– No es habitual, pero realmente tampoco hay nada que lo impida.
 
 Paremos aquí por un momento. Ya han salido varios conceptos y términos:
 
@@ -69,19 +69,19 @@ Estamos al principio del proceso por lo que la información va a llegar de forma
 
 – Vale. Me gustaría profundizar más en esto. Pero antes querría aclarar una cosa: hemos usado la palabra Estudiante y Alumno. ¿Significan lo mismo? ¿Cuál deberíamos usar?
 
-– La verdad es que no hay ninguna diferencia. Habitualmente en los niveles en que trabajamos hablamos de Alumnos, no de Estudiantes.
+– La verdad es que no hay ninguna diferencia. Habitualmente en los niveles en que trabajamos hablamos de Alumnos, no de Estudiantes.
 
 – De acuerdo, entonces. Volviendo al tema de los padres… Estaba pensando que también se matricularán hermanos, ¿cómo afecta eso a la gestión, las comunicaciones y demás?
 
-– En la medida de lo posible evitamos duplicar comunicaciones generales en el caso de que haya hermanos, sobre todo cuando son en papel, aunque eso ocurre cada vez menos. Pero es verdad que la información de contacto es la misma: domicilio, teléfonos para avisos, etc. Además, las **familias** prefieren poder acceder a la información de sus hijos de manera unificada.
+– En la medida de lo posible evitamos duplicar comunicaciones generales en el caso de que haya hermanos, sobre todo cuando son en papel, aunque eso ocurre cada vez menos. Pero es verdad que la información de contacto es la misma: domicilio, teléfonos para avisos, etc. Además, las **familias** prefieren poder acceder a la información de sus hijos de manera unificada.
 
 Otra parada. Ha surgido el concepto **Familia** que puede ayudar a clarificar el tema de la participación de adultos en el proceso, vamos a tirar un poco de ese hilo:
 
 – ¿Hay alguna consecuencia más del hecho de que haya hermanos en el colegio aparte de lo que se refiere a la comunicación con las familias?
 
-– Aparte de esto, la única cosa relevante ocurre antes de la matrícula, ya que tener hermanos matriculados en el mismo centro da puntos en la solicitud. Pero una vez matriculados la única consecuencia es en este aspecto de la relación con las familias.
+– Aparte de esto, la única cosa relevante ocurre antes de la matrícula, ya que tener hermanos matriculados en el mismo centro da puntos en la solicitud. Pero una vez matriculados la única consecuencia es en este aspecto de la relación con las familias.
 
-– Ya veo. Entonces, ¿podríamos definir **Familia** como el conjunto de alumnos y sus adultos responsables, por así decir?
+– Ya veo. Entonces, ¿podríamos definir **Familia** como el conjunto de alumnos y sus adultos responsables, por así decir?
 
 – Sí, ciertamente.
 
@@ -95,37 +95,37 @@ Además, nos han señalado unos límites del subdominio de la "Secretaría educa
 
 – Bien. Hemos dicho que un Alumno se matricula para un **curso**, como 4º de Primaria o 3º de ESO.
 
-– Sí, correcto.
+– Sí, correcto.
 
 – ¿Cuándo lo hace?
 
 – En principio la matrícula se hace los primeros días del **curso escolar**, aunque antes se ha hecho una reserva, si ya era Alumno del centro, o una asignación de plaza cuando es nuevo. 
 
-– Vale, pero eso… ¿afecta al proceso en sí?
+– Vale, pero eso… ¿afecta al proceso en sí?
 
 – Realmente no. Es otro proceso.
 
 – De acuerdo. ¿Cómo se sabe que el alumno se matricula en el curso que le corresponde?
 
-– Bueno. En principio los alumnos se matriculan en un curso en función de su edad, salvo que hayan tenido que repetir alguno o se les haya adelantado en el caso de tener altas capacidades. Esa información consta en su expediente.
+– Bueno. En principio los alumnos se matriculan en un curso en función de su edad, salvo que hayan tenido que repetir alguno o se les haya adelantado en el caso de tener altas capacidades. Esa información consta en su expediente.
 
 – Entiendo que eso está regulado por Ley.
 
-– Sí. Por ejemplo, los alumnos que cumplen 6 años en el año en que comienza el curso escolar se matriculan en Primero de Primaria, los de 7 en Segundo, y así sucesivamente.
+– Sí. Por ejemplo, los alumnos que cumplen 6 años en el año en que comienza el curso escolar se matriculan en Primero de Primaria, los de 7 en Segundo, y así sucesivamente.
 
 Aquí nos surge una situación interesante: un mismo término que estaría refiriéndose a conceptos distintos: **curso**. Tenemos que aclarar esto, lo que nos traerá un giro inesperado:
 
-– Estamos hablando de **curso** y **curso escolar**. Entiendo que son conceptos distintos, ¿no?
+– Estamos hablando de **curso** y **curso escolar**. Entiendo que son conceptos distintos, ¿no?
 
 – Sí, por un lado hablamos de **curso** como **nivel educativo** en que está matriculado un Alumno y, por otro, el curso escolar es el año escolar, que va del 1 de septiembre de un año hasta el 30 de agosto del siguiente.
 
-– ¿Podríamos usar **año escolar** en lugar de curso escolar para evitar la ambigüedad?
+– ¿Podríamos usar **año escolar** en lugar de curso escolar para evitar la ambigüedad?
 
 – Sí, aunque es muy habitual usar la otra forma.
 
 – Ya, comprendo. Por otra parte, he observado que el colegio tiene tres grupos por curso, ¿afecta eso al proceso de matrícula?
 
-– En principio, no. Obviamente cada alumno acaba siendo asignado a uno de los tres cursos, pero eso ya es una cuestión de organización pedagógica que se hace una vez matriculado.
+– En principio, no. Obviamente cada alumno acaba siendo asignado a uno de los tres cursos, pero eso ya es una cuestión de organización pedagógica que se hace una vez matriculado.
 
 – Un momento. Me ha parecido entender que se refería a los tres grupos de un curso como cursos, ¿es eso correcto?
 
@@ -143,7 +143,7 @@ Después de aclarar los puntos anteriores, seguimos avanzando en la conversació
 
 – Se le asigna un número de matrícula aunque realmente sólo se usa para algunos trámites ya que normalmente identificamos al alumno por su nombre y apellidos o, dentro de un año escolar, por su nivel, grupo y número de clase, que viene dado por su posición en la lista por orden alfabético del apellido.
 
-– De acuerdo. Sin embargo, necesitaremos un identificador único. Entiendo que cabe la posibilidad de que haya alguna coincidencia de nombres y apellidos de vez en cuando.
+– De acuerdo. Sin embargo, necesitaremos un identificador único. Entiendo que cabe la posibilidad de que haya alguna coincidencia de nombres y apellidos de vez en cuando.
 
 – Sí, podría pasar, aunque es raro que ocurra dentro del mismo nivel y grupo.
 
@@ -153,7 +153,7 @@ Después de aclarar los puntos anteriores, seguimos avanzando en la conversació
 
 – Entiendo que es un número que se incrementa con cada matrícula. ¿es necesario ocupar todos los números o pueden quedar huecos de números no usados?
 
-– En principio no hay problema en dejar números sin usar.
+– En principio no hay problema en dejar números sin usar.
 
 Aquí surge otra regla de negocio: cada alumno tiene un identificador único para su vida escolar, pero también se menciona que tiene otros identificadores, como el número de clase que lo identifica dentro de un grupo de alumnos concreto durante un año escolar e, incluso, junto la identificación de su grupo, lo identifica dentro del centro durante ese mismo año escolar. En otras palabras, nos están mencionando distintos contextos.
 

@@ -108,7 +108,7 @@ class Scene(object):
         return 0
 ```
 
-## Organizando el código en Scenes
+## Organizando el código en Scenes
 
 Con la estructura `App -> Window -> Scene` hemos generado, por así decir, el esqueleto que va a sostener nuestro juego. Llega el momento de partir `ponggame()` y reubicarlo.
 

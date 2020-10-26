@@ -660,7 +660,7 @@ Si nos fijamos en el test ya podemos ver cómo es la relación entre los compone
 
 Este test nos servirá para tener una red de seguridad que nos evite romper algo. Sin embargo, esto es sólo un primer paso.
 
-## Entendiendo el dominio
+## Entendiendo el dominio
 
 ¿De qué trata esta pequeña aplicación? Sabemos que consiste en enviar pujas por espacio publicitario en blogs. El meollo o core de la aplicación ocurre en `BlogAuctionTask`. Aquí todavía tenemos pendiente el problema de extraer la dependencia de `QuotePublisher`, pero nos ocuparemos de eso dentro de un rato.
 

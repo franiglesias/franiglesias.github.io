@@ -71,7 +71,7 @@ Por ese motivo, la historia se convierte en una tarea de investigación. Con ell
 
 El objetivo es decidir si la petición es realizable y, en su caso, definir nuevas historias de usuario para realizar la implementación.
 
-### El nuevo backlog
+### El nuevo backlog
 
 Así que el backlog va a quedar así:
 

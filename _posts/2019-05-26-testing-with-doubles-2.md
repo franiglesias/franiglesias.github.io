@@ -190,7 +190,7 @@ $this->contractRepository
     ->method('save');
 ```
 
-#### Asumir que los colaboradores doblados tienen sus propios tests
+#### Asumir que los colaboradores doblados tienen sus propios tests
 
 El ámbito de un test es la unidad que testeamos, los colaboradores garantizan su comportamiento mediante sus propios tests, por lo que tenemos que asumir es el que esperamos. 
 

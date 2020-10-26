@@ -13,7 +13,7 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 ¿Nos estamos volviendo glotones?
 
-No hablo de comida, y eso que he escuchado historias de personas que se quejan porque en un meetup no hay bastante, o simplemente no han puesto o es que no les gusta. Aunque eso también cuenta como glotonería. Esto es: tu vas a un meetup a aprender sobre algo, una reunión que alguien se ha preocupado de organizar, de intentar ofrecer un contenido interesante, la oportunidad de conocer gente… ¿y lo que más te parece preocupar es si has comido suficiente pizza?
+No hablo de comida, y eso que he escuchado historias de personas que se quejan porque en un meetup no hay bastante, o simplemente no han puesto o es que no les gusta. Aunque eso también cuenta como glotonería. Esto es: tu vas a un meetup a aprender sobre algo, una reunión que alguien se ha preocupado de organizar, de intentar ofrecer un contenido interesante, la oportunidad de conocer gente… ¿y lo que más te parece preocupar es si has comido suficiente pizza?
 
 Y eso que si hablamos de meetups tenemos que hablar del problema de las plazas que se quedan vacías en casi todas las convocatorias. Una empresa aporta un dinero, su tiempo y sus instalaciones para que sea posible organizar un evento que, aunque pequeño, contribuye a enriquecer el conocimiento de la comunidad developer, a estrechar lazos e incluso ofrece oportunidades para conectar empresas y potenciales colaboraciones. Ponentes y organizadores invierten parte de su tiempo libre en ofrecer un contenido y una experiencia interesante. ¿Y el resultado? Ocupaciones del 10%, cuando había listas de espera de hasta el 200% de las plazas ofrecidas. ¿No es otro signo de glotonería?
 

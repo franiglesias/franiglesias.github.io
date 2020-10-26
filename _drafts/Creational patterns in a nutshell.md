@@ -1,6 +1,6 @@
-# Creational patterns in a nutshell
+# Creational patterns in a nutshell
 
-## How should I instantiate new objects?
+## How should I instantiate new objects?
 
 ### It is simple, `__construct` has few parameters
 

@@ -27,7 +27,7 @@ Ya entraremos en detalles en su momento. En este primer artículo nos vamos a ce
 
 Pondré el proyecto como template en github.
 
-## Preparando el entorno de desarrollo
+## Preparando el entorno de desarrollo
 
 Actualmente, no concibo un proyecto PHP que no sea virtualizado. Esto es una cuestión de portabilidad y de unificación de entornos de desarrollo en un equipo. Puesto que la plataforma de virtualización más popular ahora mismo es docker, prepararé un entorno con los contenedores suficientes para levantar y ejecutar el proyecto. En otros lenguajes diría que esto es más fácil de gestionar sin necesidad de herramientas especiales de virtualización, pero hoy día en PHP es casi obligado.
 

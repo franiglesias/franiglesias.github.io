@@ -2,7 +2,6 @@
 layout: post
 title: Buscando nuevo trabajo
 categories: articles
-author: [Fran Iglesias]
 tags: misc
 ---
 

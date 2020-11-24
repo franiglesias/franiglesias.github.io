@@ -62,9 +62,9 @@ Siguiendo el principio ***Tell, Don't Ask*** movemos responsabilidades a los obj
 
 ## Ley de Demeter
 
-La **Ley de Demeter**[^fn demeter] también se conoce como **Principio de menor conocimiento** y, más o menos, dice que un objeto no debería conocer la organización interna de los otros objetos con los que colabora.
+La **Ley de Demeter**[^demeter] también se conoce como **Principio de menor conocimiento** y, más o menos, dice que un objeto no debería conocer la organización interna de los otros objetos con los que colabora.
 
-[^fn demeter]: El nombre viene del proyecto donde se uso por primera vez.
+[^demeter]: El nombre viene del proyecto donde se usó por primera vez.
 
 Siguiendo la **Ley de Demeter,** como veremos, un método de una clase sólo puede usar los objetos a los que conoce. Estos son:
 

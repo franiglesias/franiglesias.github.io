@@ -67,7 +67,7 @@ Aparentemente es mejor opción la tercera, puesto que es más general, ¿no? Pue
 
 Las tres opciones nos permiten sumar 2 y 2. La segunda nos permite indicar el número que querríamos sumar dos veces. La tercera nos permite sumar cualquier par de números. Parece la mejor. Sin embargo, oculta un problema.
 
-La siguiente feature nos dice que los *stakeholders* no quería sumar números realmente, sino obtener el doble de cualquier número. Aparte de tener que cambiar el nombre de la función para representar el cambio del concepto del dominio vemos que la primera opción no nos sirve por inflexible, mientras que la tercera opción no nos sirve porque hicimos una generalización prematura que nos llevó a escoger la abstracción equivocada.
+La siguiente feature nos dice que los *stakeholders* no querían realmente sumar números, sino obtener el doble de cualquier número. Aparte de tener que cambiar el nombre de la función para representar el cambio del concepto del dominio vemos que la primera opción no nos sirve por inflexible, mientras que la tercera opción no nos sirve porque hicimos una generalización prematura que nos llevó a escoger la abstracción equivocada.
 
 Descartada la primera opción por demasiado específica, la segunda sólo necesita cambiar el nombre y el comportamiento se mantiene.
 
@@ -86,7 +86,7 @@ def double
   2 + 2
 end
 
-puts(add)
+puts(double)
 ```
 
 Extraemos el parámetro y de ponemos un valor por defecto, por lo que los consumidores no tendrían que cambiar:
@@ -96,7 +96,7 @@ def double(a = 2)
   a + a
 end
 
-puts(add)
+puts(double)
 ```
 
 Por su parte la tercera opción requiere, además, que prescindamos de un parámetro y modifiquemos el comportamiento:
@@ -165,13 +165,13 @@ def double(a = 2)
 end
 ```
 
-Y si no hubiésemos hecho el refactor, podríamos hacerlo antes de implementar la nueva feature, protegidas como estábamos por los tests.
+Y si no hubiésemos hecho el *refactor*, podríamos haberlo hecho antes de implementar la nueva *feature*, protegidas como estábamos por los tests.
 
 Otras buenas prácticas, como respetar el principio YAGNI (no lo vas a necesitar), nos evitarían intentar generalizar demasiado antes de tener más información.
 
 ## La lentitud veloz
 
-Este ejemplo pone de relieve la paradoja de que usando buenas prácticas realmente vamos más rápido. Las buenas prácticas nos ayudan, entre otras cosas, a delimitar correctamente hasta dónde tenemos que llegar. Y como beneficio extra, probablemente no tendremos que deshacer camino.
+Este ejemplo pone de relieve la paradoja de que usando buenas prácticas realmente vamos más rápido. Las buenas prácticas nos ayudan, entre otras cosas, a delimitar correctamente hasta dónde tenemos que llegar. Y como beneficio extra, probablemente no tendremos que deshacer camino cuando cambie el negocio.
 
 También resulta paradójico que el código malo sea bastante complicado en realidad. Nos parece que necesitamos todo el tiempo disponible para escribirlo porque, de hecho, utilizamos todo el tiempo disponible. De lo que se deduce que "no quedaría" espacio para buenas prácticas. 
 

@@ -9,21 +9,21 @@ La aplicación ciega de metodologías, principios de diseño o patrones, puede l
 
 ## El patrón repositorio
 
-El concepto de repositorio en Domain Driven Design hace referencia al lugar donde el dominio puede guardar y recuperar entidades o agregados. En este artículo, utilizaré indistintamente el concepto de entidad y de agregado la mayor parte del tiempo.
+El concepto de repositorio en Domain Driven Design hace referencia al lugar donde el dominio puede persistir y recuperar entidades o agregados. En este artículo, utilizaré indistintamente el concepto de entidad y de agregado la mayor parte del tiempo.
 
 Este repositorio, por definición, se comporta como una colección en memoria en el que podemos guardar una entidad y reclamarla más adelante gracias a que conocemos su identidad. En condiciones ideales, un repositorio tiene disponibilidad inmediata, capacidad de almacenamiento infinita y persistencia infinita.
 
 Sí: en la práctica tenemos bastantes limitaciones dependiendo de los mecanismos concretos de persistencia. La idea de una colección en memoria no se sostiene desde el punto de vista de que las máquinas físicas en las que funciona el software se reiniciarán más de una vez, que la capacidad de memoria no es ilimitada y otras muchas circunstancias. En la práctica, usamos tecnologías concretas que crean la ilusión de que esas limitaciones no existen. 
 
-Pero en la capa de dominio lo que usamos son modelos abstractos, por lo que desde el punto de vista de los procesos de dominio el repositorio no es más que una colección en la que guardar entidades creadas a las que podría querer acceder en algún momento.
+Pero en la capa de dominio lo que usamos son modelos abstractos, por lo que desde el punto de vista de los procesos de dominio el repositorio no es más que una colección en la que están las entidades creadas y que eventualmente necesitaré para hacer algo con ellas.
 
-Esta abstracción suele representarse con una Interface, lo que nos permite implementar repositorios usando tecnologías concretas para la persistencia. Así, estas tecnologías nos permitirían crear repositorios en memoria, usando ficheros en un sistema de archivos, usando bases de datos relacionales o usando bases de datos no sql, lo que mejor nos parezca.
+Esta abstracción suele representarse con una Interface, lo que nos permite implementar repositorios usando tecnologías concretas para la persistencia. Así, estas tecnologías nos permitirían crear repositorios en memoria, guardando los datos en ficheros en un sistema de archivos, usando bases de datos relacionales o usando bases de datos no sql, lo que mejor nos parezca.
 
 Un repositorio tiene tres comportamientos posibles:
 
 * **Almacenar entidades**: el repositorio nos tiene que permitir guardar una entidad ya creada de modo que podamos recuperarla íntegra en un futuro. Lo podemos representar con métodos llamados `store` o similar. Las entidades o agregados tienen que tener identidad cuando las guardamos, no queremos que sea el sistema de persistencia el que la asigne. Esto equivale a un método `append` en un objeto Collection.
 * **Recuperar entidades por su identidad**: el repositorio nos tiene que permitir recuperar una entidad existente usando su identidad. Lo podemos representar con métodos llamados `retrieve` o `getById`. No usaríamos `find` porque no tenemos que "buscar" la entidad, si tenemos una identidad esta tendría que existir en el repositorio. Esto equivale a obtener un objeto de una colección dada su "key".
-* **Recuperar entidades que cumplan una especificación**: el repositorio nos tiene que permitir recuperar una colección de entidades que cumplan una serie de condiciones formuladas como una especificación. Lo podemos representar mediante un método `findSatisfying". La especificación es un concepto que representa una regla de dominio que las entidades pueden cumplir o no. [Ya hemos hablado en otras ocasiones del patrón Specification](/the-way-to-ddd-2). Esto es similar al metodo `filter` de una colección.
+* **Recuperar entidades que cumplan una especificación**: el repositorio nos tiene que permitir recuperar una colección de entidades que cumplan una serie de condiciones formuladas como una especificación. Lo podemos representar mediante un método `findSatisfying`. La especificación es un concepto que representa una regla de dominio que las entidades pueden cumplir o no. [Ya hemos hablado en otras ocasiones del patrón Specification](/the-way-to-ddd-2). Esto es similar al metodo `filter` de una colección.
 
 Y hasta aquí el patrón repositorio.
 
@@ -51,7 +51,7 @@ Una situación habitual en cualquier aplicación es mostrar una vista que sea un
 
 Típicamente, estos listados necesitan una cantidad reducida de información:
 
-* Dos ó tres campos de la entidad cliente (su identidad, un nombre significativo, algún dato de categorización de primer nivel, etc.)
+* Dos ó tres campos de la entidad Cliente (su identidad, un nombre significativo, algún dato de categorización de primer nivel, etc.)
 * Quizá algún dato agregado (número total de pedidos, facturas, etc.)
 * Un número limitado de clientes por página mostrada, una consideración que, por otra parte, es totalmente indiferente para el dominio.
 * Frecuentemente se necesita filtrar y ordenar el listado.
@@ -62,6 +62,8 @@ Este tipo de listados son necesarios para muchas acciones que necesitan los usua
 
 Claramente tenemos dos problemas distintos: la selección de entregas y el cálculo de la ruta óptima para ese día, que es una cuestión del dominio, y la visualización de esa ruta que es una cuestión de la infraestructura.
 
-### Representation Model
+### View Model
 
-Una forma de enfocar este problema es utilizar el concepto de Representation Model. Como su nombre indica, sería una representación de
+Una forma de enfocar este problema es aplicar el patrón MVC, no para toda la aplicación, sino para cada vista concreta. El View Model sería una representación de la información que queremos mostrar en una determinada vista, entendiendo como vista cualquier output del sistema, ya sea una GUI, una página web o la respuesta JSON de un API.
+
+

@@ -7,6 +7,8 @@ tags: design-principles good-practices
 
 De vez en cuando encuentro algunos debates sobre el tema de que es mejor una duplicación que una mala abstracción. [Como esta en twitter, por ejemplo](https://twitter.com/c0rvid0/status/1350826080639324161).
 
+![Veo a gente diciendo "duplicar es más barato que una mala abstracción" y mira... MIRA... Pa empezar, una mala abstracción no existe. O es una abstracción o es un truño. A lo mejor es que no sabéis abstraer y aquí tenemos el problema.](/assets/images/twitter-abstractions.png)
+
 Se trata de un tema interesante que revela la tensión entre principios de diseño aparentemente opuestos y los compromisos a los que llegamos entre ellos para crear una solución de software. Pero también revela una cierta falta de profundidad a la hora de interpretar y aplicar los distintos principios que orientan el diseño de software.
 
 En este caso concreto, el debate se suele centrar en el equilibro entre el principio DRY (*Don't repeat yourself*) y evitar el smell de *Premature abstraction*, que en algunos casos tiene que ver con el principio YAGNI (*you aren't gonna need it*).

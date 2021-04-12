@@ -24,7 +24,7 @@ Lo que interesa resaltar es que esta concepción se oponía, y se opone, a la vi
 
 Un programa, desde este punto de vista, es un pequeño universo de [objetos actores que son expertos en hacer ciertas cosas](https://ovid.github.io/articles/alan-kay-and-oo-programming.html) y con los que nos comunicamos, y se comunican entre sí, enviando mensajes.
 
-Esta perspectiva me parece fascinante y la percibo en la base de muchas ideas que manejamos actualmente, aunque no siempre con total acierto. No sólo en paradigmas como el Domain Driven Design, sino en áreas como los patrones de diseño, los sistemas de mensajería e incluso los refactors orientados a ocultar las estructuras de datos y potenciar el comportamiento de los objetos. 
+Esta perspectiva me parece fascinante y la percibo en la base de muchas ideas que manejamos actualmente, aunque no siempre con total acierto. No solo en paradigmas como el Domain Driven Design, sino en áreas como los patrones de diseño, los sistemas de mensajería e incluso los refactors orientados a ocultar las estructuras de datos y potenciar el comportamiento de los objetos. 
 
 
 

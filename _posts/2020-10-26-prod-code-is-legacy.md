@@ -65,7 +65,7 @@ En cambio, una arquitectura limpia, que estructure el software por capas y con r
 
 Así, el conocimiento de negocio puede reflejarse en una capa de dominio rica, estructurada en torno a los conceptos, procesos y reglas de negocio.,
 
-La necesidades de las usuarias quedarían recogidas en una capa de aplicación estructurada en tornos a los casos de uso.
+Las necesidades de las usuarias quedarían recogidas en una capa de aplicación estructurada en tornos a los casos de uso.
 
 Y, finalmente, toda la tecnología necesaria para la implementación quedaría en una capa de infraestructura, supeditada a las necesidades de la capa de dominio y organizada de forma significativa, en la que, por cierto, cabría un framework MVC destinada al que es su espacio natural en la UI.
 

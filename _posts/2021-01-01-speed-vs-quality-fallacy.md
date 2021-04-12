@@ -17,7 +17,7 @@ Y también sufre la confianza: desplegamos ese código con los dedos cruzados.
 
 ## Cuando rapidez es lentitud
 
-El problema es que, por contraintuitivo que parezca, reducir las buenas prácticas no acelera el desarrollo. De hecho, puede ralentizarlo.
+El problema es que, por contra-intuitivo que parezca, reducir las buenas prácticas no acelera el desarrollo. De hecho, puede ralentizarlo.
 
 Pensemos, por ejemplo, en la falta de tests. Estos, si se hacen a posteriori, nos pueden ayudar a prevenir defectos y a asegurar que el código cumple los requisitos y que se proporciona la funcionalidad. Además, teniendo tests que garanticen el comportamiento, podríamos refactorizar a un mejor diseño con seguridad.
 
@@ -89,7 +89,7 @@ end
 puts(double)
 ```
 
-Extraemos el parámetro y de ponemos un valor por defecto, por lo que los consumidores no tendrían que cambiar:
+Extraemos el parámetro y le ponemos un valor por defecto, por lo que los consumidores no tendrían que cambiar:
 
 ```ruby
 def double(a = 2)
@@ -139,11 +139,11 @@ La calidad del código es algo que hay que valorar en contexto. Hay código que 
 * Tiene múltiples fallos y problemas, no funciona si alguna condición externa es adversa.
 * No es reutilizable.
 * No está bien organizado. Encontrar algo en él es un esfuerzo enorme, que lleva a multitud de vías muertas o a descubrir que una misma idea es expresada en diferentes lugares, diseminada en múltiples sitios e incluso ausente.
-* No es testeable. Hay que hacer un gran esfuerzo sólo para poder empezar a hacer un test, incluyendo tener que transformar el código para hacerlo posible.
-* No es legible. No es posible entender qué hace sólo con leer el código, hay que buscar otras fuentes de información para hacerse una idea de lo que estaría ocurriendo, incluso aunque exista documentación o comentarios, porque ya han perdido la sincronía con el código.
+* No es testeable. Hay que hacer un gran esfuerzo solo para poder empezar a hacer un test, incluyendo tener que transformar el código para hacerlo posible.
+* No es legible. No es posible entender qué hace solo con leer el código, hay que buscar otras fuentes de información para hacerse una idea de lo que estaría ocurriendo, incluso aunque exista documentación o comentarios, porque ya han perdido la sincronía con el código.
 * No es sostenible. Llevar a cabo una modificación es peligroso porque puede resultar incompleta o tener efectos en lugares insospechados.
  
-Pero luego hay código que *parece bueno*,y sin embargo tiene efectos perjudiciales como acabamos de ver.
+Pero luego hay código que *parece bueno*, y sin embargo tiene efectos perjudiciales como acabamos de ver.
 
 ## Un problema evitable
 
@@ -175,6 +175,6 @@ Este ejemplo pone de relieve la paradoja de que usando buenas prácticas realmen
 
 También resulta paradójico que el código malo sea bastante complicado en realidad. Nos parece que necesitamos todo el tiempo disponible para escribirlo porque, de hecho, utilizamos todo el tiempo disponible. De lo que se deduce que "no quedaría" espacio para buenas prácticas. 
 
-En realidad no es lentitud ni rapidez. No se puede hablar de una velocidad de desarrollo que puedas alcanzar por un simple esfuerzo de voluntad ya que poder desarrollar una cierta *feature* depende de varios factores, como son la información proporcionada, nuestro conocimiento y el estado del código en el que la vamos a introducir.
+En realidad no es lentitud ni rapidez. No se puede hablar de una velocidad de desarrollo que puedas alcanzar por un simple esfuerzo de voluntad, ya que poder desarrollar una cierta *feature* depende de varios factores, como son la información proporcionada, nuestro conocimiento y el estado del código en el que la vamos a introducir.
 
 Parte de lo que nos lleva a esto es pensar que nuestro trabajo es escribir código, cuando en realidad nuestro trabajo consiste en resolver un problema, eventualmente escribiendo código.

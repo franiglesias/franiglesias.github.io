@@ -85,9 +85,9 @@ private function executeSqlStatement(string $sql, array $options): StatementInte
 
 La respuesta es que no. Esto no tiene que ver con DRY ni realmente con abstracciones. Diría que ni siquiera es una práctica particularmente recomendable. Veamos por qué.
 
-**No, no es DRY**. El principio DRY se refiere a conocimiento, no a código. DRY viene a decir que sólo debería hacer una fuente de verdad sobre cualquier conocimiento en un programa. En este ejemplo, lo que tenemos son dos "unidades de conocimiento", representadas cada una por un método: una para saber cuántos registros se deben procesar y otra para obtener los que son. En último término, como se puede ver, no podemos dejar de mantener esas dos unidades de conocimiento, señal de que se refieren a dos cosas distintas.
+**No, no es DRY**. El principio DRY se refiere a conocimiento, no a código. DRY viene a decir que solo debería hacer una fuente de verdad sobre cualquier conocimiento en un programa. En este ejemplo, lo que tenemos son dos "unidades de conocimiento", representadas cada una por un método: una para saber cuántos registros se deben procesar y otra para obtener los que son. En último término, como se puede ver, no podemos dejar de mantener esas dos unidades de conocimiento, señal de que se refieren a dos cosas distintas.
 
-**No, no es una abstracción**. Tampoco es que hayamos descubierto una abstracción. De hecho, como puedes ver en el ejemplo refactorizado, no podemos eliminar esas dos unidades de conocimiento. Lo que hemos extraído no es más que el conocimiento de ejecutar una una petición en SQL, que por otra parte ya estaba abstraído en  Connection y Statement, y devolver la respuesta.
+**No, no es una abstracción**. Tampoco es que hayamos descubierto una abstracción. De hecho, como puedes ver en el ejemplo refactorizado, no podemos eliminar esas dos unidades de conocimiento. Lo que hemos extraído no es más que el conocimiento de ejecutar una petición en SQL, que por otra parte ya estaba abstraído en Connection y Statement, y devolver la respuesta.
 
 **Puede que ni siquiera sea buena práctica**. Podríamos estar incluso ante un caso de *sobre-ingeniería*. En cierto modo hemos aplicado un patrón Facade, proporcionando una interfaz sencilla a un proceso relativamente más complicado. Esto puede ser buena idea si el código va a ser reutilizado en muchos lugares, pero no es el caso.
 
@@ -114,7 +114,7 @@ Ambos heurísticos nos indican que ciertos objetos pueden ser ejemplos de un con
 
 Por otro lado, las propiedades relevantes para considerar una abstracción serán distintas según el contexto. Dicho de otro modo, en distintos contextos, los mismos objetos pueden generar abstracciones diferentes.
 
-## ¿Por qué podríamos estar identificando abstracciones no adecuadas?
+## ¿Por qué podríamos estar identificando abstracciones no adecuadas?
 
 Una razón es que tengamos prejuicios. Es decir, en lugar de atender a los datos y requisitos que tenemos, tratamos de ajustar el dominio a una idea preconcebida.
 
@@ -122,7 +122,7 @@ Otra posible razón es que no entendemos bien el dominio, lo que hará que nuest
 
 En cualquier caso, para lograr buenas abstracciones, que es como decir, para modelar lo mejor posible un dominio, tenemos que saber de ese dominio. En DDD diríamos que tenemos que insistir en la parte de *knowledge crunching* para desarrollar un buen modelo mental.
 
-Por otra parte, en los enfoques de diseño desarrollados a partir de detalles técnicos, como puede ser el enfoque database-first, los desarrollos muy acoplados a los frameworks o incluso la aplicación de ciertos modelos de arquitectura, es muy fácil caer en abstracciones erróneas ya que los requisitos técnicos van a condicionar nuestro modelado.
+Por otra parte, en los enfoques de diseño desarrollados a partir de detalles técnicos, como puede ser el enfoque database-first, los desarrollos muy acoplados a los frameworks o incluso la aplicación de ciertos modelos de arquitectura, es muy fácil caer en abstracciones erróneas, ya que los requisitos técnicos van a condicionar nuestro modelado.
 
 ## ¿Podemos identificar abstracciones en el código?
 

@@ -39,9 +39,9 @@ Por ejemplo, las pruebas técnicas o *technical challenges*.
 
 En general, estoy bastante a favor de las pruebas técnicas. 
 
-Más que nada, creo que pueden dar una idea si las formas de trabajar son compatibles con el estado actual del equipo. Es decir, no pienso que se trate tanto de saber si eres "buena" (sea eso lo que signifique que es una discusión para otro momento), como de averiguar si tu forma de trabajar puede encajar y aportar  algo interesante.
+Más que nada, creo que pueden dar una idea si las formas de trabajar son compatibles con el estado actual del equipo. Es decir, no pienso que se trate tanto de saber si eres "buena" (sea eso lo que signifique que es una discusión para otro momento), como de averiguar si tu forma de trabajar puede encajar y aportar algo interesante.
 
-También las veo útiles cuando no tienes muy clara cual es tu competencia para un determinado puesto. Es decir, pueden darte una oportunidad de aprender algo sobre tí.
+También las veo útiles cuando no tienes muy clara cuál es tu competencia para un determinado puesto. Es decir, pueden darte una oportunidad de aprender algo sobre tí.
 
 A decir verdad, he visto algunas pruebas que sin ser difíciles se hacían larguísimas. Otras en las que no he acabado de entender bien cual era su objetivo. Alguna especialmente bien montada y alguna realmente interesante en su planteamiento.
 

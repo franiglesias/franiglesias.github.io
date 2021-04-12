@@ -20,7 +20,7 @@ La responsabilidad de crear un objeto de una cierta clase debería estar en otro
 * Usa instancias de de la clase a crear.
 * Contiene la información necesaria para instanciar objetos de la clase a crear.
 
-La primera condición, contiene o agrega instancias de otra clase, se aplica, por ejemplo, en los agregados de dominio. En lugar de entregarle objetos ya instanciados, lo correcto sería entregarle los datos necesarios para crearlos de modo que el agregado se responsabiliza de proteger las invariantes de dominio que les afectan.
+La primera condición: contiene o agrega instancias de otra clase, se aplica, por ejemplo, en los agregados de dominio. En lugar de entregarle objetos ya instanciados, lo correcto sería entregarle los datos necesarios para crearlos de modo que el agregado se responsabiliza de proteger las invariantes de dominio que les afectan.
 
 He aquí un ejemplo. Creamos un objeto `Order` y le añadimos un `Item` pasándole la información necesaria para crearlo:
 
@@ -79,7 +79,7 @@ Pon la responsabilidad en la clase que tenga la información necesaria para ejer
 
 Uno de los ejemplos en los que resulta más fácil verlo en acción es en el modelado de una venta en una tienda, así que podemos aprovechar el ejemplo anterior. 
 
-Supongamos que necesitamos conocer el importa total del pedido. Normalmente tendremos clases como `Order` e `Item`. Es sencillo ver que `Order`, al contener la colección de `Items` solicitados, es quien tiene toda la información necesaria para poder calcular el importe total, mientras que `Item` sería responsable del importe de cada línea.
+Supongamos que necesitamos conocer el importe total del pedido. Normalmente tendremos clases como `Order` e `Item`. Es sencillo ver que `Order`, al contener la colección de `Items` solicitados, es quien tiene toda la información necesaria para poder calcular el importe total, mientras que `Item` sería responsable del importe de cada línea.
 
 Lo podemos ver aquí:
 
@@ -144,7 +144,7 @@ class Order
 end
 ```
 
-## ¿Cómo gestiono variantes basada en clase de objetos? Polymorphism
+## ¿Cómo gestiono variantes basadas en clase de objetos? Polymorphism
 
 El polimorfismo nos ayuda cuando tenemos que hacer distintas cosas en función del tipo de objeto o información que recibimos. La responsabilidad de cada variedad de comportamiento corresponde al tipo, de modo que el objeto consumidor u orquestador no tiene que saber previamente el tipo de objeto que está manejando, simplemente le envía el mensaje para que actúe. Hemos tratado esto más ampliamente en [un artículo sobre Programar sin ifs](/programar-sin-ifs/).
 
@@ -192,7 +192,7 @@ class SurfaceCalculator
 end
 ```
 
-Como podemos ver en el método `total`, `SurfaceCalculator` sólo tiene que preguntarle a cada Shape su area, sin necesidad de preguntarle cuál es su tipo primero. Esto hace que las figuras deban entender el mensaje `area` (o, lo que es lo mismo, tener el método `area`)
+Como podemos ver en el método `total`, `SurfaceCalculator` solo tiene que preguntarle a cada Shape su área, sin necesidad de preguntarle cuál es su tipo primero. Esto hace que las figuras deban entender el mensaje `area` (o, lo que es lo mismo, tener el método `area`)
 
 He aquí el código de las formas:
 
@@ -246,13 +246,13 @@ class Rectangle
 end
 ```
 
-El problema es que esta forma de trabajar no es segura ya que nada nos garantiza la existencia previa del método `area` en los diferentes tipos de forma. ¿Podemos garantizarlo de alguna forma? Vayamos al siguiente principio.
+El problema es que esta forma de trabajar no es segura, ya que nada nos garantiza la existencia previa del método `area` en los diferentes tipos de forma. ¿Podemos garantizarlo de alguna forma? Vayamos al siguiente principio.
 
 ## ¿Cómo diseño los objetos para evitar el impacto de las variaciones? Protected variations
 
 Es el principio tras la definición de interfaces. Lo que buscamos al aplicar este principio es proteger a los componentes del sistema de las variaciones de otros componentes. Se trataría de establecer algún tipo de contrato entre los componentes participantes que obligue a ser capaz de responder a unos mensajes determinados.
 
-En Ruby, el lenguaje usando en estos ejemplos, y en otros lenguajes (Golang, etc.) no existe la idea de definir interfaces explícitamente. En su lugar, tenemos interfaces implícitas. Por eso, el código anterior funciona siempre que usemos objetos que tengan el método `area`. Esto ya sería una buena razón para aplicar el principio `Creator`, pues nos puede facilitar el asegurar que `SurfaceCalculator` sólo utiliza formas de las que *sabe* que le pueden dar una respuesta en el método `area`.
+En Ruby, el lenguaje usando en estos ejemplos, y en otros lenguajes (Golang, etc.) no existe la idea de definir interfaces explícitamente. En su lugar, tenemos interfaces implícitas. Por eso, el código anterior funciona siempre que usemos objetos que tengan el método `area`. Esto ya sería una buena razón para aplicar el principio `Creator`, pues nos puede facilitar el asegurar que `SurfaceCalculator` solo utiliza formas de las que *sabe* que le pueden dar una respuesta en el método `area`.
 
 En otros lenguajes, como Java o PHP, tenemos que definir interfaces explícitamente, de modo que el propio intérprete o compilador nos obligan a que las clases las implementen correctamente.
 
@@ -329,7 +329,7 @@ Como se puede apreciar es el mismo código, pero ahora hemos definido cada forma
 
 El objetivo del patrón **Indirection** es evitar el acoplamiento directo entre otros dos objetos, normalmente introduciendo un objeto intermediario. El objetivo es permitir que los objetos relacionados puedan evolucionar independientemente.
 
-En los ejemplos anteriores hemos creado una clase `SurfaceCalculator` que puede calcular el área de figuras compuestas por triángulos y cuadrados. Sin embargo, ¿qué tenemos que hacer para que pueda procesar también rectángulos u otras figuras?. Tal como está ahora mismo, `SurfaceCalculator` está acoplada al tipo de figuras que conoce. Por el propio principio **Creator**, sólo puede instanciar figuras conocidas y no puede instanciar figuras que no conoce salvo que la modifiquemos.
+En los ejemplos anteriores hemos creado una clase `SurfaceCalculator` que puede calcular el área de figuras compuestas por triángulos y cuadrados. Sin embargo, ¿qué tenemos que hacer para que pueda procesar también rectángulos u otras figuras?. Tal como está ahora mismo, `SurfaceCalculator` está acoplada al tipo de figuras que conoce. Por el propio principio **Creator**, solo puede instanciar figuras conocidas y no puede instanciar figuras que no conoce salvo que la modifiquemos.
 
 Algo así:
 
@@ -414,7 +414,7 @@ end
 
 Podríamos discutir dos cosas:
 
-`ShapeFactory` está acoplado a las formas, tiene que tener conocimiento de cuales soporta y cuales no. Efectivamente, sin embargo esa es su responsabilidad: saber qué formas se pueden instanciar.
+`ShapeFactory` está acoplado a las formas, tiene que tener conocimiento de la que soporta y de las que no. Sin embargo esa es su responsabilidad: saber qué formas se pueden instanciar.
 
 Por otro lado, ¿no hemos dicho que `SurfaceCalculator`, al agregar formas tendría que ser la `Creator`?. Ciertamente, pero en este caso, nada nos impediría hacer que `ShapeFactory` sea colaboradora de `SurfaceCalculator`, permitiéndonos cumplir de nuevo este principio:
 
@@ -466,9 +466,9 @@ Ya [hemos hablado de acoplamiento en una entrega anterior](/beyond-solid). El ac
 
 ## ¿Cómo focalizo las responsabilidades de una clase? High cohesion
 
-En [un artículo anterior](/beyond-solid) también mencionamos la cohesión. La cohesión es la fuerza que mantiene focalizadas las responsabilidades de una clase, o de un módulo en su caso. Una clase con alta cohesión es más fácil de entender porque no tiene elementos que nos puedan hacer dudar de cuales son sus responsabilidades.
+En [un artículo anterior](/beyond-solid) también mencionamos la cohesión. La cohesión es la fuerza que mantiene focalizadas las responsabilidades de una clase, o de un módulo en su caso. Una clase con alta cohesión es más fácil de entender, ya que no tiene elementos que nos puedan hacer dudar de cuáles son sus responsabilidades.
 
-La alta cohesión se logra, sobre todo, aprendiendo a decir no a las responsabilidades que no corresponden a una clase, especialmente a aquellas que a primera vista sí parecerían adecuadas. También se contribuye a ella identificando aquellas cosas que cambian juntas ya que, cuando es así, deberían ir juntas.
+La alta cohesión se logra, sobre todo, aprendiendo a decir no a las responsabilidades que no corresponden a una clase, especialmente a aquellas que a primera vista sí parecerían adecuadas. También se contribuye a ella identificando aquellas cosas que cambian juntas, ya que, cuando es así, deberían ir juntas.
 
 ## ¿Dónde pongo la responsabilidad cuando no puedo asignarla a una clase específica? Pure fabrication
 

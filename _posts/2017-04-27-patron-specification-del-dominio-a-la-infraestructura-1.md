@@ -20,7 +20,7 @@ El patrón Specification nos permite encapsular reglas de negocio, ya sean estas
 
 En el dominio, una Specification recibe una Entidad como parámetro y nos dice si satisface o no las condiciones que encapsula.
 
-Lo que llamamos **Reglas de negocio** o de domino en general no son más que una serie de condiciones que ciertas Entidades deben cumplir. Por lo general, condición nos remite a chequeos con IF/THEN, pero sabemos que mal manejados pueden ser un gran problema, especialmente si, además, pueden cambiar.
+Lo que llamamos **Reglas de negocio** o de dominio en general no son más que una serie de condiciones que ciertas Entidades deben cumplir. Por lo general, condición nos remite a chequeos con IF/THEN, pero sabemos que mal manejados pueden ser un gran problema, especialmente si, además, pueden cambiar.
 
 ## El viaje desde If a Specification
 
@@ -90,7 +90,7 @@ if ($eligibleForFreeShipping->isSatisfiedBy($order) ) {
 
 Puedes usar la specification en cualquier lugar donde la precises. Y lo más interesante: si las reglas del negocio cambian, en lugar de reescribir la specification puedes escribir una nueva con las nuevas reglas y pasársela al servicio que la utilice en lugar de la primera.
 
-En el ejemplo anterior, he simulado que hemos inyectado en el Service una factoría de Specification de modo que le podamos pedir Specifications del tipo deseado. De este modo, sólo tendríamos que reescribir el método **createFreeShipping** de la factoría para que devuelva las nuevas.
+En el ejemplo anterior, he simulado que hemos inyectado en el Service una factoría de Specification de modo que le podamos pedir Specifications del tipo deseado. De este modo, solo tendríamos que reescribir el método **createFreeShipping** de la factoría para que devuelva las nuevas.
 
 ¿A que mola?
 
@@ -98,13 +98,13 @@ En el ejemplo anterior, he simulado que hemos inyectado en el Service una factor
 
 Como decía, podemos usar las specification en muchos lugares. Uno de los más obvios e interesantes es en los Repositorios. Esto nos llevará a un problema, del que me ocuparé más tarde y que es el origen de este artículo. Pero vayamos por partes.
 
-En DDD los repositorios son vistos por el domino como colecciones en memoria, independientemente de la implementación concreta. Para el dominio son simplemente el lugar en el que buscar o almacenar entidades. A veces, se usan para obtener una entidad bien identificada (por su id). Otras veces, se usan para obtener una colección de entidades que cumplan ciertas condiciones.
+En DDD los repositorios son vistos por el dominio como colecciones en memoria, independientemente de la implementación concreta. Para el dominio son simplemente el lugar en el que buscar o almacenar entidades. A veces, se usan para obtener una entidad bien identificada (por su id). Otras veces, se usan para obtener una colección de entidades que cumplan ciertas condiciones.
 
 ¿He dicho condiciones? Pues eso es algo en lo que las Specifications son especialistas.
 
 Si el repositorio en cuestión está implementado en memoria, podemos usar las Specification como filtros.
 
-¿Conoces la función **array_filter**? Esta función recibe un Callable que retorna true o false para seleccionar que elementos del array se toman y cuales se dejan, respectivamente. Pues podemos usar las Specification con Repositorios en memoria de una forma parecida y ciertamente podríamos utilizar la Specification como callable de array_filter.
+¿Conoces la función **array_filter**? Esta función recibe un Callable que retorna true o false para seleccionar que elementos del array se toman y cuáles se dejan, respectivamente. Pues podemos usar las Specification con Repositorios en memoria de una forma parecida y ciertamente podríamos utilizar la Specification como callable de array_filter.
 
 Al fin y al cabo, solemos implementar estos repositorios usando un array de objetos (o un SPLObjectStorage...). No tenemos más que recorrerlo y quedarnos con los objetos que cumplen la Specification. Algo más o menos así en una implementación un poco sucia:
 
@@ -129,10 +129,11 @@ class InMemoryRepository {
 
 Creo que queda bastante claro, ¿no?
 
-Gracias al uso de Specification, además, los Repositorios no tienen que tener un método por cada tipo de petición que necesitemos. Si alguien de Negocio nos viene con nuevas ideas, tan sólo tendríamos que crear nuevas Specification para satisfacer la petición.
+Gracias al uso de Specification, además, los Repositorios no tienen que tener un método por cada tipo de petición que necesitemos. Si alguien de Negocio nos viene con nuevas ideas, tan solo tendríamos que crear nuevas Specification para satisfacer la petición.
 
 Ahora bien, seguro que estás pensando lo siguiente:
-<blockquote>¡Pero <em>pringao</em>! Si tengo 800.000 registros en la base de datos, ¿cómo #@]]# quieres que cargue todo en memoria y vaya mirando uno por uno si cumplen la especificación?</blockquote>
+
+– ¡Pero _pringao_! Si tengo 800.000 registros en la base de datos, ¿cómo #@]]# quieres que cargue todo en memoria y vaya mirando uno por uno si cumplen la especificación?</blockquote>
 
 Este es uno de los problemas que tenemos que solucionar en la implementación del patrón dependiendo de nuestra infraestructura y que a mí me traía de cabeza hasta hace poco.
 

@@ -159,7 +159,7 @@ class BlogWithSlug extends CompositeDbalSpecification
 
 El parámetro `$slug` es el nombre simplificado del blog y se pasa a la Specification en el constructor. Observa que también paso un ExpressionBuilder, que es una clase de Doctrine con la que montar expresiones para las Queries.
 
-¿Por qué lo hago así? En este caso, me interesa por varias razones. En primer lugar, porque es un ejemplo de que podemos pasar a la Specification cualquier dependencia que necesite para desempeñar su función. En el ejemplo no sería realmente necesario ya que la expresión es bien sencilla (`'blog.slug = :slug'`), pero hay algunas expresiones para las que ExpressionBuilder es mejor solución que hacerlas a mano.
+¿Por qué lo hago así? En este caso, me interesa por varias razones. En primer lugar, porque es un ejemplo de que podemos pasar a la Specification cualquier dependencia que necesite para desempeñar su función. En el ejemplo no sería realmente necesario, ya que la expresión es bien sencilla (`'blog.slug = :slug'`), pero hay algunas expresiones para las que ExpressionBuilder es mejor solución que hacerlas a mano.
 
 De todos modos, BlogWithSlug desciende de una clase abstracta llamada CompositeDbalSpecification que sí necesita ExpressionBuilder para sus funciones. Pero no voy a meterme en eso ahora.
 
@@ -169,7 +169,7 @@ Si tienes familiaridad con el QueryBuilder de Doctrine conocerás los parámetro
 
 Una solución sería hacer la limpieza necesaria al construir la cláusula en la Specification, pero ya que QueryBuilder la va a hacer cuando se genere el SQL y se ejecute, parece más interesante delegarle un trabajo que hace muy bien.
 
-Así que lo que se me ha ocurrido es que la Specification pueda recoger los parámetros y pasárselo a QueryBuilder cuando éste los necesita. Por eso, he puesto unos métodos de utilidad en la clase abstracta de la que descienden las Specifications. Os presento a **CompositeDbalSpecification**:
+Así que lo que se me ha ocurrido es que la Specification pueda recoger los parámetros y pasárselo a QueryBuilder cuando este los necesita. Por eso, he puesto unos métodos de utilidad en la clase abstracta de la que descienden las Specifications. Os presento a **CompositeDbalSpecification**:
 
 ```php
 namespace Mh13\plugins\contents\infrastructure\persistence\dbal\specification;
@@ -237,11 +237,11 @@ abstract class CompositeDbalSpecification implements DbalSpecification
 
 Fundamentalmente **CompositeDbalSpecification** nos proporciona soporte para, entre otras cosas, guardar y devolver la lista de parámetros y sus tipos.
 
-Por cierto, es importante guardar las parámetros en el constructor por razones que explicaré en el próximo capítulo.
+Por cierto, es importante guardar los parámetros en el constructor por razones que explicaré en el próximo capítulo.
 
 ## Bien. ¿Y esto cómo se usa?
 
-En este ejemplo voy a poner un Read Model, que viene siendo un repositorio sólo para lectura, pero que funcionaría más o menos igual.
+En este ejemplo voy a poner un Read Model, que viene siendo un repositorio solo para lectura, pero que funcionaría más o menos igual.
 
 ```php
 namespace Mh13\plugins\contents\infrastructure\persistence\dbal;

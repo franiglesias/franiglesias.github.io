@@ -18,9 +18,9 @@ De entrada, no hay ninguna norma que limite la complejidad de las specification.
 
 Ahora bien, como ya sabemos, cuando más complejo sea el algoritmo más difícil será de mantener y más probable será que existan duplicaciones entre Specifications, las cuales, en caso de tener que modificar el código en un futuro, pueden llevarnos a errores o a resultados contradictorios si nos olvidamos de cambiar alguna.
 
-Por ejemplo. En un CMS los artículos se pueden ver si están marcados para publicar y si la fecha en que se hace la petición está dentro del rango que va de la fecha de publicación a la fecha de expiración (si es que tiene una definida). Así que cuando un usuario solicita el artículo con el id o alias que sea, también es necesario comprobar si está disponible (flag de publicación y rango de fechas correcto). Lo mismo ocurre si lo que se pide es la lista de últimos artículos de un blog: los artículos devueltos deben estar disponibles.
+Por ejemplo. En un CMS los artículos se pueden ver si están marcados para publicar y si la fecha en que se hace la petición está dentro del rango que va de la fecha de publicación a la fecha de expiración (si es que tiene una definida). Así que cuando un usuario solicita el artículo con el **id** o alias que sea, también es necesario comprobar si está disponible (flag de publicación y rango de fechas correcto). Lo mismo ocurre si lo que se pide es la lista de últimos artículos de un blog: los artículos devueltos deben estar disponibles.
 
-En este ejemplo debería ser fácil ver que chequeamos una parte común, como que los artículos están disponibles, y una parte específica: que el artículo tiene el id o alias solicitado, o que los artículos pertenecen a un blog especificado.
+En este ejemplo debería ser fácil ver que chequeamos una parte común, como que los artículos están disponibles, y una parte específica: que el artículo tiene el **id** o alias solicitado, o que los artículos pertenecen a un blog especificado.
 
 En consecuencia, podríamos extraer la parte común a una especificación y las partes particulares a sendas especificaciones. Pero, ¿cómo combinarlas?
 
@@ -35,11 +35,11 @@ Para entender bien el patrón Composite hay que hacer explícita una distinción
 
 En OOP tratamos con objetos, aunque necesitamos las clases para definir su comportamiento y propiedades. Son los objetos los que interactúan entre sí, los que colaboran y pueden, en su caso, combinarse. La base de los patrones de diseño no serían tanto las clases como los objetos y sus interfaces.
 
-El patrón Composite es un patrón en el que combinamos objetos para que actúen como si fuesen uno. No se trata de combinar clases, pero tenemos que hacer que las clases nos permitan combinar los objetos entre sí para actuar como uno sólo.
+El patrón Composite es un patrón en el que combinamos objetos para que actúen como si fuesen uno. No se trata de combinar clases, pero tenemos que hacer que las clases nos permitan combinar los objetos entre sí para actuar como uno solo.
 
 En consecuencia, el objeto compuesto y los objetos componentes deben cumplir la misma interfaz. Su comportamiento debe ser el resultado de algún tipo de combinación del comportamiento de los componentes. Hay muchos patrones que podrían considerarse una forma especializada de Composite.
 
-En el caso de Specification, una Composite Specification sigue siendo una Specification y el resultado de su método "isSatisfiedBy" o equivalente, es el resultado de combinar los resultados de las Specification componentes.
+En el caso de Specification, una _Composite Specification_ sigue siendo una Specification y el resultado de su método "isSatisfiedBy" o equivalente, es el resultado de combinar los resultados de las Specification componentes.
 
 Queremos que las Specification se combinen mediante operadores lógicos (AND, OR, NOT). Volviendo al ejemplo del CMS mencionado más arriba, podríamos tener las Specification ArticleIsAvailable, ArticleHasId y ArticleBelongsToBlog, y combinarlas de estas formas:
 
@@ -52,7 +52,7 @@ Para poder hacer Composite, tanto de Specification como de cualquier otro tipo d
 
 Los objetos que cumplen la misma interfaz anuncian que tienen el mismo comportamiento. Nuestro composite debe ser capaz de cumplir la interfaz de nuestros objetos básicos.
 
-Por otro lado, nuestro composite tomará como argumentos del constructor un número de objetos "combinables". Puesto que tanto los composite como los objetos básicos cumplen la misma interfaz, podremos componer composites para lograr toda la complejidad que necesitemos.
+Por otro lado, nuestro composite tomará como argumentos del constructor un número de objetos "combinables". Puesto que tanto los _composites_ como los objetos básicos cumplen la misma interfaz, podremos componer composites para lograr toda la complejidad que necesitemos.
 
 ## Composite Specification en el dominio
 
@@ -117,7 +117,7 @@ $compositeSpecification = new AndSpecification(new ArticleIsAvailable(), new Art
 
 En la última línea del ejemplo anterior podemos ver cómo crear una Specification combinada.
 
-Podemos hacer lo mismo para la una ORSpecification, la única diferencia será el operador lógico con el combinamos los resultados de las Specification que pasamos en la construcción:
+Podemos hacer lo mismo para la una ORSpecification, la única diferencia será el operador lógico con el que combinamos los resultados de las Specification que pasamos en la construcción:
 
 ```php
 <?php
@@ -154,7 +154,7 @@ Como hemos señalado antes, podríamos pasar estas especificaciones combinadas p
 
 ### Añadiendo Factory Method
 
-Aunque podemos usar AndSpecification y OrSpecification para crear CompositeSpecification de forma bastante sencilla,  podemos obviar la necesidad de usarlas explícitamente añadiendo un par de Factory Method en una clase base de Specification. De esta manera conseguimos una interfaz más expresiva.
+Aunque podemos usar AndSpecification y OrSpecification para crear CompositeSpecification de forma bastante sencilla, podemos obviar la necesidad de usarlas explícitamente añadiendo un par de Factory Method en una clase base de Specification. De esta manera conseguimos una interfaz más expresiva.
 
 Veamos el ejemplo aumentado, lo interesante está en las líneas 7 a 17:
 
@@ -243,7 +243,7 @@ $articleSpecification = $articleSpecification->and(new ArticleIsAvailable());
 
 Lo interesante está en la línea 7: introducimos la clase abstracta base ComposableSpecification que añade los métodos `and()` y `or()` que son métodos factoría para crear Composite Specification del tipo AndSpecification y OrSpecification, respectivamente.
 
-El beneficio es un código más explícito, como se puede ver en la líneas finales.
+El beneficio es un código más explícito, como se puede ver en las líneas finales.
 
 ## Bajando a la infraestructura
 

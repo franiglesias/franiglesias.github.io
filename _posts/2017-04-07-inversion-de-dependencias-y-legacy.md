@@ -5,7 +5,7 @@ categories: articles
 tags: design-principles legacy
 ---
 
-He aquí una estrategias sencilla para reescribir una clase legacy de manera ordenada, aplicando el principio de Inversión de Dependencia.
+He aquí una estrategia sencilla para reescribir una clase legacy de manera ordenada, aplicando el principio de Inversión de Dependencia.
 
 Supongamos que tienes una clase en tu Legacy que proporciona un servicio determinado. Al fin y al cabo, el código Legacy "funciona", aunque a veces no sepas ni cómo es posible que todavía funcione, pero esa es otra historia. Voy a llamarla **LegacyService**.
 
@@ -25,7 +25,7 @@ Una nueva tentación: reescribir la clase para implemente **ServiceNewInterface*
 
 ## Escribe un Adaptador (Adapter)
 
-Una adaptador es una clase que nos sirve para que un objeto cumpla una interfaz diferente a la que tiene. No tenemos que tocar la clase original para nada.
+Un adaptador es una clase que nos sirve para que un objeto cumpla una interfaz diferente a la que tiene. No tenemos que tocar la clase original para nada.
 
 Lo que hacemos primero es crear una nueva clase (la llamaré **ServiceAdapter**) que deberá implementar la interfaz definida, **ServiceNewInterface.** Usa un enfoque TDD o BDD para tener tests.
 
@@ -53,6 +53,6 @@ Lo cierto es que ahora puedes testear la funcionalidad de **LegacyService** a tr
 
 Otra opción es refactorizar **ServiceAdapter** para que no dependa de **LegacyService** moviendo el código de **LegacyService** a **ServiceAdapter**. Sería una extracción. Ahora tienes la protección necesaria para hacerlo sin romper nada.
 
-Supongamos el típico caso de que la funcionalidad usada de **LegacyService** es sólo una parte de la misma porque la clase tiene varias responsabilidades y tú solo tienes interés en una de ellas.
+Supongamos el típico caso de que la funcionalidad usada de **LegacyService** es solo una parte de la misma porque la clase tiene varias responsabilidades y tú solo tienes interés en una de ellas.
 
 Se trataría entonces de mover el código de **LegacyService** a la clase **ServiceAdapter**, asegurándote de que no se rompen los tests de esta última clase. Una vez que hayas trasladado la funcionalidad necesaria, puedes prescindir de **LegacyService** y el resto del código no se habrá enterado de nada.

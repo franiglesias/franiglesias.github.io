@@ -21,37 +21,32 @@ Lo realmente importante es seguir las especificaciones de API REST tanto al defi
 
 El ejemplo que voy a poner está basado en Silex, aunque eso no tiene mayor importancia. La verdad es que Silex resulta muy adecuado para trabajar con API REST, como veremos enseguida.
 
-Para el ejemplo, vamos a suponer un CMS en el que componemos las páginas de índice de las distintas secciones haciendo solicitudes de artículos vía AJAX con unos parámetros de filtrado. Es una API completamente abierta que no necesita restricciones de seguridad ya que los datos que va a mostrar son públicos y se va a consumir internamente. En ese sentido, es un ejemplo de uso para comunicar diferentes partes de la aplicación.
+Para el ejemplo, vamos a suponer un CMS en el que componemos las páginas de índice de las distintas secciones haciendo solicitudes de artículos vía AJAX con unos parámetros de filtrado. Es una API completamente abierta que no necesita restricciones de seguridad, ya que los datos que va a mostrar son públicos y se va a consumir internamente. En ese sentido, es un ejemplo de uso para comunicar diferentes partes de la aplicación.
 
 La verdad es que no voy a exponer todo el código implicado, pero creo que será suficiente para entender cómo funciona.
 
 
-## Definiendo el API
+## Definiendo la API
 
 
 Para este ejemplo me voy a limitar a una única API. La función de esta API es devolver una colección de artículos publicados en el CMS. Los artículos se ordenan por orden inverso de fecha (lo habitual en los blogs), con la salvedad de que podemos indicar un flag "sticky" para señalar que ciertos artículos especialmente marcados siempre deben aparecer al principio.
 
 En principio, el consumidor será un módulo HTML/Javascript que hará la solicitud mediante AJAX.
 
-<ul>
-    <li>Puesto que la petición persigue obtener recursos, el verbo HTTP será GET.</li>
-    <li>Los recursos que se solicitan son artículos del CMS, así que la ruta es /articles.</li>
-    <li>Las condiciones para filtrar los artículos y seleccionar los deseados irán como parámetros de query. Estas condiciones son:
-<ul>
-    <li>blogs: seleccionar artículos de los blogs indicados</li>
-    <li>excludeBlogs: no seleccionar artículos de los blogs indicados, suele ir con...</li>
-    <li>site: sólo artículos del site indicado (es una colección de blogs)</li>
-    <li>home: sólo artículos marcados como portada</li>
-    <li>featured: sólo artículos marcados como destacados</li>
-    <li>page: página del listado de artículos</li>
-    <li>sticky: ordenar los artículos teniendo en cuenta los que van fijos al principio</li>
-</ul>
-</li>
-</ul>
+* Puesto que la petición persigue obtener recursos, el verbo HTTP será GET.
+* Los recursos que se solicitan son artículos del CMS, así que la ruta es `/articles`.
+* Las condiciones para filtrar los artículos y seleccionar los deseados irán como parámetros de query. Estas condiciones son:
+  * blogs: seleccionar artículos de los blogs indicados
+  * excludeBlogs: no seleccionar artículos de los blogs indicados, suele ir con...
+  * site: solo artículos del site indicado (es una colección de blogs)
+  * home: solo artículos marcados como portada
+  * featured: sólo artículos marcados como destacados
+  * page: página del listado de artículos
+  * sticky: ordenar los artículos teniendo en cuenta los que van fijos al principio
 
 Una petición típica podría tener esta forma:
 
-GET /articles?blogs=mi_blog&page=3
+`GET /articles?blogs=mi_blog&page=3`
 
 Que significa, "dame los artículos que pertenecen al blog "Mi Blog" y que están en la página 3".
 
@@ -139,6 +134,6 @@ Un error del servidor puede dar lugar a una respuesta vacía, pero debemos dejar
 
 En resumen, hay que hacer una lista de posibles situaciones que le interesen a nuestro consumidor y detectarlas en el controlador para decidir el código de respuesta que vamos a devolver.
 
-Sin embargo, también es necesario decidir cómo le vamos a devolver el contenido de la respuesta, para ello tendremos que hablar de las cabeceras HTTP, de la negociación de contenido y las consecuencias que puede tener en la respuesta. Por ejemplo, podríamos tener los datos, pero no poder entregarlos al consumidor en el formato que éste desea.
+Sin embargo, también es necesario decidir cómo le vamos a devolver el contenido de la respuesta, para ello tendremos que hablar de las cabeceras HTTP, de la negociación de contenido y las consecuencias que puede tener en la respuesta. Por ejemplo, podríamos tener los datos, pero no poder entregarlos al consumidor en el formato que este desea.
 
 Y eso es lo que veremos en el próximo artículo.

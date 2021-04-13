@@ -5,7 +5,7 @@ categories: articles
 tags: design-principles good-practices
 ---
 
-A veces, cuando se habla de principios de diseño de software parece que sólo existiesen estos cinco. Así que los repasaremos con un poco de contexto.
+A veces, cuando se habla de principios de diseño de software parece que solo existiesen estos cinco. Así que los repasaremos con un poco de contexto.
 
 Los principios SOLID son cinco principios en el diseño orientado a objetos compilados por Robert C. Martin. Puedes encontrarlos [aquí](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod), con enlaces a los artículos originales.
 
@@ -47,11 +47,11 @@ Otro de sus corolarios es que una clase que extienda de otra no puede modificar 
 
 ## Principio de segregación de interfaces (Interface Segregation Principle, ISP)
 
-El principio de segregación de interfaces puede definirse diciendo que una clase no debería verse obligada a depender de métodos o propiedades que no necesita. Expresado de otra forma: una interfaz sólo debería tener los métodos que sus consumidores necesitan, y ni uno más. 
+El principio de segregación de interfaces puede definirse diciendo que una clase no debería verse obligada a depender de métodos o propiedades que no necesita. Expresado de otra forma: una interfaz solo debería tener los métodos que sus consumidores necesitan, y ni uno más. 
 
-Supongamos que tenemos una clase con ocho métodos públicos y algunos consumidores de la misma que sólo requieren dos de esos métodos. Si hacemos que dependan directamente de esa clase (de la totalidad de su interfaz pública) los obligamos a cargar con seis métodos que no necesitan. Ahora bien, si definimos una interfaz para esos dos métodos, y hacemos que sea implementada por la clase, la dependencia de los consumidores será a esa nueva interfaz.
+Supongamos que tenemos una clase con ocho métodos públicos y algunos consumidores de la misma que solo requieren dos de esos métodos. Si hacemos que dependan directamente de esa clase (de la totalidad de su interfaz pública) los obligamos a cargar con seis métodos que no necesitan. Ahora bien, si definimos una interfaz para esos dos métodos, y hacemos que sea implementada por la clase, la dependencia de los consumidores será a esa nueva interfaz.
 
-Si la clase de la que hablamos sirve a otros consumidores que utilizan otros métodos, podrían definirse nuevas interfaces. La ganancia aquí es que los consumidores sólo dependen de aquellos métodos que usan, lo que nos permitirá cambiar esa dependencia con más facilidad cuando sea necesario.
+Si la clase de la que hablamos sirve a otros consumidores que utilizan otros métodos, podrían definirse nuevas interfaces. La ganancia aquí es que los consumidores solo dependen de aquellos métodos que usan, lo que nos permitirá cambiar esa dependencia con más facilidad cuando sea necesario.
 
 ## Principio de inversión de dependencia (Dependency Inversion Principle, DIP)
 
@@ -68,11 +68,11 @@ Si utilizamos los principios SOLID para diseñar nuestro software orientado a ob
 
 Aún así, pienso que tendríamos que añadir el Principio de Mínimo Conocimiento, o Ley de Démeter, para conseguirlo. 
 
-El SRP nos dice que cada unidad de software debe tener una única razón para cambiar, debe ser responsable de un sólo interés (no se puede servir a dos amos).
+El SRP nos dice que cada unidad de software debe tener una única razón para cambiar, debe ser responsable de un solo interés (no se puede servir a dos amos).
 
 El OCP nos dice que una clase no debería modificarse, sino extenderse para evitar romper el sistema.
 
-El LSP nos dice que sólo deberíamos usar la herencia para especializar comportamientos en las jerarquías de clases, lo que nos indica cuando nos conviene usar este mecanismo y cuándo es preferible la composición. Esto nos ayuda con el OCP.
+El LSP nos dice que solo deberíamos usar la herencia para especializar comportamientos en las jerarquías de clases, lo que nos indica cuando nos conviene usar este mecanismo y cuándo es preferible la composición. Esto nos ayuda con el OCP.
 
 El ISP nos dice que las interfaces deben definirse por las necesidades de sus consumidores, lo que entronca con el SRP y nos impulsa a definir interfaces con pocos métodos.
 

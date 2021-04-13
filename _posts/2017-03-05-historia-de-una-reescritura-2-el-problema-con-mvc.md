@@ -36,7 +36,7 @@ En concreto, los modelos se encargarían de las "reglas de negocio" (o dominio) 
 
 Es necesario separar estas responsabilidades, de modo que los modelos solo se ocupen de la lógica de negocio (o de dominio), mientras que la persistencia forme parte de la infraestructura. El motivo es tanto la testabilidad (lo que nos ayuda a hacer la aplicación mantenible a medio y largo plazo) y la separación de responsabilidades, lo que nos permite evolucionar cada parte de la aplicación de forma independiente.
 
-Los modelos, en lo que respecta al controlador y la vista, deberían ser simples DTO, lo que implica que el framework MVC esté fuera de la capa de dominio. Esta separación puede sonar muy extraña si sólo has trabajado desde el punto de vista del MVC.
+Los modelos, en lo que respecta al controlador y la vista, deberían ser simples DTO, lo que implica que el framework MVC esté fuera de la capa de dominio. Esta separación puede sonar muy extraña si solo has trabajado desde el punto de vista del MVC.
 
 ¿Cómo hacer esta separación? Hay varias posibilidades. Personalmente no lo tengo muy definido todavía, pero lo que estoy considerando es:
 

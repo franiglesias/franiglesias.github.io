@@ -15,7 +15,7 @@ Además, ni siquiera una cobertura del 100% garantiza realmente que todos los ca
 
 Por otra parte, la cobertura total es bastante difícil de conseguir en una base de código que no cuente todavía con tests. Entre otras cosas, porque tampoco es un objetivo deseable, ya que hay muchas partes de una aplicación que ni siquiera merece la pena considerar testear porque el código es trivial o porque el único tipo de test posible resultaría muy frágil.
 
-En realidad, creo que sólo desarrollando con TDD se conseguiría una cobertura completa, pero como consecuencia de la metodología y no porque nos la planteemos como objetivo. Y esto es así porque, por definición, el código de producción sólo se escribe con el objetivo de hacer pasar un test.
+En realidad, creo que solo desarrollando con TDD se conseguiría una cobertura completa, pero como consecuencia de la metodología y no porque nos la planteemos como objetivo. Y esto es así porque, por definición, el código de producción solo se escribe con el objetivo de hacer pasar un test.
 
 En todo caso, y a pesar de estas observaciones, mejorar el nivel de cobertura de tests de una base de código es un objetivo que merece la pena.
 
@@ -31,10 +31,10 @@ PHPUnit nos proporciona todo lo necesario, pero primero tendremos que condigurar
 
 ### Preparar el entorno para disponer de análisis de Code Coverage
 
-Por una parte, vamos a crear un archivo de configuración de phpunit. Podemos hacerlo mediante el siguiente comando en shell en la raíz del proyecto:
+Por una parte, vamos a crear un archivo de configuración de PHPUnit. Podemos hacerlo mediante el siguiente comando en shell en la raíz del proyecto:
 
 ```bash
-bin/phpunit --generate-configuration
+bin/PHPUnit --generate-configuration
 ```
 
 Este comando es interactivo y nos pedirá confirmar algunos valores según nuestro proyecto:
@@ -55,8 +55,8 @@ Lo siguiente será modificar un poco el archivo resultante ya que, por defecto, 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.5/phpunit.xsd"
+<PHPUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.PHPUnit.de/6.5/PHPUnit.xsd"
          bootstrap="vendor/autoload.php"
          forceCoversAnnotation="false"
          beStrictAboutCoversAnnotation="true"
@@ -71,13 +71,13 @@ Lo siguiente será modificar un poco el archivo resultante ya que, por defecto, 
             <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
-</phpunit>
+</PHPUnit>
 ```
 
-Con esto, podremos ejecutar `phpunit` con el informe de coverage que más nos convenga:
+Con esto, podremos ejecutar `PHPUnit` con el informe de coverage que más nos convenga:
 
 ```bash
-bin/phpunit --coverage-html ./coverage
+bin/PHPUnit --coverage-html ./coverage
 ```
 
 La línea anterior generará un informe de cobertura en Html creando la carpeta coverage si no existe. Abriendo el index.html en un navegador podremos acceder a él.
@@ -127,7 +127,7 @@ Por tanto, para garantizar que esté bien cubierto, y sabiendo que el bloque ha 
 | true | false | No |
 | false | true | Sí |
 
-A partir de aquí, las expresiones condicionales complejas requerirán un número de hits acorde con sus posibles estados. Cubrir sólo dos casos (la expresión se cumple o no se cumple) puede ocultarnos información, particularmente en el caso de expresiones que incluyan operadores OR.
+A partir de aquí, las expresiones condicionales complejas requerirán un número de hits acorde con sus posibles estados. Cubrir solo dos casos (la expresión se cumple o no se cumple) puede ocultarnos información, particularmente en el caso de expresiones que incluyan operadores OR.
 
 ## Para finalizar
 

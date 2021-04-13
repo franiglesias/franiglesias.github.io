@@ -5,7 +5,7 @@ categories: articles
 tags: php bdd testing
 ---
 
-En el [primer artículo de la serie](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta Behat. En el [segundo](/bdd-example-2), utilizamos `phpspec` para comenzar a desarrollar nuestra feature, partiendo de un *Use Case* y descubriendo las clases colaboradoras necesarias a medida que identificamos responsabilidades. En esta tercera entrega pretendemos a empezar a unir las piezas.
+En el [primer artículo de la serie](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta Behat. En el [segundo](/bdd-example-2), utilizamos `PHPSpec` para comenzar a desarrollar nuestra feature, partiendo de un *Use Case* y descubriendo las clases colaboradoras necesarias a medida que identificamos responsabilidades. En esta tercera entrega pretendemos a empezar a unir las piezas.
 
 Al final de la fase anterior conseguimos desarrollar el *Use Case* `UpdatePricesFromUploadedFile` y descubrimos las interfaces de sus colaboradores. Es un buen momento para volver a `FeatureContext` y completar el test de aceptación. Para eso, tenemos que revisar las interfaces generadas, implementar varias cosas y tomar algunas decisiones.
 
@@ -13,15 +13,15 @@ Al final de la fase anterior conseguimos desarrollar el *Use Case* `UpdatePrices
 
 Para decidir que empezaríamos por `UpdatePricesFromUploadedFile` lo hicimos sobre la base de que este `Use Case` representa el núcleo de la *Feature* que estamos desarrollando. Ahora nos toca implementar sus colaboradores para poder pasar el test de aceptación.
 
-Nuestra primera tarea es instanciar todos los objetos necesarios. Puesto que sólo tenemos interfaces necesitamos implementar clases concretas a partir de ellas. Para poder escribir el código de `FeatureContext` y tener un test que pueda ejecutarse, empezaremos haciendo la implementación mínima ejecutable (expresión que me acabo de inventar, pero que suena tremendamente profesional y *cool*). Básicamente queremos *dummys* para que nuestra *Feature* pueda ejecutarse de principio a fin aunque, de momento, no nos dará resultados viables.
+Nuestra primera tarea es instanciar todos los objetos necesarios. Puesto que solo tenemos interfaces necesitamos implementar clases concretas a partir de ellas. Para poder escribir el código de `FeatureContext` y tener un test que pueda ejecutarse, empezaremos haciendo la implementación mínima ejecutable (expresión que me acabo de inventar, pero que suena tremendamente profesional y *cool*). Básicamente queremos *dummys* para que nuestra *Feature* pueda ejecutarse de principio a fin aunque, de momento, no nos dará resultados viables.
 
 Acabaremos con un código similar al que proponíamos en el primer artículo de la serie y, a partir de ahí, desarrollaremos la funcionalidad que necesitamos.
 
-Pediremos a `phpspec` que nos eche una mano en esta tarea, que así será más cómoda.
+Pediremos a `PHPSpec` que nos eche una mano en esta tarea, que así será más cómoda.
 
 ### FilePath
 
-Aquí tenemos la interfaz de `FilePath`. Como es un Value Object realmente no vamos a necesitar tener varias implementaciones ya que la que necesitamos es la única, por lo tanto, tan sólo tenemos que crear la clase y hacer una implementación mínima.
+Aquí tenemos la interfaz de `FilePath`. Como es un Value Object realmente no vamos a necesitar tener varias implementaciones ya que la que necesitamos es la única, por lo tanto, tan solo tenemos que crear la clase y hacer una implementación mínima.
 
 Ya que estamos, aprovecharemos para refinar un poco el código. Por ejemplo, añadiendo el *type hinting* y los *return type* que sean necesarios. Eso hará innecesarios varios tests y aportará solidez a nuestro código. Como contrapartida, nos obligará a trabajar un poquito más, puesto que las implementaciones iniciales serán un poco menos *dummies*.
 
@@ -38,19 +38,19 @@ interface FilePath
 }
 ```
 
-Comenzamos diciéndole a phpspec que vamos a describir la clase FilePath:
+Comenzamos diciéndole a PHPSpec que vamos a describir la clase FilePath:
 
 ```
-bin/phpspec describe 'TalkingBit\BddExample\VO\FilePath'
+bin/PHPSpec describe 'TalkingBit\BddExample\VO\FilePath'
 ```
 
 Y ejecutamos la *Spec*. Para no tener que ejecutar todas las Specs que tengamos definidas podemos apuntar a la que nos interesa:
 
 ```
-bin/phpspec run 'TalkingBit\BddExample\VO\FilePath'
+bin/PHPSpec run 'TalkingBit\BddExample\VO\FilePath'
 ```
 
-`phpspec` detectará que no existe la clase, aunque existe la interfaz, por lo que nos pide permiso para crearla:
+`PHPSpec` detectará que no existe la clase, aunque existe la interfaz, por lo que nos pide permiso para crearla:
 
 ```
 
@@ -75,7 +75,7 @@ bin/phpspec run 'TalkingBit\BddExample\VO\FilePath'
 
 ```
 
-Si decimos que sí, puesto que el archivo existe nos preguntará si queremos sobre-escribirlo. Esto ya queda un poco a nuestro gusto, o bien dejamos a `phpspec` que cree la clase desde cero (ignorando la interfaz ya existente) o bien modificamos manualmente la interfaz. Nosotros vamos a hacer esto último ya que queremos aprovechar, así que responderemos que no y editaremos el archivo de la interfaz para dejarlo más o menos así:
+Si decimos que sí, puesto que el archivo existe nos preguntará si queremos sobre-escribirlo. Esto ya queda un poco a nuestro gusto, o bien dejamos a `PHPSpec` que cree la clase desde cero (ignorando la interfaz ya existente) o bien modificamos manualmente la interfaz. Nosotros vamos a hacer esto último ya que queremos aprovechar, así que responderemos que no y editaremos el archivo de la interfaz para dejarlo más o menos así:
 
 ```php
 <?php
@@ -94,12 +94,12 @@ class FilePath
 Al ejecutar la Spec nos dirá que todo va bien. La implementación tonta que tiene el método `path()` nos sirve para evitar el error de tipo. Puedes comprobar que este cambio no afecta a la Spec de `UpdatePricesFromUploadedFile` ejecutando todas con el comando sin argumentos
 
 ```
-bin/phpspec run
+bin/PHPSpec run
 ```
 
 ## Product
 
-En nuestra hipotética aplicación, `Product` sería una entidad de dominio, por lo que tampoco tiene mucho sentido mantener la dualidad interfaz-clase. De nuevo, tan sólo queremos tener una una clase instanciable que ya desarrollaremos después.
+En nuestra hipotética aplicación, `Product` sería una entidad de dominio, por lo que tampoco tiene mucho sentido mantener la dualidad interfaz-clase. De nuevo, tan solo queremos tener una una clase instanciable que ya desarrollaremos después.
 
 Seguiremos el mismo proceso que con `FilePath`, por lo que no voy a repetirlo aquí. La interfaz que tenemos es:
 
@@ -127,10 +127,10 @@ interface Product
 }
 ```
 
-Generamos la Spec, ejecutando `phpspec`:
+Generamos la Spec, ejecutando `PHPSpec`:
 
 ```
-bin/phpspec describe 'TalkingBit\BddExample\Product'
+bin/PHPSpec describe 'TalkingBit\BddExample\Product'
 ```
 
 Y modificamos `Product` para convertirlo en una clase:
@@ -148,10 +148,10 @@ class Product
 }
 ```
 
-Finalmente, ejecutamos `phpspec` para asegurarnos de que la clase es inicializable.
+Finalmente, ejecutamos `PHPSpec` para asegurarnos de que la clase es inicializable.
 
 ```
-bin/phpspec run 'TalkingBit\BddExample\Product'
+bin/PHPSpec run 'TalkingBit\BddExample\Product'
 ```
 
 Y ya tenemos, una clase `Product` sin comportamiento, pero suficiente para avanzar.
@@ -184,13 +184,13 @@ interface ProductRepository
 Empezamos describiendo una posible implementación, que será en memoria:
 
 ```php
-bin/phpspec describe 'TalkingBit\BddExample\Persistence\InMemoryProductRepository'
+bin/PHPSpec describe 'TalkingBit\BddExample\Persistence\InMemoryProductRepository'
 ```
 
 Ejecutamos la Spec y damos permiso para crear la clase por nosotros:
 
 ```
-bin/phpspec run 'TalkingBit\BddExample\Persistence\InMemoryProductRepository'
+bin/PHPSpec run 'TalkingBit\BddExample\Persistence\InMemoryProductRepository'
 ```
 
 Esta es la Spec y vamos a hacer algunas modificaciones ya que queremos que `InMemoryProductRepository` implemente la interfaz `ProductRepository`:
@@ -201,7 +201,7 @@ Esta es la Spec y vamos a hacer algunas modificaciones ya que queremos que `InMe
 namespace spec\TalkingBit\BddExample\Persistence;
 
 use TalkingBit\BddExample\Persistence\InMemoryProductRepository;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class InMemoryProductRepositorySpec extends ObjectBehavior
@@ -221,7 +221,7 @@ La dejamos así:
 namespace spec\TalkingBit\BddExample\Persistence;
 
 use TalkingBit\BddExample\Persistence\InMemoryProductRepository;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 use TalkingBit\BddExample\ProductRepository;
 
@@ -277,7 +277,7 @@ interface FileReader
 A continuación, generamos la Spec:
 
 ```
-bin/phpspec describe 'TalkingBit\BddExample\FileReader\CSVFileReader'
+bin/PHPSpec describe 'TalkingBit\BddExample\FileReader\CSVFileReader'
 ```
 
 La cual modificaremos para que se asegure que CSVFileReader implemente FileReader:
@@ -288,7 +288,7 @@ La cual modificaremos para que se asegure que CSVFileReader implemente FileReade
 namespace spec\TalkingBit\BddExample\FileReader;
 
 use TalkingBit\BddExample\FileReader\CSVFileReader;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 use TalkingBit\BddExample\FileReader\FileReader;
 
@@ -448,7 +448,7 @@ Con esto podemos ejecutar la Feature, pero aún no tenemos los pasos implementad
     }
 ```
 
-Para implementar este paso necesitamos añadir Products en `InMemoryProductRepository`, pero es un comportamiento que aún no tiene. Y, para eso, tenemos que poder acceder a la instancia que pasamos a `UpdatePricesFromUploadedFile`. Tenemos que cambiar eso en el constructor y recurriremos a phpspec para modelar el comportamiento de guardar Products en el repositorio.
+Para implementar este paso necesitamos añadir Products en `InMemoryProductRepository`, pero es un comportamiento que aún no tiene. Y, para eso, tenemos que poder acceder a la instancia que pasamos a `UpdatePricesFromUploadedFile`. Tenemos que cambiar eso en el constructor y recurriremos a PHPSpec para modelar el comportamiento de guardar Products en el repositorio.
 
 Así es como queremos usarlo:
 
@@ -521,7 +521,7 @@ Feature: Massively update product prices when needed
 
 La utilidad nos informa de que hay varios escenarios que fallan. ¿Varios? Sí. Todos los escenarios comparten el paso **Given There are current prices in the system**, que falla porque `InMemoryProductRepository` no tiene un método `store`. 
 
-Ahora podríamos escribir el código mínimo que haga pasar el escenario, aunque no tenga comportamiento, dejando para más tarde implementarlo. La otra opción, por supuesto, es hacerlo ahora con la ayuda de **phpspec**.
+Ahora podríamos escribir el código mínimo que haga pasar el escenario, aunque no tenga comportamiento, dejando para más tarde implementarlo. La otra opción, por supuesto, es hacerlo ahora con la ayuda de **PHPSpec**.
 
 Nosotros vamos a optar por la primera posibilidad y hacer una implementación mínima del método `store()`, el cual debemos añadir a la interfaz ProductRepository.
 
@@ -896,7 +896,7 @@ No es la implementación definitiva, ni muchísimo menos, pero nos permitirá se
       Failed asserting that 10.0 matches expected '17.00'.
 ```
 
-Esto ya suena a test que no pasa. En parte, gracias a que hemos utilizado las asserts de `phpunit` pues lanzan excepciones en caso de que no se cumplan. No es necesario usarlas ya que basta lanzar una excepción si observamos que el resultado obtenido no es el esperado, pero nos ahorran mucho trabajo.
+Esto ya suena a test que no pasa. En parte, gracias a que hemos utilizado las asserts de `PHPUnit` pues lanzan excepciones en caso de que no se cumplan. No es necesario usarlas ya que basta lanzar una excepción si observamos que el resultado obtenido no es el esperado, pero nos ahorran mucho trabajo.
 
 La cuestión es que este mensaje nos está diciendo que ya es la hora de implementar ProductRepository.
 
@@ -925,7 +925,7 @@ Nos dice que no podemos devolver siempre el mismo producto. Por tanto, ha llegad
 
 ### Volvamos a describir comportamiento
 
-La implementación de un repositorio, aunque sea de tipo in memory, no es tan trivial como las que hemos tenido que hacer hasta ahora. Por esa razón retomaremos `phpspec` a fin de desarrollarlo. Esto es un buen ejemplo del uso combinado de las dos herramientas. `behat` nos permite ir de la historia de usuario y descubrir los elementos que necesitamos, mientas que phpspec nos ayuda en el desarrollo de los mismos.
+La implementación de un repositorio, aunque sea de tipo in memory, no es tan trivial como las que hemos tenido que hacer hasta ahora. Por esa razón retomaremos `PHPSpec` a fin de desarrollarlo. Esto es un buen ejemplo del uso combinado de las dos herramientas. `behat` nos permite ir de la historia de usuario y descubrir los elementos que necesitamos, mientas que PHPSpec nos ayuda en el desarrollo de los mismos.
 
 Como recordarás (espero) tenemos una Spec muy simple que demuestra que nuestro repositorio se puede instanciar, pero nada más. Lo que sí sabemos, gracias a lo que hemos estado haciendo hasta ahora, es que queremos describir dos comportamientos:
 
@@ -1063,7 +1063,7 @@ Pues que sigue fallando, pero de una manera distinta.
 
 #### Recuperar precios
 
-Nuestro repositorio sólo está almacenando el último `Product` que introducimos, por lo que deberíamos describir mejor su comportamiento. Volvamos a `phpspec`, porque aunque lo hemos usado no hemos descrito el comportamiento que esperamos de `getById()`:
+Nuestro repositorio solo está almacenando el último `Product` que introducimos, por lo que deberíamos describir mejor su comportamiento. Volvamos a `PHPSpec`, porque aunque lo hemos usado no hemos descrito el comportamiento que esperamos de `getById()`:
 
 
 ```php
@@ -1177,7 +1177,7 @@ La conclusión que podemos sacar es que los precios no se están actualizando y 
 
 ¿Qué ocurre con `CSVFileReader`? Pues fundamentalmente ocurre que no hace lo que dice que hace. Esto es: no lee archivos.
 
-Como puedes imaginar, volveremos con phpspec para describir el comportamiento de CSVFileReader e implementarlo.
+Como puedes imaginar, volveremos con PHPSpec para describir el comportamiento de CSVFileReader e implementarlo.
 
 ```php
 <?php
@@ -1185,7 +1185,7 @@ Como puedes imaginar, volveremos con phpspec para describir el comportamiento de
 namespace spec\TalkingBit\BddExample\FileReader;
 
 use TalkingBit\BddExample\FileReader\CSVFileReader;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 use TalkingBit\BddExample\FileReader\FileReader;
 use TalkingBit\BddExample\VO\FilePath;
@@ -1242,7 +1242,7 @@ Describir el comportamiento de CSVFileReader va a requerir algo más de esfuerzo
 
 namespace spec\TalkingBit\BddExample\FileReader;
 
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use TalkingBit\BddExample\FileReader\FileReader;
 use TalkingBit\BddExample\VO\FilePath;
 
@@ -1304,7 +1304,7 @@ Esto ya requiere algo más de implementación. Vamos a ello:
 
 namespace spec\TalkingBit\BddExample\FileReader;
 
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use TalkingBit\BddExample\FileReader\FileReader;
 use TalkingBit\BddExample\VO\FilePath;
 
@@ -1478,9 +1478,9 @@ Y con esto, por fin hemos hecho que nuestro escenario pase.
 
 Hemos comenzado el viaje con una historia de usuario, más o menos representativa, pero definida con la ayuda del lenguaje Gherkin, expresada tanto en valor de negocio como en una serie de escenarios ejecutables que definen criterios observables que podemos comprobar programáticamente en un test, cuyo esqueleto hemos generado con la ayuda de `behat`.
 
-A continuación, hemos convertido la historia en un Use Case y lo hemos introducido en el test, de modo que hemos podido decidir cómo querríamos que funcionase, lo cual nos ha llevado a utilizar `phpspec` para especificar el comportamiento del propio Use Case.
+A continuación, hemos convertido la historia en un Use Case y lo hemos introducido en el test, de modo que hemos podido decidir cómo querríamos que funcionase, lo cual nos ha llevado a utilizar `PHPSpec` para especificar el comportamiento del propio Use Case.
 
-Esto nos ha llevado a descubrir las entidades, value objects y colaboradores que iban siendo necesarios para que el Use Case pudiese producir efectos en el sistema, combinando el uso de `behat` y `phpspec` para lanzar pruebas cuyos fallos nos fuesen indicando qué pasos seguir a continuación: qué teníamos que desarrollar.
+Esto nos ha llevado a descubrir las entidades, value objects y colaboradores que iban siendo necesarios para que el Use Case pudiese producir efectos en el sistema, combinando el uso de `behat` y `PHPSpec` para lanzar pruebas cuyos fallos nos fuesen indicando qué pasos seguir a continuación: qué teníamos que desarrollar.
 
 Finalmente, tenemos un Use Case implementado que coordina diversos actores para producir el efecto deseado. Todo este comportamiento se encuentra bajo un test que negocio puede validar, así como bajo una serie de test unitarios en forma de Spec que garantizan que el software que acabamos de escribir hace lo que dice que hace.
 
@@ -1711,7 +1711,7 @@ Ahora, al ejecutar `behat` obtenemos un mensaje más interesante que nos dice qu
       | 103 | Product 3 | 21.75 |
 ```
 
-Este mensaje ya es un mensaje de test que falla. Implementar lo necesario para hacerlo pasar nos va a llevar a volver otra vez a `phpspec`.
+Este mensaje ya es un mensaje de test que falla. Implementar lo necesario para hacerlo pasar nos va a llevar a volver otra vez a `PHPSpec`.
 
 El objeto que va a lanzar la excepción en último término es `UpdatePricesFromUploadedFile`, así que empezaremos a trabajar con su Spec, añadiendo este ejemplo:
 
@@ -1732,10 +1732,10 @@ El objeto que va a lanzar la excepción en último término es `UpdatePricesFrom
     }
 ```
 
-Al ejecutar phpspec:
+Al ejecutar PHPSpec:
 
 ```
-bin/phpspec run 'TalkingBit\BddExample\UpdatePricesFromUploadedFile'
+bin/PHPSpec run 'TalkingBit\BddExample\UpdatePricesFromUploadedFile'
 ```
 
 Obtenemos este resultado:
@@ -1880,7 +1880,7 @@ Y así lograr que el segundo escenario quede completo.
 
 ## Cerrando el último escenario
 
-Nos queda un escenario por terminar, uno en el que un error del sistema impide que un archivo correcto se pueda utilizar para actualizar los precios. En realidad, sólo tenemos un paso por implementar, el que nos indica la condición de que ocurre el error del sistema.
+Nos queda un escenario por terminar, uno en el que un error del sistema impide que un archivo correcto se pueda utilizar para actualizar los precios. En realidad, solo tenemos un paso por implementar, el que nos indica la condición de que ocurre el error del sistema.
 
 Una forma sencilla de provocar este error sería eliminar el archivo que hemos simulado subir, de este modo, el UseCase fallará al no tener nada de dónde leer.
 
@@ -1961,7 +1961,7 @@ Así que arreglamos primero la Spec y luego implementamos lo que nos falta:
 namespace spec\TalkingBit\BddExample\VO;
 
 use TalkingBit\BddExample\VO\FilePath;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class FilePathSpec extends ObjectBehavior
@@ -2162,16 +2162,16 @@ En estos tres capítulos hemos aprendido a definir una historia de usuario media
 
 Hemos aprendido también a convertir, con la ayuda de `behat`, la definición de la historia de usuario en un test funcional de aceptación, de modo que pueda dirigir nuestro desarrollo de fuera hacia adentro (por así decir).
 
-Este test, nos ayuda a decidir por dónde comenzaremos a desarrollar el software necesario para satisfacer la historia de usuario. Recurriendo a la especificación por ejemplos y la herramienta `phpspec`, hemos ido descubriendo las interfaces de los colaboradores necesarios e implementándolos a medida que la ejecución de los tests nos lo reclamaba.
+Este test, nos ayuda a decidir por dónde comenzaremos a desarrollar el software necesario para satisfacer la historia de usuario. Recurriendo a la especificación por ejemplos y la herramienta `PHPSpec`, hemos ido descubriendo las interfaces de los colaboradores necesarios e implementándolos a medida que la ejecución de los tests nos lo reclamaba.
 
-Finalmente, este proceso nos ha permitido completar la `feature`, que no sólo es plenamente funcional, en los términos definidos en el documento Gherkin, sino que está totalmente cubierta por tests unitarios y un test de aceptación.
+Finalmente, este proceso nos ha permitido completar la `feature`, que no solo es plenamente funcional, en los términos definidos en el documento Gherkin, sino que está totalmente cubierta por tests unitarios y un test de aceptación.
 
 ## Hacia dónde vamos ahora
 
 En el próximo capítulo de esta serie intentaremos resolver algunas cuestiones que han quedado pendientes, como pueden ser:
 
 * Cómo asegurar que nuestro tests de aceptación prueba lo que dice que prueba
-* Refinar los comportamientos de los objetos participantes usando `phpspec` y el test de aceptación como red de seguridad
+* Refinar los comportamientos de los objetos participantes usando `PHPSpec` y el test de aceptación como red de seguridad
 * Cómo mejorar los test de aceptación y configurar `behat` para adaptarlo a nuestros entornos particulares: cambiar la ubicación de features, tests, nombres, etc.
 
 Además, en [los siguientes capítulos](/bdd-example-4) veremos cómo realizar tests end-to-end, tanto para interfaces web como API. 

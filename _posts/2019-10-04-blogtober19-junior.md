@@ -37,7 +37,7 @@ A la larga, resultan un peligro para sí mismas y para el equipo. Su única arma
 
 Si juntas un alto nivel técnico pero escasa madurez personal te encuentras con este caso. La tecnología es un campo profesional que, en algunos casos, puede favorecer este tipo de perfiles, requiriendo excelencia técnica sin tener en cuenta a la persona entera. La idea del developer "10x", "ninja", "rockstar" viene de ahí.
 
-La inmadurez como persona te puede llevar a ser incapaz de trabajar en equipo, a no preocuparte ni un ápice por el negocio al que se dedica tu empresa o a no interesarte por lo que tus usuarios demandan, que no son sólo los clientes, si no también el resto de personas de otros departamentos.
+La inmadurez como persona te puede llevar a ser incapaz de trabajar en equipo, a no preocuparte ni un ápice por el negocio al que se dedica tu empresa o a no interesarte por lo que tus usuarios demandan, que no son solo los clientes, si no también el resto de personas de otros departamentos.
 
 ### Una palabra para definir muchos conceptos
 

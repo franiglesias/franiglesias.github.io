@@ -52,7 +52,7 @@ Después de intentarlo con un [plugin al efecto que no conseguí hacer funcionar
 
 Para empezar a trabajar, hice un duplicado del estado de la aplicación en la máquina de desarrollo (incluyendo base de datos, archivos de imágenes y demás). A continuación, me aseguré de que podía hacerla funcionar en el servidor web local para desarrollo. Fundamentalmente se trataba de configurar la aplicación para trabajar en esa máquina concreta (en realidad desarrollo en dos ordenadores, por lo que de paso estoy reorganizando cosas para poder mover el proyecto con facilidad).
 
-Una vez conseguido esto, instalé Composer para el proyecto, de modo que pudiese ir añadiendo dependencias (como Twig) de forma sencilla, pero también phpspec y phpunit para cuando tocase, o cualquier otra que llegase a ser necesaria. Posteriormente, creé un [repositorio en GitHub](https://github.com/franiglesias/mh13).
+Una vez conseguido esto, instalé Composer para el proyecto, de modo que pudiese ir añadiendo dependencias (como Twig) de forma sencilla, pero también PHPSpec y PHPUnit para cuando tocase, o cualquier otra que llegase a ser necesaria. Posteriormente, creé un [repositorio en GitHub](https://github.com/franiglesias/mh13).
 
 Una vez instalado Twig no tuve más que añadirlo como [member al AppController](http://mh13/app_controller.php), del cual descienden todos los controladores, y crear un Loader apuntando a la carpeta base que contiene las plantillas (en mi caso la carpeta view global del proyecto) y un Environment. No necesitas más para empezar.
 

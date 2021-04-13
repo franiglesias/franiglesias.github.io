@@ -45,7 +45,7 @@ Ahora bien, en toda aplicación que pretenda ser útil y utilizable tenemos que 
 
 ### Lo que esconde una vista
 
-Una situación habitual en cualquier aplicación es mostrar una vista que sea un listado de entidades o agregados disponibles en el sistema. Imagina un típico listado de clientes. El agregado Cliente, puede contener un pequeño universo de entidades, como Perfiles, Pedidos, Facturas y otros muchos. La petición a base de datos de un sólo cliente desencadenará numerosas peticiones a varias tablas cuyos resultados nos permitirán reconstruir el agregado. Ahora imagina eso mismo aplicado a cientos, miles o decenas de miles de clientes.
+Una situación habitual en cualquier aplicación es mostrar una vista que sea un listado de entidades o agregados disponibles en el sistema. Imagina un típico listado de clientes. El agregado Cliente, puede contener un pequeño universo de entidades, como Perfiles, Pedidos, Facturas y otros muchos. La petición a base de datos de un solo cliente desencadenará numerosas peticiones a varias tablas cuyos resultados nos permitirán reconstruir el agregado. Ahora imagina eso mismo aplicado a cientos, miles o decenas de miles de clientes.
 
 ¿Quiere decir que para obtener los datos necesarios para generar un listado de clientes tengo que pedir al repositorio todas las entidades existentes y cargarlas en memoria? Incluso aunque aplique una especificación que limite su número, hacerlo así suena como una llamada al desastre en cuanto a consumo de recursos y memoria.
 
@@ -56,14 +56,14 @@ Típicamente, estos listados necesitan una cantidad reducida de información:
 * Un número limitado de clientes por página mostrada, una consideración que, por otra parte, es totalmente indiferente para el dominio.
 * Frecuentemente se necesita filtrar y ordenar el listado.
 
-Es decir, es evidente que hay una desproporción entre los datos que se necesitan mostrar y los que obtendríamos haciendo una petición al repositorio. De hecho, pedir este listado a un repositorio no es sólo ineficiente, sino que no tiene el más mínimo sentido. El dominio no entiende de páginas, de filtros o de ordenación. Todo eso con problemas de la capa de presentación, por tanto, de la infraestructura.
+Es decir, es evidente que hay una desproporción entre los datos que se necesitan mostrar y los que obtendríamos haciendo una petición al repositorio. De hecho, pedir este listado a un repositorio no es solo ineficiente, sino que no tiene el más mínimo sentido. El dominio no entiende de páginas, de filtros o de ordenación. Todo eso con problemas de la capa de presentación, por tanto, de la infraestructura.
 
-Este tipo de listados son necesarios para muchas acciones que necesitan los usuarios del sistema. Imagina, por ejemplo, la vista de entregas por repartidor de una empresa de transportes. El caso de uso será algo así como "mostrar la lista de entregas para la ruta X". Muy posiblemente el meollo de ese caso de uso sea la optimización de las entregas en la ruta para minimizar el tiempo. El listado sólo es la visualización de ese resultado. Es posible que el número de entregas totales alcance varias decenas, mientras que cada página de la vista sólo muestre 15 ó 20 porque es la capacidad de la pantalla disponible.
+Este tipo de listados son necesarios para muchas acciones que necesitan los usuarios del sistema. Imagina, por ejemplo, la vista de entregas por repartidor de una empresa de transportes. El caso de uso será algo así como "mostrar la lista de entregas para la ruta X". Muy posiblemente el meollo de ese caso de uso sea la optimización de las entregas en la ruta para minimizar el tiempo. El listado solo es la visualización de ese resultado. Es posible que el número de entregas totales alcance varias decenas, mientras que cada página de la vista solo muestre 15 ó 20 porque es la capacidad de la pantalla disponible.
 
 Claramente tenemos dos problemas distintos: la selección de entregas y el cálculo de la ruta óptima para ese día, que es una cuestión del dominio, y la visualización de esa ruta que es una cuestión de la infraestructura.
 
 ### View Model
 
-Una forma de enfocar este problema es aplicar el patrón MVC, no para toda la aplicación, sino para cada vista concreta. El View Model sería una representación de la información que queremos mostrar en una determinada vista, entendiendo como vista cualquier output del sistema, ya sea una GUI, una página web o la respuesta JSON de un API.
+Una forma de enfocar este problema es aplicar el patrón MVC, no para toda la aplicación, sino para cada vista concreta. El View Model sería una representación de la información que queremos mostrar en una determinada vista, entendiendo como vista cualquier output del sistema, ya sea una GUI, una página web o la respuesta JSON de una API.
 
 

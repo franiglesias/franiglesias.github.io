@@ -63,7 +63,7 @@ Para decirlo de forma más técnica y menos dramática: todos tenemos un cierto 
 En particular, señalaría estos factores que influyen en la dificultad psicológica de poner a prueba el código creado por nosotros:
 
 1. **Tarea terminada**: cuando conseguimos que un código funcione tenemos la sensación de haber cumplido con la tarea, por lo que la fase de testing se convierte en un extra difícil de asumir. Nuestra mente se ha puesto en modo de "buscar la siguiente tarea".
-2. **La solución única**: la mayoría de nosotros hemos pasado por un sistema educativo que ha inculcado en nuestros cerebros la idea de que sólo hay una solución correcta para los problemas. Una cultura maniquea, en la que las cosas o están bien o están mal y en la que la evaluación se percibe como un peligro más que como una forma de diagnostico (a ver si va a fallar el test en algún caso raruno).
+2. **La solución única**: la mayoría de nosotros hemos pasado por un sistema educativo que ha inculcado en nuestros cerebros la idea de que solo hay una solución correcta para los problemas. Una cultura maniquea, en la que las cosas o están bien o están mal y en la que la evaluación se percibe como un peligro más que como una forma de diagnostico (a ver si va a fallar el test en algún caso raruno).
 
 Pero, ¿cómo librarse de esta visión subjetiva del propio código? Probablemente la mejor forma sea utilizando un enfoque *test first*, como TDD y BDD. 
 
@@ -91,7 +91,7 @@ La respuesta es otra pregunta: ¿cómo puedes decir que el producto funciona si 
 
 Es habitual tener la siguiente experiencia: dedicar un tiempo a desarrollar un código, entregarlo y tener que emplear el mismo tiempo o más para corregir detectar y corregir errores que se han manifestado tras entregar el producto. De tal modo que la definición de producto **terminado** queda completamente cuestionada: ¿podemos decir que un producto está terminado si tenemos que corregir errores que impiden su funcionamiento en muchos de los casos de uso habituales?
 
-Ese tiempo que hemos tenido que dedicar a corregir errores hubiera podido dedicarse a prevenirlos mediante un testeo adecuado que guiase el desarrollo. No sólo eso, los errores pueden tener consecuencias en forma de pérdida de ingresos, publicidad negativa, etc, que son medibles y, muy probablemente, supongan un mayor coste que haber tratado de garantizar una buena cobertura de tests.
+Ese tiempo que hemos tenido que dedicar a corregir errores hubiera podido dedicarse a prevenirlos mediante un testeo adecuado que guiase el desarrollo. No solo eso, los errores pueden tener consecuencias en forma de pérdida de ingresos, publicidad negativa, etc, que son medibles y, muy probablemente, supongan un mayor coste que haber tratado de garantizar una buena cobertura de tests.
 
 ## Testear no es igual a confirmar que funciona
 
@@ -101,7 +101,7 @@ Siguiendo la idea de la falsabilidad, un experimento exitoso no demuestra que la
 
 Con los tests de software pasa algo parecido. Un test determinado puede pasar, pero eso no garantiza que el software funcione bien, ya que puede haber casos en los que no. Los test deberían buscar el fallo del software, es decir, probar aquellos casos que pondrían en cuestión su funcionamiento. Cuantos más de estos casos podamos expresar en forma de test, con más solidez podremos afirmar que el software funciona.
 
-Un test de *happy path*, es decir, un test que sólo ejercita el flujo perfecto de nuestro código no nos garantiza el funcionamiento del mismo, aunque ciertamente nos ayuda proporcionando una representación formal de cuál debería ser su comportamiento.
+Un test de *happy path*, es decir, un test que solo ejercita el flujo perfecto de nuestro código no nos garantiza el funcionamiento del mismo, aunque ciertamente nos ayuda proporcionando una representación formal de cuál debería ser su comportamiento.
 
 ## Responsabilidad y testeo
 

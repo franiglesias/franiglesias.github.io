@@ -39,7 +39,7 @@ En muchos entornos de trabajo existe una tensión entre la entrega rápida y fre
 
 * La segunda fuerza impulsa a los equipos a mejorar la calidad del código aplicando buenas prácticas tanto al código nuevo como al existente. En el peor de los casos, el equipo podría estar dedicándose a refactorizar toda la base de código hasta la extenuación sin entregar valor con la suficiente velocidad o sin entregar valor alguno en el corto plazo, aunque se gane velocidad en el medio y largo con un código más legible y fácil de mantener.
 
-Un libro muy recomendable para encontrar una solución a esta disyuntiva es [The nature of software development, de Ron Jeffreys](https://www.amazon.es/Nature-Software-Development-Simple-Valuable/dp/1941222374). Resumiendo mucho, podríamos decir que la propuesta que hace es aplicar la _regla del boy-scout_: deja siempre el campamento mejor que como lo has encontrado. De este modo cada parte del código recibirá atención proporcional a la cantidad de veces que debamos intervenir sobre ella, y en cada una de esas veces no sólo evolucionará hacia un mejor diseño, sino que será más fácil realizar las modificaciones requeridas por la user story.
+Un libro muy recomendable para encontrar una solución a esta disyuntiva es [The nature of software development, de Ron Jeffreys](https://www.amazon.es/Nature-Software-Development-Simple-Valuable/dp/1941222374). Resumiendo mucho, podríamos decir que la propuesta que hace es aplicar la _regla del boy-scout_: deja siempre el campamento mejor que como lo has encontrado. De este modo cada parte del código recibirá atención proporcional a la cantidad de veces que debamos intervenir sobre ella, y en cada una de esas veces no solo evolucionará hacia un mejor diseño, sino que será más fácil realizar las modificaciones requeridas por la user story.
 
 Los proyectos de refactor como tales no parecen muy buena idea, salvo que realmente el estado del código sea tan malo que imposibilite una entrega realista de valor. 
 
@@ -94,10 +94,10 @@ Las condicionales aumentan la complejidad del código y, si están anidadas, muc
 Por ejemplo, el primer nivel de condicionales tras el bloque `try… catch` nos indica que hay tres cursos de acción posibles:
  
 * En el primero encontramos un nuevo `if`, en el que tenemos 3 posibilidades.
-* El segundo curso (`elseif`) sólo tiene un curso posible.
+* El segundo curso (`elseif`) solo tiene un curso posible.
 * El tercer curso (`else`), nos lleva a un complejo árbol, cuyo primer nivel ya nos ofrece 2 nuevos caminos.
  
-A estas alturas estamos hablando de seis posibles cursos sólo en los primeros dos niveles de anidación. Puedes imaginar la complejidad del resto. A eso hay que añadir las condiciones combinadas.
+A estas alturas estamos hablando de seis posibles cursos solo en los primeros dos niveles de anidación. Puedes imaginar la complejidad del resto. A eso hay que añadir las condiciones combinadas.
 
 ### Condiciones combinadas
 
@@ -133,7 +133,7 @@ Nuestra primera tarea sería generar **tests de caracterización**, dado que no 
 
 Hasta cierto punto, estos tests de caracterización podrían convertirse en la base de los tests de aceptación que prepararemos para cumplimentar la historia que nos han pedido.
 
-Una forma de abordarlo es ir identificando outputs que correspondan a determinados flujos y, poco a poco, cubrir todos los casos. En algún momento, podremos comenzar a refactorizar aquellos flujos que tengamos bien cubiertos y sólo en ese caso.
+Una forma de abordarlo es ir identificando outputs que correspondan a determinados flujos y, poco a poco, cubrir todos los casos. En algún momento, podremos comenzar a refactorizar aquellos flujos que tengamos bien cubiertos y solo en ese caso.
 
 ### Primer test y primeros problemas
 
@@ -166,7 +166,7 @@ Dado que nuestras clases existentes no están bajo un namespace tenemos que conf
     "bin-dir": "bin"
   },
   "require": {
-    "phpunit/phpunit": "6.5.4"
+    "PHPUnit/PHPUnit": "6.5.4"
   }
 }
 ```
@@ -425,10 +425,10 @@ Hasta este momento ha sido relativamente fácil orientarnos en el bosque de ifs 
 
 ### Preparar el entorno para disponer de CodeCoverage
 
-Por una parte, vamos a crear un archivo de configuración de phpunit. Podemos hacerlo mediante el siguiente comando en shell en la raíz del proyecto:
+Por una parte, vamos a crear un archivo de configuración de PHPUnit. Podemos hacerlo mediante el siguiente comando en shell en la raíz del proyecto:
 
 ```bash
-bin/phpunit --generate-configuration
+bin/PHPUnit --generate-configuration
 ```
 
 Este comando es interactivo y nos pedirá confirmar algunos valores que toma del proyecto:
@@ -443,8 +443,8 @@ Lo siguiente será modificar un poco el archivo resultante ya que, por defecto, 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.5/phpunit.xsd"
+<PHPUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.PHPUnit.de/6.5/PHPUnit.xsd"
          bootstrap="vendor/autoload.php"
          forceCoversAnnotation="false"
          beStrictAboutCoversAnnotation="true"
@@ -459,13 +459,13 @@ Lo siguiente será modificar un poco el archivo resultante ya que, por defecto, 
             <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
-</phpunit>
+</PHPUnit>
 ```
 
-Ahora, podemos ejecutar `phpunit` con el informe de coverage que más nos convenga:
+Ahora, podemos ejecutar `PHPUnit` con el informe de coverage que más nos convenga:
 
 ```bash
-bin/phpunit --coverage-html ./coverage
+bin/PHPUnit --coverage-html ./coverage
 ```
 
 La línea anterior generará un informe de cobertura en Html creando la carpeta coverage si no existe. Abriendo el index.html en un navegador podremos acceder a él.

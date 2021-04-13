@@ -38,11 +38,11 @@ Al etiquetar es importante tener en cuenta el significado de las versiones. El "
 En versiones semánticas el número de versión tiene tres partes, representadas por números naturales:
 <p style="text-align:center;">Major version . Minor version . Patch version</p>
 
-**Major version**: implica cambios en el API que rompen la compatibilidad con versiones anteriores. En la práctica, indica que incorporar la nueva versión a un proyecto que usa tu software supone que hay que realizar cambios en ese proyecto.
+**Major version**: implica cambios en la API que rompen la compatibilidad con versiones anteriores. En la práctica, indica que incorporar la nueva versión a un proyecto que usa tu software supone que hay que realizar cambios en ese proyecto.
 
 **Minor version**: añades funcionalidades que no rompen la compatibilidad con versiones anteriores. Es decir, la nueva versión puede utilizarse o incorporarse a otro proyecto sin cambiar nada, aunque sí podría modificarse para utilizar las nuevas características.
 
-**Patch version**: indica una corrección de errores. No altera el API ni añade funcionalidades.
+**Patch version**: indica una corrección de errores. No altera la API ni añade funcionalidades.
 
 ## Ramificación o branching
 

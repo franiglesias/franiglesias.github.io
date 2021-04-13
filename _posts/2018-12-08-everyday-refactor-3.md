@@ -121,7 +121,7 @@ if ($order->getDestinationCountry() == Country::FRANCE && $order->id() < 745) {
 
 ```
 
-Un uso habitual de esta técnica es la de tratar casos particulares o que sean obvios en los primeros pasos del algoritmo, volviendo al flujo principal cuanto antes, de modo que el algoritmo sólo recibe aquellos casos a los que se aplica realmente.
+Un uso habitual de esta técnica es la de tratar casos particulares o que sean obvios en los primeros pasos del algoritmo, volviendo al flujo principal cuanto antes, de modo que el algoritmo solo recibe aquellos casos a los que se aplica realmente.
 
 ### Cláusulas de guarda
 

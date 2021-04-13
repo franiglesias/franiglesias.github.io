@@ -112,7 +112,7 @@ Este principio no se refiere a código. En realidad en un sistema el código se 
 
 ### YAGNI, You ain't gonna need it
 
-Ron Jeffries aconseja no añadir funcionalidad hasta que no la vayas a necesitar. Es tan simple, y tan difícil, como desarrollar sólo aquello que necesitas para que las cosas funcionen y no pensar en lo que podría necesitarse en un futuro.
+Ron Jeffries aconseja no añadir funcionalidad hasta que no la vayas a necesitar. Es tan simple, y tan difícil, como desarrollar solo aquello que necesitas para que las cosas funcionen y no pensar en lo que podría necesitarse en un futuro.
 
 Lo que no quita que desarrolles con flexibilidad y capacidad de adaptación a los cambios del futuro. Se refiere a que no insertes funcionalidad en un sistema simplemente porque puedes y a lo mejor un día la podrías querer llegar a usar.
 

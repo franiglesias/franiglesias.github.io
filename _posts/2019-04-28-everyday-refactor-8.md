@@ -37,7 +37,7 @@ Los principios que hemos enunciado se centran en el carácter único de la repre
 
 ### En los objetos a los que pertenece
 
-El principio *Tell, don't ask* nos proporciona una primera pista: el conocimiento que afecta sólo a un objeto debería estar en el propio objeto. Esto es, en lugar de obtener información de un objeto para operar con ella y tomar una decisión sobre ese objeto, le pedimos que lo haga él mismo y nos entregue el resultado si es preciso.
+El principio *Tell, don't ask* nos proporciona una primera pista: el conocimiento que afecta solo a un objeto debería estar en el propio objeto. Esto es, en lugar de obtener información de un objeto para operar con ella y tomar una decisión sobre ese objeto, le pedimos que lo haga él mismo y nos entregue el resultado si es preciso.
 
 En ese sentido, los *Value Objects*, de los que hemos hablado tantas veces, son lugares ideales para encapsular conocimiento. Veamos un ejemplo:
 
@@ -196,7 +196,7 @@ class HasDomainEligibleForPromotion
 }
 ```
 
-Ahora el conocimiento de la regla de negocio se encuentra en un sólo lugar y lo puedes reutilizar allí donde lo necesites[^fn-spec]
+Ahora el conocimiento de la regla de negocio se encuentra en un solo lugar y lo puedes reutilizar allí donde lo necesites[^fn-spec]
 
 [^fn-spec]: Una objeción que se puede poner a este código es que instanciamos la Specification. Normalmente lo mejor sería inyectar en el servicio una factoría de Specification para pedirle las que necesitemos y que sea la factoría la que gestione sus posibles dependencias.
 
@@ -219,7 +219,7 @@ class OfferPromotion
 }
 ```
 
-No sólo eso, sino que incluso nos permite escribir mejor el servicio al expresar las relaciones correctas: en este caso la regla de negocio se basa en una propiedad de los clientes y no de los pedidos, aunque luego se aplique el resultado a los pedidos o al cálculo de su importe.
+No solo eso, sino que incluso nos permite escribir mejor el servicio al expresar las relaciones correctas: en este caso la regla de negocio se basa en una propiedad de los clientes y no de los pedidos, aunque luego se aplique el resultado a los pedidos o al cálculo de su importe.
 
 Sobre el patrón Specification puedes encontrar [más información en este artículo](https://franiglesias.github.io/patron-specification-del-dominio-a-la-infraestructura-1/)
 

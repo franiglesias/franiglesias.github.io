@@ -18,7 +18,7 @@ Para ello, me he inspirado en el modo en que lo hemos hecho en el equipo de Back
 
 ## Análisis de situación
 
-La primera tarea en la que nos centraremos es conocer la situación real del testing de un proyecto. Puede que no haya ni un sólo test. O puede que ya haya un cierto nivel de testeo. Y, en este caso, la calidad del mismo puede oscilar entre dudosa y aceptable.
+La primera tarea en la que nos centraremos es conocer la situación real del testing de un proyecto. Puede que no haya ni un solo test. O puede que ya haya un cierto nivel de testeo. Y, en este caso, la calidad del mismo puede oscilar entre dudosa y aceptable.
 
 Si no hay tests, el trabajo está claro: decidirse por un framework de testing que nos ayude en la tarea, instalarlo e investigar por dónde empezar.
 
@@ -28,7 +28,7 @@ Si ya existen tests, lo suyo es ejecutarlos y ver qué pasa. Podrían ocurrir va
 * Los tests se ejecutan, pero algunos no pasan. En ese caso toca intentar arreglarlos o, si por algún motivo esto resulta complicado, eliminarlos y quedarse con los que pasan.
 * Los tests ni siquiera se pueden ejecutar o si lo hacen fallan todos. Esto es síntoma de que los intentos de test que se hicieron en ese código son seguramente bastante antiguos y se abandonaron. Es muy posible que tengas que eliminar todo y empezar de cero.
 
-En cuanto al framework de test, posiblemente lo mejor es empezar con [phpunit](https://phpunit.de) que no deja de ser la herramienta de testing estándar en el mundo PHP, pero no descartaría tampoco [codeception](https://codeception.com), al menos para ciertas áreas.
+En cuanto al framework de test, posiblemente lo mejor es empezar con [PHPUnit](https://PHPUnit.de) que no deja de ser la herramienta de testing estándar en el mundo PHP, pero no descartaría tampoco [codeception](https://codeception.com), al menos para ciertas áreas.
 
 ### Cultura de testing
 
@@ -61,7 +61,7 @@ En cualquier caso, el análisis de cobertura es una buena herramienta para ident
 
 ### Cómo priorizar
 
-Cuando la cobertura de tests es baja puede invadirnos una cierta sensación de agobio ante la tarea que nos espera. ¿Por dónde empezar a trabajar y cómo? ¿Debería tener tareas o historias que sean sólo técnicas para poder incrementar el nivel de testing?
+Cuando la cobertura de tests es baja puede invadirnos una cierta sensación de agobio ante la tarea que nos espera. ¿Por dónde empezar a trabajar y cómo? ¿Debería tener tareas o historias que sean solo técnicas para poder incrementar el nivel de testing?
 
 La cuestión es priorizar y la mejor forma de hacerlo es alineándonos con negocio.
 

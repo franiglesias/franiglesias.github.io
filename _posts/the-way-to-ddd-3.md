@@ -18,7 +18,7 @@ Contamos con dos herramientas de las que ya [hemos hablado con anterioridad en e
 
 ### Ley de demeter
 
-Un método de una clase sólo debe hablar con los objetos que conoce:
+Un método de una clase solo debe hablar con los objetos que conoce:
 
 * La propia clase, de la que puede usar todos sus métodos.
 * Objetos que son propiedades de esa clase.

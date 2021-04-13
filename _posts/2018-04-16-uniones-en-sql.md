@@ -259,7 +259,7 @@ SELECT * FROM books INNER JOIN authors ON books.author_id = authors.id;
 3 rows in set (0,00 sec)
 ```
 
-Ves la diferencia, ¿verdad? Con el `INNER JOIN` sólo se devuelven resultados "dentro" del producto cartesiano (o dicho de otro modo, se devuelven pares de registros de ambas tablas). Se toman los registros de la tabla "izquierda" y se combinan con el registro correspondiente de la tabla "derecha" que cumpla las condiciones del `ON` y si no existe se ignora esa fila.
+Ves la diferencia, ¿verdad? Con el `INNER JOIN` solo se devuelven resultados "dentro" del producto cartesiano (o dicho de otro modo, se devuelven pares de registros de ambas tablas). Se toman los registros de la tabla "izquierda" y se combinan con el registro correspondiente de la tabla "derecha" que cumpla las condiciones del `ON` y si no existe se ignora esa fila.
 
 Con `LEFT JOIN` se podría decir que se toman todos los registros de la tabla izquierda relevantes (que cumplan las condiciones de `WHERE` si está presente) y se combinan con el registro correspondiente de la tabla "derecha" tanto si existe, como si no, un registro en ella que cumpla las condiciones de `ON`.
 
@@ -429,7 +429,7 @@ FROM books
 ORDER BY title;
 ```
 
-En qué medida debes usar `left` o `right` depende de si necesitas obtener todos los registros posibles de las tablas izquierda o derecha, o sólo aquellos que tienen datos en ambas tablas.
+En qué medida debes usar `left` o `right` depende de si necesitas obtener todos los registros posibles de las tablas izquierda o derecha, o solo aquellos que tienen datos en ambas tablas.
 
 Ahora veamos cómo podemos buscar libros que correspondan a una etiqueta. Empezamos por la combinación de tablas y luego no tenemos más que indicar en `WHERE` qué etiquetas queremos seleccionar:
 

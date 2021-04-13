@@ -130,13 +130,13 @@ Un problema que nos plantea `map` tiene que ver con lo que devuelve. Si queremos
 
 Además, me estoy fijando que hay algunas ideas que no están bien expresadas y que incluso entran en contracción, como que el método `map` devuelva un array, cuando quiero que devuelva un Collection y así poderlo encadenar.
 
-Sin embargo, hay una cuestión que me preocupa: ¿y si no devuelvo objetos en la función de mapeo? Por ejemplo, a lo mejor sólo quiero obtener una lista simple de nombres a partir de una colección de objetos.
+Sin embargo, hay una cuestión que me preocupa: ¿y si no devuelvo objetos en la función de mapeo? Por ejemplo, a lo mejor solo quiero obtener una lista simple de nombres a partir de una colección de objetos.
 
 Una solución es forzar que todas las transformaciones den como resultado objetos, que no tienen que ser del mismo tipo que los de la colección original, de modo que pueda coleccionarlos sin más. Eso me lleva a pensar en que podría ser necesario un método `mapToArray` o `toArray` (o ambos), con el que mapear una colección a un array y que sería el punto final de un pipeline.
 
 Otra solución sería generalizar Collection para permitir cualquier tipo de dato, de modo que pueda coleccionar cualquier cosa. Esta idea es correcta y es interesante. Podríamos poder seguir especificando el tipo para garantizar que la lista se mantenga coherente. Aún siguiendo este desarrollo, sigue siendo interesante incluir el método `mapToArray` para poder obtener la colección en ese formato que suele ser útil para interactuar con otro código existente.
 
-¿Cuál de las dos elegir? Pues da un poco igual. Como estamos desarrollando con TDD estamos protegidos para realizar cualquier cambio, no sólo refactoring, sino también cambios de funcionalidad. Mi opción va a ser la primera (sólo Objetos) y luego, ya veremos. Lo anoto para no olvidarlo, además de reorganizar un poco la lista conforme a las reflexiones que he estado haciendo:
+¿Cuál de las dos elegir? Pues da un poco igual. Como estamos desarrollando con TDD estamos protegidos para realizar cualquier cambio, no solo refactoring, sino también cambios de funcionalidad. Mi opción va a ser la primera (solo Objetos) y luego, ya veremos. Lo anoto para no olvidarlo, además de reorganizar un poco la lista conforme a las reflexiones que he estado haciendo:
 
 * Que pueda devolver una Collection de transformaciones de los objetos (map)
 * Que pueda devolver una Collection de objetos filtrados conforme a un criterio (filter)
@@ -266,7 +266,7 @@ En cualquier caso, ahora hemos conseguido un test que falla, con lo que estamos 
     }
 ```
 
-Ahora el test pasa, pero no prueba que estemos mapeando, sólo prueba que devolvemos una Collection con el tipo MappedObject, el objeto resultado del mapeo. Nuestro test necesita una cierta **triangulación**, es decir, varias aserciones que, juntas, prueben lo que queremos mostrar con el test. Debemos volver al rojo, retomando un test que descartamos antes:
+Ahora el test pasa, pero no prueba que estemos mapeando, solo prueba que devolvemos una Collection con el tipo MappedObject, el objeto resultado del mapeo. Nuestro test necesita una cierta **triangulación**, es decir, varias aserciones que, juntas, prueben lo que queremos mostrar con el test. Debemos volver al rojo, retomando un test que descartamos antes:
 
 ```php
     public function test_Map_can_map_one_element()

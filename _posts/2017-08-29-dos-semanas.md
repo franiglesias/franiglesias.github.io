@@ -21,7 +21,7 @@ Están los conceptos propios del dominio, que en este caso es bastante amplio y 
 
 Están las herramientas y los entornos de trabajo. Acostumbrado al "modo manual", hay muchas cosas que casi me parecen magia. De repente he entrado en el mundo de Docker, Git Hooks, Jenkins y demás.
 
-Está el hecho enfrentarse a un código que no conoces por primera vez y que usa algunas infraestructuras que no conocías (Elastic, Redis, etc).
+Está el hecho enfrentarse a un código que no conoces por primera vez y que usa algunas infraestructuras que no conocías (Elastic, Redis, etc.).
 
 Está el hecho de trabajar con metodología Scrum y lo que esto conlleva.
 

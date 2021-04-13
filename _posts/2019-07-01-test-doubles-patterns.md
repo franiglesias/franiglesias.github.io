@@ -13,7 +13,7 @@ En este artículo proponemos varios patrones prácticos para crear y utilizar te
 
 El primer patrón de creación y uso de dobles de test es no usarlos. Es decir, en la medida de lo posible en los tests es preferible usar los objetos "reales" en lugar de doblarlos.
 
-Sin embargo, hay muchas buenas razones para usar dobles. En situaciones de test nos interesa asegurar que el comportamiento que se ejecuta en la unidad bajo test es exactamente el que queremos verificar. Esto es, si probamos una unidad de software (ya sea una única clase aislada, ya sean varias coordinadas) queremos cerciorarnos de que sólo esa unidad, o ese conjunto, sea la responsable del resultado que obtenemos y que ese resultado no está afectado por elementos externos.
+Sin embargo, hay muchas buenas razones para usar dobles. En situaciones de test nos interesa asegurar que el comportamiento que se ejecuta en la unidad bajo test es exactamente el que queremos verificar. Esto es, si probamos una unidad de software (ya sea una única clase aislada, ya sean varias coordinadas) queremos cerciorarnos de que solo esa unidad, o ese conjunto, sea la responsable del resultado que obtenemos y que ese resultado no está afectado por elementos externos.
 
 Por otro lado, los objetos reales pueden perjudicar aspectos como la velocidad o fortaleza de los test, introduciendo variables no deseadas que, incluso sin afectar al resultado devuelto, pueden hacerlos demasiado lentos o provocar fallos por razones ajenas al comportamiento que queremos testear. Esto perjudica la utilidad del test y del ciclo de *feedback* que nos puede proporcionar.
 
@@ -134,7 +134,7 @@ class GetBooksByCategoryCommandHandlerTest extends TestCase
 }
 ```
 
-Pero también hay que tener en cuenta un factor pragmático. En ocasiones puede ser más complejo montar uno de estos objetos que generar su doble, especialmente si sólo nos vamos a fijar en unos pocos de sus métodos o propiedades, o incluso si no vamos a hacer ningún uso de ellos, porque en la unidad probada el objeto simplemente se va despachando entre diversos colaboradores, algo bastante habitual en UseCases.
+Pero también hay que tener en cuenta un factor pragmático. En ocasiones puede ser más complejo montar uno de estos objetos que generar su doble, especialmente si solo nos vamos a fijar en unos pocos de sus métodos o propiedades, o incluso si no vamos a hacer ningún uso de ellos, porque en la unidad probada el objeto simplemente se va despachando entre diversos colaboradores, algo bastante habitual en UseCases.
 
 ```php
 <?php
@@ -214,7 +214,7 @@ Así que, en esos casos, podemos permitirnos doblar objetos en lugar de instanci
 
 ## Utilizar una librería de dobles
 
-Existen diversas librerías con las que generar dobles para test que nos aportan algunas utilidades interesantes, así como una manera cómoda y rápida de obtener los que necesitamos en cada caso. **phpunit** integra una utilidad propia. También integra el framework **Prophecy**, que ofrece una alternativa interesante para generar dobles aunque está diseñada para trabajar mano a mano con **phpspec** en TDD y BDD.
+Existen diversas librerías con las que generar dobles para test que nos aportan algunas utilidades interesantes, así como una manera cómoda y rápida de obtener los que necesitamos en cada caso. **PHPUnit** integra una utilidad propia. También integra el framework **Prophecy**, que ofrece una alternativa interesante para generar dobles aunque está diseñada para trabajar mano a mano con **PHPSpec** en TDD y BDD.
 
 Hay un oferta bastante amplia de otras librerías de dobles, pero nos centraremos en estas dos.
 
@@ -222,7 +222,7 @@ Hay un oferta bastante amplia de otras librerías de dobles, pero nos centraremo
 
 En este apartado veremos patrones básicos de creación de dobles.
 
-La manera más sencilla de crear un doble de test en **phpunit**, sería utilizar el método `createMock` de nuestro test case:
+La manera más sencilla de crear un doble de test en **PHPUnit**, sería utilizar el método `createMock` de nuestro test case:
 
 ```php
 $generateUserPassword = $this->createMock(GenerateUserPassword::class);
@@ -236,9 +236,9 @@ $generateUserPassword = $this->prophesize(GenerateUserPassword::class)->reveal()
 
 La diferencia aquí es que `prophesize` devuelve un objeto Prophet que realmente es un builder que nos permite configurar el doble, el cual obtenemos con el método reveal, una vez configurado.
 
-**Phpunit** también nos permite crear un `builder` para personalizar al máximo lo que necesitamos de él, pero la verdad es que `createMock` nos servirá como atajo válido para la mayoría de los casos generando un doble que podremos usar sin más y al que le podremos configurar su comportamiento gracias a los métodos `expects` y `method`.
+**PHPUnit** también nos permite crear un `builder` para personalizar al máximo lo que necesitamos de él, pero la verdad es que `createMock` nos servirá como atajo válido para la mayoría de los casos generando un doble que podremos usar sin más y al que le podremos configurar su comportamiento gracias a los métodos `expects` y `method`.
 
-Esta diferencia supone un pequeño engorro a la hora de usar **Prophecy** frente al `MockBuilder` nativo de **PhpUnit** y es que te obliga a instanciar la unidad bajo test en cada test, en lugar de poder hacerlo una única vez en el `setup`, como veremos más adelante en detalle.
+Esta diferencia supone un pequeño engorro a la hora de usar **Prophecy** frente al `MockBuilder` nativo de **PHPUnit** y es que te obliga a instanciar la unidad bajo test en cada test, en lugar de poder hacerlo una única vez en el `setup`, como veremos más adelante en detalle.
 
 Finalmente, podemos crear dobles usando clases anónimos que extienden la clase que estamos doblando o implementan su interfaz.
 
@@ -266,7 +266,7 @@ Generando así los dobles no encontraremos grandes diferencias prácticas, por n
 
 ### Creación con clases anónimas
 
-De forma alternativa podríamos crear un doble instanciando una clase anónima. Es un método muy eficiente, aunque puede resultar trabajoso si las interfaces son complejas o si no disponemos de ellas. En esta modalidad, queda mucho más claro el beneficio que aportan las interfaces explícitas, incluso aunque sólo tengamos una implementación de producción.
+De forma alternativa podríamos crear un doble instanciando una clase anónima. Es un método muy eficiente, aunque puede resultar trabajoso si las interfaces son complejas o si no disponemos de ellas. En esta modalidad, queda mucho más claro el beneficio que aportan las interfaces explícitas, incluso aunque solo tengamos una implementación de producción.
 
 En primer lugar, vamos a suponer que tenemos una interfaz:
 
@@ -289,7 +289,7 @@ $passwordGenerator = new class() extends PasswordGeneratorInterface {
 };
 ```
 
-Ahora, imaginemos que no tenemos una interfaz explícita, sino que contamos sólo con una implementación.
+Ahora, imaginemos que no tenemos una interfaz explícita, sino que contamos solo con una implementación.
 
 ```php
 class CalculateFee 
@@ -455,7 +455,7 @@ class PrintBookCommandHandlerTest extends TestCase
 
 Cuando testeamos servicios, usecases y otros objetos que no tienen estadoes una buena idea instanciarlos en el setup, de modo que nos evitemos repetir el proceso en cada test. Dentro de cada test configuramos el comportamiento que nos interesa para ese escenario concreto, lo que nos permite un test menos farragoso y más claro.
 
-Esto es algo que podemos hacer fácilmente con el `mockBuilder` de **phpunit**.
+Esto es algo que podemos hacer fácilmente con el `mockBuilder` de **PHPUnit**.
 
 Con **prophesize** tenemos que usar otro enfoque un poco más incómodo, teniendo que instanciar la unidad bajo test en cada test.
 
@@ -673,7 +673,7 @@ $bookRepository = new class($book) implements BookRepositoryInterface {
 
 Cuando queremos verificar que un colaborador ha sido llamado por nuestro código bajo test tenemos la tentación de crear un *mock* o un *spy*, es decir, un doble que registra el modo en que ha sido utilizado.
 
-Para testear esto de manera explícita podemos hacerlo mediante este patrón en **phpunit**:
+Para testear esto de manera explícita podemos hacerlo mediante este patrón en **PHPUnit**:
 
 ```php
 $this->bookRepository
@@ -804,7 +804,7 @@ El problema viene cuando esa dependencia necesita ser doblada, como en este ejem
 
 El primer paso sería intentar aislar la instanciación de la dependencia en un método de la clase en la que corresponda. No siempre tendremos acceso a ella para modificarla o no siempre será posible aislarla limpiamente.
 
-En **phpunit** puedes hacer algo que suena contraintuitivo, doblando la clase bajo test pero diciendo que doble el método que instancia la dependencia. En este caso, la librería Guzzle proporciona un `MockHandler` para poder simular llamadas fácilmente.
+En **PHPUnit** puedes hacer algo que suena contraintuitivo, doblando la clase bajo test pero diciendo que doble el método que instancia la dependencia. En este caso, la librería Guzzle proporciona un `MockHandler` para poder simular llamadas fácilmente.
 
 ```php
 class ClientRepositoryTest extends TestCase

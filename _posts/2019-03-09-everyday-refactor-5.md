@@ -21,7 +21,7 @@ En la práctica, además, podemos hacer que los **Enumerables** nos permitan una
 
 Empecemos con un caso más o menos típico. Tenemos una entidad con una propiedad que puede tener dos valores, como 'activo' y 'cancelado'. Inicialmente la modelamos con un *string*, que es como se va a guardar en base de datos, y confiamos en que lo sabremos manejar sin mayores problemas en el código. ¿Qué podría salir mal?
 
-Para empezar, cuando tenemos una variable o propiedad de tipo *string*, tenemos infinitos valores potenciales de esa variable o propiedad y tan sólo queremos usar dos de ellos. Así que, cuando necesitemos usarlo, tendremos que asegurarnos de que sólo consideraremos esos dos *strings* concretos. En otras palabras: tendremos que validarlos cada vez.
+Para empezar, cuando tenemos una variable o propiedad de tipo *string*, tenemos infinitos valores potenciales de esa variable o propiedad y tan solo queremos usar dos de ellos. Así que, cuando necesitemos usarlo, tendremos que asegurarnos de que solo consideraremos esos dos *strings* concretos. En otras palabras: tendremos que validarlos cada vez.
 
 Habitualmente también haremos alguna normalización, como poner el *string* en minúsculas o mayúsculas, para simplificar el proceso de comparación y asegurarnos una representación coherente.
 
@@ -115,7 +115,7 @@ En cualquier caso, lo que importa es que vamos a tener una representación en c�
 
 Por otro lado, está el tema de las constantes públicas. Es una cuestión de conveniencia ya que nos puede permitir acceder a los valores estándar en momentos en los que no podemos usar objetos mediante llamada estática.
 
-Nuestro siguiente paso debería ser implementar la validación que nos garantice que podemos instanciar sólo valores correctos.
+Nuestro siguiente paso debería ser implementar la validación que nos garantice que podemos instanciar solo valores correctos.
 
 ```php
 <?php
@@ -338,13 +338,13 @@ $newStatus = Status::cancelled();
 
 ## Enumerables y cambios de estado
 
-Supongamos que una cierta propiedad de una entidad se puede modelar con un enumerable de n elementos con la característica de que sólo puede cambiar en una cierta secuencia. 
+Supongamos que una cierta propiedad de una entidad se puede modelar con un enumerable de n elementos con la característica de que solo puede cambiar en una cierta secuencia. 
 
 Con frecuencia nos encontramos que esta gestión de estados la realiza la entidad. Sin embargo, podemos delegar en el enumerable buena parte de este comportamiento.
 
 A veces esta secuencia es lineal, indicando que la entidad pasa, a lo largo de su ciclo de vida, por los diferentes estados en un orden prefijado. Por ejemplo, un contrato puede pasar por los estados *pre-signed*, *signed*, *extended* and *finalized*, pero siempre lo hará en ese orden, por lo que es necesario comprobar que no es posible asignar a un contrato un estado nuevo que sea "incompatible" con el actual.
 
-Otras veces, el orden de la secuencia puede variar, pero sólo se puede pasar de unos estados determinados a otros. Por ejemplo, un post de un blog, puede pasar de *draft* a *ready to review*, pero no directamente a *published*, mientras que desde *ready to review* puede volver a *draft*, si el revisor no lo encuentra adecuado, o avanzar a *published* si está listo para ver la luz.
+Otras veces, el orden de la secuencia puede variar, pero solo se puede pasar de unos estados determinados a otros. Por ejemplo, un post de un blog, puede pasar de *draft* a *ready to review*, pero no directamente a *published*, mientras que desde *ready to review* puede volver a *draft*, si el revisor no lo encuentra adecuado, o avanzar a *published* si está listo para ver la luz.
 
 Como hemos dicho, este tipo de reglas de negocio pueden encapsularse en el propio enumerable simplificando así el código de la entidad. Hay muchas formas de hacer esto y en casos complejos necesitaremos hacer uso de otros patrones.
 

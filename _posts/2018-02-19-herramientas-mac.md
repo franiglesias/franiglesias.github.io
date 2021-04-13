@@ -90,7 +90,7 @@ Es el gestor de paquetes con el que instalar utilidades y programas en línea de
 
 ### Oh my zsh
 
-Se trata de una mejora para el terminal. Con ella, a través de plugins, dispones de una serie de mejoras de aspecto y de funcionalidad. El sólo hecho de mostrarte la branch actual del repositorio de Git es suficiente excusa para instalarlo, junto con el coloreado en ls. De ahí en adelante todo son ventajas.
+Se trata de una mejora para el terminal. Con ella, a través de plugins, dispones de una serie de mejoras de aspecto y de funcionalidad. El solo hecho de mostrarte la branch actual del repositorio de Git es suficiente excusa para instalarlo, junto con el coloreado en ls. De ahí en adelante todo son ventajas.
 
 [Oh my zsh](https://github.com/robbyrussell/oh-my-zsh)
 
@@ -98,13 +98,13 @@ Se trata de una mejora para el terminal. Con ella, a través de plugins, dispone
 
 ### Flycut
 
-Flycut te permite mantener un portapapeles histórico y persistente en Mac OS X. Es sólo para texto, pero para programadores ya nos vale. Puedes tener los últimos 99 recortes a tu disposición. Hay aplicaciones que incluyen un portapapeles histórico, pero no entre aplicaciones.
+Flycut te permite mantener un portapapeles histórico y persistente en Mac OS X. Es solo para texto, pero para programadores ya nos vale. Puedes tener los últimos 99 recortes a tu disposición. Hay aplicaciones que incluyen un portapapeles histórico, pero no entre aplicaciones.
 
 [Flycut](https://itunes.apple.com/es/app/flycut-clipboard-manager/id442160987?mt=12)
 
 ### Plugins para quicklook
 
-Quick Look es una característica del Finder de Mac OS X que permite abrir una vista preliminar de un archivo con sólo tenerlo seleccionado y pulsar la barra de espacio. Es muy práctico cuando quieres encontrar algo entre un montón de archivos. Lo que no es muy conocido es el hecho de que es un sistema extensible mediante plugins, lo que le permite reconocer formatos de archivo y mostrarlos adecuadamente.
+Quick Look es una característica del Finder de Mac OS X que permite abrir una vista preliminar de un archivo con solo tenerlo seleccionado y pulsar la barra de espacio. Es muy práctico cuando quieres encontrar algo entre un montón de archivos. Lo que no es muy conocido es el hecho de que es un sistema extensible mediante plugins, lo que le permite reconocer formatos de archivo y mostrarlos adecuadamente.
 
 En el enlace puedes acceder a una colección de plugins interesantes para desarrolladores. Con ellos puedes echar un vistazo rápido a archivos de código con syntax highlight, markdown formateado y un montón de cosas interesantes más.
 

@@ -124,7 +124,7 @@ public function testShouldFailWithBadRequestIfInvalidData(): void
 }
 ```
 
-Este test está en el nivel *End to End* de una API, así que por debajo prepara un entorno en el que se simula un usuario conectado al sistema, una llamada a un API con una muestra de datos (en este caso, incompletos o inválidos), así como las aserciones sobre la respuesta. Todo ese código técnico metido dentro del test haría éste muy difícil de leer y seguir.
+Este test está en el nivel *End to End* de una API, así que por debajo prepara un entorno en el que se simula un usuario conectado al sistema, una llamada a una API con una muestra de datos (en este caso, incompletos o inválidos), así como las aserciones sobre la respuesta. Todo ese código técnico metido dentro del test haría éste muy difícil de leer y seguir.
 
 En cambio, ocultando la complejidad técnica del test bajo métodos cuyo nombre explica lo que pasa a un nivel mayor de abstracción nos permite lograr un test razonablemente expresivo.
 

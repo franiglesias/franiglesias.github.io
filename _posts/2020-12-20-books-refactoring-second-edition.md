@@ -13,7 +13,7 @@ Cuando salió la primera edición la idea de refactor era relativamente novedosa
 
 Por otro lado, uno de los elementos que más llama la atención es que todos los ejemplos de código están en Javascript y no son puramente orientados a objetos, lo que consigue introducir la idea de que el refactor es aplicable a cualquier tipo de código en cualquier lenguaje, por si no quedaba lo suficientemente claro.
 
-Personalmente, el capítulo que más me interesa en este momento es el segundo: "Principles in Refactoring" que ayuda no sólo a definir qué es realmente Refactoring, sino también en qué momentos y cómo hacerlo. Buena parte de este capítulo es el núcleo de [esta charla](https://youtu.be/vqEg37e4Mkw).
+Personalmente, el capítulo que más me interesa en este momento es el segundo: "Principles in Refactoring" que ayuda no solo a definir qué es realmente Refactoring, sino también en qué momentos y cómo hacerlo. Buena parte de este capítulo es el núcleo de [esta charla](https://youtu.be/vqEg37e4Mkw).
 
 Por detrás, y a muy poca distancia, estaría el capítulo sobre los *smells*, escrito con Kent Beck, en el que se explican qué tipo de problemas podemos encontrar en el código y qué refactors aplicar para solucionarlos.
 

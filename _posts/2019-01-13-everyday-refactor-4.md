@@ -25,7 +25,7 @@ Los Value Objects pueden ser muy genéricos y reutilizables, como Money, o muy e
 
 Refactorizar a Value Objects puede ser una tarea de bastante calado ya que implica crear nuevas clases y utilizarlas en diversos puntos del código. Ahora bien, este proceso puede hacerse de forma bastante gradual. Ten en cuenta que:
 
-* Los Value Objects no tienen dependencias, para crearlos sólo necesitas tipos escalares u otros Value Objects.
+* Los Value Objects no tienen dependencias, para crearlos solo necesitas tipos escalares u otros Value Objects.
 * Los Value Objects se pueden instanciar allí donde los necesites, son *newables*.
 * Normalmente tendrás métodos para convertir los Value Objects a escalares, de modo que puedas utilizar sus valores con código que no puedes modificar.
 
@@ -35,7 +35,7 @@ Los Value Objects aportan varias ventajas:
 * Aportarán significado a tu código, siempre sabrás cuando una variable es un precio, un email, una edad, lo que necesites.
 * Te permiten abstraerte de cuestiones como formato, precisión, etc.
 
-### Propiedades múltiples para un sólo concepto
+### Propiedades múltiples para un solo concepto
 
 Veamos un objeto típico de cualquier negocio: `Customer` que da lugar a varios ejemplos clásicos de Value Object. Normalmente un cliente siempre tiene un nombre, que suele ser una combinación de nombre de pila y uno o más apellidos. También tiene una dirección, que es una combinación de unos cuantos datos.
 
@@ -217,7 +217,7 @@ class PersonName
 }
 ```
 
-La validación debe hacerse en el constructor, de modo que sólo se puedan instanciar `PersonName` correctos. Supongamos que nuestras reglas son:
+La validación debe hacerse en el constructor, de modo que solo se puedan instanciar `PersonName` correctos. Supongamos que nuestras reglas son:
 
 * Name y FirstSurname son obligatorios y no pueden ser un string vacío.
 * LastSurname es opcional.
@@ -246,7 +246,7 @@ class PersonName
 }
 ```
 
-Más adelante volveremos sobre este objeto. Ahora vamos a definir varios Value Objects. De momento, sólo me voy a concentrar en los constructores, sin añadir ningún comportamiento, ni siquiera el método `equals` ya que quiere centrarme en cómo movernos de usar escalares a estos objetos.
+Más adelante volveremos sobre este objeto. Ahora vamos a definir varios Value Objects. De momento, solo me voy a concentrar en los constructores, sin añadir ningún comportamiento, ni siquiera el método `equals` ya que quiere centrarme en cómo movernos de usar escalares a estos objetos.
 
 ### Value Object Compuesto
 
@@ -1001,17 +1001,17 @@ class CustomerBuilder
 }
 ```
 
-Esta modificación ya tiene algo más de calado, pero sigue siendo razonablemente segura. Si te fijas, sólo estamos modificando comportamientos del Builder y ahí podemos ser un poco menos estrictos. Teniendo muchísimo rigor, podríamos crear un decorador de `CustomerBuilder` que crease un `Customer` cuyo `PersonNameInterface` fuese un GenderMarkerPersonName, pero ya estaríamos entrando quizá en la sobre-ingeniería.
+Esta modificación ya tiene algo más de calado, pero sigue siendo razonablemente segura. Si te fijas, solo estamos modificando comportamientos del Builder y ahí podemos ser un poco menos estrictos. Teniendo muchísimo rigor, podríamos crear un decorador de `CustomerBuilder` que crease un `Customer` cuyo `PersonNameInterface` fuese un GenderMarkerPersonName, pero ya estaríamos entrando quizá en la sobre-ingeniería.
 
 Fíjate que ahora `Customer` es capaz de usar el tratamiento adecuado para cada cliente y realmente no lo hemos tenido que tocar. De hecho, hemos añadido la `feature` añadiendo bastante código, pero con un mínimo riesgo de afectación al resto de la aplicación.
 
 ## Haciendo balance
 
-Veamos algunos números. Empezamos con dos clases: `Customer` y `CustomerBuilder`. ¿Sabes cuántas tenemos ahora? Nada menos que nueve, además de una interfaz. La parte buena es que hemos afectado muy poco al código restante, tan sólo en el último paso, cuando hemos tenido que introducir una nueva `feature`. Pero aquí ya no estamos hablando de refactor.
+Veamos algunos números. Empezamos con dos clases: `Customer` y `CustomerBuilder`. ¿Sabes cuántas tenemos ahora? Nada menos que nueve, además de una interfaz. La parte buena es que hemos afectado muy poco al código restante, tan solo en el último paso, cuando hemos tenido que introducir una nueva `feature`. Pero aquí ya no estamos hablando de refactor.
 
 Sin embargo, nuestro dominio tiene ahora muchísima flexibilidad y capacidad de cambio. 
 
-Sería bastante fácil, por ejemplo, dar soporte a los múltiples formatos de dirección postal que se usan en todo el mundo, de modo que nuestro negocio está mejor preparado para expandirse internacionalmente ya que sólo tendríamos que introducir una interfaz y nuevos formatos a medida que los necesitemos, sin tener que cambiar el `core` del dominio. Puede sonar exagerado, pero estos pequeños detalles pueden ser un dolor de cabeza enorme si seguimos el modelo con el que empezamos. Algo tan pequeño puede ser la diferencia entre un código y un negocio que escale fácilmente o no.
+Sería bastante fácil, por ejemplo, dar soporte a los múltiples formatos de dirección postal que se usan en todo el mundo, de modo que nuestro negocio está mejor preparado para expandirse internacionalmente ya que solo tendríamos que introducir una interfaz y nuevos formatos a medida que los necesitemos, sin tener que cambiar el `core` del dominio. Puede sonar exagerado, pero estos pequeños detalles pueden ser un dolor de cabeza enorme si seguimos el modelo con el que empezamos. Algo tan pequeño puede ser la diferencia entre un código y un negocio que escale fácilmente o no.
 
 
 

@@ -13,13 +13,13 @@ La función de los dobles de test es tener bajo control el comportamiento de los
 
 Además, los dobles de test, nos ayudan a evitar dificultades derivadas de usar colaboradores que no controlamos o que introducen elementos indeseables como conexiones de red, sistemas de almacenamiento, servicios de terceros, etc.
 
-Es decir, cuando hacemos un test de una unidad de software lo que queremos comprobar es que la respuesta o efecto de esa unidad se produce como resultado de que se ejecuta su código y sólo su código. 
+Es decir, cuando hacemos un test de una unidad de software lo que queremos comprobar es que la respuesta o efecto de esa unidad se produce como resultado de que se ejecuta su código y solo su código. 
 
 En esa situación no queremos testear lo que hacen los colaboradores, **sino que queremos decidir que harán o no en ese test concreto**.
 
 ## Se llaman dobles, no mocks, y los hay de varios tipos
 
-Casi todo el mundo habla de mocks al referirse a los objetos que usamos para sustituir a los colaboradores de nuestra unidad bajo test. Sin embargo, llamarlos a todos mocks es un error. Cierto es que las librerías para fabricar dobles no ayudan en la terminología: desde `phpunit` que ofrece el método `createMock` o el `mockBuilder`, pasando por la conocida `mockery`.
+Casi todo el mundo habla de mocks al referirse a los objetos que usamos para sustituir a los colaboradores de nuestra unidad bajo test. Sin embargo, llamarlos a todos mocks es un error. Cierto es que las librerías para fabricar dobles no ayudan en la terminología: desde `PHPUnit` que ofrece el método `createMock` o el `mockBuilder`, pasando por la conocida `mockery`.
 
 Pero no, el nombre genérico es `test double`. Y es posible crear varios tipos de dobles:
 

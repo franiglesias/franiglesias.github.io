@@ -37,7 +37,7 @@ La tercera trampa es la esperanza de que las cosas puedan ser distintas. En mi c
 
 Otra cuestión es, si tan incómodo eres para la empresa, ¿por qué no te echa? Y aquí hay, de nuevo, dos hipótesis:
 
-La primera es que sigues siendo útil. Puede que te maltraten, pero te necesitan (si estuviese sólo en manos de los que "viven bien" en la organización, ésta no duraría ni un ejercicio fiscal más). Si eres una persona responsable que rindes cuentas ante tí misma, intentas seguir haciendo bien tu trabajo ante todo.
+La primera es que sigues siendo útil. Puede que te maltraten, pero te necesitan (si estuviese solo en manos de los que "viven bien" en la organización, ésta no duraría ni un ejercicio fiscal más). Si eres una persona responsable que rindes cuentas ante tí misma, intentas seguir haciendo bien tu trabajo ante todo.
 
 La segunda es que echarte es un problema, porque a partir de cierto punto puede salirle muy caro a la empresa (económicamente) y ante el riesgo de que levantes la alfombra y se vea la porquería acumulada debajo. Por eso, prefieren que te vayas, aunque sea por los pies por delante.
 

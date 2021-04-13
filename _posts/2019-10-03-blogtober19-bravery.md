@@ -25,7 +25,7 @@ Los discursos motivacionales de moda hablan, a veces, de la valentía de salir d
 
 Salir de la zona de confort es necesario para crecer, pero creo que se trata principalmente de luchar contra tu pereza o incluso tu ignorancia. Valentía no es salir de tu zona de confort, sino entrar en la zona del miedo, que cae bastante más lejos.
 
-La valentía tiene más que ver con ser capaz de hacer lo necesario aún cuando no sólo no tienes garantía de conseguirlo, sino que tampoco la tienes de llegar a salir de una pieza del intento aunque logres tu objetivo.
+La valentía tiene más que ver con ser capaz de hacer lo necesario aún cuando no solo no tienes garantía de conseguirlo, sino que tampoco la tienes de llegar a salir de una pieza del intento aunque logres tu objetivo.
 
 ### Elección
 

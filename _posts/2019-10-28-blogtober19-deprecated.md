@@ -14,7 +14,7 @@ Los [significados de la palabra *deprecated*](https://www.linguee.com/english-sp
 
 Me viene bien esto, porque en parte me ayuda a prepararme para la próxima palabra, que será `legacy`.
 
-El uso habitual de *deprecated* es el de marcar algo como obsoleto, ya sea una función, una clase, un endpoint de un API, etc, aunque aún no se retire del código, con el objeto de dejar de usarlo de manera ordenada y recurrir a las alternativas disponibles. De este modo se evitan roturas de servicio.
+El uso habitual de *deprecated* es el de marcar algo como obsoleto, ya sea una función, una clase, un endpoint de una API, etc, aunque aún no se retire del código, con el objeto de dejar de usarlo de manera ordenada y recurrir a las alternativas disponibles. De este modo se evitan roturas de servicio.
 
 Claro que, a veces, también ocurre que el proceso de *deprecation* no funciona como es debido. Por ejemplo, que una unidad *deprecated* nunca llega a borrarse del código, generando un bloque de código muerto que acaba distrayéndonos mientras buscamos información que nos confirme que efectivamente no se utiliza para nada.
 

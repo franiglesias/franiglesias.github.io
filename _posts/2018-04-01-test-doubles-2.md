@@ -28,9 +28,9 @@ Incluso si vemos que generar el test double es complicado, eso nos estaría indi
 
 ### Única responsabilidad
 
-Una clase que sólo tiene una razón para cambiar será más fácil de testear que una clase que tiene múltiples responsabilidades.
+Una clase que solo tiene una razón para cambiar será más fácil de testear que una clase que tiene múltiples responsabilidades.
 
-Al desarrollar los test doubles, este principio nos beneficia en el sentido de que las clases dobladas serán más sencillas de definir al tener que reproducir un sólo tipo de comportamiento. 
+Al desarrollar los test doubles, este principio nos beneficia en el sentido de que las clases dobladas serán más sencillas de definir al tener que reproducir un solo tipo de comportamiento. 
 
 ### Abierto para extensión, cerrado para modificación
 
@@ -52,11 +52,11 @@ Los test doubles, por tanto, deben cumplir este principio en lo que se refiere a
 
 ### Segregación de interfaces
 
-El principio de segregación de interfaces nos dice que una clase no debe depender de funcionalidad que no necesita. En otras palabras: las interfaces deben exponer sólo los métodos necesarios. Si fuese necesario, una clase implementará varias interfaces.
+El principio de segregación de interfaces nos dice que una clase no debe depender de funcionalidad que no necesita. En otras palabras: las interfaces deben exponer solo los métodos necesarios. Si fuese necesario, una clase implementará varias interfaces.
 
 Cuanto mejor aplicado esté este principio más fácil será crear doubles y los tests serán menos complejos y más precisos ya que no tendremos que simular un montón de comportamientos.
 
-Si una clase colaboradora tuviese veinte métodos, al crear su double necesitaríamos implementar los veinte, aunque estemos interesados tan sólo en dos. En ese caso, es preferible extraer esos dos métodos a una interfaz, a partir de la cual crear el double. Y eso nos podría llevar, como beneficio extra, a la posibilidad de extraer funcionalidad de la clase, repartiendo mejor las responsabilidades.
+Si una clase colaboradora tuviese veinte métodos, al crear su double necesitaríamos implementar los veinte, aunque estemos interesados tan solo en dos. En ese caso, es preferible extraer esos dos métodos a una interfaz, a partir de la cual crear el double. Y eso nos podría llevar, como beneficio extra, a la posibilidad de extraer funcionalidad de la clase, repartiendo mejor las responsabilidades.
 
 ### Inversión de dependencias
 
@@ -70,13 +70,13 @@ La ley de Demeter nos dice que los objetos no deben tener conocimiento de cómo 
 
 Si un objeto A usa otro objeto B que, a su vez, utiliza internamente un tercer objeto C para responder a esa petición, entonces A no debe conocer nada de C.
 
-En el caso de los test esto significa que por muchas dependencias que pueda tener una clase doblada, no las necesitamos para crear el double ya que sólo nos interesa su interfaz o su comportamiento, no su estructura. Y si las necesitásemos entonces es que tenemos un problema con el diseño.
+En el caso de los test esto significa que por muchas dependencias que pueda tener una clase doblada, no las necesitamos para crear el double ya que solo nos interesa su interfaz o su comportamiento, no su estructura. Y si las necesitásemos entonces es que tenemos un problema con el diseño.
 
 ### DRY: Evita las repeticiones
 
 Cualquier repetición en el código debería llevarnos a un refactor con el objetivo de reducirla o eliminarla.
 
-Este principio no se aplica sólo al código probado, sino también a los propios tests y, por supuesto, a los test doubles.
+Este principio no se aplica solo al código probado, sino también a los propios tests y, por supuesto, a los test doubles.
 
 El principio DRY no tiene que buscarse necesariamente por diseño previo, sino que podemos aplicarlo a medida que detectamos repeticiones en nuestro código. Por ejemplo, si observamos que estamos usando el mismo test-double por tercera vez, puede ser el momento de moverlo a una propiedad del Test Case e inicializarlo en el setUp.
 
@@ -165,11 +165,11 @@ class SendNotificationServiceTest extends TestCase
 
 Tanto `Mailer` como `Message` son interfaces, de modo que el servicio no depende de ninguna implementación concreta. En el proyecto podríamos estar usando SwiftMailer, por poner un ejemplo, pero nada nos impediría utilizar una implementación que ponga mensaje en Twitter, Slack, Telegram..., con tal de escribir un Adapter que cumpla la interfaz de `Mailer`.
 
-En el test la implementación concreta nos da igual. Nosotros sólo queremos que nuestro servicio intente enviar el mensaje y devuelva una excepción si no puede hacerlo.
+En el test la implementación concreta nos da igual. Nosotros solo queremos que nuestro servicio intente enviar el mensaje y devuelva una excepción si no puede hacerlo.
 
 Al aplicar la Inversión de Dependencias, es decir, al depender de interfaces, podemos preparar *Stubs* que reproduzcan el comportamiento que necesitamos sin mucho esuerzo. En nuestro caso, que el mensaje se ha enviado correctamente (el Mailer devolvería true).
 
-Por otra parte, está claro que `Mailer` sólo tiene una responsabilidad, que es enviar mensajes, por lo que su comportamiento es sencillo de simular. Y también debería verse que se cumplen los principios Abierto/Cerrado y Liskov. El hecho de que sólo nos interese un método en la interfaz de `Mailer`, nos dice que también aplicamos Segregación de Interfaces: nuestras implementaciones concretas podrían tener otros métodos, pero para esta situación sólo queremos uno.
+Por otra parte, está claro que `Mailer` solo tiene una responsabilidad, que es enviar mensajes, por lo que su comportamiento es sencillo de simular. Y también debería verse que se cumplen los principios Abierto/Cerrado y Liskov. El hecho de que solo nos interese un método en la interfaz de `Mailer`, nos dice que también aplicamos Segregación de Interfaces: nuestras implementaciones concretas podrían tener otros métodos, pero para esta situación solo queremos uno.
 
 `Message` aquí actúa como dummy, no queremos que haga nada en particular, pero lo necesitamos para cumplir la interface.
 
@@ -226,13 +226,13 @@ class SendNotificationServiceTest extends TestCase
 
 En resumidas cuentas, unos principios nos ayudan a cumplir otros. 
 
-En particular, al invertir las dependencias y depender sólo de una interfaz sencilla, nuestra clase bajo test no puede atarse a una implementación concreta, lo que facilita cumplir la Ley de Demeter, pues puede que en este momento de desarrollo ni siquiera hayamos decidido cuál va a ser el mecanismo de distribución de esas notificaciones.
+En particular, al invertir las dependencias y depender solo de una interfaz sencilla, nuestra clase bajo test no puede atarse a una implementación concreta, lo que facilita cumplir la Ley de Demeter, pues puede que en este momento de desarrollo ni siquiera hayamos decidido cuál va a ser el mecanismo de distribución de esas notificaciones.
 
-Lo mismo ocurre respecto al principio YAGNI. Nuestro servicio no tiene que estar preparado para implementaciones que podrían usarse en un futuro, sólo tiene que saber usar un `Mailer`. Aunque inicialmente estuviésemos pensando en usar el correo electrónico, dentro de un tiempo podríamos lanzarlas por Slack.
+Lo mismo ocurre respecto al principio YAGNI. Nuestro servicio no tiene que estar preparado para implementaciones que podrían usarse en un futuro, solo tiene que saber usar un `Mailer`. Aunque inicialmente estuviésemos pensando en usar el correo electrónico, dentro de un tiempo podríamos lanzarlas por Slack.
 
 ## En resumen
 
-Los principio de diseño no rigen sólo para el código de producción, sino que deberían impregnar todo el desarrollo, incluyendo los test y los test doubles cuando los necesitemos.
+Los principio de diseño no rigen solo para el código de producción, sino que deberían impregnar todo el desarrollo, incluyendo los test y los test doubles cuando los necesitemos.
 
 
 

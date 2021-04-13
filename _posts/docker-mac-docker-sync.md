@@ -46,7 +46,7 @@ Por cierto, si usas docker en producción, tienes que asegurarte de separar el `
 
 **docker-sync.yml**
 
-En este archivo vamos a definir la sincronización. En este ejemplo sólo vamos a compartir la carpeta que contiene el código del proyecto. Esto se hace bajo la clave `syncs`:
+En este archivo vamos a definir la sincronización. En este ejemplo solo vamos a compartir la carpeta que contiene el código del proyecto. Esto se hace bajo la clave `syncs`:
 
 ```yaml
 version: '2'
@@ -95,7 +95,7 @@ services:
         environment:
             - PHP_IDE_CONFIG=serverName=Dev
             - XDEBUG_REMOTE_HOST=docker.for.mac.host.internal
-            - SYMFONY_PHPUNIT_VERSION=8.4
+            - SYMFONY_PHPUnit_VERSION=8.4
         networks:
             - docker
 
@@ -121,7 +121,7 @@ Una vez que aparezca el mensaje `success  Starting Docker-Sync in the background
 Hay algunos detalles prácticos que hay que tener en cuenta para asegurarte de que los cambios que hagas en el código estarán sincronizados en el contenedor, en particular si utilizas PhpStorm. Este IDE tiene algunas peculiaridades a la hora de guardar archivos que pueden hacer que el contenedor no se sincronice exactamente cuando esperas, veamos cuáles son:
 
 * PhpStorm tiene un modo de "escritura segura" que se basa en escribir los cambio de un archivo a un fichero temporal antes de guardarlos en el archivo que estás editando, lo que puede causar un pequeño retraso.
-* Dependiendo de cómo lo tengas configurado, el guardado automático del archivo se producirá sólo cuando ocurran ciertos eventos, básicamente activar o desactivar la pestaña del editor. Es decir, si haces un cambio en un archivo y no haces nada más, el cambio no se guardará en el disco y, en consecuencia, no se sincronizará el contenedor.
+* Dependiendo de cómo lo tengas configurado, el guardado automático del archivo se producirá solo cuando ocurran ciertos eventos, básicamente activar o desactivar la pestaña del editor. Es decir, si haces un cambio en un archivo y no haces nada más, el cambio no se guardará en el disco y, en consecuencia, no se sincronizará el contenedor.
 * Opcionalmente podrías tener configurado el editor para guardar automáticamente los cambios después de un intervalo de tiempo.
 
 El resultado es si ejecutas algo en ese momento es muy posible que no se haya sincronizado el contenedor y estés ejecutando código desactualizado. Así que lo más seguro es pulsar la combinación `cmd` + `S` para forzar el guardado del archivo y disparar la sincronización.
@@ -140,7 +140,7 @@ Basta con:
 docker-sync stop
 ```
 
-Un ejemplo puede ser que hayas estado tocando una parte del código y ejecutando sólo una parte de los tests. Una vez que has terminado y quieres comprobar que no ha habido consecuencias en otros tests o efectos inesperados, podrías parar el `docker-sync` y ejecutar toda la suite.
+Un ejemplo puede ser que hayas estado tocando una parte del código y ejecutando solo una parte de los tests. Una vez que has terminado y quieres comprobar que no ha habido consecuencias en otros tests o efectos inesperados, podrías parar el `docker-sync` y ejecutar toda la suite.
 
 Las ganancias de velocidad que he observado es que los tests llegan a ejecutarse hasta el doble de rápido.
 
@@ -196,7 +196,7 @@ External tool 'External Tools/Docker Sync ON'
 
 Por cierto, una vez que defines una External Tool la puedes reutilizar en todas las configuraciones que necesites.
 
-Un buena idea puede ser definir varias configuraciones para ejecutar los tests. Por ejemplo, una DEV que tenga docker-sync activado (como la del ejemplo anterior) y otra TEST que lo desactive para correr más rápidamente, que sólo tendría la versión OFF:
+Un buena idea puede ser definir varias configuraciones para ejecutar los tests. Por ejemplo, una DEV que tenga docker-sync activado (como la del ejemplo anterior) y otra TEST que lo desactive para correr más rápidamente, que solo tendría la versión OFF:
 
 ```
 Before launch: External tool (2)

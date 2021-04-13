@@ -21,7 +21,7 @@ Hay algunos perfiles en los equipos que ayudan a que las discusiones se hagan di
 
 **Polemistas** son aquellas personas que les gusta discutir. No es nada personal, pero disfrutan de la provocación aunque sin llegar al nivel de troll. Es decir, bordean el límite entre la discusión que puede servir para aprender o mejorar y la simple pérdida de tiempo.
 
-**Guardianes de la mazmorra** ya es otro tipo de problema. Son los que discuten para evitar que se produzca un cambio, cerrándose en banda ante cualquier cuestión. Su objetivo es normalmente proteger un estatus basado en un conocimiento que sólo ellos tienen y que los hace, o creen que los hace, imprescindibles.
+**Guardianes de la mazmorra** ya es otro tipo de problema. Son los que discuten para evitar que se produzca un cambio, cerrándose en banda ante cualquier cuestión. Su objetivo es normalmente proteger un estatus basado en un conocimiento que solo ellos tienen y que los hace, o creen que los hace, imprescindibles.
 
 Otro perfil problemático es el **Hay que cambiar esto que está mal** pero sin contexto. Me explico: imagina que alguien nuevo entra en un equipo y empieza a señalar defectos en el código, pero sin tratar de entender primero por qué estaban ahí. El caso es que, aunque tiene razón, en realidad todos somos conscientes de eso, hay motivos que explican esa situación y por qué todavía no se ha resuelto o no se ha podido resolver.
 

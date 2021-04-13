@@ -40,7 +40,7 @@ En principio, el consumidor será un módulo HTML/Javascript que hará la solici
   * excludeBlogs: no seleccionar artículos de los blogs indicados, suele ir con...
   * site: solo artículos del site indicado (es una colección de blogs)
   * home: solo artículos marcados como portada
-  * featured: sólo artículos marcados como destacados
+  * featured: solo artículos marcados como destacados
   * page: página del listado de artículos
   * sticky: ordenar los artículos teniendo en cuenta los que van fijos al principio
 
@@ -112,7 +112,7 @@ A continuación, voy a exponer algunas situaciones más o menos típicas y algun
 
 En ocasiones puede ocurrir que la petición sea correcta y no devuelva ningún resultado porque no lo hay. Es decir, al pedírselo al Application Service el controlador obtiene una respuesta vacía.
 
-En ese caso, aunque la interacción HTTP es "exitosa" en el sentido de que el servidor puede dar una respuesta (aunque sea vacía), el consumidor del API debería recibir algún tipo de feedback que indique lo sucedido. Para ello es adecuado devolver un código 204.
+En ese caso, aunque la interacción HTTP es "exitosa" en el sentido de que el servidor puede dar una respuesta (aunque sea vacía), el consumidor dla API debería recibir algún tipo de feedback que indique lo sucedido. Para ello es adecuado devolver un código 204.
 
 Un tema que podría discutirse es si debe devolverse o no un contenido más informativo que el resultado vacío. Los más pragmáticos sugieren retornar más información.
 
@@ -120,7 +120,7 @@ Un tema que podría discutirse es si debe devolverse o no un contenido más info
 #### La petición que falla porque no está bien hecha
 
 
-Si el consumidor del API utiliza campos de filtrado incorrectos, el API no devolverá resultados y debería comunicar un error significativo, que bien puede ser de la familia 400 - Bad Request. Esto debería permitir al consumidor corregir la petición (es como una especie de error de sintaxis).
+Si el consumidor dla API utiliza campos de filtrado incorrectos, la API no devolverá resultados y debería comunicar un error significativo, que bien puede ser de la familia 400 - Bad Request. Esto debería permitir al consumidor corregir la petición (es como una especie de error de sintaxis).
 
 En otros casos, el consumidor puede solicitar un recurso inexistente. Por ejemplo, pide un artículo cuyo id no existe. En ese caso, el código de respuesta podría ser 404.
 
@@ -130,7 +130,7 @@ En general, usamos errores 400 si la falta está del lado del cliente.
 #### La petición que falla porque el servidor "peta"
 
 
-Un error del servidor puede dar lugar a una respuesta vacía, pero debemos dejar claro al consumidor del API que el fallo está en nuestra infraestructura y que la petición en sí es correcta. El código de error puede ser 500. Dentro de esta familia de códigos, los hay para infinidad de situaciones.
+Un error del servidor puede dar lugar a una respuesta vacía, pero debemos dejar claro al consumidor dla API que el fallo está en nuestra infraestructura y que la petición en sí es correcta. El código de error puede ser 500. Dentro de esta familia de códigos, los hay para infinidad de situaciones.
 
 En resumen, hay que hacer una lista de posibles situaciones que le interesen a nuestro consumidor y detectarlas en el controlador para decidir el código de respuesta que vamos a devolver.
 

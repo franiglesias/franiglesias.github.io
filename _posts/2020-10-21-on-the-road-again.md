@@ -25,7 +25,7 @@ Por otra parte, están otras dudas más personales. ¿Encajarás en el nuevo equ
 
 Y así un montón de ellas.
 
-Claro que, en buena lógica, los equipos que están contratando tienen que tener unas dudas similares sólo que en el sentido inverso: esta persona... ¿ayudará al equipo o se convertirá en un problema algún día?
+Claro que, en buena lógica, los equipos que están contratando tienen que tener unas dudas similares solo que en el sentido inverso: esta persona... ¿ayudará al equipo o se convertirá en un problema algún día?
 
 ## Sobre el proceso
 

@@ -19,9 +19,9 @@ Sin embargo, mi plan es cubrir ese tipo de pruebas más adelante.
 
 **¿Esta cosa es configurable?** Bajando a aspectos más prácticos, todavía no me parado en introducir los detalles de configuración de Behat. Con toda razón habrá quien se pregunte si no es posible guardar los archivos en otra parte o generar más tests que el `FeatureContext` que se crea por defecto. Por supuesto que es posible personalizar la herramienta pero, de nuevo, me ha parecido más fácil centrarnos en entender bien el flujo de trabajo antes de tratar de personalizarlo sin saber por qué o para qué.
 
-**¿Otro entorno de test? ¿Tengo que aprender phpspec?** En la entrega anterior mencioné que usaríamos **phpspec** para la siguiente fase de desarrollo BDD. Sin embargo, no es estrictamente necesario ya que con **phpunit** podemos desarrollar el mismo tipo de test, aunque nos exige algo más de disciplina. Como ya he comentado anteriormente, y la documentación de **phpspec** insiste, se trata de un framework de test con opiniones muy marcadas acerca de cómo deberías programar.
+**¿Otro entorno de test? ¿Tengo que aprender PHPSpec?** En la entrega anterior mencioné que usaríamos **PHPSpec** para la siguiente fase de desarrollo BDD. Sin embargo, no es estrictamente necesario ya que con **PHPUnit** podemos desarrollar el mismo tipo de test, aunque nos exige algo más de disciplina. Como ya he comentado anteriormente, y la documentación de **PHPSpec** insiste, se trata de un framework de test con opiniones muy marcadas acerca de cómo deberías programar.
 
-PHPspec impone muchas restricciones que son buenas para forzarnos a respetar los principios de diseño y construir un código desacoplado y sostenible guiados por ejemplos. 
+PHPSpec impone muchas restricciones que son buenas para forzarnos a respetar los principios de diseño y construir un código desacoplado y sostenible guiados por ejemplos. 
 
 Y con esto, termina este inciso y volvemos al trabajo.
 
@@ -409,14 +409,14 @@ Los tests tradicionales suelen tener un lenguaje aseverativo: el código hace al
 
 Los tests BDD tienen un lenguaje más descriptivo e incluso desiderativo y suelen nombrarse con la fórmula "debería" (should...) porque se definen como una descripción del comportamiento que se espera de ese objeto en una situación dada.
 
-Este tipo de tests se pueden crear en **phpunit** con un poco de disciplina, pero contamos con una herramienta diseñada específicamente para ello que es **phpspec**. Hagamos una pausa para instalarla:
+Este tipo de tests se pueden crear en **PHPUnit** con un poco de disciplina, pero contamos con una herramienta diseñada específicamente para ello que es **PHPSpec**. Hagamos una pausa para instalarla:
 
-### Añadiendo phpspec al proyecto
+### Añadiendo PHPSpec al proyecto
 
-Requerimos `phpspec` mediante `composer` para incluirlo en nuestras dependencias de desarrollo.
+Requerimos `PHPSpec` mediante `composer` para incluirlo en nuestras dependencias de desarrollo.
 
 ```bash
-composer require --dev phpspec/phpspec
+composer require --dev PHPSpec/PHPSpec
 ```
 
 Nuestro composer.json necesitará la adición de una clave para autoload PSR-0:
@@ -438,9 +438,9 @@ Nuestro composer.json necesitará la adición de una clave para autoload PSR-0:
     }
   ],
   "require-dev": {
-    "phpunit/phpunit": "^7.4@dev",
+    "PHPUnit/PHPUnit": "^7.4@dev",
     "behat/behat": "^3.5@dev",
-    "phpspec/phpspec": "^5.0@dev"
+    "PHPSpec/PHPSpec": "^5.0@dev"
   },
   "autoload": {
     "psr-4": {
@@ -462,13 +462,13 @@ Al igual que con **Behat**, de momento no nos vamos a preocupar de los detalles 
 
 ### Embelleciendo el informe del test
 
-Aunque el reporte por omisión del phpspec funciona bien por lo general, queda muy mal si la presentación del mismo es en monocromática como en este artículo, por lo que para tener un mejor visión de lo que ocurre con nuestra especificación vamos a cambiar su formato con esta opción:
+Aunque el reporte por omisión del PHPSpec funciona bien por lo general, queda muy mal si la presentación del mismo es en monocromática como en este artículo, por lo que para tener un mejor visión de lo que ocurre con nuestra especificación vamos a cambiar su formato con esta opción:
 
 ```bash
-bin/phpspec run --format pretty
+bin/PHPSpec run --format pretty
 ```
 
-La cual podemos fijar como opción por defecto mediante un archivo de configuración `phpspec.yml` que se sitúa en la raíz del proyecto y que más adelante usaremos para añadir más opciones:
+La cual podemos fijar como opción por defecto mediante un archivo de configuración `PHPSpec.yml` que se sitúa en la raíz del proyecto y que más adelante usaremos para añadir más opciones:
 
 ```yaml
 formatter.name: pretty
@@ -500,7 +500,7 @@ El núcleo de la feature que vamos a desarrollar es el *Use Case* llamado `Updat
 Así que empezamos por *describir* el comportamiento de nuestro *Use Case*:
 
 ```bash
-bin/phpspec describe 'TalkingBit\BddExample\UpdatePricesFromUploadedFile'
+bin/PHPSpec describe 'TalkingBit\BddExample\UpdatePricesFromUploadedFile'
 ```
 
 En este ejemplo he preferido usar la notación de namespace, que debe ir entre comillas para que la utilidad pueda procesarla correctamente.
@@ -519,7 +519,7 @@ Y genera este archivo en la carpeta del proyecto con nombre `spec`:
 namespace spec\TalkingBit\BddExample;
 
 use TalkingBit\BddExample\UpdatePricesFromUploadedFile;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
@@ -536,12 +536,12 @@ Tenemos nuestro primer test, o mejor dicho: nuestra primera Spec con su primer e
 Vamos a ver qué pasa haciéndola funcionar:
 
 ```bash
-bin/phpspec run
+bin/PHPSpec run
 ```
 
 Pues pasa que el primer ejemplo no se cumple. O dicho en otros términos tenemos un primer test que falla, en realidad está roto porque todavía no está implementada la clase.
 
-Lo bueno es que `phpspec` nos dice por qué falla y nos ofrece una solución.
+Lo bueno es que `PHPSpec` nos dice por qué falla y nos ofrece una solución.
 
 ```
 
@@ -616,7 +616,7 @@ Sigamos profundizando en la especificación.
 
 La especificación anterior es la base para definir el comportamiento del *Use Case* que vamos a desarrollar.
 
-`phpspec` genera un primer ejemplo muy simple: que se pueda inicializar el objeto cuyo comportamiento describimos.
+`PHPSpec` genera un primer ejemplo muy simple: que se pueda inicializar el objeto cuyo comportamiento describimos.
 
 `$this` es un proxy al objeto. No tenemos que instanciarlo aunque, como veremos, es posible inicializarlo de una manera determinada para describir un ejemplo específico o para todos en general. Lo veremos en su momento.
 
@@ -641,7 +641,7 @@ Vamos a describir este comportamiento escribiendo un ejemplo de cómo podríamos
 namespace spec\TalkingBit\BddExample;
 
 use TalkingBit\BddExample\UpdatePricesFromUploadedFile;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
@@ -658,9 +658,9 @@ class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
 }
 ```
 
-Como primera cosa a destacar, señalar que los ejemplos se escriben comenzando por `it_` o `its_` (de forma similar a como los test en `phpunit` se escriben comenzando por `test`). Además los nombres se escriben con *underscore* o *snake-case*. Esto va contra las recomendaciones de PSR, pero creo que podremos lidiar con ello.
+Como primera cosa a destacar, señalar que los ejemplos se escriben comenzando por `it_` o `its_` (de forma similar a como los test en `PHPUnit` se escriben comenzando por `test`). Además los nombres se escriben con *underscore* o *snake-case*. Esto va contra las recomendaciones de PSR, pero creo que podremos lidiar con ello.
 
-No esperamos que este método retorne nada, sólo que exista, así que si ejecutamos nos dará un fallo. De nuevo, además de las estadísticas y resultados del test, nos indica que el problema es que no existe el método y nos ofrece crearlo.
+No esperamos que este método retorne nada, solo que exista, así que si ejecutamos nos dará un fallo. De nuevo, además de las estadísticas y resultados del test, nos indica que el problema es que no existe el método y nos ofrece crearlo.
 
 ```
 
@@ -756,7 +756,7 @@ Lo que dice este ejemplo es que el objeto debería lanzar una excepción `Invali
 Al ejecutar la suite:
 
 ```
-bin/phpspec run
+bin/PHPSpec run
 ```
 
 Obtenemos lo siguiente:
@@ -783,7 +783,7 @@ Obtenemos lo siguiente:
 
 ```
 
-Puede que hayas notado una diferencia pequeña, pero interesante. En los casos anteriores, `phpspec` nos decía que había "broken examples", es decir, ejemplos que no pasaban porque había algún tipo de error que impedía su ejecución (la clase no estaba definida y el método tampoco). Ahora nos dice que hay "failed examples", es decir, ejemplos que fallan porque el código no hace lo que debería hacer.
+Puede que hayas notado una diferencia pequeña, pero interesante. En los casos anteriores, `PHPSpec` nos decía que había "broken examples", es decir, ejemplos que no pasaban porque había algún tipo de error que impedía su ejecución (la clase no estaba definida y el método tampoco). Ahora nos dice que hay "failed examples", es decir, ejemplos que fallan porque el código no hace lo que debería hacer.
 
 Se nos dice que se espera una excepción y no se obtiene ninguna. El ejemplo falla, por lo que debemos implementar algo para que pase:
 
@@ -865,7 +865,7 @@ Pero hay una alarma sonando en nuestra cabeza...
 
 ### Introducing FilePath value object
 
-Lo que queremos es que nuestro *Use Case* no tenga que ocuparse de verificar que le pasamos una ruta a un archivo utilizable. Su responsabilidad en la validación debería ser sólo que el archivo contiene una estructura de datos que pueda manejar, mientras que el hecho de que sea un path correctamente construido y que apunte a un archivo que existe debería ser de otro objeto.
+Lo que queremos es que nuestro *Use Case* no tenga que ocuparse de verificar que le pasamos una ruta a un archivo utilizable. Su responsabilidad en la validación debería ser solo que el archivo contiene una estructura de datos que pueda manejar, mientras que el hecho de que sea un path correctamente construido y que apunte a un archivo que existe debería ser de otro objeto.
 
 Una forma de hacerlo es considerar el path al archivo como un *value object* el cual, al construirse se aseguraría de que el string que representa el path apunte a un archivo existente. De este modo, podemos olvidarnos de que `UpdatePricesFromUploadedFile` tenga que ocuparse de esas cosas.
 
@@ -878,7 +878,7 @@ namespace spec\TalkingBit\BddExample;
 
 use InvalidArgumentException;
 use TalkingBit\BddExample\UpdatePricesFromUploadedFile;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
@@ -905,7 +905,7 @@ namespace spec\TalkingBit\BddExample;
 use InvalidArgumentException;
 use TalkingBit\BddExample\UpdatePricesFromUploadedFile;
 use TalkingBit\BddExample\VO\FilePath;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
@@ -922,7 +922,7 @@ class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
 }
 ```
 
-Hemos añadido `FilePath $filePath` como parámetro en el segundo ejemplo, así como un `use` que defina dónde debería ubicarse. Ahora ejecutemos `phpspec`:
+Hemos añadido `FilePath $filePath` como parámetro en el segundo ejemplo, así como un `use` que defina dónde debería ubicarse. Ahora ejecutemos `PHPSpec`:
 
 ```
 
@@ -949,7 +949,7 @@ Hemos añadido `FilePath $filePath` como parámetro en el segundo ejemplo, así 
 
 ```
 
-En esta ocasión el ejemplo está roto porque no sabemos nada de ese tal `FilePath`, así que phpspec nos ofrece crear la interfaz que debería implementar el objeto (¡una interfaz! ¿Lo pillas? `phpspec` nos fuerza a aplicar la Inversión de Dependencias). Al indicar su ubicación en `use`, phpspec sabrá dónde colocarla.
+En esta ocasión el ejemplo está roto porque no sabemos nada de ese tal `FilePath`, así que PHPSpec nos ofrece crear la interfaz que debería implementar el objeto (¡una interfaz! ¿Lo pillas? `PHPSpec` nos fuerza a aplicar la Inversión de Dependencias). Al indicar su ubicación en `use`, PHPSpec sabrá dónde colocarla.
 
 ```
 Interface TalkingBit\BddExample\VO\FilePath created in /Users/frankie/Sites/csvrepo/src/TalkingBit/BddExample/VO/FilePath.php.
@@ -959,13 +959,13 @@ Interface TalkingBit\BddExample\VO\FilePath created in /Users/frankie/Sites/csvr
 
   13  ✔ is initializable (107ms)
   18  ! should receieve a path to a file (82ms)
-        exception [err:TypeError("Argument 1 passed to TalkingBit\BddExample\UpdatePricesFromUploadedFile::usingFile() must be of the type string, object given, called in /Users/frankie/Sites/csvrepo/vendor/phpspec/phpspec/src/PhpSpec/Wrapper/Subject/Caller.php on line 255")] has been thrown.
+        exception [err:TypeError("Argument 1 passed to TalkingBit\BddExample\UpdatePricesFromUploadedFile::usingFile() must be of the type string, object given, called in /Users/frankie/Sites/csvrepo/vendor/PHPSpec/PHPSpec/src/PHPSpec/Wrapper/Subject/Caller.php on line 255")] has been thrown.
 
 ----  broken examples
 
         TalkingBit/BddExample/UpdatePricesFromUploadedFile
   18  ! should receieve a path to a file (82ms)
-        exception [err:TypeError("Argument 1 passed to TalkingBit\BddExample\UpdatePricesFromUploadedFile::usingFile() must be of the type string, object given, called in /Users/frankie/Sites/csvrepo/vendor/phpspec/phpspec/src/PhpSpec/Wrapper/Subject/Caller.php on line 255")] has been thrown.
+        exception [err:TypeError("Argument 1 passed to TalkingBit\BddExample\UpdatePricesFromUploadedFile::usingFile() must be of the type string, object given, called in /Users/frankie/Sites/csvrepo/vendor/PHPSpec/PHPSpec/src/PHPSpec/Wrapper/Subject/Caller.php on line 255")] has been thrown.
 
 
 1 specs
@@ -991,7 +991,7 @@ class UpdatePricesFromUploadedFile
 }
 ```
 
-Si ejecutamos ahora `phpspec`, veremos que estamos en verde.
+Si ejecutamos ahora `PHPSpec`, veremos que estamos en verde.
 
 Por cierto, esta es la interfaz `FilePath`:
 
@@ -1005,7 +1005,7 @@ interface FilePath
 }
 ```
 
-¿Y qué es lo que tenemos? `phpspec` va a generar un *Test double* de `FilePath` usando el framework **prophecy**, de modo que podremos simular comportamientos de este objeto como veremos en el apartado siguiente.
+¿Y qué es lo que tenemos? `PHPSpec` va a generar un *Test double* de `FilePath` usando el framework **prophecy**, de modo que podremos simular comportamientos de este objeto como veremos en el apartado siguiente.
 
 ## Avanzando con nuestro diseño
 
@@ -1030,7 +1030,7 @@ use \RuntimeException;
 use InvalidArgumentException;
 use TalkingBit\BddExample\UpdatePricesFromUploadedFile;
 use TalkingBit\BddExample\VO\FilePath;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
@@ -1086,7 +1086,7 @@ Estamos de acuerdo en que no es la mejor manera de garantizar la existencia de u
                                                                          [Y/n] 
 ```
 
-`phpspec` nos ofrece añadir el método `path` a la interfaz de `FilePath`, ¿no es adorable? Pues si le decimos que sí, lo añade (puedes comprobarlo) y el ejemplo falla porque no hemos implementado nada todavía:
+`PHPSpec` nos ofrece añadir el método `path` a la interfaz de `FilePath`, ¿no es adorable? Pues si le decimos que sí, lo añade (puedes comprobarlo) y el ejemplo falla porque no hemos implementado nada todavía:
 
 ```
   Method signature TalkingBit\BddExample\VO\FilePath::path() has been created.
@@ -1209,7 +1209,7 @@ Pensemos un poco sobre eso. En nuestra `feature` hemos basado los escenarios en 
 
 Así que apuntamos a la tercera opción: introducir un nuevo objeto que se encargue de pelearse con el contenido del archivo, liberando a `UpdatePricesFromUploadedFile` de esa tarea para que se centre únicamente en su responsabilidad de trasladar esos datos a donde son necesarios.
 
-Tiene sentido que nuestro lector de archivos se le inyecte a `UpdatePricesFromUploadedFile` en construcción porque va a ser necesario siempre, lo que nos va a permitir aprender algo nuevo sobre `phpspec`. Así es como quedará la Spec:
+Tiene sentido que nuestro lector de archivos se le inyecte a `UpdatePricesFromUploadedFile` en construcción porque va a ser necesario siempre, lo que nos va a permitir aprender algo nuevo sobre `PHPSpec`. Así es como quedará la Spec:
 
 ```php
 <?php
@@ -1221,7 +1221,7 @@ use InvalidArgumentException;
 use TalkingBit\BddExample\UpdatePricesFromUploadedFile;
 use TalkingBit\BddExample\FileReader\FileReader;
 use TalkingBit\BddExample\VO\FilePath;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
@@ -1256,7 +1256,7 @@ Hay un montón de cosas nuevas aquí, por lo que vamos a analizarlas:
 
 ### Let y beConstructedWith
 
-*let* es un método que se ejecuta antes de cada ejemplo, lo que nos permite preparar todo lo necesario y que sea común para todos los ejemplos. En `phpunit` sería `setUp`.
+*let* es un método que se ejecuta antes de cada ejemplo, lo que nos permite preparar todo lo necesario y que sea común para todos los ejemplos. En `PHPUnit` sería `setUp`.
 
 En este caso, lo que hacemos es inicializar nuestro *subject under specification*, haciendo que sea construido con un colaborador, una nueva clase cuya interfaz se llamará `FileReader`. Es cierto que queremos una implementación que lea CSV, pero ya que estamos, vamos a desligarnos de eso y ya dejaremos para luego esa implementación concreta. El método `beConstructedWith` es una especie de factoría que nos permite pasarle los parámetros que requerirá el constructor. Y, sí, también existe una versión para constructores estáticos.
 
@@ -1272,7 +1272,7 @@ Recuerda que `FilePath` es un value object para representar la ruta a un archivo
 
 Como todavía no hemos cambiado la implementación, la Spec fallará, pero no está de más ejecutarla para que nos diga por dónde seguir trabajando ahora.
 
-Lo primero que va a pasar es que no tenemos definida la interfaz de `FileReader`, ni el constructor en `UpdatePricesFromUploadedFile`, por lo que `phpspec` nos irá preguntando si los queremos crear. Como ya sabemos que lo hace bien, vamos contestando que sí a todas las preguntas. Finalmente, este es el resultado:
+Lo primero que va a pasar es que no tenemos definida la interfaz de `FileReader`, ni el constructor en `UpdatePricesFromUploadedFile`, por lo que `PHPSpec` nos irá preguntando si los queremos crear. Como ya sabemos que lo hace bien, vamos contestando que sí a todas las preguntas. Finalmente, este es el resultado:
 
 ```
 
@@ -1284,7 +1284,7 @@ Lo primero que va a pasar es que no tenemos definida la interfaz de `FileReader`
         /Users/frankie/Sites/csvrepo/src/TalkingBit/BddExample/UpdatePricesFromUploadedFile.php line 19
   30  ✘ should fail if file is empty
         expected exception of class "RuntimeException", but got
-        [exc:PhpSpec\Exception\Example\ErrorException("warning: file_get_contents(): Filename cannot be empty in
+        [exc:PHPSpec\Exception\Example\ErrorException("warning: file_get_contents(): Filename cannot be empty in
         /Users/frankie/Sites/csvrepo/src/TalkingBit/BddExample/UpdatePricesFromUploadedFile.php line 19")].
 
 ----  failed examples
@@ -1292,7 +1292,7 @@ Lo primero que va a pasar es que no tenemos definida la interfaz de `FileReader`
         TalkingBit/BddExample/UpdatePricesFromUploadedFile
   30  ✘ should fail if file is empty
         expected exception of class "RuntimeException", but got
-        [exc:PhpSpec\Exception\Example\ErrorException("warning: file_get_contents(): Filename cannot be empty in
+        [exc:PHPSpec\Exception\Example\ErrorException("warning: file_get_contents(): Filename cannot be empty in
         /Users/frankie/Sites/csvrepo/src/TalkingBit/BddExample/UpdatePricesFromUploadedFile.php line 19")].
 
 ----  broken examples
@@ -1341,7 +1341,7 @@ Y, efectivamente, ahora la Spec pasa. Hemos simulado que `FileReader` fallará y
 
 ### Momento Refactor
 
-Resulta curioso pensar que aún no hemos otorgado nada de funcionalidad a `UpdatePricesFromUploadedFile` sino que más bien le hemos ido quitando de encima responsabilidades que no le corresponden. Antes de continuar, vamos a revisar las interfaces que `phpspec` ha ido creando, ya que necesitarán un poco de cariño en forma de *Type Hinting* y *Return Type*.
+Resulta curioso pensar que aún no hemos otorgado nada de funcionalidad a `UpdatePricesFromUploadedFile` sino que más bien le hemos ido quitando de encima responsabilidades que no le corresponden. Antes de continuar, vamos a revisar las interfaces que `PHPSpec` ha ido creando, ya que necesitarán un poco de cariño en forma de *Type Hinting* y *Return Type*.
 
 **FilePath**
 
@@ -1384,7 +1384,7 @@ Al añadir *Return Type*, `FileReader` provocará un fallo en el ejemplo, por lo
 
 Ahora la Spec pasa perfectamente.
 
-Una nota extra: cuando declaras colaboradores como parámetros en los métodos de la Spec, `phpspec` puede reutilizarlos en cualquier otro método siempre que mantengas el mismo nombre. Por eso, el `$fileReader` cuyo comportamiento definimos en `let`, lo mantiene en los demás métodos, a no ser que lo cambiemos para un método concreto como hacemos en nuestro ejemplo.
+Una nota extra: cuando declaras colaboradores como parámetros en los métodos de la Spec, `PHPSpec` puede reutilizarlos en cualquier otro método siempre que mantengas el mismo nombre. Por eso, el `$fileReader` cuyo comportamiento definimos en `let`, lo mantiene en los demás métodos, a no ser que lo cambiemos para un método concreto como hacemos en nuestro ejemplo.
 
 ## Nuevos colaboradores
 
@@ -1432,7 +1432,7 @@ Así queda la Spec completa. La explicación, como es habitual, después:
 
 namespace spec\TalkingBit\BddExample;
 
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Prophet;
 use RuntimeException;
 use TalkingBit\BddExample\FileReader\FileReader;
@@ -1488,9 +1488,9 @@ class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
 }
 ```
 
-Para no complicar el ejemplo voy a hacerlo sólo con un producto, que es un caso sencillo. 
+Para no complicar el ejemplo voy a hacerlo solo con un producto, que es un caso sencillo. 
 
-Primero fallará porque hemos cambiado la interfaz del constructor de `UpdatePricesFromUploadedFile`, así que debemos arreglar eso de modo que el primer parámetro sea el repositorio. Una vez reparado eso, volvemos a lanzar `phpspec` y nos pedirá crear la interfaz de `Product`, con su método `setPrice`, así como el método `getById` en `ProductRepository`. Luego la Spec fallará como era de esperar porque no hay implementación.
+Primero fallará porque hemos cambiado la interfaz del constructor de `UpdatePricesFromUploadedFile`, así que debemos arreglar eso de modo que el primer parámetro sea el repositorio. Una vez reparado eso, volvemos a lanzar `PHPSpec` y nos pedirá crear la interfaz de `Product`, con su método `setPrice`, así como el método `getById` en `ProductRepository`. Luego la Spec fallará como era de esperar porque no hay implementación.
 
 Nos vamos a `UpdatePricesFromUploadedFile` y añadimos el código necesario para que el test pase.
 
@@ -1555,10 +1555,10 @@ Hemos comenzado partiendo de un *Use Case*. En las arquitecturas limpias los *Us
 
 Al avanzar en el diseño del *Use Case* hemos descubierto algunas cosas. Para empezar, que el *Use Case* necesita preparar una serie de requisitos, como es llegar a un archivo del cual extraer la información, y que esa preparación no siempre le corresponde, por lo que podemos asumir que serán otros objetos los que se encarguen de ello. Serán sus colaboradores.
 
-No vamos a programar ahora a los colaboradores, sino que vamos a imaginarnos cómo queremos que interactúen con el *Use Case*, definiendo sus interfaces desde el punto de vista de su "cliente", tarea en la que los automatismos de `phpspec` nos pueden ayudar. Más adelante tendremos que ocuparnos de desarrollarlos, pero por ahora tenemos más que suficiente.
+No vamos a programar ahora a los colaboradores, sino que vamos a imaginarnos cómo queremos que interactúen con el *Use Case*, definiendo sus interfaces desde el punto de vista de su "cliente", tarea en la que los automatismos de `PHPSpec` nos pueden ayudar. Más adelante tendremos que ocuparnos de desarrollarlos, pero por ahora tenemos más que suficiente.
 
 De hecho, hemos podido desarrollar la funcionalidad básica del *Use Case*, con el mínimo código posible y todo razonablemente bien diseñado y desacoplado, respetando los principios de diseño desde el primer momento.
 
 En el [próximo capítulo](/bdd-example-3) de esta serie, seguiremos avanzando en el desarrollo de la *feature* explorando diversos enfoques, aprendiendo cómo podemos ampliarla con nuevas demandas de negocio y viendo cómo el diálogo entre desarrollo y negocio puede ayudar a ambas partes a crear mejores productos.
 
-Veremos también cómo podemos escribir los colaboradores de manera independiente y también algunas capacidades interesantes tanto de `behat` como de `phpspec`.
+Veremos también cómo podemos escribir los colaboradores de manera independiente y también algunas capacidades interesantes tanto de `behat` como de `PHPSpec`.

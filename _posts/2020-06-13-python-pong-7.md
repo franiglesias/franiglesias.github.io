@@ -129,7 +129,7 @@ class Ball(pygame.sprite.Sprite):
 
 El primer problema en este punto es que todos los cambios se producen en el método update, así que vamos a aislar el código que nos interesa en un método de forma que podamos testearlo. Además, necesitamos poder aislar el pad implicado en la colisión para acceder a su posición y poder determinar en qué parte es golpeado por la bola.
 
-Lo primero es dar nombre al objeto que colisiona con la bola (voy a copiar sólo el código implicado para que sea más fácil de seguir):
+Lo primero es dar nombre al objeto que colisiona con la bola (voy a copiar solo el código implicado para que sea más fácil de seguir):
 
 ```python
         pad_collisions = pygame.sprite.spritecollide(self, self.pads, False)
@@ -559,7 +559,7 @@ Ok. Ahora vamos a programar que la bola golpea en la región intermedia superior
    +--+  ->  90% -> 100% => dy = 2, dx * -1
 ```
 
-Los porcentajes indican entre qué píxeles de la raqueta tendría que tocar la bola para determinar la zona. Lo he puesto en porcentajes para que en el futuro el tamaño del pad sea configurable. En cualquier caso, sabiendo que este método se va a ejecutar sólo cuando la raqueta y la bola colisionan, realmente sólo tenemos que prestar atención a la coordenada `y`. Ahora bien, tenemos que estar pendientes de que la altura de la bola respecto al pad debe medirse por su centro.
+Los porcentajes indican entre qué píxeles de la raqueta tendría que tocar la bola para determinar la zona. Lo he puesto en porcentajes para que en el futuro el tamaño del pad sea configurable. En cualquier caso, sabiendo que este método se va a ejecutar solo cuando la raqueta y la bola colisionan, realmente solo tenemos que prestar atención a la coordenada `y`. Ahora bien, tenemos que estar pendientes de que la altura de la bola respecto al pad debe medirse por su centro.
 
 Añadimos un test en el test case de Pad:
 

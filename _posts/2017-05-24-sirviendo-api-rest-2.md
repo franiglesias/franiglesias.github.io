@@ -21,7 +21,7 @@ Este es el código:
 
 La mayor parte del trabajo la realiza ArticleService, que busca los artículos en la solución de persistencia, a partir de una ArticleRequest. ArticleRequest es un objeto que extrae los filtros de la URL de la petición y es utilizado por ArticleService para montar una Specification compuesta y aplicar ciertos criterios de ordenación.
 
-En cualquier caso, lo que importa es que ArticleService devuelve un array con los artículos encontrados y ArticleController sólo tiene que dar la respuesta adecuada a la petición.
+En cualquier caso, lo que importa es que ArticleService devuelve un array con los artículos encontrados y ArticleController solo tiene que dar la respuesta adecuada a la petición.
 
 En el [artículo anterior](/sirviendo-api-rest-1) comentaba que se podían dar diferentes resultados y que deberíamos dar una respuesta adecuada.
 
@@ -33,7 +33,7 @@ En resumidas cuentas, se calcula cuál es la página actual de resultados y cuá
 
 En este caso, uso la clase JsonResponse de Symfony HttpFoundation, aunque eso es indiferente. También utilizo las constantes de Response que representan los distintos códigos de estado HTTP, lo que permite que el código sea más expresivo.
 
-Las cabeceras personalizadas **X-Max-Pages** y **X-Current-Page** podrían ayudar al consumidor a dar información al usuario sobre su situación en el listado global de artículos. No son preceptivas, sin embargo a mí me pareció útil enviar esta información. Al hacerlo en la cabecera evitamos contaminar el array JSON, que el cliente puede usar con la confianza de saber que sólo va a tener artículos.
+Las cabeceras personalizadas **X-Max-Pages** y **X-Current-Page** podrían ayudar al consumidor a dar información al usuario sobre su situación en el listado global de artículos. No son preceptivas, sin embargo a mí me pareció útil enviar esta información. Al hacerlo en la cabecera evitamos contaminar el array JSON, que el cliente puede usar con la confianza de saber que solo va a tener artículos.
 
 La cabecera **Link** es una cabecera estándar y nos sirve para enviar enlaces relacionados. La idea de esta cabecera es que el cliente no tenga que calcular los enlaces que necesita para acceder a recursos relacionados. En este caso, las he puesto para dar al consumidor enlaces de paginación.
 
@@ -67,16 +67,16 @@ Cada bloque genera una respuesta acorde con el problema encontrado.
 
 Las rutas son dependientes del framework o router específico que vayamos a utilizar. En este caso estoy usando Silex como framework para la interfaz web.
 
-He decidido que la ruta que sirve el api sea **/api/articles**, por tanto, en mi **index.php** aparece algo así:
+He decidido que la ruta que sirve la API sea **/api/articles**, por tanto, en mi **index.php** aparece algo así:
 
 {% gist e6ca0eab400154d8311016d9854473af %}
 
 En este ejemplo, el controlador se declara como servicio, para que esté lo más desacoplado posible.
 
-El **when** nos permite realizar una negociación muy básica de contenido, ya que Silex sólo responderá si el consumidor solicita _application/json_, lo que dificulta otros accesos al API.
+El **when** nos permite realizar una negociación muy básica de contenido, ya que Silex solo responderá si el consumidor solicita _application/json_, lo que dificulta otros accesos al API.
 
 ## Limitaciones y resumen
 
-Y con esto tenemos un controlador básico capaz de servir un API, resolviendo algunos de los problemas principales que se nos plantean.
+Y con esto tenemos un controlador básico capaz de servir una API, resolviendo algunos de los problemas principales que se nos plantean.
 
-En su estado actual, el controlador no puede atender peticiones desde otro dominio y tampoco hace nada por autentificar (en este caso es una API completamente pública que sólo ofrece información, así que tampoco tiene mucho sentido limitarla) y tiene otras limitaciones que intentaré ir subsanando en futuras entregas.
+En su estado actual, el controlador no puede atender peticiones desde otro dominio y tampoco hace nada por autentificar (en este caso es una API completamente pública que solo ofrece información, así que tampoco tiene mucho sentido limitarla) y tiene otras limitaciones que intentaré ir subsanando en futuras entregas.

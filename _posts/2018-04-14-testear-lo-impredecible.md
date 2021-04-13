@@ -193,7 +193,7 @@ Si tenemos un conjunto finito de n símbolos, la posibilidad de extraer uno cual
 
 #### Extrayendo la aleatoridad de nuestra clase
 
-Ahora bien este test no sólo es poco práctico para nuestro caso, sino que además lo que realmente testea es un hipotético generador aleatorio de símbolos, el cual podría ser utilizado por nuestro generador de contraseñas. Este se encargará de pedir al generador aleatorio los símbolos que vaya necesitando y componer la contraseña con ellos.
+Ahora bien este test no solo es poco práctico para nuestro caso, sino que además lo que realmente testea es un hipotético generador aleatorio de símbolos, el cual podría ser utilizado por nuestro generador de contraseñas. Este se encargará de pedir al generador aleatorio los símbolos que vaya necesitando y componer la contraseña con ellos.
 
 De momento no vamos a crear el generador aleatorio, pero sí crearemos una interfaz para poder utilizar un test double suyo.
 
@@ -482,7 +482,7 @@ Y ahora que tenemos los tests en verde, es momento de refactorizar. Entre otras 
 
 Veamos: nuestros tests se basan en dos especificaciones que ahora hemos resumido en una sola. Por lo tanto, debería bastarnos con un único test que compruebe si el grupo vocálico es válido ya que podemos asumir que el RandonEngine, que estamos doblando, siempre nos va a permitir escoger un grupo válido de las opciones disponibles.
 
-Por tanto, unificamos los tests en uno sólo, y aprovechamos para dejar el código un poco más limpio:
+Por tanto, unificamos los tests en uno solo, y aprovechamos para dejar el código un poco más limpio:
 
 ```php
 namespace Tests\TalkingBit\Readable;
@@ -670,7 +670,7 @@ class RandomSyllableGenerator implements RandomSymbolGenerator
 
 ### Y ahora, sílabas terminadas en consonante
 
-Para terminar la generación de sílabas, seguiremos un procedimiento parecido. En este caso sólo hay cinco terminaciones posibles (n, l, s, r, d), además de la posibilidad de que la sílaba acabe en consonante.
+Para terminar la generación de sílabas, seguiremos un procedimiento parecido. En este caso solo hay cinco terminaciones posibles (n, l, s, r, d), además de la posibilidad de que la sílaba acabe en consonante.
 
 En principio, este será el test con el que probarlo:
 
@@ -922,7 +922,7 @@ Recapitulemos un poco:
 
 Empezamos creando un generador de contraseñas, hasta que nos vimos en la necesidad de separar responsabilidades: por un lado, el generador de la contraseña **PasswordGenerator** y, por otro, el generador de símbolos que será del tipo **RandomSymbolGenerator** y que, para nuestro caso, es **RandomSyllableSymbolGenerator**.
 
-El generador de la contraseña se limita a concatenar símbolos al azar que obtiene del generador de símbolos. Como tal, el generador no tiene ningún conocimiento acerca de cómo genera su colaborador los símbolos, con tal de que cada vez que lo llame le entregue uno que pueda concatenar. En otras palabras: a **PasswordGenerator** sólo le importa que se cumpla el contrato o interfaz **RandomSymbolGenerator**.
+El generador de la contraseña se limita a concatenar símbolos al azar que obtiene del generador de símbolos. Como tal, el generador no tiene ningún conocimiento acerca de cómo genera su colaborador los símbolos, con tal de que cada vez que lo llame le entregue uno que pueda concatenar. En otras palabras: a **PasswordGenerator** solo le importa que se cumpla el contrato o interfaz **RandomSymbolGenerator**.
 
 Por otra parte, al implementar un **RamdomSymbolGenerator** identificamos y decidimos separar dos responsabilidades: la composición del símbolo como tal, que de nuevo es concatenar una serie de piezas, y la aleatoriedad en la elección de estas piezas, que hemos extraído a un contrato o interfaz **RandomnessEngine**.
 
@@ -1059,7 +1059,7 @@ Vamos a ello:
 
 ### Contraseñas más cortas con la misma especificación
 
-Un problema con la especificación original es que sólo pone un límite inferior al tamaño de las contraseñas generadas. Si se hubiera definido también un límite superior quizá no tuviésemos ese problema.
+Un problema con la especificación original es que solo pone un límite inferior al tamaño de las contraseñas generadas. Si se hubiera definido también un límite superior quizá no tuviésemos ese problema.
 
 Como hemos mencionado antes, el problema es que comenzamos trabajando con el concepto de contraseña como una sucesión de caracteres y hemos desarrollado una solución que lo define como una sucesión de sílabas y, en algunos momentos, hemos tomado como equivalentes sílabas o símbolos y caracteres individuales, de modo que hemos asumido que nuestro `RamdomGenerator` entrega caracteres. Si PHP tuviese un tipo de dato char quizá hubiésemos sido más conscientes de este problema.
 
@@ -1212,7 +1212,7 @@ class Hackerize implements Generator
 }
 ```
 
-Fíjate que no necesitamos para nada el generador real, ni ninguna de sus dependencias, tan sólo estamos usando un stub que nos devuelve los valores de contraseña que nos interesan.
+Fíjate que no necesitamos para nada el generador real, ni ninguna de sus dependencias, tan solo estamos usando un stub que nos devuelve los valores de contraseña que nos interesan.
 
 Dado que vamos a tener contraseñas de varios caracteres, vamos a forzar una nueva implementación con este test:
 
@@ -1298,7 +1298,7 @@ class Hackerize implements Generator
 }
 ```
 
-Realmente, sólo nos queda añadir más sustituciones de símbolos. Podemos refactorizar los tests con un *data provider* y dejarlo todo más limpio:
+Realmente, solo nos queda añadir más sustituciones de símbolos. Podemos refactorizar los tests con un *data provider* y dejarlo todo más limpio:
 
 ```php
 namespace Tests\TalkingBit\Readable\Decorator;
@@ -1364,7 +1364,7 @@ class Hackerize implements Generator
 
 ### Decorador con mayúsculas
 
-Como `PasswordGenerator` sólo usa minúsculas para construir contraseñas, nos piden aumentar la dificultad añadiendo alguna letra mayúscula. Nosotros vamos a incluir una al azar.
+Como `PasswordGenerator` solo usa minúsculas para construir contraseñas, nos piden aumentar la dificultad añadiendo alguna letra mayúscula. Nosotros vamos a incluir una al azar.
 
 Lo suyo es comenzar con un test muy sencillo, que fallará:
 
@@ -1455,7 +1455,7 @@ El caso es que hemos dicho que queremos poner en mayúscula una letra al azar y 
 
 Este último problema ya lo conocemos ¿Recuerdas que tenemos un generador de números aleatorios en este paquete que estamos creando?
 
-Por otro lado, queremos comprobar que las contraseñas decoradas sólo tienen una letra mayúscula, cosa que podemos hacer eliminado las minúsculas en el resultado y contando lo que quede.
+Por otro lado, queremos comprobar que las contraseñas decoradas solo tienen una letra mayúscula, cosa que podemos hacer eliminado las minúsculas en el resultado y contando lo que quede.
 
 ```php
     public function testRandomlyUpperizeOnePassword()

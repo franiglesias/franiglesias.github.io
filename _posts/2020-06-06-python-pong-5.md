@@ -361,7 +361,7 @@ class StartScene(Scene):
 
 Una cosa en la que me fijo es que normalmente la `Surface` en la que se muestra el texto será siempre la misma de la escena. Tiene sentido entonces pasársela en construcción a `TextRenderer`, de forma que es un parámetro menos cuando lo utilizamos. Eso, además, puede facilitarme su instanciación en las Scenes. De hecho, podría instanciarse en la constructora de `Scene`, con lo que estaría automáticamente disponible para cualquier otra que lo necesite.
 
-Como de momento sólo tengo un uso es fácil hacer el cambio:
+Como de momento solo tengo un uso es fácil hacer el cambio:
 
 ```python
 import pygame

@@ -13,15 +13,15 @@ En las partes más antiguas del código en el que trabajo habitualmente hay algu
 
 Hablemos un momento sobre esto. Decir que una clase hace demasiadas cosas puede ser algo que necesite un poco de análisis. Veamos un ejemplo:
 
-Estoy haciendo un mini proyecto personal para refactorizar una clase que presenta el susodicho *smell*. La clase se encarga de construir un DTO para poder comunicar la información de un contrato al ERP. Así que, desde cierto punto de vista muy general, la clase sólo tiene una responsabilidad. 
+Estoy haciendo un mini proyecto personal para refactorizar una clase que presenta el susodicho *smell*. La clase se encarga de construir un DTO para poder comunicar la información de un contrato al ERP. Así que, desde cierto punto de vista muy general, la clase solo tiene una responsabilidad. 
 
 Sin embargo, puede que las cosas sean un poco más complicadas.
 
 Para poder hacer su trabajo, la clase necesita varios DTO a partir de ciertos objetos concretos, como son la información del suministro, la de facturación, la del contacto, la del contrato en sí y otros muchos detalles. Para ello, existen bloques de código, extraídos a métodos privados, que se encargan de generar ese DTO específico. 
 
-Estos métodos privados no comparten código entre sí y, además, al fijarnos en las dependencias que tiene la clase, podemos ver que algunas de ellas son necesarias únicamente para convertir un tipo específico de todos los objetos que componen la información que deseamos enviar al ERP. O sea, cada dependencia trabaja sólo en uno de los métodos privados.
+Estos métodos privados no comparten código entre sí y, además, al fijarnos en las dependencias que tiene la clase, podemos ver que algunas de ellas son necesarias únicamente para convertir un tipo específico de todos los objetos que componen la información que deseamos enviar al ERP. O sea, cada dependencia trabaja solo en uno de los métodos privados.
 
-Esto es otro *smell*. Cuando introducimos una dependencia en una clase sólo para poder cumplir algún requisito de una de sus subtareas nos podría estar diciendo que esa subtarea tal vez necesite estar en su propia clase. Como hemos dicho, los métodos privados son independientes entre sí. Podría extraerlos limpiamente a su correspondiente clase, llevando consigo sus dependencias específicas.
+Esto es otro *smell*. Cuando introducimos una dependencia en una clase solo para poder cumplir algún requisito de una de sus subtareas nos podría estar diciendo que esa subtarea tal vez necesite estar en su propia clase. Como hemos dicho, los métodos privados son independientes entre sí. Podría extraerlos limpiamente a su correspondiente clase, llevando consigo sus dependencias específicas.
 
 Haciendo esto, obtendría una clase principal que se encargaría de orquestar a las otras para construir el DTO que se debe enviar al ERP. En este caso sigue teniendo bastantes dependencias, pero son mucho más cohesivas y justificadas, pues cada una de ellas se encargaría de una parte de la tarea principal.
 

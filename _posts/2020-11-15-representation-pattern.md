@@ -48,8 +48,8 @@ El caso de uso normalmente sigue el patrón Command, posiblemente Command/Handle
 
 El problema surge cuando consideramos qué tipo de respuesta debería devolver el Handler, teniendo en cuenta que este debería ser agnóstico respecto a la instancia que haya realizado la petición. Por ejemplo:
 
-* Un controlador de un endpoint de un API podría requerir una respuesta que luego será serializada como JSON, que es lo que ocurre en el ejemplo anterior.
-* Otro controlador podría requerir la misma respuesta, pero sólo con algunos campo, y luego serializarla.
+* Un controlador de un endpoint de una API podría requerir una respuesta que luego será serializada como JSON, que es lo que ocurre en el ejemplo anterior.
+* Otro controlador podría requerir la misma respuesta, pero solo con algunos campo, y luego serializarla.
 * Un comando de consola podría querer usar ese mismo caso de uso pero para generar una versión en YAML, con todos los campos o una selección de ellos.
 * O igualmente podría necesitar un CSV, porque tiene que haber de todo…
 
@@ -59,7 +59,7 @@ Pero tampoco queremos tener objetos de dominio en un controlador o en un comando
 
 ## DTO
 
-La naturaleza de un Data Transfer Object es mover información entre sistemas. Es decir, son objetos sin comportamiento cuya función es ser contenedores de datos que representarán objetos en el sistema. En ese sentido podrían servirnos desde arrays o hashes a objetos con sólo propiedades públicas, y que son fácilmente serializables para transmitir vía red, por ejemplo.
+La naturaleza de un Data Transfer Object es mover información entre sistemas. Es decir, son objetos sin comportamiento cuya función es ser contenedores de datos que representarán objetos en el sistema. En ese sentido podrían servirnos desde arrays o hashes a objetos con solo propiedades públicas, y que son fácilmente serializables para transmitir vía red, por ejemplo.
 
 ```php
 class HotelRepresentation
@@ -76,9 +76,9 @@ class HotelRepresentation
 
 El DTO es un objeto del lenguaje en que está escrita la aplicación que representa el contrato de datos entre sistemas, datos que se representarían en el tipo más sencillo posible. Serán tipos básicos o escalares, en general, pero no habría ningún problema en hacer que todos fuesen `string`, excepto aquellos casos en que necesitemos `arrays`.
 
-Extendiendo la idea, podríamos mover datos entre las capas de una aplicación usando DTO, pero esa es sólo una parte del problema.
+Extendiendo la idea, podríamos mover datos entre las capas de una aplicación usando DTO, pero esa es solo una parte del problema.
 
-Me explico: Supongamos un endpoint que devuelve un payload JSON. El controlador recibe del caso de uso un DTO que contiene datos en tipos escalares (string, int, float...) y sólo tiene que serializarlo, posiblemente con una herramienta estándar provista por el propio lenguaje. Esto no debería tener mayor complicación, es bastante trivial.
+Me explico: Supongamos un endpoint que devuelve un payload JSON. El controlador recibe del caso de uso un DTO que contiene datos en tipos escalares (string, int, float...) y solo tiene que serializarlo, posiblemente con una herramienta estándar provista por el propio lenguaje. Esto no debería tener mayor complicación, es bastante trivial.
 
 En nuestro ejemplo, basta pasar el DTO para crear una JsonReponse (Symfony):
 
@@ -93,7 +93,7 @@ La parte complicada es cómo se obtiene ese DTO. Recordemos, el `Use Case` obten
 
 De hecho, nuestra respuesta en este artículo es la siguiente: no serializamos los objetos de dominio, sino que obtenemos una representación que luego podemos serializar de manera trivial.
 
-Esta representación será un objeto del lenguaje. Puede ser un DTO puro, con propiedades públicas que sólo se utilizará para cruzar esa frontera entre capas, o puede ser un objeto algo más rico que nos ofrezca otras posibilidades más.
+Esta representación será un objeto del lenguaje. Puede ser un DTO puro, con propiedades públicas que solo se utilizará para cruzar esa frontera entre capas, o puede ser un objeto algo más rico que nos ofrezca otras posibilidades más.
 
 ## Entendiendo el problema
 
@@ -178,7 +178,7 @@ Esto se relaciona con el problema de poblar la representación. La interfaz nos 
 
 **Un DTO con propiedades públicas** en PHP expone implícitamente una interfaz, aunque no sea muy rigurosa, pero implica que todas las representaciones posibles contienen esos mismos campos y el Handler *tiene que saber* qué campos son esos.
 
-Por ejemplo, supongamos que necesitamos dos representaciones de un objeto de dominio Hotel, una de ellas contiene todos sus detalles, incluyendo las habitaciones, y otra sólo la información básica y de ubicación.
+Por ejemplo, supongamos que necesitamos dos representaciones de un objeto de dominio Hotel, una de ellas contiene todos sus detalles, incluyendo las habitaciones, y otra solo la información básica y de ubicación.
 
 ```php
 class HotelRepresentation
@@ -427,6 +427,6 @@ class GetHotelByIdHandler
 }
 ```
 
-Otra opción es usar automapeadores que utilicen reflection para acceder a las propiedades privadas de los objetos de dominio. Personalmente es una opción que evito cada vez más. No sólo la configuración se complica, sino que suelen ser librerías pesadas, que intentan abarcar una infinidad de casos posibles y pueden recurrir a un montón de automagia y configuración.
+Otra opción es usar automapeadores que utilicen reflection para acceder a las propiedades privadas de los objetos de dominio. Personalmente es una opción que evito cada vez más. No solo la configuración se complica, sino que suelen ser librerías pesadas, que intentan abarcar una infinidad de casos posibles y pueden recurrir a un montón de automagia y configuración.
 
 

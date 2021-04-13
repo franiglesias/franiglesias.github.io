@@ -21,7 +21,7 @@ Tiene su miga y eso es lo que voy a intentar hacer en este artículo.
 
 Un buen IDE para trabajar con Python es [PyCharm, de Jetbrains](https://www.jetbrains.com/pycharm/). Obviamente, viniendo de IDEs de la misma compañía como PHPStorm, usar PyCharm es estar en terreno familiar, lo que facilita mucho las cosas. Además, ofrecen la versión gratuita PyCharm Community, por lo que tienes todo a favor.
 
-Inciar un proyecto nuevo en PyCharm es sencillo, sólo tienes que darle un nombre y escoger el intérprete de Python. Yo he optado por el [virtual environment](https://rukbottoland.com/blog/tutorial-de-python-virtualenv/) que es algo así como crear un entorno controlado para desarrollar un proyecto (*disclaimer*: soy muy novato en esto, así que cualquier comentario se agradece).
+Inciar un proyecto nuevo en PyCharm es sencillo, solo tienes que darle un nombre y escoger el intérprete de Python. Yo he optado por el [virtual environment](https://rukbottoland.com/blog/tutorial-de-python-virtualenv/) que es algo así como crear un entorno controlado para desarrollar un proyecto (*disclaimer*: soy muy novato en esto, así que cualquier comentario se agradece).
 
 Y ya está.
 
@@ -72,7 +72,7 @@ En cuanto al test en sí, en este ejercicio es importante pensar en cómo funcio
 * Luego se suma lo obtenido de los números impares y pares.
 * Si el resultado es múltiplo de 10 (esto es: acaba en cero) entonces el número de tarjeta ingresado es válido.
 
-Al analizar este flujo podemos ver que las operaciones son sumas y productos y, siendo los productos una suma de sumandos iguales, tenemos una cifra interesante para empezar a trabajar que es el 0, elemento neutro de la suma de enteros. Un número de tarjeta compuesto sólo por ceros será válido porque la serie de cálculos realizados dará cero como resultado. Por tanto es ideal como primer test, que nos forzará a crear la clase y el método.
+Al analizar este flujo podemos ver que las operaciones son sumas y productos y, siendo los productos una suma de sumandos iguales, tenemos una cifra interesante para empezar a trabajar que es el 0, elemento neutro de la suma de enteros. Un número de tarjeta compuesto solo por ceros será válido porque la serie de cálculos realizados dará cero como resultado. Por tanto es ideal como primer test, que nos forzará a crear la clase y el método.
 
 ## Empezando con el código de producción
 
@@ -162,7 +162,7 @@ Nuestro primer test nos forzó a implementar algo muy básico: el validador siem
 Y esto es lo que tenemos:
 
 * La inversión de los dígitos se puede forzar si el número de la tarjeta de crédito es asimétrico, por ejemplo, todos los dígitos son iguales menos uno en un extremo.
-* Lo más sencillo es operar con los dígitos que tras la inversión queden en las posiciones impares, ya que sólo habría que sumarlos.
+* Lo más sencillo es operar con los dígitos que tras la inversión queden en las posiciones impares, ya que solo habría que sumarlos.
 * Los dígitos que caigan en lugar par tendré que multiplicarlos por dos, y lo ideal, de momento, es que sean menores a cinco para no tener que hacer la suma de los dígitos resultantes.
 * Los dígitos que sean cero no van a influir en el cálculo, por lo que puedo dejar en cero todos los dígitos que no necesite.
 * Si a esto le añado que los dígitos finales del original acabarán en las primeras posiciones de la secuencia invertida…
@@ -175,7 +175,7 @@ Lo cierto es que si aplicamos el algoritmo vemos que nuestro ejemplo no sería v
 
 ¿Y por qué este ejemplo en concreto y no otro?
 
-Bien, mi interés es probar que invertimos el número de tarjeta introducido, así que voy a implementar un test que asegure que si sólo tomo en consideración el primer dígito tras la inversión éste no es cero y, por tanto, la cadena ha sido invertida. Si sólo tomo el primer dígito en consideración y los demás son ceros, el resultado de la suma total que necesitamos para valorar si la tarjeta es válida será igual a ese primer dígito.
+Bien, mi interés es probar que invertimos el número de tarjeta introducido, así que voy a implementar un test que asegure que si solo tomo en consideración el primer dígito tras la inversión éste no es cero y, por tanto, la cadena ha sido invertida. Si solo tomo el primer dígito en consideración y los demás son ceros, el resultado de la suma total que necesitamos para valorar si la tarjeta es válida será igual a ese primer dígito.
 
 ```python
 import unittest
@@ -220,7 +220,7 @@ Este ha sido un primer paso, y puede que no sea suficiente para demostrar todo l
 
 ## Los tests deben forzar implementaciones
 
-Una premisa de TDD es que cualquier código de producción sólo puede crearse como respuesta a un test que falle. Si ahora escribimos un nuevo test que pase no podríamos modificar la implementación. No es que esté "prohibido", es simplemente que en este momento si escribimos un nuevo test que pasa, no nos dice nada acerca de qué deberíamos implementar. Únicamente nos confirma lo que ya sabemos. En todo caso, este tipo de tests, que recién escrito ya pasa, nos puede servir como test de **regresión**: si algún día falla nos está indicando que algo está alterando el algoritmo. 
+Una premisa de TDD es que cualquier código de producción solo puede crearse como respuesta a un test que falle. Si ahora escribimos un nuevo test que pase no podríamos modificar la implementación. No es que esté "prohibido", es simplemente que en este momento si escribimos un nuevo test que pasa, no nos dice nada acerca de qué deberíamos implementar. Únicamente nos confirma lo que ya sabemos. En todo caso, este tipo de tests, que recién escrito ya pasa, nos puede servir como test de **regresión**: si algún día falla nos está indicando que algo está alterando el algoritmo. 
 
 Lo que nos interesa ahora mismo es introducir alguna variación en los ejemplos que fuerce un cambio en la implementación a fin de darle cobertura. En concreto queremos sumar los dígitos en las posiciones impares.
 
@@ -303,7 +303,7 @@ En este ejemplo, que hace pasar el test, se pueden ver algunos detalles interesa
 
 Todavía no tenemos mucho para forzarnos a escribir un algoritmo más general. Para eso necesitamos otro test, el cual debe fallar si queremos que nos sirva. El código nos pedirá un algoritmo más general cuando podamos observar repeticiones o algún tipo de regularidad que podamos expresar de otra manera.
 
-Nosotros vamos a proponer el siguiente test, que nos fuerza a considerar un tercer dígito en la validación. Ahora que ya he establecido que el algoritmo se basa en la suma, puedo volver a mi estrategia minimalista anterior. He aquí el ejemplo (a partir de ahora sólo voy a poner el test específico):
+Nosotros vamos a proponer el siguiente test, que nos fuerza a considerar un tercer dígito en la validación. Ahora que ya he establecido que el algoritmo se basa en la suma, puedo volver a mi estrategia minimalista anterior. He aquí el ejemplo (a partir de ahora solo voy a poner el test específico):
 
 ```python
     def test_credit_card_with_only_fifth_digit_is_invalid(self):
@@ -446,7 +446,7 @@ class LuhnValidator:
         return even
 ```
 
-Podemos seguir usando el mismo patrón que antes, moviendo el dígito a la siguiente posición par, un test cada vez. Para abreviar el ejemplo, voy a poner sólo los tests que he ido haciendo (te doy mi palabra de que he llegado hasta aquí haciendo baby steps):
+Podemos seguir usando el mismo patrón que antes, moviendo el dígito a la siguiente posición par, un test cada vez. Para abreviar el ejemplo, voy a poner solo los tests que he ido haciendo (te doy mi palabra de que he llegado hasta aquí haciendo baby steps):
 
 ```python
     def test_credit_card_with_only_fourth_digit_is_invalid(self):

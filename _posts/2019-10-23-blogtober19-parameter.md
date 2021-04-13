@@ -31,7 +31,7 @@ Conclusión: **tres** parámetros es el máximo recomendable para trabajar cómo
 
 ### Soluciones para limitar el número de parámetros
 
-**Value Objects**. Se trata de ver si algunos de esos parámetros se agrupan en una unidad conceptual que puede sernos útil no sólo en esa llamada, sino como concepto del dominio. Por ejemplo, si tenemos que pasar una cantidad que representa dinero y la unidad monetaria, es que en realidad necesitamos un VO Money.
+**Value Objects**. Se trata de ver si algunos de esos parámetros se agrupan en una unidad conceptual que puede sernos útil no solo en esa llamada, sino como concepto del dominio. Por ejemplo, si tenemos que pasar una cantidad que representa dinero y la unidad monetaria, es que en realidad necesitamos un VO Money.
 
 ```php
 public function setPrice(float $priceAmount, string $priceMonetaryUnit);

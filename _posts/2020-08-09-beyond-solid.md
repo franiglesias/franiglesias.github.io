@@ -11,7 +11,7 @@ Los principios de diseño de software no son recetas ni objetivos, son guías pa
 
 Es muy complicado definir qué es buen código. Entran en juego toda una serie de factores, incluyendo preferencias personales o su ajuste a un contexto determinado. El buen código funciona, por supuesto, pero también esperamos que tenga algunas características más: que sea robusto, reutilizable, testeable, bien organizado, legible y sostenible.
 
-¿Qué significa cada una de estas propiedades? ¿Son medibles o auditables? En la mayor parte de los casos podemos dar definiciones aproximadas que, por desgracia, pueden tener mucho que ver con preferencias personales. En cuanto a la medición de las mismas, es posible que sólo podamos tomar medidas relativas, del tipo *más que ayer, pero menos que mañana*. Veamos:
+¿Qué significa cada una de estas propiedades? ¿Son medibles o auditables? En la mayor parte de los casos podemos dar definiciones aproximadas que, por desgracia, pueden tener mucho que ver con preferencias personales. En cuanto a la medición de las mismas, es posible que solo podamos tomar medidas relativas, del tipo *más que ayer, pero menos que mañana*. Veamos:
 
 **Robusto.** Diríamos que el código es robusto si está libre de defectos, si la tasa de fallos es reducida o nula, si es capaz de gestionar ciertas condiciones adversas, como la caída de redes o servicios de los que depende.
 
@@ -35,8 +35,8 @@ Puede que sea más fácil definir lo que no es buen código. El mal código care
 * Tiene múltiples fallos y problemas, no funciona si alguna condición externa es adversa.
 * No es reutilizable.
 * No está bien organizado. Encontrar algo en él es un esfuerzo enorme, que lleva a multitud de vías muertas o a descubrir que una misma idea es expresada en diferentes lugares, diseminada en múltiples sitios e incluso ausente.
-* No es testeable. Hay que hacer un gran esfuerzo sólo para poder empezar a hacer un test, incluyendo tener que transformar el código para hacerlo posible.
-* No es legible. No es posible entender qué hace sólo con leer el código, hay que buscar otras fuentes de información para hacerse una idea de lo que estaría ocurriendo, incluso aunque exista documentación o comentarios, porque ya han perdido la sincronía con el código.
+* No es testeable. Hay que hacer un gran esfuerzo solo para poder empezar a hacer un test, incluyendo tener que transformar el código para hacerlo posible.
+* No es legible. No es posible entender qué hace solo con leer el código, hay que buscar otras fuentes de información para hacerse una idea de lo que estaría ocurriendo, incluso aunque exista documentación o comentarios, porque ya han perdido la sincronía con el código.
 * No es sostenible. Llevar a cabo una modificación es peligroso porque puede resultar incompleta o tener efectos en lugares insospechados.
 
 ## Principios de diseño para crear buen código
@@ -67,7 +67,7 @@ Un corolario de este principio es que si determinamos que una unidad de software
 
 ### Principio de abstracción
 
-Enunciado por Benjamin Pierce, dice que cada parte significativa de funcionalidad de un programa debe implementarse en un sólo lugar del código fuente.
+Enunciado por Benjamin Pierce, dice que cada parte significativa de funcionalidad de un programa debe implementarse en un solo lugar del código fuente.
 
 Conocemos una versión más "pragmática" en forma del principio DRY, del que hablaremos en la tercera entrega. Pero en general, este principio lo que nos dice es que toda funcionalidad significativa debería existir en un único lugar accesible al resto del programa, evitando repetir el código que la ejecuta. 
 
@@ -75,7 +75,7 @@ Este principio nos ayuda a tener criterios para modularizar código y para favor
 
 En cuando a la modularidad, una funcionalidad que debe reutilizarse tiene que existir en forma única en un módulo que sea utilizable desde las partes del programa que lo precise. Desde el punto de vista de este consumidor, esa funcionalidad está abstracta en una función o clase, por lo que no necesita preocuparse de los detalles de su implementación.
 
-La sostenibilidad se ve favorecida porque si necesitamos cambiar esa funcionalidad sólo existirá un punto en el que debamos intervenir, sin riesgo de que haya distintas partes del código que puedan quedar sin actualizar.
+La sostenibilidad se ve favorecida porque si necesitamos cambiar esa funcionalidad solo existirá un punto en el que debamos intervenir, sin riesgo de que haya distintas partes del código que puedan quedar sin actualizar.
 
 ### Separación comando pregunta (command query separation o CQS)
 
@@ -85,7 +85,7 @@ El meollo de este principio es que una función no debería provocar un cambio e
 
 Por este tipo de problemas es necesario separar la realización de cambios en el sistema, de la obtención de información acerca de esos cambios.
 
-En consecuencia, normalmente de los comandos no obtenemos respuestas. En su lugar nos preocupa sólo saber que se han ejecutado y, en todo caso, si ha habido algo que ha impedido completar esa ejecución. De ahí que sea la práctica habitual que un comando no retorne nada (void) pero puede lanzar excepciones de modo que su emisor pueda saber que ha fallado. Una alternativa más avanzada es que, como resultado de la ejecución, se dispare un evento que notifica a la aplicación el cambio que se acaba de producir, permitiendo que otras partes de la misma actúen en consecuencia. 
+En consecuencia, normalmente de los comandos no obtenemos respuestas. En su lugar nos preocupa solo saber que se han ejecutado y, en todo caso, si ha habido algo que ha impedido completar esa ejecución. De ahí que sea la práctica habitual que un comando no retorne nada (void) pero puede lanzar excepciones de modo que su emisor pueda saber que ha fallado. Una alternativa más avanzada es que, como resultado de la ejecución, se dispare un evento que notifica a la aplicación el cambio que se acaba de producir, permitiendo que otras partes de la misma actúen en consecuencia. 
 
 Por otro lado, aplicando este principio, tendremos la seguridad de que las *queries* no producen cambios (*side effects*) en el estado del sistema, por lo que devuelven información correcta acerca del mismo. El concepto de *función pura* tiene que ver con este principio también.
 
@@ -95,7 +95,7 @@ La aplicación del principio CQS favorece la testeablidad del software y contrib
 
 ### Principio del mínimo conocimiento (Ley de Demeter o *No hables con extraños*)
 
-Ian Holland es el promotor de este principio definido como práctica recomendada en un proyecto denominado [Demeter](https://www2.ccs.neu.edu/research/demeter/), del cual tomó su nombre más popular. Su nombre formal tiene que ver con el enunciado del principio, que dice, más o menos, que una unidad de software sólo puede hablar con aquellas otras unidades que conozca.
+Ian Holland es el promotor de este principio definido como práctica recomendada en un proyecto denominado [Demeter](https://www2.ccs.neu.edu/research/demeter/), del cual tomó su nombre más popular. Su nombre formal tiene que ver con el enunciado del principio, que dice, más o menos, que una unidad de software solo puede hablar con aquellas otras unidades que conozca.
 
 ¿Cuales son estas otras unidades que una unidad de software puede conocer? Pues las siguientes:
 
@@ -107,7 +107,7 @@ En el caso de orientación a objetos, asumiendo que la unidad es un método de u
 * La propia clase en la que se define el método.
 * Los métodos y atributos de la clase.
 
-Una consecuencia de este principio es que una unidad de software no debe tener conocimiento de la estructura interna de esas otras unidades con las que puede hablar. No puede usarlas para acceder a propiedades internas de estas colaboradoras, sino que sólo puede relacionarse con ellas a través de su interfaz pública.
+Una consecuencia de este principio es que una unidad de software no debe tener conocimiento de la estructura interna de esas otras unidades con las que puede hablar. No puede usarlas para acceder a propiedades internas de estas colaboradoras, sino que solo puede relacionarse con ellas a través de su interfaz pública.
 
 La aplicación de este principio ayuda mucho a la testeabilidad, sobre todo cuando en el nivel unitario utilizamos dobles de tests. Además, aligera el acoplamiento eliminando dependencias ocultas o transitivas (cuando desde la unidad A, usamos una unidad B porque contiene una tercera unidad C que es la que realmente queremos usar), y favorece la cohesión.
 

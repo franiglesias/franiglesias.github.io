@@ -77,13 +77,13 @@ Ya tenemos el primer test pasando.
 
 ## Testeando lo que no es válido
 
-Testear validadores o cualquier método que devuelva resultados booleanos tiene un poco de truco, porque sólo tenemos dos respuestas posibles. Por eso, normalmente querremos empezar por un caso para generar nuestra primera implementación mínima e inflexible y, después, empezar a explorar casos que la contradigan.
+Testear validadores o cualquier método que devuelva resultados booleanos tiene un poco de truco, porque solo tenemos dos respuestas posibles. Por eso, normalmente querremos empezar por un caso para generar nuestra primera implementación mínima e inflexible y, después, empezar a explorar casos que la contradigan.
 
 La estrategia que vamos a seguir en esta ocasión es centrarnos primero en los casos de NIFs que no son válidos. Ahora necesitamos un nuevo test que falle esperando que el siguiente NIF no sea válido.
 
 Lo cierto es que hay varios ejemplos de NIF que no son válidos porque no cumplen los requisitos básicos de número de caracteres, así que podemos empezar por conseguir que nuestro ValidateNif los rechace.
 
-En lugar de testear que el validador sólo admite cadenas de nueve caracteres (ocho números y una letra) lo que vamos a hacer es testear que los `strings` de más de 9 caracteres nunca serán válidos.
+En lugar de testear que el validador solo admite cadenas de nueve caracteres (ocho números y una letra) lo que vamos a hacer es testear que los `strings` de más de 9 caracteres nunca serán válidos.
 
 Aquí tenemos el test que falla:
 
@@ -112,7 +112,7 @@ La clave está en lo siguiente: nuestra primera implementación inflexible siemp
 
 Al añadir código para hacer pasar estos tests nos estamos obligando a tratar con esos casos que no deberían entrar al algoritmo de validación. Como, por ejemplo, los que son demasiado cortos.
 
-Una nota sobre este tipo de casos: puede que ya tengamos validaciones por front-end de datos introducidos por usuarios, pero nunca está de más. A lo mejor otra fuente de entrada de datos es un archivo CSV o la respuesta de un API en las que puede que no contemos con esa primera barrera de defensa.
+Una nota sobre este tipo de casos: puede que ya tengamos validaciones por front-end de datos introducidos por usuarios, pero nunca está de más. A lo mejor otra fuente de entrada de datos es un archivo CSV o la respuesta de una API en las que puede que no contemos con esa primera barrera de defensa.
 
 En fin, volviendo al tema, aquí tenemos un test para probar que nuestra clase sabe lidiar con NIFs demasiado cortos.
 
@@ -538,7 +538,7 @@ class ValidateNif
 
 Este código pasa todos los tests. Es muy mejorable, especialmente en cuanto a legibilidad.
 
-Además nos falta cubrir varios casos más, como los números de NIE, que tendrían este formato: 'X0000000T'. En realidad el algoritmo no cambia mucho, sólo hay que reemplazar las letras X, Y, Z por los números 0, 1, 2, respectivamente.
+Además nos falta cubrir varios casos más, como los números de NIE, que tendrían este formato: 'X0000000T'. En realidad el algoritmo no cambia mucho, solo hay que reemplazar las letras X, Y, Z por los números 0, 1, 2, respectivamente.
 
 Hagamos un test que pruebe que podemos dar como válidos NIE correctos:
 

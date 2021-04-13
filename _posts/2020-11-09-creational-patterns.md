@@ -58,7 +58,7 @@ Pero...
 
 En muchas aplicaciones existe una diversidad de fuentes de entrada de datos que deberían dar lugar al mismo tipo de objetos. Por ejemplo, si manejo precios en una tienda online es posible que tenga proveedores que me indican sus precios con distintos formatos.
 
-Por ejemplo, tal vez un API de un proveedor me presente los precios con un `string` de este tipo:
+Por ejemplo, tal vez una API de un proveedor me presente los precios con un `string` de este tipo:
 
 ```php
 $providerPrice = '35.49 EUR';
@@ -74,7 +74,7 @@ $providerPrice = '35.49 EUR';
 $money = new Money($amount, $currency);
 ```
 
-Por otro lado, podría ser que la mayor parte de las veces sólo esté usando una `currency` (por ejemplo, euros), lo que hace muy tedioso tener que estar pendiente de pasarla correctamente:
+Por otro lado, podría ser que la mayor parte de las veces solo esté usando una `currency` (por ejemplo, euros), lo que hace muy tedioso tener que estar pendiente de pasarla correctamente:
 
 ```php
 const EUR = 'EUR';
@@ -415,7 +415,7 @@ $address = $builder->build();
 
 El método `atLocality` nos ayuda a mantener juntos los parámetros `$postalCode`, `$city` y `$province` que siempre van juntos.
 
-De hecho, sería posible usar un Builder para pasar sólo el parámetro `$city` y usar un servicio que nos localice el código postal y la provincia consultando un API, por ejemplo.
+De hecho, sería posible usar un Builder para pasar solo el parámetro `$city` y usar un servicio que nos localice el código postal y la provincia consultando una API, por ejemplo.
 
 Los métodos del Builder pueden ser semánticos. Por ejemplo, si sabemos que tenemos que instanciar una dirección para una casa unifamiliar podríamos usar:
 
@@ -551,6 +551,6 @@ $fee = $calculator->calculate();
 
 En este artículo hemos visto distintos patrones de construcción de objetos que resuelven diferentes problemas que se nos presentan al desarrollar aplicaciones.
 
-Uno de los beneficios de usar estos patrones es que el conocimiento necesario para instanciar objetos está contenido en un sólo lugar, lo que nos proporciona cierta seguridad a la hora de introducir cambios o incluso nuevas variedades de objetos.
+Uno de los beneficios de usar estos patrones es que el conocimiento necesario para instanciar objetos está contenido en un solo lugar, lo que nos proporciona cierta seguridad a la hora de introducir cambios o incluso nuevas variedades de objetos.
 
 Por otro lado, nada nos impide mezclar estos patrones. Aunque tengamos Builders o Factories, el hecho de que las clases contengan Factory Methods o Named Constructors nos ayuda a simplificar su uso y mantener un diseño DRY.

@@ -121,4 +121,4 @@ El índice de Code Coverage indica qué líneas de un código han sido ejecutada
 
 Aunque está estrechamente relacionado con el anterior, el branch coverage es un poco diferente. Su función es indicarnos si los posibles cursos de acción (o branches) de un código se han ejecutado.
 
-Por ejemplo, una cláusula if…then que evalúa una condición tiene dos ramas, por tanto, ambas ramas deberían haberse ejecutado al menos una vez para asegurarnos de que han sido correctamente cubiertas. Si se evalúan dos condiciones, tendremos cuatro posibles combinaciones lógicas.
+Por ejemplo, una cláusula `if…then` que evalúa una condición tiene dos ramas, por tanto, ambas ramas deberían haberse ejecutado al menos una vez para asegurarnos de que han sido correctamente cubiertas. Si se evalúan dos condiciones, tendremos cuatro posibles combinaciones lógicas.

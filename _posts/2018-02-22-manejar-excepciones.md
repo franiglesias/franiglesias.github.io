@@ -105,7 +105,7 @@ try {
 
 Si durante la ejecución del bloque `try` se produce una excepción, se detiene el flujo y se salta al bloque `catch`. A este bloque se le pasa la excepción como parámetro, de la cual se puede extraer información si es el caso y hacer algo adecuado, como podría ser añadir una entrada en el *log* de errores, redirigir a una página particular, o incluso volver a lanzar la misma excepción u otra para que las siguiente capa de la aplicación la pueda recibir.
 
-El código después de esta estructura sólo se ejecuta si no ha habido excepción, aunque haya sido capturada.
+El código después de esta estructura solo se ejecuta si no ha habido excepción, aunque haya sido capturada.
 
 Podemos capturar excepciones concretas simplemente añadiendo bloques `catch`, pero tenemos que hacerlo de manera que las excepciones más concretas se capturen antes que las más genéricas.
 
@@ -158,9 +158,9 @@ try {
 }
 ```
 
-El problema de usar sólo excepciones genéricas es que si en algún momento necesitamos actuar de manera diferente según el problema detectado es muy posible que la excepción no pueda proporcionarnos información suficiente.
+El problema de usar solo excepciones genéricas es que si en algún momento necesitamos actuar de manera diferente según el problema detectado es muy posible que la excepción no pueda proporcionarnos información suficiente.
 
-Si la propia excepción ya nos dice qué ha pasado, por su tipo, sólo tendríamos que explorar algunos de sus datos para tomar las medidas adecuadas.
+Si la propia excepción ya nos dice qué ha pasado, por su tipo, solo tendríamos que explorar algunos de sus datos para tomar las medidas adecuadas.
 
 Y **nunca, nunca**, deberíamos tener bloques `catch` que no hagan nada, silenciando las excepciones. Como mínimo, si nos interesa que no rompan el flujo del programa, deberíamos crear una entrada en el *log*, para el caso de que se detecte algún problema y eso nos pueda proporcionar alguna pista en el análisis posterior.
 
@@ -232,7 +232,7 @@ Aunque estrictamente hablando se viola el principio de sustitución de Liskov, h
 
 ### Named constructors en excepciones
 
-Una técnica que puede mejorar la expresividad de las excepciones es utilizar métodos factoría (*named constructors*) de modo que la construcción de estas nuevas excepciones no sólo sea más expresiva sino incluso más coherente. El ejemplo anterior se podría reescribir así:
+Una técnica que puede mejorar la expresividad de las excepciones es utilizar métodos factoría (*named constructors*) de modo que la construcción de estas nuevas excepciones no solo sea más expresiva sino incluso más coherente. El ejemplo anterior se podría reescribir así:
 
 ```php
 class InvalidCoordinatesException extends \InvalidArgumentException

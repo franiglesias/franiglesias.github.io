@@ -54,7 +54,7 @@ El nuevo backlog quedaría así:
 * Efecto de sonido diferenciado cuando se hace un tanto
 * Se puede jugar en modalidad dobles (se necesita más información)
 
-Esta es exactamente una de las grandes ventajas de usar un enfoque ágil. En una situación ideal, en el momento de planificar no estamos haciendo nada. El comienzo del sprint debería ser comenzar de cero. Esto nos permite no tener una preferencia por una historia en particular, sino sólo por la que es más importante o necesaria conseguir, medida en valor de negocio. Por eso, en la planificación podemos cambiar prioridades o incluso introducir historias nuevas si con eso vamos a añadir más valor.
+Esta es exactamente una de las grandes ventajas de usar un enfoque ágil. En una situación ideal, en el momento de planificar no estamos haciendo nada. El comienzo del sprint debería ser comenzar de cero. Esto nos permite no tener una preferencia por una historia en particular, sino solo por la que es más importante o necesaria conseguir, medida en valor de negocio. Por eso, en la planificación podemos cambiar prioridades o incluso introducir historias nuevas si con eso vamos a añadir más valor.
 
 ### El compromiso de entrega
 
@@ -75,7 +75,7 @@ En nuestro ejemplo, entendemos que cada `commit` es una entrega a producción, a
 
 ### Definition of done
 
-Por otra parte, ¿qué significa que una historia esté completada? Si quieres ser verdaderamente ágil una historia terminada (done) es **una feature que está en producción y que al menos un usuario del software puede utilizar**. Estar en PR, mezclada en master o cualquier otro estado, es sólo un paso previo.
+Por otra parte, ¿qué significa que una historia esté completada? Si quieres ser verdaderamente ágil una historia terminada (done) es **una feature que está en producción y que al menos un usuario del software puede utilizar**. Estar en PR, mezclada en master o cualquier otro estado, es solo un paso previo.
 
 Si no la puedes desplegar por razones de negocio, por ejemplo porque es una feature que no debería aparecer antes de cierta fecha, entonces tal vez necesites algún tipo de feature toggle o herramienta similar para poder desplegar y activar o desactivar las features a voluntad.
 
@@ -105,7 +105,7 @@ Así que vamos con nuestra primera historia y vemos que tiene básicamente las s
 
 Esta división de tareas se puede haber hecho durante el Refinamiento del backlog, durante la Planificación, en sesiones específicas de análisis de historias por el equipo de desarrollo o, como en este caso, en el momento de abordarla.
 
-La tarea que requiere más esfuerzo y más cambios en el código es la segunda, ya que implica modificar el flujo del juego en el nivel de `App` o `Window`. La tercera tarea en realidad es el comportamiento actual y sólo queremos excluir una tecla.
+La tarea que requiere más esfuerzo y más cambios en el código es la segunda, ya que implica modificar el flujo del juego en el nivel de `App` o `Window`. La tercera tarea en realidad es el comportamiento actual y solo queremos excluir una tecla.
 
 La tecla que nos permitirá volver a jugar podría ser "P" por "Play again".
 
@@ -183,7 +183,7 @@ class Window(object):
         self.scenes.append(scene)
 ```
 
-Ahora mismo, el método `run` ejecuta las Scenes en secuencia y cualquier valor que no sea 0 es considerado error y se sale del juego. Necesitamos cambiar esto para que nos de la oportunidad de volver a empezar o salir si queremos. Es decir, tendría sentido modificar el código para que sólo salga prematuramente con un código de error negativo y se el código de salida corresponde con el de "volver a jugar", se reinicie el juego desde el principio.
+Ahora mismo, el método `run` ejecuta las Scenes en secuencia y cualquier valor que no sea 0 es considerado error y se sale del juego. Necesitamos cambiar esto para que nos de la oportunidad de volver a empezar o salir si queremos. Es decir, tendría sentido modificar el código para que solo salga prematuramente con un código de error negativo y se el código de salida corresponde con el de "volver a jugar", se reinicie el juego desde el principio.
 
 O sea, esta tarea en realidad contiene otras dos. Una para poder capturar la pulsación de la tecla P y otra para gestionar la ejecución del juego. Además, tendríamos que hacer primero este cambio para que la ejecución del juego no se rompa. Por tanto, haremos las subtareas de esta manera:
 
@@ -201,7 +201,7 @@ Para desarrollar esta parte vamos primero a los tests. Lo primero que observamos
             self.assertEqual(-1, window.run())
 ```
 
-De este modo podemos cambiar que aborte el programa sólo si salimos de una escena con un código de salida negativo:
+De este modo podemos cambiar que aborte el programa solo si salimos de una escena con un código de salida negativo:
 
 ```python
 import pygame
@@ -348,7 +348,7 @@ class Window(object):
         return exit_code < 0
 ```
 
-Ya sólo nos falta añadir soporte para salir con la tecla `P` de `EndScene`. Así que vamos a su test y añadimos este:
+Ya solo nos falta añadir soporte para salir con la tecla `P` de `EndScene`. Así que vamos a su test y añadimos este:
 
 ```python
     @unittest.mock.patch("pong.scoreboard.ScoreBoard")
@@ -590,7 +590,7 @@ Una vez que todos los tests pasan sin intervención y vemos que la pantalla de d
 
 En un entorno de entrega continua creo que haría `commit` de la feature y haría un pequeño *spike* de código al completar el sprint, si me sobra tiempo, para saber si el cambio es viable. Al haber entregado ya la historia los usuarios pueden beneficiarse de ella y empezar a proporcionar feedback. 
 
-También podría hacer el *spike* en este momento si valoro que todavía estoy dentro de la estimación de la historia, es decir, que me haya llevado menos tiempo del previsto. Pero esto es algo que creo que haría sólo si veo que me queda un tiempo "muerto" al final del día y prefiero dejar el abordaje de la próxima historia para el día siguiente, en que puedo cambiar más fácilmente de foco.
+También podría hacer el *spike* en este momento si valoro que todavía estoy dentro de la estimación de la historia, es decir, que me haya llevado menos tiempo del previsto. Pero esto es algo que creo que haría solo si veo que me queda un tiempo "muerto" al final del día y prefiero dejar el abordaje de la próxima historia para el día siguiente, en que puedo cambiar más fácilmente de foco.
 
 Pero como normal general, tenemos que priorizar las historias del sprint y dejar estas mejoras técnicas para el final o para una historia que nos proporcione la oportunidad de tocar ese punto que nos gustaría arreglar. Si es realmente importante, acabaremos volviendo sobre él.
 

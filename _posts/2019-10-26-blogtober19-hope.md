@@ -18,7 +18,7 @@ En muchos sentidos la [programación es Lingüística](http://verraes.net/2014/0
 
 Históricamente hablando, el paradigma de programación orientada a objetos tiene un marcado carácter lingüístico. De hecho, Alan Kay, uno de sus fundadores, lamentaría haberlo llamado en primer lugar "orientada a objetos", porque en realidad quería poner el énfasis en los "mensajes" con que esos objetos se comunican para realizar tareas. Como se explica en [esta conversación](http://www.purl.org/stefan_ram/pub/doc_kay_oop_en) los objetos ya existían en el lenguaje [Simula](http://staff.um.edu.mt/jskl1/talk.html) (de 1962), pero el enfoque OOP en el sentido de ["orientado a mensajes"](http://lists.squeakfoundation.org/pipermail/squeak-dev/1998-October/017019.html) se introdujo en SmallTalk (Talk, ¿a qué te suena?) creado en el mítico Xerox PARC en los años 70.
 
-*Nota: Se podría hacer un blogtober sólo hablando de todas las cosas importantes que tuvieron origen en este centro de investigación y que han dado forma a la informática que conocemos hoy.*
+*Nota: Se podría hacer un blogtober solo hablando de todas las cosas importantes que tuvieron origen en este centro de investigación y que han dado forma a la informática que conocemos hoy.*
 
 Lo que interesa resaltar es que esta concepción se oponía, y se opone, a la visión que podríamos considerar más *matematicista* de la informática en la que la centralidad pertenece a las estructuras de datos, que en el caso de la OOP pone énfasis en el objetos y no tanto en su comunicación.
 

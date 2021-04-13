@@ -13,7 +13,7 @@ Y, sin embargo, puede que esa no sea la mejor opción.
 
 Hace tiempo que descubrí la [QuoteBot kata](https://github.com/cyriux/legacy-testing-kata-java), un ejercicio para aprender a trabajar con código legacy. Me gustó tanto [que la adapté a PHP](https://github.com/franiglesias/legacy-testing-kata) y la he repetido varias veces.
 
-En esta kata vamos a ver un código que no conocemos, estructurado de una manera que no entendemos y que tiene pinta de no ser precisamente buena. Aparte de eso, no hay ni un sólo test. Por otro lado, una condición importante: No podemos tocar lo que hay en la carpeta `lib`, son vendors que no controlamos.
+En esta kata vamos a ver un código que no conocemos, estructurado de una manera que no entendemos y que tiene pinta de no ser precisamente buena. Aparte de eso, no hay ni un solo test. Por otro lado, una condición importante: No podemos tocar lo que hay en la carpeta `lib`, son vendors que no controlamos.
 
 Así que en este primer artículo me voy a centrar en como reestructurar el código para tener una organización más actual. En la segunda parte, veremos como desarrollar una capa de dominio rica, que describa por sí misma lo que hace la aplicación.
 
@@ -355,7 +355,7 @@ Time: 5.49 seconds, Memory: 4.00MB
 OK (1 test, 1 assertion)
 ```
 
-El test tarda 5 segundos en ejecutarse, lo que cual sería excesivo incluso en Docker para Mac. Esto es así porque `AutomaticQuoteBot` obtendría la lista de blogs de un recurso lento que podría ser una base de datos o un API, que aquí está siendo simulado con un sleep para forzar el tiempo de respuesta.
+El test tarda 5 segundos en ejecutarse, lo que cual sería excesivo incluso en Docker para Mac. Esto es así porque `AutomaticQuoteBot` obtendría la lista de blogs de un recurso lento que podría ser una base de datos o una API, que aquí está siendo simulado con un sleep para forzar el tiempo de respuesta.
 
 `AutomaticQuoteBot` obtiene la lista de blogs de una dependencia estática llamada `AdSpace`, la cual, a su vez, obtiene la lista de otra dependencia más llamada `TechBlogs`. `AdSpace` actúa haciendo una cache de la lista para evitar que las peticiones sucesivas sean lentas, aunque esto en el test no ocurre porque todo se inicia cada vez.
 
@@ -658,7 +658,7 @@ Y con esto deberíamos estar preparadas para empezar a trabajar de verdad.
 
 Si nos fijamos en el test ya podemos ver cómo es la relación entre los componentes principales de la aplicación. Fíjate que estamos usando clases modificadas expresamente para test y *mocks*. Nuestro objetivo es poder ejecutar este mismo test usando los objetos reales que controlamos e implementaciones específicas para test de las dependencias de *vendors* y de infraestructura.
 
-Este test nos servirá para tener una red de seguridad que nos evite romper algo. Sin embargo, esto es sólo un primer paso.
+Este test nos servirá para tener una red de seguridad que nos evite romper algo. Sin embargo, esto es solo un primer paso.
 
 ## Entendiendo el dominio
 
@@ -1153,7 +1153,7 @@ class BlogAuctionTaskTest extends TestCase
 }
 ```
 
-Debido a haber simulado esto con Mocks no es posible tener la estructura Given-When-Then en el orden correcto, pero no sólo el test se entiende mejor, sino que también podemos tener un generador de test que facilite su creación en el futuro.
+Debido a haber simulado esto con Mocks no es posible tener la estructura Given-When-Then en el orden correcto, pero no solo el test se entiende mejor, sino que también podemos tener un generador de test que facilite su creación en el futuro.
 
 ```php
 <?php
@@ -1672,7 +1672,7 @@ class BlogAuctionTaskTest extends TestCase
 
 Tenemos todos los tests en verde y el sistema funciona en producción.
 
-Ahora es cuando podemos recuperar el test borrado, sólo que esta vez ya podemos simular el comportamiento de TimeService. Por ejemplo, podemos usar el valor 1, dado que es el elemento neutro de la multiplicación, lo que nos permite `ignorarlo` en el test. De paso arreglamos algún *typo* que se ha colado.
+Ahora es cuando podemos recuperar el test borrado, solo que esta vez ya podemos simular el comportamiento de TimeService. Por ejemplo, podemos usar el valor 1, dado que es el elemento neutro de la multiplicación, lo que nos permite `ignorarlo` en el test. De paso arreglamos algún *typo* que se ha colado.
 
 ```php
 <?php

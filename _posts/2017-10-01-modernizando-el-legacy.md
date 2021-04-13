@@ -21,7 +21,7 @@ En nuestro caso teníamos una especie de "objeto Dios" (God Object), un hedor de
 
 Empezamos usando un enfoque TDD. Nuestro plan era diseñar una clase que asumiese la funcionalidad deseada, pero en lugar de simplemente copiar y pegar, preferimos proceder de una forma más rigurosa. Así que empezamos creando tests unitarios con el enfoque de cambios mínimos mientras íbamos trasladando el código de la "clase dios" a la nueva. El resultado fue una nueva clase que reproducía la funcionalidad, aunque también es cierto que algunos de los defectos de la implementación existente, sobre los que hablaré más adelante.
 
-Con esto prácticamente hecho nos dimos cuenta de que podríamos refactorizar los tests. Este es un punto interesante. En el caso que nos ocupa, acabamos usando los dataProviders de PHPUnit para simplificar el código de los tests y probar una diversidad de casuísticas con tan sólo dos métodos de test.
+Con esto prácticamente hecho nos dimos cuenta de que podríamos refactorizar los tests. Este es un punto interesante. En el caso que nos ocupa, acabamos usando los dataProviders de PHPUnit para simplificar el código de los tests y probar una diversidad de casuísticas con tan solo dos métodos de test.
 
 El refactor de los tests es un punto importante del desarrollo. No creo que los tests deban ser inamovibles, sino que evolucionan con el desarrollo. El cambio en los tests no los invalida. Por una parte, el refactor de tests debe obedecer a la necesidad de que sean más legibles, concisos y eficientes, pero si el el desarrollo evoluciona y cambia, los tests tienen que cambiar porque son parte inseparable del desarrollo.
 
@@ -47,7 +47,7 @@ Esta situación encaja claramente en el patrón de cadena de responsabilidad: se
 
 El paso siguiente es extraer las diferentes condiciones a clases que representarán las reglas y como queremos seguir con la metodología TDD, vamos creando tests que las verifican. Estas clases extienden una clase abstracta que proporciona la funcionalidad común necesaria para efectuar tanto el encadenamiento de nuevas reglas, como la delegación y respuesta por defecto.
 
-Una vez que hemos construido la cadena de responsabilidad, podemos refactorizar nuestra clase para que la utilice, con lo que adelagaza una barbaridad y se queda sólo con las responsabilidades que le corresponden. Esto es: devolver los mensajes necesarios, delegando la decisión a la cadena de reglas que hemos definido.
+Una vez que hemos construido la cadena de responsabilidad, podemos refactorizar nuestra clase para que la utilice, con lo que adelagaza una barbaridad y se queda solo con las responsabilidades que le corresponden. Esto es: devolver los mensajes necesarios, delegando la decisión a la cadena de reglas que hemos definido.
 
 Como tenemos tests desde el principio, podemos comprobar en cada paso del refactor que no rompemos nada. En la práctica decubrimos algún caso mal testeado que quedaba disimulado por defectos de la implementación inicial, lo que confirma que una buena arquitectura contribuye a reducir los errores poniéndolos al descubierto cuando ocurren.
 

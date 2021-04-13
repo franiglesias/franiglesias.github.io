@@ -449,7 +449,7 @@ Si cambio la visibilidad del método en `TestablePost` no voy a cambiar este res
 
 Lo ideal sería que Post no tuviese que depender de `time()`, y esto se puede lograr de varias formas. 
 
-Por ejemplo, utilizando una Specification para decidir si un Post está publicado o no. En buena medida, no es responsabilidad del Post saber cuándo le toca mostrarse como publicado, tan sólo conocer su fecha de publicación. De este modo, es posible testear la Specification con Posts a medida que se publiquen en la fecha anterior o siguiente a la actual, así como testear Post sin tener que saber en qué día lo estamos haciendo.
+Por ejemplo, utilizando una Specification para decidir si un Post está publicado o no. En buena medida, no es responsabilidad del Post saber cuándo le toca mostrarse como publicado, tan solo conocer su fecha de publicación. De este modo, es posible testear la Specification con Posts a medida que se publiquen en la fecha anterior o siguiente a la actual, así como testear Post sin tener que saber en qué día lo estamos haciendo.
 
 En muchos casos, desarrollar la clase con la ayuda de TDD nos obliga a considerar estos problemas de diseño desde el primer momento y resolverlos antes de que se presenten siquiera.
 

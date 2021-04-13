@@ -242,7 +242,7 @@ abstract IsEnrolledInClass implments StudentSpecification
 }
 ```
 
-Las implementaciones concretas dependen del sistema de persistencia e implementarían sólo el método `selectSatisfying`:
+Las implementaciones concretas dependen del sistema de persistencia e implementarían solo el método `selectSatisfying`:
 
 ```php
 class SQLIsEnrolledInClass extends IsEnrolledInClass
@@ -299,9 +299,9 @@ En nuestro caso, podríamos utilizar una variante de este concepto para referirn
 
 Otra forma de referirse a un concepto similar son los *Read Models*. *Read Model* es un concepto de **CQRS** que se refiere a los objetos responsables de la lectura de datos del sistema de persistencia. Igualmente, los *Read Models* son específicos para las peticiones concretas que se realicen.
 
-Ambos conceptos nos permiten resolver un tema que en DDD nunca queda del todo claro: ¿cómo generamos simples listados o reports sin tener que montar decenas de entidades o agregados? No hay muchas aplicaciones que no requieran en algún momento presentar algún tipo de vista (de nuevo, en sentido genérico, no sólo UI, sino también API y similares) en forma de lista con unas pocas propiedades de un agregado.
+Ambos conceptos nos permiten resolver un tema que en DDD nunca queda del todo claro: ¿cómo generamos simples listados o reports sin tener que montar decenas de entidades o agregados? No hay muchas aplicaciones que no requieran en algún momento presentar algún tipo de vista (de nuevo, en sentido genérico, no solo UI, sino también API y similares) en forma de lista con unas pocas propiedades de un agregado.
 
-Aquí entraría este concepto de **proyección** o **read model** cuya característica principal es que nos proporciona colecciones de DTOs creados específicamente para la petición que recibe el sistema y que no necesita pasar por la capa de dominio realmente. Esto es así porque se trata más bien de necesidades de la aplicación que no afectan al estado del dominio ya que sólo son lecturas, ni implican realmente reglas del dominio, pues su manipulación se basa normalmente en la aplicación de simples filtros para afinar la selección de información. Con todo, nos ayudan a proporcionar acceso a los consumidores a los agregados individuales en los que estén interesados o la posibilidad de seleccionarlos para operar con ellos.
+Aquí entraría este concepto de **proyección** o **read model** cuya característica principal es que nos proporciona colecciones de DTOs creados específicamente para la petición que recibe el sistema y que no necesita pasar por la capa de dominio realmente. Esto es así porque se trata más bien de necesidades de la aplicación que no afectan al estado del dominio ya que solo son lecturas, ni implican realmente reglas del dominio, pues su manipulación se basa normalmente en la aplicación de simples filtros para afinar la selección de información. Con todo, nos ayudan a proporcionar acceso a los consumidores a los agregados individuales en los que estén interesados o la posibilidad de seleccionarlos para operar con ellos.
 
 Tomando nuestro ejemplo de la lista, una posible implementación sería:
 

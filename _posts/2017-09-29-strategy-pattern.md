@@ -24,7 +24,7 @@ Este acercamiento nos lleva a varios problemas:
 
 En primer lugar, si con el tiempo necesitamos nuevos algoritmos tendríamos que modificar nuestra clase servicio, lo que va contra el principio Abierto/Cerrado.
 
-Por otro lado, también se va en contra de la Segregación de Interfaces ya que la clase Servicio expone varios métodos y los consumidores sólo están interesados en uno de ellos. En consecuencia, para el cliente puede ser problemático usar el método deseado de la clase, sobre todo si debe hacer la selección basándose en algún tipo de computación.
+Por otro lado, también se va en contra de la Segregación de Interfaces ya que la clase Servicio expone varios métodos y los consumidores solo están interesados en uno de ellos. En consecuencia, para el cliente puede ser problemático usar el método deseado de la clase, sobre todo si debe hacer la selección basándose en algún tipo de computación.
 
 Ejemplo:
 
@@ -81,7 +81,7 @@ class ConvertToString implements Strategy {
 }
 ```
 
-Seguidamente hacemos que Service pueda utilizar estos algoritmos para realizar la tarea con un sólo método
+Seguidamente hacemos que Service pueda utilizar estos algoritmos para realizar la tarea con un solo método
 
 ```php
 class Service {

@@ -20,7 +20,7 @@ $store[] = 'random string';
 
 Es decir, la única forma de garantizar que almacenamos en un array objetos de un tipo determinado, y siempre del mismo, es controlarlo en el momento de añadirlo, pero también en el de usarlo ya que entre un punto y otro del flujo puede haber pasado cualquier cosa con nuestro array.
 
-Una solución es encapsular el array en algún tipo de objeto Collection, que se encargue de asegurar que sólo incorporamos objetos válidos y que pueda realizar ciertas operaciones con ellos, garantizándonos la coherencia de los datos en todo momento.
+Una solución es encapsular el array en algún tipo de objeto Collection, que se encargue de asegurar que solo incorporamos objetos válidos y que pueda realizar ciertas operaciones con ellos, garantizándonos la coherencia de los datos en todo momento.
 
 Existen diversas librerías que aportan colecciones en PHP, a Google pronto:
 
@@ -43,7 +43,7 @@ Hagamos una lista de control. Fundamentalmente pienso que necesitamos:
 * Poder añadir elementos a la colección
 * Que estos elementos sean objetos
 * Que pueda decirnos cuántos objetos está almacenando
-* Que sólo pueda añadir objetos de la misma clase o interfaz
+* Que solo pueda añadir objetos de la misma clase o interfaz
 * Que pueda añadir objetos de subclases de la original
 * Que pueda iterar a través de todos los elementos y hacer algo con ellos (each)
 * Que pueda devolver un array de transformaciones de los objetos (map)
@@ -130,7 +130,7 @@ Nuestra lista de tareas empieza a tener algunos elementos menos:
 * Poder añadir elementos a la colección
 * Que estos elementos sean objetos
 * ~~Que pueda decirnos cuántos objetos está almacenando~~
-* Que sólo pueda añadir objetos de la misma clase o interfaz
+* Que solo pueda añadir objetos de la misma clase o interfaz
 * Que pueda añadir objetos de subclases de la original
 * Que pueda iterar a través de todos los elementos y hacer algo con ellos (each)
 * Que pueda devolver un array de transformaciones de los objetos (map)
@@ -250,7 +250,7 @@ Repasemos lo conseguido hasta ahora:
 * ~~Poder añadir elementos a la colección~~
 * Que estos elementos sean objetos
 * ~~Que pueda decirnos cuántos objetos está almacenando~~
-* Que sólo pueda añadir objetos de la misma clase o interfaz
+* Que solo pueda añadir objetos de la misma clase o interfaz
 * Que pueda añadir objetos de subclases de la original
 * Que pueda iterar a través de todos los elementos y hacer algo con ellos (each)
 * Que pueda devolver un array de transformaciones de los objetos (map)
@@ -451,7 +451,7 @@ class CollectionTest extends TestCase
 
 De momento, se queda así.
 
-Ahora bien, nuestro test para controlar que Collection sólo admite objetos de un tipo sigue fallando y tendremos que hacer algo al respecto para ponernos en verde.
+Ahora bien, nuestro test para controlar que Collection solo admite objetos de un tipo sigue fallando y tendremos que hacer algo al respecto para ponernos en verde.
 
 Parece que es obvio que hay que añadir un control que compare el tipo del objeto que se pasa en `append` con el que hemos registrado en Collection.
 
@@ -488,7 +488,7 @@ class Collection
 }
 ```
 
-Esto va a hacer que fallen nuestros tests anteriores porque al hacer que type sea opcional, también tenemos que asegurarnos de que controlamos el tipo sólo si tenemos alguno definido. Esto va a suponer un problema conceptual que tendremos que tratar, pero de momento vamos a aparcarlo.
+Esto va a hacer que fallen nuestros tests anteriores porque al hacer que type sea opcional, también tenemos que asegurarnos de que controlamos el tipo solo si tenemos alguno definido. Esto va a suponer un problema conceptual que tendremos que tratar, pero de momento vamos a aparcarlo.
 
 El código de producción tendría que quedar así:
 
@@ -649,7 +649,7 @@ Por fin, podemos tachar algunos elementos de nuestra lista:
 * ~~Poder añadir elementos a la colección~~
 * ~~Que estos elementos sean objetos~~
 * ~~Que pueda decirnos cuántos objetos está almacenando~~
-* ~~Que sólo pueda añadir objetos de la misma clase o interfaz~~
+* ~~Que solo pueda añadir objetos de la misma clase o interfaz~~
 * ~~Que pueda añadir objetos de subclases de la original~~
 * Que pueda iterar a través de todos los elementos y hacer algo con ellos (each)
 * Que pueda devolver un array de transformaciones de los objetos (map)
@@ -869,7 +869,7 @@ class CollectionTest extends TestCase
 
 Fíjate que siguen pasando los tests y que, en cierto modo, hemos usado el código de producción como "test del test" para hacer este refactoring.
 
-Ahora ya podemos tocar la clase Collection y ver si al hacer obligatoria la definición del tipo se rompe algo. La respuesta es que no. Además, podemos quitar el feo control de null, ya que ahora el parámetro siempre estará presente. Por cierto, que al ser privado y pasarse sólo en el constructor, resulta que es inmatuble desde fuera de Collection y eso es bueno.
+Ahora ya podemos tocar la clase Collection y ver si al hacer obligatoria la definición del tipo se rompe algo. La respuesta es que no. Además, podemos quitar el feo control de null, ya que ahora el parámetro siempre estará presente. Por cierto, que al ser privado y pasarse solo en el constructor, resulta que es inmatuble desde fuera de Collection y eso es bueno.
 
 ```php
 <?php
@@ -985,7 +985,7 @@ class CollectionTest extends TestCase
 }
 ```
 
-Al fin y al cabo, sólo hay que hacer unas pequeñas modificaciones para volver a verde:
+Al fin y al cabo, solo hay que hacer unas pequeñas modificaciones para volver a verde:
 
 ```php
 <?php

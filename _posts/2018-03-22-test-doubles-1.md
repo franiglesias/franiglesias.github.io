@@ -130,7 +130,7 @@ El problema es que en caso de que cambie la implementación del SUT, el resultad
 
 Pongamos un ejemplo sencillo. Supongamos que el método bajo test hace dos llamadas a un Servicio que envía emails porque queremos notificar a dos destinatarios una determinada situación, así que hacemos un Double del servicio de Email que será llamado dos veces. Por tanto, el test espera dos llamadas y pasará siempre y cuando la implementación realice ambas llamadas.
 
-Pero ahora, imaginemos que nuestro Servicio de email puede enviar a una lista de direcciones con una sola llamada. Si cambiamos la implementación para hacerlo así, nuestro test fallará, puesto que espera dos llamadas y sólo se realiza una. Sin embargo, el comportamiento del SUT sigue siendo correcto porque se envían dos emails.
+Pero ahora, imaginemos que nuestro Servicio de email puede enviar a una lista de direcciones con una sola llamada. Si cambiamos la implementación para hacerlo así, nuestro test fallará, puesto que espera dos llamadas y solo se realiza una. Sin embargo, el comportamiento del SUT sigue siendo correcto porque se envían dos emails.
 
 Entonces, si el comportamiento es correcto, ¿por qué falla el test? Pues porque estos *test doubles* pueden generar un acoplamiento del test a la implementación del SUT a través de las expectativas que les programamos.
 
@@ -238,7 +238,7 @@ Si esta implementación incluye lógica de negocio estaríamos hablando de un Fa
 
 El *self-shunt* es una técnica bastante curiosa que consiste en que el propio TestCase sea el test double haciendo que implemente la interfaz que necesitamos reproducir, lo que nos permite recoger información al estilo de un Spy.
 
-Obviamente no es una técnica para usar de forma habitual, pero puede ser práctica en los primeros estadios de desarrollo, cuando no hemos creado todavía el colaborador y queremos ir haciéndonos una idea de su interfaz, o cuando ésta es muy simple y tiene sólo uno ó dos métodos.
+Obviamente no es una técnica para usar de forma habitual, pero puede ser práctica en los primeros estadios de desarrollo, cuando no hemos creado todavía el colaborador y queremos ir haciéndonos una idea de su interfaz, o cuando ésta es muy simple y tiene solo uno ó dos métodos.
 
 He aquí la versión self-shunt del MailerSpy.
 

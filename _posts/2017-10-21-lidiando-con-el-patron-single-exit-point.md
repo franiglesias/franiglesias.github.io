@@ -37,7 +37,7 @@ Pero como ha ocurrido con otros patrones de programación, una vez que las circu
 
 Así, por ejemplo, los lenguajes modernos no suelen permitir las sentencias GOTO ni tampoco la posibilidad de entrar a una función o método en un punto arbitrario ni retorno a otro lugar que no sea a continuación del punto de llamada.
 
-Sin embargo, la idea del single exit point siguió viva en ciertos estilos de programación en la forma de la regla de que sólo debe haber un return en una función o método. Y eso nos lleva a un montón de malas prácticas y la necesidad de refactorizar código.
+Sin embargo, la idea del single exit point siguió viva en ciertos estilos de programación en la forma de la regla de que solo debe haber un return en una función o método. Y eso nos lleva a un montón de malas prácticas y la necesidad de refactorizar código.
 
 ## Por qué mantener un único punto de salida
 
@@ -51,7 +51,7 @@ Tengo la sensación de que, por un lado, esta idea del único punto de salida es
 
 https://en.wikipedia.org/wiki/Return_type
 
-Por ejemplo: un método de una clase que devuelve resultados de una búsqueda de usuarios debería devolver siempre un array o una colección vacía en caso de no encontrar nada, y no null o false, o bien una colección o array de un único usuario, si sólo encuentra un resultado, y no un objeto usuario. 
+Por ejemplo: un método de una clase que devuelve resultados de una búsqueda de usuarios debería devolver siempre un array o una colección vacía en caso de no encontrar nada, y no null o false, o bien una colección o array de un único usuario, si solo encuentra un resultado, y no un objeto usuario. 
 
 Es algo que hay que vigilar de cerca en los lenguajes que no permiten especificar return type, como es el caso de las versiones de PHP anteriores a la 7 y, por lo tanto, podría ser recomendable reducir los puntos de salida para asegurarnos controlar correctamente lo que devolvemos.
 
@@ -348,7 +348,7 @@ function selectElement(Criteria $criteria, Desirability $desirability)
 }
 ```
 
-En este último ejemplo hemos podido eliminar toda la gestión de la validez de los parámetros fuera del método y el método sólo hace una cosa, pero todavía quedan unas cuantas cosillas que podemos arreglar.
+En este último ejemplo hemos podido eliminar toda la gestión de la validez de los parámetros fuera del método y el método solo hace una cosa, pero todavía quedan unas cuantas cosillas que podemos arreglar.
 
 Por una parte, podemos ver que el algoritmo no está muy bien escrito. Se utiliza un bucle foreach y se recorre todo el array. En realidad podemos forzar la salida del bucle al encontrar el elemento deseado, ahorrándonos de paso unas cuantas condicionales:
 
@@ -410,7 +410,7 @@ function selectElement(Criteria $criteria, Desirability $desirability) : Element
 
 El uso de Null Objects merecería un artículo completo porque tiene chicha para un buen debate, pero en muchos casos es una buena solución.
 
-Llegados a este punto tenemos el código en una situación muy buena. Aunque parece posible aplicar algunas nuevas refactorizaciones, tenemos que valorar si realmente vale la pena ir más allá. En nuestro ejemplo, hemos llegado al punto en que el código no sólo se ha vuelto mucho más legible, sino que hemos podido distribuir mejor las diferentes responsabilidades y ahora es fácil determinar dónde debenmos tocar para añadir las modificaciones que nos pedían inicialmente.
+Llegados a este punto tenemos el código en una situación muy buena. Aunque parece posible aplicar algunas nuevas refactorizaciones, tenemos que valorar si realmente vale la pena ir más allá. En nuestro ejemplo, hemos llegado al punto en que el código no solo se ha vuelto mucho más legible, sino que hemos podido distribuir mejor las diferentes responsabilidades y ahora es fácil determinar dónde debenmos tocar para añadir las modificaciones que nos pedían inicialmente.
 
 ## En resumen
 

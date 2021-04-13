@@ -54,7 +54,7 @@ Cuando tenemos una colección de objetos suele interesarnos poder realizar búsq
 Fíjate que tenemos dos situaciones:
 
 * En unos casos queremos conseguir todos los objetos de la colección que cumplen el criterio, que es lo que entendemos como una búsqueda o un filtrado, y que nos devolverá una nueva colección que contenga los objetos seleccionados (o ninguno, si ninguno cumple los criterios).
-* En otros casos queremos obtener sólo un elemento que cumpla las condiciones. En ese caso, devolverá un objeto del tipo contenido en la colección si es que alguno cumple los criterios. En caso de que no los cumpla puede no devolver nada, puede devolver un objeto nulo o puede lanzar una excepción si partimos del supuesto de que el objeto debería estar ahí.
+* En otros casos queremos obtener solo un elemento que cumpla las condiciones. En ese caso, devolverá un objeto del tipo contenido en la colección si es que alguno cumple los criterios. En caso de que no los cumpla puede no devolver nada, puede devolver un objeto nulo o puede lanzar una excepción si partimos del supuesto de que el objeto debería estar ahí.
 
 Ambas situaciones son parecidas, pero no exactamente iguales. Por el momento, nos vamos a centrar en la primera: crear un método `filter` que nos devuelva una colección de objetos seleccionados por un criterio.
 
@@ -67,7 +67,7 @@ Aprovechando lo que hemos aprendido hasta ahora, sabemos que el test más sencil
 * La Collection devuelta no tiene elementos
 * La Collection devuelta no es la misma que la original
 
-Podemos adoptar dos enfoques. Hasta ahora, hemos escrito un test para probar cada una de estas condiciones, con una aserción por test. Alternativamente podríamos escribir un sólo test con las cuatro aserciones.
+Podemos adoptar dos enfoques. Hasta ahora, hemos escrito un test para probar cada una de estas condiciones, con una aserción por test. Alternativamente podríamos escribir un solo test con las cuatro aserciones.
 
 ¿Qué es mejor? La primera opción nos dará una información más explícita si al ir implementando hacemos fallar alguno de estos tests, pues nos señala claramente dónde hemos metido la pata. La segunda opción nos permite avanzar un poco más rápido si tenemos confianza en lo que estamos haciendo o simplemente nos parece que podemos tratar el problema como un todo. A cambio perdemos un poco de resolución: en caso de que falle el test, todavía tendremos que examinar cuatro aserciones para descubrir qué hemos roto.
 
@@ -243,7 +243,7 @@ Para nuestro siguiente test necesitamos que la lista tenga más de un elemento. 
     }
 ```
 
-El test falla, ya que la implementación actual sólo añade el primer elemento de la colección, tendríamos que recorrer los elementos y probarlos con la función de filtro.
+El test falla, ya que la implementación actual solo añade el primer elemento de la colección, tendríamos que recorrer los elementos y probarlos con la función de filtro.
 
 ```php
     public function filter(Callable $function): Collection
@@ -266,8 +266,8 @@ Finalmente, el test pasa con esta implementación, que pone punto final al desar
 Pero… Nuestro abogado del diablo lleva un rato sugiriendo que deberíamos probar varias condiciones más. Por ejemplo:
 
 * Que la función de filtro permita probar que unos objetos pasan y otros no pasan (ahora mismo cuando hacemos un test usamos una función que siempre devuelve lo mismo). Realmente no es necesario. Lo que nosotros tenemos que probar es que filter utiliza el resultado de la función para decidir si incluye o no un objeto en la lista, cosa que hemos probado ya con un par de tests. Si la función filtra bien o no, es cuestión del test de la propia función.
-* Que los objetos de la colección deberían ser instancias distintas (ahora son la misma). Tampoco es necesario, sencillamente no los consideramos en la función de filtro, tan sólo necesitamos que estén llenando la colección en un número conocido.
-* Que tenemos que probar que estamos iterando la colección. De momento sólo hemos probado que si esperamos un número de elementos (porque se han de incluir o todos o ninguno, según lo que devuelva la función de filtrado), recibiremos ese número de elementos en la colección filtrada, podría ser el mismo elemento repetido el número de veces deseado.
+* Que los objetos de la colección deberían ser instancias distintas (ahora son la misma). Tampoco es necesario, sencillamente no los consideramos en la función de filtro, tan solo necesitamos que estén llenando la colección en un número conocido.
+* Que tenemos que probar que estamos iterando la colección. De momento solo hemos probado que si esperamos un número de elementos (porque se han de incluir o todos o ninguno, según lo que devuelva la función de filtrado), recibiremos ese número de elementos en la colección filtrada, podría ser el mismo elemento repetido el número de veces deseado.
 
 Y aquí nos ha sembrado una duda razonable. Como nosotros podemos ver la implementación, estamos razonablemente seguros de que recorremos la colección y que, por tanto, nuestro algoritmo es correcto. Pero, ¿qué haríamos si no supiésemos nada de la implementación? ¿Cómo testeamos eso?
 
@@ -487,7 +487,7 @@ Y el test falla porque tira la excepción. Nos está pidiendo a gritos implement
     }
 ```
 
-De momento, vamos bien, pero ahora necesitamos estar seguros de que la función devuelve el objeto deseado y no el primero que haya. Tenemos que escribir un test mínimo que pruebe eso. Para ello, vuelvo a tirar de _self-shunt_, de modo que simplemente añado una propiedad que sólo está _seteada_ en uno de los objetos, así como un método para comprobarla. De este modo es posible rastrearlo.
+De momento, vamos bien, pero ahora necesitamos estar seguros de que la función devuelve el objeto deseado y no el primero que haya. Tenemos que escribir un test mínimo que pruebe eso. Para ello, vuelvo a tirar de _self-shunt_, de modo que simplemente añado una propiedad que solo está _seteada_ en uno de los objetos, así como un método para comprobarla. De este modo es posible rastrearlo.
 
 Este es el código del test y la parte del _self-shunt_.
 

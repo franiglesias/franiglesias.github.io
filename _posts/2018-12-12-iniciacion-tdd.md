@@ -67,7 +67,7 @@ Repasemos las leyes de TDD. Son tres, en la formulación de Robert C. Martin:
 
 **La primera regla** nos dice que siempre hemos de empezar con un test. El test especifica lo que queremos conseguir que haga el código de producción que escribiremos posteriormente. Nos indica un objetivo en el que nos vamos a centrar durante los minutos siguientes, sin preocuparnos de nada más.
 
-**La segunda regla** nos pide que sólo escribamos un sólo test cada vez y que sea lo bastante concreto como para fallar por un motivo específico, y lo hará porque todavía no hemos escrito código que resuelva esa situación que estamos definiendo con el test.
+**La segunda regla** nos pide que solo escribamos un solo test cada vez y que sea lo bastante concreto como para fallar por un motivo específico, y lo hará porque todavía no hemos escrito código que resuelva esa situación que estamos definiendo con el test.
 
 Una vez que tenemos el test tenemos que ejecutarlo y verlo fallar. Literalmente: "verlo fallar". No basta con "saber" que va a fallar. Tenemos que verlo fallar y que, así, nos diga cosas.
 
@@ -85,7 +85,7 @@ Y espero que en este ejercicio las puedas ver en acción.
 
 ## La *kata* del DNI
 
-Nuestro ejercicio consistirá en crear un Value Object que nos sirva para representar un DNI o NIF. Por tanto, queremos que se pueda instanciar un objeto sólo si tenemos un DNI válido. Así que vamos a ello.
+Nuestro ejercicio consistirá en crear un Value Object que nos sirva para representar un DNI o NIF. Por tanto, queremos que se pueda instanciar un objeto solo si tenemos un DNI válido. Así que vamos a ello.
 
 Lo que queremos es algo así:
 
@@ -104,7 +104,7 @@ $invalidDni = new Dni('00000000G');
 
 ### ¿Qué vamos a testear?
 
-Esencialmente, un DNI no es más que una cadena de caracteres con un formato específico. De todas las cadenas de caracteres que se podrían generar sólo un subconjunto de ellas cumplen todas las condiciones exigidas para ser un DNI. Estas condiciones se pueden resumir en:
+Esencialmente, un DNI no es más que una cadena de caracteres con un formato específico. De todas las cadenas de caracteres que se podrían generar solo un subconjunto de ellas cumplen todas las condiciones exigidas para ser un DNI. Estas condiciones se pueden resumir en:
 
 * Son cadenas de 9 caracteres.
 * Los primeros 8 caracteres son números, y el último es una letra.
@@ -131,11 +131,11 @@ El primer problema sencillo que podemos resolver es asegurarnos de que vamos a r
 
 Así que es hora de abrir el editor y empezar a escribir nuestro primer test.
 
-El primer impulso podría ser el hacer un test con el que se compruebe que nuestro DNI sólo acepta cadenas que contengan exactamente nueve caracteres. Pero, si lo piensas, es mucho más fácil comprobar que rechaza cadenas que contengan más o menos de ese número caracteres.
+El primer impulso podría ser el hacer un test con el que se compruebe que nuestro DNI solo acepta cadenas que contengan exactamente nueve caracteres. Pero, si lo piensas, es mucho más fácil comprobar que rechaza cadenas que contengan más o menos de ese número caracteres.
 
 Ten en cuenta lo siguiente: una vez que has hecho un test, tiene que seguir pasando a medida que añades más tests y más código de producción. Ahora mismo, podríamos escribir un test que prueba que una cadena de nueve caracteres sea aceptada, pero para que ese test no falle en el futuro, la cadena ya tendría que ser un DNI válido y nuestro código todavía no sabe nada sobre eso. Si ahora ponemos una cadena de nueve caracteres en el test que no sea un DNI válido, el test fallará en el futuro cuando implementemos el algoritmo completo, obligándonos a cambiar esos tests que han fallado.
 
-Por eso, vamos a escoger un problema mucho más sencillo y general: rechazar cadenas de caracteres que no tengan la longitud adecuada y que, por tanto, nunca podrían ser DNI válidos, con lo que esos tests no fallarán al implementar el algoritmo completo. De hecho, sólo podrían fallar si realizamos algún cambio que introduzca un cambio en el comportamiento o un error, lo que los convierte en tests de regresión.
+Por eso, vamos a escoger un problema mucho más sencillo y general: rechazar cadenas de caracteres que no tengan la longitud adecuada y que, por tanto, nunca podrían ser DNI válidos, con lo que esos tests no fallarán al implementar el algoritmo completo. De hecho, solo podrían fallar si realizamos algún cambio que introduzca un cambio en el comportamiento o un error, lo que los convierte en tests de regresión.
 
 Por tanto, testearemos que al intentar instanciar un objeto `Dni` se lanza una excepción si la cadena de caracteres tiene una longitud inadecuada. Pero la vamos a hacer en dos pasos: primero probaremos cadenas con más de nueve caracteres.
 
@@ -219,7 +219,7 @@ class Dni
 Este código de producción hace que el test pase y nosotros ya estamos listos para avanzar un paso más. Pero vamos a observar un par de detalles:
 
 * No estamos pasando nada al constructor. De hecho, no lo necesitamos todavía. Estamos posponiendo la decisión de qué vamos a hacer con ese parámetro.
-* El código sólo hace lo que pide el único test que tenemos, porque realmente no estamos resolviendo aún ese problema. 
+* El código solo hace lo que pide el único test que tenemos, porque realmente no estamos resolviendo aún ese problema. 
 
 Y está bien que sea así.
 
@@ -263,7 +263,7 @@ class Dni
 }
 ```
 
-Lo que ocurrirá será que el último test pasará, pero el anterior fallará. Ejecutando `phpunit` con la opción `--testdox `para verlo mejor: `bin/phpunit tests/Dojo/DniTest.php  --testdox` obtenemos este informe:
+Lo que ocurrirá será que el último test pasará, pero el anterior fallará. Ejecutando `PHPUnit` con la opción `--testdox `para verlo mejor: `bin/PHPUnit tests/Dojo/DniTest.php  --testdox` obtenemos este informe:
 
 ```
 s\Dojo\Dni
@@ -301,11 +301,11 @@ De hecho, estamos posponiendo el problema planteado para este segundo test, así
 
 ### Tercer test
 
-Ahora ya garantizamos que sólo serán candidatas a ser un Dni las cadenas de nueve caracteres y tenemos dos tests que lo demuestran. 
+Ahora ya garantizamos que solo serán candidatas a ser un Dni las cadenas de nueve caracteres y tenemos dos tests que lo demuestran. 
 
 Con eso hemos reducido el ámbito del problema. Ahora tenemos que ver qué secuencias de caracteres tienen aspecto de ser un DNI.
 
-En realidad, sabemos que un DNI es una serie de números con una letra al final, excepto aquellos casos en los que se permiten ciertas letras como primer carácter. Esto nos dice que una cadena formada por números que tenga una letra al final puede ser un Dni. Pero, aún mejor, también nos dice que una cadena cuyo símbolo final sea un número no puede serlo, como una cadena formada sólo por números.
+En realidad, sabemos que un DNI es una serie de números con una letra al final, excepto aquellos casos en los que se permiten ciertas letras como primer carácter. Esto nos dice que una cadena formada por números que tenga una letra al final puede ser un Dni. Pero, aún mejor, también nos dice que una cadena cuyo símbolo final sea un número no puede serlo, como una cadena formada solo por números.
 
 Por lo tanto, vamos a testear precisamente eso:
 
@@ -395,7 +395,7 @@ class Dni
 }
 ```
 
-Para empezar, vemos el número nueve dos veces. No sólo hay una repetición del mismo valor, sino que lo podemos considerar un número mágico. Un número o valor mágico no es más que un valor arbitrario que tiene un significado no expresado en el código. En este caso, el nueve representa la longitud válida de un DNI, por lo que podríamos convertirlo en una constante, lo que le da nombre y significado:
+Para empezar, vemos el número nueve dos veces. No solo hay una repetición del mismo valor, sino que lo podemos considerar un número mágico. Un número o valor mágico no es más que un valor arbitrario que tiene un significado no expresado en el código. En este caso, el nueve representa la longitud válida de un DNI, por lo que podríamos convertirlo en una constante, lo que le da nombre y significado:
 
 ```php
 <?php
@@ -623,7 +623,7 @@ Podríamos haber escogido otra implementación con tal de hacer pasar el test, p
 
 Poco más podemos hacer con este código, así que podemos avanzar a la siguiente condición.
 
-La siguiente condición que voy a probar es que el DNI sólo puede estar formado por números, excepto la letra final y, en ciertos casos, la inicial. Por tanto, no puede haber caracteres que no sean números fuera de las posiciones extremas. Lo expresamos en forma de test:
+La siguiente condición que voy a probar es que el DNI solo puede estar formado por números, excepto la letra final y, en ciertos casos, la inicial. Por tanto, no puede haber caracteres que no sean números fuera de las posiciones extremas. Lo expresamos en forma de test:
 
 ```php
 public function testShouldFailWhenDniHasLettersInTheMiddle(): void
@@ -680,7 +680,7 @@ class Dni
 
 De nuevo: no tenemos que preocuparnos mucho por la calidad de la implementación. Simplemente escribimos código de producción que haga pasar el test y mantenga los test anteriores pasando, de manera que seguimos teniendo el comportamiento deseado en todo momento.
 
-En cualquier caso, con esta implementación, el test está pasando y es ahora cuando podríamos pararnos a mejorar la implementación. Pero eso lo vamos a dejar para dentro de un rato. No tenemos que hacerlo a cada paso si no nos convence o no vemos claro cómo hacer ese refactor. Tenemos un código que no sólo funciona, sino que su funcionamiento está completamente respaldado por tests.
+En cualquier caso, con esta implementación, el test está pasando y es ahora cuando podríamos pararnos a mejorar la implementación. Pero eso lo vamos a dejar para dentro de un rato. No tenemos que hacerlo a cada paso si no nos convence o no vemos claro cómo hacer ese refactor. Tenemos un código que no solo funciona, sino que su funcionamiento está completamente respaldado por tests.
 
 Ahora vamos a probar otra condición. Esta vez, trata sobre cómo debería ser el principio de la cadena. O mejor dicho: cómo no debería ser. Y la cuestión es que no debería empezar por nada que no sea un número o las letras [X, Y, Z].
 
@@ -987,7 +987,7 @@ class Dni
 }
 ```
 
-Ya sólo tenemos dos estructuras `if` y hemos hecho el cambio sin romper la funcionalidad que ya existía gracias a los tests existentes. Ahora vamos a ver si podemos unificarlas, invirtiendo el patrón de una de ellas:
+Ya solo tenemos dos estructuras `if` y hemos hecho el cambio sin romper la funcionalidad que ya existía gracias a los tests existentes. Ahora vamos a ver si podemos unificarlas, invirtiendo el patrón de una de ellas:
 
 ```php
 <?php

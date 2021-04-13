@@ -13,15 +13,15 @@ La idea de estos ejercicios es imponer unas restricciones artificiales para forz
 
 En este artículo vamos a aplicar estas restricciones:
 
-* Un sólo nivel de indentación
+* Un solo nivel de indentación
 * No usar `else`
 * Mantener las unidades pequeñas
 
 ## Las restricciones
 
-### Un sólo nivel de indentación
+### Un solo nivel de indentación
 
-La indentación es un modelo de organización de código que nos ayuda a identificar fácilmente bloques de instrucciones que formas ramas o caminos en el flujo del software, así como bloques de instrucciones relacionadas. En lenguajes como Python la indentación tiene un significado y, por tanto, es insoslayable. Sin embargo en PHP y muchísimos otros lenguajes, la indentación es una convención útil. Podríamos escribir programas sin indentación y funcionarían igual, sólo que serían más difíciles de leer.
+La indentación es un modelo de organización de código que nos ayuda a identificar fácilmente bloques de instrucciones que formas ramas o caminos en el flujo del software, así como bloques de instrucciones relacionadas. En lenguajes como Python la indentación tiene un significado y, por tanto, es insoslayable. Sin embargo en PHP y muchísimos otros lenguajes, la indentación es una convención útil. Podríamos escribir programas sin indentación y funcionarían igual, solo que serían más difíciles de leer.
 
 La indentación es típica de las estructuras de control, como `if/then`:
 
@@ -110,7 +110,7 @@ class BubbleSort
 }
 ```
 
-El test es este, por cierto, y está realizado con `phpspec`:
+El test es este, por cierto, y está realizado con `PHPSpec`:
 
 ```php
 <?php
@@ -118,7 +118,7 @@ El test es este, por cierto, y está realizado con `phpspec`:
 namespace spec\Dsa\Algorithms\Sorting;
 
 use Dsa\Algorithms\Sorting\BubbleSort;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 
 
 class BubbleSortSpec extends ObjectBehavior
@@ -136,7 +136,7 @@ class BubbleSortSpec extends ObjectBehavior
 }
 ```
 
-En este caso tenemos **tres niveles de indentación** y la restricción es que cada método sólo puede tener uno como máximo. Para ello, extraeremos el `for` anidado a su propio método con ayuda del IDE, asegurándonos de que los tests siguen pasando:
+En este caso tenemos **tres niveles de indentación** y la restricción es que cada método solo puede tener uno como máximo. Para ello, extraeremos el `for` anidado a su propio método con ayuda del IDE, asegurándonos de que los tests siguen pasando:
 
 ```php
 <?php
@@ -210,7 +210,7 @@ class BubbleSort
 }
 ```
 
-De momento, pasar el elemento y no el índice no parece viable, pero hemos conseguido algunas mejoras ya que ahora no necesitamos calcular explícitamente la longitud de `$source`, lo que significa una línea menos y somos más explícitos en representar la idea de que recorremos el array. Seguimos manteniendo un único nivel de indentación que, además, sólo tiene una línea.
+De momento, pasar el elemento y no el índice no parece viable, pero hemos conseguido algunas mejoras ya que ahora no necesitamos calcular explícitamente la longitud de `$source`, lo que significa una línea menos y somos más explícitos en representar la idea de que recorremos el array. Seguimos manteniendo un único nivel de indentación que, además, solo tiene una línea.
 
 Ahora tenemos **dos niveles de indentación** dentro del método `compareEveryElementWithCurrent`, así que vamos a tratarlos de la misma manera: extrayendo a un método.
 
@@ -560,7 +560,7 @@ El test que nos va a proteger en este proceso es el siguiente:
 namespace spec\Dsa\Structures;
 
 use Dsa\Structures\BinarySearchTree;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 
 class BinarySearchTreeSpec extends ObjectBehavior
 {

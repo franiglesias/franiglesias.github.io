@@ -30,7 +30,7 @@ En la capa de Aplicación
 * Haz que se lancen eventos anunciando cualquier cosa interesante que haya en el dominio
 * Introduce un Command Bus si no lo tienes ya
 * Introduce un Event Bus si no lo tienes ya
-* Analiza los Use cases y deja en ellos sólo el código que ejecuta su intent y mueve la lógica a subscribers
+* Analiza los Use cases y deja en ellos solo el código que ejecuta su intent y mueve la lógica a subscribers
 
 En la capa de infrastructura
 
@@ -38,7 +38,7 @@ En la capa de infrastructura
 
 Siendo realistas, esto va a ser una gran cantidad de trabajo y es una locura intentar hacerlo de una tacada, incluso las fases sueltas. Lo más eficaz es aplicarlo de forma iterativa en cada tarea.
 
-Es decir, en una tarea que tengamos, aplicamos la primera etapa en las clases de dominio que tengamos que tocar. Pero sólo la primera. La próxima vez que "pasemos por ahí" aplicamos la siguiente etapa y así sucesivamente.
+Es decir, en una tarea que tengamos, aplicamos la primera etapa en las clases de dominio que tengamos que tocar. Pero solo la primera. La próxima vez que "pasemos por ahí" aplicamos la siguiente etapa y así sucesivamente.
 
 Intentar refactorizar a DDD como proyecto nunca funciona.
 
@@ -196,7 +196,7 @@ En el ejemplo anterior las invariantes son:
 * El viaje ha de tener origen y destino (no se puede crear un viaje sin las dos)
 * El viaje puede tener cero o más etapas intermedias (se pueden añadir opcionalmente)
 
-Imagina que para los efectos de esta aplicación una regla de negocio es que sólo pueden hacerse un total de 5 etapas en un viaje. Ahora las invariantes son:
+Imagina que para los efectos de esta aplicación una regla de negocio es que solo pueden hacerse un total de 5 etapas en un viaje. Ahora las invariantes son:
 
 * El viaje ha de tener origen y destino.
 * El viaje puede tener entre 0 y 3 etapas intermedias.

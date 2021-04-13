@@ -39,7 +39,7 @@ Podemos definir el *legacy* como el desfase existente entre el conocimiento de d
 
 O bien, decir que tenemos *legacy* cuando el código ha dejado de representar el conocimiento actual del dominio.
 
-El dominio es un área del conocimiento que está en constante cambio, expansión y ramificación. Nuestro conocimiento sólo puede aspirar a mantenerse razonablemente dentro de sus límites y también en constante expansión y ramificación. El código va por detrás, como hemos visto, pero también creciendo. El ideal del código es mantener una representación completa de ese conocimiento.
+El dominio es un área del conocimiento que está en constante cambio, expansión y ramificación. Nuestro conocimiento solo puede aspirar a mantenerse razonablemente dentro de sus límites y también en constante expansión y ramificación. El código va por detrás, como hemos visto, pero también creciendo. El ideal del código es mantener una representación completa de ese conocimiento.
 
 En una situación de legacy, el código se encuentra desfasado con respecto al conocimiento. De hecho, puede que esté apuntando a áreas fuera del conocimiento actual del negocio, de tal modo que debemos preguntarnos: ¿a quién está sirviendo este código?
 
@@ -51,11 +51,11 @@ En realidad, la situación de legacy tiene que plantearnos un montón de pregunt
 * ¿De dónde viene el conocimiento de negocio?
 * ¿Dónde se está aplicando?
 
-Son preguntas que no atañen sólo al software, sino que cuestionan la forma en que la propia organización gestiona su conocimiento y cómo integra su software dentro de su operativa.
+Son preguntas que no atañen solo al software, sino que cuestionan la forma en que la propia organización gestiona su conocimiento y cómo integra su software dentro de su operativa.
 
 ## El esqueleto de un framework
 
-Una de las problemáticas habituales en los códigos que consideramos legacy es la presencia de un framework. No me entiendas mal, para desarrollar software de producto de una manera medianamente rápida y segura, necesitamos partir de una serie de elementos básicos que los frameworks nos puede proporcionar. Pero, un framework no es sólo código, sino una serie de decisiones que pueden condicionar la capacidad de nuestro software para expresar nuestro modelo mental del negocio en el que nos encontramos.
+Una de las problemáticas habituales en los códigos que consideramos legacy es la presencia de un framework. No me entiendas mal, para desarrollar software de producto de una manera medianamente rápida y segura, necesitamos partir de una serie de elementos básicos que los frameworks nos puede proporcionar. Pero, un framework no es solo código, sino una serie de decisiones que pueden condicionar la capacidad de nuestro software para expresar nuestro modelo mental del negocio en el que nos encontramos.
 
 Así, los típicos frameworks MVC suelen proponer una estructura de carpetas muy "técnica" que no dice mucho acerca de cómo se estructura nuestro negocio. Más allá de eso, pueden haber optado por decisiones técnicas que complican su evolución, como la apuesta generalizada de estos frameworks por patrones como Active Record, o el propio MVC.
 

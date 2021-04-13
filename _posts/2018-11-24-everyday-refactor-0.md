@@ -29,8 +29,8 @@ Se trata de realizar pequeños refactors seguros en nuestro código en cualquier
 
 Nuestra propuesta concreta es que hagas un refactor muy pequeño cada vez que lo veas necesario, de modo que, en una primera fase:
 
-* sólo tocas un archivo.
-* los cambios quedan recogidos en un único commit atómico, que contengan sólo los cambios debidos a ese refactor.
+* solo tocas un archivo.
+* los cambios quedan recogidos en un único commit atómico, que contengan solo los cambios debidos a ese refactor.
 
 En una segunda fase:
 

@@ -55,7 +55,7 @@ public function testShouldRetrieveStudentsInAGivenClass()
 El caso *Not so good* tiene dos defectos principales:
 
 * En primer lugar dice que se prueba el método `FindAllByClass`, lo que asume que existe ese método. Si en algún momento cambiamos el nombre del mismo, el test empezará a mentir.
-* En segundo lugar, no dice qué se espera que suceda, lo cual es la razón de ser del test. Tan sólo dice que se prueba, tanto da que devuelva estudiantes, como chorizos o billetes de metro.
+* En segundo lugar, no dice qué se espera que suceda, lo cual es la razón de ser del test. Tan solo dice que se prueba, tanto da que devuelva estudiantes, como chorizos o billetes de metro.
 
 El caso *Better* ataca ambos problemas:
 
@@ -73,13 +73,13 @@ Usar anotaciones, que no me gusta:
 public function shouldRetrieveStudentsInAGivenClass()
 ```
 
-Configurar un [prefijo alternativo mediante un add-on para PHPUnit](https://github.com/unfunco/phpunit-alternative-test-prefix), que tampoco me convence porque la convención está muy establecida, de modo que pudiese escribir lo anterior sin anotaciones:
+Configurar un [prefijo alternativo mediante un add-on para PHPUnit](https://github.com/unfunco/PHPUnit-alternative-test-prefix), que tampoco me convence porque la convención está muy establecida, de modo que pudiese escribir lo anterior sin anotaciones:
 
 ```php
 public function shouldRetrieveStudentsInAGivenClass()
 ```
 
-En este mismo sentido, me gusta la sintaxis de **phpspec**, que usa `it` como prefijo, lo que es más natural que `test`:
+En este mismo sentido, me gusta la sintaxis de **PHPSpec**, que usa `it` como prefijo, lo que es más natural que `test`:
 
 ```php
 public function it_should_create_a_user_from_retrieved_data();

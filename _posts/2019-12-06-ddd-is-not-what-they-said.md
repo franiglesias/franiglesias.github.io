@@ -38,11 +38,11 @@ La Arquitectura Hexagonal y, en general, las arquitecturas limpias son perfectam
 
 Pero **no hay nada que diga que la Arquitectura Hexagonal ES la arquitectura propia de una aplicación DDD**. De hecho, la Arquitectura Hexagonal es una aplicación del principio de Inversión de Dependencias y sus prácticas asociadas, más que una arquitectura.
 
-En cualquier caso, estructuramos el código en torno a tres carpetas/capas: dominio, aplicación e infraestructura. Pero esto por sí sólo no es DDD.
+En cualquier caso, estructuramos el código en torno a tres carpetas/capas: dominio, aplicación e infraestructura. Pero esto por sí solo no es DDD.
 
 La razón de que esto funcione es que el DDD pide que el modelo de dominio esté representado en código mediante objetos puros del lenguaje, completamente aislados de cualquier detalle técnico como la persistencia. Es decir los llamados *building blocks* (las entidades, los value objects, los domain events o los servicios) no pueden diseñarse pensando en cómo van a ser persistidos o comunicados en una API, por poner un ejemplo, sino que deben diseñarse como si siempre estuviesen viviendo en memoria.
 
-Pero, como resulta bastante evidente, necesitamos un mecanismo de persistencia de las entidades y agregados, aunque sólo sea por pura necesidad técnica.
+Pero, como resulta bastante evidente, necesitamos un mecanismo de persistencia de las entidades y agregados, aunque solo sea por pura necesidad técnica.
 
 ## DDD y Bases de Datos
 
@@ -52,7 +52,7 @@ El concepto que se encarga de la persistencia en DDD es el de Repositorio, un lu
 * Obtener entidades conociendo su identidad
 * Obtener subconjuntos de entidades que cumplan una especificación
 
-En un mundo ideal, la interfaz de un Repositorio sólo tiene tres métodos:
+En un mundo ideal, la interfaz de un Repositorio solo tiene tres métodos:
 
 * store
 * retrieve(id)
@@ -84,7 +84,7 @@ Simplificando mucho CQRS consiste en la aplicación *extrema* del CQS (Command Q
 
 CQS dice que una función o método ha de ser un comando, que provoca un efecto en el sistema sin obtener información del mismo, o una query, que recupera información de un sistema sin provocar ningún efecto en él.
 
-En la interfaz de repositorio de la que hablamos más arriba, se asume que sólo existe un objeto repositorio que gestiona tanto la lectura como la escritura, aunque cada método tiene su propia responsabilidad.
+En la interfaz de repositorio de la que hablamos más arriba, se asume que solo existe un objeto repositorio que gestiona tanto la lectura como la escritura, aunque cada método tiene su propia responsabilidad.
 
 Sin embargo, CQRS separa las operaciones de lectura y escritura en modelos diferentes. De modo que pueden implementarse incluso con tecnologías distintas. Su "reverso tenebroso" es la consistencia: ¿cómo mantenemos consistente la información que se escribe con la que se lee? 
 
@@ -122,7 +122,7 @@ Más bien pienso que los microservicios podrían surgir de forma natural al iden
 
 ## Para terminar
 
-No es DDD si el énfasis está en la implementación y los patrones tácticos. Esa es sólo una parte de todo lo que DDD supone. La palabra clave en DDD es la última D: Design.
+No es DDD si el énfasis está en la implementación y los patrones tácticos. Esa es solo una parte de todo lo que DDD supone. La palabra clave en DDD es la última D: Design.
 
 DDD trata de conversaciones, conceptos y modelos. En definitiva, trata de diseño.
 

@@ -258,7 +258,7 @@ Puede haber razones muy justificadas para esta duplicación, ya sea de la inform
 * La configuración de una aplicación mantiene la misma estructura en los distintos entornos (desarrollo, testing, producción), aunque con contenidos distintos (por ejemplo, el parameters.yml de Symfony). El problema es estar seguros de que accedemos a la versión correcta desde cada entorno.
 * Cierta información que se guarda en soportes lentos podría cachearse para tener un acceso más rápido. Obviamente es necesario que haya momentos en que se sincronice. Aquí el problema es saber a qué versión estamos accediendo y ser coherentes por si no está sincronizada.
 
-Pero lo que está muy claro que es necesario que haya un único punto de acceso a esa información de modo que se utilice la versión correcta o que se sincroinza cuando debe. De ese modo, de cara a quien la consume, la información sólo tendrá una fuente de verdad.
+Pero lo que está muy claro que es necesario que haya un único punto de acceso a esa información de modo que se utilice la versión correcta o que se sincroinza cuando debe. De ese modo, de cara a quien la consume, la información solo tendrá una fuente de verdad.
 
 Sin embargo, otros casos de esta problemática son más cotidianos y pequeños, aunque sus efectos pueden ser bastante importantes.
 

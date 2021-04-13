@@ -13,7 +13,7 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 De primeras había pensado en escribir sobre la casi omnipresencia de la cerveza en los eventos de desarrolladores. En fin. Todo evento que dedique un espacio a la socialización incluye habitualmente algo de comida y alcohol en el menú. Tiempo atrás, y supongo que todavía se hace en otros entornos, se ofrecía un "vino español" al finalizar algún acto, y parece que su equivalente developer es "pizza y cervezas".
 
-Hay un aspecto positivo en tanto que se procura que estas reuniones no sean sólo para cumplir un objetivo, digamos, formal, como debatir un tema o aprender sobre algo, sino que se incluya un tiempo y espacio para la socialización. Especialmente en un grupo profesional que lleva colgando el sambenito de la carencia de vida social, e incluso de su incapacidad para tenerla. El mito del programador adolescente y solitario.
+Hay un aspecto positivo en tanto que se procura que estas reuniones no sean solo para cumplir un objetivo, digamos, formal, como debatir un tema o aprender sobre algo, sino que se incluya un tiempo y espacio para la socialización. Especialmente en un grupo profesional que lleva colgando el sambenito de la carencia de vida social, e incluso de su incapacidad para tenerla. El mito del programador adolescente y solitario.
 
 Al contrario, si una cosa llama la atención es la existencia de un espíritu de comunidad bastante desarrollado, con mucho intercambio de información en grupos de trabajo, meet-ups, conferencias y todo tipo de eventos, incluyendo una buena ración de eventos tech con nombre de comida típica, sin contar los proyectos de software colaborativos, blogs, formación online y todo tipo de foros.
 

@@ -59,7 +59,7 @@ class PriceCalculator {
 }
 ```
 
-Por supuesto, en este ejemplo hay algunos errores más aparte de los nombres. Pero hoy sólo nos ocuparemos de éstos. Vamos por partes.
+Por supuesto, en este ejemplo hay algunos errores más aparte de los nombres. Pero hoy solo nos ocuparemos de éstos. Vamos por partes.
 
 ### Nombres demasiado genéricos
 
@@ -494,7 +494,7 @@ class Book
 }
 ```
 
-Y aquí comienza un desastre que sólo se detecta mucho tiempo después y que puede suponer una sangría, quizá lenta pero constante, de tiempo, recursos y, en último término, dinero para los equipos y empresas.
+Y aquí comienza un desastre que solo se detecta mucho tiempo después y que puede suponer una sangría, quizá lenta pero constante, de tiempo, recursos y, en último término, dinero para los equipos y empresas.
 
 La modificación de la clase `Book` hizo que ésta pasara a representar dos conceptos distintos, pero quizá se consideró que era una ambigüedad manejable: un compromiso aceptable.
 

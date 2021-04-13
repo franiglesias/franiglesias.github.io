@@ -127,7 +127,7 @@ Las capas de orden superior definen mediante Interfaces cómo quieren usar los c
 
 Este principio está en la base de la llamada [Arquitectura Hexagonal, o Ports and Adapters](http://alistair.cockburn.us/Hexagonal+architecture), aunque [llamarla arquitectura podría ser un poco exagerado](http://www.javiervelezreyes.com/ni-nueva-ni-arquitectura-ni-hexagonal/). La capa de dominio define un puerto (interfaz) y en la infraestructura se crea un adaptador que puede interactuar con ese puerto.
 
-Por ejemplo, cuando la capa de aplicación guarda un objeto de dominio en un repositorio, sólo sabe que el repositorio es el lugar en el que puede guardar objetos de dominio y no debe haber ninguna diferencia debida al mecanismo concreto de persistencia que se vaya a utilizar, así como ninguna consideración o detalle de tal mecanismo debe influenciar en nada lo que ocurre en esta capa.
+Por ejemplo, cuando la capa de aplicación guarda un objeto de dominio en un repositorio, solo sabe que el repositorio es el lugar en el que puede guardar objetos de dominio y no debe haber ninguna diferencia debida al mecanismo concreto de persistencia que se vaya a utilizar, así como ninguna consideración o detalle de tal mecanismo debe influenciar en nada lo que ocurre en esta capa.
 
 ## ¿Qué va en cada capa?
 

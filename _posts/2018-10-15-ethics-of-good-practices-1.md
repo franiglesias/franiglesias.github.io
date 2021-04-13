@@ -124,7 +124,7 @@ Y, para empezar, deberíamos llamar a las cosas por su nombre.
 
 Es un hecho conocido que una de las cosas consideradas más difíciles en programación es [poner nombres](https://geekytheory.com/las-9-cosas-mas-dificiles-que-tienen-que-hacer-los-desarrolladores/).
 
-Los nombres representan conceptos y los usamos para razonar y comunicarnos acerca de esos conceptos. Poner y usar los nombres adecuados es un primer caso para que el código sea, no sólo comprensible, sino también fiel reflejo del problema que trata de resolver.
+Los nombres representan conceptos y los usamos para razonar y comunicarnos acerca de esos conceptos. Poner y usar los nombres adecuados es un primer caso para que el código sea, no solo comprensible, sino también fiel reflejo del problema que trata de resolver.
 
 En ese sentido, los nombres siempre deberían ser:
 
@@ -132,7 +132,7 @@ En ese sentido, los nombres siempre deberían ser:
 * **Ubicuos**: los nombres definidos en el dominio de la aplicación están presentes en todos los niveles del código: nombres de clases, variables, métodos, funciones.
 * **Precisos**: los nombres deberían describir con precisión los conceptos, intenciones o efectos.
 
-Nombres imprecisos o inconsistentes pueden llevar a la introducción posterior de errores en el código, al perderse el sentido semántico de lo que nuestro software debería estar haciendo. Una base de código crece más rápido de lo que cualquier desarolladora puede mantener en mente en un momento dado. En cada instante, trabajamos sólo en una pequeña parte, una faceta del todo, y es fácil olvidar qué función cumple con respecto al resto del código. Un uso inconsistente de la nomenclatura podría inducirnos a error en cuanto a la función que cumple la pequeña parte en la que estamos trabajando.
+Nombres imprecisos o inconsistentes pueden llevar a la introducción posterior de errores en el código, al perderse el sentido semántico de lo que nuestro software debería estar haciendo. Una base de código crece más rápido de lo que cualquier desarolladora puede mantener en mente en un momento dado. En cada instante, trabajamos solo en una pequeña parte, una faceta del todo, y es fácil olvidar qué función cumple con respecto al resto del código. Un uso inconsistente de la nomenclatura podría inducirnos a error en cuanto a la función que cumple la pequeña parte en la que estamos trabajando.
 
 ### Principios de diseño
 

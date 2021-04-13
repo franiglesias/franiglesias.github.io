@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Katando phpSpec 4
+title: Katando PHPSpec 4
 categories: articles
 tags: tdd bdd
 ---
@@ -9,10 +9,10 @@ En las entregas anteriores de la serie he tratado de explicar cómo hacer TDD us
 
 La serie **Katando PHPSpec** consta de los siguientes artículos:
 
-[Katando PHPSpec (1)](/katando-phpspec-1)  
-[Katando PHPSpec (2)](/katando-phpspec-2)  
-[Katando PHPSpec (3)](/katando-phpspec-3)  
-[Katando PHPSpec (4)](/katando-phpspec-4)
+[Katando PHPSpec (1)](/katando-PHPSpec-1)  
+[Katando PHPSpec (2)](/katando-PHPSpec-2)  
+[Katando PHPSpec (3)](/katando-PHPSpec-3)  
+[Katando PHPSpec (4)](/katando-PHPSpec-4)
 
 Si recuerdas, esta era la última implementación de la clase **Calculator**. La pongo aquí para referencia:
 
@@ -111,7 +111,7 @@ Una de ellas consiste en desarrollar `Parser` desde cero con la ayuda de PHPSpec
 namespace spec\kata;
 
 use kata\Parser;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class ParserSpec extends ObjectBehavior
@@ -258,7 +258,7 @@ namespace spec\kata;
 
 use kata\Calculator;
 use kata\Parser;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class CalculatorSpec extends ObjectBehavior
@@ -335,7 +335,7 @@ namespace spec\kata;
 
 use kata\Calculator;
 use kata\Parser;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class CalculatorSpec extends ObjectBehavior

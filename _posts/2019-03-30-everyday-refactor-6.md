@@ -66,7 +66,7 @@ La **Ley de Demeter**[^demeter] también se conoce como **Principio de menor con
 
 [^demeter]: El nombre viene del proyecto donde se usó por primera vez.
 
-Siguiendo la **Ley de Demeter,** como veremos, un método de una clase sólo puede usar los objetos a los que conoce. Estos son:
+Siguiendo la **Ley de Demeter,** como veremos, un método de una clase solo puede usar los objetos a los que conoce. Estos son:
 
 * La propia clase, de la que puede usar todos sus métodos.
 * Objetos que son propiedades de esa clase.

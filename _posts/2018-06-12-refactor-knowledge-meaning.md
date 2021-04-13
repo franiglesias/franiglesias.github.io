@@ -314,7 +314,7 @@ public function failIfValueIsAnInvalidType(string $value):void
 
 #### Encapsular operaciones complejas y darles significado
 
-Un caso particularmente útil de extraer método es aplicarlo a expresiones condicionales (no sólo complejas) cuyo significado no resulta evidente.
+Un caso particularmente útil de extraer método es aplicarlo a expresiones condicionales (no solo complejas) cuyo significado no resulta evidente.
 
 En el ejemplo anterior, podríamos hacer que la expresión condicional fuese más explícita:
 
@@ -385,7 +385,7 @@ interface Service
 
 ```
 
-`SomeService` podría tener otros muchos métodos, pero a nosotros sólo nos interesa `doSomething`.
+`SomeService` podría tener otros muchos métodos, pero a nosotros solo nos interesa `doSomething`.
 
 Ahora cambiamos `SomeService` para que implemente la interfaz que acaba de definir y hacemos que `MyClass` espere una dependencia de la interfaz `SomeService`.
 

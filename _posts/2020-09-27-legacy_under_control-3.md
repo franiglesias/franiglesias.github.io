@@ -17,9 +17,9 @@ Así que en esta tercera entrega intentaremos desarrollar esta idea en el códig
 
 ## Introduciendo AdSpace y Blog
 
-Nos queda aún trabajo. Tenemos un concepto que no hemos reflejado, como es el de `Blog` o `AdSpace`. De hecho, tenemos que introducir un filtro en el `AdSpaceProvider` para poder usar sólo los espacios que cumplen algunas condiciones. 
+Nos queda aún trabajo. Tenemos un concepto que no hemos reflejado, como es el de `Blog` o `AdSpace`. De hecho, tenemos que introducir un filtro en el `AdSpaceProvider` para poder usar solo los espacios que cumplen algunas condiciones. 
 
-Para empezar, tenemos un punto interesante en la discusión de si el concepto que nos interesa es `Blog` o `AdSpace`. Podemos razonar que `Blog` es un tipo de los posibles `AdSpaces` que podríamos tener que gestionar. Por otro lado, si nuestro mercado actual son sólo blogs tecnolígicos puede parecer innecesario hacer esta separación. Sin embargo, si lo piensas, el coste futuro de remodelar la aplicación para pasar de `Blog` a `AdSpaces`, es decir de un concepto más concreto a uno más general, puede ser mucho más alto que establecer ahora esa categoría general, desarrollando la versión específica para `Blogs` y creando nuevas especializaciones en el futuro si es necesario.
+Para empezar, tenemos un punto interesante en la discusión de si el concepto que nos interesa es `Blog` o `AdSpace`. Podemos razonar que `Blog` es un tipo de los posibles `AdSpaces` que podríamos tener que gestionar. Por otro lado, si nuestro mercado actual son solo blogs tecnolígicos puede parecer innecesario hacer esta separación. Sin embargo, si lo piensas, el coste futuro de remodelar la aplicación para pasar de `Blog` a `AdSpaces`, es decir de un concepto más concreto a uno más general, puede ser mucho más alto que establecer ahora esa categoría general, desarrollando la versión específica para `Blogs` y creando nuevas especializaciones en el futuro si es necesario.
 
 Mi preferencia es esta última opción. Introducir el concepto general y desarrollar la especialización `Blog` para resolver la tarea inmediata. El coste es mínimo y deja el código en disposición de introducir otros tipos de espacios en el futuro.
 
@@ -169,7 +169,7 @@ class Blog extends AdSpace
 }
 ```
 
-Nos toca revisar los usos de `Blog` a lo largo del código, cosa que hacemos con ayuda del IDE. Añadimos los *type hintings* y *return types* necesarios. Aquí es importante tener en cuenta que debemos hacer los *type hintings* con `AdSpace`, que es la abstracción. El cambio más significativo tiene que ver con los objetos que sólo pueden usar la versión en texto del identificador del blog:
+Nos toca revisar los usos de `Blog` a lo largo del código, cosa que hacemos con ayuda del IDE. Añadimos los *type hintings* y *return types* necesarios. Aquí es importante tener en cuenta que debemos hacer los *type hintings* con `AdSpace`, que es la abstracción. El cambio más significativo tiene que ver con los objetos que solo pueden usar la versión en texto del identificador del blog:
 
 ```php
 <?php
@@ -382,7 +382,7 @@ Por otro lado, la expresividad del código aumenta muchísimo.
 
 Este proceso que hemos seguido se basa en el principio Open/Close. En lugar de cambiar las clase, con el riesgo de alterar partes del software que pudiesen estar usándolo, lo que hacemos es no modificarla, extendiéndola mediante una composición.
 
-Sin embargo, en el ejemplo sólo utilizamos una vez esta clase, por lo que podríamos deshacernos de ella, para lo cual el siguiente paso sería mover el código de `AutomaticQuoteBot` a `GenerateAllQuotes`, reduciendo la cantidad de objetos. En este caso es bastante fácil, pero antes tenemos que cambiar el test `QuoteBotAppTest` pues las cosas no van a funcionar igual ahora.
+Sin embargo, en el ejemplo solo utilizamos una vez esta clase, por lo que podríamos deshacernos de ella, para lo cual el siguiente paso sería mover el código de `AutomaticQuoteBot` a `GenerateAllQuotes`, reduciendo la cantidad de objetos. En este caso es bastante fácil, pero antes tenemos que cambiar el test `QuoteBotAppTest` pues las cosas no van a funcionar igual ahora.
 
 ```php
 <?php
@@ -976,7 +976,7 @@ Es bastante evidente que esto es un ejercicio y que esta elaboración para el pr
 
 Por ejemplo, ahora es más fácil intervenir en el código para realizar mejoras o añadir features.
 
-De hecho, tenemos pendiente una: la posibilidad de obtener sólo los `Blogs` cuyo nombre comience por la letra `T` (el @todo que teníamos en el código ha desaparecido en algún momento del proceso).
+De hecho, tenemos pendiente una: la posibilidad de obtener solo los `Blogs` cuyo nombre comience por la letra `T` (el @todo que teníamos en el código ha desaparecido en algún momento del proceso).
 
 La interfaz en la que nos vamos a detener es la de `AdSpaceProvider`, implementada por `BlogAdSpaceProvider`. Lo primero es que vamos a preparar un poco el terreno. Queremos obtener una lista que cumpla ciertas condiciones, pues parece bastante claro que no nos conviene incrustar en código la condición concreta que nos están pidiendo.
 

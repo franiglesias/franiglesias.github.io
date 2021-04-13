@@ -36,7 +36,7 @@ LogicException : The parent constructor was not called: the object is in an inva
 
 Buscando la explicación de este error aparecen algunas pistas, que [indican que SplFileObject extiende de SplFileInfo](https://gist.github.com/everzet/4215537), la cual exige que se pase una ruta al archivo sí o sí. Puesto que al generar el doble se ignora por defecto el constructor, eso nunca llega a ocurrir y de ahí el fallo. Este ejemplo ilustra tanto los problemas de dependencia que puede generar la herencia como esas cosillas peculiares que aparecen a veces en los objetos de la SPL.
 
-De todos modos, la solución es fácil. Tan sólo hay que tomar el camino largo de creación de dobles:
+De todos modos, la solución es fácil. Tan solo hay que tomar el camino largo de creación de dobles:
 
 ```php
 $splFileObject = $this->getMockBuilder(SplFileObject::class)

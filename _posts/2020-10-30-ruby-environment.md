@@ -9,7 +9,7 @@ Hace un tiempo que estoy estudiando algo de Ruby y estoy tratando de encontrar o
 
 Creo que ya lo habrás notado porque en algunas entradas anteriores he estado poniendo ejemplos en Ruby. La verdad es que en un lenguaje muy agradable con el que trabajar y tengo la impresión de que es especialmente interesante para mejorar en el área de orientación a objetos.
 
-En ese sentido, tengo que recomendar muy insistentemente el libro de Sandi Metz, [Practical Object-Oriented Design](https://www.amazon.es/dp/0134456475/ref=cm_sw_em_r_mt_dp_xD-LFbGC7Z45Q?_encoding=UTF8&psc=1), no sólo si tienes interés en Ruby, sino como un gran manual de programación orientada a objetos desde un modelo de tipado dinámico.
+En ese sentido, tengo que recomendar muy insistentemente el libro de Sandi Metz, [Practical Object-Oriented Design](https://www.amazon.es/dp/0134456475/ref=cm_sw_em_r_mt_dp_xD-LFbGC7Z45Q?_encoding=UTF8&psc=1), no solo si tienes interés en Ruby, sino como un gran manual de programación orientada a objetos desde un modelo de tipado dinámico.
 
 ## Cómo es Ruby
 
@@ -102,7 +102,7 @@ Preparar un entorno dockerizado para trabajar con Ruby no debería ser particula
 
 Aparte de eso, trabajar en Ruby suele estar muy ligado a su framework *Ruby on Rails*, así que la mayor parte de información que encuentras se refiere a éste. Tanto es así, que frecuentemente se identifica al lenguaje con el framework. Sin embargo, hay otras formas de desarrollar con Ruby y no estoy especialmente interesado en Rails por el momento.
 
-Así, ante mi posible interés de escribir algún tipo de aplicación web prefiero un framework más específico como es [Sinatra](http://sinatrarb.com/documentation.html), con el que puedo tener un MVC suficientemente potente para aplicaciones web tradicionales o exponer un API. Sinatra instala el servidor web Rack, lo que cubre este apartado también y de una forma sencilla.
+Así, ante mi posible interés de escribir algún tipo de aplicación web prefiero un framework más específico como es [Sinatra](http://sinatrarb.com/documentation.html), con el que puedo tener un MVC suficientemente potente para aplicaciones web tradicionales o exponer una API. Sinatra instala el servidor web Rack, lo que cubre este apartado también y de una forma sencilla.
 
 En cualquier caso, usar Rails o Sinatra o cualquier otra dependencia es algo que se gestiona mediante la instalación de Gemas (o paquetes), de modo que realmente lo único que necesitamos es preparar un `Dockerfile` bastante minimalista basado en una imagen específica de Ruby. 
 

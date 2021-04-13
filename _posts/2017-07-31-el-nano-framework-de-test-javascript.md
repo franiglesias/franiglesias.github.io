@@ -35,7 +35,7 @@ Puede recibir todavía muchas mejoras, pero con esta función sencilla ya dispon
 
 ## Una línea que vale su peso en oro
 
-Una vez que tuve mi entorno de test, éste demostró ser utilísimo para mejorar mi conocimiento de Javascript, tanto en velocidad como en solidez.
+Una vez que tuve mi entorno de test, este demostró ser utilísimo para mejorar mi conocimiento de Javascript, tanto en velocidad como en solidez.
 
 En primer lugar, al poder escribir con metodología TDD el aprendizaje se hace mucho más fácil y potente.
 
@@ -56,7 +56,7 @@ Pero también tiene ciertas peculiaridades. Por ejemplo, no puedes comparar arra
 
 ## Undefined vs null
 
-En PHP null vale para casi todo y, según el contexto, puede evaluar a false o a 0 (cero). Esto no es del todo bueno porque introduce ambigüedades. Así, por ejemplo, una función que no devuelve "nada" (return; o return implícito), devuelve null. Eso se ha usado muchas veces cuando se detecta un error y no se puede ejecutar la función. Sin embargo, en esos casos, no podemos diferenciar cuándo se ha producido un error y cuándo no se ha producido resultado. La solución es lanzar un excepción cuando es un error y null cuando no hay una respuesta.
+En PHP null vale para casi todo y, según el contexto, puede evaluar a `false` o a 0 (cero). Esto no es del todo bueno porque introduce ambigüedades. Así, por ejemplo, una función que no devuelve "nada" (return; o return implícito), devuelve null. Eso se ha usado muchas veces cuando se detecta un error y no se puede ejecutar la función. Sin embargo, en esos casos, no podemos diferenciar cuándo se ha producido un error y cuándo no se ha producido resultado. La solución es lanzar un excepción cuando es un error y null cuando no hay una respuesta.
 
 En Javascript undefined se refiere a cualquier cosa que no tiene un valor. Las funciones son undefined si no devuelven nada explícitamente, y las variables declaradas están undefined si no se les asigna un valor. Null es otra cosa y puede usarse de manera más limitada con un significado más restringido. Por ejemplo, en una lista ligada, podríamos poner el enlace next a null para indicar que no apunta a ninguna parte.
 

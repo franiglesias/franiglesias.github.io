@@ -326,7 +326,7 @@ Esto no se cumple en ciertos casos. Por ejemplo, cuando hablamos de Value Object
 
 Así que podemos distinguir entre objetos "newables" y objetos "inyectables". [Miško Hevery lo explica muy bien](http://misko.hevery.com/2008/09/30/to-new-or-not-to-new/ "To &#8220;new&#8221; or not to &#8220;new&#8221;&#8230;"). En resumen:
 
-Los objetos **newables** son aquellos que necesitan algún parámetro variable en el momento de su creación. De hecho, necesitaremos un objeto nuevo cada vez. Imagina una clase Email que represente una dirección de email o incluso un mensaje (ojo, no lo envía, sólo lo representa, pero también se encarga de validarlo y asegurarse de que está bien construido). Necesitamos un objeto distinto por cada dirección de email o mensaje. Veamos un ejemplo:
+Los objetos **newables** son aquellos que necesitan algún parámetro variable en el momento de su creación. De hecho, necesitaremos un objeto nuevo cada vez. Imagina una clase Email que represente una dirección de email o incluso un mensaje (ojo, no lo envía, solo lo representa, pero también se encarga de validarlo y asegurarse de que está bien construido). Necesitamos un objeto distinto por cada dirección de email o mensaje. Veamos un ejemplo:
 
 ```php
 class Email {

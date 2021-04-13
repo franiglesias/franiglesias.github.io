@@ -17,7 +17,7 @@ Utilizando TDD y diferentes técnicas de refactor, Metz nos va llevando de la ma
 
 Los distintos capítulos están escritos con claridad y sencillez, pero sin renunciar al rigor y a la precisión. Es un libro práctico y, a la vez, es muy profundo en el plano teórico.
 
-Lo recomendaría muy por delante de otros como "Clean Code". No sólo es un libro más amigable, sino que la aparente sencillez de su proyecto ejemplo, nos ayuda a entender que no hay código, por simple que nos parezca, que no pueda verse afectado de inflexibilidad y que no pueda mejorar su expresividad y su capacidad de evolucionar en el futuro.
+Lo recomendaría muy por delante de otros como "Clean Code". No solo es un libro más amigable, sino que la aparente sencillez de su proyecto ejemplo, nos ayuda a entender que no hay código, por simple que nos parezca, que no pueda verse afectado de inflexibilidad y que no pueda mejorar su expresividad y su capacidad de evolucionar en el futuro.
 
 También nos ayuda a adoptar una metodología iterativa. Metz propone pequeños cambios que nos van ayudando a despejar el código y descubrir conceptos sin bloquear en ningún momento la funcionalidad del software. Cada pequeño cambio podría desplegarse en producción sin afectar lo más mínimo al comportamiento. Pero es que además, al final del libro, el sistema puede generar letras para cualquier canción del estilo con un esfuerzo mínimo.
 

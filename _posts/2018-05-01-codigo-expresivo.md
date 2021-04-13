@@ -5,7 +5,7 @@ categories: articles
 tags: php good-practices
 ---
 
-Al hablar de código expresivo queremos decir no sólo que el código debería indicar con claridad su intención, también queremos que el código revele más cosas de sí mismo.
+Al hablar de código expresivo queremos decir no solo que el código debería indicar con claridad su intención, también queremos que el código revele más cosas de sí mismo.
 
 Aprender a escribir código que sea expresivo es algo que se consigue con la práctica, leyendo código de otros y dejando que otros lean nuestro código. La verdad es que aprender a escribir buen código es un proceso muy similar al de aprender a escribir bien. Y una de las metas es la de aprender a elegir mejores palabras y expresiones.
 

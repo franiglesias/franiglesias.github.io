@@ -101,7 +101,7 @@ Para mejorar el test usamos una estructura `try...catch` en el propio test, con 
 
 ## Test de validadores
 
-Otro caso en el que la estrategia de usar el `try...catch` dentro de un test funciona bastante bien tiene que ver con la validación de datos. En este caso, a partir de los datos recibidos en un endpoint de un API, necesitamos crear un objeto válido y, en caso de que alguno de los datos no lo sea, devolver una lista con los errores encontrados.
+Otro caso en el que la estrategia de usar el `try...catch` dentro de un test funciona bastante bien tiene que ver con la validación de datos. En este caso, a partir de los datos recibidos en un endpoint de una API, necesitamos crear un objeto válido y, en caso de que alguno de los datos no lo sea, devolver una lista con los errores encontrados.
 
 Una de las estrategias que nos planteamos fue lanzar una excepción en caso de detectar errores y hacer que contuviese un payload con la lista de errores recopilada y sus causas.
 
@@ -124,7 +124,7 @@ El problema es que no hay forma de testear eso si simplemente esperamos que se l
 
 En este caso usamos un data provider para pasar el campo en el que estamos interesados y el ejemplo de valor no válido que llevaría. En `getRequestWithField` construímos un objeto Request (de la HttpFoundation de Symfony, en este caso) que simula los datos recibidos en el endpoint. Por defecto, se crearía una petición válida y luego le sobreescribimos los campos que queremos hacer inválidos.
 
-Al ejecutar el test capturamos la excepción, nos aseguramos de que sólo hay una entrada de error y que contiene el campo que hemos pasado como no válido.
+Al ejecutar el test capturamos la excepción, nos aseguramos de que solo hay una entrada de error y que contiene el campo que hemos pasado como no válido.
 
 
 

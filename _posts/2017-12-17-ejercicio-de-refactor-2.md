@@ -237,7 +237,7 @@ En primer lugar, nos indica con más claridad los puntos en los que tenemos prob
 
 En segundo lugar, la estructura es mucho más expresiva: ahora, en lugar de un laberinto de caminos, nos está indicando que cumpliéndose ciertas condiciones, responderá con un mensaje determinado. Como señalábamos en el artículo anterior de la serie, aquello tenía pinta de ser un caso de un patrón de Cadena de Responsabilidad, y ahora la estructura lo hace casi evidente.
 
-Sólo con esto, ya habríamos mejorado bastante las cosas, no sólo el código es más limpio, sino que tenemos tests. Pero nosotros queremos más.
+Sólo con esto, ya habríamos mejorado bastante las cosas, no solo el código es más limpio, sino que tenemos tests. Pero nosotros queremos más.
 
 El camino a continuación pasaría por ir definiendo las reglas que formarán la cadena y reemplazando las estructuras if por ellas.
 
@@ -435,7 +435,7 @@ Tras esta operación, los tests están en verde, y nuestro bloque try… catch h
     }
 ```
 
-La pregunta que puedes hacerte ahora es si no sería mejor aplicar la ley de Demeter (principio Tell, don't ask) aquí porque si algo nos está mostrando este refactor es que estos objetos nuestros hablan con cualquiera y tiran de métodos de objetos que están dentro de otros objetos con toda la libertad del mundo. Lo ideal sería interactuar sólo con Order, pero ese cambio lo haremos seguramente en la próxima entrega de la serie.
+La pregunta que puedes hacerte ahora es si no sería mejor aplicar la ley de Demeter (principio Tell, don't ask) aquí porque si algo nos está mostrando este refactor es que estos objetos nuestros hablan con cualquiera y tiran de métodos de objetos que están dentro de otros objetos con toda la libertad del mundo. Lo ideal sería interactuar solo con Order, pero ese cambio lo haremos seguramente en la próxima entrega de la serie.
 
 De momento, seguimos con las extracciones.
 
@@ -488,7 +488,7 @@ El test de caracterización falla porque, finalmente, hemos conseguido que el bl
     }
 ``` 
 
-La segunda consecuencia es que podemos ver algo interesante: los parámetros `$productStatus` y `$orderStatus` que pasamos junto con `$order` los podemos obtener de éste último y no necesitamos pasar más que éste, y lo mismo podríamos decir de `$paymentMethod` respecto de `$paymentMethods`. Así que podríamos refactorizar los métodos que los consumen para que reciban sólo los parámetros imprescindibles.
+La segunda consecuencia es que podemos ver algo interesante: los parámetros `$productStatus` y `$orderStatus` que pasamos junto con `$order` los podemos obtener de éste último y no necesitamos pasar más que éste, y lo mismo podríamos decir de `$paymentMethod` respecto de `$paymentMethods`. Así que podríamos refactorizar los métodos que los consumen para que reciban solo los parámetros imprescindibles.
 
 Esto nos da el resultado siguiente, en el que, además, hemos ordenado un poco el código, aunque todavía no hemos tocado los métodos extraídos, algo que dejo para próximas entregas.
 

@@ -26,7 +26,7 @@ La primera forma normal es la más básica de todas e implica cumplir cinco cond
 1. **Independencia del orden de las filas**. Esto quiere decir que en una tabla el orden en que se presentan las filas no cambia su significado. Por ejemplo, para representar la posición final de los participantes en una carrera utilizamos un campo *position* o *finish_time*, en lugar de hacer que el orden de las filas coincida con la posición participantes. Otra cosa diferente es que presentemos esos resultados ordenados en una aplicación.
 2. **Independencia del orden de las columnas**. Se refiere a que el significado de las columnas no depende del orden en que están definidas en la tabla. El hecho de que una columna sea la primera o la tercera no indicaría nada, ni el hecho de que vayan juntas. Así, por ejemplo, los campos *primer_apellido* y *segundo_apellido* podrían ir en ese orden o en otro cualquiera, aunque prefiramos tenerlos agrupados para interpretar la tabla más fácilmente.
 3. **No hay filas duplicadas**. Que es lo mismo que decir que cada fila representa una instancia o sujeto diferente del tipo de entidad representada. En consecuencia, no puede haber dos filas que representen a un mismo sujeto o a una misma relación. La forma en que aseguramos esto es haciendo que la tabla contenga una clave primaria, formada por una o más columnas, que será única para cada fila.
-4. **Cada intersección de fila y columna puede contener un y sólo un valor del dominio aplicable**. En términos prácticos, significa que un campo de una fila no puede contener más de un valor. En algunas versiones, tampoco podría contener valores nulos, aunque esto es objeto de discusión. En cualquier caso, no pueden ser nulos los campos que formen parte de la clave primaria.
+4. **Cada intersección de fila y columna puede contener un y solo un valor del dominio aplicable**. En términos prácticos, significa que un campo de una fila no puede contener más de un valor. En algunas versiones, tampoco podría contener valores nulos, aunque esto es objeto de discusión. En cualquier caso, no pueden ser nulos los campos que formen parte de la clave primaria.
 5. **Todas las columnas son regulares y no contienen información oculta**.
 
 El punto 4 es el más visible de todos y se refiere al hecho de que la entidad pueda tener varios valores de un mismo atributo o conjunto de atributos. O, en términos de tablas, varios valores en la misma columna. 
@@ -82,9 +82,9 @@ Ahora las tablas están en primera forma normal. A mí me recuerda al *Single Re
 
 Si el DDD te es familiar, estarás de acuerdo en que una Entidad se caracteriza por tener Identidad. En una base de datos, la identidad se representa mediante una **clave primaria** representada por una o más columnas no vacías y que nos asegura que cada fila de la tabla es distinta.
 
-Diremos que una tabla está en **segunda forma normal** cuando ya está en **primera forma normal** y cada columna de la tabla depende de la clave primaria. Si hay columnas que sólo dependen de una parte de la clave primaria, en caso de que sea compuesta, quiere decir que tendrían que estar en otra tabla.
+Diremos que una tabla está en **segunda forma normal** cuando ya está en **primera forma normal** y cada columna de la tabla depende de la clave primaria. Si hay columnas que solo dependen de una parte de la clave primaria, en caso de que sea compuesta, quiere decir que tendrían que estar en otra tabla.
 
-De hecho, las tablas que están en **primera forma normal** y cuya clave primaria sea una única columna están automáticamente en **segunda forma normal**, porque no hay forma de que exista un atributo que sólo dependa de parte de la clave.
+De hecho, las tablas que están en **primera forma normal** y cuya clave primaria sea una única columna están automáticamente en **segunda forma normal**, porque no hay forma de que exista un atributo que solo dependa de parte de la clave.
 
 Y esto, ¿qué significa? 
 
@@ -130,7 +130,7 @@ La tabla representa los productos de una empresa de alimentación que tiene vari
 
 En este ejemplo, la clave primaria está formada por las columnas *section* + *product*. El campo *name* depende de esa clave primaria por completo. En otras palabras: cada combinación de *section* + *product* define un producto que tiene su nombre correspondiente.
 
-Sin embargo, el campo *store*, que representa la tienda en la que se vende cada familia de productos, sólo depende de una de las columnas de la clave (*section*). Esto genera una redundancia y un riesgo de generar inconsistencia de datos en caso de que haya que actualizar el campo *store* para alguna de las *sections*.
+Sin embargo, el campo *store*, que representa la tienda en la que se vende cada familia de productos, solo depende de una de las columnas de la clave (*section*). Esto genera una redundancia y un riesgo de generar inconsistencia de datos en caso de que haya que actualizar el campo *store* para alguna de las *sections*.
 
 Pues bien, debido a eso, esta tabla no cumple la **segunda forma normal**. Para normalizar estos datos, de nuevo deberíamos separarlos en dos tablas:
 
@@ -160,7 +160,7 @@ Se puede decir que cada forma normal surge a partir de las limitaciones de la fo
 
 La **tercera forma normal** dice que cada columna está relacionada directamente con las columnas de la clave primaria y no a través de otro campo. Dicho de una manera más formal: no pueden existir relaciones transitivas entre campos y claves. Una relación transitiva es aquella que tiene la forma: A -> B, B -> C, A -> C (A y C se relacionan a través de B). Pues bien: no queremos esto en tablas normalizadas.
 
-La idea es que los campos de la tabla que no formen parte de la clave, sean atributos dependientes de la clave y sólo de esta. Intentaré mostrar un ejemplo:
+La idea es que los campos de la tabla que no formen parte de la clave, sean atributos dependientes de la clave y solo de esta. Intentaré mostrar un ejemplo:
 
 **employees**
 

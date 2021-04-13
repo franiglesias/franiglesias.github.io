@@ -69,7 +69,7 @@ Las tres opciones nos permiten sumar 2 y 2. La segunda nos permite indicar el n�
 
 La siguiente feature nos dice que los *stakeholders* no querían realmente sumar números, sino obtener el doble de cualquier número. Aparte de tener que cambiar el nombre de la función para representar el cambio del concepto del dominio vemos que la primera opción no nos sirve por inflexible, mientras que la tercera opción no nos sirve porque hicimos una generalización prematura que nos llevó a escoger la abstracción equivocada.
 
-Descartada la primera opción por demasiado específica, la segunda sólo necesita cambiar el nombre y el comportamiento se mantiene.
+Descartada la primera opción por demasiado específica, la segunda solo necesita cambiar el nombre y el comportamiento se mantiene.
 
 ```ruby
 def double(a)

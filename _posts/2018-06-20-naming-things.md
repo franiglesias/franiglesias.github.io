@@ -166,7 +166,7 @@ Dejando al margen consideraciones de si lo más correcto sería utilizar un valu
 $fileSizeInBytes = $upload->size();
 ```
 
-Este nombre nos quita todas las dudas. Incluso nos ayudaría en caso de depuración, ya que deja claro no sólo que la variable contiene el tamaño de un archivo dado, sino que también nos dice que debería estar expresado en bytes y si los valores nos hacen sospechar otra cosa nos estaría indicando que hay un problema.
+Este nombre nos quita todas las dudas. Incluso nos ayudaría en caso de depuración, ya que deja claro no solo que la variable contiene el tamaño de un archivo dado, sino que también nos dice que debería estar expresado en bytes y si los valores nos hacen sospechar otra cosa nos estaría indicando que hay un problema.
 
 Y, sobre el tema del Value Object, sigue siendo una buena idea utilizar nombres tan detallados:
 

@@ -16,7 +16,7 @@ Siempre es bueno tener métricas, pero las métricas sin contexto no sirven de m
 
 Por un lado, es una de las métricas más falseable que nos podamos echar a la cara, pues basta con aplicar unos pocos trucos de dudoso gusto y menor ética para conseguir coberturas elevadas sin esfuerzo: unos cuantos `assertTrue(true)` y listo.
 
-Tampoco hace falta llegar a este extremo. Tan sólo testeando los casos seguros por unidad nos servirán para conseguir una cobertura alta sin demasiado esfuerzo.
+Tampoco hace falta llegar a este extremo. Tan solo testeando los casos seguros por unidad nos servirán para conseguir una cobertura alta sin demasiado esfuerzo.
 
 En ambos casos, la métrica no dice nada sobre la situación del testing en esa base de código.
 

@@ -66,7 +66,7 @@ Sin embargo, todavía tenemos algunas carencias: no podemos cambiar el color del
 ```
 
 
-Siendo `style` un diccionario en el que pasar todas las características del texto, no sólo el tamaño como ahora, con la idea de definir los que sean necesarios en **config.py**, garantizando coherencia y predictibilidad en su uso.
+Siendo `style` un diccionario en el que pasar todas las características del texto, no solo el tamaño como ahora, con la idea de definir los que sean necesarios en **config.py**, garantizando coherencia y predictibilidad en su uso.
 
 Vamos a usar el siguiente enfoque.
 

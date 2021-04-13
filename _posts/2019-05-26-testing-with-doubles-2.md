@@ -58,7 +58,7 @@ Los *spies* son, igualmente, *dummies* o *stubs* que registran el modo en que nu
 
 La ventaja sobre los *mocks* es que con ellos podemos hacer aserciones de manera explícita en el test, es decir, una vez ejecutada la unidad bajo test le preguntamos al *spy* lo que nos interese controlar de su uso.
 
-En algunas librerías de test doubles existen métodos para usar los dobles como *spies*, pero los mocks nativos de PHPUnit son un poco pejigueros y no está bien documentado el [método para conseguirlos](https://lyte.id.au/2014/03/01/spying-with-phpunit/).
+En algunas librerías de test doubles existen métodos para usar los dobles como *spies*, pero los mocks nativos de PHPUnit son un poco pejigueros y no está bien documentado el [método para conseguirlos](https://lyte.id.au/2014/03/01/spying-with-PHPUnit/).
 
 El ejemplo anterior, podría convertirse en un spy de esta manera:
 
@@ -152,7 +152,7 @@ $this->userRepository
 $this->createUser->withUsername('user@example.com');
 ```
 
-La regla de oro aquí es que sólo deberíamos establecer expectativas para verificar que se produce el efecto esperado por la ejecución de la unidad bajo test. Y cuantas menos expectativas mejor. De hecho, si la unidad bajo test produce dos o más efectos lo ideal sería tener un test para cada uno de ellos.
+La regla de oro aquí es que solo deberíamos establecer expectativas para verificar que se produce el efecto esperado por la ejecución de la unidad bajo test. Y cuantas menos expectativas mejor. De hecho, si la unidad bajo test produce dos o más efectos lo ideal sería tener un test para cada uno de ellos.
  
 ### Limitar la verificación de parámetros de las llamadas
 

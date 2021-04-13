@@ -89,7 +89,7 @@ Por ejemplo, si uno de nuestros objetos Store careciese del dato de longitud no 
 ## Value objects
 
 
-Por otro lado, el objeto Store contiene propiedades que se pueden organizar en grupos cohesivos y que, de hecho, son conceptos que pueden representarse como objetos. Para expresarlo en código, Store no tendría siete propiedades, sino tres. Pero esto es sólo el comienzo.
+Por otro lado, el objeto Store contiene propiedades que se pueden organizar en grupos cohesivos y que, de hecho, son conceptos que pueden representarse como objetos. Para expresarlo en código, Store no tendría siete propiedades, sino tres. Pero esto es solo el comienzo.
 
 ```php
 class Address {
@@ -260,7 +260,7 @@ class Coordinates {
 
 Gracias a lo anterior, nuestros Value Objects ya son objetos muy sólidos, pero aún nos faltan cosas. De todos los objetos que es posible construir no nos sirven todos, tienen que ser válidos para el concepto que representan. Me explico: la clase Coordinates tiene y necesita dos propiedades latitude y longitude, algo ya representado en la existencia del constructor, pero esas propiedades no deben admitir cualquier valor de coma flotante, sino únicamente aquellos en el rango -90 a 90 para la latitud y en el rango -180 a 180 para la longitud.
 
-Esta restricción termina por definir lo que es un par de coordenadas y para expresarlo en código necesitamos añadir algún tipo de control que se asegure de que el objeto se construirá si y sólo si se le pasan dos valores en ese rango.
+Esta restricción termina por definir lo que es un par de coordenadas y para expresarlo en código necesitamos añadir algún tipo de control que se asegure de que el objeto se construirá si y solo si se le pasan dos valores en ese rango.
 
 Y la mejor forma de expresarlo es lanzando una excepción si alguno de los dos valores no lo cumple:
 
@@ -430,7 +430,7 @@ class Coordinates {
 
 La clase Coordinates puede quedar bien resuelta de esta manera, pero si vemos que tenemos que hacer cálculos con los datos que nos devuelve, entonces debemos plantearnos, o bien escribir métodos que nos devuelvan los datos procesados, o bien escribir decoradores que nos permitan obtener los datos en distintas formatos según el consumidor.
 
-Por ejemplo, hemos asumido que Coordinates representa las coordenadoas en grados decimales, pero es muy posible que queramos la expresión de los mismos en formato sexagesimal. Un primer impulso sería introducir métodos capaces de realizar esta transformación, pero debemos valorar antes algunas cuestiones, como si ese formato lo vamos a necesitar sólo para cuestiones de presentación o si va a tener más usos.
+Por ejemplo, hemos asumido que Coordinates representa las coordenadoas en grados decimales, pero es muy posible que queramos la expresión de los mismos en formato sexagesimal. Un primer impulso sería introducir métodos capaces de realizar esta transformación, pero debemos valorar antes algunas cuestiones, como si ese formato lo vamos a necesitar solo para cuestiones de presentación o si va a tener más usos.
 
 Personalmente creo que puede ser mejor idea utilizar un objeto conversor al que le pasamos un Coordinates y lo convierte al sistema sexagesimal:
 

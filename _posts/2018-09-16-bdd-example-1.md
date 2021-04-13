@@ -157,12 +157,12 @@ mkdir src
 mkdir tests
 ```
 
-Iniciamos el proyecto mediante `composer init` y como primera dependencia requerimos `phpunit`.
+Iniciamos el proyecto mediante `composer init` y como primera dependencia requerimos `PHPUnit`.
 
 ```bash
 composer init
 # Fill in with the data needed
-composer require --dev phpunit/phpunit
+composer require --dev PHPUnit/PHPUnit
 ```
 
 También queremos tener `behat`.
@@ -190,7 +190,7 @@ Por último, configuraremos los namespaces del proyecto en `composer.json`, que 
     }
   ],
   "require-dev": {
-    "phpunit/phpunit": "^7.4@dev",
+    "PHPUnit/PHPUnit": "^7.4@dev",
     "behat/behat": "^3.5@dev"
   },
   "autoload": {
@@ -206,7 +206,7 @@ Por último, configuraremos los namespaces del proyecto en `composer.json`, que 
 }
 ```
 
-También hemos añadido la clave `config`, con `bin-dir`, de este modo, los paquetes como `phpunit` y `behat` crearán un alias de su ejecutable en la carpeta `bin`, con lo que podremos lanzarlos fácilmente con `bin/phpunit` y `bin/behat`, respectivamente.
+También hemos añadido la clave `config`, con `bin-dir`, de este modo, los paquetes como `PHPUnit` y `behat` crearán un alias de su ejecutable en la carpeta `bin`, con lo que podremos lanzarlos fácilmente con `bin/PHPUnit` y `bin/behat`, respectivamente.
 
 Después de este cambio puedes hacer un `composer install` o un `composer dump-autoload`, para ponerte en marcha.
 
@@ -214,18 +214,18 @@ Después de este cambio puedes hacer un `composer install` o un `composer dump-a
 composer install
 ```
 
-`phpunit` necesita un poco de configuración, así que vamos a prepararla ejecutando lo siguiente. Es un interactivo y normalmente nos servirán las respuestas por defecto.
+`PHPUnit` necesita un poco de configuración, así que vamos a prepararla ejecutando lo siguiente. Es un interactivo y normalmente nos servirán las respuestas por defecto.
 
 ```bash
-bin/phpunit --generate-configuration
+bin/PHPUnit --generate-configuration
 ```
 
-Esto generará un archivo de configuración por defecto `phpunit.xml` ([más información en este artículo](https://franiglesias.github.io/code-coverage-para-mejores-tests/)). Normalmente hago un pequeño cambio para poder tener medida de cobertura en cualquier código y no tener que pedir explícitamente en cada test, poniendo el parámetro `forceCoversAnnotation` a `false`:
+Esto generará un archivo de configuración por defecto `PHPUnit.xml` ([más información en este artículo](https://franiglesias.github.io/code-coverage-para-mejores-tests/)). Normalmente hago un pequeño cambio para poder tener medida de cobertura en cualquier código y no tener que pedir explícitamente en cada test, poniendo el parámetro `forceCoversAnnotation` a `false`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.4/phpunit.xsd"
+<PHPUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.PHPUnit.de/7.4/PHPUnit.xsd"
          bootstrap="vendor/autoload.php"
          forceCoversAnnotation="false"
          beStrictAboutCoversAnnotation="true"
@@ -243,7 +243,7 @@ Esto generará un archivo de configuración por defecto `phpunit.xml` ([más inf
             <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
-</phpunit>
+</PHPUnit>
 ```
 
 Por último, iniciaremos `behat`, para que prepare la estructura de directorios que necesita, aunque podemos configurarla a nuestro gusto más adelante.
@@ -438,7 +438,7 @@ Feature: Massively update product prices when needed
 0m0.03s (7.09Mb)
 ```
 
-Ahora podemos ver que cada paso del escenario aparece asociada a un método de la clase `*feature*Context`. Esta clase equivale más o menos a un `TestCase` en `phpunit`, por mencionar un concepto que ya nos es familiar.
+Ahora podemos ver que cada paso del escenario aparece asociada a un método de la clase `*feature*Context`. Esta clase equivale más o menos a un `TestCase` en `PHPUnit`, por mencionar un concepto que ya nos es familiar.
 
 La línea **Given** aparece con un mensaje `TODO: write pending definition`. Esto nos está diciendo que tenemos que escribir algo en este método que, obviamente, debería consistir en poner el sistema en el estado indicado. En nuestro ejemplo, tal vez sea tener un repositorio de precios o productos con algún contenido representativo.
 
@@ -682,7 +682,7 @@ El último paso queda definido así:
 
 La mejor manera de saber si los precios se han actualizado es comprobar que el precio de los productos tras realizar la actualización ha cambiado al indicado en el archivo.
 
-Una buena forma de hacer esto es aprovechar las *Asserts* de `phpunit` pues si fallan lanzarán una excepción que, como hemos visto, es la manera que tiene `behat` de hacer que los pasos del escenario fallen. En caso de pasar, nuestras líneas aparecerán en verde y, cuando todas lo hagan, tanto negocio como nosotros estaremos contentos.
+Una buena forma de hacer esto es aprovechar las *Asserts* de `PHPUnit` pues si fallan lanzarán una excepción que, como hemos visto, es la manera que tiene `behat` de hacer que los pasos del escenario fallen. En caso de pasar, nuestras líneas aparecerán en verde y, cuando todas lo hagan, tanto negocio como nosotros estaremos contentos.
 
 Pero nos queda bastante trabajo por hacer.
 
@@ -690,7 +690,7 @@ Pero nos queda bastante trabajo por hacer.
 
 Tenemos un test de aceptación que falla porque realmente no tenemos ninguna funcionalidad implementada. Sin embargo, ya hemos tomado algunas decisiones de diseño y ya empezamos a tener una idea de qué es lo que necesitamos escribir. Ya no partimos de cero, sino que tenemos un objetivo definido.
 
-En nuestra próxima entrega veremos cómo seguir adelante, moviéndonos desde el test de aceptación al nivel unitario con herramientas BDD, recurriendo a `phpspec`, [del cual ya hemos hablado alguna vez en este blog](/katando-phpspec-1).
+En nuestra próxima entrega veremos cómo seguir adelante, moviéndonos desde el test de aceptación al nivel unitario con herramientas BDD, recurriendo a `PHPSpec`, [del cual ya hemos hablado alguna vez en este blog](/katando-PHPSpec-1).
 
 Así que [nos vemos dentro de unos días aquí mismo](/bdd-example-2) :-)
 

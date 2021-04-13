@@ -27,7 +27,7 @@ Vamos a examinarlos en detalle.
 
 Este principio dice que las clases deberían tener una única razón para cambiar.
 
-Otra forma de decirlo es que las clases deberían hacer una sola cosa. El problema de esta definición, aparentemente más clara, es que puede estrechar demasiado tu visión: no se trata de que las clases tengan sólo un método o algo por el estilo.
+Otra forma de decirlo es que las clases deberían hacer una sola cosa. El problema de esta definición, aparentemente más clara, es que puede estrechar demasiado tu visión: no se trata de que las clases tengan solo un método o algo por el estilo.
 
 En cualquier organización hay secciones o departamentos. Cada uno de ellos puede tener necesidades diferentes con respecto a un asunto. En un colegio, por ejemplo, el profesorado se preocupa de las calificaciones y asistencia de los alumnos, mientras que la administración le interesa saber qué servicios consume el alumno y por cuales debe facturarle, al servicio de comedor o cantina le interesa saber si el alumno va a comer ese día o no, y al servicio de transporte le interesa saber dónde vive. Al diseñar una aplicación para gestionar un colegio nos encontraremos con estas visiones y peticiones desde los distintos servicios.
 
@@ -61,7 +61,7 @@ Otra forma de verlo es decir que las interfaces se han de definir a partir de la
 
 ## Principio de inversión de dependencia
 
-[La inversión de dependencias no es sólo lo que tú piensas](http://blog.koalite.com/2015/04/la-inversion-de-dependencias-no-es-solo-lo-que-tu-piensas/)
+[La inversión de dependencias no es solo lo que tú piensas](http://blog.koalite.com/2015/04/la-inversion-de-dependencias-no-es-solo-lo-que-tu-piensas/)
 
 El principio de inversión de dependencia dice que:
 

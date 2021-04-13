@@ -14,7 +14,7 @@ El patrón Presenter un ejemplo de ello. Estos días hemos estado dicutiendo sob
 
 El patrón Presenter se usaría cuando queremos pasar objetos o información entre dos objetos que están en distintas capas (aplicación e infrastructura) y queremos que el consumidor pueda decidir sobre la forma en que se le presenta esa información. Para ello, al hacer la petición, pasa un Presenter que encapsula la lógica que transforma la información al formato que al consumidor le interesa.
 
-Fundamentalmente un Presenter es un DataTransformer, y es cómo se le denomina en el Libro Rojo de DDD. Los DataTransformers simplemente son objetos que traducen estructuras de datos, pudiendo hacerlo en dos direcciones o en una sola. Los presenters sólo harían la conversión en una dirección.
+Fundamentalmente un Presenter es un DataTransformer, y es cómo se le denomina en el Libro Rojo de DDD. Los DataTransformers simplemente son objetos que traducen estructuras de datos, pudiendo hacerlo en dos direcciones o en una sola. Los presenters solo harían la conversión en una dirección.
 
 Por otra parte, este patrón sería, a su vez, una aplicación del patrón Strategy, que consiste en encapsular algoritmos para que puedan ser intercambiables.
 
@@ -26,7 +26,7 @@ Cuando se ejecuta un usecase o un query que devuelve una respuesta, la capa de i
 
 Dependiendo de la tarea la capa de infraestructura puede querer toda o parte de la información que devuelve el usecase, adicionalmente, en un formato determinado. Podría ser un array o una serialización json, xml o cualquier otra estructura o forma que le interese al consumidor del UseCase.
 
-Usando el patrón Presenter la capa de infraestructura puede controlar la forma en que el UseCase devuelve la información sin conocer nada acerca de objetos de dominio. Además, de este modo, tanto el UseCase como el Presenter son reutilizables en solicitudes diferentes sobre los mismos objetos de dominio. Por ejemplo, en algunos casos sólo necesitamos el id de la Entidad, en otros casos, queremos el id, el nombre y otro dato, etc.
+Usando el patrón Presenter la capa de infraestructura puede controlar la forma en que el UseCase devuelve la información sin conocer nada acerca de objetos de dominio. Además, de este modo, tanto el UseCase como el Presenter son reutilizables en solicitudes diferentes sobre los mismos objetos de dominio. Por ejemplo, en algunos casos solo necesitamos el id de la Entidad, en otros casos, queremos el id, el nombre y otro dato, etc.
 
 Hay que decir también que este patrón es utilizable sin objetos de dominio, es decir, Presenter encapsula la lógica que traduce la información que obtiene al formato que el consumidor necesita.
 
@@ -263,7 +263,7 @@ class Response {
 
 En algunos ejemplos de código real hay algunas discrepancias en la forma en que el Presenter se relaciona con el objeto de dominio. Usando el patrón en modalidad "con estado", podríamos plantearlo de dos maneras.
 
-La forma _estricta_ (estricta en tanto que el objeto de domino *nunca* abandona la capa de aplicación) sólo usa el objeto de domino para obtener la información y realizar la transformación, que se realiza en el mismo método `write` que registra el objeto de dominio en el Presenter, de modo que éste sólo contiene la información en el formato final y se limita a devolverla con el método `read()`. Es la forma que hemos utilizado en los ejemplos anteriores, como:
+La forma _estricta_ (estricta en tanto que el objeto de domino *nunca* abandona la capa de aplicación) solo usa el objeto de domino para obtener la información y realizar la transformación, que se realiza en el mismo método `write` que registra el objeto de dominio en el Presenter, de modo que éste solo contiene la información en el formato final y se limita a devolverla con el método `read()`. Es la forma que hemos utilizado en los ejemplos anteriores, como:
 
 ```php
 class UserIdAndNamePresenter implements UserPresenter {

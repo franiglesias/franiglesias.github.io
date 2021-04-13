@@ -132,7 +132,7 @@ De nuevo, el test pasa y hay poco más que podamos hacer aquí, ¿o sí?
 
 ## Enfoque funcional
 
-¿En qué momento damos un salto en el que no sólo modificamos el algoritmo, sino incluso el enfoque bajo el que lo afrontamos?
+¿En qué momento damos un salto en el que no solo modificamos el algoritmo, sino incluso el enfoque bajo el que lo afrontamos?
 
 Muchas veces, cuando hemos refactorizado un código hasta un cierto nivel, se despeja el terreno lo suficiente como para vislumbrar otra manera de hacer las cosas. En este caso, el código no tiene pinta de poder mejorarse más a no ser que lo planteemos de otra forma.
 

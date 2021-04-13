@@ -11,9 +11,9 @@ Lo primero será saber de qué estamos hablando:
 
 ## Single return
 
-Se trata de que en cada método o función sólo tengamos un único `return`, a pesar de que el código pueda tener diversos caminos que nos permitirían finalizar en otros momentos.
+Se trata de que en cada método o función solo tengamos un único `return`, a pesar de que el código pueda tener diversos caminos que nos permitirían finalizar en otros momentos.
 
-Obviamente, si el método sólo tiene un camino posible tendrá un sólo `return`.
+Obviamente, si el método solo tiene un camino posible tendrá un solo `return`.
 
 ```php
 public function isValid(string $luhnCode) : bool
@@ -63,7 +63,7 @@ Si el método tiene más de dos caminos se dará una combinación de las posibil
 
 En principio, la ventaja del *single Return* es poder controlar con facilidad que se devuelve el tipo de respuesta correcta, algo que sería más difícil si tenemos muchos lugares con `return` . Pero la verdad es que explicitando *return types* es algo de lo que ni siquiera tendríamos que preocuparnos.
 
-En cambio, el mayor problema que tiene Single Return es que fuerza la anidación de condicionales y el uso de `else` hasta extremos exagerados, lo que provoca que el código sea especialmente difícil de leer. Lo peor es que eso no se justifica por necesidades del algoritmo, sino por la gestión del flujo para conseguir que sólo se pueda retornar en un punto.
+En cambio, el mayor problema que tiene Single Return es que fuerza la anidación de condicionales y el uso de `else` hasta extremos exagerados, lo que provoca que el código sea especialmente difícil de leer. Lo peor es que eso no se justifica por necesidades del algoritmo, sino por la gestión del flujo para conseguir que solo se pueda retornar en un punto.
 
 El origen de esta práctica parece que podría ser una mala interpretación del patrón *Single Exit Point* de Djkstra, un patrón que era útil en lenguajes que permitían que las llamadas a subrutinas y sus retornos pudieran hacerse a líneas arbitrarias. Su objetivo era asegurar que se entrase a una subrutina en su primera línea y se volviese siempre a la línea siguiente a la llamada.
 
@@ -161,7 +161,7 @@ public function sort(array $source)
 }
 ```
 
-Al invertir las ramas es fácil ver que en caso de que `$length` sea menor o igual que uno podemos retornar sin problema. De hecho, no tiene mucho sentido intentar ordenar una lista de un sólo elemento.
+Al invertir las ramas es fácil ver que en caso de que `$length` sea menor o igual que uno podemos retornar sin problema. De hecho, no tiene mucho sentido intentar ordenar una lista de un solo elemento.
 
 Al hacer esto, también podemos eliminar el uso de la variable temporal `$sorted` que es innecesaria.
 

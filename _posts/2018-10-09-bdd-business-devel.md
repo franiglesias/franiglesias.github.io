@@ -53,7 +53,7 @@ Pero tener feedback de los stakeholders (o de los propios integrantes del equipo
 
 Así que también tenemos un espacio de comunicación que está basado en el propio código: los tests. Por no hablar del hecho de que el código también comunica.
 
-Esta es, básicamente, la definición de Test Driven Development en el contexto del desarrollo ágil. El testing no sólo como una forma de verificar que el código que implementamos se ajusta a las demandas de los stakeholders, sino como una guía para escribirlo y una documentación sobre cómo funciona.
+Esta es, básicamente, la definición de Test Driven Development en el contexto del desarrollo ágil. El testing no solo como una forma de verificar que el código que implementamos se ajusta a las demandas de los stakeholders, sino como una guía para escribirlo y una documentación sobre cómo funciona.
 
 Y esto nos lleva al Bahavior Driven Design (y al artículo de Dan North)
 
@@ -128,7 +128,7 @@ A finales de 2003, Dan North comenzó a desarrollar **JBehave**, como alternativ
 
 No es que con **JUnit** no se pudiese hacer BDD, sino que el objetivo era tener una herramienta que favoreciese ese estilo de TDD.
 
-En PHP, la herramienta equivalente es **phpspec**.
+En PHP, la herramienta equivalente es **PHPSpec**.
 
 ### Comportamiento y valor de negocio
 
@@ -189,13 +189,13 @@ En conjunto, la historia debería tener un tamaño lo bastante pequeño para pod
 
 ### Beneficios de tener una estructura
 
-Utilizar una estructura como esta para definir las historias de usuario aporta muchos beneficios tanto a stakeholders como al equipo de desarrollo, pues no se trata sólo de que las historias sirvan como documento de toma de requisitos. Este tipo de restricciones nos fuerza a pensar de una manera particular y a cuestionarnos nuestras ideas iniciales.
+Utilizar una estructura como esta para definir las historias de usuario aporta muchos beneficios tanto a stakeholders como al equipo de desarrollo, pues no se trata solo de que las historias sirvan como documento de toma de requisitos. Este tipo de restricciones nos fuerza a pensar de una manera particular y a cuestionarnos nuestras ideas iniciales.
 
 Tener que representar la definición de la prestación con esta estructura y cumplimentar todos los elementos hace reflexionar a los stakeholders sobre el por qué y para qué quieren lo que piden y el balance entre coste y beneficio que supone.
 
 A su vez, nos fuerza como equipo a llegar a acuerdo concretos sobre qué es lo que define la prestación que se va a desarrollar en base a criterios operacionales y verificables. Esto hace que se puedan traducir a un lenguaje de programación y expresar en forma de tests de aceptación ejecutables.
 
-Ya no se trata sólo de indicaciones más o menos concretas sobre cómo debería comportarse el software, sino que podemos programar contra ellas y verificar en todo momento si las estamos cumpliendo o no. Es decir, inicialmente son tests de aceptación que fallan y, por tanto, nos obligan a realizar la implementación mínima y necesaria para pasen. Y así, a medida que vamos implementando escenarios, terminamos por desarrollar la prestación solicitada, lo que podemos demostrar porque los escenarios se ejecutan completamente.
+Ya no se trata solo de indicaciones más o menos concretas sobre cómo debería comportarse el software, sino que podemos programar contra ellas y verificar en todo momento si las estamos cumpliendo o no. Es decir, inicialmente son tests de aceptación que fallan y, por tanto, nos obligan a realizar la implementación mínima y necesaria para pasen. Y así, a medida que vamos implementando escenarios, terminamos por desarrollar la prestación solicitada, lo que podemos demostrar porque los escenarios se ejecutan completamente.
 
 ### Un ejemplo
 

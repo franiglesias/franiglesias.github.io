@@ -17,7 +17,7 @@ He modificado bastante los detalles de la metodología para lanzar los test, por
 
 El cambio es que ahora los test se lanzan en procesos diferentes y aislados. En conjunto hace que sea más lento, por lo que he reducido las repeticiones por defecto a 50.
 
-Por otro lado, la información del consumo de memoria también cambia. Aparte de que sea debido a la nueva forma de lanzar los test, he intentado evitar un efecto de posición: el primer test parecía consumir una cantidad de memoria desproporcionadamente grande. Para evitarlo, lo que ahora se hace es ejecutar una primera vez cada test y medir la memoria sólo tras esa primer ejecución. Este aspecto de la memoria es el menos fiable, por lo que no comentaré el dato hasta tener una metodología que me convenza.
+Por otro lado, la información del consumo de memoria también cambia. Aparte de que sea debido a la nueva forma de lanzar los test, he intentado evitar un efecto de posición: el primer test parecía consumir una cantidad de memoria desproporcionadamente grande. Para evitarlo, lo que ahora se hace es ejecutar una primera vez cada test y medir la memoria solo tras esa primer ejecución. Este aspecto de la memoria es el menos fiable, por lo que no comentaré el dato hasta tener una metodología que me convenza.
 
 Un último comentario es que hay un margen de error en la medida. Si ejecutas los tests en tu propio entorno podrías observar resultados ligeramente diferentes o distinto orden en cada ejecución entre métodos que arrojan tiempos parecidos. Parece que existe un pequeño elemento de aleatoriedad, supongo que dependiendo de procesos que puedan estar corriendo en tu máquina en un momento dado. 
 
@@ -27,7 +27,7 @@ Gracias a [Sergio Susa](https://github.com/sergiosusa) por sus observaciones sob
 
 Son muchos los factores que influyen en el tiempo de ejecución de una suite de tests y, de momento, voy a centrarme en un aspecto concreto: los métodos para generar test doubles. En varios artículos del blog hemos hablado de ellos. Fundamentalmente me interesaba comprar los dobles generados con librerías de mocking frente a usar las clases originales o instanciar clases anónimas como dobles.
 
-Después de unos primeros análisis bastante simples, los resultados fueron un tanto inesperados ya que el método más eficiente resultó ser la creación de dobles nativos de **phpunit** (los que se obtienen con `createMock`), con bastante diferencia sobre usar las clases originales y sobre los dobles usando la librería **prophecy**, integrada también en **phpunit**.
+Después de unos primeros análisis bastante simples, los resultados fueron un tanto inesperados ya que el método más eficiente resultó ser la creación de dobles nativos de **PHPUnit** (los que se obtienen con `createMock`), con bastante diferencia sobre usar las clases originales y sobre los dobles usando la librería **prophecy**, integrada también en **PHPUnit**.
 
 Un ejemplo de los resultados obtenidos fue este:
 
@@ -42,7 +42,7 @@ Para alguien bastante fan de **prophecy** fueron resultados sorprendentes y un t
 
 Sin embargo, reescribí algunos tests que eran particularmente lentos en mi entorno para ver qué efecto tendría cambiar el *framework* de dobles:
 
-| TestCase   | Prophecy (ms) | Phpunit (ms)|
+| TestCase   | Prophecy (ms) | PHPUnit (ms)|
 |:-----------|--------------:|------------:|
 | TestCase 1 |          1652 |         377 |
 | TestCase 2 |         35774 |         860 |
@@ -99,7 +99,7 @@ Test Doubles creation methods (50 times)
 
 Para empezar, los resultados parecen más consistentes con lo esperado. La instanciación de la clase bajo test es el método más eficaz, mientras que la instanciación de una clase anónima que extiende de ella es marginalmente más lenta. En términos de ejecución, serían intercambiables.
 
-A cierta distancia, pero no demasiada, los dobles nativos de **phpunit** son un poco más lentos. Sin embargo, ofrecen un buen compromiso entre el coste en performance y la complejidad que puede suponer en no pocas ocasiones instanciar la clase real, especialmente si la necesitamos como dummy o sólo se nos requiere hacer stub de uno o dos de sus métodos.
+A cierta distancia, pero no demasiada, los dobles nativos de **PHPUnit** son un poco más lentos. Sin embargo, ofrecen un buen compromiso entre el coste en performance y la complejidad que puede suponer en no pocas ocasiones instanciar la clase real, especialmente si la necesitamos como dummy o solo se nos requiere hacer stub de uno o dos de sus métodos.
 
 Finalmente, generar los dobles con **prophecy** parece ser el método más costoso en tiempo. Lo sorprendente es la gran diferencia con respecto a cualquiera de los otros métodos.
 
@@ -197,7 +197,7 @@ Test Doubles with behaviour creation methods (50 times)
  AnonymousTest::test................  53.9065         1.45
 ```
 
-Comparando los dos *frameworks* que hemos probado, se puede ver que **prophecy** es menos eficiente que el *mock builder* nativo de **phpunit** aunque no tanto como esperaba inicialmente (en la versión anterior del proyecto, había una diferencia bastante mayor).
+Comparando los dos *frameworks* que hemos probado, se puede ver que **prophecy** es menos eficiente que el *mock builder* nativo de **PHPUnit** aunque no tanto como esperaba inicialmente (en la versión anterior del proyecto, había una diferencia bastante mayor).
 
 ## Conclusiones
 
@@ -215,5 +215,5 @@ Además, hay que tener en cuenta que podemos tener que utilizar muchas variantes
 
 Por otro lado, cuando la complejidad de construir las clases nativas, o incluso su versión anónima, es alta resulta más conveniente utilizar los *frameworks* de test. En general, diría que para todo tipo de servicios, command handlers, etc, que tengan comportamientos complejos y dependencias lo mejor es utilizar un *framework* para obtener sus dobles.
 
-Y en caso de utilizarlo, la opción más eficiente en el *mock builder* nativo de **phpunit**.
+Y en caso de utilizarlo, la opción más eficiente en el *mock builder* nativo de **PHPUnit**.
 

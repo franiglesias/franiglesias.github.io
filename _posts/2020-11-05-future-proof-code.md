@@ -13,11 +13,11 @@ Así que en este artículo veremos algunas tácticas para escribir código nuevo
 
 Normalmente recomendamos no escribir código pensando en lo que pueda necesitarse más adelante, pero hay que distinguir entre añadir features que no sabemos si se necesitará algún día y escribir código pensando en que algún día será modificado.
 
-Lo primero tiene que ver con el principio YAGNI (*No lo vas a necesitar*) y que básicamente nos dice que no añadamos código para introducir características en el software sólo porque podemos o porque nos parece que pueden ser interesantes.
+Lo primero tiene que ver con el principio YAGNI (*No lo vas a necesitar*) y que básicamente nos dice que no añadamos código para introducir características en el software solo porque podemos o porque nos parece que pueden ser interesantes.
 
 En cambio, lo segundo es una forma de escribir software de tal manera que llegado el momento sea fácil añadir esas nuevas características minimizando la dificultad y el riesgo de afectar o dañar las existentes.
 
-En un entorno que siga una filosofía ágil de desarrollo, no sólo cuenta la posibilidad de desarrollar MVP de features en corto espacio de tiempo, sino también la posibilidad de iterarlas incrementalmente, por lo cual necesitamos no sólo velocidad para la primera entrega, sino asegurar que tendremos velocidad en las iteraciones. 
+En un entorno que siga una filosofía ágil de desarrollo, no solo cuenta la posibilidad de desarrollar MVP de features en corto espacio de tiempo, sino también la posibilidad de iterarlas incrementalmente, por lo cual necesitamos no solo velocidad para la primera entrega, sino asegurar que tendremos velocidad en las iteraciones. 
 
 Por tanto, necesitamos escribir código que aporte valor cuanto antes, pero que nos ayuda a aportar valor rápidamente en el futuro. En ese sentido, es ir un poco más lentos al principio para poder ir más rápido en el largo plazo.
 
@@ -114,7 +114,7 @@ class ScoreManager(object):
 
 El acceso a las propiedades `left` y `right`, que representan los jugadores según el lado del campo en que se encuentran, se hace a través de los métodos `left_player` y `right_player`. Lo que nos interesa es saber qué jugador ocupa cada posición, independientemente de la forma en que se haya representado.
 
-De hecho, podríamos plantearnos cambiar esa representación ya que ahora la clase no depende de ello. Por ejemplo, en lugar de tener dos propiedades, podríamos hacerlo sólo en una:
+De hecho, podríamos plantearnos cambiar esa representación ya que ahora la clase no depende de ello. Por ejemplo, en lugar de tener dos propiedades, podríamos hacerlo solo en una:
 
 ```python
 class ScoreManager(object):
@@ -138,7 +138,7 @@ class ScoreManager(object):
     # ...
 ```
 
-Como se puede ver, los únicos cambios que hemos tenido que hacer han ocurrido sólo en los métodos `_set_players`, `left_player` y `right_player`, y no ha sido necesario tocar nada de los demás.
+Como se puede ver, los únicos cambios que hemos tenido que hacer han ocurrido solo en los métodos `_set_players`, `left_player` y `right_player`, y no ha sido necesario tocar nada de los demás.
 
 Otro aspecto de la cuestión es la lógica de asignación de los jugadores a su posición. Tendría sentido encapsularla, de forma que ahora la constructora describe mejor lo que pasa. 
 
@@ -168,9 +168,9 @@ Mejor aún, convierte o encapsula esa estructura en un objeto y dótalo de compo
 
 En el `ScoreManager` también se pueden ver ejemplos.
 
-El refactor que hicimos en el apartado anterior sobre la forma en que se guarda la información de los jugadores es un caso. La clase no depende de la estructura de datos utilizada, sólo unos métodos muy específicos tienen el conocimiento requerido. Eso nos ha permitido hacer el cambio de usar dos propiedades a sólo una.
+El refactor que hicimos en el apartado anterior sobre la forma en que se guarda la información de los jugadores es un caso. La clase no depende de la estructura de datos utilizada, solo unos métodos muy específicos tienen el conocimiento requerido. Eso nos ha permitido hacer el cambio de usar dos propiedades a solo una.
 
-Por otro lado, tenemos la propiedad `match`, que define las reglas de la puntuación. En el código se puede ver que hemos aplicado la regla anterior y sólo dos métodos saben cómo obtener la información que contiene:
+Por otro lado, tenemos la propiedad `match`, que define las reglas de la puntuación. En el código se puede ver que hemos aplicado la regla anterior y solo dos métodos saben cómo obtener la información que contiene:
 
 ```python
 import math
@@ -250,9 +250,9 @@ Si ha extraído responsabilidades a otras clases, lo suyo es inyectarlas como co
 
 Si por alguna razón esto no es posible, aísla la instanciación de estos colaboradores en métodos. 
 
-Hazlo igualmente para las llamadas a esos mismos colaboradores. Esto es llevar la ley de Demeter un paso más allá y podría resumirse en que tu clase no sólo no debe hablar con extraños, sino que incluso debe reducir al mínimo su interacción con sus propios colaboradores.
+Hazlo igualmente para las llamadas a esos mismos colaboradores. Esto es llevar la ley de Demeter un paso más allá y podría resumirse en que tu clase no solo no debe hablar con extraños, sino que incluso debe reducir al mínimo su interacción con sus propios colaboradores.
 
-El efecto beneficioso de esto es que si el colaborador cambia su interfaz en algún momento, o incluso si cambia el colaborador, tendrás un sólo lugar que tocar en sus clases usuarias.
+El efecto beneficioso de esto es que si el colaborador cambia su interfaz en algún momento, o incluso si cambia el colaborador, tendrás un solo lugar que tocar en sus clases usuarias.
 
 Sigamos con el ejemplo anterior.
 
@@ -277,7 +277,7 @@ class ScoreManager(object):
     # ...
 ```
 
-La dependencia no está inyectada ni aislada. En este caso sólo se instancia en la constructora, lo que tampoco está del todo mal. Pero si necesitásemos instanciarla en varios lugares lo mejor sería extraerlo a su propio método:
+La dependencia no está inyectada ni aislada. En este caso solo se instancia en la constructora, lo que tampoco está del todo mal. Pero si necesitásemos instanciarla en varios lugares lo mejor sería extraerlo a su propio método:
 
 ```python
 from game.scoring.match import Match
@@ -365,7 +365,7 @@ Muchos métodos reciben parámetros y esto genera un cierto nivel de acoplamient
 
 Si el número de parámetros es pequeño esta circunstancia es bastante manejable, pero en cuanto una función tiene más de dos argumentos las cosas se complican bastante, sobre todo si alguno de ellos es opcional.
 
-Algunos lenguajes permiten los argumentos con nombre, lo cual te permite olvidarte de su orden. En python ni siquiera tienes que definirlo, tan sólo usar como *key* el nombre del argumento:
+Algunos lenguajes permiten los argumentos con nombre, lo cual te permite olvidarte de su orden. En python ni siquiera tienes que definirlo, tan solo usar como *key* el nombre del argumento:
 
 ```python
 self.window.score_manager = ScoreManager(
@@ -403,7 +403,7 @@ Por su parte, Builders y Factories nos pueden proporcionar mecanismos de instanc
 Algunas reglas prácticas al respecto serían:
 
 * Si se requiere cierta preparación para poder instanciar un objeto es posible que debas encapsular esa lógica en la constructora. Por ejemplo, si tienes que procesar un cierto input para obtener los argumentos de la constructora.
-* Si esa lógica alcanza cierto nivel de complejidad, seguramente necesitas un objeto tipo Builder que se ocupe de gestionarla y tenerlo accesible en un sólo lugar.
+* Si esa lógica alcanza cierto nivel de complejidad, seguramente necesitas un objeto tipo Builder que se ocupe de gestionarla y tenerlo accesible en un solo lugar.
 * Si necesitas poder construir un mismo tipo de objeto de distintas formas, probablemente te vendrá bien introducir *named constructors*. Esto ocurre cuanto tienes distintos formatos de la información necesaria para la instanciación.
 
 ## Para terminar

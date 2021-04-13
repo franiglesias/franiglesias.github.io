@@ -17,7 +17,7 @@ Hay una de esas reglas no escritas que dice que un commit debería referirse a u
 
 Siempre me propongo respetarla, pero raramente lo consigo.
 
-Para mí, el arte del commit, tiene que ver con trabajar de manera ordenada en un aspecto concreto del software que estás desarrollando. A veces ese aspecto está muy acotado y sólo tocas unos pocos archivos estrechamente relacionados. En esos casos puedes percibir la cohesión entre ellos y el concepto de commit "atómico" cobra todo el sentido.
+Para mí, el arte del commit, tiene que ver con trabajar de manera ordenada en un aspecto concreto del software que estás desarrollando. A veces ese aspecto está muy acotado y solo tocas unos pocos archivos estrechamente relacionados. En esos casos puedes percibir la cohesión entre ellos y el concepto de commit "atómico" cobra todo el sentido.
 
 ### Arreglando el último commit
 
@@ -35,7 +35,7 @@ git add .
 git commit --amend --no-edit
 ```
 
-O si sólo quieres cambiar el mensaje:
+O si solo quieres cambiar el mensaje:
 
 ```bash
 git add .
@@ -47,7 +47,7 @@ git commit --amend -m "Nuevo mensaje"
 El problema viene cuando pasan otros dos o tres commits, o más, y te das cuenta de que tienes uno o varios problemas:
 
 * Un cambio en el que estás trabajando debería estar en un commit anterior que, por supuesto, no es el último.
-* Has hecho varios commits que podrían agruparse en uno sólo. De hecho, podría ser que todos tus commits pudiesen empaquetarse en un único commit para ese pull request.
+* Has hecho varios commits que podrían agruparse en uno solo. De hecho, podría ser que todos tus commits pudiesen empaquetarse en un único commit para ese pull request.
 
 Para eso está `rebase` interactivo, la herramienta que te permite manipular tus commits a placer.
 
@@ -79,7 +79,7 @@ Por un lado, tratar de mantener el foco en cada grupo de cambios, de manera que 
 
 Hacer commits pequeños muy compactos mientras desarrollas puede ser una buena idea teniendo en cuenta usar el *rebase interactivo* antes de hacer `push` para ordenar la historia de tu desarrollo y dejar las cosas más claras.
 
-En muchos casos, posiblemente sea buena idea unir en uno sólo todos los commits de un *pull request* antes de mezclarlo. De este modo, la historia del proyecto será mucho más clara y con menos información irrelevante.
+En muchos casos, posiblemente sea buena idea unir en uno solo todos los commits de un *pull request* antes de mezclarlo. De este modo, la historia del proyecto será mucho más clara y con menos información irrelevante.
 
 
 [Las herramientas de Git: reescribiendo la historia](https://git-scm.com/book/es/v1/Las-herramientas-de-Git-Reescribiendo-la-historia)

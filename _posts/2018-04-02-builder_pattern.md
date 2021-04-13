@@ -596,7 +596,7 @@ class PostalAddressBuilder
 }
 ```
 
-Al método `at` le pasamos una localidad y se ocupa de buscar la información utilizando la dependencia `PostalCodeService`. De este modo, el objeto PostalAddress no tiene que cargar este tipo de dependencias que sólo necesitaría en el momento de la construcción.
+Al método `at` le pasamos una localidad y se ocupa de buscar la información utilizando la dependencia `PostalCodeService`. De este modo, el objeto PostalAddress no tiene que cargar este tipo de dependencias que solo necesitaría en el momento de la construcción.
 
 ## Fluent interface
 
@@ -613,7 +613,7 @@ $address = $builder
 	->build();
 ```
 
-Esta expresión no sólo es más compacta, sino que expresa bien el flujo de creación del objeto y lo presenta de una manera unitaria.
+Esta expresión no solo es más compacta, sino que expresa bien el flujo de creación del objeto y lo presenta de una manera unitaria.
 
 Para ello, tenemos que hacer que nuestros métodos `setter` devuelvan la propia instancia del builder y cambiar el return type por self:
 

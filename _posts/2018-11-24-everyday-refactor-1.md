@@ -146,9 +146,9 @@ Los comentarios mentirosos son aquellos que dicen algo distinto que el código. 
 
 ¿De dónde vienen los comentarios mentirosos? No, no los han escrito psicópatas para amargarte la vida. Simplemente ha ocurrido que los comentarios se han quedado olvidados, sin mantenimiento, mientras que el código ha evolucionado. Por eso, cuando los lees hoy es posible que digan cosas que ya no valen para nada.
 
-Este hecho debería bastar para que no añadas nuevos comentarios sin una buena razón. Tendemos a ignorar los comentarios triviales, de modo que cuando cambiamos el código nos despreocupamos de mantenerlos actualizados y acaban siendo mentirosos. Así que procuraremos dejar sólo aquellos comentarios que nos importen realmente.
+Este hecho debería bastar para que no añadas nuevos comentarios sin una buena razón. Tendemos a ignorar los comentarios triviales, de modo que cuando cambiamos el código nos despreocupamos de mantenerlos actualizados y acaban siendo mentirosos. Así que procuraremos dejar solo aquellos comentarios que nos importen realmente.
 
-Si ya nos hemos librado de los comentarios redundantes, deberíamos contar sólo con los que pueden aportar alguna información útil, así que nos toca examinarlos para asegurarnos de que no sean mentirosos. Y serán mentirosos si no nos cuentan lo mismo que cuenta el código.
+Si ya nos hemos librado de los comentarios redundantes, deberíamos contar solo con los que pueden aportar alguna información útil, así que nos toca examinarlos para asegurarnos de que no sean mentirosos. Y serán mentirosos si no nos cuentan lo mismo que cuenta el código.
 
 Puede parecer un poco absurdo, pero al fin y al cabo los comentarios simplemente están ahí y nos les prestamos mucha atención, salvo que sea la primera vez que nos movemos por cierto fragmento de código y tratamos de aprovechar cualquier información que nos parezca útil. Es entonces cuando descubrimos comentarios que pueden oscilar entre lo simplemente desactualizado y lo esperpéntico.
 

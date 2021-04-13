@@ -113,7 +113,7 @@ class Notification
 }
 ```
 
-El refactor va dejando en evidencia los problemas de diseño de este código, pero otra cosa muy distinta es que podamos plantearnos arreglarlos en este momento. En el ámbito de este artículo no conocemos el contexto completo del código, por lo tanto sólo podemos hacer algunas propuestas más o menos razonables de cómo continuar.
+El refactor va dejando en evidencia los problemas de diseño de este código, pero otra cosa muy distinta es que podamos plantearnos arreglarlos en este momento. En el ámbito de este artículo no conocemos el contexto completo del código, por lo tanto solo podemos hacer algunas propuestas más o menos razonables de cómo continuar.
 
 En todo caso, una vez desbrozado el código y aclarado el campo de trabajo, todo apunta a que la funcionalidad que supuestamente aporta `PaymentMethods` sea propia de `Order`: `Order` debería saber qué `PaymentMethod` tiene definido, como se induce del hecho de que `PaymentMethods` tiene que extraer la información de `Order`, lo que nos indica que `Order` la contiene.
 
@@ -486,7 +486,7 @@ class IsAssociatedProviderSpecificationTest extends TestCase
 }
 ```
 
-Para pasar el test, sólo necesitamos esto:
+Para pasar el test, solo necesitamos esto:
 
 ```php
 class IsAssociatedProviderSpecification implements Specification

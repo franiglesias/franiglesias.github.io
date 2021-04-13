@@ -27,7 +27,7 @@ En otros casos, a lo mejor tu método espera que otros componentes del software 
 
 Resultado: **bug**
 
-O bien, lees de un API de terceros, que obviamente no está bajo tu control, y un día esa API bien por sus propios errores, bien por cambios, empieza a devolver valores que tu método no puede manejar.
+O bien, lees de una API de terceros, que obviamente no está bajo tu control, y un día esa API bien por sus propios errores, bien por cambios, empieza a devolver valores que tu método no puede manejar.
 
 Resultado: **bug**
 
@@ -59,9 +59,9 @@ La validación semántica, por otro lado, es la que se realizaría dentro de la 
 
 ### Herramientas de validación
 
-Dentro del código tenemos muchas herramientas que nos sirven para garantizar que sólo usamos datos que podemos manejar:
+Dentro del código tenemos muchas herramientas que nos sirven para garantizar que solo usamos datos que podemos manejar:
 
-* **Value objects**. La creación de [value objects a partir de escalares](https://franiglesias.github.io/everyday-refactor-4/) nos permite crear nuestros propios tipos y garantizar que sólo llevan valores legales.
+* **Value objects**. La creación de [value objects a partir de escalares](https://franiglesias.github.io/everyday-refactor-4/) nos permite crear nuestros propios tipos y garantizar que solo llevan valores legales.
 * **Cláusulas de guarda**. Nos sirven para definir las precondiciones que deben cumplir los datos antes de procesarlos. [Puedes hacerlas con simples if o con aserciones](https://franiglesias.github.io/guard-clauses-with-asserts/).
 
 

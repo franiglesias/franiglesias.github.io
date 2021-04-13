@@ -290,7 +290,7 @@ class Application
 
 ## Organización de código
 
-Hasta ahora, cuando hemos tenido que introducir alguna interfaz o alguna clase nueva hemos ido colocándolas en las capas de Dominio e Infraestructura. La separación en capas es la habitual en DDD o en las arquitecturas limpias. Lo importante no es sólo la existencia de las capas, sino la aplicación de la *regla de dependencia* de modo que todas las dependencias apunten hacia el dominio, de modo que:
+Hasta ahora, cuando hemos tenido que introducir alguna interfaz o alguna clase nueva hemos ido colocándolas en las capas de Dominio e Infraestructura. La separación en capas es la habitual en DDD o en las arquitecturas limpias. Lo importante no es solo la existencia de las capas, sino la aplicación de la *regla de dependencia* de modo que todas las dependencias apunten hacia el dominio, de modo que:
 
 * Las clases en `Domain` no tienen ninguna dependencia fuera de la capa.
 * Las clases en `Application` (esta capa aún no existe) pueden tener dependencias en `Domain`.
@@ -477,13 +477,13 @@ src
     └── VendorDataRetriever.php
 ```
 
-Pero esto sólo es el principio.
+Pero esto solo es el principio.
 
 ## El software representa el conocimiento
 
 Nuestro cerebro organiza la información mediante una estructura de red multienlazada y jerárquica. Cuando se activa un concepto, otros muchos que están relacionados se activan o se inhiben. Si representamos eso gráficamente la forma más adecuada sería un diagrama en forma de árbol invertido, con el concepto más general en lo alto, ramificándose a medida que descendemos por los niveles de abstracción. Cuando más preciso y rico es nuestro conocimiento sobre un tema más ramificado, profundo y detallado estará el árbol.
 
-Algo parecido ocurre en el código. Ahora mismo tenemos dos grandes ramas, pero poca profundidad, pues sólo cuenta con dos niveles. Nos está diciendo que nuestro conocimiento del dominio de la aplicación está poco desarrollado. Puede que la aplicación sea simple, pero también puede que no hayamos identificado y extraído conceptos que deberían estar presentes.
+Algo parecido ocurre en el código. Ahora mismo tenemos dos grandes ramas, pero poca profundidad, pues solo cuenta con dos niveles. Nos está diciendo que nuestro conocimiento del dominio de la aplicación está poco desarrollado. Puede que la aplicación sea simple, pero también puede que no hayamos identificado y extraído conceptos que deberían estar presentes.
 
 En todo caso, podemos observar que nos falta poblar una capa, la de aplicación, indicando que no hemos representado las intenciones de las usuarias. Además, vemos que hay demasiados elementos al mismo nivel en las capas de dominio e infraestructura, lo que nos sugiere que tal vez deberíamos estructurarlas mejor.
 
@@ -1260,7 +1260,7 @@ class QuoteBotAppTest extends TestCase
 
 ```
 
-Y aprovecho para señalar que estamos gestionando todos estos cambios con tan sólo dos tests. Hasta ahora no hemos necesitado más.
+Y aprovecho para señalar que estamos gestionando todos estos cambios con tan solo dos tests. Hasta ahora no hemos necesitado más.
 
 La verdad es que ahora hemos introducido un montón de cambios con este último refactor, sin embargo, podemos desplegar con confianza.
 
@@ -1403,7 +1403,7 @@ src
 
 ## Fin de la segunda parte
 
-Nos queda aún trabajo. Tenemos un concepto que no hemos reflejado, como es el de `Blog` o `AdSpace`. De hecho, tenemos que introducir un filtro en el `AdSpaceProvider` para poder usar sólo los espacios que cumplen algunas condiciones.
+Nos queda aún trabajo. Tenemos un concepto que no hemos reflejado, como es el de `Blog` o `AdSpace`. De hecho, tenemos que introducir un filtro en el `AdSpaceProvider` para poder usar solo los espacios que cumplen algunas condiciones.
 
 También nos podría interesar replantear el modo en que se expresan las acciones que realizan `AutomaticQuoteBot` y `BlogAuctionTask` ya que querríamos introducir el patrón `Command` para mejorar este punto.
 

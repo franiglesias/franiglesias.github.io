@@ -15,7 +15,7 @@ En este artículo voy a empezar con un código bastante malo y trataré de mostr
 
 ## Iniciando un negocio
 
-Supongamos que vamos a poner en marcha una tienda online de estampación de camisetas. Al principio sólo tenemos un tipo de máquina para estampar y no ofrecemos ninguna opción extra. Para modelar el precio que cobramos al cliente hacemos algo así:
+Supongamos que vamos a poner en marcha una tienda online de estampación de camisetas. Al principio solo tenemos un tipo de máquina para estampar y no ofrecemos ninguna opción extra. Para modelar el precio que cobramos al cliente hacemos algo así:
 
 ```php
 class TShirt
@@ -94,7 +94,7 @@ Una segunda opción sería reescribir el método para parametrizarlo, de modo qu
 
 ### Recurrir a la herencia
 
-Otra opción sería extender la clase y sobreescribir la constante `PRINTED` para reflejar el precio de la nueva técnica, que sería una solución aberrante (¿cómo es que quieres hacer variable una constante?), o bien sobreescribir el método `getPricePrinted()`, que sería algo menos ofensivo (sólo un poco) si lo haces de esta manera (y sin olvidar cambiar la visibilidad de `VAT` a `protected`):
+Otra opción sería extender la clase y sobreescribir la constante `PRINTED` para reflejar el precio de la nueva técnica, que sería una solución aberrante (¿cómo es que quieres hacer variable una constante?), o bien sobreescribir el método `getPricePrinted()`, que sería algo menos ofensivo (solo un poco) si lo haces de esta manera (y sin olvidar cambiar la visibilidad de `VAT` a `protected`):
 
 ```php
 class TShirtExtra extends TShirt
@@ -113,7 +113,7 @@ $priceWithVAT = $shirt->getPriceWithVAT();
 
 En el lado positivo está que es una solución algo más SOLID:
 
-* Extendemos la clase en lugar de modificarla (bueno, sólo un poquito)
+* Extendemos la clase en lugar de modificarla (bueno, solo un poquito)
 * Cada clase se ocupa de un tipo de impresión
 * La interfaz es la misma y no arrastramos métodos que no usamos
 
@@ -188,7 +188,7 @@ class PremiumPrintedTShirt extends TShirt
 
 ## Multiplicando las opciones
 
-El negocio va viento en popa. No sólo hemos añadido una tercera técnica de estampación, sino que nos hemos dado cuenta de que hay tres o cuatro tamaños de estampación requeridos por los clientes, por lo que nos planteamos que en lugar de cobrar lo mismo por ellos, podríamos ofrecer unos precios más ajustados y ser más competitivos: no es lo mismo estampar un logo del tamaño de un bolsillo, que la camiseta entera o una parte de ella.
+El negocio va viento en popa. No solo hemos añadido una tercera técnica de estampación, sino que nos hemos dado cuenta de que hay tres o cuatro tamaños de estampación requeridos por los clientes, por lo que nos planteamos que en lugar de cobrar lo mismo por ellos, podríamos ofrecer unos precios más ajustados y ser más competitivos: no es lo mismo estampar un logo del tamaño de un bolsillo, que la camiseta entera o una parte de ella.
 
 Pero esta nueva serie de tamaños se aplica a las tres técnicas de estampación y eso quiere decir que vamos a pasar de ofrecer tres modelos a 12, ni más ni menos: tres tipos de estampación por cuatro tamaños diferentes. ¿Vamos a gestionar eso con herencias?
 
@@ -491,7 +491,7 @@ $withVAT = new VATTax($anotherTShirt, 1.21);
 
 ### Duplicación
 
-Nuestros decoradores molan, pero como podemos observar son todos prácticamente iguales, hasta el punto de que tal y como está este ejemplo, realmente sólo necesitaríamos dos tipos, que representen los dos tipos de modificación de comportamiento:
+Nuestros decoradores molan, pero como podemos observar son todos prácticamente iguales, hasta el punto de que tal y como está este ejemplo, realmente solo necesitaríamos dos tipos, que representen los dos tipos de modificación de comportamiento:
 
 * Los que suman el coste de la opción al precio base, que coinciden con las opciones de impresión.
 * Los que multiplican el importe, que coinciden con los impuestos.

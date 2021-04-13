@@ -38,7 +38,7 @@ Es más fácil de entender con un ejemplo. Supongamos que estamos testeando un *
 
 El servicio debe ser doblado para hacer el test unitario, pero no tenemos que hacer que este mock "sepa" qué productos están descatalogados y cómo hacer la conversión. Dicho de otro modo: no necesitamos programar en el mock ninguna lógica que haga esa conversión. 
 
-En nuestro test sólo necesitamos simular que se ha solicitado un producto y se obtiene otro. Lo que estamos testeando es la capacidad del Use Case para devolver el producto actualizado.
+En nuestro test solo necesitamos simular que se ha solicitado un producto y se obtiene otro. Lo que estamos testeando es la capacidad del Use Case para devolver el producto actualizado.
 
 Este fragmento de test intenta construir un doble de `ProductRepository` que "sepa" que si pasamos un *id* que corresponde a un producto descatalogado "de verdad", devuelve un nuevo producto. En este caso se hace poniendo como condición que se pasa un valor determinado como parámetro al método `byId`.
 
@@ -179,7 +179,7 @@ protected function setUp()
 
 Lo primero es preparar los parámetros que necesita el método que vamos a ejercitar en el test. Si estos parámetros son objetos, podemos usar el objeto reales o dobles. 
 
-Muchas veces es mejor empezar también con *dummies*. Si los objetos que pasamos son complejos o no tenemos claro qué datos concretos necesitan es mucho más cómodo. En algunos casos, ese objeto sólo se va a ir moviendo de colaborador en colaborador, así que eso que salimos ganando.
+Muchas veces es mejor empezar también con *dummies*. Si los objetos que pasamos son complejos o no tenemos claro qué datos concretos necesitan es mucho más cómodo. En algunos casos, ese objeto solo se va a ir moviendo de colaborador en colaborador, así que eso que salimos ganando.
 
 Una vez que el escenario está listo, ejecutamos el test y observamos lo que ocurre. Aquí tenemos un ejemplo y, como vemos, ni siquiera es necesario hacer que el doble de `RegistrationDto` devuelva datos.
 
@@ -199,11 +199,11 @@ public function testShouldNotGenerateRegistrationIfEmptyData(): void
 Si lanza un error o una excepción puede tratarse de dos cosas:
 
 * **Una excepción propia del comportamiento bajo test**, en cuyo caso lo que hacemos es testear que se lanza la excepción en esas condiciones. Por ejemplo, hemos pasado un parámetro inválido, cosa detectada en una cláusula de guarda la cual lanza una excepción. Así que ese es un comportamiento esperable del SUT y nuestro test verifica que si pasamos un parámetro no válido se lanzará la excepción y hacemos que el test verifique eso.
-* **Una excepción o error debidos a que no estamos pasando datos en los parámetros**. Por ejemplo, hemos pasado un objeto *dummy* que sólo devuelve `null` y que debería permitir al **SUT** obtener un id con el que buscar en un repositorio. Pero como sólo devuelve *null* no se satisface el *type hinting* del colaborador que espera un objeto `Uuid`, por ejemplo. En este caso, arreglamos lo que sea necesario para que ese parámetro tenga un valor adecuado, bien sea personalizando el objeto, bien sea fijando *stubs* a través de su doble.
+* **Una excepción o error debidos a que no estamos pasando datos en los parámetros**. Por ejemplo, hemos pasado un objeto *dummy* que solo devuelve `null` y que debería permitir al **SUT** obtener un id con el que buscar en un repositorio. Pero como solo devuelve *null* no se satisface el *type hinting* del colaborador que espera un objeto `Uuid`, por ejemplo. En este caso, arreglamos lo que sea necesario para que ese parámetro tenga un valor adecuado, bien sea personalizando el objeto, bien sea fijando *stubs* a través de su doble.
 
 En otras ocasiones puede ocurrir que necesitemos simular el comportamiento de uno de los colaboradores que pasamos al principio. Por ejemplo, un repositorio puede tener que devolver un objeto en una llamada `getById`, o un conjunto de ellos en un un `findBy`, o bien lanzar una excepción porque no se encuentra lo buscado. Lo mismo se puede aplicar a cualquier servicio.
 
-Aquí tenemos un ejemplo de un test en el que sólo hacemos stub de uno de los getters del DTO (que en total tiene unos treinta):
+Aquí tenemos un ejemplo de un test en el que solo hacemos stub de uno de los getters del DTO (que en total tiene unos treinta):
 
 ```php
 public function testShouldDetectInvalidPersonId(): void
@@ -239,7 +239,7 @@ En el nivel unitario no tenemos forma de observar un efecto real en el sistema, 
 Podemos ser más precisos definiendo qué entidad exacta esperamos recibir (o qué características tiene), aunque hay que tener en cuenta que si se cumple lo siguiente, realmente no hay que llegar a tanta precisión:
 
 * Si el método save tiene *type hinting*, fallará si no recibe una entidad.
-* Si la entidad sólo se puede construir de manera consistente, el test fallará si pretendemos crearla con datos inconsistentes.
+* Si la entidad solo se puede construir de manera consistente, el test fallará si pretendemos crearla con datos inconsistentes.
 
 En cualquier caso, la construcción consistente de la entidad debería estar testeada en otra parte. Incluso, puede ser buena idea sacarla del SUT y llevarla a otro colaborador que sí podríamos testear.
 
@@ -297,7 +297,7 @@ Por cierto que eso nos llevará seguramente a encontrarnos con un montón de vio
 
 Los dobles de tests se utilizan para simular el comportamiento de objetos colaboradores de aquel que estemos probando. Con frecuencia, debido a la naturaleza del comportamiento testeado no es posible hacer aserciones sobre la respuesta del *subject under test* o de sus efectos en el sistema. Por esa razón, establecemos expectativas sobre los dobles: esperamos que sean usados por nuestro *SUT* de cierta manera, lo que los convierte en *mocks* y son la base para que nuestro test nos aporte alguna información.
 
-Un caso típico puede ser un test unitario de un servicio que utiliza un objeto Mailer para enviar un mensaje de correo electrónico. No podemos observar ese efecto para los objetivos del test, tan sólo podemos recoger su respuesta (el Mailer podría devolver un código que nos diga si el envío se ha realizado) o bien asegurarnos de que ha sido llamado por el *SUT* con los parámetros esperados:
+Un caso típico puede ser un test unitario de un servicio que utiliza un objeto Mailer para enviar un mensaje de correo electrónico. No podemos observar ese efecto para los objetivos del test, tan solo podemos recoger su respuesta (el Mailer podría devolver un código que nos diga si el envío se ha realizado) o bien asegurarnos de que ha sido llamado por el *SUT* con los parámetros esperados:
 
 ```php
 public function testShouldSendAnEmail ()

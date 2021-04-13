@@ -233,7 +233,7 @@ class ComputerControlEngine(ControlEngine):
 
 En comparación con el código que teníamos al principio es cierto que tenemos más líneas de código, pero si leemos el método principal `follow` está todo mucho más claro. El código explica lo que hace en un lenguaje casi natural.
 
-Por otro lado, la dependencia de la super clase está mucho más controlada. `ComputerControlEngine` delega en `ControlEngine` las acciones sobre `Pad`, centrándose sólo en `Ball`, que le es propia.
+Por otro lado, la dependencia de la super clase está mucho más controlada. `ComputerControlEngine` delega en `ControlEngine` las acciones sobre `Pad`, centrándose solo en `Ball`, que le es propia.
 
 ## Refactor para toda la familia
 
@@ -582,7 +582,7 @@ class KeyboardControlEngine(ControlEngine):
 
 ## Repasando
 
-Después de todo el trabajo de refactor nos encontramos con que el código de la clase se ha hecho más largo. En contrapartida los métodos son ahora mucho más cortos, la mayoría tiene sólo una línea, y también más auto explicativos. 
+Después de todo el trabajo de refactor nos encontramos con que el código de la clase se ha hecho más largo. En contrapartida los métodos son ahora mucho más cortos, la mayoría tiene solo una línea, y también más auto explicativos. 
 
 Los niveles de abstracción están más definidos y tenemos menos cosas en las que pensar en cada uno de los niveles, con lo que el código se hace más fácil de seguir con la ayuda de las herramientas de navegación de código del IDE.
 

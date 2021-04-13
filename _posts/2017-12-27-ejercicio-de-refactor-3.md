@@ -154,7 +154,7 @@ Por ejemplo, en los métodos citados `generateMessageForAssociatedProviders` y `
 
 Un segundo grupo de condicionales devuelve un mensaje en función del estado del producto.
 
-Por otra parte, hay un control que no se refiere al estado del producto (`$productStatus`), sino al estado del pedido (`$orderStatus`), mezclado entre el resto de controles que se hacen a `$productStatus`. Curiosamente ese control es el mismo en los dos métodos sólo que está invertido, mostrando ese tipo de duplicación que no es obvia a primera vista:
+Por otra parte, hay un control que no se refiere al estado del producto (`$productStatus`), sino al estado del pedido (`$orderStatus`), mezclado entre el resto de controles que se hacen a `$productStatus`. Curiosamente ese control es el mismo en los dos métodos solo que está invertido, mostrando ese tipo de duplicación que no es obvia a primera vista:
 
 ```php
 // en generateMessageForAssociatedProviders
@@ -495,7 +495,7 @@ Ahora sustituimos el código por la llamada al nuevo método de la clase: inicia
 
 Pero al pasar el test surgen problemas. Hasta ahora teníamos un _stub_ de `PaymentMethods` y ahora necesitamos modificarlo para reconocer la nueva funcionalidad de la clase. Nuestro problema es que hemos llegado tarde a este refactor y nuestro test se ve afectado. La moraleja es que seguramente deberíamos haber encapsulado la funcionalidad mucho antes.
 
-Pero es interesante ver que nuestro método para crear el stub es mucho más sencillo, y eso es bueno ya que hemos ocultado un montón de destalles que realmente sólo importaban a `PaymentMethods`:
+Pero es interesante ver que nuestro método para crear el stub es mucho más sencillo, y eso es bueno ya que hemos ocultado un montón de destalles que realmente solo importaban a `PaymentMethods`:
 
 ```php
 class PaymentMethodsStubFactory extends TestCase

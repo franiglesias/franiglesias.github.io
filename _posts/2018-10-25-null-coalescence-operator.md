@@ -147,7 +147,7 @@ Esto sería equivalente a comprobar que $value contenga algún valor de los que 
 $field = $value ? $value : 'default';
 ```
 
-De nuevo, al tratarse de una condición libre, el operador ternario puede aprovechar la potencia de los *truthy* y *falsy* values de PHP, o caer en sus trampas. ¡Cuidado con ellos! Un string vacío, un array vacío, o un boolean false saltarán al segundo valor de los dos posibles, y quizá no es lo que necesitábamos.
+De nuevo, al tratarse de una condición libre, el operador ternario puede aprovechar la potencia de los *truthy* y *falsy* values de PHP, o caer en sus trampas. ¡Cuidado con ellos! Un string vacío, un array vacío, o un boolean `false` saltarán al segundo valor de los dos posibles, y quizá no es lo que necesitábamos.
 
 
 ### null coalesce

@@ -13,7 +13,7 @@ Hasta ahora, hemos trabajado en nuestro **Pong!** de varias formas:
 
 En su primer momento se desarrolló como un prototipo, con intención exploratoria. Con este tipo de enfoque se pretende verificar una hipótesis de negocio, pero también una hipótesis técnica: ¿Es posible desarrollar un producto que responda a esta demanda? ¿Podemos tener rápidamente un Producto Mínimo Viable con el que empezar a obtener feedback de los usuarios potenciales?
 
-En una segunda fase, lo afrontamos como actualización o modernización de un proyecto *legacy*. El prototipo no era sólo funcional, sino que la tecnología escogida nos parecía adecuada para usarla en el producto final, pero requería una actualización que le permitiese escalar y añadir nuevas funcionalidades con una velocidad razonable. Hemos dedicado varias iteraciones a mejorar algunos de esos aspectos. Por un lado, hemos conseguido no atascar el desarrollo, entregando mejoras en ciclos cortos. Pero por otro lado, la dirección es un poco caótica porque tendemos a centrarnos en mejoras técnicas que no suponen entrega de valor al usuario.
+En una segunda fase, lo afrontamos como actualización o modernización de un proyecto *legacy*. El prototipo no era solo funcional, sino que la tecnología escogida nos parecía adecuada para usarla en el producto final, pero requería una actualización que le permitiese escalar y añadir nuevas funcionalidades con una velocidad razonable. Hemos dedicado varias iteraciones a mejorar algunos de esos aspectos. Por un lado, hemos conseguido no atascar el desarrollo, entregando mejoras en ciclos cortos. Pero por otro lado, la dirección es un poco caótica porque tendemos a centrarnos en mejoras técnicas que no suponen entrega de valor al usuario.
 
 Así que, en este punto, me gustaría introducir algunas ideas sobre cómo compaginar avances en ambos aspectos del producto: acercarnos a la excelencia técnica mientras aportamos valor en cada iteración. Para esto siempre recomiendo el librito de Ron Jeffreys "The Nature of Software Development". Las ideas que veremos a continuación están extraídas de aquí, junto con algunas aportaciones de mi experiencia en un equipo de propósito con mentalidad ágil.
 
@@ -250,7 +250,7 @@ Modificamos GameScene para darles soporte, justo antes de empezar el Game loop y
                     done = True
 ```
 
-Con esto, podemos quitar la parte de `clumsyness` del método `follow`, porque ahora se encarga el sistema de eventos. Y con ello, el método sólo hace una cosa: seguir a la bola.
+Con esto, podemos quitar la parte de `clumsyness` del método `follow`, porque ahora se encarga el sistema de eventos. Y con ello, el método solo hace una cosa: seguir a la bola.
 
 ```python
     def follow(self, the_ball: pong.ball.Ball):

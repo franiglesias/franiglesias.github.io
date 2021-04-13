@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TDD no es sólo testear antes de escribir código
+title: TDD no es solo testear antes de escribir código
 categories: articles
 tags: tdd php
 ---
@@ -254,7 +254,7 @@ class ClassifyDocumentTest extends TestCase
 
 Este test fallará, en primer lugar porque no se encuentra la clase **ClassifyDocument** que aún no hemos creado. Sin embargo y de momento, me interesa resaltar cómo voy a probar la generación de cada fragmento.
 
-Para empezar a trabajar, mi ruta sólo va a tener un elemento, por lo que no me preocupo de otra cosa que generarlo.
+Para empezar a trabajar, mi ruta solo va a tener un elemento, por lo que no me preocupo de otra cosa que generarlo.
 
 Para ello, voy resolviendo las cosas que me pide el resultado de pasar cada test. En primer lugar, crear la clase y, luego, el método.
 
@@ -337,7 +337,7 @@ interface SchoolYearCalculator
 }
 ```
 
-Solo para que conste: personalmente no soy partidario de añadir el sufijo `Interface`. La interfaz representa el concepto, y las implementaciones serían formas concretas, cuyo nombre podría indicarnos su tipo concreto. Podría ocurrir que sólo tiene sentido una implementación concreta de ese servicio, con lo cual desaparecería la interfaz, la implementación sería genérica y, como *bonus*, no tendría que cambiar nada más.
+Solo para que conste: personalmente no soy partidario de añadir el sufijo `Interface`. La interfaz representa el concepto, y las implementaciones serían formas concretas, cuyo nombre podría indicarnos su tipo concreto. Podría ocurrir que solo tiene sentido una implementación concreta de ese servicio, con lo cual desaparecería la interfaz, la implementación sería genérica y, como *bonus*, no tendría que cambiar nada más.
 
 Un *stub* es un *test double* que tiene una respuesta programada a ciertos mensajes que le enviamos, así que lo introducimos en nuestro test y veremos a qué nos lleva:
 
@@ -720,7 +720,7 @@ Fíjate con esta técnica obtengo exactamente el fragmento de la ruta que quiero
     [, $stage] = explode('/', $route);
 ```
 
-Esto es lo que quería señalar, ahora **nuestros tests están mirando sólo una parte del algoritmo cada vez**. Si en el futuro se rompe alguno, sabré exactamente qué parte ha sido afectada.
+Esto es lo que quería señalar, ahora **nuestros tests están mirando solo una parte del algoritmo cada vez**. Si en el futuro se rompe alguno, sabré exactamente qué parte ha sido afectada.
 
 Sigamos:
 
@@ -965,7 +965,7 @@ class ClassifyDocument
 }
 ```
 
-Con esto, no sólo sigue pasando el test, sino que es mucho más elegante y clara la forma de montar la URL.
+Con esto, no solo sigue pasando el test, sino que es mucho más elegante y clara la forma de montar la URL.
 
 ### TDD del grupo
 
@@ -1116,7 +1116,7 @@ En cualquier caso, puedes ver el código en [este repositorio](https://github.co
 
 ## Conclusiones
 
-Lo que he tratado de mostrar en este ejercicio es que TDD no consiste sólo en hacer tests antes de escribir el código. 
+Lo que he tratado de mostrar en este ejercicio es que TDD no consiste solo en hacer tests antes de escribir el código. 
 
 Para que podamos hablar de TDD, los tests tienen que generarnos la necesidad de implementar, impulsando el desarrollo de cada característica de nuestro software.
 

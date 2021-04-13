@@ -12,7 +12,7 @@ Es decir, para decidir si es conveniente o no comentar un código podríamos sim
 
 ## When: cuándo se ha escrito ese código
 
-¿Un comentario para añadir esta información? ¿En serio? Teniendo los sistemas de control de versiones este tipo de datos no sólo es redundante, sino que además es fácilmente falseable. Para conocer la vida de un código no hay nada mejor que revisar su historial de versiones que proporciona herramientas para eso.
+¿Un comentario para añadir esta información? ¿En serio? Teniendo los sistemas de control de versiones este tipo de datos no solo es redundante, sino que además es fácilmente falseable. Para conocer la vida de un código no hay nada mejor que revisar su historial de versiones que proporciona herramientas para eso.
 
 ## Who: quién ha escrito el código
 

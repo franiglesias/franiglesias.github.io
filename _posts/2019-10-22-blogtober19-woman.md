@@ -25,7 +25,7 @@ Pero, de alguna manera, pensábamos que era cuestión de tiempo el que llegara a
 
 33 años después nos encontramos en que tenemos que trabajar todavía por estimular vocaciones STEM entre las mujeres; que tenemos que reivindicar los logros de mujeres en ciencias y tecnología y particularmente en informática; que tenemos que hacer códigos de conducta en los eventos técnicos para luchar contra comportamientos masculinos injustificables; que tenemos que explicar que si no encuentras mujeres para ocupar un puesto de developer es porque no te molestas en buscarlas; que seguimos teniendo que hablar de brecha salarial por género; que seguimos necesitando crear entornos seguros… y así decenas de cosas y detalles.
 
-*Y esto sólo ciñéndonos a aspectos más o menos profesionales, porque si empiezo con temas como manadas, sí es sí, violencia de género y demás no sé cuándo podría parar.*
+*Y esto solo ciñéndonos a aspectos más o menos profesionales, porque si empiezo con temas como manadas, sí es sí, violencia de género y demás no sé cuándo podría parar.*
 
 *En muchos sentidos parece que el mundo se haya puesto a girar al revés. Puede que la tecnología haya contribuido a sacar a la luz y estimular ideas, ideologías y comportamientos que pensábamos que estaban en camino de desaparecer. La sobreabundancia de información no ha ayudado a extender el conocimiento y hoy tenemos que desgañitarnos hasta el absurdo rebatiendo noticias falsas, ideologías dañinas o ideas pseudo científicas a las que los medios se empeñan en dar cancha como si tuviesen alguna validez.*
 

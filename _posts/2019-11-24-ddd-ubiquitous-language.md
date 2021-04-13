@@ -13,7 +13,7 @@ Sin embargo DDD es, ante todo, una conversación.
 
 Comienza con una conversación entre desarrolladores y expertos de dominio acerca de la naturaleza y estructura del dominio, cuyo primer objetivo es delimitar cuál es el problema cuya solución vamos a construir. En esta conversación se van clarificando, separando y organizando los subdominios (de los que hablamos en el artículo anterior), a la vez que construyendo un modelo que los representa. La conversación sigue cuando pasamos del espacio del problema (los subdominios) al espacio de la solución (los contextos acotados), y continúa a medida que avanzamos en el desarrollo del modelo, primero, y la implementación, después. Y en todas estas fases tienen lugar toda suerte de conversaciones, ya sea entre los desarrolladores y los expertos de dominio, o entre desarrolladores de distintos bounded contexts, y todos las personas implicadas en el proyecto.
 
-Y para que esta conversación pueda tener lugar es necesario que se vehicule en un lenguaje que no sólo es compartido por todas las implicadas, sino que está presente en todos los niveles de la misma: desde la discusión sobre el dominio hasta su representación en forma de código: en el nombre de los objetos, los servicios, las variables o los tests.
+Y para que esta conversación pueda tener lugar es necesario que se vehicule en un lenguaje que no solo es compartido por todas las implicadas, sino que está presente en todos los niveles de la misma: desde la discusión sobre el dominio hasta su representación en forma de código: en el nombre de los objetos, los servicios, las variables o los tests.
 
 ## ¿Documentar el lenguaje ubicuo?
 
@@ -141,7 +141,7 @@ Después de aclarar los puntos anteriores, seguimos avanzando en la conversació
 
 – Una vez que el alumno se ha matriculado, ¿cómo se le identifica dentro del sistema?
 
-– Se le asigna un número de matrícula aunque realmente sólo se usa para algunos trámites ya que normalmente identificamos al alumno por su nombre y apellidos o, dentro de un año escolar, por su nivel, grupo y número de clase, que viene dado por su posición en la lista por orden alfabético del apellido.
+– Se le asigna un número de matrícula aunque realmente solo se usa para algunos trámites ya que normalmente identificamos al alumno por su nombre y apellidos o, dentro de un año escolar, por su nivel, grupo y número de clase, que viene dado por su posición en la lista por orden alfabético del apellido.
 
 – De acuerdo. Sin embargo, necesitaremos un identificador único. Entiendo que cabe la posibilidad de que haya alguna coincidencia de nombres y apellidos de vez en cuando.
 

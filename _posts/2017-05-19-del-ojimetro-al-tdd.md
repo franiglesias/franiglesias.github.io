@@ -27,7 +27,7 @@ Sencillamente dicho: **un test no es más que un programa simple que comprueba s
 
 Al principio haces post-tests: tienes un montón de código escrito y te has dado cuenta de que es necesario saber si cada unidad funciona como esperas en los casos que debería manejar.
 
-Los post-tests no son perfectos pero son útiles y son el primer paso para poner un poco de orden en lo que escribes. Gracias a esos tests empiezas a manejar el refactoring, aunque no lo llames así todavía.
+Los post-tests no son perfectos, pero son útiles y son el primer paso para poner un poco de orden en lo que escribes. Gracias a esos tests empiezas a manejar el refactoring, aunque no lo llames así todavía.
 
 [Michael Feathers](https://michaelfeathers.silvrback.com), que de refactoring y legacy sabe un rato, llama a estos tests "[Tests de caracterización](https://michaelfeathers.silvrback.com/characterization-testing)". Son los que se hacen para describir y/o descubrir el comportamiento actual de un módulo de software legacy y como primer paso para reescribirlo. Con este test tendríamos una red de seguridad para ir haciendo los cambios necesarios.
 
@@ -37,7 +37,7 @@ Pero en realidad, estoy siendo demasiado impreciso. Es necesario parar un moment
 
 El control de calidad del software engloba un montón de tipos de pruebas, que podemos agrupar en dos familias principales:
 
-**Pruebas funcionales:** que tratan de medir lo que hace el software en base a unas especificaciones previas. Es decir: las pruebas funcionales nos sirven para asegurar que el software hace aquello que queremos que haga.
+**Pruebas funcionales:** que tratan de medir lo que hace el software con base en unas especificaciones previas. Es decir: las pruebas funcionales nos sirven para asegurar que el software hace aquello que queremos que haga.
 
 **Pruebas no funcionales:** que tratan de medir cómo lo hace a través de métricas más genéricas como el rendimiento, la capacidad de carga, la velocidad, la capacidad de recuperación, etc.
 
@@ -69,7 +69,7 @@ Por poner un ejemplo un poco bruto: si tenemos una clase que utiliza un Logger p
 
 Hablaremos de ello dentro de un rato.
 
-De este modo, podemos afirmar que el resultado devuelto por la unidad es producido por el algoritmo que ésta contiene y no por otros agentes.
+De este modo, podemos afirmar que el resultado devuelto por la unidad es producido por el algoritmo que esta contiene y no por otros agentes.
 
 **Tests de integración:** evalúan lo que hacen las unidades de software en interacción. Es posible que nuestras unidades funcionen bien por separado, pero ¿qué ocurre si las juntamos? Los tests de integración dan respuesta a esa pregunta.
 
@@ -81,7 +81,7 @@ Volviendo al ejemplo de antes, si tanto la clase probada como el Logger funciona
 
 Hasta cierto punto podríamos decir que todo test, una vez que ha pasado, se convierte en un test de regresión a partir del momento en que comenzamos a modificar un software.
 
-**Tests de aceptación:** responden a la pregunta de si la funcionalidad está implementada en términos de los interesados en el software, también llamados <em>stakeholders</em>. Los tests de aceptación son, también, tests de integración.
+**Tests de aceptación:** responden a la pregunta de si la funcionalidad está implementada en términos de los interesados en el software, también llamados _stakeholders_. Los tests de aceptación son, también, tests de integración.
 
 ## Anatomía de un test
 
@@ -97,7 +97,7 @@ Es la ejecución de la unidad de software en la que estamos interesados (o subje
 
 ### Entonces…
 
-Es cuando comparamos el resultado obtenido con el esperado, habitualmente a través de Aserciones, es decir, condiciones que debería cumplir el resultado para ser aceptado. Por ejemplo, ser igual a, ser distinto, no estar vacío, etc...
+Es cuando comparamos el resultado obtenido con el esperado, habitualmente a través de Aserciones, es decir, condiciones que debería cumplir el resultado para ser aceptado. Por ejemplo, ser igual a, ser distinto, no estar vacío, etc. ...
 
 ## Manejo de las dependencias
 
@@ -107,7 +107,7 @@ Por otra parte, algunas de esas dependencias pueden ser bastante complicadas de 
 
 Para eso, están los "dobles" o "test doubles".
 
-Se trata de objetos creados para reemplazar las dependencias en situación de test. Son éstos:
+Se trata de objetos creados para reemplazar las dependencias en situación de test. Son estos:
 
 **Dummies**: son objetos que no hacen nada más que implementar una interfaz, pero sin añadir comportamiento. Los usamos porque necesitamos pasar la dependencia para poder instancias el objeto bajo test.
 
@@ -115,7 +115,7 @@ Por cierto, los Test Doubles, en general, ponen en valor el principio de Inversi
 
 Así que suele ser mejor estrategia, en ese caso, extraer la interfaz y crear un Dummy. Y esto es bueno, porque te ayuda a reconsiderar tu diseño.
 
-**Stubs**: los dummies son útiles, pero muchas veces necesitamos que la dependencia nos de una respuesta. Los Stubs son como los dummies en el sentido de que implementan una interfaz, pero también devuelven respuestas fijas y conocidas cuando los llamamos.
+**Stubs**: los dummies son útiles, pero muchas veces necesitamos que la dependencia nos dé una respuesta. Los Stubs son como los dummies en el sentido de que implementan una interfaz, pero también devuelven respuestas fijas y conocidas cuando los llamamos.
 
 Por ejemplo, podemos tener una dependencia de una clase Mailer que devuelve true cuando un mensaje ha sido enviado con éxito. Para testear nuestra clase consumidora de Mailer, podemos tener un MailerStub que devuelve true (o false) sin tener que enviar ningún mensaje real, permitiéndonos hacer el test sin necesidad de configurar servidor de correo, ni importunar a media empresa con un correo de pruebas que se te escapa, ni tener conexión de red, si me apuras.
 
@@ -129,7 +129,7 @@ Los test funcionales deben ser de "caja negra": conocemos las entradas (inputs) 
 
 Por tanto, un test basado en cómo o cuándo se llama a un método en un colaborador está irremediablemente ligado a esa implementación. Si se cambia la implementación, por ejemplo porque se puede hacer lo mismo con menos llamadas u otras distintas, el test fallaría incluso aunque el output fuese correcto. Por eso decimos que es un test frágil: porque puede fallar por motivos por los que no debería hacerlo.
 
-Nuestros siguientes dobles, tienen el mismo problema, pero agravado:
+Nuestros siguientes dobles tienen el mismo problema, pero agravado:
 
 **Mocks**: por desgracia el término mock se usa mucho para referirse a todo tipo de test double, pero en realidad es un tipo particular y no demasiado conveniente. Un Mock es un Spy con expectativas, es decir, los Mocks esperan específicamente ser llamados de cierta manera, con ciertos parámetros o con cierta frecuencia, de modo que ellos mismos realizan la prueba o aserción.
 
@@ -141,7 +141,7 @@ El uso de spies y mocks en los tests puede revelar problemas de diseño. Por eje
 
 **Fake**: El último miembro de la familia de los Tests Doubles es el Fake, un impostor. En realidad es una implementación de la dependencia creada a medida para la situación de test.
 
-Es decir, tú quieres probar una unidad de software que tiene una dependencia complicada, como puede ser una base de datos o el sistema de archivos. Pues tú vas y creas una implementación de esa base de datos "pero más sencilla" para poder testar tu clase. Lo malo, es que el Fake en sí también necesita tests, porque no sólo es la implementación tonta de la interfaz (como un Dummy) o de un comportamiento básico (como un Stub), sino que es una implementación funcional concreta y completa, que hasta podría llegar a usarse en producción.
+Es decir, tú quieres probar una unidad de software que tiene una dependencia complicada, como puede ser una base de datos o el sistema de archivos. Pues tú vas y creas una implementación de esa base de datos "pero más sencilla" para poder testar tu clase. Lo malo, es que el Fake en sí también necesita tests, porque no solo es la implementación tonta de la interfaz (como un Dummy) o de un comportamiento básico (como un Stub), sino que es una implementación funcional concreta y completa, que hasta podría llegar a usarse en producción.
 
 El ejemplo clásico, son las implementaciones en memoria de repositorios, bases de datos, sistemas de archivos, etc.
 
@@ -209,7 +209,7 @@ Así que tendremos que reescribir ese método para tener en cuenta esa circunsta
 
 [TDD es una disciplina](http://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html). No digo que sea fácil conseguirla, incluso al principio suena un poco descabellada. Si consigues convertirla en un hábito mental tienes una herramienta muy poderosa en tus manos.
 
-A partir de cierto momento, comienzas a introducir el refactoring. Cuando el código alcanza cierta complejidad, comienzas a plantearte soluciones más generales y debes comenzar a ajustar la arquitectura. Creas métodos privados para resolver casos específicos, cláusulas de guarda, etc, etc. Los tests que ya has hecho te protegen para realizar esos cambios, aunque en algún momento puede que decidas refactorizar los test porque la solución ha avanzado hacia otro planteamiento diferente.
+A partir de cierto momento, comienzas a introducir el refactoring. Cuando el código alcanza cierta complejidad, comienzas a plantearte soluciones más generales y debes comenzar a ajustar la arquitectura. Creas métodos privados para resolver casos específicos, cláusulas de guarda, etc., etc. Los tests que ya has hecho te protegen para realizar esos cambios, aunque en algún momento puede que decidas refactorizar los test porque la solución ha avanzado hacia otro planteamiento diferente.
 
 TDD favorece lo que se llama diseño emergente: al ir añadiendo tests, que evalúan que nuestro diseño cumpla ciertas especificaciones, van definiéndose diferentes aspectos del problema y nos impulsa hacia soluciones cada vez más generales.
 
@@ -247,6 +247,6 @@ El code coverage nos da una medida de las líneas de código que se han ejecutad
 
 Sin embargo, no debe tomarse como objetivo. Muchas clases tienen métodos triviales cuyo testing tal vez nos convenga posponer. En un proyecto mediano es difícil llegar a ese 100%, lo cual no invalida que intentes conseguir el máximo posible, pero usando la cabeza.
 
-El code coverage por sí mismo no dice mucho sobre la calidad de los tests. Éstos pueden cubrir el 100% del código y ser malos o frágiles.
+El code coverage por sí mismo no dice mucho sobre la calidad de los tests. Estos pueden cubrir el 100% del código y ser malos o frágiles.
 
 El Code Coverage es una buena herramienta para decidir qué testear, ya que podemos identificar recorridos de la unidad que han quedado sin pruebas y que, por tanto, podrían mantener escondidos problemas.

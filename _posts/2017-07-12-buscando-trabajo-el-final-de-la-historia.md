@@ -25,7 +25,7 @@ Imagina esta vez que recibes la prueba, que la abres y piensas: "esto lo puedo b
 
 Sigue imaginando: imagina que el lunes (estamos a 12 de junio) te llaman para decirte que "– Oye, nos ha gustado mucho tu prueba. Queremos que te entrevistes este miércoles con el Jefe de equipo y parte del equipo con el que trabajarías". Imagina ahora que el 14 de junio te entrevistas con cinco personas, te preguntan, preguntas, te dan una lista de cosas que ir mirando y que te dicen: "Danos un minuto y te decimos algo". Imagina que pasa el minuto y te dicen: "– Nos gustas. Por nosotros, que vengas."
 
-Y esa misma tarde te llaman para decirte: "– Sólo nos queda un paso. Por nuestra parte te ofreceríamos tal y cual. Si nos dices que sí, vienes por aquí para tener una última entrevista presencial". Y ahora supón que contestas que sí y organizáis una visita a las oficinas de la empresa.
+Y esa misma tarde te llaman para decirte: "– Solo nos queda un paso. Por nuestra parte te ofreceríamos tal y cuál. Si nos dices que sí, vienes por aquí para tener una última entrevista presencial". Y ahora supón que contestas que sí y organizáis una visita a las oficinas de la empresa.
 
 Y, finalmente, supón que después de coordinar fechas te plantas allí, a la hora convenida. Que saludas a esas personas que conociste a través de Skype o del teléfono, que te enseñan las instalaciones, habláis acerca de lo que te ofrecen, de la impresión que tienes, del futuro que se te abre. Imagina que, encima, te sientes a gusto, te imaginas en ese lugar, trabajando con esas personas que te acogen.
 
@@ -36,5 +36,3 @@ Y, ahora imagina que después de llamar a casa y contar las buenas noticias, te 
 Imagínate lo que es sentir eso.
 
 :-)
-
- 

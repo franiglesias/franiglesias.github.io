@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Katando phpSpec 3
+title: Katando PHPSpec 3
 categories: articles
 tags: tdd bdd
 ---
@@ -9,16 +9,16 @@ En esta tercera entrega, vamos a examinar cómo los nuevos requisitos nos pueden
 
 La serie **Katando PHPSpec** consta de los siguientes artículos:
 
-[Katando PHPSpec (1)](/katando-phpspec-1)  
-[Katando PHPSpec (2)](/katando-phpspec-2)  
-[Katando PHPSpec (3)](/katando-phpspec-3)  
-[Katando PHPSpec (4)](/katando-phpspec-4)
+[Katando PHPSpec (1)](/katando-PHPSpec-1)  
+[Katando PHPSpec (2)](/katando-PHPSpec-2)  
+[Katando PHPSpec (3)](/katando-PHPSpec-3)  
+[Katando PHPSpec (4)](/katando-PHPSpec-4)
 
-En el [capítulo anterior](/katando-phpspec-2/) implementamos los primeros tres requisitos de la kata. Al final del mismo mencionamos varias oportunidades de *refactoring*, puesto que podíamos ver algunos puntos potencialmente apestosos del código.
+En el [capítulo anterior](/katando-PHPSpec-2/) implementamos los primeros tres requisitos de la kata. Al final del mismo mencionamos varias oportunidades de *refactoring*, puesto que podíamos ver algunos puntos potencialmente apestosos del código.
 
 Creo que no es posible dar una receta que nos señale en qué momentos podemos o debemos refactorizar una solución, es algo que vamos descubriendo con la experiencia y también con las necesidades que vamos teniendo en cada momento.
 
-Lo que no suele ser buena idea es refactorizar o añadir funcionalidad pensando en que "podríamos necesitarlo" en el futuro. A eso se le llama principio **YAGNI** (*You ain't gonna need it*, no lo vamos a necesitar). La filosofía tras este principio es que no trabajes sobre supuestos de los que tienes seguridad, si no sólo a partir de los requisitos específicos que tengas en cada momento. Es un modo de mantener el foco y no desperdigarse.
+Lo que no suele ser buena idea es refactorizar o añadir funcionalidad pensando en que "podríamos necesitarlo" en el futuro. A eso se le llama principio **YAGNI** (*You ain't gonna need it*, no lo vamos a necesitar). La filosofía tras este principio es que no trabajes sobre supuestos de los que tienes seguridad, si no solo a partir de los requisitos específicos que tengas en cada momento. Es un modo de mantener el foco y no desperdigarse.
 
 Otra cosa diferente es que descubramos oportunidades de refactoring porque podemos hacer el código más legible, expresivo, extensible o desacoplado, o bien porque detectamos *smells*.
 
@@ -46,7 +46,7 @@ Consideremos nuestro separador: la coma. Como puedes ver, aparece repetida hasta
 
 Una solución sería convertirlo en una variable, en una constante de clase, o en una propiedad, añadiendo incluso un método para poder definirla o pasarlo en el constructor. Pero, ¿qué es mejor?
 
-Pues depende, pero como no podemos adivinar el futuro podría darnos un poco igual una solución que otra. Todas nos permiten reducir el *smell* de duplicación al establecer el valor en un sólo punto, así como el *smell* de hardcoding al darle un nombre significativo. Con cualquiera de las opciones atacamos este problema específico que tenemos ahora.
+Pues depende, pero como no podemos adivinar el futuro podría darnos un poco igual una solución que otra. Todas nos permiten reducir el *smell* de duplicación al establecer el valor en un solo punto, así como el *smell* de hardcoding al darle un nombre significativo. Con cualquiera de las opciones atacamos este problema específico que tenemos ahora.
 
 Pero si en la próxima ronda de requisitos necesitamos hacerlo, y mientras no demos por terminado el desarrollo, podemos cambiarlo de nuevo.
 
@@ -169,7 +169,7 @@ En cualquier caso, necesitamos un nuevo test que describa un ejemplo de lo que n
 namespace spec\kata;
 
 use kata\Calculator;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class CalculatorSpec extends ObjectBehavior
@@ -308,7 +308,7 @@ No. Todavía podemos refactorizar la solución. Al fin y al cabo, las *regexp* s
 
 A la espera de encontrar una mejor solución para nuestro problema actual podemos refactorizar a fin de extraer el código que acabamos de añadir en sus propios métodos. De este modo, la clase será mucho más legible y, seguramente, será más fácil aún arreglar el desaguisado que acabamos de cometer.
 
-Pero eso lo dejamos [para más adelante](/katando-phpspec-4).
+Pero eso lo dejamos [para más adelante](/katando-PHPSpec-4).
 
  
 

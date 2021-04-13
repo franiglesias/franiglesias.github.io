@@ -15,7 +15,7 @@ Esto se traduce en que esos datos deben someterse a una validación, es decir, a
 * De computación: utilizar tipos de datos incorrectos que provoquen errores en el funcionamiento del programa.
 * De consistencia: que los datos no entren en los límites de tolerancia en los algoritmos, provocando resultados sin sentido, inconsistentes, etc.
 
-Voy a poner un ejemplo algo chusco, pero creo que bastante claro. Supongamos que tengo un algoritmo que divide dos números entre sí, algo ciertamente complejo y al alcance sólo de un puñado de ninja developers:
+Voy a poner un ejemplo algo chusco, pero creo que bastante claro. Supongamos que tengo un algoritmo que divide dos números entre sí, algo ciertamente complejo y al alcance solo de un puñado de ninja developers:
 
 ```php
 function divide($dividend, $divisor)
@@ -140,7 +140,7 @@ En último término, lo que estamos haciendo es estableciendo un contrato o inte
 
 ## Validación y capas
 
-En realidad, mi interés sobre este tema para hacer un artículo viene de ver un ejemplo de código en el que los parámetros que recibe el endpoint de un API no se validan hasta que son utilizados dentro de un UseCase.
+En realidad, mi interés sobre este tema para hacer un artículo viene de ver un ejemplo de código en el que los parámetros que recibe el endpoint de una API no se validan hasta que son utilizados dentro de un UseCase.
 
 Yo llamaría a esto _validación tardía_ e implica que datos externos al sistema viajan a través de él sin ser controlados has el último momento, cuando ya se van a utilizar. Lo malo es que entonces puede ser tarde para el feedback y la lógica del UseCase se contamina de cuestiones que no tendría por qué tratar.
 
@@ -196,7 +196,7 @@ El primer problema que encuentro en este planteamiento es que hay un acoplamient
 
 Tenemos que invertir esa dependencia en el sentido de que debe ser el controlador quien se adapte a las restricciones que ponga la capa de aplicación. En una arquitectura limpia la dirección de las dependencias es de fuera hacia adentro.
 
-Imagina una situación bastante típica: el mismo UseCase se utiliza con datos de un formulario al que se accede desde una web y en un API Rest: ¿tendríamos que considerar en el UseCase que los datos recibidos necesitasen una validación particular por la forma en que nos llegan? Creo que la respuesta es no: el UseCase tendría que establecer un contrato que garantice que los datos van a llegar en ciertas condiciones.
+Imagina una situación bastante típica: el mismo UseCase se utiliza con datos de un formulario al que se accede desde una web y en una API Rest: ¿tendríamos que considerar en el UseCase que los datos recibidos necesitasen una validación particular por la forma en que nos llegan? Creo que la respuesta es no: el UseCase tendría que establecer un contrato que garantice que los datos van a llegar en ciertas condiciones.
 
 Por otro lado, pensemos en el principio de Única Responsabilidad (SRP): además de hacer lo que le toca, el UseCase tiene que validar los datos que recibe antes de poder utilizarlos. Y lo tiene que hacer por dos tipos de razones: por reglas del dominio, y por motivos de implementación.
 
@@ -338,7 +338,7 @@ function grades($courseId, Request $request)
 
 Lo cierto es que un objeto Request puede, y mi opinión es que **debe**, ser más que un simple DTO.
 
-Para ello, los datos se pasarían en construcción con type hinting, para garantizar que el Command se construye como es debido y es consistente en el sentido de que el Handler podrá utilizar esos datos preocupándose sólo de validarlos para las necesidades específicas de su tarea.
+Para ello, los datos se pasarían en construcción con type hinting, para garantizar que el Command se construye como es debido y es consistente en el sentido de que el Handler podrá utilizar esos datos preocupándose solo de validarlos para las necesidades específicas de su tarea.
 
 Por otro lado, en caso de que este objeto Command lo necesitase, podría admitir parámetros opcionales, lo que quedaría expresado en forma de setters.
 

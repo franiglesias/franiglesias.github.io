@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Katando phpSpec 2
+title: Katando PHPSpec 2
 categories: articles
 tags: tdd bdd
 ---
@@ -9,10 +9,10 @@ Continuamos con la kata iniciada en el artículo anterior.
 
 La serie **Katando PHPSpec** consta de los siguientes artículos:
 
-[Katando PHPSpec (1)](/katando-phpspec-1)  
-[Katando PHPSpec (2)](/katando-phpspec-2)  
-[Katando PHPSpec (3)](/katando-phpspec-3)  
-[Katando PHPSpec (4)](/katando-phpspec-4)
+[Katando PHPSpec (1)](/katando-PHPSpec-1)  
+[Katando PHPSpec (2)](/katando-PHPSpec-2)  
+[Katando PHPSpec (3)](/katando-PHPSpec-3)  
+[Katando PHPSpec (4)](/katando-PHPSpec-4)
 
 El siguiente requisito que vamos a implementar en nuestra Calculator es:
 
@@ -20,13 +20,13 @@ El siguiente requisito que vamos a implementar en nuestra Calculator es:
 2. Haz que el método add pueda manejar un número desconocido de números.
 ```
 
-Llegados a este punto espero que ya sepas lo que toca hacer: preparar un ejemplo que lo refleje y lanzar phpspec esperando que el ejemplo falle. Un ejemplo como el que puedes ver aquí:
+Llegados a este punto espero que ya sepas lo que toca hacer: preparar un ejemplo que lo refleje y lanzar PHPSpec esperando que el ejemplo falle. Un ejemplo como el que puedes ver aquí:
 
 ```php
 namespace spec\kata;
 
 use kata\Calculator;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class CalculatorSpec extends ObjectBehavior
@@ -96,7 +96,7 @@ Como los ejemplos son muy claros, vamos a utilizarlos tal cual, empezando por el
 namespace spec\kata;
 
 use kata\Calculator;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class CalculatorSpec extends ObjectBehavior
@@ -169,7 +169,7 @@ Bueno, no todos. Nos queda uno por resolver. Volvemos a la Spec y creamos un eje
 namespace spec\kata;
 
 use kata\Calculator;
-use PhpSpec\ObjectBehavior;
+use PHPSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class CalculatorSpec extends ObjectBehavior
@@ -297,7 +297,7 @@ En esta segunda entrega de la serie hemos visto varias cosas:
 * Cómo verificar que se lanzan excepciones.
 * Cómo utilizar una Spec para hacer refactoring cuando nuestra solución comienza a tener cierta cantidad de código.
 
-En la [próxima entrega](/katando-phpspec-3) vamos a enfrentarnos a un nuevo requisito que nos permita cambiar el separador que usamos en la expresión. Eso nos va a hacer plantearnos algunas de las cosas que hemos hecho hasta ahora.
+En la [próxima entrega](/katando-PHPSpec-3) vamos a enfrentarnos a un nuevo requisito que nos permita cambiar el separador que usamos en la expresión. Eso nos va a hacer plantearnos algunas de las cosas que hemos hecho hasta ahora.
 
 En concreto, vamos a descubrir algunos "malos olores" en el código que tenemos escrito. Es posible que ya te hayas dado cuenta. Si no, echa un vistazo de nuevo. Podrás encontrar algún caso de duplicación y valores *hardcoded*. Es una buena oportunidad para reflexionar sobre lo que apuntábamos al final del apartado anterior: ¿merece la pena refactorizar para facilitar los cambios futuros o nos basta con dejar las cosas como están?
 

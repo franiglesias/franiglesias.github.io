@@ -43,7 +43,7 @@ Si en el futuro vuelve a surgir la necesidad no hay más que reincorporarla al b
 
 Tras el despliegue la historia US-6B no resulta ser tan importante. Las reacciones de las usuarias a la posibilidad de jugar varios sets han sido muy buenas. Pero en muchos casos encuentran 3 sets más que suficientes para divertirse con el juego, incluso un solo set sería suficiente para disfrutar de un momento de desconexión.
 
-Esto hace que bajemos la prioridad, además de añadir la opción de poder jugar partidos de un sólo set.
+Esto hace que bajemos la prioridad, además de añadir la opción de poder jugar partidos de un solo set.
 
 Con frecuencia nos encontramos que una *feature* se puede dividir en varias partes. Una de ellas producirá una aportación de valor del 80% (o al 80% de destinatarias) y es la que necesitamos entregar. El resto es aportado mediante mejoras incrementales que, una vez desplegada la parte principal, son vistas desde una nueva perspectiva.
 
@@ -372,7 +372,7 @@ class App(object):
 
 ```
 
-Por el momento, voy a mover los sonidos a los objetos con los que la bola puede chocar. Esto podría tener más sentido porque así cada objeto es dueño de su propia reacción. `Ball` sólo les dice que ha chocado con ellos.
+Por el momento, voy a mover los sonidos a los objetos con los que la bola puede chocar. Esto podría tener más sentido porque así cada objeto es dueño de su propia reacción. `Ball` solo les dice que ha chocado con ellos.
 
 En **ball.py**
 

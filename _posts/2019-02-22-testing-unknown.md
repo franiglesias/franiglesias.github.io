@@ -11,7 +11,7 @@ En esta ocasión voy a hablar sobre cómo estoy afrontando el testeo de un códi
 
 Como primer ejemplo, voy a tomar un caso bastante simple, pero que me permitirá ilustrar el enfoque con el que estoy atacando la tarea.
 
-Se trata de un Middleware para MessageBus. No es un concepto de negocio, pero me viene muy bien porque sólo tiene un flujo de ejecución y, además, me permite poner en juego un par de técnicas interesantes.
+Se trata de un Middleware para MessageBus. No es un concepto de negocio, pero me viene muy bien porque solo tiene un flujo de ejecución y, además, me permite poner en juego un par de técnicas interesantes.
 
 Esta es la clase que vamos a testear:
 
@@ -200,7 +200,7 @@ Por otro lado, como veremos en otro momento, los dobles nos permiten trabajar m�
 
 Para crear un DomainEvent de prueba utilizaré una clase anónima. 
 
-PHP no permite implementar la interfaz `DateTimeInterface`, por lo que el generador de doubles de **phpunit** no puede hacer un double de nuestro `DomainEvent` pues éste devuelve un objeto DateTimeInterface en el método `occurredOn` y no puede doblarlo.
+PHP no permite implementar la interfaz `DateTimeInterface`, por lo que el generador de doubles de **PHPUnit** no puede hacer un double de nuestro `DomainEvent` pues éste devuelve un objeto DateTimeInterface en el método `occurredOn` y no puede doblarlo.
 
 ```php
 <?php

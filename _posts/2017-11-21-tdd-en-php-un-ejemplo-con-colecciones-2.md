@@ -5,7 +5,7 @@ categories: articles
 tags:  tdd php 
 ---
 
-Ahora que tenemos una clase Collection a la que podemos añadir objetos de un tipo determinado o sus descendientes, vamos a desarrollar algo de comportamiento. Al fin y al cabo, queremos nuestras colecciones para hacer algo con sus elementos, no sólo para admirarlas… (ejem!).
+Ahora que tenemos una clase Collection a la que podemos añadir objetos de un tipo determinado o sus descendientes, vamos a desarrollar algo de comportamiento. Al fin y al cabo, queremos nuestras colecciones para hacer algo con sus elementos, no solo para admirarlas… (ejem!).
 
 ## Testing dirigido por Checklist
 
@@ -22,7 +22,7 @@ Esta era nuestra lista inicial:
 * Poder añadir elementos a la colección
 * Que estos elementos sean objetos
 * Que pueda decirnos cuántos objetos está almacenando
-* Que sólo pueda añadir objetos de la misma clase o interfaz
+* Que solo pueda añadir objetos de la misma clase o interfaz
 * Que pueda añadir objetos de subclases de la original
 * Que pueda iterar a través de todos los elementos y hacer algo con ellos (each)
 * Que pueda devolver un array de transformaciones de los objetos (map)
@@ -86,7 +86,7 @@ El método each tiene que aceptar un Callable que tome un objeto del tipo colecc
 
 Una forma de testear esto podría ser añadir algunos elementos a la lista y definir una función que simplemente se ejecute una vez por cada elemento. Suena un poco "sucio", pero podría servir. 
 
-Pero en realidad, hay un test que debo realizar antes: una Collection vacía no debería ejecutar nada. Esta es mi primera tentativa en `CollectionTest.php` (sólo incluyo la parte relevante):
+Pero en realidad, hay un test que debo realizar antes: una Collection vacía no debería ejecutar nada. Esta es mi primera tentativa en `CollectionTest.php` (solo incluyo la parte relevante):
 
 ```php
     public function test_Each_does_nothing_on_empty_collection()
@@ -149,7 +149,7 @@ Lanzamos el test y pasa, pero ahora se rompe el test anterior. Y esto es bueno, 
 
 Con esto nos ponemos en verde.
 
-El motivo de hacer este _baby step_ es el siguiente: si implementamos la iteración con un sólo elemento, nuestro siguiente test sería irrelevante y no nos iba a aportar información nueva. 
+El motivo de hacer este _baby step_ es el siguiente: si implementamos la iteración con un solo elemento, nuestro siguiente test sería irrelevante y no nos iba a aportar información nueva. 
 
 Por otro lado podría ocurrir que tanto el caso "0 elementos" como el "1 elemento" fuesen especiales (no dejan de ser casos límite al hablar de colecciones) y tener tests específicos para ellos podría desvelar esa peculiaridad.
 

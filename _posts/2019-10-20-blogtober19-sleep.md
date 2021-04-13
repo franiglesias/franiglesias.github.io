@@ -113,7 +113,7 @@ class CreateContractCommandHandler
 
 Nope, no haremos una llamada estática porque eso sería volver a establecer la dependencia global y seríamos, de nuevo, incapaces de testear.
 
-Ahora, para testear, sólo necesitamos hacer una implementación que sea un stub de la fecha que nos interese:
+Ahora, para testear, solo necesitamos hacer una implementación que sea un stub de la fecha que nos interese:
 
 ```php
 <?php
@@ -234,7 +234,7 @@ De este modo, el test no tendrá demora independientemente de la que necesites f
 
 ### Alternativas a dormir
 
-Cuando tenemos procesos que se ejecutan, por así decir, en paralelo y uno tiene que esperar el resultado de otro hacer una pausa puede ser un problema. No sólo en el aspecto de testing, sino que tal vez el contexto lo haga desaconsejable.
+Cuando tenemos procesos que se ejecutan, por así decir, en paralelo y uno tiene que esperar el resultado de otro hacer una pausa puede ser un problema. No solo en el aspecto de testing, sino que tal vez el contexto lo haga desaconsejable.
 
 ¿Qué significa esperar? En unos casos, puede ser literalmente esperar un poco para que la segunda acción tenga tiempo de terminar porque sabemos que es más lenta, pero podemos tener una cierta seguridad de que terminará dentro de ese tiempo.
 

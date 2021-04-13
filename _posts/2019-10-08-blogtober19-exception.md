@@ -99,7 +99,7 @@ try {
 }
 ```
 
-En ese caso sólo capturamos uno de los muchos posibles errores que se podrían producir, generando bugs.
+En ese caso solo capturamos uno de los muchos posibles errores que se podrían producir, generando bugs.
 
 **Bien**
 
@@ -129,7 +129,7 @@ try {
 }
 ```
 
-Capturamos la excepción específica y la tratamos con la respuesta adecuada (siguiendo el ejemplo del API, ahora sería un 404), mientras que seguimos manteniendo bajo control los demás errores.
+Capturamos la excepción específica y la tratamos con la respuesta adecuada (siguiendo el ejemplo dla API, ahora sería un 404), mientras que seguimos manteniendo bajo control los demás errores.
 
 ### Cada cada una excepción
 

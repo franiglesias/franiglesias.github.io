@@ -21,7 +21,7 @@ Otra forma de verlo es decir que esta persona podría haber tomado sus decisione
 
 Así, de haber escogido un restaurante vegano para empezar, podría haber comido cualquier plato de la carta sin dudar. Incluso, de haber entrado en un restaurante no vegano, podría haber escogido platos aceptables.
 
-Sin embargo es como si no tomase en cuenta su rasgo vegano hasta el último momento, al decidir si ese plato de comida es adecuado para comer o no sólo cuando lo tiene delante.
+Sin embargo es como si no tomase en cuenta su rasgo vegano hasta el último momento, al decidir si ese plato de comida es adecuado para comer o no solo cuando lo tiene delante.
 
 ## El tipo como antipatrón
 
@@ -184,7 +184,7 @@ De manera que podríamos usarlo así:
 
 ## La belleza de la composición
 
-Cuando el concepto con el que estamos trabajando tiene un sólo eje de clasificación en tipos la extensión en subclases mediante herencia puede ser una buena solución, aunque tiene inconvenientes. Por ejemplo, la violación del principio de Segregación de Dependencias. Al hacer subclases sólo porque necesitamos sobreescribir uno ó dos métodos también nos llevamos todo el resto de comportamiento que posiblemente sea irrelevante en el rasgo concreto de comportamiento que estamos atacando.
+Cuando el concepto con el que estamos trabajando tiene un solo eje de clasificación en tipos la extensión en subclases mediante herencia puede ser una buena solución, aunque tiene inconvenientes. Por ejemplo, la violación del principio de Segregación de Dependencias. Al hacer subclases solo porque necesitamos sobreescribir uno ó dos métodos también nos llevamos todo el resto de comportamiento que posiblemente sea irrelevante en el rasgo concreto de comportamiento que estamos atacando.
 
 Además, podría ocurrir que haya más dimensiones en las que clasificar nuestro concepto, lo que supondría complicar mucho nuestra familia de clases.
 

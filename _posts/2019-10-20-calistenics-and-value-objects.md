@@ -9,7 +9,7 @@ En este artículo presentamos un ejercicio que puede servir para adquirir soltur
 
 Un problema típico para una aplicación de *e-commerce* es el de requerir una **dirección de envío** y una **dirección de facturación** para cada pedido. Ambas son muy similares estructuralmente, pero diferentes en cuanto a significado. La dirección de envío es relevante para el sistema logístico y puede requerir un extra de instrucciones especiales, mientras que las de facturación es relevante en términos de legalidad fiscal.
 
-Representar una dirección es un problema aparentemente simple pero en cuanto empiezas a escarbar un poco empiezan a salir todo tipo de inconveniencias. ¿Cuán complicada puede ser una dirección? Pues aparentemente mucho y eso ciñéndonos sólo a direcciones postales españolas y sin considerar problemas de formato, simplemente intentando representarlas correctamente en nuestro dominio. 
+Representar una dirección es un problema aparentemente simple pero en cuanto empiezas a escarbar un poco empiezan a salir todo tipo de inconveniencias. ¿Cuán complicada puede ser una dirección? Pues aparentemente mucho y eso ciñéndonos solo a direcciones postales españolas y sin considerar problemas de formato, simplemente intentando representarlas correctamente en nuestro dominio. 
 
 Supongo que este formulario te sonará, tanto en versión digital como en papel:
 
@@ -83,9 +83,9 @@ Localidad
 Provincia
 ```
 
-Mucho mejor, ¿no? Al fin y al cabo, la dirección se puede expresar en un sólo campo fácilmente y eso no supone ningún problema. ¿O sí?
+Mucho mejor, ¿no? Al fin y al cabo, la dirección se puede expresar en un solo campo fácilmente y eso no supone ningún problema. ¿O sí?
 
-¿Qué ocurre si el cliente sólo pone el nombre de la calle y el número de portal, pero no indica el piso? ¿Y si en su edificio hay dos escaleras y no indica cuál? ¿Se entregará su paquete según lo previsto?
+¿Qué ocurre si el cliente solo pone el nombre de la calle y el número de portal, pero no indica el piso? ¿Y si en su edificio hay dos escaleras y no indica cuál? ¿Se entregará su paquete según lo previsto?
 
 Estos problemas, y otros muchos similares, hacen que necesitemos que los clientes nos proporciones sus direcciones de una manera precisa y que no se olviden de ningún dato. Por eso, presentamos formularios con todos esos espacios para que el cliente sea consciente de todo lo que necesita decirnos para poder entregarle su pedido con el mínimo posible de demoras e inconvenientes. Así que en vez de lidiar con siete manejables campos nos toca hacerlo con quince por dirección, lo que hace un total de treinta campos sin contar el resto de los que necesita el pedido.
 
@@ -102,11 +102,11 @@ En este caso vamos a aplicar dos de las reglas:
 * Envolver primitivas en objetos
 * Sólo dos variables de instancia
 
-– A ver, es que la primera me suena hasta razonable, pero… ¿dos variables de instancia? Estamos hablando de quince campos para especificar una dirección… ¿y quieres que use sólo dos variables de instancia?
+– A ver, es que la primera me suena hasta razonable, pero… ¿dos variables de instancia? Estamos hablando de quince campos para especificar una dirección… ¿y quieres que use solo dos variables de instancia?
 
 – Exactamente. Pero deja que me explique…
 
-La primera regla, a poco que la pienses, tiene que ver con los *Value Objects*. Podemos representar valores usando tipos escalares (`string`, `int`, `float`, etc) y aunque es una práctica habitual tiene sus problemas. Los tipos escalares sólo nos imponen algunas restricciones muy generales sobre los datos aceptables.
+La primera regla, a poco que la pienses, tiene que ver con los *Value Objects*. Podemos representar valores usando tipos escalares (`string`, `int`, `float`, etc) y aunque es una práctica habitual tiene sus problemas. Los tipos escalares solo nos imponen algunas restricciones muy generales sobre los datos aceptables.
 
 Pongamos por caso, el código postal. En España, el código postal es un número de cinco dígitos, lo que nos sugiere representarlo con un `int`. Pero, en realidad, normalmente es mejor representarlo con un tipo `string` porque aunque tiene forma numérica, no es un número.
 
@@ -118,7 +118,7 @@ Una razón es que puede empezar con un 0 y esto nos daría problemas para manten
 * Los dos primeros (empezando por la izquierda) representan un número entre 00 y 52.
 * Los tres restantes, representan un número que va de 000 a un límite distinto según la provincia.
 
-Ningún tipo escalar nos permite cumplir todas estas restricciones, por lo que es buena idea crear un *Value Object* `PostalCode` que nos permita validar el código conforme a estas reglas y así asegurarnos que sólo podemos crear códigos postales válidos o, al menos, reducir al mínimo la posibilidad de introducirlos no válidos.
+Ningún tipo escalar nos permite cumplir todas estas restricciones, por lo que es buena idea crear un *Value Object* `PostalCode` que nos permita validar el código conforme a estas reglas y así asegurarnos que solo podemos crear códigos postales válidos o, al menos, reducir al mínimo la posibilidad de introducirlos no válidos.
 
 En otros casos ocurre que un concepto se representa con varios campos de información que siempre van juntos. Así, por ejemplo, un nombre de persona es el nombre de pila y dos apellidos, siendo así que constituyen una unidad. Los tres campos se representan mediante tipos `string` y la forma de indicar que van juntos es reuniéndolos en un *Value Object* `PersonName` que nos permita manejarlos como un todo.
 
@@ -166,7 +166,7 @@ Dirección de facturación
 ```
 
 
-En el primer nivel ya tendríamos sólo dos variables de instancia (dirección de envío y dirección de facturación), así que vamos bien. Ahora vamos a agrupar las otras variables según si cambian juntas como un todo o no:
+En el primer nivel ya tendríamos solo dos variables de instancia (dirección de envío y dirección de facturación), así que vamos bien. Ahora vamos a agrupar las otras variables según si cambian juntas como un todo o no:
 
 ```
 Dirección de envío

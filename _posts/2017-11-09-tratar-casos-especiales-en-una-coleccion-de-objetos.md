@@ -7,7 +7,7 @@ tags: legacy refactoring
 
 A veces tenemos que hacer cosas específicamente con algunos objetos de una colección. En este artículo planteo una forma de encarar este problema.
 
-Hace unos días tuve que examinar un código que consume el API de uno de nuestros proveedores para construir un array de objetos a partir de los resultados. En algunos de esos objetos había que aplicar un tratamiento específico, ya fuera por razones comerciales o para corregir algunos errores en la fuente de datos.
+Hace unos días tuve que examinar un código que consume la API de uno de nuestros proveedores para construir un array de objetos a partir de los resultados. En algunos de esos objetos había que aplicar un tratamiento específico, ya fuera por razones comerciales o para corregir algunos errores en la fuente de datos.
 
 Como no se trataba de un asunto directamente relacionado con la tarea concreta en la que estábamos trabajando lo dejé pasar, pero no paré de darle vueltas en la cabeza a posibles formas de lidiar con esos casos especiales sin llenar un bloque de código de condicionales _ad-hoc_, rompiendo varios principios de diseño en el camino. Como es más fácil verlo que explicarlo, voy a poner un ejemplo que simula la situación que acabo de describir:
 

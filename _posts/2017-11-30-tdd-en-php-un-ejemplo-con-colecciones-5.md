@@ -363,7 +363,7 @@ Esto era de esperar porque ya estaba contemplado en el método `append`, al que 
 
 Ahora podemos considerar que hemos terminado de implementar el método `collect`. Es momento de refactorizarlo.
 
-Los tests nos protegen contra problemas derivados de los cambios que hagamos. Al refactorizar sólo estamos cambiando la implementación, no la interfaz ni el comportamiento público, y eso es lo que nos aseguran los tests en este momento.
+Los tests nos protegen contra problemas derivados de los cambios que hagamos. Al refactorizar solo estamos cambiando la implementación, no la interfaz ni el comportamiento público, y eso es lo que nos aseguran los tests en este momento.
 
 ```php
     public static function collect(array $elements)

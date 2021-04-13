@@ -36,13 +36,13 @@ Hasta cierto punto, para los programadores en PHP esto no debería resultar muy 
 
 El sistema de tipado de PHP permite que podamos reutilizar una misma variable para distintos tipos de datos. Es decir, comenzamos usando una variable de tipo `int`, pero posteriormente podríamos introducir un dato de tipo `string`. El intérprete se encarga de, sobre la marcha, decidir el tipo de dato que puede manejar y, si es necesario, lo convierte. PHP es lo que se conoce como un lenguaje de **tipado débil**.
 
-Otros lenguajes tienen **tipado estricto**. Esto quiere decir que las variables deben declararse con su tipo para que el intérprete o compilador reserve el espacio de memoria adecuado. Además, una vez definida una variable, ésta sólo puede usarse para almacenar valores de ese tipo o que hayan sido explícitamente convertidos a ese tipo. De este modo, si intentas guardar un `string` en una variable `int`, saltará un error.
+Otros lenguajes tienen **tipado estricto**. Esto quiere decir que las variables deben declararse con su tipo para que el intérprete o compilador reserve el espacio de memoria adecuado. Además, una vez definida una variable, ésta solo puede usarse para almacenar valores de ese tipo o que hayan sido explícitamente convertidos a ese tipo. De este modo, si intentas guardar un `string` en una variable `int`, saltará un error.
 
 Por esa razón, el polimorfismo en los lenguajes de tipado estricto resulta especialmente llamativo, ya que con el tipado estricto no podríamos declarar una variable de tipo `Book` para empezar y luego asignarle un valor de tipo `Review` como se hace en el código anterior. El polimorfismo, por tanto, implica que el sistema de tipos se relaja.
 
 Por otro lado, en los lenguajes de tipado estricto también deben declararse los tipos de los argumentos de las funciones y, consecuentemente, los tipos de los argumentos de los métodos. Esto es muy bueno, porque nos proporciona un primer medio de control de que los datos que se pasan son válidos. Si intentamos pasar un argumento de un tipo no indicado para la función el intérprete o compilador nos lanzará un error.
 
-Precisamente, PHP ha incorporado esa característica, denominada *Type Hinting* en las llamadas a funciones y métodos pero sólo para objetos y, gracias a ello, podemos declarar el tipo de objeto que pasamos como argumento a una función o método. Su uso no es obligatorio, pero como beneficio directo tenemos esa primera línea de validación de datos que, más adelante, veremos como explotar a fondo.
+Precisamente, PHP ha incorporado esa característica, denominada *Type Hinting* en las llamadas a funciones y métodos pero solo para objetos y, gracias a ello, podemos declarar el tipo de objeto que pasamos como argumento a una función o método. Su uso no es obligatorio, pero como beneficio directo tenemos esa primera línea de validación de datos que, más adelante, veremos como explotar a fondo.
 
 Sin embargo, ¿cómo es posible que el tipado fuerte o, en su caso, el *type hinting* permitan el polimorfismo?
 

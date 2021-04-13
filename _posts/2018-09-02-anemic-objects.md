@@ -13,17 +13,17 @@ En esos casos, el comportamiento de negocio suele estar distribuido en diferente
 
 Y esto no debería ser así. Luego veremos por qué.
 
-Por otra parte, este tipo de situaciones no ocurre sólo en el dominio. Podemos encontrar objetos anémicos en cualquier lugar de nuestro código y eso acaba generando una serie de problemas que a la larga acabarán manifestándose en forma de test frágiles, duplicación de conocimiento, responsabilidades disueltas y funcionamiento errático de la aplicación.
+Por otra parte, este tipo de situaciones no ocurre solo en el dominio. Podemos encontrar objetos anémicos en cualquier lugar de nuestro código y eso acaba generando una serie de problemas que a la larga acabarán manifestándose en forma de test frágiles, duplicación de conocimiento, responsabilidades disueltas y funcionamiento errático de la aplicación.
 
 Pero empecemos por el principio.
 
 ## Objetos anémicos y cómo encontrarlos
 
-Podríamos disponer todos los objetos de una aplicación en una escala que va desde aquellos que sólo contienen estado hasta aquellos que sólo contienen comportamiento.
+Podríamos disponer todos los objetos de una aplicación en una escala que va desde aquellos que solo contienen estado hasta aquellos que solo contienen comportamiento.
 
 En el primero de los extremos tenemos objetos como los DTOs, las Request y todo tipo de objetos-mensaje como los Eventos.
 
-En el otro extremo tenemos objetos que no mantienen ningún tipo de estado y sólo tienen comportamientos, algo que es característico de los Servicios o Use Cases.
+En el otro extremo tenemos objetos que no mantienen ningún tipo de estado y solo tienen comportamientos, algo que es característico de los Servicios o Use Cases.
 
 Lejos de ser una dicotomía estricta, entre ambos extremos podríamos situar otros muchos objetos. Por ejemplo, las Entidades de dominio y los Value Objects mantienen estado y (deberían) realizar comportamientos.
 
@@ -121,7 +121,7 @@ Como puedes ver, empieza a definirse un patrón: nuestro Score es un objeto ané
 
 ### Apesta a Data Class
 
-El *smell* [Data Class](https://refactoring.guru/smells/data-class) podría ser de aplicación aquí. Simplemente, ocurre que nuestra clase no tiene comportamientos, sólo lleva datos, y para cambiar su estado tenemos que acceder al mismo, y volverlo a ajustar con un setter.
+El *smell* [Data Class](https://refactoring.guru/smells/data-class) podría ser de aplicación aquí. Simplemente, ocurre que nuestra clase no tiene comportamientos, solo lleva datos, y para cambiar su estado tenemos que acceder al mismo, y volverlo a ajustar con un setter.
 
 Lo podemos saber porque el código que usa el objeto primero pregunta por el estado y luego lo cambia.
 
@@ -129,7 +129,7 @@ Esto va en contra del principio de diseño "tell, don't ask" que, en esencia, di
 
 ### No respeta la Ley de Demeter
 
-La ley de Demeter dice que un objeto sólo debería hablar con otros objetos que conozca. Nuestros diversos objetos IncreasePlayerScore* sólo conocen a Player y a otro objeto que indica la circunstancia que provoca la variación de puntos, pero realmente no conocen a Score y, por tanto, no deberían hablar con él.
+La ley de Demeter dice que un objeto solo debería hablar con otros objetos que conozca. Nuestros diversos objetos IncreasePlayerScore* solo conocen a Player y a otro objeto que indica la circunstancia que provoca la variación de puntos, pero realmente no conocen a Score y, por tanto, no deberían hablar con él.
 
 Esto se manifiesta especialmente en los ejemplos en los que utilizamos cadenas de mensajes:
 
@@ -150,7 +150,7 @@ Como se puede ver en los ejemplos anteriores, todos los servicios que modifican 
 
 La lógica así montada presenta complicaciones para el testing. Para poder testear cada uno de los servicios nos vemos obligados a montar un objeto Player que nos devuelva el Objeto score, con unos valores determinados.  
 
-En último término estos tests son tremendamente frágiles, complicados de montar y realmente no nos aportan información. Puedes encontrar una buena explicación de este problema en [este artículo de Samuele Lilli](https://labs.madisoft.it/about-testing-entity-state-changes-in-phpspec/).
+En último término estos tests son tremendamente frágiles, complicados de montar y realmente no nos aportan información. Puedes encontrar una buena explicación de este problema en [este artículo de Samuele Lilli](https://labs.madisoft.it/about-testing-entity-state-changes-in-PHPSpec/).
 
 ## Quién tiene la responsabilidad
 

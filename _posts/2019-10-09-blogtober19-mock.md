@@ -17,7 +17,7 @@ Me llama la atención que en una actividad como la nuestra y teniendo en cuenta 
 
 Sin ir más lejos: los **Mocks**. Llamamos **Mock** a cualquier doble de test, cuando **mock** es un tipo específico. Ya sabéis: *dummies*, *stubs*, *spies*, *fakes* y *mocks*.
 
-Pero los propios frameworks de testing contribuyen a ello, como **phpunit** con su `mockBuilder` o incluso el framework **Mockery**, pero también está **mockito** en Java. Supongo que *doubleBuilder*, *Doublery* o *Doublito* no suenan tan ingeniosos. 
+Pero los propios frameworks de testing contribuyen a ello, como **PHPUnit** con su `mockBuilder` o incluso el framework **Mockery**, pero también está **mockito** en Java. Supongo que *doubleBuilder*, *Doublery* o *Doublito* no suenan tan ingeniosos. 
 
 En relación con esto, me preocupa que muchas veces a la hora de hacer tests la primera pregunta que suele aparecer tiene que ver con los **mocks**, lo que hay que `mockear` o doblar, cómo hacerlo, etc. Diría que antes incluso de saber qué es lo que se pretende testear. La primera pregunta debería ser: ¿qué comportamiento necesito verificar en este momento?
 

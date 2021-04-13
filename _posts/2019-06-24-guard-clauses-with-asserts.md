@@ -7,7 +7,7 @@ tags: tips good-practices
 
 Las cláusulas de guarda nos permiten asegurar que se cumplen las condiciones necesarias para ejecutar un método.
 
-En el código, las cláusulas de guarda son habitualmente estructuras if que lanzan una excepción si una cierta condición requerida no se cumple. La idea es despejar el terreno de casos no válidos para ejecutar el algoritmo contenido en el método sólo con valores válidos.
+En el código, las cláusulas de guarda son habitualmente estructuras if que lanzan una excepción si una cierta condición requerida no se cumple. La idea es despejar el terreno de casos no válidos para ejecutar el algoritmo contenido en el método solo con valores válidos.
 
 Las cláusulas de guarda son un buen medio de forzar que se cumplen las reglas de negocio. Un buen lugar para ello son los constructores de las entidades, aunque es aplicable a cualquier método que tenga que verificar que los argumentos recibidos o ciertas condiciones se cumplen. Vamos a ver un ejemplo muy sencillo.
 

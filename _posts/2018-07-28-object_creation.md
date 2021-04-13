@@ -178,7 +178,7 @@ $coordinatesFromAPI = [45.23, -12.43];
 $coordinates = Coordinates::fromAPIArray($coordinatesFromAPI);
 ```
 
-De este modo la lógica de creación del objeto a partir de una forma de obtención de los datos es gestionada por el código de la propia clase y no necesitamos saber cómo se tiene que preparar la información, tan sólo pasársela.
+De este modo la lógica de creación del objeto a partir de una forma de obtención de los datos es gestionada por el código de la propia clase y no necesitamos saber cómo se tiene que preparar la información, tan solo pasársela.
 
 Cuando usamos named constructors es frecuente hacer privado el constructor para obligar a usar estos métodos. No es obligatorio, aunque se considera una buena práctica. En caso de que usar el método constructor estándar tenga sentido, siempre podremos crear un named constructor que lo reemplace.
 
@@ -289,7 +289,7 @@ Cuando una función o método requiere más de tres parámetros comienza a conve
 
 Una primera aproximación es trata de crear Parameter objects o value objects siempre que sea posible y aliviar así el trabajo del constructor.
 
-Sin embargo, a veces la dificultad viene determinada no sólo por la cantidad de parámetros, sino por las relaciones que pueden existir entre ellos.
+Sin embargo, a veces la dificultad viene determinada no solo por la cantidad de parámetros, sino por las relaciones que pueden existir entre ellos.
 
 Por ejemplo, podemos tener parámetros que dependen unos de otros en alguna forma, o bien parámetros que pueden introducirse en número variable y queremos tener control sobre ello (y no simplemente pasarlos en forma de array o colección), así como otras posibilidades.
 

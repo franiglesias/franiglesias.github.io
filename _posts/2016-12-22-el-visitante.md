@@ -46,13 +46,13 @@ Así que vamos a aplicar el patrón **Visitor**.
 
 Como señalamos más arriba, es posible que tengamos necesidad de más tipos de informes, por lo tanto, nos interesaría que tanto `CantineList` como `CantineListUserRecord` sean capaces de aceptar visitas de todos ellos, de modo que necesitamos una abstracción que represente a todos nuestros generadores de informes. En PHP podemos realizar esta abstracción con una clase abstracta o con una interfaz, pero ya que en el caso del Visitor es muy posible que alguno de los métodos `visit` sea compartido por varios Visitors, nos vamos a decantar por una clase abstracta, que será `CantineListReport`.
 
-En nuestro ejemplo, como veremos en el código, `CantineList` acepta visitas de `CantineListReport`, y se encarga de "guiarlo" para que visite a los distintos `CantineListUserRecord` que contiene. En otras palabras: `CantineListReport` no conoce la estructura interna de `CantineList`, por lo que necesita que esa ésta quién dirija la visita.
+En nuestro ejemplo, como veremos en el código, `CantineList` acepta visitas de `CantineListReport`, y se encarga de "guiarlo" para que visite a los distintos `CantineListUserRecord` que contiene. En otras palabras: `CantineListReport` no conoce la estructura interna de `CantineList`, por lo que necesita que esa esta quién dirija la visita.
 
 El método `visitRecord` es más específico, ya que debe recabar distintos datos según el tipo de informe, por lo que lo definiremos en las clases finales que extienden `CantineListReport`.
 
 ## Ejemplos de código
 
-### Visitante
+### Visitante
 
 Aquí tenemos la clase abstracta base de nuestro Visitor `CantineListReporter`.
 
@@ -69,7 +69,7 @@ abstract class CantineListReporter
 
 Podríamos haberla definido como interface, pero queremos dejar abierta la posibilidad de que haya código compartido.
 
-### Visitante concreto
+### Visitante concreto
 
 ```php
 namespace Milhojas\Domain\Cantine\CantineList;
@@ -142,7 +142,7 @@ class TurnStageCantineListReporter extends CantineListReporter
 }
 ```
 
-### El anfitrión
+### El anfitrión
 
 En realidad tenemos dos anfitriones. En primer lugar, CantineList, que es la que contiene los registros y debe guiar al visitante por ellos.
 

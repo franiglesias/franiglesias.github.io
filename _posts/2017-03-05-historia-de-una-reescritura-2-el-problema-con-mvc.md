@@ -32,9 +32,9 @@ El patrón MVC nació para las interfaces gráficas de usuario y ahí está el q
 
 Pero en los frameworks MVC normalmente el modelo se ocupa de muchas cosas, y en particular CakePHP en la versión utilizada en esta aplicación.
 
-En concreto, los modelos se encargarían de las "reglas de negocio" (o dominio) y del almacenamiento de datos. Los modelos CakePHP siguen el patrón Active Record y, por tanto, no sólo saben comportarse conforme a sus roles en el dominio de la aplicación, sino que también saben persistirse y recargarse de la base de datos. Es decir, al menos dos responsabilidades y una dependencia de la capa de modelo de un elemento de infraestructura.
+En concreto, los modelos se encargarían de las "reglas de negocio" (o dominio) y del almacenamiento de datos. Los modelos CakePHP siguen el patrón Active Record y, por tanto, no solo saben comportarse conforme a sus roles en el dominio de la aplicación, sino que también saben persistirse y recargarse de la base de datos. Es decir, al menos dos responsabilidades y una dependencia de la capa de modelo de un elemento de infraestructura.
 
-Es necesario separar estas responsabilidades, de modo que los modelos sólo se ocupen de la lógica de negocio (o de dominio), mientras que la persistencia forme parte de la infraestructura. El motivo es tanto la testabilidad (lo que nos ayuda a hacer la aplicación mantenible a medio y largo plazo) y la separación de responsabilidades, lo que nos permite evolucionar cada parte de la aplicación de forma independiente.
+Es necesario separar estas responsabilidades, de modo que los modelos solo se ocupen de la lógica de negocio (o de dominio), mientras que la persistencia forme parte de la infraestructura. El motivo es tanto la testabilidad (lo que nos ayuda a hacer la aplicación mantenible a medio y largo plazo) y la separación de responsabilidades, lo que nos permite evolucionar cada parte de la aplicación de forma independiente.
 
 Los modelos, en lo que respecta al controlador y la vista, deberían ser simples DTO, lo que implica que el framework MVC esté fuera de la capa de dominio. Esta separación puede sonar muy extraña si sólo has trabajado desde el punto de vista del MVC.
 

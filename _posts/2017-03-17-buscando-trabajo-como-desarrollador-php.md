@@ -29,7 +29,7 @@ La aplicación funcionó bastante bien para ser un proyecto de bastante mala cal
 
 Claro que yo tampoco me tomaba el tema de la programación como un aspecto principal de mi trabajo, que estaba más enfocado al tema de la tecnología educativa.
 
-Pero con el tiempo, mi situación en el trabajo empezó a deteriorarse y, poco a poco, mi situación personal también. Eso desembocó en una crisis profunda y varios cambios significativos en mi vida. No fue el trabajo uno de ellos, pero las circunstancias me llevaron, como efecto colateral, a tomar un nuevo interés en la programación. Descubrí todo lo que tenía que ver con principios SOLID, patrones de diseño de software, refactoring, arquitectura limpia, DDD  y otros muchos los elementos que constituyen el saber y saber hacer de un desarrollador profesional.
+Pero con el tiempo, mi situación en el trabajo empezó a deteriorarse y, poco a poco, mi situación personal también. Eso desembocó en una crisis profunda y varios cambios significativos en mi vida. No fue el trabajo uno de ellos, pero las circunstancias me llevaron, como efecto colateral, a tomar un nuevo interés en la programación. Descubrí todo lo que tenía que ver con principios SOLID, patrones de diseño de software, refactoring, arquitectura limpia, DDD y otros muchos los elementos que constituyen el saber y saber hacer de un desarrollador profesional.
 
 Todo eso cambió mi forma de ver y plantear el trabajo y empecé a experimentar con los conceptos y cambiar mis herramientas. Decidí que si quería tener un futuro como programador tenía que empezar a trabajar como tal.
 
@@ -39,11 +39,11 @@ Los cambios conceptuales me llevaron a pensar en cómo reescribir mis aplicacion
 
 Pero también hice otros cambios en mis herramientas de trabajo. Adopté Symfony como pila de componentes para escribir aplicaciones desacopladas de un framework. Obviamente, a estas alturas ya tendría que estar usando Composer para manejar todo esto.
 
-Aunque ya hacía TDD, no acababa de sentirme a gusto con PHPUnit en esa tarea, por lo que decidí probar con PHPSpec y Behat, de modo que ahora ambas utilidades forman parte de mi ciclo de desarrollo. Utilizar PHPSpec ha sido una de las cosas que más ha contribuido a mejorar la calidad de mi código en menos tiempo. PHPSpec no sólo te ayuda a diseñar tus clases, si no que te enseña a programar mejor.
+Aunque ya hacía TDD, no acababa de sentirme a gusto con PHPUnit en esa tarea, por lo que decidí probar con PHPSpec y Behat, de modo que ahora ambas utilidades forman parte de mi ciclo de desarrollo. Utilizar PHPSpec ha sido una de las cosas que más ha contribuido a mejorar la calidad de mi código en menos tiempo. PHPSpec no solo te ayuda a diseñar tus clases, sino que te enseña a programar mejor.
 
 Por otro lado, ya llevaba un tiempo trabajando con SASS para la escritura de CSS, y finalmente, después de algunos experimentos, aprendí a usar Gulp para la gestión de assets Javascript, CSS y demás.
 
-Llevaba unos años trabajando con TextMate como editor, pero lo jubilé, primero a favor de Atom y desde hace un par de semanas he ido a por el mejor IDE: PHPStorm. No sólo es un editor fantástico, sino que también te permite integrar todas estas herramientas en un solo lugar.
+Llevaba unos años trabajando con TextMate como editor, pero lo jubilé, primero a favor de Atom y desde hace un par de semanas he ido a por el mejor IDE: PHPStorm. No solo es un editor fantástico, sino que también te permite integrar todas estas herramientas en un solo lugar.
 
 Y, además, pasé de usar SVN como gestor de versiones para usar Git y tengo repositorios en GitHub. Y esto me lleva a…
 
@@ -61,7 +61,7 @@ Finalmente, rechazaron mi candidatura muy amablemente. Pero el daño ya estaba h
 
 En realidad, la sorpresa no acabó ahí. Algunos días después llegó otro correo de otra empresa de Viena: [Kununu](https://www.kununu.com), que forma parte Xing, en el que me preguntaban si estaría interesado en un puesto de Front-end developer. Lo más alucinante fue que el contacto se lo habían pasado desde la empresa anterior, Tourradar. Por desgracia, mi experiencia como Front-end developer es pobre y tras un par de correos quedamos en que no encajaría en sus necesidades. Una pena, porque las condiciones eran fantásticas y Viena es una ciudad realmente atractiva para irse a vivir. Y tengo que decir que las personas con las que hablé tuvieron un trato exquisito conmigo.
 
-Aunque estas excelentes oportunidades no cuajaron (hubiera sido un milagro, para qué nos vamos a engañar) sí que tuvieron el efecto de despertarme del letargo. En primer lugar, porque eran señales de que podía estar suficientemente capacitado para buscar trabajo en el campo del desarrollo con ciertas garantía. En segundo lugar, porque me forzaron a ampliar mi campo de búsqueda. Salir de la zona de comodidad (en este caso geográfica) y buscar oportunidades con mejores condiciones y más probabilidad de éxito.
+Aunque estas excelentes oportunidades no cuajaron (hubiera sido un milagro, para qué nos vamos a engañar) sí que tuvieron el efecto de despertarme del letargo. En primer lugar, porque eran señales de que podía estar suficientemente capacitado para buscar trabajo en el campo del desarrollo con ciertas garantías. En segundo lugar, porque me forzaron a ampliar mi campo de búsqueda. Salir de la zona de comodidad (en este caso geográfica) y buscar oportunidades con mejores condiciones y más probabilidad de éxito.
 
 ## Algunas observaciones
 
@@ -83,7 +83,7 @@ En LinkedIn las respuestas han sido relativamente pocas, pero me han proporciona
 
 En cuanto a las solicitudes directas, hice dos. Una a una empresa de Viena y otra de Barcelona y de ambas obtuve respuesta. De la primera, en forma de entrevista. No salió. Pero fue también una buena experiencia.
 
-En la segunda, la cosa fue bastante mejor. Un intercambio de correos y una prueba técnica. Y la prueba técnica no sólo fue bien (mejor de lo que esperaba), sino que fueron tan amables de explicarme punto por punto la evaluación de lo que había hecho y lo que les había parecido.
+En la segunda, la cosa fue bastante mejor. Un intercambio de correos y una prueba técnica. Y la prueba técnica no solo fue bien (mejor de lo que esperaba), sino que fueron tan amables de explicarme punto por punto la evaluación de lo que había hecho y lo que les había parecido.
 
 Tuvimos una entrevista que fue muy bien y ahí sigo en el proceso :-).
 
@@ -91,17 +91,17 @@ Tuvimos una entrevista que fue muy bien y ahí sigo en el proceso :-).
 
 Desde que escribí la primera versión de este artículo han pasado un montón de cosas.
 
-Lo primero que tengo que contar es que ese proceso prometedor del que hablaba al final no pudo concretarse :-(, pero no te pongas triste todavía.
+Lo primero que tengo que contar es que ese proceso prometedor del que hablaba al final no pudo concretarse, pero no te pongas triste todavía.
 
-Por supuesto, he seguido enviando solicitudes, alrededor de 60 en lo que va de año, de ellas más de 50 sólo a través de LinkedIn. Algunas dieron lugar a entrevista.
+Por supuesto, he seguido enviando solicitudes, alrededor de 60 en lo que va de año, de ellas más de 50 solo a través de LinkedIn. Algunas dieron lugar a entrevista.
 
 Como conclusiones más interesantes te puedo contar:
 
 Cuando tienes un perfil <em>extraño</em> (quiero decir que no tienes un título relacionado con Informática o no vienes de empresas de desarrollo o tecnológicas) y las ofertas proceden de consultoras de RRHH, o de los departamentos de RRHH de las empresas, es muy difícil que lleguen siquiera a enviarte un email de rechazo. Las ofertas que vienen por consultoras suelen ser casi imposibles para los perfiles raros.
 
-Aún así, es posible que la persona responsable contacte contigo y hasta que  te haga una primera entrevista, al menos para averiguar algunos detalles sobre ti. El problema es que muchas veces estas mismas personas tienen que hacer un filtro para localizar los perfiles más prometedores y, ciertamente, si el tuyo se sale de ciertos parámetros es posible que te rechacen. Como me dijo una persona que me entrevistó: "la verdad es que a nosotros nos puedes engañar con las cosas técnicas, así que vamos a hablar de otros asuntos" (y en mi caso, eso sirvió para pasar el filtro :-)).
+Aun así, es posible que la persona responsable contacte contigo y hasta que te haga una primera entrevista, al menos para averiguar algunos detalles sobre ti. El problema es que muchas veces estas mismas personas tienen que hacer un filtro para localizar los perfiles más prometedores y, ciertamente, si el tuyo se sale de ciertos parámetros es posible que te rechacen. Como me dijo una persona que me entrevistó: "la verdad es que a nosotros nos puedes engañar con las cosas técnicas, así que vamos a hablar de otros asuntos" (y en mi caso, eso sirvió para pasar el filtro :-)).
 
-Si la selección la está llevando a cabo un CTO o una responsable técnica con frecuencia llegarás a una primera entrevista con tal de que tu CV sea decente. Lo bueno de una entrevista con alguien del lado técnico (que probablemente te supervisará en caso de llegar a contratarte) es que si estás realmente capacitado y sabes de lo que hablas, esta persona lo puede percibir y valorar. En una entrevista para una start-up me llegaron a decir que no me aceptaban porque realmente buscaban un ingeniero, pero que estaba preparado para hablar de tú a tú de cuestiones de desarrollo. Un poco agridulce pero ¡qué le vamos a hacer!.
+Si la selección la está llevando a cabo un CTO o una responsable técnica con frecuencia llegarás a una primera entrevista con tal de que tu CV sea decente. Lo bueno de una entrevista con alguien del lado técnico (que probablemente te supervisará en caso de llegar a contratarte) es que si estás realmente capacitado y sabes de lo que hablas, esta persona lo puede percibir y valorar. En una entrevista para una start-up me llegaron a decir que no me aceptaban porque realmente buscaban un ingeniero, pero que estaba preparado para hablar de tú a tú de cuestiones de desarrollo. Un poco agridulce, pero ¡qué le vamos a hacer!.
 
 Un rechazo a este nivel siempre es un poco más útil porque normalmente te ayuda a identificar dónde están tus limitaciones y cómo podrías trabajar para solucionarlas: qué estudiar, qué tecnologías utilizar, etc. En este sentido, he tenido entrevistas de las que he sacado información para tomar decisiones para mi trabajo y para mi autoformación.
 
@@ -143,7 +143,7 @@ Lo que no sabía era que había una segunda prueba, en la que tenía que realiza
 
 Unos días después, apareció un mensaje en mi correo que se puede resumir así: "has superado las pruebas técnicas y vamos a tener una entrevista de RRHH contigo".
 
-La entrevista fue bien y muy agradable. Esa fue la persona que me dijo que no íbamos a hablar de cuestiones técnicas. Hablamos un poquito de mi perfil, de mis posibilidades y me explicó las condiciones. Sólo voy a decir que son fantabulosas.
+La entrevista fue bien y muy agradable. Esa fue la persona que me dijo que no íbamos a hablar de cuestiones técnicas. Hablamos un poquito de mi perfil, de mis posibilidades y me explicó las condiciones. Solo voy a decir que son fantabulosas.
 
 La respuesta fue que en unos días sabría algo.
 

@@ -5,7 +5,7 @@ categories: articles
 tags: php design-patterns
 ---
 
-El patrón Cadena de Responsabilidad (Chain of Responsibility) nos permite manejar una petición que puede ser atendida por varios objetos, sin saber a priori cual de ellos lo hará.
+El patrón Cadena de Responsabilidad (Chain of Responsibility) nos permite manejar una petición que puede ser atendida por varios objetos, sin saber a priori cuál de ellos lo hará.
 
 ----
 Este patrón es uno de los clásicos del libro de [Gang of Four](https://www.amazon.es/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8).
@@ -19,7 +19,7 @@ La cadena de responsabilidad puede ejemplificarse de una manera muy sencilla:
 – Sí, por supuesto. Esta es la respuesta.  
 – Gracias.
 
-El problema que la Cadena de Responsabilidad resuelve es el de que tenemos un conjunto de objetos que podrían atender una petición, pero no sabemos a priori cuál de ellos lo hará. Por lo tanto, lo que hacemos es probar con uno de los objetos, si éste no lo puede manejar, se lo pedimos al siguiente, y así sucesivamente hasta que uno de ellos nos puede dar la respuesta.
+El problema que la Cadena de Responsabilidad resuelve es el de que tenemos un conjunto de objetos que podrían atender una petición, pero no sabemos a priori cuál de ellos lo hará. Por lo tanto, lo que hacemos es probar con uno de los objetos, si este no lo puede manejar, se lo pedimos al siguiente, y así sucesivamente hasta que uno de ellos nos puede dar la respuesta.
 
 Los elementos de este patrón son:
 
@@ -45,7 +45,7 @@ Si los objetos no van a ser de la misma clase, entonces nos interesa definir una
 
 ## Ejemplo
 
-El servicio de comedor de un colegio tiene que atender a un gran número de estudiantes, por lo que es necesario organizarlos en varios turnos. Los criterios para realizar la asignación de cada estudiante a su turno dependen de varios factores: curso que estudia, día de la semana o participación en actividades extra escolares. El turno se debe asignar cada día, porque hay muchos estudiantes que usan el servicio sólo en determinados días. En resumen: no podemos saber con antelación qué regla se aplicará para cada estudiante concreto.
+El servicio de comedor de un colegio tiene que atender a un gran número de estudiantes, por lo que es necesario organizarlos en varios turnos. Los criterios para realizar la asignación de cada estudiante a su turno dependen de varios factores: curso que estudia, día de la semana o participación en actividades extra escolares. El turno se debe asignar cada día, porque hay muchos estudiantes que usan el servicio solo en determinados días. En resumen: no podemos saber con antelación qué regla se aplicará para cada estudiante concreto.
 
 En este caso he optado por utilizar el patrón de Cadena de Responsabilidad para realizar la asignación de turnos de comedor. Para cada estudiante se recorre la cadena de reglas hasta que una de ellas le asigna el turno.
 
@@ -79,7 +79,7 @@ private $schedule;
 private $turn; 
 
 /**
- * The rule to delegate is current instance can assing a user.
+ * The rule to delegate is current instance can assign a user.
  *
  * @var Rule 
  */ 
@@ -209,9 +209,9 @@ public function chain(Rule $delegateTo)
 }
 ```
 
-Este método podría llamare también setNext o setSuccessor. El nombre <code>chain</code> me ayuda a recordar que se trata de una cadena.
+Este método podría llamarse también `setNext` o `setSuccessor`. El nombre `chain` me ayuda a recordar que se trata de una cadena.
 
-El objeto que se pasa debe ser del mismo tipo o implmentar la misma interfaz. Tenemos que contemplar el caso de que el actual eslabón de la cadena ya tenga un "sucesor", en cuyo caso, le pasamos el nuevo eslabón para que sea su sucesor. Los demás eslabones irán pasándoselo hasta encontrar uno que no tenga sucesor, que será el que lo enlace.
+El objeto que se pasa debe ser del mismo tipo o implementar la misma interfaz. Tenemos que contemplar el caso de que el actual eslabón de la cadena ya tenga un "sucesor", en cuyo caso, le pasamos el nuevo eslabón para que sea su sucesor. Los demás eslabones irán pasándoselo hasta encontrar uno que no tenga sucesor, que será el que lo enlace.
 
 ## Delegar en el sucesor
 
@@ -230,9 +230,9 @@ private function delegate(CantineUser $User, \DateTime $date)
 }
 ```
 
-En nuestro ejemplo, el método privado delegate se encarga de hacer esta delegación, devolviendo `false`, en caso de no tener sucesor (pero lo mismo podría lanzar una excepción, devolver `null` o lo que más nos convenga.)
+En nuestro ejemplo, el método privado `delegate` se encarga de hacer esta delegación, devolviendo `false`, en caso de no tener sucesor (pero lo mismo podría lanzar una excepción, devolver `null` o lo que más nos convenga.)
 
-No es necesario tener este método <code>delegate</code>. En mi caso, creo que hace más legible el método principal (`Rule::assignsUserToTurn`), encapsulando todo lo necesario para la delegación.
+No es necesario tener este método `delegate`. En mi caso, creo que hace más legible el método principal (`Rule::assignsUserToTurn`), encapsulando todo lo necesario para la delegación.
 
 En resumidas cuentas, si el objeto no puede dar una respuesta a `assignsUserToTurn` porque la regla no es aplicable, entonces lo que hace es delegar la petición. Si no tiene nadie a quien delegar, entonces devuelve una respuesta por defecto.
 

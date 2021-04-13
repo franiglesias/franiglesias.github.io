@@ -23,7 +23,7 @@ Los principios SOLID están muy relacionados entre sí, por lo que suele ocurrir
 
 Vamos a examinarlos en detalle.
 
-## Principio de única responsabilidad
+## Principio de única responsabilidad
 
 Este principio dice que las clases deberían tener una única razón para cambiar.
 
@@ -33,7 +33,7 @@ En cualquier organización hay secciones o departamentos. Cada uno de ellos pued
 
 Si más de un agente puede solicitar cambios en una de nuestras clases, eso es que la clase tiene muchas razones para cambiar y, por lo tanto, mantiene muchas responsabilidades. En consecuencia, será necesario repartir esas responsabilidades entre clases.
 
-## Principio abierto/cerrado
+## Principio abierto/cerrado
 
 Este principio dice que una clase debe estar cerrada para modificación y abierta para extensión.
 
@@ -43,7 +43,7 @@ El principio abierto/cerrado nos dice que debemos evitar justamente eso y no toc
 
 Cuando creamos nuevas clases es importante tener en cuenta este principio para facilitar su extensión en un futuro.
 
-## Principio de sustitución de Liskov
+## Principio de sustitución de Liskov
 
 En una jerarquía de clases, las clases base y las subclases deben poder intercambiarse sin tener que alterar el código que las utiliza.
 
@@ -51,15 +51,15 @@ Esto no quiere decir que tengan que hacer exactamente lo mismo, sino que han de 
 
 El reverso de este principio es que no debemos extender clases mediante herencia por el hecho de aprovechar código de las clases bases o por conseguir forzar que una clase sea una "hija de" y superar un <em>type hinting</em> si no existe una relación que justifique la herencia (ser clases con el mismo tipo de comportamiento, pero que lo realizan de manera diferente). En ese caso, es preferible basar el polimorfismo en una interfaz (ver el Principio de segregación de interfaces).
 
-## Principio de segregación de interfaces
+## Principio de segregación de interfaces
 
 El principio de segregación de interfaces puede definirse diciendo que una clase no debería verse obligada a depender de métodos o propiedades que no necesita.
 
-Supongamos una clase que debe extender otra clase base. En realidad, nuestra clase sólo está interesada en dos métodos de la clase base, mientras que el resto de métodos no los necesita para nada. Si extendemos la clase base mediante herencia arrastramos un montón de métodos que nuestra clase no debería tener.
+Supongamos una clase que debe extender otra clase base. En realidad, nuestra clase solo está interesada en dos métodos de la clase base, mientras que el resto de métodos no los necesita para nada. Si extendemos la clase base mediante herencia arrastramos un montón de métodos que nuestra clase no debería tener.
 
 Otra forma de verlo es decir que las interfaces se han de definir a partir de las necesidades de la clase cliente.
 
-## Principio de inversión de dependencia
+## Principio de inversión de dependencia
 
 [La inversión de dependencias no es sólo lo que tú piensas](http://blog.koalite.com/2015/04/la-inversion-de-dependencias-no-es-solo-lo-que-tu-piensas/)
 

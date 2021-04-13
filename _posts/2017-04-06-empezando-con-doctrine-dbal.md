@@ -62,7 +62,7 @@ composer require symphony/yaml
 
 He usado una clave `default_connection` para definir el nombre de la conexión a usar por defecto si hubiese varias, cosa que podría ser necesaria para poder usar distintos servidores para diversos propósitos.
 
-Debajo de la clave `connections` van cada una de las conexiones definidas. En el ejemplo, sólo he creado `default`. He puesto la configuración en formato UrlSchema, que es conciso y fácil de escribir. Se pueden poner claves para cada componente (consulta la documentación).
+Debajo de la clave `connections` van cada una de las conexiones definidas. En el ejemplo, solo he creado `default`. He puesto la configuración en formato UrlSchema, que es conciso y fácil de escribir. Se pueden poner claves para cada componente (consulta la documentación).
 
 Las líneas 10 y 11 simplemente obtienen los datos de conexión del array leído del archivo `config.yml`.
 

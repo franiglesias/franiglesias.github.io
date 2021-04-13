@@ -12,7 +12,7 @@ Algo que resulta bastante confuso de los patrones, cuando estás empezando a est
 Es el caso del patrón Strategy, que recuerda mucho a otros patrones como Adapter. Pero hay diferencias.
 
 
-## El problema
+## El problema
 
 El problema que intentamos resolver usando Strategy es el siguiente:
 
@@ -57,7 +57,7 @@ class Client {
 ```
 
 
-## Solución con Strategy pattern
+## Solución con Strategy pattern
 
 El acercamiento con el patrón Strategy es bastante más elegante y extensible.
 
@@ -128,6 +128,6 @@ Class StrategyFactory
 ```
 
 
-## Diferencias con otros patrones
+## Diferencias con otros patrones
 
 El patrón Strategy puede sonar bastante parecido al patrón Adapter. La diferencia es que el patrón Adapter lo que busca es adaptar la funcionalidad de una clase a una interfaz deseada. Strategy, por su parte, es una forma de dar control a los consumidores sobre el comportamiento concreto que utiliza un servicio.

@@ -18,7 +18,7 @@ La serie **Historia de una reescritura** está compuesta de los siguientes artí
 
 Cuando eres desarrollador autodidacta y el único miembro de un equipo de desarrollo que se encarga de preparar y gestionar servidores, programar el backend, optimizar el acceso a la base de datos, preparar el diseño gráfico y construir las páginas y plantillas, aprendes mucho, a veces de la manera dura, y a veces de la manera retorcida.
 
-La manera dura es cuando, por ejemplo,  tu aplicación se cae porque el servidor de base de datos no puede atender sus peticiones y tienes que reconstruir todas las queries para reducir la cantidad de datos recuperados o para evitar aquellas que sean innecesarias, cachear los resultados y redefinir los índices para optimizar el tiempo y la cantidad de datos que se transfieren.
+La manera dura es cuando, por ejemplo, tu aplicación se cae porque el servidor de base de datos no puede atender sus peticiones y tienes que reconstruir todas las queries para reducir la cantidad de datos recuperados o para evitar aquellas que sean innecesarias, cachear los resultados y redefinir los índices para optimizar el tiempo y la cantidad de datos que se transfieren.
 
 La manera retorcida es cuando experimentas técnicas o conceptos y estos te llevan a callejones sin salida o incluso a reventar la aplicación y te obligan a volver atrás y empezar de nuevo.
 
@@ -28,7 +28,7 @@ Mi aplicación empezó siendo un sistema de gestión de incidencias (un issue tr
 
 La primera aplicación fue bastante bien, aunque yo trabajaba muy a ciegas y sin mucha sistemática.
 
-Con el tiempo se pidieron nuevas prestaciones (un gestor de cartas circulares bilíngüe, el gestor de contenidos, gestión del comedor escolar, admisiones de nuevos alumnos, bolsa de trabajo y otros) y la aplicación fue creciendo. Esta vez, sobre el framework CakePHP 1.x.
+Con el tiempo se pidieron nuevas prestaciones (un gestor de cartas circulares bilingüe, el gestor de contenidos, gestión del comedor escolar, admisiones de nuevos alumnos, bolsa de trabajo y otros) y la aplicación fue creciendo. Esta vez, sobre el framework CakePHP 1.x.
 
 Hoy diría que este proceso fue muy orgánico, como forma cool de decir que fue bastante desorganizado. Yo iba aprendiendo a base de escribir y, además, teniendo que ocuparme de otras tareas.
 
@@ -48,7 +48,7 @@ También empecé a utilizar Git y, poco a poco, voy creando proyectos específic
 
 Objetivamente esto puede ser demasiado para la aplicación que tengo entre manos (o no), pero también me di cuenta de que sería la única forma de, por un lado, mejorarla significativamente y, por otro, convertirme en un programador mejor y con más posibilidades de encontrar un nuevo trabajo.
 
-Así que, en un momento dado, decidí que, definitivamente,  tenía que replantear la aplicación, pero no sabía muy bien por dónde empezar.
+Así que, en un momento dado, decidí que, definitivamente, tenía que replantear la aplicación, pero no sabía muy bien por dónde empezar.
 
 Por un lado, inicié un proyecto para reescribir el dominio y explorar ideas en ese sentido. Esto es lo que estoy haciendo en [milhojas](https://github.com/franiglesias/milhojas).
 

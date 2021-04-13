@@ -16,11 +16,11 @@ La serie **Historia de una reescritura** está compuesta de los siguientes artí
 [Historia de una reescritura (5): Tests](/historia-de-una-reescritura-5-tests)  
 [Historia de una reescritura (6): Autoload sin namespaces](/historia-de-una-reescritura-6-autoload-sin-namespaces)
 
-Hay decisiones que tienen sentido tomadas en perspectiva. Por ejemplo, basarse en un framework MVC como CakePHP 1.* era muy razonable en su momento, debido a su orientación práctica, las limitaciones inherentes a la versión 4 de PHP, el boom que estaban experimentando los frameworks MVC (Symfony, CodeIgniter, el componente MVC de Zend, etc) o la proyección aparente que iba a tener el proyecto.
+Hay decisiones que tienen sentido tomadas en perspectiva. Por ejemplo, basarse en un framework MVC como CakePHP 1.* era muy razonable en su momento, debido a su orientación práctica, las limitaciones inherentes a la versión 4 de PHP, el boom que estaban experimentando los frameworks MVC (Symfony, CodeIgniter, el componente MVC de Zend, etc.) o la proyección aparente que iba a tener el proyecto.
 
-Sin embargo, un par de años después la comunidad alrededor de CakePHP se rompió en dos  y el futuro del proyecto se mantuvo dudoso un tiempo. Pero eso no se podría predecir salvo que tuvieses mucha experiencia en ese campo.
+Sin embargo, un par de años después la comunidad alrededor de CakePHP se rompió en dos y el futuro del proyecto se mantuvo dudoso un tiempo. Pero eso no se podría predecir salvo que tuvieses mucha experiencia en ese campo.
 
-Otras decisiones son mucho más difíciles de explicar. Malas decisiones en cuestiones como la organización de código, diseño, etc, derivan de la falta de experiencia y de fundamentos teóricos. Mi código comenzó a cambiar cuando aprendí sobre los patrones de diseño de software, y sobre una verdadera separación de responsabilidades más allá del MVC, pero hasta entonces había algunas cosas buenas a las que había llegado por intuición junto a otras bastante lamentables.
+Otras decisiones son mucho más difíciles de explicar. Malas decisiones en cuestiones como la organización de código, diseño, etc., derivan de la falta de experiencia y de fundamentos teóricos. Mi código comenzó a cambiar cuando aprendí sobre los patrones de diseño de software, y sobre una verdadera separación de responsabilidades más allá del MVC, pero hasta entonces había algunas cosas buenas a las que había llegado por intuición junto a otras bastante lamentables.
 
 Una de las lamentables fue la organización del código de las vistas.
 
@@ -44,9 +44,9 @@ Por hacer corta, una historia larga, yo mismo provoqué varios problemas con los
 
 Las vistas de mi aplicación empezaron a comportarse como una especie de enfermedad creciendo sin control y ocupándose de cosas que no debían. No podía comenzar la reescritura de la aplicación sin tomar medidas sobre eso y, finalmente, pensé que podría ser buena idea cambiar la tecnología subyacente. Era hora de recurrir a Twig.
 
-Twig es el lenguaje de plantillas de SensioLabs y el recomendado para Symfony. Al principio pensé que iba a ser un mundo integrarlo en un proyecto antiguo de CakePHP pero resultó que no.
+Twig es el lenguaje de plantillas de SensioLabs y el recomendado para Symfony. Al principio pensé que iba a ser un mundo integrarlo en un proyecto antiguo de CakePHP, pero resultó que no.
 
-Después de intentarlo con un [plugin al efecto que no conseguí hacer funcionar](https://github.com/yappabe/cakephp-twig-view), la forma de integrarlo no sólo fue sencilla, sino que no interfería apenas en el funcionamiento general de la aplicación, es más, con un mínimo de cuidado en realidad no se rompe nada.
+Después de intentarlo con un [plugin al efecto que no conseguí hacer funcionar](https://github.com/yappabe/cakephp-twig-view), la forma de integrarlo no solo fue sencilla, sino que no interfería apenas en el funcionamiento general de la aplicación, es más, con un mínimo de cuidado en realidad no se rompe nada.
 
 ## Manos a la obra
 
@@ -90,17 +90,14 @@ Veamos cómo he ido sustituyendo los diferentes tipos de componentes del sistema
         * Estructuras genéricas complejas en HTML. Por ejemplo, para montar los típicos widget de columna lateral que tienen un título y un contenido. En Symfony hay muchos ejemplos de ello.
         * Estructuras que pueden escogerse en tiempo de ejecución en función de preferencias o algún tipo de test. Por ejemplo, la parte de gestión de contenidos permite que el sistema elija cabeceras con imagen o sin ella, entre diversos tipos de listas de artículos o incluso en la forma de presentar las fotografías por artículo. En algunos de estos casos, un archivo de macros con las diversas variantes, permite tener el material más organizado y hacerlo más coherente.
 	* Y, por último, hay helpers que pueden resolverse mediante filtros y funciones de twig, ya sean de las incorporadas, ya sea creando las nuestras propias. Por ejemplo, en mi caso, he adaptado un helper para hacer diversos chequeos en el cuerpo de los artículos de modo que pueda detectar enlaces a youtube o extraer una entradilla del texto.
-
-
-
-
+	
 ## El caso RequestAction
 
-Muchas clases CakePHP tienen un método requestAction que nos sirve para llamar a un controlador desde cualquier punto del código. Este método tuvo cierta polémica en su momento porque se consideraba que penalizaba mucho el rendimiento, aunque posteriormente hubo benchmarkings que prácticamente decían lo contrario si se usaba una buena estrategia de cache, incluida con el propio framework.
+Muchas clases CakePHP tienen un método requestAction que nos sirve para llamar a un controlador desde cualquier punto del código. Este método tuvo cierta polémica en su momento porque se consideraba que penalizaba mucho el rendimiento, aunque posteriormente hubo _benchmarkings_ que prácticamente decían lo contrario si se usaba una buena estrategia de _cache_, incluida con el propio framework.
 
 Sin embargo, con requestAction era muy fácil construir módulos especializados con los que construir páginas complejas.
 
-La solución que he encontrado para reemplazar requestAction en twig es muy simple: AJAX. Usando jQuery, un simple $().load(url) me basta para recargar un módulo. Por ejemplo:
+La solución que he encontrado para reemplazar `requestAction` en twig es muy simple: AJAX. Usando jQuery, un simple `$().load(url)` me basta para recargar un módulo. Por ejemplo:
 
 ```javascript
 $('#mh-main-header').load('/uploads/image_collections/collection/home');
@@ -108,7 +105,7 @@ $('#mh-main-header').load('/uploads/image_collections/collection/home');
 
 El código del controlador tiene que recibir algunos cambios para gestionar la nueva forma de ser llamado que debe generar una plantilla twig.
 
-Esto no sólo funciona muy bien, sino que abre la puerta a un nuevo estilo de módulos que podrían actualizarse dinámicamente, aunque eso quedará para una fase más adelante.
+Esto no solo funciona muy bien, sino que abre la puerta a un nuevo estilo de módulos que podrían actualizarse dinámicamente, aunque eso quedará para una fase más adelante.
 
 ## Beneficios obtenidos
 
@@ -118,16 +115,16 @@ El primero y más importante es que cada nueva plantilla convertida es un paso e
 
 Por otro lado, aunque aún es pronto para asegurarlo con certeza, el rendimiento parece haber mejorado de manera significativa.
 
-Finalmente, la reunificación del código relacionado con la vista en un sólo punto permite un mejor modularización del proyecto en el ámbito del desarrollo. La gestión de assets, css y javascript también se ha centralizado en otro punto y automatizado usando Gulp. Estamos utilizando como base el framework Foundation 6 y las hojas de estilos las escribimos en SASS. Nuestro [gulpfile](https://github.com/franiglesias/mh13/blob/master/frontend/gulpfile.js) se encarga de mantener al día todo lo necesario.
+Finalmente, la reunificación del código relacionado con la vista en un solo punto permite un mejor modularización del proyecto en el ámbito del desarrollo. La gestión de assets, css y javascript también se ha centralizado en otro punto y automatizado usando Gulp. Estamos utilizando como base el framework Foundation 6 y las hojas de estilos las escribimos en SASS. Nuestro [gulpfile](https://github.com/franiglesias/mh13/blob/master/frontend/gulpfile.js) se encarga de mantener al día todo lo necesario.
 
 ## Próximos pasos
 
 En realidad, el trabajo no ha hecho más que empezar.
 
-El proceso de reescritura de la vista tiene varias fases. En un primera, la idea es convertir todo el código a Twig, afinando lo más posible.
+El proceso de reescritura de la vista tiene varias fases. En una primera, la idea es convertir todo el código a Twig, afinando lo más posible.
 
-Sin embargo, al menos habrá una segunda pasada a medida que vaya viendo qué elementos pueden necesitar una re-elaboración. Por ejemplo, dónde viene mejor usar macros, dónde plantillas para incluir, qué layouts son prescindibles, etc.
+Sin embargo, al menos habrá una segunda pasada a medida que vaya viendo qué elementos pueden necesitar una reelaboración. Por ejemplo, dónde viene mejor usar macros, dónde plantillas para incluir, qué layouts son prescindibles, etc.
 
-Entremedias, una vez que el código de vistas deje de depender de otros componentes del proyecto, eliminaré éstos y pasaré a centrarme en la evolución del código hacia una arquitectura limpia.
+Entremedias, una vez que el código de vistas deje de depender de otros componentes del proyecto, eliminaré estos y pasaré a centrarme en la evolución del código hacia una arquitectura limpia.
 
 Pero de eso hablaré en otro capítulo. Antes, me gustaría hablar del código tóxico.

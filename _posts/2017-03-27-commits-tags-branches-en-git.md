@@ -9,11 +9,11 @@ Trabajar de forma individual hace que, a veces, descuides aspectos del flujo de 
 
 Hasta hace un tiempo llevaba la gestión de versiones con SVN, pero al empezar a desarrollar el proyecto [milhojas](https://github.com/franiglesias/milhojas), decidí hacerlo con Git, que al fin y al cabo se ha convertido prácticamente en el estándar.
 
-La forma en que Git gestiona los proyectos es bastante diferente al modo en que trabaja SVN. Mientras que éste último se centra en los cambios, Git guarda "instantáneas" del repositorio en cada momento. Esto se traduce en una gestión más fácil de las versiones y de las ramificaciones, procesos que en SVN eran muy incómodos y confusos.
+La forma en que Git gestiona los proyectos es bastante diferente al modo en que trabaja SVN. Mientras que este último se centra en los cambios, Git guarda "instantáneas" del repositorio en cada momento. Esto se traduce en una gestión más fácil de las versiones y de las ramificaciones, procesos que en SVN eran muy incómodos y confusos.
 
 ## Commits
 
-Cada conjunto de cambios que envías es un Commit. Como tal, un commit es un pequeño hito que tendrá distinta significación en cada caso. A veces sólo será una corrección de "coding style", otras una característica completa, otras el añadido de un test o una corrección de un error.
+Cada conjunto de cambios que envías es un Commit. Como tal, un commit es un pequeño hito que tendrá distinta significación en cada caso. A veces solo será una corrección de "coding style", otras una característica completa, otras el añadido de un test o una corrección de un error.
 
 Cada vez que envías un cambio al repositorio de Git se genera una instantánea del estado actual del repositorio. O si lo quieres expresar de otra forma, un commit genera una nueva versión. Sin embargo, esta nueva versión puede carecer de un significado particular o interesante para el proyecto de cara al cliente o usuario.
 
@@ -48,7 +48,7 @@ En versiones semánticas el número de versión tiene tres partes, representadas
 
 La ramificación es un proceso diferente al etiquetado.
 
-Puesto que tenemos un tronco básico puede ser bastante arriesgado o complicado intentar introducir algún elemento nuevo o experimentar una solución y después de un tiempo tener que deshacerlo ya que, mientras tanto, tal vez hayamos trabajado en otras partes del proyecto corrigiendo errores o haciendo ajustes.
+Puesto que tenemos un tronco básico puede ser bastante arriesgado o complicado intentar introducir algún elemento nuevo o experimentar una solución y después de un tiempo tener que deshacerlo, ya que, mientras tanto, tal vez hayamos trabajado en otras partes del proyecto corrigiendo errores o haciendo ajustes.
 
 Al intentar revertir los cambios de alguna modificación que nos haya resultado infructuosa estaríamos también revirtiendo otros cambios que desearíamos mantener.
 
@@ -68,6 +68,6 @@ Para cada solución de error o para cada nueva característica se podría crear 
 
 De este modo, el master se mantiene limpio y en caso de que alguna de las ramas nos lleve a un camino indeseado simplemente se puede eliminar o revertir en su propio camino, sin afectar a otros objetivos.
 
-La idea de los Pull Request es que haya un responsable de revisarlos y aceptarlos, para garantizar que las propuestas de cambios no generen problemas en otras partes. Puede ser difícil, según el proyecto, trabajar en ramas completamente aisladas. Por ejemplo, podría se que trabajases en una nueva característica pero, al mismo tiempo, hubiese alguien corrigiendo algún error en los mismos archivos, pero en otra rama o en el master.
+La idea de los Pull Request es que haya un responsable de revisarlos y aceptarlos, para garantizar que las propuestas de cambios no generen problemas en otras partes. Puede ser difícil, según el proyecto, trabajar en ramas completamente aisladas. Por ejemplo, podría ser que trabajases en una nueva característica, pero, al mismo tiempo, hubiese alguien corrigiendo algún error en los mismos archivos, pero en otra rama o en el master.
 
  

@@ -13,7 +13,7 @@ Diría que su popularidad es debida tanto a su inclusión en libros como *Clean 
 
 Con todo, yo echo de menos entre ellos el Principio de Mínimo Conocimiento, o Ley de Demeter. Pero de eso podremos hablar después.
 
-## Principio de única responsabilidad (Single Responsibility Principle, SRP)
+## Principio de única responsabilidad (Single Responsibility Principle, SRP)
 
 Este principio dice que las clases deberían tener una única razón para cambiar.
 
@@ -23,7 +23,7 @@ El SRP alude a las razones para cambiar el comportamiento de una clase o unidad 
 
 El SRP tiene más que ver con los propósitos del software que con sus aspectos técnicos. No se trata de las tareas discretas que conlleva cualquier función significativa para el dominio, lo que nos podría llevar a diseños muy atomizados con una gran complejidad al tratar de aislar cada una de esas operaciones en una unidad de software.
 
-## Principio abierto/cerrado (Open Close Principle, OCP)
+## Principio abierto/cerrado (Open Close Principle, OCP)
 
 Este principio dice que una clase debe estar cerrada para modificación y abierta para extensión. Fue enunciado por Bertrand Meyer.
 
@@ -35,7 +35,7 @@ En lugar de eso, usaríamos mecanismos de extensión, como la herencia o la comp
 
 Cuando creamos nuevas clases es importante tener en cuenta este principio para facilitar su extensión en un futuro.
 
-## Principio de sustitución de Liskov (Liskov Substitution Principle, LSP)
+## Principio de sustitución de Liskov (Liskov Substitution Principle, LSP)
 
 En una jerarquía de clases, las clases base y las subclases deben poder intercambiarse sin tener que alterar el código que las utiliza. El enunciado original es de Barbara Liskov.
 
@@ -45,7 +45,7 @@ El reverso de este principio es que no debemos extender clases mediante herencia
 
 Otro de sus corolarios es que una clase que extienda de otra no puede modificar la interfaz pública respecto de su clase base añadiendo nuevos métodos. Eso es lo que provocará la violación del principio. Si tenemos la necesidad de hacerlo así, es muy posible que estemos necesitando una nueva familia de clases. De hecho, eso nos lleva al siguiente principio: el de Segregación de Interfaces.
 
-## Principio de segregación de interfaces (Interface Segregation Principle, ISP)
+## Principio de segregación de interfaces (Interface Segregation Principle, ISP)
 
 El principio de segregación de interfaces puede definirse diciendo que una clase no debería verse obligada a depender de métodos o propiedades que no necesita. Expresado de otra forma: una interfaz sólo debería tener los métodos que sus consumidores necesitan, y ni uno más. 
 
@@ -53,7 +53,7 @@ Supongamos que tenemos una clase con ocho métodos públicos y algunos consumido
 
 Si la clase de la que hablamos sirve a otros consumidores que utilizan otros métodos, podrían definirse nuevas interfaces. La ganancia aquí es que los consumidores sólo dependen de aquellos métodos que usan, lo que nos permitirá cambiar esa dependencia con más facilidad cuando sea necesario.
 
-## Principio de inversión de dependencia (Dependency Inversion Principle, DIP)
+## Principio de inversión de dependencia (Dependency Inversion Principle, DIP)
 
 El principio de inversión de dependencia dice:
 

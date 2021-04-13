@@ -26,12 +26,12 @@ Aquí el ejemplo del que estoy usando:
 
 {% gist f73fc32a4207e0bd6eaa1c68184700fa %}
 
-En el caso de CakePHP hay que tener cuidado ya que el framework incluye unas cuantas clases fallback, con lo cual hay un buen número de ellas que se definen en varios archivos, uno de los cuales es tu versión y los otros son o bien plantillas o bien fallbacks, lo que provoca que Composer encuentre varios duplicados. Un ejemplo es AppController.
+En el caso de CakePHP hay que tener cuidado, ya que el framework incluye unas cuantas clases fallback, con lo cual hay un buen número de ellas que se definen en varios archivos, uno de los cuales es tu versión y los otros son o bien plantillas o bien fallbacks, lo que provoca que Composer encuentre varios duplicados. Un ejemplo es AppController.
 
 Como solución, Composer añade al mapa de las clases una de las clases que encuentra, por lo que bien podría pasar que seleccione justo alguna de las que no te interesa, lo que lleva a resultados más que inesperados.
 
 La solución es tan sencilla como añadir a la clave 'exclude-from-classmap' las clases o rutas que necesites excluir.
 
-A partir de ahí tendremos autoload para las clases en el espacio global. Si tenemos que compatibilizar con clases con namespace, no tenemos más que usar el FQCN global, o sea: <code>\MiClase</code>
+A partir de ahí tendremos autoload para las clases en el espacio global. Si tenemos que compatibilizar con clases con namespace, no tenemos más que usar el _FQCN_ global, o sea: `\MiClase`
 
  

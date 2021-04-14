@@ -37,7 +37,7 @@ La tercera trampa es la esperanza de que las cosas puedan ser distintas. En mi c
 
 Otra cuestión es, si tan incómodo eres para la empresa, ¿por qué no te echa? Y aquí hay, de nuevo, dos hipótesis:
 
-La primera es que sigues siendo útil. Puede que te maltraten, pero te necesitan (si estuviese solo en manos de los que "viven bien" en la organización, ésta no duraría ni un ejercicio fiscal más). Si eres una persona responsable que rindes cuentas ante tí misma, intentas seguir haciendo bien tu trabajo ante todo.
+La primera es que sigues siendo útil. Puede que te maltraten, pero te necesitan (si estuviese solo en manos de los que "viven bien" en la organización, esta no duraría ni un ejercicio fiscal más). Si eres una persona responsable que rindes cuentas ante tí misma, intentas seguir haciendo bien tu trabajo ante todo.
 
 La segunda es que echarte es un problema, porque a partir de cierto punto puede salirle muy caro a la empresa (económicamente) y ante el riesgo de que levantes la alfombra y se vea la porquería acumulada debajo. Por eso, prefieren que te vayas, aunque sea por los pies por delante.
 
@@ -47,7 +47,7 @@ La segunda es que echarte es un problema, porque a partir de cierto punto puede 
 
 Una de las pistas más evidentes es que en último término el objetivo de la estructura organizativa es decirte lo que tienes que hacer hasta en los más mínimos detalles. Me explico:
 
-Por supuesto trabajas en una empresa para hacer lo que la empresa quiere, pero tu aportación depende de tu formación, conocimientos y experiencia. La empresa tiene unos objetivos pero tu contribución se basa justamente en ese bagaje. Cuando el CEO dice que la empresa necesita una herramienta para gestionar el almacén, por poner un ejemplo, no tiene que decirte si debes estructurar el código de tal o cual manera o qué tecnología de bases de datos utilizar, etc. El CEO lo que te tiene que pedir es que tomes las mejores decisiones para construirla con los recursos de los que puedes disponer.
+Por supuesto trabajas en una empresa para hacer lo que la empresa quiere, pero tu aportación depende de tu formación, conocimientos y experiencia. La empresa tiene unos objetivos, pero tu contribución se basa justamente en ese bagaje. Cuando el CEO dice que la empresa necesita una herramienta para gestionar el almacén, por poner un ejemplo, no tiene que decirte si debes estructurar el código de tal o cual manera o qué tecnología de bases de datos utilizar, etc. El CEO lo que te tiene que pedir es que tomes las mejores decisiones para construirla con los recursos de los que puedes disponer.
 
 También señalaría como pista el hecho de que la estructura organizativa está orientada a la transmisión de órdenes e información en una sola dirección. Vale: hay organizaciones que para funcionar necesitan justamente esto. Pero la mayoría necesitan que exista un circuito de feedback. En estas organizaciones tóxicas la información de feedback nunca "sube", porque los niveles intermedios están para neutralizarlo. Por otra parte, estos mismos niveles intermedios están cuidadosamente seleccionados para retransmitir instrucciones y pautas de manera completamente acrítica, no para cuidar de que puedas hacer el mejor trabajo posible.
 
@@ -61,11 +61,11 @@ La endogamia es otra señal preocupante. La empresa no busca la diversidad de pr
 
 ## Vista atrás
 
-Trabajar en una empresa tóxica tuvo un coste muy alto para mi y para las personas que me rodeaban y rodean. Por suerte, hubo un momento en que fue posible juntar todas las piezas necesarias para dar el salto a otro lugar (y menudo salto, si lo piensas bien).
+Trabajar en una empresa tóxica tuvo un coste muy alto para mí y para las personas que me rodeaban y rodean. Por suerte, hubo un momento en que fue posible juntar todas las piezas necesarias para dar el salto a otro lugar (y menudo salto, si lo piensas bien).
 
 Visto en retrospectiva es lógico reprocharse que tenía que haberlo visto venir antes, que podía haber tomado otras decisiones. Ahora es fácil decirlo.
 
-La lección es que hay que estar alerta. Sea cual sea la posición en la que te encuentres dentro de una empresa lucha contra las señales que indican la presencia del veneno y, si las percibes, procura tener una plan B, y hasta un plan C, por si algún día te hace falta.
+La lección es que hay que estar alerta. Sea cual sea la posición en la que te encuentres dentro de una empresa lucha contra las señales que indican la presencia del veneno y, si las percibes, procura tener un plan B, y hasta un plan C, por si algún día te hace falta.
 
 
 

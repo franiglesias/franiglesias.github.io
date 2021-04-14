@@ -47,7 +47,7 @@ git commit --amend -m "Nuevo mensaje"
 El problema viene cuando pasan otros dos o tres commits, o más, y te das cuenta de que tienes uno o varios problemas:
 
 * Un cambio en el que estás trabajando debería estar en un commit anterior que, por supuesto, no es el último.
-* Has hecho varios commits que podrían agruparse en uno solo. De hecho, podría ser que todos tus commits pudiesen empaquetarse en un único commit para ese pull request.
+* Has hecho varios commits que podrían agruparse en uno solo. De hecho, podría ser que todos tus commits pudiesen empaquetarse en un único commit para ese _pull request_.
 
 Para eso está `rebase` interactivo, la herramienta que te permite manipular tus commits a placer.
 

@@ -102,11 +102,11 @@ En este caso vamos a aplicar dos de las reglas:
 * Envolver primitivas en objetos
 * Sólo dos variables de instancia
 
-– A ver, es que la primera me suena hasta razonable, pero… ¿dos variables de instancia? Estamos hablando de quince campos para especificar una dirección… ¿y quieres que use solo dos variables de instancia?
+– A ver, es que la primera me suena hasta razonable, pero… ¿Dos variables de instancia? Estamos hablando de quince campos para especificar una dirección… ¿Y quieres que use solo dos variables de instancia?
 
 – Exactamente. Pero deja que me explique…
 
-La primera regla, a poco que la pienses, tiene que ver con los *Value Objects*. Podemos representar valores usando tipos escalares (`string`, `int`, `float`, etc) y aunque es una práctica habitual tiene sus problemas. Los tipos escalares solo nos imponen algunas restricciones muy generales sobre los datos aceptables.
+La primera regla, a poco que la pienses, tiene que ver con los *Value Objects*. Podemos representar valores usando tipos escalares (`string`, `int`, `float`, etc.) y aunque es una práctica habitual tiene sus problemas. Los tipos escalares solo nos imponen algunas restricciones muy generales sobre los datos aceptables.
 
 Pongamos por caso, el código postal. En España, el código postal es un número de cinco dígitos, lo que nos sugiere representarlo con un `int`. Pero, en realidad, normalmente es mejor representarlo con un tipo `string` porque aunque tiene forma numérica, no es un número.
 
@@ -116,7 +116,7 @@ Una razón es que puede empezar con un 0 y esto nos daría problemas para manten
 * Tiene 5 caracteres
 * Todos son numéricos
 * Los dos primeros (empezando por la izquierda) representan un número entre 00 y 52.
-* Los tres restantes, representan un número que va de 000 a un límite distinto según la provincia.
+* Los tres restantes representan un número que va de 000 a un límite distinto según la provincia.
 
 Ningún tipo escalar nos permite cumplir todas estas restricciones, por lo que es buena idea crear un *Value Object* `PostalCode` que nos permita validar el código conforme a estas reglas y así asegurarnos que solo podemos crear códigos postales válidos o, al menos, reducir al mínimo la posibilidad de introducirlos no válidos.
 
@@ -124,11 +124,11 @@ En otros casos ocurre que un concepto se representa con varios campos de informa
 
 – Pero habías hablado de dos variables de instancia, ¿cómo se come eso con un Value Object que necesitará tres?
 
-La segunda regla dice que no usemos más de dos variables de instancia. Dos es un número totalmente arbitrario y, de hecho, es posible que no siempre podamos llegar a ese objetivo de una manera razonable o sostenible. La regla sería: minimizar la cantidad de variables de instancia, pero forzar un límete arbitrario nos obliga a no conformarnos y tratar de llegar al objetivo si es posible y tiene sentido. Recuerda: **Calistenia es un ejercicio** con el que automatizar una forma de escribir nuestro código.
+La segunda regla dice que no usemos más de dos variables de instancia. Dos es un número totalmente arbitrario y, de hecho, es posible que no siempre podamos llegar a ese objetivo de una manera razonable o sostenible. La regla sería: minimizar la cantidad de variables de instancia, pero forzar un límite arbitrario nos obliga a no conformarnos y tratar de llegar al objetivo si es posible y tiene sentido. Recuerda: **Calistenia es un ejercicio** con el que automatizar una forma de escribir nuestro código.
 
 Esto nos lleva de nuevo al recurso de los *Value Objects*. Como hemos visto hace un momento, algunos conceptos están representados con varios campos que siempre van juntos. Constituyen una unidad que se representa encapsulándolos en un único objeto.
 
-En nuestro caso, tenemos 30 campos que modelan la dirección de envía y la dirección de facturación, así que empecemos a agruparlos:
+En nuestro caso, tenemos 30 campos que modelan la dirección de envío y la dirección de facturación, así que empecemos a agruparlos:
 
 ```
 Dirección de envío
@@ -254,7 +254,7 @@ Dirección de facturación
         Provincia
 ```
 
-Y, otra vez, hemos conseguido reducir a dos variables de instancia. Pero hay algo más, hemos conseguido una nueva regularidad ya que Nombre de Persona es un tipo de Value Object que podemos usar exactamente igual en ambos lados.
+Y, otra vez, hemos conseguido reducir a dos variables de instancia. Pero hay algo más, hemos conseguido una nueva regularidad, ya que Nombre de Persona es un tipo de Value Object que podemos usar exactamente igual en ambos lados.
 
 Vamos a forzar un poco aquí. El nombre de una persona puede estar formado por dos campos: nombre de pila y apellidos, de modo que podemos encapsular estos en un nuevo tipo de objeto Apellidos. Normalmente nos puede interesar tener campos separados para los dos apellidos debido a la existencia de apellidos compuestos y no siempre quedaría claro cuál es el punto de corte si viniesen en un único campo.
 

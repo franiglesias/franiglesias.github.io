@@ -7,7 +7,7 @@ tags: good-practices refactoring
 
 En este artículo presentamos un ejercicio que puede servir para adquirir soltura a la hora de escribir clases más compactas con métodos más expresivos y sencillos de entender.
 
-Los ejercicios de [Object Calisthenics](https://williamdurand.fr/2013/06/03/object-calisthenics/) nos pueden ayudar a automatizar prácticas que nos permiten acercarnos a los mejores principios de diseño. En cierto modo consiste en aprender a detectar ciertos patrones erróneos en el código y transformar éste de modo que avanzamos en el objetivo de mejorar la calidad del código.
+Los ejercicios de [Object Calisthenics](https://williamdurand.fr/2013/06/03/object-calisthenics/) nos pueden ayudar a automatizar prácticas que nos permiten acercarnos a los mejores principios de diseño. En cierto modo consiste en aprender a detectar ciertos patrones erróneos en el código y transformar este de modo que avanzamos en el objetivo de mejorar la calidad del código.
 
 La idea de estos ejercicios es imponer unas restricciones artificiales para forzar respuestas que nos obliguen a pensar más allá de las soluciones convencionales.
 
@@ -59,7 +59,7 @@ En esencia, esto nos obliga a considerar lo que hace cada bloque de código y ex
 
 ### No usar `else`
 
-La estructura `if/then/else` puede resultar confusa por varios motivos. Uno de ellos es precisamene el uso innecesario de `else`, particularmente cuando la pata `then` implica una salida del bucle o del método principal.
+La estructura `if/then/else` puede resultar confusa por varios motivos. Uno de ellos es precisamente el uso innecesario de `else`, particularmente cuando la pata `then` implica una salida del bucle o del método principal.
 
 ```php
 if (!$current->getRight()) {
@@ -75,7 +75,7 @@ He introducido esta restricción porque está bastante relacionada con la anteri
 
 En el artículo citado al principio se habla de entidades, pero pensándolo mejor, he preferido poner unidades a fin de referirme tanto a clases como a métodos. En último término se trata de que cada unidad, sea cual sea la resolución que estemos manejando, sea lo más pequeña y manejable posible.
 
-Este lleva a una cierta contradicción. Por ejemplo, una clase puede ocupar menos líneas con un único método grande que si dividimos éste en varios más pequeños en base a principios como reducir los niveles de indentación. Obviamente se trata de decisiones que conllevan compromisos. El equilibrio está en mantener la legibilidad e inteligibilidad de la clase y sus métodos.
+Este lleva a una cierta contradicción. Por ejemplo, una clase puede ocupar menos líneas con un único método grande que si dividimos este en varios más pequeños basándonos en principios como reducir los niveles de indentación. Obviamente se trata de decisiones que conllevan compromisos. El equilibrio está en mantener la legibilidad e inteligibilidad de la clase y sus métodos.
 
 ## Ejercicios
 
@@ -172,7 +172,7 @@ class BubbleSort
 
 El test pasa, así que no hemos roto nada. Podemos ver algunos detalles mejorables en esta extracción:
 
-* El parámetro `$length` es innecesario porque ya que lo podemos obtener fácilmente de `$source`, así que lo omitiremos.
+* El parámetro `$length` es innecesario, ya que lo podemos obtener fácilmente de `$source`, así que lo omitiremos.
 * Podríamos haber utilizado una estructura `foreach` en lugar de `for`.
 * Cabe la posibilidad de pasar el elemento del array en vez de su índice.
 
@@ -210,7 +210,7 @@ class BubbleSort
 }
 ```
 
-De momento, pasar el elemento y no el índice no parece viable, pero hemos conseguido algunas mejoras ya que ahora no necesitamos calcular explícitamente la longitud de `$source`, lo que significa una línea menos y somos más explícitos en representar la idea de que recorremos el array. Seguimos manteniendo un único nivel de indentación que, además, solo tiene una línea.
+De momento, pasar el elemento y no el índice no parece viable, pero hemos conseguido algunas mejoras, ya que ahora no necesitamos calcular explícitamente la longitud de `$source`, lo que significa una línea menos y somos más explícitos en representar la idea de que recorremos el array. Seguimos manteniendo un único nivel de indentación que, además, solo tiene una línea.
 
 Ahora tenemos **dos niveles de indentación** dentro del método `compareEveryElementWithCurrent`, así que vamos a tratarlos de la misma manera: extrayendo a un método.
 
@@ -255,7 +255,7 @@ class BubbleSort
 
 Bien, hay un par de cosas interesantes por aquí:
 
-* Sólo tenemos un nivel de indentación en cada nivel.
+* Solo tenemos un nivel de indentación en cada método o nivel de abstracción.
 * En el nombre del método hacemos una referencia a un *current element*, así que estaría bien expresarla en código cambiando el nombre la variable `$i` a `$currentIndex` o similar, de forma que sea explícita la referencia.
 * Podríamos aplicar el mismo tratamiento de convertir el `for` en `foreach` y ahorrarnos la variable `$length`.
 
@@ -306,7 +306,7 @@ Hay un par de cosas que también merece la pena señalar:
 * Vamos pasando el array `$source` de método en método para procesarlo y devolverlo. Nos surge la pregunta de si podría pasarse por referencia, para evitar los retornos y mantener los cambios o incluso guardarlo en la clase como propiedad y operar sobre ella. Respecto a esta última opción diría que no, ya que el algoritmo encapsulado en la clase no tiene por qué tener estado, y guardar el array sería otorgarle uno. Sobre lo de pasar el array por referencia, es una opción que dejaría el código un poco más conciso, pero tal vez tengamos otras maneras de hacerlo así que no lo vamos a aplicar por ahora.
 * Por otro lado, en el método `swapElementsIfCurrentIsLower` nos queda un bloque de tres líneas que bien podría merecer ser extraído a su propio método para explicitar su intención.
 
-De paso, extendemos el cambio de nombre de `$i` a todos sus usos para que queda más claro en todo momento:
+De paso, extendemos el cambio de nombre de `$i` a todos sus usos para que quede más claro en todo momento:
 
 ```php
 <?php
@@ -680,7 +680,7 @@ public function insert($value): void
 }
 ```
 
-El método `insertNew` añade nodos bajo un nodo determinado. En un árbol binario como éste, cada nodo puede tener dos hijos (y así recursivamente), de tal modo que el nodo hijo de la izquierda contiene valores menores que el nodo padre, y el otro nodo contiene valores mayores. Si alguno de los nodos hijos ya existe, se le intenta añadir el nuevo nodo de forma recursiva, hasta que se encuentra una "rama" libre en la que colocarlo.
+El método `insertNew` añade nodos bajo un nodo determinado. En un árbol binario como este, cada nodo puede tener dos hijos (y así recursivamente), de tal modo que el nodo hijo de la izquierda contiene valores menores que el nodo padre, y el otro nodo contiene valores mayores. Si alguno de los nodos hijos ya existe, se le intenta añadir el nuevo nodo de forma recursiva, hasta que se encuentra una "rama" libre en la que colocarlo.
 
 Hablando de `insertNew`, alcanza los dos niveles de indentación y tiene dos `else`, ¿qué podemos hacer al respecto?
 
@@ -918,7 +918,7 @@ private function findParent(BinarySearchNode $current, $value): ?BinarySearchNod
 ```
 
 
-Los tests siguen pasando y el método está un poquito más aplanado. En este momento, parece buena idea deshacer parte de lo avanzado antes ya que si invierto algunas condicionales puedo reducir niveles de indentación sin extraer métodos:
+Los tests siguen pasando y el método está un poquito más aplanado. En este momento, parece buena idea deshacer parte de lo avanzado antes, ya que si invierto algunas condicionales puedo reducir niveles de indentación sin extraer métodos:
 
 ```php
 private function findParent(BinarySearchNode $current, $value): ?BinarySearchNode

@@ -11,7 +11,7 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 ## Fume
 
-Con motivo de este Blogtober me he enterado de que la palabra *Fume* en inglés es algo así como estar muy enfadado. Tiene gracia, porque en galego hay una expresión que es "estar botando fume" (estar echando humo), que viene a significar exactamente lo mismo.
+Con motivo de este _Blogtober_ me he enterado de que la palabra *Fume* en inglés es algo así como estar muy enfadado. Tiene gracia, porque en galego hay una expresión que es "estar botando fume" (estar echando humo), que viene a significar exactamente lo mismo.
 
 Estaba intentando pensar qué cosas me enfadan hasta el punto de ponerme a "echar humo" y no son muchas. Digamos que prefiero no llegar a ese punto. La parte mala es que cuando ocurre es bastante gordo.
 

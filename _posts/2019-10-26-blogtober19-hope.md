@@ -20,7 +20,7 @@ Históricamente hablando, el paradigma de programación orientada a objetos tien
 
 *Nota: Se podría hacer un blogtober solo hablando de todas las cosas importantes que tuvieron origen en este centro de investigación y que han dado forma a la informática que conocemos hoy.*
 
-Lo que interesa resaltar es que esta concepción se oponía, y se opone, a la visión que podríamos considerar más *matematicista* de la informática en la que la centralidad pertenece a las estructuras de datos, que en el caso de la OOP pone énfasis en el objetos y no tanto en su comunicación.
+Lo que interesa resaltar es que esta concepción se oponía, y se opone, a la visión que podríamos considerar más *matematicista* de la informática en la que la centralidad pertenece a las estructuras de datos, que en el caso de la OOP pone énfasis en los objetos y no tanto en su comunicación.
 
 Un programa, desde este punto de vista, es un pequeño universo de [objetos actores que son expertos en hacer ciertas cosas](https://ovid.github.io/articles/alan-kay-and-oo-programming.html) y con los que nos comunicamos, y se comunican entre sí, enviando mensajes.
 

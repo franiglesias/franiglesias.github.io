@@ -19,17 +19,17 @@ Al contrario, si una cosa llama la atención es la existencia de un espíritu de
 
 Pero volviendo a la cerveza…
 
-Hay un punto de polémica aquí. Se suele decir que el alcohol puede actuar como *lubricante* social, en parte por los efectos desinhibidores de una ingesta moderada, en parte por que estamos habituados a la comida y bebida como contexto para las relaciones sociales. Pero también puede tener efectos negativos.
+Hay un punto de polémica aquí. Se suele decir que el alcohol puede actuar como *lubricante* social, en parte por los efectos desinhibidores de una ingesta moderada, en parte porque estamos habituados a la comida y bebida como contexto para las relaciones sociales. Pero también puede tener efectos negativos.
 
-Uno de ellos es justamente que se produzca un efecto de exclusión porque hay muchas personas que por sus gustos, estilo de vida, salud, etc, no toman alcohol y [no siempre se les ofrecen buenas alternativas](https://alistapart.com/column/does-our-industry-have-a-drinking-problem/). Pensemos en lo que transmite un evento que incluye alguna referencia al alcohol en su nombre. [Aquí tienes unos consejos sobre el asunto si organizas eventos](https://modelviewculture.com/pieces/alcohol-and-inclusivity-planning-tech-events-with-non-alcoholic-options).
+Uno de ellos es justamente que se produzca un efecto de exclusión porque hay muchas personas que por sus gustos, estilo de vida, salud, etc., no toman alcohol y [no siempre se les ofrecen buenas alternativas](https://alistapart.com/column/does-our-industry-have-a-drinking-problem/). Pensemos en lo que transmite un evento que incluye alguna referencia al alcohol en su nombre. [Aquí tienes unos consejos sobre el asunto si organizas eventos](https://modelviewculture.com/pieces/alcohol-and-inclusivity-planning-tech-events-with-non-alcoholic-options).
 
 El efecto más grave es el abuso del alcohol y las situaciones que puede desencadenar asociadas a ello. En los últimos tiempos, las conferencias y eventos suelen incluir un código de conducta orientado a prevenir, y también sancionar, comportamientos tóxicos, ofensivos y discriminadores. Este artículo trata sobre como [fomentar una mejor cultura alcohólica en los eventos tech](https://medium.com/@mxsash/how-to-build-a-better-alcohol-culture-at-your-tech-conferences-and-events-9e1cce7179c0), y quizá sea buena idea introducir un apartado sobre el tema si no lo has hecho ya.
 
-Como tantas otras cosas, que el uso no se convierta en abuso depende de la responsabilidad personal, pero también está fuertemente influído por la cultura de los grupos sociales en que nos movemos. No podemos obviar el papel de las bebidas alcohólicas en nuestra cultura, pero tampoco podemos obviar los riesgos de su consumo.
+Como tantas otras cosas, que el uso no se convierta en abuso depende de la responsabilidad personal, pero también está fuertemente influido por la cultura de los grupos sociales en que nos movemos. No podemos obviar el papel de las bebidas alcohólicas en nuestra cultura, pero tampoco podemos obviar los riesgos de su consumo.
 
-## Postdata
+## Posdata
 
-Una de las cosas que hacen que sea divertido escribir estos artículos es encontrarte cosas como éstas mientras investigas, así que no puedo dejar de citarlos:
+Una de las cosas que hacen que sea divertido escribir estos artículos es encontrarte cosas como estas mientras investigas, así que no puedo dejar de citarlos:
 
 **El pico de Balmer**: No tenía ni idea de esto. [Se atribuye a Microsoft](https://www.loopeando.com/se-programa-mejor-borracho-el-ballmer-peak/) haber encontrado que un cierto nivel de alcohol en sangre permite un rendimiento excepcional a la hora de programar. Y pensábamos que era la cafeína.
 

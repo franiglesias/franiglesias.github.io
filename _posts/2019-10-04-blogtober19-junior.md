@@ -13,7 +13,7 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 El paso de *Junior* a *Senior* es uno de los misterios de la profesión de developer. O, a lo mejor, es simplemente un problema sin solución. Sin solución de continuidad, quiero decir: un día te percatas de que hay un cierto consenso en tu entorno como para poder considerarte como profesional *senior*, incluso hay veces que lo llegas a creer. O vaya usted a saber.
 
-En algunos casos, etiqueta un escalafón en el cual el nivel, o sub-nivel, Junior conlleva una supervisión por parte de otra persona a la que se etiqueta como Senior. Esa supervisión no se refiere necesariamente a una necesidad de controlar o aprobar el trabajo del Junior, sino que éste ejerce una responsabilidad de una parte específica del negocio, que el Senior coordina.
+En algunos casos, etiqueta un escalafón en el cual el nivel, o sub-nivel, Junior conlleva una supervisión por parte de otra persona a la que se etiqueta como Senior. Esa supervisión no se refiere necesariamente a una necesidad de controlar o aprobar el trabajo del Junior, sino que este ejerce una responsabilidad de una parte específica del negocio, que el Senior coordina.
 
 Pero en el mundo del desarrollo, Junior se usa con un abanico de significados dependiendo del punto de vista, que oscilan entre definir a un profesional que recién ha entrado en el mercado laboral o servir para justificar un sueldo bajo para una oferta laboral que pide tres carreras y cinco másteres, "pero de junior".
 
@@ -35,18 +35,18 @@ A la larga, resultan un peligro para sí mismas y para el equipo. Su única arma
 
 #### El otro caso del *senior* que era *junior*
 
-Si juntas un alto nivel técnico pero escasa madurez personal te encuentras con este caso. La tecnología es un campo profesional que, en algunos casos, puede favorecer este tipo de perfiles, requiriendo excelencia técnica sin tener en cuenta a la persona entera. La idea del developer "10x", "ninja", "rockstar" viene de ahí.
+Si juntas un alto nivel técnico, pero escasa madurez personal te encuentras con este caso. La tecnología es un campo profesional que, en algunos casos, puede favorecer este tipo de perfiles, requiriendo excelencia técnica sin tener en cuenta a la persona entera. La idea del developer "10x", "ninja", "rockstar" viene de ahí.
 
-La inmadurez como persona te puede llevar a ser incapaz de trabajar en equipo, a no preocuparte ni un ápice por el negocio al que se dedica tu empresa o a no interesarte por lo que tus usuarios demandan, que no son solo los clientes, si no también el resto de personas de otros departamentos.
+La inmadurez como persona te puede llevar a ser incapaz de trabajar en equipo, a no preocuparte ni un ápice por el negocio al que se dedica tu empresa o a no interesarte por lo que tus usuarios demandan, que no son solo los clientes, sino también el resto de personas de otros departamentos.
 
 ### Una palabra para definir muchos conceptos
 
 Junior y Senior, en el campo del desarrollo, son etiquetas que tratan de identificar varios conceptos o varias dimensiones de las personas que no siempre van correlacionadas:
 
-* **El desarrollo personal.** El paso de las distintas etapas de crecimiento: adolescencia, juventud, madurez y vejez, así como el desarrollo de tus habilidades sociales, tu bagaje emocial y tus herramientas de conocimiento y aprendizaje.
+* **El desarrollo personal.** El paso de las distintas etapas de crecimiento: adolescencia, juventud, madurez y vejez, así como el desarrollo de tus habilidades sociales, tu bagaje emocional y tus herramientas de conocimiento y aprendizaje.
 * **La mochila de conocimientos y experiencia en tu ámbito profesional.** Todo lo que has aprendido y sabes sobre tu profesión, y las herramientas con que cuentas para incrementarlo y desarrollarlo.
 * **El desarrollo de la carrera profesional personal.** El recorrido desde que terminamos nuestra formación básica y nos incorporamos al mundo laboral hasta que llega el momento de retirarse.
-* **El desarrollo de la carrera profesional en tu empresa.** Es decir, el recorrido que haces dentro de una empresa, desde que te incorporas hasta que la dejas, con lo que conlleva de aprender y comprender su negocio, sus procesos y sus dinámicas internas. Aquí se definen etapas en las necesitamos formación, en las que podemos asumir o no puestos de responsabilidad, tener o no a cargo a otras personas, coordinar con otros departamentos o equipos, entre otras cosas.
+* **El desarrollo de la carrera profesional en tu empresa.** Es decir, el recorrido que haces dentro de una empresa, desde que te incorporas hasta que la dejas, con lo que conlleva de aprender y comprender su negocio, sus procesos y sus dinámicas internas. Aquí se definen etapas en las que necesitamos formación, en las que podemos asumir o no puestos de responsabilidad, tener o no a cargo a otras personas, coordinar con otros departamentos o equipos, entre otras cosas.
 
 Estas dimensiones suelen ir de la mano, pero no ocurre siempre. Muchas personas recorren un camino en el que, más o menos, cada uno de esos aspectos evoluciona de una manera bastante predecible.
 

@@ -12,7 +12,7 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 Hablemos del vacío y de los *return types*.
 
-Del mismo que modo que los *type hints* en las signaturas de las funciones y métodos nos permiten asegurar que pasamos parámetros de un tipo determinado, actuando como una especie de pre-condición, el *return type* nos permite asegurar que los métodos responden con algo predecible, constituyendo una especie de validación parcial de la respuesta que devuelve el método.
+Del mismo que modo que los *type hints* en las signaturas de las funciones y métodos nos permiten asegurar que pasamos parámetros de un tipo determinado, actuando como una especie de precondición, el *return type* nos permite asegurar que los métodos responden con algo predecible, constituyendo una especie de validación parcial de la respuesta que devuelve el método.
 
 Vamos a verlo poco a poco.
 
@@ -24,7 +24,7 @@ public function doSomething()
 }
 ```
 
-Esta es la peor de las posibilidades ya que no podemos fiarnos de lo que devuelve. De hecho, nos permite hacer cosas feas como éstas:
+Esta es la peor de las posibilidades, ya que no podemos fiarnos de lo que devuelve. De hecho, nos permite hacer cosas feas como estas:
 
 ```php
 public function doSomething()

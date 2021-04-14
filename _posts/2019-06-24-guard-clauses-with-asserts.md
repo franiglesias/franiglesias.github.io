@@ -158,7 +158,7 @@ class Book
 
 Nota: es cierto que una condición incluye a la otra, pero lo que me interesa es simplemente ver qué podemos hacer cuando tenemos varias cláusulas.
 
-Estas cláusulas de guarda puede llegar a hacerse bastante complejas de leer, tenemos varias formas de mejorar esto y una de ellas es mediante Assert. Sí, las mismas asserts que harías en un test. Aunque puede usar algunas librerías como:
+Estas cláusulas de guarda pueden llegar a hacerse bastante complejas de leer, tenemos varias formas de mejorar esto y una de ellas es mediante **Assert**. Sí, las mismas asserts que harías en un test. Aunque puedes usar algunas librerías como:
 
 * [WebMozart Assert](https://github.com/webmozart/assert)
 * [Beberlei Assert](https://github.com/beberlei/assert)

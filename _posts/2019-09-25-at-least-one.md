@@ -85,7 +85,7 @@ Tratándose de arrays, lo primero que viene a la cabeza es utilizar un bucle `fo
     }
 ```
 
-El algoritmo en sí, como se puede ver, es muy sencillo. Recorremos el array y cuando encontramos un elemento que cumple la condición nos salimos del bucle y retornamos el resultado. Esta es la aproximación que podríamos considerar como más "ingenua" en el sentido de que intenta reproducir paso por paso el algoritmo manual que hemos descrito al principio.
+El algoritmo en sí, como se puede ver, es muy sencillo. Recorremos el _array_ y cuando encontramos un elemento que cumple la condición nos salimos del bucle y retornamos el resultado. Esta es la aproximación que podríamos considerar como más "ingenua" en el sentido de que intenta reproducir paso por paso el algoritmo manual que hemos descrito al principio.
 
 Lo que me interesa señalar es que nunca es mala idea empezar con la implementación más sencilla, ingenua y poco sofisticada, que se nos ocurra. Así tengamos un montón de variables y un montón de código poco optimizado. El objetivo de la primera aproximación es conseguir un algoritmo que funcione para hacer pasar el test y para ello, es buena idea intentar reproducir en código lo que hemos pensado en pseudo-código o dibujado en un papel o una servilleta.
 
@@ -138,7 +138,7 @@ Muchas veces, cuando hemos refactorizado un código hasta un cierto nivel, se de
 
 En PHP, las funciones `array_*` nos proporcionan una aproximación funcional al trabajo con esta estructura de datos.
 
-Por ejemplo, `array_walk`, nos permite hacer algo con cada elemento del array, cosa que en este caso no resulta muy útil porque queremos lo que realmente queremos hacer es reducir el array a un valor booleano, que nos diga si al menos uno de los elementos cumple la condición. Con `array_map`, nos pasa algo parecido ya que esta función genera un array nuevo con los elementos de la original transformados por otra función.
+Por ejemplo, `array_walk`, nos permite hacer algo con cada elemento del array, cosa que en este caso no resulta muy útil porque queremos lo que realmente queremos hacer es reducir el array a un valor booleano, que nos diga si al menos uno de los elementos cumple la condición. Con `array_map`, nos pasa algo parecido, ya que esta función genera un array nuevo con los elementos de la original transformados por otra función.
 
 Esto nos lleva a considerar `array_filter` o `array_reduce`. 
 
@@ -203,4 +203,4 @@ Puestos a comparar la última solución es la que "mola" más y la más "técnic
 
 En todo caso, lo que me interesa resaltar es, como casi siempre, el proceso. Empezamos con un modelo basto de cómo solucionar nuestro problema y en cada iteración lo refinamos un poco más. Este refinamiento viene conducido por varias fuerzas, como son: nuestro conocimiento del problema, la necesidad de optimizar la solución y el conocimiento de las técnicas de programación.
 
-Además, esta progresión nos ayuda a aliviar la carga cognitiva: la cantidad de cosas que necesitamos mantener en la cabeza a la hora de afrontar una tarea. Programar no es un juego de "ahora o nunca" en el que haya que acertar a las primera con todas las propiedades de la solución, como que resuelva el problema y esté bien construida. Para lograr ambas, tenemos que conocer bien el asunto que estamos tratando y eso, muchas veces, no lo vamos a conseguir hasta tener una primera aproximación que funciona. El `feedback` entre lo que sabemos y lo que pasa en realidad hace que nuestra visión del problema se refine y mejore, permitiéndonos encontrar soluciones cada vez mejores.
+Además, esta progresión nos ayuda a aliviar la carga cognitiva: la cantidad de cosas que necesitamos mantener en la cabeza a la hora de afrontar una tarea. Programar no es un juego de "ahora o nunca" en el que haya que acertar a la primera con todas las propiedades de la solución, como que resuelva el problema y esté bien construida. Para lograr ambas, tenemos que conocer bien el asunto que estamos tratando y eso, muchas veces, no lo vamos a conseguir hasta tener una primera aproximación que funciona. El `feedback` entre lo que sabemos y lo que pasa en realidad hace que nuestra visión del problema se refine y mejore, permitiéndonos encontrar soluciones cada vez mejores.

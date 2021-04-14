@@ -35,4 +35,4 @@ Sin embargo, soy optimista.
 
 Tengo la suerte de trabajar codo con codo con mujeres que son referentes de nuestra profesión, con las que aprendo cada día. Y, con ellas, he tenido la suerte de conocer otras muchas que hacen que las cosas avancen, que se destruyan tópicos y prejuicios. 
 
-Y es trabajo de todas y todos apuntalar todos estos logros y no dejar que nunca volvamos atrás.
+Y es trabajo de todas y todos apuntalar todos estos logros y no permitir que volvamos atrás.

@@ -31,7 +31,7 @@ Lejos de entrar a discutir si este tipo de profesional existe, creo que el verda
 
 Mi impresión es que hay pocas, por no decir ninguna, compañías en las que este perfil pueda plantearse siquiera. 
 
-Un equipo de desarrollo dedicado a crear herramientas internas o para clientes brilla cuando es capaz de conjugar la entrega de valor, tanto en forma de *features*, como en fiabilidad y minimización de problemas, con la excelencia técnica de mantener un código bien construido, mantenible y lo bastante flexible para evolucionar según las necesidades del negocio sin tener un drama cada vez que es necesario hacer un cambio. Un equipo que sea más que la suma de sus miembros y en el que las decisiones tecnológicas se adopten por que son convenientes para sus objetivos, no porque lucen más o menos en el currículum o estén más o menos de moda.
+Un equipo de desarrollo dedicado a crear herramientas internas o para clientes brilla cuando es capaz de conjugar la entrega de valor, tanto en forma de *features*, como en fiabilidad y minimización de problemas, con la excelencia técnica de mantener un código bien construido, mantenible y lo bastante flexible para evolucionar según las necesidades del negocio sin tener un drama cada vez que es necesario hacer un cambio. Un equipo que sea más que la suma de sus miembros y en el que las decisiones tecnológicas se adopten porque son convenientes para sus objetivos, no porque lucen más o menos en el currículum o estén más o menos de moda.
 
 No creo que los Ninjas, sean quienes sean, tengan cabida en un equipo así.
 

@@ -11,9 +11,9 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 ## Overflow
 
-Esta entrega del blogtober va con retraso por un pequeño problema de overflow...
+Esta entrega del _blogtober_ va con retraso por un pequeño problema de overflow...
 
-**Overflow** y **overcharge** son dos conceptos que se refieren a lo que ocurre cuando se sobrepasa la capacidad de un sistema. **Overflow**, o desbordamiento, tiene que ver con superar la cantidad de elementos que que el sistema puede contener. Por su parte, **overcharge**, o sobrecarga, se refiere más bien al problema de tener que manejar elementos que son demasiado grandes o densos.
+**Overflow** y **overcharge** son dos conceptos que se refieren a lo que ocurre cuando se sobrepasa la capacidad de un sistema. **Overflow**, o desbordamiento, tiene que ver con superar la cantidad de elementos que el sistema puede contener. Por su parte, **overcharge**, o sobrecarga, se refiere más bien al problema de tener que manejar elementos que son demasiado grandes o densos.
 
 Por lo general, la forma de evitar este tipo de problema en un sistema de software es conocer sus límites y establecer controles que eviten llegar o ellos, previniendo así el problema, o que detecten que se han superado e indicar el fallo de una manera manejable para el resto del sistema.
 

@@ -11,11 +11,11 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 ## Web
 
-Ya he mencionado la Web en un par de ocasiones en este Blogtober. Una, al hablar de [Gopher](/blogtober19-gopher) y otra en relación a los [Trolls](/blogtober19-troll).
+Ya he mencionado la Web en un par de ocasiones en este Blogtober. Una, al hablar de [Gopher](/blogtober19-gopher) y otra en relación con los [Trolls](/blogtober19-troll).
 
 En este último apuntaba una historia que ya me tenía bastante fastidiado hace algunos años. Tiene un poco que ver con mi etapa en el mundo de la educación.
 
-Cuando todavía creía que mi carrera tenía futuro en ese sector (*spoiler*: no), hice un máster sobre Educación y Comunicación en la red (*fíjateeeee*) en un momento en que la etiqueta **2.0** se le ponía a todo lo que quería presumir de modernez (Escuela 2.0, *jijijijiji*). Precisamente uno de los ensayos que escribí en ese contexto trataba sobre una crítica al abuso de la etiqueta para legitimar ciertas prácticas como "las más mejores" (ensayo que he perdido, por cierto).
+Cuando todavía creía que mi carrera tenía futuro en ese sector (*spoiler*: no), hice un máster sobre _Educación y Comunicación en la red_ (*fíjateeeee*) en un momento en que la etiqueta **2.0** se le ponía a todo lo que quería presumir de modernez (Escuela 2.0, *jijijijiji*). Precisamente uno de los ensayos que escribí en ese contexto trataba sobre una crítica al abuso de la etiqueta para legitimar ciertas prácticas como "las más mejores" (ensayo que he perdido, por cierto).
 
 Una de las cosas que tocaba en ese ensayo era precisamente la apropiación que hizo [Tim O'Reilly del concepto de Web 2.0](https://es.wikipedia.org/wiki/Web_2.0) como [web colaborativa](https://web.archive.org/web/20071025235914/http://sociedaddelainformacion.telefonica.es/jsp/articulos/detalle.jsp?elem=2146), otorgando legitimidad a plataformas nacidas a su abrigo como (tachan!) Twitter, Facebook y otras, cosa que a otro Tim, sir Tim Berners-Lee, no le gustó nada de nada.
 

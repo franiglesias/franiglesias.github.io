@@ -13,7 +13,7 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 ¿Nos estamos volviendo glotones?
 
-No hablo de comida, y eso que he escuchado historias de personas que se quejan porque en un meetup no hay bastante, o simplemente no han puesto o es que no les gusta. Aunque eso también cuenta como glotonería. Esto es: tu vas a un meetup a aprender sobre algo, una reunión que alguien se ha preocupado de organizar, de intentar ofrecer un contenido interesante, la oportunidad de conocer gente… ¿y lo que más te parece preocupar es si has comido suficiente pizza?
+No hablo de comida, y eso que he escuchado historias de personas que se quejan porque en un _meetup_ no hay bastante, o simplemente no han puesto o es que no les gusta. Aunque eso también cuenta como glotonería. Esto es: tú vas a un meetup a aprender sobre algo, una reunión que alguien se ha preocupado de organizar, de intentar ofrecer un contenido interesante, la oportunidad de conocer gente… ¿Y lo que más te parece preocupar es si has comido suficiente pizza?
 
 Y eso que si hablamos de meetups tenemos que hablar del problema de las plazas que se quedan vacías en casi todas las convocatorias. Una empresa aporta un dinero, su tiempo y sus instalaciones para que sea posible organizar un evento que, aunque pequeño, contribuye a enriquecer el conocimiento de la comunidad developer, a estrechar lazos e incluso ofrece oportunidades para conectar empresas y potenciales colaboraciones. Ponentes y organizadores invierten parte de su tiempo libre en ofrecer un contenido y una experiencia interesante. ¿Y el resultado? Ocupaciones del 10%, cuando había listas de espera de hasta el 200% de las plazas ofrecidas. ¿No es otro signo de glotonería?
 
@@ -25,11 +25,11 @@ O, "es más fácil cambiar de trabajo que pedir un aumento en tu puesto actual".
 
 O, "si pasa tal cosa en la entrevista, me levanto y me voy".
 
-Y podría seguir con algunas otras cosas relacionadas con al autopromoción y el arte de venderse…
+Y podría seguir con algunas otras cosas relacionadas con la autopromoción y el arte de venderse…
 
-Es cierto que esto ocurre en un entorno bastante localizado y cuando ya tienes una posición consolidada en el mercado, algo para lo que tampoco hace falta mucho, no te vayas a pensar. Puede que si lees esto desde una ciudad que no sea *sunny* Barcelona (e incluso en ella, porque no todo el bosque está lleno de unicornios), en una oficina que no tiene máquinas arcade, ni *friday barbecue*, en la que cobras un salario por el que alguna personas de las representadas más arriba ni se levantaría de la cama, y en la que no intentas buscar otro puesto porque podría ser peor; estas cosas te suenen muy lejanas. Incluso ofensivas.
+Es cierto que esto ocurre en un entorno bastante localizado y cuando ya tienes una posición consolidada en el mercado, algo para lo que tampoco hace falta mucho, no te vayas a pensar. Puede que si lees esto desde una ciudad que no sea *sunny* Barcelona (e incluso en ella, porque no todo el bosque está lleno de unicornios), en una oficina que no tiene máquinas arcade, ni *friday barbecue*, en la que cobras un salario por el que algunas personas de las representadas más arriba ni se levantaría de la cama, y en la que no intentas buscar otro puesto porque podría ser peor; estas cosas te suenen muy lejanas. Incluso ofensivas.
 
-En mi caso, tengo mucha suerte. Estoy en una empresa que me gusta, en el mejor equipo que pudiese imaginar, haciendo una de las cosas con las que más disfruto que es programar y en las condiciones de trabajo perfectas para mi. Y eso es algo que tengo que cuidar, porque también sé lo fácil que puede ser perderlo y lo crudas que llegan a ser otras situaciones. Por eso, intento con mucha fuerza no llegar a convertirme en un glotón.
+En mi caso, tengo mucha suerte. Estoy en una empresa que me gusta, en el mejor equipo que pudiese imaginar, haciendo una de las cosas con las que más disfruto que es programar y en las condiciones de trabajo perfectas para mí. Y eso es algo que tengo que cuidar, porque también sé lo fácil que puede ser perderlo y lo crudas que llegan a ser otras situaciones. Por eso, intento con mucha fuerza no llegar a convertirme en un glotón.
 
 En [esta entrevista de Codely.tv](https://www.youtube.com/watch?v=3NDTjXnhvok), Carlos Buenosvinos expresaba su preocupación por que gracias a un mercado laboral extremadamente favorable en oportunidades y en sueldos algunos developers se volviesen *gilipollas*.
 

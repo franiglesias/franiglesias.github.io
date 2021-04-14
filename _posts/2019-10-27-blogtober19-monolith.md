@@ -14,7 +14,7 @@ Al ver que la palabra del día es Monolito he pensado que tenía dos opciones: e
 
 *2001* es una de mis obras de ciencia ficción favoritas de todos los tiempos (la novela y la película). O quizá sea la número uno. Pero creo que mejor no voy a hablar de *ese* monolito.
 
-Al hablar de una aplicación que está construida en base a un monolito lo que estamos diciendo es que todas las capacidades y servicios de la aplicación pertenecen a la misma base de código. Si quieres una definición bastante chusquera pero pragmática: es una aplicación cuyo código está en un único repositorio.
+Al hablar de una aplicación que está construida con base en un monolito lo que estamos diciendo es que todas las capacidades y servicios de la aplicación pertenecen a la misma base de código. Si quieres una definición bastante chusquera, pero pragmática: es una aplicación cuyo código está en un único repositorio.
 
 Como otras cosas de nuestro sector, se habla mucho de los monolitos para ponerlos a caer de un burro porque lo que mola son los *microservicios*, cuya definición chusquera podría ser: es una aplicación cuyo código está repartido en distintos repositorios. 
 
@@ -30,5 +30,5 @@ A ver. Si todavía tenemos problemas para estructurar bien una aplicación en su
 
 Sin embargo, esta idea de que un monolito podría ser convertido en un sistema de microservicios es seguramente muy equivocada. Volviendo a las definiciones graciosas de antes: la separación en microservicios no es una simple partición del código y a correr, sino una decisión compleja que supone multitud de consideraciones tanto en lo que se refiere al código, como en los protocolos de comunicación y las necesidades de infraestructura. Los microservicios son una buena solución… para los problemas que los requieren, los demás podemos seguir usando monolitos y tan contentos.
 
-Con todo, no hace tampoco falta llegar a los microservicios para hablar de partición de aplicaciones. Un caso común y que queda muy bien resuelto con una partición es la que hacemos cuando separamos frontend y backend y los comunicamos mediante API, lo que, entre otras cosas, nos habilita para ofrecer distintas puertas de entrada a la misma aplicación (web, mobile, etc) manteniendo un fuente de verdad única para todas ellas y dándonos la flexibilidad para cambiarlas de forma independiente o introducir nuevas.
+Con todo, no hace tampoco falta llegar a los microservicios para hablar de partición de aplicaciones. Un caso común y que queda muy bien resuelto con una partición es la que hacemos cuando separamos frontend y backend y los comunicamos mediante API, lo que, entre otras cosas, nos habilita para ofrecer distintas puertas de entrada a la misma aplicación (web, mobile, etc.) manteniendo una fuente de verdad única para todas ellas y dándonos la flexibilidad para cambiarlas de forma independiente o introducir nuevas.
 

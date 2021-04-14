@@ -35,7 +35,7 @@ Si tenemos un método con más de 10 líneas de código, tenemos un *Long method
 
 Los *smells* por **Object Orientation Abusers** resultan más sutiles y difíciles, por tanto, de detectar. Por un lado, requieren tener una cierta soltura con la orientación a objetos y, por otro, se camuflan fácilmente como prácticas correctas.
 
-Pongamos que tenemos dos clases que tienen un método que hace las mismas cosas pero con distinto nombre. Es posible que podamos unificar los nombres, dándoles una interfaz común y, tal vez, extraer la funcionalidad a una clase abstracta de la que deriven extiendan ambas y así evitar la duplicación. En el fondo, es una violación del principio DRY, pero los diferentes nombres de los métodos nos pueden llevar a no verlo a la primera.
+Pongamos que tenemos dos clases que tienen un método que hace las mismas cosas, pero con distinto nombre. Es posible que podamos unificar los nombres, dándoles una interfaz común y, tal vez, extraer la funcionalidad a una clase abstracta de la que deriven extiendan ambas y así evitar la duplicación. En el fondo, es una violación del principio DRY, pero los diferentes nombres de los métodos nos pueden llevar a no verlo a la primera.
 
 ## Change Preventers
 
@@ -45,7 +45,7 @@ Es el caso de *Shotgun Surgery*, en el que si haces un cambio en una clase tiene
 
 ## Dispensables
 
-Cuando algo se podría quitar del código sin que afecte a nada tienes un caso de *Dispensable*. Esto puede ocurrir cuando nos hemos pasado de frenada anticipando funcionalidades que nunca se necesitan, o bien cuando dejamos de utilizar métodos o clases porque ya no son necesarias. Muchos IDE nos pueden ayudar a detectar este tipo de problemas ya que, precisamente porque no se usan, es fácil olvidarse de que están ahí. Sin embargo, una vez que te los encuentras te pueden causar un pequeño quebradero de cabeza hasta que puedes determinar si tienen o no utilidad.
+Cuando algo se podría quitar del código sin que afecte a nada tienes un caso de *Dispensable*. Esto puede ocurrir cuando nos hemos pasado de frenada anticipando funcionalidades que nunca se necesitan, o bien cuando dejamos de utilizar métodos o clases porque ya no son necesarias. Muchos IDE nos pueden ayudar a detectar este tipo de problemas, ya que, precisamente porque no se usan, es fácil olvidarse de que están ahí. Sin embargo, una vez que te los encuentras te pueden causar un pequeño quebradero de cabeza hasta que puedes determinar si tienen o no utilidad.
 
 Un caso curioso es *Lazy Class*. Tienes una clase que, en principio, tiene funcionalidad y tiene todo su sentido. Sin embargo, empiezas a refactorizarla y cuando te das cuenta, resulta que no la necesitas para nada.
 

@@ -11,7 +11,7 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 ## Sleep
 
-El otro día surgió un temilla en el trabajo relacionado con la función `sleep` y cómo testear un método que la utilice. El problema, como se puede suponer fácilmente, tiene que ver con que el test tardará en ejecutarse debido a este retraso.
+El otro día surgió un _temilla_ en el trabajo relacionado con la función `sleep` y cómo testear un método que la utilice. El problema, como se puede suponer fácilmente, tiene que ver con que el test tardará en ejecutarse debido a este retraso.
 
 Las razones para introducir un `sleep` en el código pueden ser varias, como por ejemplo, dar tiempo para que otro proceso se ejecute y evitar fallos debido a que no haya podido terminar porque necesitamos los datos que genera.
 
@@ -21,7 +21,7 @@ En cualquier caso, todo lo que tiene que ver con el paso del tiempo supone un pr
 
 ### Tass: Time as a Service
 
-Este enfoque consiste en encapsular las funciones que tienen que ver con el tiempo en un servicio. En su forma más simple, nos bastaría on encapsular las funciones nativas en servicios y utilizar éstos en su lugar. De este modo evitamos la dependencia global y podemos crear fácilmente stubs para testing.
+Este enfoque consiste en encapsular las funciones que tienen que ver con el tiempo en un servicio. En su forma más simple, nos bastaría on encapsular las funciones nativas en servicios y utilizar estos en su lugar. De este modo evitamos la dependencia global y podemos crear fácilmente stubs para testing.
 
 He aquí un ejemplo muy sencillo que ilustra lo que quiero decir:
 
@@ -70,7 +70,7 @@ class NativeClock implements ClockServiceInterface
 }
 ```
 
-El método `now()` nos entrega la fecha y hora del sistema, mientras que `thisTime(string $time)` devuelve la que le especifiquemos con un string válido de fecha y/o hora.
+El método `now()` nos entrega la fecha y hora del sistema, mientras que `thisTime(string $time)` devuelve la que le especifiquemos con un string válido de fecha y/u hora.
 
 ¿Cómo lo usaríamos? Cuando sea necesario, lo pasaríamos como colaborador a la clase que lo necesite.
 
@@ -286,7 +286,7 @@ En los patrones Observer y Publisher-subscriber es el otro proceso el que anunci
 
 En el patrón Observer, siguiendo el ejemplo anterior, el generador del documento notificaría al servicio de envío, así como a otros servicios interesados que se registran como Observers de su actividad.
 
-En el patrón Publisher-Subscriber, se hace algo parecido, pero en este caso el observador y el observado no se relacionan directamente. El Publisher anuncia (evento) algo en un `EventBus` y éste se encarga de comunicárselo a los observadores suscritos a ese evento concreto que harán lo que tengan que hacer.
+En el patrón Publisher-Subscriber, se hace algo parecido, pero en este caso el observador y el observado no se relacionan directamente. El Publisher anuncia (evento) algo en un `EventBus` y este se encarga de comunicárselo a los observadores suscritos a ese evento concreto que harán lo que tengan que hacer.
 
 Yendo aún más lejos, puede hacerse incluso mediante un intermediario llamado "orquestador" que lance los procesos participantes y gestione en qué orden pueden o deben realizar cada uno su trabajo, permitiendo actuar algunos en paralelo si no dependen entre sí mientras que espera por el resultado de otros para lanzarlos.
 

@@ -17,7 +17,7 @@ Hasta finales de los años 90, los servicios que funcionaban sobre Internet defi
 
 Gopher fue inventado en la Universidad de Minnesota por [Mark P. McCahill](https://en.wikipedia.org/wiki/Mark_P._McCahill).
 
-Su idea básica era presentarse a los usuarios como un sistema de almacenamiento montable de solo lectura y acceso global, una especie de disco de red. Los documentos podrían residir físicamente en numerosos servidores, lo que supone una ventaja sobre el FTP, en el cual tienes que saber previamente en qué servidor concreto se encuentra el archivo que buscas, al proporcionarte un único punto de entrada.
+Su idea básica era presentarse a los usuarios como un sistema de almacenamiento _montable_ de solo lectura y acceso global, una especie de disco de red. Los documentos podrían residir físicamente en numerosos servidores, lo que supone una ventaja sobre el FTP, en el cual tienes que saber previamente en qué servidor concreto se encuentra el archivo que buscas, al proporcionarte un único punto de entrada.
 
 Gopher incorporaba sistemas de búsqueda y jerarquía de la información, de modo que podrías examinar documentos organizados en carpetas y realizar búsquedas contra un servidor que te proporcionarían listados de documentos relevantes. Su mayor inconveniente era la rigidez en el formato de archivo y en la forma en que los servidores definían la navegación.
 

@@ -11,7 +11,7 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 ## Testing
 
-Como ya sabes, uno de los temas principales de este blog es el testing, así que resulta un poco complicado encontrar un enfoque distinto que aporte sentido a un artículo para este blogtober que no sea repetitivo.
+Como ya sabes, uno de los temas principales de este blog es el testing, así que resulta un poco complicado encontrar un enfoque distinto que aporte sentido a un artículo para este _blogtober_ que no sea repetitivo.
 
 Una de las cuestiones que me preocupa últimamente sobre testing es que tenemos bastante confusión sobre de qué se trata el testing, no lo hacemos muy bien y lo hacemos a desgana.
 

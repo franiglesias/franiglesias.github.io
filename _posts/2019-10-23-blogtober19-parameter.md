@@ -19,13 +19,13 @@ Así que tenemos que resolver un par de problemas:
 
 ### El mágico número siete
 
-Ya he traído a colación anteriormente [este artículo de George A. Miller, fundamental en la psicología cognitiva](http://www2.psych.utoronto.ca/users/peterson/psy430s2001/Miller%20GA%20Magical%20Seven%20Psych%20Review%201955.pdf). En resumen, se trata de la idea de que nuestra memoria a corto plazo o memoria de trabajo tiene una capacidad limitada para mantener unidades de información simultáneamente mientras realizamos una tarea. Este límite rondaría los siete chuncks o elementos de información. Actualmente no se intenta determinar un valor preciso de esta capacidad, ya que varía según diversas circunstancias, pero la idea de base de que es una capacidad limitada nos ayuda a explicar, en primer lugar, porqué una signatura de una función con muchos parámetros dificulta nuestra comprensión.
+Ya he traído a colación anteriormente [este artículo de George A. Miller, fundamental en la psicología cognitiva](http://www2.psych.utoronto.ca/users/peterson/psy430s2001/Miller%20GA%20Magical%20Seven%20Psych%20Review%201955.pdf). En resumen, se trata de la idea de que nuestra memoria a corto plazo o memoria de trabajo tiene una capacidad limitada para mantener unidades de información simultáneamente mientras realizamos una tarea. Este límite rondaría los siete _chunks_ o elementos de información. Actualmente no se intenta determinar un valor preciso de esta capacidad, ya que varía según diversas circunstancias, pero la idea de base de que es una capacidad limitada nos ayuda a explicar, en primer lugar, porque una signatura de una función con muchos parámetros dificulta nuestra comprensión.
 
 También nos sirve para realizar una estimación, nada científica por otra parte, de la cantidad de parámetros máxima que debería tener un método o función. Repito, esto que voy a hacer no es científico, pero a lo mejor es útil.
 
-Partimos del número siete, pero necesitaremos uno o dos chuncks para llevar cuenta de qué estamos haciendo y no olvidarnos por el camino. Esto nos deja unos cinco chuncks libres.
+Partimos del número siete, pero necesitaremos uno o dos chunks para llevar cuenta de qué estamos haciendo y no olvidarnos por el camino. Esto nos deja unos cinco chunks libres.
 
-Gastamos otros dos en el el nombre del método o función y en saber qué es lo que hace. ¿Me sigues? Nos quedan tres chuncks libres, cuatro con suerte.
+Gastamos otros dos en el nombre del método o función y en saber qué es lo que hace. ¿Me sigues? Nos quedan tres chunks libres, cuatro con suerte.
 
 Conclusión: **tres** parámetros es el máximo recomendable para trabajar cómodamente, manteniendo la carga cognitiva bajo control.
 
@@ -41,7 +41,7 @@ public function setPrice(float $priceAmount, string $priceMonetaryUnit);
 public function setPrice(Money $price)
 ```
 
-**Parameter Object**. Si aún así nos quedan muchos parámetros, podemos crear un objeto que los agrupe todos bajo un nombre significativo. Es posible, incluso, que lo puedas reutilizar.
+**Parameter Object**. Si aun así nos quedan muchos parámetros, podemos crear un objeto que los agrupe todos bajo un nombre significativo. Es posible, incluso, que lo puedas reutilizar.
 
 ```php
 public function setContactData($phoneNumber, $email, $address);

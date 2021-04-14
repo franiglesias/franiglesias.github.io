@@ -77,9 +77,9 @@ $this->assertEquals(1, $feeCalculatorSpy->getInvocations());
 
 ### La fragilidad de los tests con *mocks* y *spies*
 
-El mayor inconveniente o riesgo de abusar de los *mocks* y *spies* es que el test queda acoplado a la implementación ya que no testea el comportamiento de la unidad de software, sino que en el código se hacen ciertas llamadas y de una cierta manera.
+El mayor inconveniente o riesgo de abusar de los *mocks* y *spies* es que el test queda acoplado a la implementación, ya que no testea el comportamiento de la unidad de software, sino que en el código se hacen ciertas llamadas y de una cierta manera.
 
-De este modo, si en el futuro cambiamos esas llamadas, puede ocurrir que el test falle aunque no estemos intentando cambiar el comportamiento de la unidad. En otras palabras: el test falla pero el comportamiento de la unidad es correcto.
+De este modo, si en el futuro cambiamos esas llamadas, puede ocurrir que el test falle aunque no estemos intentando cambiar el comportamiento de la unidad. En otras palabras: el test falla, pero el comportamiento de la unidad es correcto.
 
 A esto lo llamamos fragilidad del test: el riesgo de que un test no pase por un motivo que no sea su comportamiento.
 
@@ -93,7 +93,7 @@ Es decir, normalmente no podremos dejar de usar dobles, pero sí podemos usarlos
 
 ### Definir qué necesito testear aplicando el principio Command Query Separation
 
-El principio Command Query Seperation fue enunciado por Bertrand Mayer y dice más o menos esto:
+El principio **Command Query Separation** fue enunciado por Bertrand Mayer y dice más o menos esto:
 
 > Every method should be either a command that performs an action, either a query that returns data.
 

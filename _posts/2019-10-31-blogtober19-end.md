@@ -12,9 +12,9 @@ Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) 
 
 Es el último día del mes y, por tanto, el último día de Blogtober.
 
-Durante todo este mes he escrito un artículo al día en base a una palabra de una lista. Gracias a [Mavi Jiménez](https://twitter.com/Linkita) por prestármela, o sea, dejar que me apropiara de ella. Una cosa más de tantas que tengo que agradecerle.
+Durante todo este mes he escrito un artículo al día sobre la base de una palabra de una lista. Gracias a [Mavi Jiménez](https://twitter.com/Linkita) por prestármela, o sea, dejar que me apropiara de ella. Una cosa más de tantas que tengo que agradecerle.
 
-Escribo regularmente desde 1996. Tengo muy clara la fecha porque empecé a escribir en una especie de e-zine que montó un compañero de un curso de diseño gráfico que hice. El e-zine tratabo sobre Mac y tenía una periodicidad mensual, pero escribía varios artículos de diversos tipos. Se llamaba Macgazine, aunque luego cambió de nombre a Planeta Mac.
+Escribo regularmente desde 1996. Tengo muy clara la fecha porque empecé a escribir en una especie de e-zine que montó un compañero de un curso de diseño gráfico que hice. El e-zine trataba sobre Mac y tenía una periodicidad mensual, pero escribía varios artículos de diversos tipos. Se llamaba Macgazine, aunque luego cambió de nombre a Planeta Mac.
 
 De ahí surgieron varias cosas. Por un lado, creamos un grupo/lista de correo para ayudarnos entre usuarios. Ese grupo todavía funciona y creo que es la comunidad de usuarios Mac más longeva que existe en español (23 años) aunque yo ya participo poco.
 
@@ -34,7 +34,7 @@ Ahora escribo sobre desarrollo porque es lo que más me interesa. Ya he explicad
 
 En este Blogtober me he tenido que forzar a escribir un poco diferente a como suelo hacerlo. Por una parte, con trazos más gruesos y también, hasta cierto punto, con un enfoque más personal, un poco distinto al "libro de texto" que suelo emplear habitualmente.
 
-Ha sido una experiencia divertida. Sin embargo, no estoy seguro de querer repetirla ya que una cosa que no deseo es sentir que escribo "por obligación". Tengo ideas para futuros artículos que, en algún caso, salen de conceptos surgidos durante este mes.
+Ha sido una experiencia divertida. Sin embargo, no estoy seguro de querer repetirla, ya que una cosa que no deseo es sentir que escribo "por obligación". Tengo ideas para futuros artículos que, en algún caso, salen de conceptos surgidos durante este mes.
 
 En fin. Si has seguido este proyecto, gracias por llegar hasta aquí.
 

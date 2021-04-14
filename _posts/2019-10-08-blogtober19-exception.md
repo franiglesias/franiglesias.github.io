@@ -28,9 +28,9 @@ if (null === $book) {
 }
 ```
 
-Si alguien puede usar un Id de un libro es que o bien lo ha obtenido "legalmente" o bien está probando Ids al azar. 
+Si alguien puede usar un `Id` de un libro es que o bien lo ha obtenido "legalmente" o bien está probando Ids al azar. 
 
-En el primer caso, si es un Id legal y no existe el libro con ese Id, es que ha habido un problema: no es correcto que exista una identidad de un libro que ya no estamos gestionando (otro usuario pudo haberlo quitado, por ejemplo).
+En el primer caso, si es un `Id` legal y no existe el libro con ese `Id`, es que ha habido un problema: no es correcto que exista una identidad de un libro que ya no estamos gestionando (otro usuario pudo haberlo quitado, por ejemplo).
 
 En el segundo caso, pues es casi lo mismo. No es "normal" que se puedan estar usando Ids de libros que no gestionamos.
 
@@ -47,7 +47,7 @@ En este caso, es perfectamente esperable que no se encuentren libros cumpliendo 
 
 ### Falla específicamente
 
-Gracias a los bloques `try/catch` es fácil gestionar las excepciones. El *happy path* va en a parte del `try` y, si algo falla, se gestiona mediante el `catch`.
+Gracias a los bloques `try/catch` es fácil gestionar las excepciones. El *happy path* va en la parte del `try` y, si algo falla, se gestiona mediante el `catch`.
 
 ```php
 try {
@@ -85,7 +85,7 @@ if (null === $book) {
 
 ### Captura genéricamente (y luego refina)
 
-A la hora de capturar, sin embargo, es mejor empezar con un `catch` lo más genérico posible e ir anteponiendo `catch` más específicos a medida que necesitemos refinar las respuetas:
+A la hora de capturar, sin embargo, es mejor empezar con un `catch` lo más genérico posible e ir anteponiendo `catch` más específicos a medida que necesitemos refinar las respuestas:
 
 **Mal**
 
@@ -131,9 +131,9 @@ try {
 
 Capturamos la excepción específica y la tratamos con la respuesta adecuada (siguiendo el ejemplo dla API, ahora sería un 404), mientras que seguimos manteniendo bajo control los demás errores.
 
-### Cada cada una excepción
+### Cada capa una excepción
 
-Si capturas una excepción que viene de infrastructura en la capa de aplicación, anídala en una excepción de la capa de aplicación y relánzala.
+Si capturas una excepción que viene de infraestructura en la capa de aplicación, anídala en una excepción de la capa de aplicación y relánzala.
 
 **Mal**
 
@@ -149,7 +149,7 @@ class GetBook
 }
 ```
 
-Este código deja "subir" las excepciones de infrastructura, que podrían incluir excepciones relacionadas con el ORM o la librería de acceso a base de datos.
+Este código deja "subir" las excepciones de infraestructura, que podrían incluir excepciones relacionadas con el ORM o la librería de acceso a base de datos.
 
 **Bien**
 
@@ -169,7 +169,7 @@ class GetBook
 }
 ```
 
-Capturamos la excepción que viene de las capaz inferiores y lanzamos una excepción que tiene sentido en el contexto del Dominio. Si quieres tener más granularidad para gestionar las excepciones, como por ejemplo para diferenciar entre aquellas que indicarían que no se encuentra el libro y aquellas que indicarían un problema en la base de datos, aplica el principio anterior:
+Capturamos la excepción que viene de las capas inferiores y lanzamos una excepción que tiene sentido en el contexto del Dominio. Si quieres tener más granularidad para gestionar las excepciones, como por ejemplo para diferenciar entre aquellas que indicarían que no se encuentra el libro y aquellas que indicarían un problema en la base de datos, aplica el principio anterior:
 
 
 **Mejor**

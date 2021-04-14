@@ -45,11 +45,11 @@ En esos casos, que además suelen ser difíciles de instanciar y necesitan confi
 
 En otros casos, los colaboradores estarán bajo nuestro control, no tendrán dependencias, serán rápidos, etc. En muchos casos se tratará de comportamientos de la propia clase bajo test extraídos para su reutilización. Entonces no sería necesario doblarlos.
 
-Tampoco es necesario doblar aquellos objetos que utiliza nuestra unidad bajo test pero que podemos considerar como "objetos dato". Es decir, objetos que nos interesan más por representar o transportar entidades o valores que por su comportamiento. En este grupo entran entidades, value objects, DTOs y otros objetos similares.
+Tampoco es necesario doblar aquellos objetos que utiliza nuestra unidad bajo test, pero que podemos considerar como "objetos dato". Es decir, objetos que nos interesan más por representar o transportar entidades o valores que por su comportamiento. En este grupo entran entidades, value objects, DTO y otros objetos similares.
 
 Tomemos por ejemplo el patrón **Command** de dos componentes. Este patrón consta de dos elementos: el **Command**, que aporta la información para la ejecución, y el **CommandHandler**, que aporta el comportamiento. 
 
-Si queremos testear el **CommandHandler**, no tenemos que doblar el **Command**. Sin embargo, seguramente tengamos que doblar las dependencias propias del CommandHandler.
+Si queremos testear el **CommandHandler**, no tenemos que doblar el **Command**. Sin embargo, seguramente tengamos que doblar las dependencias propias del **CommandHandler**.
 
 Examinemos la situación:
 
@@ -210,19 +210,19 @@ class PrintBookCommandHandlerTest extends TestCase
 
 
 
-Así que, en esos casos, podemos permitirnos doblar objetos en lugar de instanciarlos en beneficio de la velocidad de desarrollo y la expresividad del test. En Test Driven Development, usar dobles nos permite ir descubriendo las interfaces que necesitamos, utilizándolos como *placeholders* mientras no nos detenemos a desarrollar las clases colaboradores.
+Así que, en esos casos, podemos permitirnos doblar objetos en lugar de instanciarlos en beneficio de la velocidad de desarrollo y la expresividad del test. En Test Driven Development, usar dobles nos permite ir descubriendo las interfaces que necesitamos, utilizándolos como *placeholders* mientras no nos detenemos a desarrollar las clases colaboradoras.
 
 ## Utilizar una librería de dobles
 
 Existen diversas librerías con las que generar dobles para test que nos aportan algunas utilidades interesantes, así como una manera cómoda y rápida de obtener los que necesitamos en cada caso. **PHPUnit** integra una utilidad propia. También integra el framework **Prophecy**, que ofrece una alternativa interesante para generar dobles aunque está diseñada para trabajar mano a mano con **PHPSpec** en TDD y BDD.
 
-Hay un oferta bastante amplia de otras librerías de dobles, pero nos centraremos en estas dos.
+Hay una oferta bastante amplia de otras librerías de dobles, pero nos centraremos en estas dos.
 
 ## Creación básica de dobles
 
 En este apartado veremos patrones básicos de creación de dobles.
 
-La manera más sencilla de crear un doble de test en **PHPUnit**, sería utilizar el método `createMock` de nuestro test case:
+La manera más sencilla de crear un doble de test en **PHPUnit**, sería utilizar el método `createMock` de nuestro _test case_:
 
 ```php
 $generateUserPassword = $this->createMock(GenerateUserPassword::class);
@@ -240,7 +240,7 @@ La diferencia aquí es que `prophesize` devuelve un objeto Prophet que realmente
 
 Esta diferencia supone un pequeño engorro a la hora de usar **Prophecy** frente al `MockBuilder` nativo de **PHPUnit** y es que te obliga a instanciar la unidad bajo test en cada test, en lugar de poder hacerlo una única vez en el `setup`, como veremos más adelante en detalle.
 
-Finalmente, podemos crear dobles usando clases anónimos que extienden la clase que estamos doblando o implementan su interfaz.
+Finalmente, podemos crear dobles usando clases anónimas que extienden la clase que estamos doblando o implementan su interfaz.
 
 ```php
 $generateUserPassword = new class() extends GenerateUserPassword {};
@@ -256,7 +256,7 @@ $generateUserPassword = $this->createMock(PasswordGeneratorInterface::class);
 
 De este modo nos centramos en la interfaz que nos interesa. Si, por ejemplo, alguna de las implementaciones que podríamos doblar está cumpliendo otras interfaces (o simplemente está violando el principio de sustitución de Liskov) nos evitamos tener que cargarnos de métodos extra (en aplicación del principio de segregación de interfaces).
 
-La otra opción, es crear el doble a partir de una implementación.
+La otra opción es crear el doble a partir de una implementación.
 
 ```php
 $generateUserPassword = $this->createMock(GenerateSecureUserPassword::class);
@@ -370,7 +370,7 @@ Los *dummies* son dobles que no tienen comportamiento. Por definición, sus mét
 
 Crearemos un `dummy` cuando necesitemos un doble de un colaborador de nuestra clase del cual no nos interesa que llegue a realizar su comportamiento en un determinado test.
 
-Para hacerlo nos basta con utilizar el método `createMock` de nuestro test case:
+Para hacerlo nos basta con utilizar el método `createMock` de nuestro _test case_:
 
 ```php
 $generateUserPassword = $this->createMock(GenerateUserPassword::class);
@@ -453,7 +453,7 @@ class PrintBookCommandHandlerTest extends TestCase
 }
 ```
 
-Cuando testeamos servicios, usecases y otros objetos que no tienen estadoes una buena idea instanciarlos en el setup, de modo que nos evitemos repetir el proceso en cada test. Dentro de cada test configuramos el comportamiento que nos interesa para ese escenario concreto, lo que nos permite un test menos farragoso y más claro.
+Cuando testeamos servicios, _use cases_ y otros objetos que no tienen estado es una buena idea instanciarlos en el _setup_, de modo que nos evitemos repetir el proceso en cada test. Dentro de cada test configuramos el comportamiento que nos interesa para ese escenario concreto, lo que nos permite un test menos farragoso y más claro.
 
 Esto es algo que podemos hacer fácilmente con el `mockBuilder` de **PHPUnit**.
 
@@ -510,7 +510,7 @@ class PrintBookCommandHandlerTest extends TestCase
 
 Se suele decir que los dummies se crean para poder cumplir una interfaz de la unidad bajo test. Es decir, para tener un objeto que podamos pasar como parámetro al método testeado respetando el type hinting, aunque no tengamos que llamarlo directamente.
 
-En muchos use cases las entidades y valores pasados como parámetros no son usados nunca directamente por el código bajo test, sino que este código coordina la actuación de los colaboradores pasándole estas entidades o valores tal cual. Por eso, en este tipo de situaciones un dummy es el objeto adecuado.
+En muchos _use cases_ las entidades y valores pasados como parámetros no son usados nunca directamente por el código bajo test, sino que este código coordina la actuación de los colaboradores pasándole estas entidades o valores tal cual. Por eso, en este tipo de situaciones un dummy es el objeto adecuado.
 
 En este test, que ya hemos visto más arriba, `Book` se utiliza como *dummy*:
 
@@ -695,7 +695,7 @@ $this->bookRepository
 
 Sin embargo, no deberías abusar de estas expectativas. Establécelas tan solo cuando una llamada a un colaborador sea el efecto que esperamos que provoque el código.
 
-Por ejemplo, en este test no hay ninguna necesidad de esperar las llamadas ya que está implícito que el resultado devuelto por el `handler` se obtiene porque esas llamadas se ejecutan realmente:
+Por ejemplo, en este test no hay ninguna necesidad de esperar las llamadas, ya que está implícito que el resultado devuelto por el `handler` se obtiene porque esas llamadas se ejecutan realmente:
 
 ```php
     public function testShouldPrintABook(): void
@@ -743,7 +743,7 @@ Si la unidad bajo test no devuelve una respuesta tendremos que fijar una expecta
 
 ## Crear el doble de una clase que no existe
 
-Si haces Test Driven Development es frecuente encontrarte con que a medida que desarrollas vas descubriendo la necesidad de disponer de colaboradores para la unidad concreta en la que estás trabajando pero, a la vez, no tienes una idea clara de cual debería ser su interfaz, pero tampoco quieres apartar el foco de la parte que estás escribiendo.
+Si haces Test Driven Development es frecuente encontrarte con que a medida que desarrollas vas descubriendo la necesidad de disponer de colaboradores para la unidad concreta en la que estás trabajando, pero, a la vez, no tienes una idea clara de cuál debería ser su interfaz, pero tampoco quieres apartar el foco de la parte que estás escribiendo.
 
 Así puedes crear un doble sin tener que salir del test:
 
@@ -804,7 +804,7 @@ El problema viene cuando esa dependencia necesita ser doblada, como en este ejem
 
 El primer paso sería intentar aislar la instanciación de la dependencia en un método de la clase en la que corresponda. No siempre tendremos acceso a ella para modificarla o no siempre será posible aislarla limpiamente.
 
-En **PHPUnit** puedes hacer algo que suena contraintuitivo, doblando la clase bajo test pero diciendo que doble el método que instancia la dependencia. En este caso, la librería Guzzle proporciona un `MockHandler` para poder simular llamadas fácilmente.
+En **PHPUnit** puedes hacer algo que suena contra intuitivo, doblando la clase bajo test, pero diciendo que doble el método que instancia la dependencia. En este caso, la librería Guzzle proporciona un `MockHandler` para poder simular llamadas fácilmente.
 
 ```php
 class ClientRepositoryTest extends TestCase
@@ -876,7 +876,7 @@ class ClientRepositoryTest extends TestCase
 
 ```
 
-**Prophecy** está diseñado de modo que prohibe específicamente este tipo de arreglos para favorecer que siempre se inyecten las dependencias. Por eso, no siempre resulta fácil utilizarlo cuando trabajamos con legacy o código basado en ciertos frameworks.
+**Prophecy** está diseñado de modo que prohíbe específicamente este tipo de arreglos para favorecer que siempre se inyecten las dependencias. Por eso, no siempre resulta fácil utilizarlo cuando trabajamos con legacy o código basado en ciertos frameworks.
 
 ## Puede que continúe
 

@@ -33,7 +33,7 @@ La documentación debe ser confiable, fácil de cambiar y accesible. En otras pa
 
 ## Aprendiendo a expresarse en el lenguaje ubicuo
 
-Establecer un lenguaje ubicuo no es un simple proceso de capturar los términos que utilizan los expertos de dominio. En cuanto intentas compilar un lenguaje no formal descubres una increíble cantidad de trampas, sobreentendidos, ambigÜedades, polisemias y sinonimias que pueden desafiar la capacidad sistematizadora de cualquiera.
+Establecer un lenguaje ubicuo no es un simple proceso de capturar los términos que utilizan los expertos de dominio. En cuanto intentas compilar un lenguaje no formal descubres una increíble cantidad de trampas, sobreentendidos, ambigüedades, polisemias y sinonimias que pueden desafiar la capacidad sistematizadora de cualquiera.
 
 Además, el lenguaje ubicuo tiene *dialectos*. Cada subdominio, cada contexto, puede tener su propia versión un término, que da nombre a un concepto ligeramente distinto porque en cada uno de ellos nos interesa un aspecto particular.
 
@@ -41,11 +41,11 @@ Intentaremos ver esto acudiendo a ejemplos en nuestro proyecto DDD para un coleg
 
 ### Arrancando
 
-Supongamos que nos centramos en el sub dominio académico, en el core domain (o al menos uno de sus dominio de soporte más cercanos). Una forma de empezar puede ser centrarnos en algún evento relevante del dominio. Por ejemplo, un nuevo estudiante se matricula en el colegio. Podemos imaginar una conversación así con la persona responsable de la Secretaría del centro:
+Supongamos que nos centramos en el sub dominio académico, en el core domain (o al menos uno de sus dominios de soporte más cercanos). Una forma de empezar puede ser centrarnos en algún evento relevante del dominio. Por ejemplo, un nuevo estudiante se matricula en el colegio. Podemos imaginar una conversación así con la persona responsable de la Secretaría del centro:
 
 – Hablemos entonces del alta de un **alumno** en el centro.
 
-– De acuerdo. A ese proceso lo llamamos **proceso de matrícula** o **hacer la matricula**.
+– De acuerdo. A ese proceso lo llamamos **proceso de matrícula** o **hacer la matrícula**.
 
 – Entiendo que se recogen los datos del **alumno**, sus **padres**, el **curso** en el que va a empezar, etc.
 
@@ -65,7 +65,7 @@ Paremos aquí por un momento. Ya han salido varios conceptos y términos:
 Estamos al principio del proceso por lo que la información va a llegar de forma casi explosiva. Y esa explosión también nos trae los primeros problemas lingüísticos.
 
 * Tenemos dos etiquetas para un mismo concepto: ¿es importante que haya una distinción? ¿Nos está indicando eso algo acerca del dominio?. Es necesario aclararlo.
-* El tema del representante adulto: no se le nombra así pero intuimos que podría haber algún concepto pugnando por salir.
+* El tema del representante adulto: no se le nombra así, pero intuimos que podría haber algún concepto pugnando por salir.
 
 – Vale. Me gustaría profundizar más en esto. Pero antes querría aclarar una cosa: hemos usado la palabra Estudiante y Alumno. ¿Significan lo mismo? ¿Cuál deberíamos usar?
 

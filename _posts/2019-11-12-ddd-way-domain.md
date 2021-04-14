@@ -67,13 +67,13 @@ El colegio desea disponer de sus propias herramientas para gestionar estos servi
 
 Esta breve introducción debería darnos algunas pistas:
 
-Servicios como comedor, transporte, guardería, extraescolares, etc. podrían ser genéricos del sector pero lo normal sería considerarlos como de soporte, debido a que:
+Servicios como comedor, transporte, guardería, extraescolares, etc. podrían ser genéricos del sector, pero lo normal sería considerarlos como de soporte, debido a que:
 
 * Ofrecerlos ayuda a captar alumnado, ofreciendo soluciones a las familias para los obstáculos prácticos que podrían desanimarlos a escoger este colegio.
 * Contribuyen a la financiación.
 * Pueden aprovecharse para reforzar la propuesta de valor que es específica del colegio: su proyecto educativo.
 
-Esto es: no forman parte del core domain pero ayudan de una manera específica a que este pueda desarrollarse. Requieren herramientas específicas: aplicaciones con las que gestionar los servicios de manera eficaz, permitiendo comunicarse con los subdominios genéricos, de forma que estos puedan adquirir los datos que necesitarán. Por ejemplo, los necesarios para realizar la facturación mensual.
+Esto es: no forman parte del core domain, pero ayudan de una manera específica a que este pueda desarrollarse. Requieren herramientas específicas: aplicaciones con las que gestionar los servicios de manera eficaz, permitiendo comunicarse con los subdominios genéricos, de forma que estos puedan adquirir los datos que necesitarán. Por ejemplo, los necesarios para realizar la facturación mensual.
 
 Cada vez nos vamos acercando más al core domain.
 

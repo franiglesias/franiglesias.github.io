@@ -5,7 +5,7 @@ categories: articles
 tags: testing good-practices
 ---
 
-En general, cuando creamos software, confiamos en que haga aquello para lo cual lo hemos programado. Es un poco de perogrullo, pero es también evidente que necesitamos poder tener esa confianza.
+En general, cuando creamos software, confiamos en que haga aquello para lo cual lo hemos programado. Es un poco de Perogrullo, pero es también evidente que necesitamos poder tener esa confianza.
 
 Una forma de entender esta idea de la confianza en el software es pensar que el código es una representación del conocimiento del negocio. En este caso, una representación ejecutable que produce efectos en el mundo. En este sentido, la confianza se puede equiparar a la seguridad que tenemos de que se trata de una representación lo más exacta posible.
 
@@ -43,7 +43,7 @@ Por eso, un primer paso en los equipos que tienen pocos o ningún test en sus pr
 
 ## Evaluar la confianza de una suite de tests
 
-Si hacemos un cambio en el código de producción y no tocamos los tests, estos solo deberían fallar en caso de hayamos modificado el comportamiento. Por ejemplo, imagina una respuesta de una API en la que hayamos quitado un campo. Tendría que haber al menos un test que falle alertando de ese cambio. 
+Si hacemos un cambio en el código de producción y no tocamos los tests, estos solo deberían fallar en caso de que hayamos modificado el comportamiento. Por ejemplo, imagina una respuesta de una API en la que hayamos quitado un campo. Tendría que haber al menos un test que falle alertando de ese cambio. 
 
 Obviamente lo suyo sería añadir o modificar tests, preferiblemente antes de introducir el cambio, para definir el nuevo comportamiento del código.
 
@@ -75,7 +75,7 @@ Aparte, si tenemos que cambiar tests es que no estamos haciendo un *refactor*, s
 
 **Aplicar el principio Command Query Separation en los tests**, lo hemos repetido muchas veces en el blog: un método solo puede ser un *command*, provocando un efecto en el sistema, o una *query*, consultando y devolviendo una información del sistema.
 
-Para testear un *command* simplemente miramos que se haya producido el efecto esperado. Si se ha de hacer sobre un *mock*, ese será el único que tenga una expectativa sobre la llamada o el efecto que testeamos. Por ejemplo, si vamos a guardar una entidad como resultado del command, podemos testearlo a través de una expectativa en el mock del respositorio.
+Para testear un *command* simplemente miramos que se haya producido el efecto esperado. Si se ha de hacer sobre un *mock*, ese será el único que tenga una expectativa sobre la llamada o el efecto que testeamos. Por ejemplo, si vamos a guardar una entidad como resultado del command, podemos testearlo a través de una expectativa en el mock del repositorio.
 
 Para testear una *query* miramos si nos devuelve lo esperado. No hacemos aserciones o expectativas sobre nada más.
 
@@ -83,7 +83,7 @@ Para testear una *query* miramos si nos devuelve lo esperado. No hacemos asercio
 
 **Eliminar lógica en los dobles**, particularmente si trata de mimetizar comportamiento de negocio. Siempre intentar el test primero con los dobles de menos conocimiento y comportamiento (*dummies*), luego los que tengan comportamiento fijo (*stubs*) y luego los que mantengan algún tipo de conocimiento (*spies*, *mocks*).
 
-**Verificar específicamente el comportamiento deseado en un test**, de modo que cambio en otras partes del código relacionadas no le afecten. Un ejemplo es testear respuestas de API, en lugar de comparar toda la respuesta con un archivo json (que puede tener muchos campos y ser muy grande) es preferible decodificarlo y hacer una aserción sobre el campo o campos específicos que deberían haber sido afectados. De otra manera, si añades un simple campo, tendrás que cambiar todos y cada uno de los tests de ese API. Lo mismo cuando se testea sobre repuestas que devuelven objetos o entidades complejos, haz la aserción sobre métodos o propiedades específicas que sean afectadas por el método bajo test.
+**Verificar específicamente el comportamiento deseado en un test**, de modo que cambio en otras partes del código relacionadas no le afecten. Un ejemplo es testear respuestas de API, en lugar de comparar toda la respuesta con un archivo json (que puede tener muchos campos y ser muy grande) es preferible decodificarlo y hacer una aserción sobre el campo o campos específicos que deberían haber sido afectados. De otra manera, si añades un simple campo, tendrás que cambiar todos y cada uno de los tests de esa API. Lo mismo cuando se testea sobre repuestas que devuelven objetos o entidades complejos, haz la aserción sobre métodos o propiedades específicas que sean afectadas por el método bajo test.
 
 **Desacopla los tests del código** en todos los sentidos. Elimina expectativas en mocks para no acoplar el test a la implementación, no sigas la estructura del código de producción para organizar los tests: usa su propia organización. [Lee acerca de la contravarianza de los tests](https://blog.cleancoder.com/uncle-bob/2017/10/03/TestContravariance.html)
 
@@ -95,9 +95,9 @@ Para testear una *query* miramos si nos devuelve lo esperado. No hacemos asercio
 * testShouldFailWhenNameIsTooShort
 * testShouldFailSilentlyIfCannotGenerateCommission
 
-Evita nombres como testGivenAWhenBThenC (eso es la estructura) o testMethod (no testeamos métodos, sino comportamientos). Cuida el naming, como en todo el resto del código (¿He dicho ya que los tests son código?).
+Evita nombres como testGivenAWhenBThenC (eso es la estructura) o testMethod (no testeamos métodos, sino comportamientos). Cuida el naming, como en todo el resto del código (¿He dicho ya, que los tests son código?).
 
-**Aisla los tests** Evita compartir *fixtures* y dobles entre tests. Huye de los tests dependientes, que son aquellos tests que se ejecutan con los resultados de otro. Evita también cualquier llamada fuera de los límites del sistema. Los tests han de poder ejecutarse en cualquier orden, en máquinas conectadas o no a la red y sin que haya que hacer ningún preparativo especial. Por tanto:
+**Aísla los tests** Evita compartir *fixtures* y dobles entre tests. Huye de los tests dependientes, que son aquellos tests que se ejecutan con los resultados de otro. Evita también cualquier llamada fuera de los límites del sistema. Los tests han de poder ejecutarse en cualquier orden, en máquinas conectadas o no a la red y sin que haya que hacer ningún preparativo especial. Por tanto:
 
 * Cada test debería tener sus propias *fixtures* o conjunto de datos propio.
 * Cada test debería tener sus propios dobles.
@@ -110,4 +110,4 @@ Evita nombres como testGivenAWhenBThenC (eso es la estructura) o testMethod (no 
 
 ## Además
 
-El código debería ser fácil de testear. Lo ideal es desarrollar usando Test Driven Development ya que al tener primero los tests, todo el código queda automáticamente testeado. Si no, escribe código teniendo en mente que lo vas a testear, así que utiliza buenas prácticas y patrones. En resumen: haz felices a tus tests.
+El código debería ser fácil de testear. Lo ideal es desarrollar usando Test Driven Development, ya que al tener primero los tests, todo el código queda automáticamente testeado. Si no, escribe código teniendo en mente que lo vas a testear, así que utiliza buenas prácticas y patrones. En resumen: haz felices a tus tests.

@@ -15,12 +15,12 @@ Posiblemente los repositorios sean uno de los componentes de la aplicación peor
 
 Vistos desde el dominio, los repositorios son colecciones en memoria de entidades o agregados. Sin embargo, en la práctica y con muchísima frecuencia usamos los repositorios como medio de acceso a la base de datos, cosa que no es correcta en DDD.
 
-¿Y para que usamos estos accesos? Pues, aparte de obtener colecciones de entidades o de agregados, es habitual que los usemos para obtener agregaciones (no en el sentido de agregados de dominio, sino de resumen de datos, estadísticos básicos, etc.) y proyecciones de los datos almacenados, bien para proporcionar información a servicios, bien para mostrarlas en algún tipo de vista, entendiendo ésta en un sentido amplio: una parte de la interfaz gráfica, para un *report*, resultado para un *endpoint* de una API, etc. Este segundo tipo de uso no es propio de los repositorios y lo trataremos en otro lugar.
+¿Y para que usamos estos accesos? Pues, aparte de obtener colecciones de entidades o de agregados, es habitual que los usemos para obtener agregaciones (no en el sentido de agregados de dominio, sino de resumen de datos, estadísticos básicos, etc.) y proyecciones de los datos almacenados, bien para proporcionar información a servicios, bien para mostrarlas en algún tipo de vista, entendiendo esta en un sentido amplio: una parte de la interfaz gráfica, para un *report*, resultado para un *endpoint* de una API, etc. Este segundo tipo de uso no es propio de los repositorios y lo trataremos en otro lugar.
 
 En DDD los repositorios se usan para:
 
 * Persistir entidades o agregados
-* Recuperar entidades o agregados conocida su identidad
+* Recuperar entidades o agregados conocidas su identidades
 * Recuperar colecciones de entidades que cumplan alguna condición
 
 Para trabajar con un repositorio, que por definición se debe comportar como un almacén en memoria, no podemos presuponer que hay un sistema de base de datos detrás al que podemos interrogar en un lenguaje propio, como SQL, sino que necesitamos alguna abstracción que nos permita definir reglas de dominio, aunque luego las implementemos de la forma que corresponde al mecanismo de persistencia.
@@ -31,7 +31,7 @@ Por su parte, los criterios para seleccionar entidades suelen representar reglas
 
 Eric Evans propone el patrón [Specification](https://martinfowler.com/apsupp/spec.pdf) para encapsular las condiciones mediante las que se escogen loa agregados. También lo [hemos tratado anteriormente](/patron-specification-del-dominio-a-la-infraestructura-1/), aunque seguramente ese artículo necesite una revisión después de tanto tiempo.
 
-La idea de **Specification** es separar los criterios de las selección del objeto que hace la selección:
+La idea de **Specification** es separar los criterios de la selección del objeto que hace la selección:
 
 > A valuable approach to these problems is to separate the statement of what kind of objects can be selected from the object that does the selection.
 
@@ -274,7 +274,7 @@ class SQLStudentRepository implements StudentRepository
 }
 ```
 
-El resultado es que tenemos implementaciones específicas para el sistema de persistencia residiendo en la capa de infrastructura, con una abstracción de la regla en dominio.
+El resultado es que tenemos implementaciones específicas para el sistema de persistencia residiendo en la capa de infraestructura, con una abstracción de la regla en dominio.
 
 ## Como gestionar proyecciones de bases de datos
 
@@ -301,7 +301,7 @@ Otra forma de referirse a un concepto similar son los *Read Models*. *Read Model
 
 Ambos conceptos nos permiten resolver un tema que en DDD nunca queda del todo claro: ¿cómo generamos simples listados o reports sin tener que montar decenas de entidades o agregados? No hay muchas aplicaciones que no requieran en algún momento presentar algún tipo de vista (de nuevo, en sentido genérico, no solo UI, sino también API y similares) en forma de lista con unas pocas propiedades de un agregado.
 
-Aquí entraría este concepto de **proyección** o **read model** cuya característica principal es que nos proporciona colecciones de DTOs creados específicamente para la petición que recibe el sistema y que no necesita pasar por la capa de dominio realmente. Esto es así porque se trata más bien de necesidades de la aplicación que no afectan al estado del dominio ya que solo son lecturas, ni implican realmente reglas del dominio, pues su manipulación se basa normalmente en la aplicación de simples filtros para afinar la selección de información. Con todo, nos ayudan a proporcionar acceso a los consumidores a los agregados individuales en los que estén interesados o la posibilidad de seleccionarlos para operar con ellos.
+Aquí entraría este concepto de **proyección** o **read model** cuya característica principal es que nos proporciona colecciones de DTOs creados específicamente para la petición que recibe el sistema y que no necesita pasar por la capa de dominio realmente. Esto es así porque se trata más bien de necesidades de la aplicación que no afectan al estado del dominio, ya que solo son lecturas, ni implican realmente reglas del dominio, pues su manipulación se basa normalmente en la aplicación de simples filtros para afinar la selección de información. Con todo, nos ayudan a proporcionar acceso a los consumidores a los agregados individuales en los que estén interesados o la posibilidad de seleccionarlos para operar con ellos.
 
 Tomando nuestro ejemplo de la lista, una posible implementación sería:
 

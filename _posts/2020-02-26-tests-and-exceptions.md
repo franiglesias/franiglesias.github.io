@@ -78,7 +78,7 @@ Sin embargo, este test era bastante insatisfactorio. Para empezar, teníamos dob
 
 El código de producción realiza varias operaciones, entre ellas llamar al servicio `ContractValidator`, aquí doblado con un *stub*, y ajustar a continuación detalles del Contrato relacionados. Si `ContractValidator` falla, arrojando una excepción, `ValidateContract` relanza la excepción y no hace nada más. Lo que más nos importa es que el Contrato no ha sido marcado como "validado por el ERP".
 
-Para mejorar el test usamos una estructura `try...catch` en el propio test, con lo que podemos capturar la excepción y ejecutar aserciones sobre el estado de Contracto. Además, en lugar de un doble, hemos cambiado el método `givenAContractToValidate`, para que devuelva una entidad real. Esto nos permite prescindir de todos los mocks y sus expectativas ya que ahora el test sí verifica un cambio observable. Incluso documenta mejor el uso de este usercase
+Para mejorar el test usamos una estructura `try...catch` en el propio test, con lo que podemos capturar la excepción y ejecutar aserciones sobre el estado de Contract. Además, en lugar de un doble, hemos cambiado el método `givenAContractToValidate`, para que devuelva una entidad real. Esto nos permite prescindir de todos los mocks y sus expectativas, ya que ahora el test sí verifica un cambio observable. Incluso documenta mejor el uso de este _use case_:
 
 ```php
     public function testShouldFailIfContractCannotBeValidatedAtErp(): void
@@ -105,7 +105,7 @@ Otro caso en el que la estrategia de usar el `try...catch` dentro de un test fun
 
 Una de las estrategias que nos planteamos fue lanzar una excepción en caso de detectar errores y hacer que contuviese un payload con la lista de errores recopilada y sus causas.
 
-El problema es que no hay forma de testear eso si simplemente esperamos que se lance la excepción. En realidad, ni siquiera la podemos obtener. Pero al hacer el `try...catch` y capturarla cuando se lanza, accedemos a la instancia y podemos examinar su payload sin problema. Este es el ejemplo;
+El problema es que no hay forma de testear eso si simplemente esperamos que se lance la excepción. En realidad, ni siquiera la podemos obtener. Pero al hacer `try...catch` y capturarla cuando se lanza, accedemos a la instancia y podemos examinar su payload sin problema. Este es el ejemplo;
 
 ```php
     /** @dataProvider invalidDataInFieldsProvider */
@@ -122,7 +122,7 @@ El problema es que no hay forma de testear eso si simplemente esperamos que se l
     }
 ```
 
-En este caso usamos un data provider para pasar el campo en el que estamos interesados y el ejemplo de valor no válido que llevaría. En `getRequestWithField` construímos un objeto Request (de la HttpFoundation de Symfony, en este caso) que simula los datos recibidos en el endpoint. Por defecto, se crearía una petición válida y luego le sobreescribimos los campos que queremos hacer inválidos.
+En este caso usamos un _data provider_ para pasar el campo en el que estamos interesados y el ejemplo de valor no válido que llevaría. En `getRequestWithField` construimos un objeto Request (de la HttpFoundation de Symfony, en este caso) que simula los datos recibidos en el endpoint. Por defecto, se crearía una petición válida y luego le sobreescribimos los campos que queremos hacer inválidos.
 
 Al ejecutar el test capturamos la excepción, nos aseguramos de que solo hay una entrada de error y que contiene el campo que hemos pasado como no válido.
 

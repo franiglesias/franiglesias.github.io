@@ -5,13 +5,13 @@ categories: articles
 tags: good-practices design-principles ddd
 ---
 
-Muchas bases de código que han sido creadas tratando de seguir la metodologías DDD se quedan atascadas en ese falso DDD que solemos llamar "directory driven development", que es básicamente una aplicación de la Arquitectura Hexagonal. Esto es, utilizan la típica distribución de carpetas Domain, Application e Infrastruture, pero el código en ellas está mal organizado y mal distribuido porque en su día no se tenía una comprensión completa de lo que implica Domain Driven Design.
+Muchas bases de código que han sido creadas tratando de seguir la metodología DDD se quedan atascadas en ese falso DDD que solemos llamar "directory driven development", que es básicamente una aplicación de la Arquitectura Hexagonal. Esto es, utilizan la típica distribución de carpetas Domain, Application e Infrastructure, pero el código en ellas está mal organizado y mal distribuido porque en su día no se tenía una comprensión completa de lo que implica Domain Driven Design.
 
 El resultado es que en lugar de la proverbial *Big Ball of Mud* ahora tenemos tres *Big Balls of Mud* que, en parte, es algo mejor pero no suficiente.
 
 Así que en este artículo vamos a ver cómo montar un plan que nos permita evolucionar el código a una organización más próxima a DDD que nos facilite llegar a un diseño más sólido, con el que identificar mejor elementos complejos como agregados, módulos o *bounded contexts*.
 
-El punto de partida de esta propuesta es la idea de que el código es una representación ejecutable del conocimiento que tenemos sobre el dominio o, también, una expresión del modelo del domino que tiene el equipo. Por tanto, se trata de un **refactor orientado a tener un mejor conocimiento del dominio**, un modelo más articulado del mismo, lo que nos puede llevar a un punto en el que estemos en disposición de profundizar en la flexibilidad del diseño, los *bounded contexts* como representación de los subdominios y otras muchas mejoras.
+El punto de partida de esta propuesta es la idea de que el código es una representación ejecutable del conocimiento que tenemos sobre el dominio o, también, una expresión del modelo del dominio que tiene el equipo. Por tanto, se trata de un **refactor orientado a tener un mejor conocimiento del dominio**, un modelo más articulado del mismo, lo que nos puede llevar a un punto en el que estemos en disposición de profundizar en la flexibilidad del diseño, los *bounded contexts* como representación de los subdominios y otras muchas mejoras.
 
 Y estas son sus etapas:
 
@@ -32,7 +32,7 @@ En la capa de Aplicación
 * Introduce un Event Bus si no lo tienes ya
 * Analiza los Use cases y deja en ellos solo el código que ejecuta su intent y mueve la lógica a subscribers
 
-En la capa de infrastructura
+En la capa de infraestructura
 
 * Organizar la capa de infraestructura en torno a conceptos
 
@@ -149,9 +149,9 @@ Domain
  ...
 ```
 
-Como puede apreciarse la impresión de orden aumenta mucho. Cognitivamente hablando, la nueva estructura revela un mayor sentido ya que las clases más estrechamente relacionadas van juntas. En la práctica, a la hora de hacer cambios, la carga es menor porque posiblemente tendremos que tocar archivos que están en la misma carpeta, sin necesidad de buscar en varias.
+Como puede apreciarse la impresión de orden aumenta mucho. Cognitivamente hablando, la nueva estructura revela un mayor sentido, ya que las clases más estrechamente relacionadas van juntas. En la práctica, a la hora de hacer cambios, la carga es menor porque posiblemente tendremos que tocar archivos que están en la misma carpeta, sin necesidad de buscar en varias.
 
-Otra ventaja a largo plazo es que nos facilita particionar el dominio si en algún momento vemos esa necesidad por el desarrollo de nuestra comprensión del negocio, por ejemplo para detectar módulos o incluso bounded contexts.
+Otra ventaja a largo plazo es que nos facilita partir el dominio si en algún momento vemos esa necesidad por el desarrollo de nuestra comprensión del negocio, por ejemplo para detectar módulos o incluso bounded contexts.
 
 Por otra parte, es muy posible que en tu carpeta de dominio no tengas todavía servicios, algo que ya solucionaremos en fases posteriores.
 
@@ -290,7 +290,7 @@ class Task
 }
 ```
 
-Es decir, una tarea puede entregarse si estaba en estado WIP, pero no en otro estado. **El límite de consistencia es la entidad Task**, de modo que otras entidades y servicios que no sean Task pueden confiar en que el status de Task será siempre consistente hagan lo que hagan con ella. La invariante que mantienen entre Task y TaskStatus es justamente esa. Y viéndolo desde fuera esta solución parece muy correcta ya que la entidad se encarga de proteger sus invariantes.
+Es decir, una tarea puede entregarse si estaba en estado WIP, pero no en otro estado. **El límite de consistencia es la entidad Task**, de modo que otras entidades y servicios que no sean Task pueden confiar en que el status de Task será siempre consistente hagan lo que hagan con ella. La invariante que mantienen entre Task y TaskStatus es justamente esa. Y viéndolo desde fuera esta solución parece muy correcta, ya que la entidad se encarga de proteger sus invariantes.
 
 Otra forma de considerar el problema es situarnos dentro de la entidad Task (que bien podría ser un agregado en un cierto contexto) y ver cuáles son los límites de consistencia de TaskStatus. Es cierto que Task se ocupa de mantener su status, pero eso no quiere decir el concepto que representa TaskStatus tenga que ser pasivo. Antes bien, tiene mucho sentido que sea el responsable de mantener sus invariantes en lo que respecta a esos cambios de estado. El ejemplo anterior, planteado de esta manera quedaría:
 
@@ -349,7 +349,7 @@ class Student
 }
 ```
 
-Es decir, el `new` no se hace fuera de Student, sino dentro.
+Es decir: el `new` no se hace fuera de Student, sino dentro.
 
 La razón de esto es que el agregado tiene la función de proteger las invariantes y aplicar las reglas de negocio necesarias porque estamos trabajando dentro de los límites de consistencia del agregado.
 
@@ -361,7 +361,7 @@ Una implicación es que no se tienen repositorios para estas entidades agregadas
 
 Del mismo modo que los agregados (pero también las entidades y los value objects) definen límites de consistencia. Los agregados definen límites transaccionales, esto es: los cambios en un agregado se persisten en una transacción, de modo que si falla la persistencia de alguno de los elementos, falla la persistencia del agregado. Y todo eso para garantizar que se mantienen las invariantes.
 
-Veámoslo con algunos ejemplos sencillo a partir del típico agregado Order con sus correspondientes Lines:
+Veámoslo con algunos ejemplos sencillos a partir del típico agregado Order con sus correspondientes Lines:
 
 * Si fallase la persistencia de una sola Line, pero se mantuviesen las demás, el cliente no recibiría todos los productos que desea.
 * ¿Y si fallasen todas las Lines? Nos podrían quedar Orders sin contenido.

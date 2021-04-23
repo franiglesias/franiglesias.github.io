@@ -286,7 +286,7 @@ Y no, no hay problemas con esto ya que se cumplen las siguientes condiciones:
 * El *Alien Value Object* no tiene dependencias. Toma nuestro *Value Object* para inicializar su propio estado.
 * El método de transformación no tiene *side effects*, lo que viene siendo una función pura.
 
-Gracias a cumplirse esas condiciones, tampoco supone un problema para los tests unitarios. En realidad, todo son ventajas ya que al no tener que inyectarlos, simplificando la instanciación de la unidad bajo test y no es necesario doblarlos. Por otra parte, ellos mismos son muy fáciles de testear.
+Gracias a cumplirse esas condiciones, tampoco supone un problema para los tests unitarios. En realidad, todo son ventajas, ya que al no tener que inyectarlos, simplificando la instanciación de la unidad bajo test y no es necesario doblarlos. Por otra parte, ellos mismos son muy fáciles de testear.
 
 ## Finalizando
 

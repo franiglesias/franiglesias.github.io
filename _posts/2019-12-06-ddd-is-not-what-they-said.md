@@ -9,7 +9,7 @@ Acabo de leerme, por fin, **El Libro** sobre *Domain Driven Design* de Eric Evan
 
 Por alguna razón las referencias que había escuchado sobre el libro eran bastante negativas. Y es una pena porque he ido posponiendo su lectura más de lo debido, aunque también es verdad que he priorizado otros que tenía más accesibles. Pero, en resumen: el libro me ha gustado mucho y el contenido me ha ayudado a darle sentido a muchas cosas.
 
-En parte puedo entender la visión "negativa" del libro ya que no es un libro técnico al uso.
+En parte puedo entender la visión "negativa" del libro, ya que no es un libro técnico al uso.
 
 Empecemos por ahí, El *Blue Book del DDD* no es un libro que te proporcione recetas sobre cómo implementar cosas, sino que trata principalmente acerca de **cómo pensar y cómo conversar acerca dominio**, el espacio del problema, y cómo iniciar y desarrollar el diseño del modelo como espacio de solución. Con todo, es un libro eminentemente práctico que ofrece una sistemática de análisis y de diseño, estructurada en temas para los cuales ofrece una completo abanico de estrategias y patrones de actuación.
 
@@ -21,7 +21,7 @@ Porque el DDD trata principalmente de eso: de **conversaciones, contextos y mode
 
 Sin embargo, es frecuente que se hable de DDD asociado a tecnologías o implementaciones concretas: microservicios, CQRS, Event Sourcing o Arquitectura Hexagonal, como si uno implicase las otras. También es frecuente que se insista en los patrones tácticos, los que tienen que ver con la implementación, y no los estratégicos, los que tienen que ver con el diseño, que es de lo que trata el *Blue Book*.
 
-Así, diría que es más popular y conocido el *Red Book*, [Implementing Domain Driven Design](https://www.amazon.es/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577), el libro de Vaughn Vernon. Entiendo que es porque es el que explica el cómo hacer, o sea, el que trata de los patrones tácticos. El libro de recetas, por decirlo así. Yo no me leído el *Red Book* entero, sino que de momento lo he estado usando como referencia para temas específicos, pero mucha gente se ha leído éste y no el de Evans y creo que es un error.
+Así, diría que es más popular y conocido el *Red Book*, [Implementing Domain Driven Design](https://www.amazon.es/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577), el libro de Vaughn Vernon. Entiendo que es porque es el que explica el cómo hacer, o sea, el que trata de los patrones tácticos. El libro de recetas, por decirlo así. Yo no me he leído el *Red Book* entero, sino que de momento lo he estado usando como referencia para temas específicos, pero mucha gente se ha leído este y no el de Evans y creo que es un error.
 
 Además, posteriormente el mismo Vaughn Vernon publicó el *Green Book*, [Domain Driven Design Distilled](https://www.amazon.es/Domain-Driven-Design-Distilled-Vaughn-Vernon/dp/0134434420) que hay quien considera como un buen libro de introducción al DDD. En este discrepo por completo. El *Distilled* es un buen índice para el *Red Book*, pero no aprenderás Domain Driven Design con él.
 
@@ -33,7 +33,7 @@ La insistencia en los patrones tácticos tiene su aspecto positivo. No dejan de 
 
 La Arquitectura Hexagonal y, en general, las arquitecturas limpias son perfectamente compatibles con Domain Driven Design. Esto es así por dos razones:
 
-* Las separación en capas, con el dominio en el centro.
+* La separación en capas, con el dominio en el centro.
 * Las reglas de dependencia, con todas las dependencias apuntando hacia adentro, de modo que dominio no tiene dependencias.
 
 Pero **no hay nada que diga que la Arquitectura Hexagonal ES la arquitectura propia de una aplicación DDD**. De hecho, la Arquitectura Hexagonal es una aplicación del principio de Inversión de Dependencias y sus prácticas asociadas, más que una arquitectura.

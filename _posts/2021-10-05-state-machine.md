@@ -17,7 +17,7 @@ La gestión de estados suele ser un punto crucial de la lógica de cualquier apl
 
 Nos interesan tres conceptos principales:
 
-* **Estados**: representan las diversas configuraciones que puede tener el sistema en un momento dato. Es un conjunto finito, habiendo un número determinado de estados en el sistema.
+* **Estados**: representan las diversas configuraciones que puede tener el sistema en un momento dado. Es un conjunto finito, habiendo un número determinado de estados en el sistema.
 * **Transformaciones**: son las acciones que hacen cambiar al sistema de un estado a otro.
 * **Guardas**: son las condiciones que se deben cumplir para que una transformación pase de uno a otro estado.
 

@@ -5,7 +5,7 @@ categories: articles
 tags: php bdd testing
 ---
 
-En el [primer artículo de la serie](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta Behat. En el [segundo](/bdd-example-2), utilizamos `PHPSpec` para comenzar a desarrollar nuestra feature, partiendo de un *Use Case* y descubriendo las clases colaboradoras necesarias a medida que identificamos responsabilidades. En esta tercera entrega pretendemos a empezar a unir las piezas.
+En el [primer artículo de la serie](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta behat. En el [segundo](/bdd-example-2), utilizamos `PHPSpec` para comenzar a desarrollar nuestra feature, partiendo de un *Use Case* y descubriendo las clases colaboradoras necesarias a medida que identificamos responsabilidades. En esta tercera entrega pretendemos a empezar a unir las piezas.
 
 Al final de la fase anterior conseguimos desarrollar el *Use Case* `UpdatePricesFromUploadedFile` y descubrimos las interfaces de sus colaboradores. Es un buen momento para volver a `FeatureContext` y completar el test de aceptación. Para eso, tenemos que revisar las interfaces generadas, implementar varias cosas y tomar algunas decisiones.
 
@@ -330,8 +330,8 @@ Primero vamos a ver dónde estábamos:
 ```php
 <?php
 
-use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
+use behat\behat\Context\Context;
+use behat\behat\Tester\Exception\PendingException;
 use TalkingBit\BddExample\UpdatePricesFromUploadedFile;
 
 /**
@@ -486,14 +486,14 @@ Feature: Massively update product prices when needed
 
   Scenario: Update uploading a csv file with new prices             # features/massiveUpdate.feature:6
     Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
-      Fatal error: Call to undefined method TalkingBit\BddExample\Persistence\InMemoryProductRepository::store() (Behat\Testwork\Call\Exception\FatalThrowableError)
+      Fatal error: Call to undefined method TalkingBit\BddExample\Persistence\InMemoryProductRepository::store() (behat\Testwork\Call\Exception\FatalThrowableError)
     And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
     When I upload the file                                          # FeatureContext::iUploadTheFile()
     Then Changes are applied to the current prices                  # FeatureContext::changesAreAppliedToTheCurrentPrices()
 
   Scenario: Update fails because an invalid file                 # features/massiveUpdate.feature:12
     Given There are current prices in the system                 # FeatureContext::thereAreCurrentPricesInTheSystem()
-      Fatal error: Call to undefined method TalkingBit\BddExample\Persistence\InMemoryProductRepository::store() (Behat\Testwork\Call\Exception\FatalThrowableError)
+      Fatal error: Call to undefined method TalkingBit\BddExample\Persistence\InMemoryProductRepository::store() (behat\Testwork\Call\Exception\FatalThrowableError)
     And I have a file named "invalid_data.csv" with invalid data # FeatureContext::iHaveAFileNamedWithInvalidData()
     When I upload the file                                       # FeatureContext::iUploadTheFile()
     Then A message is shown explaining the problem               # FeatureContext::aMessageIsShownExplainingTheProblem()
@@ -501,7 +501,7 @@ Feature: Massively update product prices when needed
 
   Scenario: Update fails because a system error                     # features/massiveUpdate.feature:19
     Given There are current prices in the system                    # FeatureContext::thereAreCurrentPricesInTheSystem()
-      Fatal error: Call to undefined method TalkingBit\BddExample\Persistence\InMemoryProductRepository::store() (Behat\Testwork\Call\Exception\FatalThrowableError)
+      Fatal error: Call to undefined method TalkingBit\BddExample\Persistence\InMemoryProductRepository::store() (behat\Testwork\Call\Exception\FatalThrowableError)
     And I have a file named "prices_update.csv" with the new prices # FeatureContext::iHaveAFileNamedWithTheNewPrices()
     When I upload the file                                          # FeatureContext::iUploadTheFile()
     And There is an error in the system                             # FeatureContext::thereIsAnErrorInTheSystem()
@@ -864,7 +864,7 @@ Volvemos a lanzar `behat` para que nos diga por dónde seguir:
       | 101 | Product 1 | 17.00 |
       | 102 | Product 2 | 14.95 |
       | 103 | Product 3 | 23.00 |
-      Type error: Too few arguments to function TalkingBit\BddExample\Product::__construct(), 2 passed in src/TalkingBit/BddExample/Persistence/InMemoryProductRepository.php on line 12 and exactly 3 expected (Behat\Testwork\Call\Exception\FatalThrowableError)
+      Type error: Too few arguments to function TalkingBit\BddExample\Product::__construct(), 2 passed in src/TalkingBit/BddExample/Persistence/InMemoryProductRepository.php on line 12 and exactly 3 expected (behat\Testwork\Call\Exception\FatalThrowableError)
 ```
 
 Este mensaje nos dice que tenemos una implementación incorrecta en InMemoryProductRepository. Recuerda que, de momento, habíamos puesto una implementación mínima, pero ahora tenemos que hacer algo más elaborado. Este es el código problemático:
@@ -1907,7 +1907,7 @@ Al ejecutar este último escenario se produce un error que no puede ser capturad
       """
       Something went wrong and it was not possible to update prices
       """
-      Fatal error: Call to a member function getMessage() on null (Behat\Testwork\Call\Exception\FatalThrowableError)
+      Fatal error: Call to a member function getMessage() on null (behat\Testwork\Call\Exception\FatalThrowableError)
     And Changes are not applied to the current prices               # FeatureContext::changesAreNotAppliedToTheCurrentPrices()
       | id  | name      | price |
       | 101 | Product 1 | 10.25 |

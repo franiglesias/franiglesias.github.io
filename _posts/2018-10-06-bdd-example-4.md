@@ -6,7 +6,7 @@ categories: articles
 tags: php bdd testing
 ---
 
-Ya llevamos tres capítulos de esta serie sobre BBD en PHP. En el [primer artículo de la serie](/bdd-example-1) dimos una visión general de BDD y Behat. [En el segundo](/example-2) y [el tercero](/bbd-example-3) revisamos el proceso de desarrollo de una Feature desde la historia de usuario hasta tener un código funcional usando la metodología y herramientas BDD.
+Ya llevamos tres capítulos de esta serie sobre BBD en PHP. En el [primer artículo de la serie](/bdd-example-1) dimos una visión general de BDD y behat. [En el segundo](/example-2) y [el tercero](/bbd-example-3) revisamos el proceso de desarrollo de una Feature desde la historia de usuario hasta tener un código funcional usando la metodología y herramientas BDD.
 
 Y en este cuarto capítulo vamos a refinar unos cuantos puntos para mejorar los tests de aceptación y su gestión.
 
@@ -16,9 +16,9 @@ Antes de nada, [en este repositorio de github](https://github.com/franiglesias/c
 
 Una cuestión importante a considerar tiene que ver con la validez de nuestros tests, en el sentido de si están probando aquello que dicen.
 
-Los test de aceptación realizados con Gherkin + Behat pueden resultar bastante fáciles de falsear ya que para que un paso se ejecute con éxito y se refleje así en el escenario basta con que no arroje ninguna excepción.
+Los test de aceptación realizados con Gherkin + behat pueden resultar bastante fáciles de falsear, ya que para que un paso se ejecute con éxito y se refleje así en el escenario basta con que no arroje ninguna excepción.
 
-Una forma de enfocarlo es hacer aserciones sobre las pre-condiciones en los pasos **Given**, es decir, no solo realizar la definición del paso, sino verificar con una o varias aserciones que se cumplen las condiciones. Esta precaución aumentará la solidez de nuestros tests de aceptación a costa de un poco más de trabajo.
+Una forma de enfocarlo es hacer aserciones sobre las precondiciones en los pasos **Given**, es decir, no solo realizar la definición del paso, sino verificar con una o varias aserciones que se cumplen las condiciones. Esta precaución aumentará la solidez de nuestros tests de aceptación a costa de un poco más de trabajo.
 
 Veamos un ejemplo. He aquí el paso **Given** mediante el cual ponemos productos en el repositorio:
 
@@ -288,7 +288,7 @@ Este otro cambio es un poco más peliagudo, pero se puede hacer igualmente:
     }
 ```
 
-Ya que realmente es la misma operación. Sin embargo, usar regexp es siempre un poco más complicado. En primer lugar tenemos que capturar el nombre de archivo y aceptar cualquier texto en la última parte del paso.
+Ya que realmente es la misma operación. Sin embargo, usar _regexp_ es siempre un poco más complicado. En primer lugar tenemos que capturar el nombre de archivo y aceptar cualquier texto en la última parte del paso.
 
 ```php
     /**
@@ -318,15 +318,15 @@ Pero además, tenemos que adaptar el transformer para usar la misma regex que ca
 
 Ciertamente esto empieza a parecer un poco mágico, pero funciona my bien.
 
-**¿Merece la pena hacer este refactor?** Reutilizar las definiciones con distintos pasos puede ser bastante buena idea de cara al mantenimiento a largo plazo de la feature y del test de aceptación. Los tests también son código y necesitan mantenimiento. Reducir la duplicación innecesario es siempre buena idea.
+**¿Merece la pena hacer este refactor?** Reutilizar las definiciones con distintos pasos puede ser bastante buena idea de cara al mantenimiento a largo plazo de la feature y del test de aceptación. Los tests también son código y necesitan mantenimiento. Reducir la duplicación innecesaria es siempre buena idea.
 
 
 ## Refinar las implementaciones con TDD
 
-El desarrollo que hemos llevado a cabo funciona como queda demostrado por la ejecución de la feature, pero la verdad es que en los capítulos anteriores no hemos lanzado la suite completa de Specs. Puede ser un buen momento hacerlo ahora.
+El desarrollo que hemos llevado a cabo funciona como queda demostrado por la ejecución de la _feature_, pero la verdad es que en los capítulos anteriores no hemos lanzado la suite completa de Specs. Puede ser un buen momento hacerlo ahora.
 
 ```
-bin/PHPSpec run
+bin/phpspec run
 ```
 
 Esto arroja una pequeña sorpresa:
@@ -386,7 +386,7 @@ Por tanto, nuestro siguiente paso sería arreglar las Specs que no estén pasand
 namespace spec\TalkingBit\BddExample;
 
 use TalkingBit\BddExample\Product;
-use PHPSpec\ObjectBehavior;
+use phpspec\ObjectBehavior;
 use Prophecy\Argument;
 
 class ProductSpec extends ObjectBehavior
@@ -407,7 +407,7 @@ Una de las ideas más subyacentes en los enfoques metodológicos de TDD y BDD es
 
 Por eso decimos que en BDD y TDD escribimos el código necesario para pasar los tests y ni una línea más.
 
-Si examinas el código que hemos escrito verás que es bastante minimalista y es posible que puedas detectar lugares donde refactorizar o mejorar el código. En ese sentido, es interesante usar herramientas para tu IDE como Php inspections (https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-), las cuales pueden proporcionarte algunas pistas útiles.
+Si examinas el código que hemos escrito verás que es bastante minimalista y es posible que puedas detectar lugares donde refactorizar o mejorar el código. En ese sentido, es interesante usar herramientas para tu IDE como [Php inspections](https://plugins.jetbrains.com/plugin/7622-php-inspections-ea-extended-), las cuales pueden proporcionarte algunas pistas útiles.
 
 Al trabajar como lo hemos hecho, todos los elementos están bastante desacoplados, son ligeros y las responsabilidades están bien repartidas. Es decir, no solo hemos escrito un código que hace lo que se desea que haga, sino que además es un código de buena calidad, preparado para seguir creciendo en el futuro, y protegido por tests.
 
@@ -417,7 +417,7 @@ Hasta ahora no había querido entrar en la organización de los tests para no de
 
 Obviamente, un proyecto medianamente grande tendrá un montón de Features y tests y querremos tenerlos ordenados de una forma significativa.
 
-Ahora solo vamos a entrar en cómo configurar `behat`, y también `PHPSpec`, para organizar los tests de la forma que más nos interese. Existen muchas opciones de configuración, así como la posibilidad de etiquetas las features y ejecutarlas selectivamente. Eso es algo de lo que hablaremos en otro momento.
+Ahora solo vamos a entrar en cómo configurar `behat`, y también `phpspec`, para organizar los tests de la forma que más nos interese. Existen muchas opciones de configuración, así como la posibilidad de etiquetas las features y ejecutarlas selectivamente. Eso es algo de lo que hablaremos en otro momento.
 
 Vamos a suponer que queremos tener todos nuestros tests bajo una única carpeta `tests`, bajo la cual tendremos los tests de `acceptance`, `integration` y `unit`. Algo así:
 
@@ -429,7 +429,7 @@ tests
 
 ```
 
-Por otro lado, queremos organizar nuestra carpeta de acceptance test en base a dominios o contextos acotados. He aquí una posible estructura para aplicar a nuestro ejemplo:
+Por otro lado, queremos organizar nuestra carpeta de acceptance test con base en dominios o contextos acotados. He aquí una posible estructura para aplicar a nuestro ejemplo:
 
 ```
 tests
@@ -450,9 +450,9 @@ Así que comencemos con `behat`. Lo primero es crear archivo `behat.yml` en la r
 default:
 ```
 
-Esto es lo que se llama un perfil (o profile). Siempre debe existir un perfil `default`, aunque puedes definir todos los que quieras según tus objetivos. Pero todos los que definas heredarán de `default` y podrán sobre-escribir aquellos aspectos que les sean propios.
+Esto es lo que se llama un perfil (o profile). Siempre debe existir un perfil `default`, aunque puedes definir todos los que quieras según tus objetivos. Pero todos los que definas heredarán de `default` y podrán sobreescribir aquellos aspectos que les sean propios.
 
-Dentro de un perfil se pueden definir varias suites o conjuntos de tests. Vamos a imaginar que nosotros queremos una suite que sea `use_cases` en la que testeamos nuestra feature a través de los Use Cases.
+Dentro de un perfil se pueden definir varias suites o conjuntos de tests. Vamos a imaginar que nosotros queremos una suite que sea `use_cases` en la que testeamos nuestra feature a través de los casos de uso.
 
 Vamos a empezar moviendo nuestras *features* a una carpeta particular, para lo que definimos la siguiente suite en **behat.yml**:
 
@@ -491,10 +491,10 @@ También hemos aprovechado para cambiar el nombre de la clase y moverla a su ubi
 
 namespace Acceptance\Product\Context;
 
-use Behat\Behat\Context\Context;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
-use PHPUnit\Framework\Assert;
+use behat\behat\Context\Context;
+use behat\Gherkin\Node\PyStringNode;
+use behat\Gherkin\Node\TableNode;
+use phpunit\Framework\Assert;
 use TalkingBit\BddExample\FileReader\CSVFileReader;
 use TalkingBit\BddExample\Persistence\InMemoryProductRepository;
 use TalkingBit\BddExample\Product;
@@ -507,11 +507,11 @@ use Throwable;
 
 Una vez que hemos movido la clase, podemos borrar la carpeta features original y lanzar `behat` para comprobar que los tests siguen pasando.
 
-Si conoces el formato **YAML** seguramente no se te ha escapado que definimos las features y contexts en la suite como un array. Esto quiere decir que es posible tener en una suite varias *features* y varios *contexts*. Cuando ejecutas `behat` para generar las definiciones de los pasos puede resultar un poquito lioso al principio ya que tienes la opción de enviar dichas definiciones a cualquier de los *contexts*. En cualquier caso, basta con cortar y pegar para mover definiciones entre contextos.
+Si conoces el formato **YAML** seguramente no se te ha escapado que definimos las features y contexts en la suite como un array. Esto quiere decir que es posible tener en una suite varias *features* y varios *contexts*. Cuando ejecutas `behat` para generar las definiciones de los pasos puede resultar un poquito lioso al principio, ya que tienes la opción de enviar dichas definiciones a cualquier de los *contexts*. En cualquier caso, basta con cortar y pegar para mover definiciones entre contextos.
 
 ### BDD on steroids: test de la feature en diferentes capas
 
-Una cosa interesante que nos permite esta forma de configuración es la posibilidad de utilizar la misma *feature* en Gherkin para escribir distintos tests de aceptación. En el ejemplo de esta serie de artículos hemos estado haciendo el test al nivel del UseCase, algo que lo caracterizaría más bien como un test de integración. Pero jugando con los perfiles y las suites es posible generar nuevos tests que podrían ser de tipo end-to-end y probar el mismo comportamiento llamando a una API o navegando la página que da acceso a esa característica.
+Una cosa interesante que nos permite esta forma de configuración es la posibilidad de utilizar la misma *feature* en Gherkin para escribir distintos tests de aceptación. En el ejemplo de esta serie de artículos hemos estado haciendo el test al nivel del Use Case, algo que lo caracterizaría más bien como un test de integración. Pero jugando con los perfiles y las suites es posible generar nuevos tests que podrían ser de tipo end-to-end y probar el mismo comportamiento llamando a una API o navegando la página que da acceso a esa característica.
 
 Por ejemplo, modificando el archivo **behat.yml**:
 
@@ -556,13 +556,13 @@ De este modo, podemos hacer tests de aceptación en dos niveles diferentes, o en
 
 ### Moviendo las *Specs*
 
-Toca el turno a las especificaciones de `PHPSpec`. Mi mayor duda en este momento es cómo considerarlas en el contexto de un proyecto. Por un lado, no dejan de ser tests unitarios y tendría sentido ponerlas directamente bajo la carpeta `tests/Unit`. Sin embargo, hay equipos que podrían preferir mantener separados estos tests de los realizados con `PHPUnit`.
+Toca el turno a las especificaciones de `phpspec`. Mi mayor duda en este momento es cómo considerarlas en el contexto de un proyecto. Por un lado, no dejan de ser tests unitarios y tendría sentido ponerlas directamente bajo la carpeta `tests/Unit`. Sin embargo, hay equipos que podrían preferir mantener separados estos tests de los realizados con `phpunit`.
 
-Por un lado, sintonizo con esta última idea: usar `PHPSpec` para el diseño y `PHPUnit` para tests unitarios más orientados al control de calidad, ya que `PHPSpec` fuerza algunas limitaciones como la de no poder usar *Data Providers* o las dificultades que puede tener para testear código *legacy* o, en general, código existente con defectos de diseño.
+Por un lado, sintonizo con esta última idea: usar `phpspec` para el diseño y `phpunit` para tests unitarios más orientados al control de calidad, ya que `phpspec` fuerza algunas limitaciones como la de no poder usar *Data Providers* o las dificultades que puede tener para testear código *legacy* o, en general, código existente con defectos de diseño.
 
 En cualquier caso, la diferencia para configurarlo sería nada más que un nombre de carpeta.
 
-Ya habíamos creado un archivo de configuración de `PHPSpec`, con el nombre de PHPSpec.yml, por lo que vamos a ver cómo ampliarlo. Empezamos definiendo test suites, para lo que recomendaría usar el mismo nombre que las definidas para `behat`:
+Ya habíamos creado un archivo de configuración de `phpspec`, con el nombre de phpspec.yml, por lo que vamos a ver cómo ampliarlo. Empezamos definiendo test suites, para lo que recomendaría usar el mismo nombre que las definidas para `behat`:
 
 ```php
 formatter.name: pretty
@@ -591,9 +591,9 @@ tests
 └── Unit
 ```
 
-### Personalizar el código generado por `PHPSpec`
+### Personalizar el código generado por `phpspec`
 
-`PHPSpec` es capaz de ayudarnos con los pasos más tediosos de la generación de código, para lo que utiliza un sistema de plantillas que se pueden personalizar guardando archivos con extensión **.tpl** en una carpeta `.PHPSpec` en la raíz del proyecto. Por ejemplo:
+`phpspec` es capaz de ayudarnos con los pasos más tediosos de la generación de código, para lo que utiliza un sistema de plantillas que se pueden personalizar guardando archivos con extensión **.tpl** en una carpeta `.phpspec` en la raíz del proyecto. Por ejemplo:
 
 **class.tpl** En esta plantilla hago que se genere la clase con strict_types
 
@@ -615,7 +615,7 @@ class %name%
 namespace %namespace%;
 
 use %subject%;
-use PHPSpec\ObjectBehavior;
+use phpspec\ObjectBehavior;
 use Prophecy\Argument;
 
 class %name% extends ObjectBehavior
@@ -640,14 +640,14 @@ Puedes sobreescribir cualquier plantilla de estas para adaptarla a tus preferenc
 * returnconstant.template
 * specification.template
 
-Puedes ver las originales en la carpeta buscando en el `vendor/PHPSpec` de tu proyecto `src/PHPSpec/CodeGenerator/Generator/templates`.
+Puedes ver las originales en la carpeta buscando en el `vendor/phpspec` de tu proyecto `src/phpspec/CodeGenerator/Generator/templates`.
 
-Una cosa que no podemos hacer es cambiar la convención de nombres de de ejemplos de `PHPSpec` que usa *snake_case* en lugar de la recomendación PSR de usar *camelCase*, y [y aquí puedes leer una discusión bastante profunda sobre las razones](https://github.com/PHPSpec/PHPSpec/issues/608).
+Una cosa que no podemos hacer es cambiar la convención de nombres de ejemplos de `phpspec` que usa *snake_case* en lugar de la recomendación PSR de usar *camelCase*, y [y aquí puedes leer una discusión bastante profunda sobre las razones](https://github.com/phpspec/phpspec/issues/608).
 
-Se trata de una herramienta con [opiniones muy marcadas acerca de cómo programar y cómo hacer TDD](https://inviqa.com/blog/my-top-ten-favourite-PHPSpec-limitations). Me gustaría hablar de eso más a fondo en un futuro artículo, aunque te puedo adelantar que ha sido clave en mi aprendizaje personal sobre TDD.
+Se trata de una herramienta con [opiniones muy marcadas acerca de cómo programar y cómo hacer TDD](https://inviqa.com/blog/my-top-ten-favourite-phpspec-limitations). Me gustaría hablar de eso más a fondo en un futuro artículo, aunque te puedo adelantar que ha sido clave en mi aprendizaje personal sobre TDD.
 
-## Y ahora… ¿qué?
+## Y ahora… ¿Qué?
 
-En estos cuatro primeros capítulos hemos explorado las bases del BDD con las herramientas `behat` y `PHPSpec`, con lo que ya estaríamos listos para empezar a aplicar este enfoque en nuestros proyectos.
+En estos cuatro primeros capítulos hemos explorado las bases del BDD con las herramientas `behat` y `phpspec`, con lo que ya estaríamos listos para empezar a aplicar este enfoque en nuestros proyectos.
 
 Ahora querríamos seguir esta serie de artículos con dos enfoques: uno más teórico que nos sirva para desarrollar la idea del Behavior Driven Development y su aplicación en la interacción con negocio y otro más aplicado, orientado a la realización de distintos tipos de tests usando las herramientas disponibles.

@@ -39,7 +39,7 @@ Los cambios conceptuales me llevaron a pensar en cómo reescribir mis aplicacion
 
 Pero también hice otros cambios en mis herramientas de trabajo. Adopté Symfony como pila de componentes para escribir aplicaciones desacopladas de un framework. Obviamente, a estas alturas ya tendría que estar usando Composer para manejar todo esto.
 
-Aunque ya hacía TDD, no acababa de sentirme a gusto con PHPUnit en esa tarea, por lo que decidí probar con PHPSpec y Behat, de modo que ahora ambas utilidades forman parte de mi ciclo de desarrollo. Utilizar PHPSpec ha sido una de las cosas que más ha contribuido a mejorar la calidad de mi código en menos tiempo. PHPSpec no solo te ayuda a diseñar tus clases, sino que te enseña a programar mejor.
+Aunque ya hacía TDD, no acababa de sentirme a gusto con PHPUnit en esa tarea, por lo que decidí probar con PHPSpec y behat, de modo que ahora ambas utilidades forman parte de mi ciclo de desarrollo. Utilizar PHPSpec ha sido una de las cosas que más ha contribuido a mejorar la calidad de mi código en menos tiempo. PHPSpec no solo te ayuda a diseñar tus clases, sino que te enseña a programar mejor.
 
 Por otro lado, ya llevaba un tiempo trabajando con SASS para la escritura de CSS, y finalmente, después de algunos experimentos, aprendí a usar Gulp para la gestión de assets Javascript, CSS y demás.
 

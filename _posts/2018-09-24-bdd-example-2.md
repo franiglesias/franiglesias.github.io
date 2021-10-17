@@ -5,7 +5,7 @@ categories: articles
 tags: php bdd testing
 ---
 
-En el [artículo anterior](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta Behat. Al final del mismo, nos habíamos quedado con una feature escrita en Gherkin y un test de aceptación vinculado fallando.
+En el [artículo anterior](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta behat. Al final del mismo, nos habíamos quedado con una feature escrita en Gherkin y un test de aceptación vinculado fallando.
 
 Antes de continuar me gustaría puntualizar algunas cosas cuya ausencia podríais haber notado.
 
@@ -15,9 +15,9 @@ Antes de continuar me gustaría puntualizar algunas cosas cuya ausencia podríai
 
 Sin embargo, mi plan es cubrir ese tipo de pruebas más adelante. 
 
-**Tests de integración con Behat**. Con relación a lo anterior, decir que es perfectamente válido utilizar Gherkin y Behat para plantear tests de integración de esta forma. Asumo que en cada equipo de desarrollo y en cada proyecto las cosas pueden ser distintas pero en mi caso esta aproximación sería suficiente en la mayor parte de ocasiones.
+**Tests de integración con behat**. Con relación a lo anterior, decir que es perfectamente válido utilizar Gherkin y behat para plantear tests de integración de esta forma. Asumo que en cada equipo de desarrollo y en cada proyecto las cosas pueden ser distintas pero en mi caso esta aproximación sería suficiente en la mayor parte de ocasiones.
 
-**¿Esta cosa es configurable?** Bajando a aspectos más prácticos, todavía no me parado en introducir los detalles de configuración de Behat. Con toda razón habrá quien se pregunte si no es posible guardar los archivos en otra parte o generar más tests que el `FeatureContext` que se crea por defecto. Por supuesto que es posible personalizar la herramienta pero, de nuevo, me ha parecido más fácil centrarnos en entender bien el flujo de trabajo antes de tratar de personalizarlo sin saber por qué o para qué.
+**¿Esta cosa es configurable?** Bajando a aspectos más prácticos, todavía no me parado en introducir los detalles de configuración de behat. Con toda razón habrá quien se pregunte si no es posible guardar los archivos en otra parte o generar más tests que el `FeatureContext` que se crea por defecto. Por supuesto que es posible personalizar la herramienta pero, de nuevo, me ha parecido más fácil centrarnos en entender bien el flujo de trabajo antes de tratar de personalizarlo sin saber por qué o para qué.
 
 **¿Otro entorno de test? ¿Tengo que aprender PHPSpec?** En la entrega anterior mencioné que usaríamos **PHPSpec** para la siguiente fase de desarrollo BDD. Sin embargo, no es estrictamente necesario ya que con **PHPUnit** podemos desarrollar el mismo tipo de test, aunque nos exige algo más de disciplina. Como ya he comentado anteriormente, y la documentación de **PHPSpec** insiste, se trata de un framework de test con opiniones muy marcadas acerca de cómo deberías programar.
 
@@ -94,7 +94,7 @@ Vamos a fijarnos en algunos detalles:
 * La clave **And** se utiliza como sinónimo de la sección en la que aparece, lo que facilita la lectura.
 * Hemos procurado repetir la formulación de los pasos en la medida de lo posible. Por lo general, muchos pasos podrán reutilizarse, pero para eso necesitamos que puedan ser encontrados por la misma expresión regular asociada a cada definición en la clase **FeatureContext**. Opcionalmente, podemos controlar eso en la definición de los pasos, introduciendo expresiones regulares capaces de capturar pasos redactados de forma ligeramente diferente.
 
-¿Qué nos toca hacer ahora? Tendríamos que escribir las definiciones necesarias en `FeatureContext` para cubrir todos los nuevos pasos que componen el escenario. Pero también podemos dejar que sea `behat` quien lo haga. Sin embargo, primero eliminaré FeatureContext, de modo que Behat pueda regenerarlo.
+¿Qué nos toca hacer ahora? Tendríamos que escribir las definiciones necesarias en `FeatureContext` para cubrir todos los nuevos pasos que componen el escenario. Pero también podemos dejar que sea `behat` quien lo haga. Sin embargo, primero eliminaré FeatureContext, de modo que behat pueda regenerarlo.
 
 ```bash
 rm features/bootstrap/FeatureContext.php
@@ -156,8 +156,8 @@ FeatureContext ha quedado así:
 ```
 <?php
 
-use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
+use behat\behat\Context\Context;
+use behat\behat\Tester\Exception\PendingException;
 
 /**
  * Defines application features from the specific context.
@@ -299,8 +299,8 @@ Esta es mi primera aproximación:
 ```php
 <?php
 
-use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
+use behat\behat\Context\Context;
+use behat\behat\Tester\Exception\PendingException;
 
 /**
  * Defines application features from the specific context.
@@ -458,7 +458,7 @@ Nuestro composer.json necesitará la adición de una clave para autoload PSR-0:
 }
 ```
 
-Al igual que con **Behat**, de momento no nos vamos a preocupar de los detalles de configuración pues para empezar ya nos va bien con su comportamiento por defecto. Excepto por una cosa: el informe.
+Al igual que con **behat**, de momento no nos vamos a preocupar de los detalles de configuración pues para empezar ya nos va bien con su comportamiento por defecto. Excepto por una cosa: el informe.
 
 ### Embelleciendo el informe del test
 
@@ -1549,7 +1549,7 @@ Yo diría que es un buen momento para detenerse y reflexionar sobre lo que hemos
 
 ## Recapitulando
 
-Hemos comenzado el artículo con una *feature* en lenguaje Gherkin que todavía tenemos que validar con un test de aceptación. El esqueleto del test ha sido generado con Behat y ahora estamos desarrollando a los actores que van a intervenir en él.
+Hemos comenzado el artículo con una *feature* en lenguaje Gherkin que todavía tenemos que validar con un test de aceptación. El esqueleto del test ha sido generado con behat y ahora estamos desarrollando a los actores que van a intervenir en él.
 
 Hemos comenzado partiendo de un *Use Case*. En las arquitecturas limpias los *Use Case* suelen representar las acciones que el sistema de software realiza en respuesta a las demandas de los usuarios por lo que tiene mucho sentido empezar por ahí y ver qué es lo que necesitamos.
 

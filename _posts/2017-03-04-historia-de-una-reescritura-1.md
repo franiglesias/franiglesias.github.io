@@ -40,7 +40,7 @@ Después, mi propia madurez como programador, al encontrarme con los conceptos d
 
 Para empezar, dejé CakePHP en favor de Symfony, pero dejando el framework para la parte de infraestructura de la interfaz web, que es el lugar que corresponde a los framework MVC.
 
-CakePHP venía con SimpleTest para los test unitarios, desde ese momento pasé a PHPUnit. Después descubrí [PHPSpec](http://www.PHPSpec.net/en/stable/) y [Behat](http://behat.org/en/latest/) y eso aceleró mi aprendizaje de una manera brutal. Ambos entornos te llevan a subir la calidad de tu código y diseños de forma exponencial.
+CakePHP venía con SimpleTest para los test unitarios, desde ese momento pasé a PHPUnit. Después descubrí [PHPSpec](http://www.PHPSpec.net/en/stable/) y [behat](http://behat.org/en/latest/) y eso aceleró mi aprendizaje de una manera brutal. Ambos entornos te llevan a subir la calidad de tu código y diseños de forma exponencial.
 
 Comencé a reescribir conceptos de la aplicación desde el punto de vista de DDD. También me interesé por ideas como la mensajería de aplicación (MessageBus y derivados) y por CQRS y EventSourcing.
 

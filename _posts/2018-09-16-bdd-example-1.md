@@ -127,7 +127,7 @@ Gherkin tiene algunas características más, pero las vamos a dejar para otro mo
 
 Pero te preguntarás: ¿qué utilidad tiene como desarrollador este tipo de documento? Es cierto que puede ser una ayuda interesante a la hora de redactar las historias de usuario entre product owner y equipo de desarrollo, pero tenemos que escribir nuestros tests y, de todos modos, ¿cómo vamos a vincularlos con este documento?
 
-Y ahí es donde entrar en juego herramientas como [Jbehave](https://jbehave.org), [Cucumber](https://cucumber.io) y, en PHP, [Behat](http://behat.org/en/latest/).
+Y ahí es donde entrar en juego herramientas como [Jbehave](https://jbehave.org), [Cucumber](https://cucumber.io) y, en PHP, [behat](http://behat.org/en/latest/).
 
 La misión de estas herramientas consiste en:
 
@@ -137,11 +137,11 @@ La misión de estas herramientas consiste en:
 
 En resumidas cuentas, estas utilidades son analizadores de lenguaje Gherkin que identifican los distintos elementos que definen la *feature* y los vinculan automáticamente para que se ejecute el método del test correspondiente.
 
-Esta vinculación se hace generalmente a través de expresiones regulares. En PHP, **Behat** hace esto permitiéndonos añadir una anotación a cada método del test. Esta anotación consiste es una expresión regular que encaja con una (o varias) de las líneas de definición del escenario,
+Esta vinculación se hace generalmente a través de expresiones regulares. En PHP, **behat** hace esto permitiéndonos añadir una anotación a cada método del test. Esta anotación consiste es una expresión regular que encaja con una (o varias) de las líneas de definición del escenario,
 
 Así que vamos a verlo en acción.
 
-### Preparemos un proyecto para probar Behat
+### Preparemos un proyecto para probar behat
 
 Creamos la carpeta del proyecto y nos situamos dentro:
 
@@ -357,10 +357,10 @@ Si vamos a mirar el archivo `features/bootstrap/FeatureContext.php`, veremos que
 ```php
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Behat\Context\Context;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+use behat\behat\Tester\Exception\PendingException;
+use behat\behat\Context\Context;
+use behat\Gherkin\Node\PyStringNode;
+use behat\Gherkin\Node\TableNode;
 
 /**
  * Defines application features from the specific context.
@@ -479,10 +479,10 @@ Por ejemplo, nosotros podríamos pensar que queremos tener esos precios en un re
 ```php
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Behat\Context\Context;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+use behat\behat\Tester\Exception\PendingException;
+use behat\behat\Context\Context;
+use behat\Gherkin\Node\PyStringNode;
+use behat\Gherkin\Node\TableNode;
 
 /**
  * Defines application features from the specific context.
@@ -548,7 +548,7 @@ Nuestro segundo paso es 'And I have a file named "prices_update.csv" with the ne
 
 El texto entre comillas ha sido identificado por `behat` como un argumento para el paso. Es decir, que podríamos utilizar la misma definición cambiando el nombre de archivo para probar distintos escenarios o ejemplos.
 
-El nombre de archivo ha sido sustituido por :arg en la anotación y el método `iHaveAFileNamedWithTheNewPrices`. `Behat` es capaz de identificar los textos entre comillas como argumentos, así como los números. Si queremos forzar que `behat` identifique un fragmento del paso como argumento no tenemos más que añadir el nombre del mismo con dos puntos en la expresión.
+El nombre de archivo ha sido sustituido por :arg en la anotación y el método `iHaveAFileNamedWithTheNewPrices`. `behat` es capaz de identificar los textos entre comillas como argumentos, así como los números. Si queremos forzar que `behat` identifique un fragmento del paso como argumento no tenemos más que añadir el nombre del mismo con dos puntos en la expresión.
 
 Del mismo modo, podemos mejorar la legibilidad de esta definición cambiando el nombre por defecto del argumento y añadiendo *type hinting*:
 
@@ -582,10 +582,10 @@ Nuestro escenario completo podría ser más o menos así. Lo explico después:
 ```php
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Behat\Context\Context;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+use behat\behat\Tester\Exception\PendingException;
+use behat\behat\Context\Context;
+use behat\Gherkin\Node\PyStringNode;
+use behat\Gherkin\Node\TableNode;
 
 /**
  * Defines application features from the specific context.
@@ -698,7 +698,7 @@ Así que [nos vemos dentro de unos días aquí mismo](/bdd-example-2) :-)
 
 [Dan North: Introducing BDD](https://dannorth.net/introducing-bdd/)  
 [Dan North: What's in a story?](https://dannorth.net/whats-in-a-story/)  
-[Behat](http://behat.org/en/latest/)
+[behat](http://behat.org/en/latest/)
 [Cucumber backgrounder](https://github.com/cucumber/cucumber/wiki/Cucumber-Backgrounder)   
 [Ryan Wilcox: Your Boss Won't Appreciate TDD: Try This Behavior-Driven Development Example](https://www.toptal.com/freelance/your-boss-won-t-appreciate-tdd-try-bdd)
 [Javier Garzas: Entendiendo que es BDD](http://www.javiergarzas.com/2014/12/bdd-behavior-driven-development-1.html)

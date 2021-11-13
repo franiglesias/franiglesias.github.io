@@ -18,7 +18,7 @@ La serie **Historia de una reescritura** está compuesta de los siguientes artí
 
 CakePHP 1.3 tiene muchos problemas derivados de su antigüedad, como el hecho de no tener namespaces, carecer de un autoloader y otro muchos, como hacer un montón de llamadas estáticas a métodos que no lo son.
 
-Aunque incluye una utilidad (App::import) para cargar las clases y un ClassRegistry, lo cierto es que si bien mejora un poco las cosas sobre un <code>require</code> o <code>require_once</code> a pelo, es bastante incómodo a la larga.
+Aunque incluye una utilidad (App::import) para cargar las clases y un ClassRegistry, lo cierto es que si bien mejora un poco las cosas sobre un `require` o `require_once` a pelo, es bastante incómodo a la larga.
 
 Una idea es aprovechar composer para tener un autoloader basado en un classmap, que no es más que un autoloader sencillo que registra todas las clases que desees y la ruta para incluirlas.
 

@@ -285,7 +285,7 @@ class DbalBlogReadModel implements BlogReadModel
 
 A este código le falta una mano de lija, pero creo que la idea se ve clara.
 
-La chicha está en las líneas 25 a 29. Construyo la Query con QueryBuilder y le paso las cláusulas de la Specification a través del método <code>where</code>. Si hay parámetros, los paso por <code>setParameter</code>. Luego no hay más que generar la Statement con <code>execute</code> y recoger los datos.
+La chicha está en las líneas 25 a 29. Construyo la Query con QueryBuilder y le paso las cláusulas de la Specification a través del método `where`. Si hay parámetros, los paso por `setParameter`. Luego no hay más que generar la Statement con `execute` y recoger los datos.
 
 Ahora bien, ¿cómo uso el ReadModel y la DbalBlogSpecificationFactory? Me alegro de que me hagas esa pregunta.
 

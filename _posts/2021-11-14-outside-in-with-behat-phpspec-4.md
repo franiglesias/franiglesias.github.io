@@ -7,6 +7,11 @@ tags: tdd php bdd
 
 Vamos a trabajar con bugs.
 
+1. [Introducción, herramientas y ejemplo](/outside-in-with-behat-phpspec/)
+2. [Desarrollo del segundo escenario](/outside-in-with-behat-phpspec-2/)
+3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
+4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
+
 En el capítulo anterior completamos la _feature_ de añadir tareas a la lista. Esto no implica que el producto esté completamente terminado, pero ya tenemos algo que las usuarias pueden utilizar y, por tanto, pueden proporcionarnos _feedback_. Hemos aportado la diferencia entre no tener nada y tener una aplicación que me permita tomar nota de las tareas, aunque el resto del trabajo tenga que ser manual.
 
 Es habitual que tengamos un cierto _roadmap_ de las prestaciones que queremos añadir a nuestra aplicación. Por ejemplo, es muy evidente la necesidad de poder marcar tareas completadas, poder modificar su descripción, eliminarlas, etc. Este _roadmap_ o _backlog_ consiste en una lista priorizada, pero tales prioridades pueden cambiar o verse alteradas por los resultados del _feedback_.

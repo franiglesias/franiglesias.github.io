@@ -7,6 +7,11 @@ tags: tdd php bdd
 
 El segundo escenario de nuestro proyecto de lista de tareas comienza donde dejamos el primero: la lista de tareas está vacía y vamos a añadir la primera de ellas.
 
+1. [Introducción, herramientas y ejemplo](/outside-in-with-behat-phpspec/)
+2. [Desarrollo del segundo escenario](/outside-in-with-behat-phpspec-2/)
+3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
+4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
+
 Como vimos en el anterior capítulo, el primero de los pasos ya se ha pasado porque es exactamente el mismo que el del escenario anterior. Esto podemos conseguirlo no solo usando la misma redacción, sino que gracias a las expresiones regulares podemos darle bastante flexibilidad al sistema. 
 
 ```

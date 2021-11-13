@@ -5,9 +5,9 @@ categories: articles
 tags: design-principles
 ---
 
-Los principios SOLID son cinco principios en el diseño orientado a objetos compilados por Robert C. Martin.
+Los principios SOLID son cinco principios en el diseño orientado a objetos compilados por Robert C. Martin, aunque quien primero se refirió a ellos con este nombre fue Michael Feathers. Martin los tomó como base para sus trabajos "Clean Code" y "Clean Architecture" y les dio la formulación más conocida. 
 
-Se trata de cinco principios que nos proporcionan una guía para crear código que sea reutilizable y se pueda mantener con facilidad. Como tales principios, nos aportan unos criterios con los que evaluar nuestras decisiones de diseño y una guía para avanzar en el trabajo. El código que los respeta es más fácil de reutilizar y mantener que el código que los ignora. Obviamente, no tienen una forma completa de implementarse y, en cada caso, pueden tener una interpretación algo diferente. No son recetas concretas para aplicar ciegamente, sino que requieren de nosotros una reflexión profunda sobre el código que estamos escribiendo.
+Se trata de cinco principios que nos proporcionan una guía para crear código que sea reutilizable y se pueda mantener con facilidad. Como tales principios, nos aportan unos criterios con los que evaluar nuestras decisiones de diseño y una guía para avanzar en el trabajo. El código que los respeta es más fácil de reutilizar y mantener que el código que los ignora. Obviamente, no tienen una forma completa de implementarse y, en cada caso, pueden tener una interpretación algo diferente. No son recetas detalladas para aplicar ciegamente, sino que requieren de nosotros una reflexión profunda sobre el código que estamos escribiendo.
 
 Los cinco principios son:
 
@@ -17,7 +17,7 @@ Los cinco principios son:
 * Principio de segregación de interfaces (Interface Segregation Principle)
 * Principio de inversión de dependencias (Dependency Inversion Principle)
 
-Si eres un desarrollador único o todo-en-uno en tu empresa o proyecto puedes pensar "para qué necesito que mi código sea mantenible o reutilizable si voy a ser yo quién se ocupe de él en el futuro y quién lleva ocupándose durante estos años y que nadie más va a verlo". La respuesta es sencilla: dentro de unos pocos meses vas a ser un programador distinto del que eres ahora. Cuando después de varias semanas trabajando en una parte de tu código te dirijas a otra parte a hacer una modificación tal vez acabes preguntándote qué estúpida razón te llevó a escribir esa función o a crear esa clase y no tendrás respuesta. Sólo por tu salud mental y laboral deberías escribir un código limpio, legible y mantenible. Seguramente tendrás por ahí secciones completas de código que no te atreves a tocar porque no sabes qué puede pasar si lo haces, o partes que se duplican en varios sitios, sabes que tienes código que apesta y que no te atreverías a enseñar. También por eso, por celo profesional, deberías aplicar los principios SOLID.
+Si eres un desarrollador único o todo-en-uno en tu empresa o proyecto puedes pensar "para qué necesito que mi código sea mantenible o reutilizable si voy a ser yo quién se ocupe de él en el futuro y quién lleva ocupándose durante estos años y que nadie más va a verlo". La respuesta es sencilla: dentro de unos pocos meses vas a ser un programador distinto del que eres ahora. Cuando después de varias semanas trabajando en una parte de tu código te dirijas a otra parte a hacer una modificación tal vez acabes preguntándote qué estúpida razón te llevó a escribir esa función o a crear esa clase y no tendrás respuesta. Solo por tu salud mental y laboral deberías escribir un código limpio, legible y mantenible. Seguramente tendrás por ahí secciones completas de código que no te atreves a tocar porque no sabes qué puede pasar si lo haces, o partes que se duplican en varios sitios, sabes que tienes código que apesta y que no te atreverías a enseñar. También por eso, por celo profesional, deberías aplicar los principios SOLID.
 
 Los principios SOLID están muy relacionados entre sí, por lo que suele ocurrir que al intentar cumplir uno de ellos estás contribuyendo a cumplir otros.
 
@@ -29,13 +29,13 @@ Este principio dice que las clases deberían tener una única razón para cambia
 
 Otra forma de decirlo es que las clases deberían hacer una sola cosa. El problema de esta definición, aparentemente más clara, es que puede estrechar demasiado tu visión: no se trata de que las clases tengan solo un método o algo por el estilo.
 
-En cualquier organización hay secciones o departamentos. Cada uno de ellos puede tener necesidades diferentes con respecto a un asunto. En un colegio, por ejemplo, el profesorado se preocupa de las calificaciones y asistencia de los alumnos, mientras que la administración le interesa saber qué servicios consume el alumno y por cuales debe facturarle, al servicio de comedor o cantina le interesa saber si el alumno va a comer ese día o no, y al servicio de transporte le interesa saber dónde vive. Al diseñar una aplicación para gestionar un colegio nos encontraremos con estas visiones y peticiones desde los distintos servicios.
+En cualquier organización hay secciones o departamentos. Cada uno de ellos puede tener necesidades diferentes con respecto a un asunto. En un colegio, por ejemplo, el profesorado se preocupa de las calificaciones y asistencia de los alumnos, mientras que la administración le interesa saber qué servicios consume el alumno y por cuáles debe facturarle, al servicio de comedor o cantina le interesa saber si el alumno va a comer ese día o no, y al servicio de transporte le interesa saber dónde vive. Al diseñar una aplicación para gestionar un colegio nos encontraremos con estas visiones y peticiones desde los distintos servicios.
 
 Si más de un agente puede solicitar cambios en una de nuestras clases, eso es que la clase tiene muchas razones para cambiar y, por lo tanto, mantiene muchas responsabilidades. En consecuencia, será necesario repartir esas responsabilidades entre clases.
 
 ## Principio abierto/cerrado
 
-Este principio dice que una clase debe estar cerrada para modificación y abierta para extensión.
+Este principio dice que una clase debe estar cerrada para modificación y abierta para extensión. Fue enunciado inicialmente por Bertrand Meyer.
 
 La programación orientada a objetos persigue la reutilización del código. No siempre es posible reutilizar el código directamente, porque las necesidades o las tecnologías subyacentes van cambiando, y nos vemos tentados a modificar ese código para adaptarlo a la nueva situación.
 
@@ -49,7 +49,9 @@ En una jerarquía de clases, las clases base y las subclases deben poder interca
 
 Esto no quiere decir que tengan que hacer exactamente lo mismo, sino que han de poder reemplazarse.
 
-El reverso de este principio es que no debemos extender clases mediante herencia por el hecho de aprovechar código de las clases bases o por conseguir forzar que una clase sea una "hija de" y superar un <em>type hinting</em> si no existe una relación que justifique la herencia (ser clases con el mismo tipo de comportamiento, pero que lo realizan de manera diferente). En ese caso, es preferible basar el polimorfismo en una interfaz (ver el Principio de segregación de interfaces).
+El reverso de este principio es que no debemos extender clases mediante herencia por el hecho de aprovechar código de las clases bases o por conseguir forzar que una clase sea una "hija de" y superar un _type hinting_ si no existe una relación que justifique la herencia (ser clases con el mismo tipo de comportamiento, pero que lo realizan de manera diferente). En ese caso, es preferible basar el polimorfismo en una interfaz (ver el Principio de segregación de interfaces).
+
+Como regla práctica extraída de este principio se podría decir que la herencia debe usarse solamente para obtener especializaciones a partir de una clase más general.
 
 ## Principio de segregación de interfaces
 

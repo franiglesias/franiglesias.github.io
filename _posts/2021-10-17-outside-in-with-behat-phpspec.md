@@ -7,6 +7,11 @@ tags: tdd php bdd
 
 _Outside-in TDD_ se ha convertido en mi primera opción para desarrollar nuevas features en los proyectos en los que trabajo. Hasta ahora he estado trabajando únicamente con **phpunit**, pero estoy preparando una especie de _side-project_ para cambiar el modo en que hago los tests de aceptación.
 
+1. [Introducción, herramientas y ejemplo](/outside-in-with-behat-phpspec/)
+2. [Desarrollo del segundo escenario](/outside-in-with-behat-phpspec-2/)
+3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
+4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
+
 A medida que he ido profundizando en _outside-in TDD_, me he dado cuenta de que está muy cerca de Behavior Driven Development. De hecho, normalmente acabo refactorizando esos tests, que escribo en **phpunit**, hasta que se parecen a escenarios de BDD.
 
 Sin embargo, estos tests siguen siendo demasiado técnicos como para que resulten útiles a negocio. Es por eso, que he pensado dar el último paso y empezar a escribirlos usando el lenguaje Gherkin, con la ayuda de **behat** (el port de **Cucumber** para PHP) y, ya de paso, probar a introducir **phpspec**, como forma de acentuar las diferencias entre los tests-ejemplos que guían el desarrollo y los tests de control de calidad.

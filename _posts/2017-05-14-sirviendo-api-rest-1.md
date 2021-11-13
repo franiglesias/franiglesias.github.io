@@ -64,7 +64,7 @@ No quiero entrar en detalles de Silex para no liar el artículo. Baste decir que
 
 Por eso decía que Silex va muy bien para crear API, y creo que es evidente el por qué.
 
-En este caso, asociamos la URL <code>/articles</code> con el verbo GET y con el método feed de una clase ArticleController. Filtraremos los artículos pasando parámetros en la query, por lo que no especificamos ningún parámetro variable en la ruta.
+En este caso, asociamos la URL `/articles` con el verbo GET y con el método feed de una clase ArticleController. Filtraremos los artículos pasando parámetros en la query, por lo que no especificamos ningún parámetro variable en la ruta.
 
 Si fuese una petición de un artículo específico, la ruta podría ser /articles/{id}, con un parámetro variable id. No creo que haga falta decir que id sería la identidad del artículo. Silex lo pasa automáticamente a la función que vaya a manejar esta petición, como era de esperar.
 

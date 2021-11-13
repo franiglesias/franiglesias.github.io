@@ -155,7 +155,7 @@ public function __construct(Turn $turn, WeeklySchedule $schedule,    CantineGrou
         return $User->belongsToGroup($this->group);
     }
     /**
-     * Rule can be applied on this date givenits schedule.
+     * Rule can be applied on this date given its schedule.
      *
      * @param \DateTime $date [Description]
      *
@@ -181,7 +181,7 @@ Las reglas se cargan a partir de un archivo de configuración. Veamos en detalle
 
 ## Mantener una referencia al siguiente elemento de la cadena
 
-El método de <code>Rule</code> en el que estamos interesados es <code>assignsUserToTurn</code>, el cual es el que realiza la asignación de turno del usuario del comedor que se le pasa. Si la primera<code>Rule</code> que recibe el mensaje lo puede asignar, lo hace, y si no, lo delega a la siguiente de la cadena, hasta llegar a una que lo pueda asignar o hasta agotar todas las reglas.
+El método de `Rule` en el que estamos interesados es `assignsUserToTurn`, el cual es el que realiza la asignación de turno del usuario del comedor que se le pasa. Si la primera`Rule` que recibe el mensaje lo puede asignar, lo hace, y si no, lo delega a la siguiente de la cadena, hasta llegar a una que lo pueda asignar o hasta agotar todas las reglas.
 
 ### Rule::next
 

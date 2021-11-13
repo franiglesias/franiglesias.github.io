@@ -55,9 +55,9 @@ Algunas de las piezas necesarias existen en PHP, como las funciones array_map, a
 
 En otros lenguajes, sin embargo, los arrays son objetos e incorporan este tipo de métodos, como es el caso de Javascript o Java, y esto es algo que me gustaría reproducir en este proyecto.
 
-Así que podríamos comenzar por <code>each</code>.
+Así que podríamos comenzar por `each`.
 
-## Implementar el método <code>each</code>
+## Implementar el método `each`
 
 Volvamos a nuestra lista de tareas:
 
@@ -78,7 +78,7 @@ Como esto me interesa, lo añado a la lista:
 * Que pueda agregar la Collection (reduce)
 * Poder encadenar operaciones
 
-Y, ahora, centrémonos en <code>each</code>.
+Y, ahora, centrémonos en `each`.
 
 Lo que queremos es poder decirle a la colección que los elementos de la lista hagan algo, pero este algo no devolverá resultados. ¿Cómo podemos testear esto?
 
@@ -100,11 +100,11 @@ Pero en realidad, hay un test que debo realizar antes: una Collection vacía no 
     }
 ```
 
-Lo primero es hacerme con una instancia de Collection mediante el método <code>getCollection</code> que, como quizá recordéis, utilizaba la técnica de <em>Self-shunt</em>, de modo que la propia clase CollectionTest actúa como elemento coleccionable.
+Lo primero es hacerme con una instancia de Collection mediante el método `getCollection` que, como quizá recordéis, utilizaba la técnica de <em>Self-shunt</em>, de modo que la propia clase CollectionTest actúa como elemento coleccionable.
 
 Para poder registrar su actividad, paso por referencia una variable `$log` en la que iré acumulando un asterisco por cada ejecución. En este primer test no debería ocurrir nada. 
 
-Ejecutamos el test y falla, lo que nos indica la necesidad de implementar un método <code>each</code>, que debería aceptar un Callable.
+Ejecutamos el test y falla, lo que nos indica la necesidad de implementar un método `each`, que debería aceptar un Callable.
 
 ```php
     public function each(Callable $function)

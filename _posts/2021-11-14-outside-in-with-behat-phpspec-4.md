@@ -11,6 +11,8 @@ Vamos a trabajar con bugs.
 2. [Desarrollo del segundo escenario](/outside-in-with-behat-phpspec-2/)
 3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
 4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
+5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
+
 
 En el capítulo anterior completamos la _feature_ de añadir tareas a la lista. Esto no implica que el producto esté completamente terminado, pero ya tenemos algo que las usuarias pueden utilizar y, por tanto, pueden proporcionarnos _feedback_. Hemos aportado la diferencia entre no tener nada y tener una aplicación que me permita tomar nota de las tareas, aunque el resto del trabajo tenga que ser manual.
 

@@ -12,6 +12,7 @@ _Outside-in TDD_ se ha convertido en mi primera opción para desarrollar nuevas 
 3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
 4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
 5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
+6. [Consideraciones sobre BDD](/outside-in-with-behat-phpspec-6/)
 
 
 A medida que he ido profundizando en _outside-in TDD_, me he dado cuenta de que está muy cerca de Behavior Driven Development. De hecho, normalmente acabo refactorizando esos tests, que escribo en **phpunit**, hasta que se parecen a escenarios de BDD.

@@ -12,6 +12,7 @@ En esta entrega, veremos cómo completar el segundo y tercer escenario de nuestr
 3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
 4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
 5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
+6. [Consideraciones sobre BDD](/outside-in-with-behat-phpspec-6/)
 
 
 Personalmente encuentro que una de las grandes ventajas de trabajar con metodologías TDD o BDD es que resulta bastante fácil parar tu trabajo y retomarlo en otro momento. No tienes más que ejecutar los tests y ver cuál es el siguiente que falla.

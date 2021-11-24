@@ -12,6 +12,7 @@ El segundo escenario de nuestro proyecto de lista de tareas comienza donde dejam
 3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
 4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
 5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
+6. [Consideraciones sobre BDD](/outside-in-with-behat-phpspec-6/)
 
 
 Como vimos en el anterior capítulo, el primero de los pasos ya se ha pasado porque es exactamente el mismo que el del escenario anterior. Esto podemos conseguirlo no solo usando la misma redacción, sino que gracias a las expresiones regulares podemos darle bastante flexibilidad al sistema. 

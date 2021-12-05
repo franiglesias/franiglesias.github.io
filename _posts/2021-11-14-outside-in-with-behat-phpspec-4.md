@@ -13,7 +13,7 @@ Vamos a trabajar con bugs.
 4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
 5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
 6. [Consideraciones sobre BDD](/outside-in-with-behat-phpspec-6/)
-
+7. [Usar un cliente Http](/outside-in-with-behat-phpspec-7/)
 
 En el capítulo anterior completamos la _feature_ de añadir tareas a la lista. Esto no implica que el producto esté completamente terminado, pero ya tenemos algo que las usuarias pueden utilizar y, por tanto, pueden proporcionarnos _feedback_. Hemos aportado la diferencia entre no tener nada y tener una aplicación que me permita tomar nota de las tareas, aunque el resto del trabajo tenga que ser manual.
 
@@ -390,4 +390,3 @@ Pero este paso no necesita implementar nada, por lo que el _bug_ queda soluciona
 Si estamos desarrollando con metodologías TDD o BDD es habitual que un bug no resulte se más que un comportamiento específico que no se ha implementado. Nuestra forma de abordarlo se basa en añadir nuevos escenarios y ejemplos que describan el comportamiento esperado para los casos en los que aparece el error.
 
 La dinámica de trabajo es exactamente la misma. Empezamos definiendo un escenario que falle, poniendo de manifiesto el bug y procedemos de fuera hacia adentro. En cada nivel, especificamos el comportamiento esperado del componente y lo vemos fallar. La implementación que haga pasar las especificaciones contribuirá a subsanar el problema, hasta conseguir que el escenario pase completamente.
-

@@ -13,6 +13,7 @@ Nuevas iteraciones nos permiten introducir funcionalidad de la que carecía el p
 4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
 5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
 6. [Consideraciones sobre BDD](/outside-in-with-behat-phpspec-6/)
+7. [Usar un cliente Http](/outside-in-with-behat-phpspec-7/)
 
 Nuestra to-do list no permite marcar tareas cuando las completamos, así que vamos a trabajar para añadirla. 
 

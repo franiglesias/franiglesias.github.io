@@ -13,6 +13,7 @@ Consideraciones sobre el desarrollo con Behavior Driven Development
 4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
 5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
 6. [Consideraciones sobre BDD](/outside-in-with-behat-phpspec-6/)
+7. [Usar un cliente Http](/outside-in-with-behat-phpspec-7/)
 
 ## Outside-in TDD vs BDD
 

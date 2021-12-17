@@ -182,7 +182,7 @@ class ArticleIsAvailable extends ComposableSpecification {
     }
 }
 
-class ArticleHasId implements  Specification {
+class ArticleHasId extends ComposableSpecification {
     private $id;
     public function __construct($id)
     {

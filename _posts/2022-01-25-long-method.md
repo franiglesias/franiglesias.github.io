@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Métodos largos: cohesión, abstracción y mantenibilidad
+title: Métodos largos
 categories: articles
 tags: design-principles refactoring
 ---

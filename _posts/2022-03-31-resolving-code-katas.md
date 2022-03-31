@@ -117,7 +117,7 @@ Una vez que adquieres suficiente práctica haciendo TDD es una buena práctica e
 
 La forma de escribirlo consiste básicamente en imaginar cómo usaríamos ese software en una situación real y usaríamos los ejemplos propuestos por el propio enunciado del ejercicio o las reglas de negocio.
 
-Una kata que se presta muy bien a ello es [Simple Mars Rover Kata](https://katalyst.codurance.com/simple-mars-rover) o [Mars Rove](https://katalyst.codurance.com/mars-rover). En su enunciado encontrarás algunos ejemplos que describen el comportamiento que se espera. Estos ejemplos sirven para probar el Rover, pero son demasiado grandes como para que puedas proceder con TDD.
+Una kata que se presta muy bien a ello es [Simple Mars Rover Kata](https://katalyst.codurance.com/simple-mars-rover) o [Mars Rover](https://katalyst.codurance.com/mars-rover). En su enunciado encontrarás algunos ejemplos que describen el comportamiento que se espera. Estos ejemplos sirven para probar el Rover, pero son demasiado grandes como para que puedas proceder con TDD.
 
 Para escribir el test de aceptación necesitarás, por supuesto, usar algunas clases inexistentes, pero en esa fase estarás definiendo su API pública.
 
@@ -160,7 +160,7 @@ Algunas katas te permitirán practicar esta secuencia, en particular yo destacar
 
 ## Aplica consistentemente las cuatro reglas del diseño simple
 
-Kent Beck (otra vez) propone [cuatro reglas sencillas para guiar un buen diseño](https://www.martinfowler.com/bliki/BeckDesignRules.html.
+Kent Beck (otra vez) propone [cuatro reglas sencillas para guiar un buen diseño](https://www.martinfowler.com/bliki/BeckDesignRules.html).
 
 ### Pasa los tests
 
@@ -183,7 +183,4 @@ Elimina la duplicación siempre que sea posible. Aunque es mejor usar la regla d
 
 ## Fin
 
-Siguiendo estas recomendaciones tus ejercicios de código serán más productivos y te ayudarán a desarrollar tus capa
-
-
-
+Siguiendo estas recomendaciones tus ejercicios de código serán más productivos y te ayudarán a desarrollar tus habilidades profesionales.

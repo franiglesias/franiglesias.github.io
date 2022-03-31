@@ -133,6 +133,19 @@ De este modo aseguras que los cambios no rompen los comportamientos que hayas im
 
 Si unes esto a introducir solo cambios pequeños, tienes una herramienta muy poderosa para escribir código libre de defectos, ya que si los cambios son pequeños y provocan un fallo, será fácil identificarlo y revertirlo.
 
+## Elimina o anula un test que falla si vas a hacer refactor
+
+Tras introducir un nuevo test en un proceso de TDD y empezar a cambiar el código de producción, puede que te des cuenta de que necesitas hacer un refactor preparatorio de modo que sea más fácil implementar el cambio.
+
+En ese caso, anula ese test antes de nada, de modo que vuelvas a tener la suite de tests pasando por completo certificando el comportamiento actual del software. Realiza el refactor necesario y, antes de introducir (por fin) el cambio del código de producción, vuelve a activar el test que especificaba el nuevo comportamiento.
+
+
+## Hablando de eliminar tests... elimina los que sean redundantes
+
+Elimina todos los tests que estén implícitos en otros tests. Por ejemplo, hace un rato te comentaba que siempre empiezo con un test que instancia la clase que estoy escribiendo. Ese test lo borro en cuanto tengo tests de comportamiento, dado que instanciar la clase va implícito en que los nuevos tests sean ejecutables.
+
+Del mismo modo, refactoriza los tests para que sea fácil crear nuevos tests. Trata siempre los tests como cualquier otro código.
+
 ## Aplica Transformation Priority Premise
 
 La [Tranformation Priority Premise](http://blog.cleancoder.com/uncle-bob/2013/05/27/TheTransformationPriorityPremise.html) sugiere la forma de secuenciar los cambios en el código de producción para que sean lo más pequeños que sea posible y nos permitan avanzar hacia la generalización del algoritmo exactamente lo necesario.
@@ -156,7 +169,7 @@ Es decir, esta regla nos dice que empecemos con el código de producción en un 
 
 Ejercitarse en esta secuencia te ayudará a definir mejor el tamaño de los baby-steps y, en general, te ayudará a desarrollar a un ritmo más sostenible.
 
-Algunas katas te permitirán practicar esta secuencia, en particular yo destacaría las clásicas [Bowling Game](https://katalyst.codurance.com/bowling) o [Roman Numerals](https://katalyst.codurance.com/roman-numerals).
+Algunas katas te permitirán practicar esta secuencia. En particular, yo destacaría las clásicas [Bowling Game](https://katalyst.codurance.com/bowling) o [Roman Numerals](https://katalyst.codurance.com/roman-numerals).
 
 ## Aplica consistentemente las cuatro reglas del diseño simple
 

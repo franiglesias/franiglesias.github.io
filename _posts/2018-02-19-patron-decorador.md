@@ -647,7 +647,7 @@ abstract class TaxDecorator implements TShirtPriceDecorator
     public function getPriceBreakdown() : array
     {
         $breakdown = $this->shirt->getPriceBreakdown();
-        $breakdown['vat ('.$this->getPct().'%)'] = $this->getVatAmount();
+        $breakdown['vat ('.$this->getVatPct().'%)'] = $this->getVatAmount();
         return $breakdown;
     }
     

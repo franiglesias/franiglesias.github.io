@@ -194,6 +194,22 @@ Elimina la duplicación siempre que sea posible. Aunque es mejor usar la regla d
 * Elimina código que no se use.
 * Intenta no sobre-extraer clases.
 
-## Fin
+## En resumen
+
+* El objetivo de los ejercicios de código es que entrenes el proceso. Solucionar el problema propuesto es un efecto colateral.
+* Elabora un plan que te oriente, pero cámbialo a medida que lo necesites.
+* Trabaja en una regla de negocio o del ejercicio cada vez, sin pensar en lo que venga después.
+* Practica a reducir el tamaño de los baby steps al mínimo posible.
+* Utiliza control de versiones por las facilidades que te proporciona para deshacer cambios o conservar ciertos puntos de interés.
+* Repite decenas de veces, con el mismo o distinto enfoque.
+* Aprende a usar bien las herramientas del IDE. Puedes llegar a programar sin escribir código.
+* Escribe un test de aceptación que describa lo que pide el problema.
+* Si no te sale, déjalo. Tómate un descanso o empieza de cero.
+* Anula el test nuevo cuando estás refactorizando.
+* Elimina tests que ya no necesites.
+* Aplica Transformation Priority Premise.
+* Aplica las cuatro reglas del diseño simple.
+
+Y diviértete.
 
 Siguiendo estas recomendaciones tus ejercicios de código serán más productivos y te ayudarán a desarrollar tus habilidades profesionales.

@@ -652,7 +652,7 @@ func divisibleBy(number, divisor int) bool {
 Pero no queda ahí la cosa. En Go es posible definir funciones y asociarlas a ciertos tipos de datos. A estas funciones les llamamos _methods_. Es similar a los métodos en orientación a objetos, pero a la vez es muy diferente. Veamos:
 
 ```go
-func (y Year) isLeap() bool {
+func (y Year) IsLeap() bool {
     if divisibleBy(int(y), 400) {
         return true
     }
@@ -666,12 +666,12 @@ func (y Year) isLeap() bool {
 
 El parámetro que recibe `func` es el _receiver_. ¿Cuáles son la ventaja de hacerlo así? 
 
-La que estamos viendo ahora es principalmente semántica. La función `isLeap` tiene sentido semántico cuando se aplica a números que representan años. Nosotros hacemos esto explícito mediante la definición de un tipo `Year` y asociando la función a ese tipo.
+La que estamos viendo ahora es principalmente semántica. La función `IsLeap` tiene sentido semántico cuando se aplica a números que representan años. Nosotros hacemos esto explícito mediante la definición de un tipo `Year` y asociando la función a ese tipo.
 
 Aparte, ahora podemos usar la función de esta manera:
 
 ```go
-year.isLeap()
+year.IsLeap()
 ```
 
 Vamos a verlo en el test:
@@ -679,7 +679,7 @@ Vamos a verlo en el test:
 ```go
 for _, test := range tests {
     t.Run(test.name, func(t *testing.T) {
-        got := test.year.isLeap()
+        got := test.year.IsLeap()
 
         if got != test.want {
             t.Errorf("Expected %#v, got %#v", test.want, got)

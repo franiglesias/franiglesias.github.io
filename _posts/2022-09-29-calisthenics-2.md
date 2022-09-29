@@ -18,8 +18,8 @@ Estas restricciones están pensadas para forzar ciertos buenos hábitos al escri
 La lista de restricciones es la siguiente:
 
 * [Un solo nivel de indentación por método](/calisthenics-1)
-* No usar la palabra clave ELSE
-* Encapsular todas las primitivas y strings
+* [No usar la palabra clave ELSE](/calisthenics-2)
+* [Encapsular todas las primitivas y strings](/calisthenics-3)
 * Colecciones de primera clase
 * Un punto por línea
 * No usar abreviaturas

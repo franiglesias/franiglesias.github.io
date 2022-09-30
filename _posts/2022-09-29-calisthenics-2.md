@@ -315,7 +315,7 @@ De todos modos, la introducción de la orientación a objetos vendrá de la mano
 
 ## El resultado
 
-Después de eliminar la palabra clave else, el código queda así:
+Después de eliminar la palabra clave `else`, el código queda así:
 
 ```python
 import math

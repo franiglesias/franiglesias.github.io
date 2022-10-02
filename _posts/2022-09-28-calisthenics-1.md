@@ -20,7 +20,7 @@ La lista de restricciones es la siguiente:
 * [Un solo nivel de indentación por método](/calisthenics-1)
 * [No usar la palabra clave ELSE](/calisthenics-2)
 * [Encapsular todas las primitivas y strings](/calisthenics-3)
-* Colecciones de primera clase
+* [Colecciones de primera clase](/calisthenics-4)
 * Un punto por línea
 * No usar abreviaturas
 * Mantener todas las entidades pequeñas

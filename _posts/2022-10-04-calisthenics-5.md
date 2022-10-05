@@ -22,7 +22,7 @@ La lista de restricciones es la siguiente:
 * [Encapsular todas las primitivas y strings](/calisthenics-3)
 * [Colecciones de primera clase](/calisthenics-4)
 * [Un punto por línea](/calisthenics-5)
-* No usar abreviaturas
+* [No usar abreviaturas](/calisthenics-6)
 * Mantener todas las entidades pequeñas
 * No más de dos variables de instancia por clase
 * No usar getters/setters o propiedades públicas
@@ -132,6 +132,130 @@ Una mejor solución es delegar y pasar el objeto a alguien que sepa comunicarse 
         volume_credits = volume_credits.add(performance.credits())
 ```
 
+### Un caso muy sutil
+
+¿Notas algo problemático aquí?
+
+```python
+    for performance in inv.performances():
+        printer.print(formatted_line(performance.title(), performance.audience(), performance.amount()))
+        invoice_amount = invoice_amount.add(performance.amount())
+        volume_credits = volume_credits.add(performance.credits())
+```
+
+Pues es un caso muy sutil de violación de esta regla. `statement` recibe objetos `Performance` que no tendría que conocer. Es una situación similar a la que acabamos de describir en el apartado anterior.
+
+Podríamos abordarla así, pero los problemas son evidentes.
+
+```python
+def process_performance(performance, invoice_amount, volume_credits, printer):
+    printer.print(formatted_line(performance.title(), performance.audience(), performance.amount()))
+    invoice_amount = invoice_amount.add(performance.amount())
+    volume_credits = volume_credits.add(performance.credits())
+    return invoice_amount, volume_credits
+
+for performance in invoice.performances():
+    invoice_amount, volume_credits = process_performance(performance, invoice_amount, volume_credits, printer)
+```
+
+Tenemos que pasar variables que serán retornadas, aparte del objeto `Performance`. Y para completarlo, el nuevo método devuelve dos valores.
+
+Hay varias razones por las que está pasando esto. Por un lado, el hecho de `Invoice` sea, por el momento, un objeto muy anémico, ya que debería ser responsable de calcular tanto el importe total como los créditos. Por otra parte, en el bucle están pasando varias cosas: se calculan los importes parciales, se van acumulando los dos totales y además se envían las líneas para imprimir.
+
+Nos conviene separar las responsabilidades. Primer paso:
+
+```python
+    for performance in invoice.performances():
+        invoice_amount = invoice_amount.add(performance.amount())
+
+    for performance in invoice.performances():
+        volume_credits = volume_credits.add(performance.credits())
+
+    for performance in invoice.performances():
+        printer.print(formatted_line(performance.title(), performance.audience(), performance.amount()))
+```
+
+Segundo paso. Pongamos juntas las cosas relacionadas:
+
+```python
+    invoice_amount = Amount(0)
+    for performance in invoice.performances():
+        invoice_amount = invoice_amount.add(performance.amount())
+
+    volume_credits = Credits(0)
+    for performance in invoice.performances():
+        volume_credits = volume_credits.add(performance.credits())
+
+    printer.print(f'Statement for {invoice.customer()}\n')
+    for performance in invoice.performances():
+        printer.print(formatted_line(performance.title(), performance.audience(), performance.amount()))
+    printer.print(f'Amount owed is {format_as_dollars(invoice_amount.current() // 100)}\n')
+    printer.print(f'You earned {volume_credits.current()} credits\n')
+```
+
+Se debería ver claro que esta lógica pertenece a `Invoice` y la podríamos pasar sin mucha dificultad.
+
+```python
+from domain.amount import Amount
+from domain.credits import Credits
+from domain.performance import Performances
+from domain.play import Plays
+
+
+class Invoice:
+    def __init__(self, data, plays):
+        self._data = data
+        self._customer = data['customer']
+        self._performances = Performances(data['performances'], Plays(plays))
+
+    def customer(self):
+        return self._customer
+
+    def performances(self):
+        return self._performances
+
+    def amount(self):
+        invoice_amount = Amount(0)
+        for performance in self.performances():
+            invoice_amount = invoice_amount.add(performance.amount())
+
+        return invoice_amount
+
+    def credits(self):
+        volume_credits = Credits(0)
+        for performance in self.performances():
+            volume_credits = volume_credits.add(performance.credits())
+
+        return volume_credits
+```
+
+Y así quedaría `statement`, después de limpiar un poco el código.
+
+```python
+from domain.invoice import Invoice
+from domain.printer import Printer
+
+
+def statement(invoice_data, plays):
+    def formatted_line(title, audience, amount):
+        return f' {title}: {format_as_dollars(amount.current() / 100)} ({audience} seats)\n'
+
+    def format_as_dollars(amount):
+        return f"${amount:0,.2f}"
+
+    printer = Printer()
+
+    invoice = Invoice(invoice_data, plays)
+
+    printer.print(f'Statement for {invoice.customer()}\n')
+    for performance in invoice.performances():
+        printer.print(formatted_line(performance.title(), performance.audience(), performance.amount()))
+    printer.print(f'Amount owed is {format_as_dollars(invoice.amount().current() // 100)}\n')
+    printer.print(f'You earned {invoice.credits().current()} credits\n')
+
+    return printer.output()
+```
+
 ## Por qué funciona
 
 Esta es una regla que nos remite al Principio de Mínimo Conocimiento o Ley de Demeter y su objetivo es evitar acoplarnos a detalles internos de otros objetos. Nos fuerza a considerar los objetos como cajas negras con las que nos podemos comunicar, pero no saber cómo funcionan por dentro.
@@ -147,34 +271,26 @@ Por un lado, esta regla nos ayuda a mover responsabilidades a su lugar adecuado.
 Por eso, el resultado en este momento resulta un poco insatisfactorio. Tendremos que esperar a las reglas restantes para alcanzar mejores soluciones.
 
 ```python
-from domain.amount import Amount
-from domain.credits import Credits
 from domain.invoice import Invoice
 from domain.printer import Printer
 
 
-def statement(invoice, plays):
-    printer = Printer()
-    invoice_amount = Amount(0)
-    volume_credits = Credits(0)
-    inv = Invoice(invoice, plays)
-
-    printer.print(f'Statement for {inv.customer()}\n')
+def statement(invoice_data, plays):
+    def formatted_line(title, audience, amount):
+        return f' {title}: {format_as_dollars(amount.current() / 100)} ({audience} seats)\n'
 
     def format_as_dollars(amount):
         return f"${amount:0,.2f}"
 
-    def formatted_line(title, audience, amount):
-        return f' {title}: {format_as_dollars(amount.current() / 100)} ({audience} seats)\n'
+    printer = Printer()
 
-    for performance in inv.performances():
+    invoice = Invoice(invoice_data, plays)
+
+    printer.print(f'Statement for {invoice.customer()}\n')
+    for performance in invoice.performances():
         printer.print(formatted_line(performance.title(), performance.audience(), performance.amount()))
-        invoice_amount = invoice_amount.add(performance.amount())
-        volume_credits = volume_credits.add(performance.credits())
-
-    printer.print(f'Amount owed is {format_as_dollars(invoice_amount.current() // 100)}\n')
-    printer.print(f'You earned {volume_credits.current()} credits\n')
+    printer.print(f'Amount owed is {format_as_dollars(invoice.amount().current() // 100)}\n')
+    printer.print(f'You earned {invoice.credits().current()} credits\n')
 
     return printer.output()
-
 ```

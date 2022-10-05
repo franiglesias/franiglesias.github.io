@@ -21,8 +21,8 @@ La lista de restricciones es la siguiente:
 * [No usar la palabra clave ELSE](/calisthenics-2)
 * [Encapsular todas las primitivas y strings](/calisthenics-3)
 * [Colecciones de primera clase](/calisthenics-4)
-* Un punto por línea
-* No usar abreviaturas
+* [Un punto por línea](/calisthenics-5)
+* [No usar abreviaturas](/calisthenics-6)
 * Mantener todas las entidades pequeñas
 * No más de dos variables de instancia por clase
 * No usar getters/setters o propiedades públicas

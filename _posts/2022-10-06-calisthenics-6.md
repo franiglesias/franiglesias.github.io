@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Object Calisthenics. Un punto por línea
+title: Object Calisthenics. No usar abreviaturas
 categories: articles
 tags: good-practices refactoring
 ---

@@ -5,7 +5,7 @@ categories: articles
 tags: good-practices refactoring
 ---
 
-Una serie de restricciones que te ayudarán a escribir mejor código. En esta ocasión hablaremos de poner las colecciones en primera clase.
+Una serie de restricciones que te ayudarán a escribir mejor código. En este artículo veremos como aplicar la regla de un solo punto por línea.
 
 ## Qué es object calisthenics
 

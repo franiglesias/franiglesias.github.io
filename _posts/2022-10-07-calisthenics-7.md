@@ -23,7 +23,7 @@ La lista de restricciones es la siguiente:
 * [Colecciones de primera clase](/calisthenics-4)
 * [Un punto por línea](/calisthenics-5)
 * [No usar abreviaturas](/calisthenics-6)
-* Mantener todas las entidades pequeñas
+* [Mantener todas las entidades pequeñas](/calisthenics-7)
 * No más de dos variables de instancia por clase
 * No usar getters/setters o propiedades públicas
 

@@ -25,7 +25,7 @@ La lista de restricciones es la siguiente:
 * [No usar abreviaturas](/calisthenics-6)
 * [Mantener todas las entidades pequeñas](/calisthenics-7)
 * [No más de dos variables de instancia por clase](/calisthenics-8)
-* No usar getters/setters o propiedades públicas
+* [No usar getters/setters o propiedades públicas](/calisthenics-9)
 
 El objetivo de esta serie de artículos es desarrollar cada una de las restricciones aplicada a un ejemplo de código y tratar de explicar cómo y por qué funciona.
 

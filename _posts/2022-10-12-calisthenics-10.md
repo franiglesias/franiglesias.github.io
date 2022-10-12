@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Object Calisthenics. No user getters, setters o propiedades públicas
+title: Object Calisthenics. Comentarios finales
 categories: articles
 tags: good-practices refactoring
 ---
 
-Una serie de restricciones que te ayudarán a escribir mejor código. La última regla consiste en no usar getters, setters o propiedades públicas.
+En este artículo reviso algunas cuestiones que se han planteado y exploro algunas líneas de desarrollo que quedaban pendientes.
 
 ## Qué es object calisthenics
 
@@ -31,11 +31,11 @@ El objetivo de esta serie de artículos es desarrollar cada una de las restricci
 
 ## Aplicar object calisthenics, ¿mejora el diseño?
 
-Sí, aplicando las reglas de object calisthenics el diseño del código mejora incluso aunque no comencemos ya a introducir patrones.
+Sí, aplicando las reglas de _object calisthenics_ el diseño del código mejora incluso aunque no comencemos a introducir patrones de diseño. En otras palabras, _calisthenics_ te ayuda incluso si no tienes mucha experiencia en diseño de software.
 
-En líneas generales, reducir el tamaño de los bloques de código y aplanar las estructuras indentadas ayuda a tener bloques de código más cohesivos centrados en torno a una responsabilidad.
+En líneas generales, reducir el tamaño de los bloques de código y aplanar las estructuras indentadas ayuda a tener bloques y métodos más cohesivos centrados en torno a una responsabilidad.
 
-Encapsular primitivos y estructuras de datos nativas contribuye a asignar mejor las responsabilidades y mover comportamientos a los objetos a los que corresponden.
+Encapsular primitivos y estructuras de datos nativas abre la puerta a  asignar mejor las responsabilidades y mover comportamientos a los objetos a los que corresponden.
 
 ## ¿Hay un orden adecuado para aplicar las reglas?
 
@@ -45,7 +45,7 @@ El proceso es, por tanto, iterativo. Empiezas aplicando una regla cuya utilidad 
 
 ## ¿Por dónde empezar?
 
-Empieza aplicando la regla que te resulte más fácil o cuyos casos sean más evidentes. Por ejemplo, no usar abreviaturas es fácil de aplicar en casi cualquier código. Aplanar estructuras condicionales suele ser muy evidente y el refactor _extraer método_ suele ser sencillo de aplicar en un IDE moderno.
+Empieza aplicando la regla que te resulte más fácil o cuyos casos sean más evidentes. Por ejemplo, no usar abreviaturas es fácil de aplicar en casi cualquier código. Aplanar estructuras condicionales suele ser muy evidente y el refactor _extraer método_ es sencillo de aplicar en un IDE moderno.
 
 Encapsular tipos primitivos y estructuras de datos no es difícil, pero ya supone un trabajo extra porque tenemos que asegurar que en todos sus usos podemos hacer la sustitución. Sin embargo, una vez introducido un concepto como objeto, mover comportamiento viene de forma casi natural.
 
@@ -56,6 +56,8 @@ No usar getter o setters puede ser muy sencillo en algunos casos, pero no es evi
 ## ¿Debo aplicar las reglas exhaustivamente en todo el código?
 
 No. Céntrate sobre todo en la lógica de dominio, que es la que más te interesa que sea fácil de entender y de mantener en el futuro. Las mejoras del código en esta área son más prioritarias, porque los objetos tienen mayor significación. En las partes de implementación de infraestructura, los beneficios pueden no ser tan importantes, lo que no debería justificar un diseño chapucero.
+
+Usa tu buen juicio. Céntrate en el código que sea importante.
 
 ## Más consideraciones y ejemplos sobre algunas reglas
 
@@ -305,10 +307,130 @@ class Comedy(Play):
 
 ¿Sobre-ingeniería?
 
+## Comentarios de lectores
+
+El objetivo de los artículos no era tanto llegar a un diseño de código `final`, como a mostrar que aplicando las reglas de Calisthenics es posible mejorar el diseño del software a través de dos caminos. El más simple consiste en aplicar las reglas tal cual. El segundo consiste en avanzar a partir de ese punto, descubriendo oportunidades para aplicar patrones de refactoring más avanzados. 
+
+Algunos lectores habéis comentado áreas en las que se podría mejorar el código.
+
+### Acoplamiento temporal al imprimir la factura
+
+[josemi](/calisthenics-9/#comment-6009753237) hace un par de sugerencias interesantes. Por ejemplo, señala un caso de acoplamiento temporal dado que `StatementPrinter` no controla el orden en que se imprimen los elementos del `Statement`. Esto es debido a que no hay una separación entre la obtención de los datos y su impresión. El método `fill` obtiene el dato e imprime la línea. De ese modo, el control lo tiene `Invoice`, así que bastaría cambiar el orden de las llamadas en `Invoice` para _romper_ la impresión del Statement.
+
+Esta es una primera aproximación muy basta, pero suficiente para hacernos a la idea y que elimina el acoplamiento temporal: 
+
+```python
+class StatementPrinter:
+    def __init__(self, printer):
+        self._printer = printer
+        self._customer = None
+        self._amount = None
+        self._credits = None
+        self._lines = []
+
+    def print(self):
+        self._printer.print(f'Statement for {self._customer}\n')
+        for line in self._lines:
+            self._printer.print(f' {line["title"]}: {FormattedAmount(line["amount"]).dollars()} ({line["audience"]} seats)\n')
+
+        self._printer.print(f'Amount owed is {FormattedAmount(self._amount).dollars()}\n')
+        self._printer.print(f'You earned {self._credits.current()} credits\n')
+
+        return self._printer.output()
+
+    def fill(self, template, *args):
+        getattr(self, '_fill_' + template)(*args)
+
+    def _fill_credits(self, credits):
+        self._credits = credits
+
+    def _fill_amount(self, amount):
+        self._amount = amount
+
+    def _fill_customer(self, customer):
+        self._customer = customer
+
+    def _fill_line(self, title, amount, audience):
+        self._lines.append({"title": title, "amount": amount, "audience": audience})
+```
+
+Ahora podría cambiar el orden de las líneas en Invoice, sin afectar al resultado:
+
+```python
+    def fill(self, statement_printer):
+        for performance in self._performances:
+            performance.fill(statement_printer)
+        statement_printer.fill('credits', self._credits())
+        statement_printer.fill('amount', self._amount())
+        statement_printer.fill('customer', self._customer)
+```
+
+### Más sobre colecciones de primera clase
+
+Otra sugerencia de [josemi](/calisthenics-9/#comment-6009753237) es que la clase `Performances`, que contiene la colección de actuaciones se encargue también de controlar el orden en que se envían las líneas a `StatementPrinter`, en lugar de `Invoice`. Me parece una propuesta interesante. Sería una aplicación del principio _Tell, don't ask_. `Invoice` le pide a `Performances` que realice la coordinación y cálculos que ahora mismo se hacen en `Invoice`, que quedaría así:
+
+```python
+from domain.performance import Performances
+from domain.play import Plays
+
+
+class Invoice:
+    def __init__(self, data, plays):
+        self._data = data
+        self._customer = data['customer']
+        self._performances = Performances(data['performances'], Plays(plays))
+
+    def _amount(self):
+        return self._performances.amount()
+
+    def _credits(self):
+        return self._performances.credits()
+
+    def fill(self, statement_printer):
+        statement_printer.fill('credits', self._credits())
+        statement_printer.fill('amount', self._amount())
+        statement_printer.fill('customer', self._customer)
+        self._performances.fill(statement_printer)
+```
+
+Mientras que Performances podría quedar así, una vez eliminado el código para hacerla iterable que ya no es necesario:
+
+```python
+class Performances:
+    def __init__(self, data, plays):
+        self._data = data
+        self._plays = plays
+
+    def amount(self):
+        amount = Amount(0)
+        for data in self._data:
+            performance = self._performance(data)
+            amount = amount.add(performance.amount())
+
+        return amount
+
+    def _performance(self, data):
+        return Performance(data['audience'], self._plays.get_by_id(data['playID']))
+
+    def credits(self):
+        volume_credits = Credits(0)
+        for data in self._data:
+            performance = self._performance(data)
+            volume_credits = volume_credits.add(performance.credits())
+
+        return volume_credits
+
+    def fill(self, statement_printer):
+        for data in self._data:
+            performance = self._performance(data)
+            performance.fill(statement_printer)
+
+```
+
 ## El resultado
 
 [Puedes consultar el proyecto en Github](https://github.com/franiglesias/theatrical-plays-kata) 
 
-## ¿Fin? Esta vez, sí.
+## ¿Fin? 
 
-
+Esta vez, sí. Lo cierto es que probablemente todavía podríamos introducir mejoras en el código. Hay algunas clases que no me convencen del todo, como `ExtraAmountByAudience` o `StatementPrinter`. Seguramente esconden aún problemas en el diseño que no he sido capaz de ver.

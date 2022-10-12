@@ -41,11 +41,11 @@ Encapsular primitivos y estructuras de datos nativas contribuye a asignar mejor 
 
 No. Las reglas se aplican según lo necesitamos o nos parece más evidente que se pueden aplicar. Muchas veces, aplicar una regla genera situaciones que se abordan aplicando otra. Así que en realidad, lo que hacemos es observar fragmentos de código que violan una u otra regla y los arreglamos lo mejor posible.
 
-El proceso es, por tanto, iterativo.
+El proceso es, por tanto, iterativo. Empiezas aplicando una regla cuya utilidad ves clara y vas haciendo pequeños commits con los cambios que ves que mejoran tu código. En algún momento, descubrirás oportunidades para aplicar otras y así sucesivamente.
 
 ## ¿Por dónde empezar?
 
-Empieza aplicando la regla que te resulte más fácil o cuyos casos sean más evidentes. Por ejemplo, no usar abreviaturas es fácil de aplicar en casi cualquier código. Aplanar estructuras condicionales suele ser muy evidente y con el refactor extraer método suele ser sencillo de aplicar en un IDE moderno.
+Empieza aplicando la regla que te resulte más fácil o cuyos casos sean más evidentes. Por ejemplo, no usar abreviaturas es fácil de aplicar en casi cualquier código. Aplanar estructuras condicionales suele ser muy evidente y el refactor _extraer método_ suele ser sencillo de aplicar en un IDE moderno.
 
 Encapsular tipos primitivos y estructuras de datos no es difícil, pero ya supone un trabajo extra porque tenemos que asegurar que en todos sus usos podemos hacer la sustitución. Sin embargo, una vez introducido un concepto como objeto, mover comportamiento viene de forma casi natural.
 
@@ -55,7 +55,7 @@ No usar getter o setters puede ser muy sencillo en algunos casos, pero no es evi
 
 ## ¿Debo aplicar las reglas exhaustivamente en todo el código?
 
-No. Céntrate sobre todo en la lógica de dominio, que es la que más te interesa que sea fácil de entender y de mantener en el futuro. Las mejoras del código en esta área son más prioritarias, porque los objetos tienen mayor significación. En las partes de implementación de infraestructura, los beneficios no son tan importantes, lo que no debería justificar un diseño chapucero.
+No. Céntrate sobre todo en la lógica de dominio, que es la que más te interesa que sea fácil de entender y de mantener en el futuro. Las mejoras del código en esta área son más prioritarias, porque los objetos tienen mayor significación. En las partes de implementación de infraestructura, los beneficios pueden no ser tan importantes, lo que no debería justificar un diseño chapucero.
 
 ## Más consideraciones y ejemplos sobre algunas reglas
 
@@ -66,7 +66,7 @@ Me he dejado algunos valores primitivos sin encapsular. El criterio de prioridad
 * El primitivo representa un concepto relevante del dominio o negocio de la aplicación
 * El primitivo tiene reglas validación o comportamiento asociado que no es soportado por el propio tipo, lo que básicamente indica que el concepto es importante para el dominio
 
-Por ejemplo, tras aplicar la última regla a Play y extender en dos subclases, quedó de manifiesto que el cálculo de importe extra en relación con la audiencia era un comportamiento asociado al concepto de Audiencia. De hecho, el IDE señala esos métodos como candidatos a ser métodos estáticos. Por ejemplo, en `Tragedy` es así:
+Por ejemplo, tras aplicar la última regla a `Play` y extender en dos subclases, quedó de manifiesto que el cálculo de importe extra en relación con la audiencia era un comportamiento asociado al concepto de Audiencia. De hecho, el IDE señala esos métodos como candidatos a ser métodos estáticos. Por ejemplo, en `Tragedy` es así:
 
 ```python
 class Tragedy(Play):
@@ -118,7 +118,7 @@ Y para `Comedy`:
         return Amount(10000 + 500 * (audience - 20))
 ```
 
-Podríamos introducir una clase `Audience` que nos calcule al Amount extra, pasándole los parámetros necesarios:
+Podríamos introducir una clase `Audience` que nos calcule el `Amount` extra, pasándole los parámetros necesarios:
 
 ```python
 class Audience:
@@ -190,6 +190,120 @@ class Tragedy(Play):
 ```
 
 Nos quedaría código relacionado con `Audience` y la posibilidad de instanciar el objeto desde el principio. Personalmente, cuando se trata de refactors suele empezar a introducirlo lo más adentro y voy "sacando" el objeto un paso cada vez. Así, por ejemplo, en el caso de `credits`, la lógica tiene que ver con Audience, pero no está tan claro como aplicar la relación.
+
+### Más sobre límites de tamaño: parámetros y propiedades
+
+Introducir `Audience` ha generado un problema, ya que la función para calcular el extra requiere tres parámetros y además hemos introducido tres propiedades más en las clases `Play`, ni más ni menos. En este caso, puede ser de aplicación el patrón `Parameter Object` para agruparlos. Sería algo así como `ExtraAmountData`:
+
+```python
+class ExtraAmountData:
+    def __init__(self, threshold, minimum_amount, coefficient):
+        self._threshold = threshold
+        self._minimum_amount = minimum_amount
+        self._coefficient = coefficient
+
+    def threshold(self):
+        return self._threshold
+
+    def minimum_amount(self):
+        return self._minimum_amount
+
+    def coefficient(self):
+        return self._coefficient
+```
+
+Esto se tendría que aplicar más o menos así. En Audience:
+
+```python
+    def extra_amount(self, extra_amount_data):
+        if self.audience <= extra_amount_data.threshold():
+            return Amount(0)
+
+        return Amount(extra_amount_data.minimum_amount() + extra_amount_data.coeficient() * (
+                    self.audience - extra_amount_data.threshold()))
+```
+
+Pero esto, sin embargo, no pinta bien. `Audience` no debería ser la responsable de calcular el extra, sino que es un dato necesario para hacerlo. Tendría más sentido que otro objeto dirija el cálculo sin exponer todos sus datos. Se podría considerar una especie de calculadora del importe extra basada en la audiencia, con coeficientes definidos por cada tipo de obra. Así que vamos a cambiar el concepto por completo.
+
+```python
+class ExtraAmountByAudience:
+    def __init__(self, threshold, minimum_amount, coefficient):
+        self._threshold = threshold
+        self._minimum_amount = minimum_amount
+        self._coefficient = coefficient
+
+    def amount(self, audience):
+        if audience <= self._threshold:
+            return Amount(0)
+        return Amount(self._minimum_amount + self._coefficient * (audience - self._threshold))
+```
+
+Y esto se usaría así:
+
+```python
+class Tragedy(Play):
+    def __init__(self, data):
+        self._name = data['name']
+
+    def name(self):
+        return self._name
+
+    def credits(self, audience):
+        return Credits(0)
+
+    def amount(self, audience):
+        return Amount(40000).add(ExtraAmountByAudience(30, 0, 1000).amount(audience))
+```
+
+Los tres parámetros de ExtraAmountByAudience son bastante crípticos. Una posible solución es usar un patrón builder:
+
+```python
+
+class ExtraAmountByAudience:
+    def __init__(self):
+        self._threshold = 0
+        self._minimum_amount = 0
+        self._coefficient = 1
+
+    def when_audience_greater_than(self, threshold):
+        self._threshold = threshold
+        return self
+
+    def minimum_amount_of(self, minimum_amount):
+        self._minimum_amount = minimum_amount
+        return self
+
+    def and_coefficient(self, coefficient):
+        self._coefficient = coefficient
+        return self
+```
+
+Con lo cual, podemos hacer una construcción más expresiva:
+
+```python
+class Comedy(Play):
+    def __init__(self, data):
+        self._name = data['name']
+
+    def name(self):
+        return self._name
+
+    def credits(self, audience):
+        return Credits(math.floor(audience / 5))
+
+    def amount(self, audience):
+        calculator = ExtraAmountByAudience().
+            when_audience_greater_than(20).
+            minimum_amount_of(10000).
+            and_coefficient(500)
+
+        return Amount(30000)
+            .add(calculator.amount(audience))
+            .add(Amount(300 * audience))
+
+```
+
+¿Sobre-ingeniería?
 
 ## El resultado
 

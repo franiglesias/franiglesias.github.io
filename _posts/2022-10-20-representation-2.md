@@ -67,7 +67,7 @@ Una de las posibles representaciones que querríamos tener es el _list name_, o 
 
 La forma sencilla podría ser esta:
 
-```injectablephp
+```php
 class PersonNameTest extends TestCase
 {
     /** @test */
@@ -82,7 +82,7 @@ class PersonNameTest extends TestCase
 
 Que se implementa así y solo expone el comportamiento de generar una representación, pero no expone los datos.
 
-```injectablephp
+```php
 final class PersonName
 {
 
@@ -104,7 +104,7 @@ final class PersonName
 
 Ahora, si queremos la representación del _full name_ o nombre completo, añadiríamos un método más:
 
-```injectablephp
+```php
 <?php
 
 namespace App\Tests;
@@ -126,7 +126,7 @@ class PersonNameTest extends TestCase
 
 Y la clase quedaría así:
 
-```injectablephp
+```php
 <?php
 
 declare (strict_types=1);
@@ -162,7 +162,7 @@ No exponemos los datos internos, pero tenemos un problema, ya que la clase `Pers
 
 Por ejemplo, el DNI español incluye una representación del nombre que es algo así:
 
-```injectablephp
+```php
 <?php
 
 namespace App\Tests;
@@ -184,7 +184,7 @@ class PersonNameTest extends TestCase
 
 Y que podríamos implementar de esta manera:
 
-```injectablephp
+```php
 <?php
 
 declare (strict_types=1);
@@ -235,7 +235,7 @@ Vamos a introducir el patrón `Visitor` para resolver nuestro problema. Antes de
 
 Como estoy haciendo TDD y ahora estoy en fase de refactor, lo primero que voy a hacer es modificar los tests para que se centren más en el comportamiento y sea más fácil cambiar la implementación. También verifico que todos los tests siguen pasando.
 
-```injectablephp
+```php
 class PersonNameRepresentationTest extends TestCase
 {
     /** @test */
@@ -287,7 +287,7 @@ class PersonNameRepresentationTest extends TestCase
 
 Voy a empezar creando un _Visitor_ que reproduzca toda la lógica de representación de `PersonName`. A falta de un nombre mejor, lo voy a llamar `PersonNamePrinter`.
 
-```injectablephp
+```php
 final class PersonNamePrinter
 {
     private string $name;
@@ -326,7 +326,7 @@ Sí, se parece mucho a PersonName, pero solo es una coincidencia. Ya veremos que
 
 Ahora, voy a introducir un cambio que me permita inyectar `PersonNamePrinter` para obtener los datos necesarios. No muestro los métodos `listName`, `fullName` y `dni` para no meter ruido, pero aún no los he eliminado.
 
-```injectablephp
+```php
 final class PersonName
 {
 
@@ -353,7 +353,7 @@ final class PersonName
 
 Ahora, cambio la implementación en los distintos tests. Este es el caso de `listName`. El test sigue pasando, demostrando que preservamos el comportamiento deseado:
 
-```injectablephp
+```php
 <?php
 
 namespace App\Tests;
@@ -388,7 +388,7 @@ class PersonNameRepresentationTest extends TestCase
 
 Los demás tests se modifican igualmente y el TestCase queda así:
 
-```injectablephp
+```php
 <?php
 
 namespace App\Tests;
@@ -451,7 +451,7 @@ class PersonNameRepresentationTest extends TestCase
 
 Por supuesto, pasan todos los tests, así que puedo quitar unos cuantos métodos a `PersonName`:
 
-```injectablephp
+```php
 <?php
 
 declare (strict_types=1);
@@ -491,7 +491,7 @@ Y el objeto _Visitor_ recibe esos datos y los revisa para ver si alguno le sirve
 
 Por ejemplo, un acuerdo en la forma de pasar estos datos. Podría ser una etiqueta que los identifique y su valor. Por ejemplo, algo como esto:
 
-```injectablephp
+```php
 <?php
 
 declare (strict_types=1);
@@ -525,7 +525,7 @@ De este modo, solo `PersonName` sabe qué datos se pasan a `PersonNamePrinter`. 
 
 Hagamos el cambio en `PersonName` para ver si todo sigue funcionando como es debido.
 
-```injectablephp
+```php
 final class PersonName
 {
 
@@ -563,7 +563,7 @@ Una buena _interface_ se define por las necesidades de sus consumidores, así qu
 
 Ponerle nombre a esta _interface_ tiene su miga. Por un lado, podría hacer referencia al hecho de que es una representación. Pero por otro, la _interface_ se centrará en la parte del _rellenado_ de datos. ¿Qué tal `Fillable`?
 
-```injectablephp
+```php
 <?php
 
 declare (strict_types=1);
@@ -578,7 +578,7 @@ interface Fillable
 
 Y podemos hacer el cambio en `PersonName` sin mayor problema, dado que basta con que el objeto que se pasa la implemente.
 
-```injectablephp
+```php
 final class PersonName
 {
 
@@ -623,7 +623,7 @@ Así que vamos al lío.
 
 Seguimos teniendo nuestro test y está pasando, así que podemos empezar a mover código. Veamos el caso del _list name_. Podemos crear una clase `ListNamePrinter`.
 
-```injectablephp
+```php
 final class ListNamePrinter implements Fillable
 {
     private string $name;
@@ -649,7 +649,7 @@ final class ListNamePrinter implements Fillable
 
 Y reemplazamos `PersonNamePrinter` en el test para comprobar que el cambio no afecta al comportamiento:
 
-```injectablephp
+```php
 <?php
 
 namespace App\Tests;
@@ -685,7 +685,7 @@ class PersonNameRepresentationTest extends TestCase
 
 Hacemos lo mismo para los otros dos métodos, extraemos una clase por cada método. Aquí están las dos que nos faltan:
 
-```injectablephp
+```php
 final class FullNamePrinter implements Fillable
 {
     private string $name;
@@ -709,7 +709,7 @@ final class FullNamePrinter implements Fillable
 }
 ```
 
-```injectablephp
+```php
 final class OCRDniPrinter implements Fillable
 {
     private string $name;
@@ -738,7 +738,7 @@ final class OCRDniPrinter implements Fillable
 
 De este modo, el test case quedaría así:
 
-```injectablephp
+```php
 class PersonNameRepresentationTest extends TestCase
 {
     /** @test */
@@ -821,7 +821,7 @@ Hemos solucionado los problemas que se mencionaban al principio:
 
 Es muy fácil añadir nuevas representaciones. Supongamos que necesitamos mapear nuestro objeto a un DTO para guardarlo en una base de datos.
 
-```injectablephp
+```php
 class PersonNameRepresentationTest extends TestCase
 {
     // Code removed for clarity
@@ -848,7 +848,7 @@ class PersonNameRepresentationTest extends TestCase
 ```
 Aquí tenemos el DTO.
 
-```injectablephp
+```php
 final class DBPersonName
 {
     public function __construct(private string $name, private string $surname) {}
@@ -867,7 +867,7 @@ final class DBPersonName
 
 Y este es el generador de la representación.
 
-```injectablephp
+```php
 final class MapToORMEntity implements Fillable
 {
     private string $name;

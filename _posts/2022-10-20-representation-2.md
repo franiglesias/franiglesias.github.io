@@ -912,3 +912,5 @@ Supongo que a estas alturas estarás pensando en "uuuh, sobre ingeniería". Sin 
 * Podemos generar cuantas representaciones necesitemos sin tocar nada del código que ya está en producción.
 
 La cuestión que nos queda por revisar es cómo aplicar estos patrones en el caso de objetos agregados. Lo dejaremos para más adelante.
+
+[En este repositorio tienes los ejemplos de código](https://github.com/franiglesias/representation-pattern)

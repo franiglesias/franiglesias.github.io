@@ -1,3 +1,11 @@
+---
+layout: post
+title: Desarrollo iterativo e incremental
+categories: articles
+tags: good-practices
+---
+
+
 # Desarrollo iterativo e incremental
 
 El desarrollo de software ágil va más allá de frameworks como Scrum. En realidad, no los necesita. La clave está en entender qué significa _ágil_.

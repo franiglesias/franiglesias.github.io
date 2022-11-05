@@ -6,11 +6,17 @@ permalink: /about/
 
 Hi, I'm Fran Iglesias
 
-I write PHP code focusing on quality. I follow SOLID principles and use TDD and Design Patterns. But I also write pretty good HMTL/CSS and acceptable Javascript (work in progress).
+## Currently working
 
-Currently working and learning at [Holaluz](http://holaluz.com) as Backend Developer of the Internal Tools Team at Barcelona.
+* [The Hotels Network]()
 
-Formerly I worked at [Atrapalo](http://atrapalo,com)
+## Former employers
+
+* [Codurance]()
+* [DocPlanner]()
+* [Pridatect]()
+* [Holaluz](http://holaluz.com)
+* [Atrapalo](http://atrapalo.com)
 
 ### Contact me
 

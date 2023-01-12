@@ -60,7 +60,7 @@ En el caso de la herencia, se consigue por el hecho de que las clases base ya of
 
 La herencia es un mecanismo para crear clases extendiendo otras clases base. La nueva clase hereda los métodos y propiedades de la clase base que extiende, así que ya cuenta con una funcionalidad de nacimiento.
 
-Normalmente utilizaremos la herencia para crear especializaciones de una clase más general. Es decir, no extendemos una clase para conseguir que la nueva contenga métodos de la clase extendida, sino que lo hacemos porque la nueva clase es semánticamente equivalente a la clase base, pero más específica o concreta. Por ejemplo, podemos tener una clase que gestiona la conexión genérica a una base de datos y extenderla con varias clases hijas para manejar drivers específicos (MySQL, SQLite, Postgre, MongoDB, etc.).
+Normalmente, utilizaremos la herencia para crear especializaciones de una clase más general. Es decir, no extendemos una clase para conseguir que la nueva contenga métodos de la clase extendida, sino que lo hacemos porque la nueva clase es semánticamente equivalente a la clase base, pero más específica o concreta. Por ejemplo, podemos tener una clase que gestiona la conexión genérica a una base de datos y extenderla con varias clases hijas para manejar drivers específicos (MySQL, SQLite, Postgre, MongoDB, etc.).
 
 La nueva clase puede tener nuevos métodos y propiedades, o bien puede sobreescribir los existentes, según sea necesario. Como resultado tenemos una clase nueva, que además de por su propio tipo, puede ser identificada por el mismo que su "clase madre" aunque se comporte de manera diferente.
 

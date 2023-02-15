@@ -45,3 +45,17 @@ You can see some of my talks (Spanish) in the following playlist.
 ### Contact me
 
 [franiglesias@mac.com](mailto:franiglesias@mac.com)
+
+
+### Credits
+
+Icon images credits:
+
+* <a href="https://www.flaticon.com/free-icons/elephant" title="elephant icons">Elephant icons created by Hery Mery - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created by Fathema Khanom - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Fathema Khanom - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Pixel perfect - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/youtube" title="youtube icons">Youtube icons created by Freepik - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/rss" title="rss icons">Rss icons created by Freepik - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/ebook" title="ebook icons">Ebook icons created by Freepik - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/book" title="book icons">Book icons created by Freepik - Flaticon</a>

@@ -8,7 +8,7 @@
     {% seo %}
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
     <a rel="me" href="https://mastodon.online/@talkingbit"></a>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/tb.css?v=' | append: site.github.build_revision | relative_url }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
     <!--[if lt IE 9]>
@@ -35,9 +35,8 @@
             <p>{{ site.description | default: site.github.project_tagline }}</p>
             <hr>
             <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
-            <span class="credits left"> - <a href="/about/">About me</a></span>
-            <span class="credits right">Hosted on GitHub Pages &mdash; Theme based on one by <a
-                    href="https://twitter.com/michigangraham">mattgraham</a></span>
+            <span class="credits left"> - Hosted on GitHub Pages</span>
+            <span class="credits right"><a href="/about/">About me</a></span>
         </div>
         <section id="tags">
             {% include archive.html %}

@@ -23,12 +23,11 @@ layout: basic
         <p>Etiquetas:
             {% for tag in page.tags %}
             {% capture tag_name %}{{ tag }}{% endcapture %}
-            <a href="/tag/{{ tag_name }}"><code class="highlighter-rouge">
+            <a href="/tag/{{ tag_name }}"><span class="tag">
                 <nobr>{{ tag_name }}</nobr>
-            </code>&nbsp;</a>
+            </span>&nbsp;</a>
             {% endfor %}
         </p>
     </div>
-
 </article>
 {% include disqus.html %}

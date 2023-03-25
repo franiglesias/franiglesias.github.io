@@ -104,7 +104,7 @@ type GenerateKey struct {
 
 func NewGenerateKey(clock ClockService, random RandomGenerator) GenerateKey {
 	return GenerateKey{
-		clock,
+		clock, 
 		random,
 	}
 }
@@ -133,9 +133,9 @@ func TestStorageKeyGivenPayload(t *testing.T) {
 	t.Run("should generate key from payload", func(t *testing.T) {
         //...
 		want := fmt.Sprintf(
-	    	"/001/%s/uid1st_uid3rd_%s_1033485_2094d635a758213b14ea0a4f67719d4b_0123.json",
-		    datePath,
-            timeStamp,
+	    	"/001/%s/uid1st_uid3rd_%s_1033485_2094d635a758213b14ea0a4f67719d4b_0123.json", 
+			datePath,
+			timeStamp,
         )
         got := generateKey.FromPayload(payload)
 
@@ -506,4 +506,3 @@ Define interfaces para abstraer todo tipo de dependencias globales como el tiemp
 Utiliza el patrón Adaptador para tener las implementaciones que necesites, ya sea usando la librería estándar del lenguaje u otra de tercera parte.
 
 Aprovecha este patrón para crear dobles de test, que te permitirán testear comportamientos dependientes del tiempo o del azar.
-

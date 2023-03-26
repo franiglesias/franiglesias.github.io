@@ -11,7 +11,7 @@ $heading_color: #0a0a0a;
 $secondary_heading_color: #333333;
 $link_color: #1e1e88;
 $intro_text_color: #444444;
-$code_block_bg: #112511;
+$code_block_bg: #020a02;
 $wrapper_bg: #ffffff;
 
 
@@ -481,6 +481,7 @@ table {
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'OpenSansLightItalic';
   src: url("../fonts/OpenSans-LightItalic-webfont.eot");
@@ -488,6 +489,7 @@ table {
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'OpenSansRegular';
   src: url("../fonts/OpenSans-Regular-webfont.eot");
@@ -496,6 +498,7 @@ table {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
 }
+
 @font-face {
   font-family: 'OpenSansItalic';
   src: url("../fonts/OpenSans-Italic-webfont.eot");
@@ -504,6 +507,7 @@ table {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
 }
+
 @font-face {
   font-family: 'OpenSansSemibold';
   src: url("../fonts/OpenSans-Semibold-webfont.eot");
@@ -512,6 +516,7 @@ table {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
 }
+
 @font-face {
   font-family: 'OpenSansSemiboldItalic';
   src: url("../fonts/OpenSans-SemiboldItalic-webfont.eot");
@@ -520,6 +525,7 @@ table {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
 }
+
 @font-face {
   font-family: 'OpenSansBold';
   src: url("../fonts/OpenSans-Bold-webfont.eot");
@@ -528,6 +534,7 @@ table {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
 }
+
 @font-face {
   font-family: 'OpenSansBoldItalic';
   src: url("../fonts/OpenSans-BoldItalic-webfont.eot");
@@ -536,6 +543,7 @@ table {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
 }
+
 @font-face {
   font-family: 'league_gothicregular';
   src: url('../fonts/leaguegothic-regular-variablefont_wdth-webfont.woff2') format('woff2'),
@@ -732,6 +740,7 @@ ul {
 ul li {
   line-height: 1.5rem;
 }
+
 strong {
   font-weight: bold;
 }
@@ -756,22 +765,6 @@ blockquote {
   font-style: italic;
 }
 
-
-pre {
-  padding: 1rem 1rem;
-  background: $code_block_bg;
-  border: 1px solid #121212;
-  box-shadow: inset 0 0.7rem 0.7rem rgba(255, 255, 255, 0.29);
-  overflow: auto;
-  overflow-y: hidden;
-  border-radius: 0.5em;
-}
-pre code {
-  color: #efefef;
-  text-shadow: 0 1px 0 #000;
-  margin: 0;
-  padding: 0;
-}
 
 table {
   width: 100%;
@@ -865,10 +858,12 @@ dt {
       float: left;
       margin-left: 0;
     }
+
     li.downloads {
       float: right;
       margin-left: 6px;
     }
+
     li.title {
       float: right;
       margin-right: 10px;
@@ -889,51 +884,60 @@ section #title {
   margin: 0 0 5rem 0;
   padding: 0 0 0.5rem 0;
 }
+
 section #title h1 {
   font-size: 6rem;
   text-align: left;
   line-height: 120%;
 }
+
 section #title p {
   color: $secondary_heading_color;
   font-family: $site_font;
   font-size: 1.3rem;
   text-align: left;
 }
+
 section #title .credits {
   font-size: 1.5rem;
   font-family: $heading_font;
   color: #696969;
   margin-top: -10px;
 }
+
 section #title .credits.left {
   float: left;
 }
+
 section #title .credits.right {
   float: right;
 }
 
 
-
 article div.authors {
   padding-top: 2rem;
 }
+
 article div.authors p {
   font-size: 2rem;
   font-style: oblique;
   text-align: center;
 }
+
 article.post {
   margin-bottom: 5rem;
 }
+
 article.post.post.full-post h1 {
   text-align: center;
 }
+
 article.post.post.full-post .entry div.footnotes ol li p:first-child {
   text-align: left !important;
   font-size: small !important;
   margin: 0rem 0rem 1rem 0rem !important;
 }
+
 article.post.post.full-post .entry p:first-child {
   color: #ccc;
   font-size: 130%;
@@ -941,22 +945,6 @@ article.post.post.full-post .entry p:first-child {
   margin: 2rem 1rem 5rem 1rem;
 }
 
-pre.highlight {
-  margin-left: -25%;
-  padding-left: 25%;
-  margin-right: -25%;
-  padding-right: 25%;
-}
-pre.highlight.cp {
-  color: #555;
-}
-pre.highlight code {
-  font-family: $code_font;
-}
-
-// Vars
-
-$margin: 25%;
 
 p code {
   font: {
@@ -968,6 +956,7 @@ p code {
 article {
   div.authors {
     padding-top: 1.5em;
+
     p {
       font: {
         size: 1em;
@@ -1026,7 +1015,20 @@ article {
   }
 }
 
+$margin: 7rem;
+
+
 pre {
+
+  margin-top: 3em;
+  margin-bottom: 3em;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: $code_block_bg;
+  overflow: auto;
+  overflow-y: hidden;
+  border-radius: 0.2rem;
+
   &.highlight {
     margin-left: -$margin;
     padding-left: $margin;
@@ -1034,10 +1036,14 @@ pre {
     padding-right: $margin;
 
     &.cp {
-      color: #555;
+      color: red;
     }
 
     code {
+      color: #efefef;
+      text-shadow: 0 1px 0 #000;
+      margin: 0;
+      padding: 0;
       font: {
         family: $code_font;
       }
@@ -1091,8 +1097,7 @@ h6 code.language-plaintext,
 }
 
 
-
-@media print, screen and (max-width: 720px) {
+@media (max-width: 720px) {
   #title .credits {
     display: block;
     width: 100%;
@@ -1108,13 +1113,17 @@ h6 code.language-plaintext,
     display: block;
   }
 }
-@media print, screen and (max-width: 480px) {
+
+@media (max-width: 375px) {
   #header {
     margin-top: -20px;
   }
 
-  section {
+  .wrapper {
     margin-top: 40px;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 0 2rem;
   }
 
   nav {

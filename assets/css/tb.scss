@@ -5,6 +5,7 @@ $tag_bg: #3535b6;
 $tag_color: #f6f6f6;
 $text_color: #030303;
 $body_bg: #f3eeec;
+$tags_bg: #d9d2d1;
 $heading_color: #0a0a0a;
 $secondary_heading_color: #333333;
 $link_color: #1e1e88;
@@ -850,7 +851,7 @@ section #title h1 {
   line-height: 36px;
 }
 section #title p {
-  color: #d7cfbe;
+  color: $secondary_heading_color;
   font-family: 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-size: 18px;
@@ -1063,7 +1064,27 @@ span.tag {
 }
 
 section#tags {
-  background-color: $body_bg;
+  margin-left: -100%;
+  padding-left: 100%;
+  margin-right: -100%;
+  padding-right: 100%;
+  background-color: $tags_bg;
+}
+
+section#tags div {
+  display: grid;
+  grid-template-columns: 22% 22% 22% 22%;
+  grid-column-gap: 0.5em;
+  grid-auto-flow: row;
+  justify-content: space-between;
+}
+
+section#tags p {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0.2em 1em;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 p code.language-plaintext,

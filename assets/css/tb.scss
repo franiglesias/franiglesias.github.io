@@ -736,10 +736,6 @@ code {
   border-radius: 2px;
 }
 
-p code {
-  color: #2a2a29;
-}
-
 pre {
   padding: 15px 15px;
   background: #112511;
@@ -926,17 +922,6 @@ section #title .credits.right {
   color: white;
 }
 
-
-p code {
-  font-size: inherit;
-  font-family: 'Fira Mono', Monaco, Terminal, Courier, monospace;
-  color: $intro_text_color;
-  margin: 0 4px;
-  padding: 4px 6px;
-  border-radius: 2px;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
 article div.authors {
   padding-top: 20px;
 }
@@ -985,11 +970,6 @@ p code {
     size: inherit;
     family: 'Fira Mono', Monaco, Terminal, Courier, monospace;
   };
-  color: #2a2a2a;
-  margin: 0 4px;
-  padding: 4px 6px;
-  border-radius: 2px;
-  background-color: rgba(255,255,255,.2);
 }
 
 article {

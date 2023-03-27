@@ -697,12 +697,12 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: normal;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 1.3rem;
 }
 
 h4, h5, h6 {
@@ -746,13 +746,50 @@ strong {
 }
 
 .wrapper {
-  max-width: 50rem;
   margin: 0 auto;
   position: relative;
-  padding: 0 10rem;
+  padding: 0 1rem;
   background-color: $wrapper_bg;
-
 }
+
+@media (min-width: 420px) {
+  .wrapper {
+    margin: 0 auto;
+    position: relative;
+    padding: 0 5rem;
+    background-color: $wrapper_bg;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: normal;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+
+@media (min-width: 780px) {
+  .wrapper {
+    max-width: 50rem;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 10rem;
+    background-color: $wrapper_bg;
+  }
+
+  h1 {
+    font-size: 5rem;
+    font-weight: normal;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+}
+
 
 section img {
   max-width: 100%;
@@ -1062,10 +1099,10 @@ span.tag {
 }
 
 section#tags {
-  margin-left: -100%;
-  padding-left: 100%;
-  margin-right: -100%;
-  padding-right: 100%;
+  margin-left: -$margin;
+  padding-left: $margin;
+  margin-right: -$margin;
+  padding-right: $margin;
   background-color: $tags_bg;
 
   div {
@@ -1117,13 +1154,6 @@ h6 code.language-plaintext,
 @media (max-width: 375px) {
   #header {
     margin-top: -20px;
-  }
-
-  .wrapper {
-    margin-top: 40px;
-    max-width: 100%;
-    min-width: 100%;
-    padding: 0 2rem;
   }
 
   nav {

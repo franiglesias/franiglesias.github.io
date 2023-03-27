@@ -19,6 +19,7 @@ $wrapper_bg: #ffffff;
 $code_font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
 $site_font: "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $heading_font: 'league_gothicregular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$inline_code_font: "m_1mregular", 'Fira Mono', Monaco, Terminal, Courier, monospace;
 
 
 article,
@@ -496,7 +497,6 @@ table {
   src: url("../fonts/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Regular-webfont.woff") format("woff"), url("../fonts/OpenSans-Regular-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Regular-webfont.svg#OpenSansRegular") format("svg");
   font-weight: normal;
   font-style: normal;
-  -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
@@ -505,7 +505,6 @@ table {
   src: url("../fonts/OpenSans-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Italic-webfont.woff") format("woff"), url("../fonts/OpenSans-Italic-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Italic-webfont.svg#OpenSansItalic") format("svg");
   font-weight: normal;
   font-style: normal;
-  -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
@@ -514,7 +513,6 @@ table {
   src: url("../fonts/OpenSans-Semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Semibold-webfont.woff") format("woff"), url("../fonts/OpenSans-Semibold-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Semibold-webfont.svg#OpenSansSemibold") format("svg");
   font-weight: normal;
   font-style: normal;
-  -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
@@ -523,7 +521,6 @@ table {
   src: url("../fonts/OpenSans-SemiboldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-SemiboldItalic-webfont.woff") format("woff"), url("../fonts/OpenSans-SemiboldItalic-webfont.ttf") format("truetype"), url("../fonts/OpenSans-SemiboldItalic-webfont.svg#OpenSansSemiboldItalic") format("svg");
   font-weight: normal;
   font-style: normal;
-  -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
@@ -532,7 +529,6 @@ table {
   src: url("../fonts/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Bold-webfont.woff") format("woff"), url("../fonts/OpenSans-Bold-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Bold-webfont.svg#OpenSansBold") format("svg");
   font-weight: normal;
   font-style: normal;
-  -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
@@ -541,7 +537,6 @@ table {
   src: url("../fonts/OpenSans-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-BoldItalic-webfont.woff") format("woff"), url("../fonts/OpenSans-BoldItalic-webfont.ttf") format("truetype"), url("../fonts/OpenSans-BoldItalic-webfont.svg#OpenSansBoldItalic") format("svg");
   font-weight: normal;
   font-style: normal;
-  -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
@@ -552,6 +547,14 @@ table {
   font-style: normal;
 
 }
+
+@font-face {
+  font-family: 'm_1mregular';
+  src: url('../fonts/mplus-1m-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 
 /*
@@ -762,7 +765,6 @@ strong {
 
   h1 {
     font-size: 3rem;
-    font-weight: normal;
   }
 
   h2 {
@@ -776,13 +778,12 @@ strong {
     max-width: 50rem;
     margin: 0 auto;
     position: relative;
-    padding: 0 10rem;
+    padding: 0 7rem;
     background-color: $wrapper_bg;
   }
 
   h1 {
     font-size: 5rem;
-    font-weight: normal;
   }
 
   h2 {
@@ -841,44 +842,16 @@ dt {
   z-index: 100;
   left: 0;
   top: 0;
-  height: 60px;
   width: 100%;
   position: fixed;
-  border-bottom: 4px solid #434343;
   background-color: #313131;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 
   nav {
-    max-width: 650px;
-    padding: 0 10px;
-    background: blue;
-    margin: 6px auto;
-
-    li a {
-      color: #bbbbbb;
-      border: none;
-      border-right: 1px solid gray;
-      background-color: transparent;
-      padding: 10px 12px;
-      margin-top: 6px;
-      line-height: 14px;
-      font-size: 14px;
-      display: inline-block;
-      text-align: center;
-      box-shadow: none;
-    }
-
-    li:last-child a {
-      border-right: none;
-    }
-
-    li.right a {
-      border-right: none;
-    }
-
-    li a:hover {
-      color: white;
-    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 95%;
+    margin: 0 auto;
 
     li {
       font-family: $site_font;
@@ -886,28 +859,44 @@ dt {
       list-style: none;
       display: inline;
       color: white;
-      line-height: 50px;
       text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-      font-size: 14px;
+      font-size: 1em;
+      margin-bottom: 0;
+      border-right: 1px solid gray;
+      padding: 0.5rem 0.6rem;
+
+
+      &.title {
+        border-right: none;
+        margin-left: auto;
+        font-size: 1rem;
+      }
+
+      a {
+        color: #bbbbbb;
+        border: none;
+        background-color: transparent;
+        display: inline-block;
+        box-shadow: none;
+
+        &:hover {
+          color: white;
+        }
+      }
     }
 
-    li.fork {
-      float: left;
-      margin-left: 0;
-    }
 
-    li.downloads {
-      float: right;
-      margin-left: 6px;
-    }
+  }
+}
 
-    li.title {
-      float: right;
-      margin-right: 10px;
-      font-size: 11px;
+@media (min-width: 810px) {
+  #header {
+    nav {
+      width: 75%;
     }
   }
 }
+
 
 section {
   padding: 3rem 0 5rem 0;
@@ -986,7 +975,7 @@ article.post.post.full-post .entry p:first-child {
 p code {
   font: {
     size: inherit;
-    family: $code_font;
+    family: $inline_code_font;
   };
 }
 
@@ -1052,20 +1041,11 @@ article {
   }
 }
 
-@media (min-width: 420px) {
-  $margin: 4rem;
-}
-
-@media (min-width: 770px) {
-  $margin: 7rem;
-}
-
 
 $margin: 2rem;
 
 
 pre {
-
   margin-top: 3em;
   margin-bottom: 3em;
   padding-top: 2rem;
@@ -1165,6 +1145,11 @@ h5 code.language-plaintext,
 h6 code.language-plaintext,
 {
   color: $text_color !important;
+    font: {
+      size: inherit;
+      family: $inline_code_font;
+    };
+
 }
 
 
@@ -1182,15 +1167,5 @@ h6 code.language-plaintext,
   #title .credits .right {
     float: none;
     display: block;
-  }
-}
-
-@media (max-width: 375px) {
-  #header {
-    margin-top: -20px;
-  }
-
-  nav {
-    display: none;
   }
 }

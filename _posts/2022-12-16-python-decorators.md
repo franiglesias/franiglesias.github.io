@@ -318,7 +318,7 @@ Empezamos con el error esperado de no tener definido `html_tag`.
 NameError: name 'html_tag' is not defined
 ```
 
-Así que empezaos por añadir esta función:
+Así que empezamos por añadir esta función:
 
 ```python
 def html_tag():

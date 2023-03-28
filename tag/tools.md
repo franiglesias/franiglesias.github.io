@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Tools"
+title: "Tools"
 tag: tools
 ---

@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Soft skills"
+title: "Soft skills"
 tag: soft-skills
 ---

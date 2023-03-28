@@ -1,6 +1,6 @@
 ---
 layout: tagfeed
-title: "Tag: API REST"
+title: "API REST"
 tag: api
 permalink: /tag/api/index.xml
 ---

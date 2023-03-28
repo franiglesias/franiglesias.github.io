@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: API REST"
+title: "API REST"
 tag: ethics
 ---

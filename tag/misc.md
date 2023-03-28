@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Varios"
+title: "Varios"
 tag: misc
 ---

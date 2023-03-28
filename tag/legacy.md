@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Legacy"
+title: "Legacy"
 tag: legacy
 ---

@@ -1,6 +1,6 @@
 ---
 layout: tagfeed
-title: "Tag: Books"
+title: "Books"
 tag: books
 permalink: /tag/books/index.xml
 ---

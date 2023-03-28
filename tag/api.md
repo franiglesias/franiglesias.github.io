@@ -1,5 +1,7 @@
 ---
 layout: tagpage
-title: "Tag: API REST"
+title: "API REST"
 tag: api
 ---
+
+Artículos sobre el diseño e implementación de API REST.

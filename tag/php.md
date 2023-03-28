@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: PHP"
+title: "PHP"
 tag: php
 ---

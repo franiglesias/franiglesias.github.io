@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Git"
+title: "Git"
 tag: git
 ---

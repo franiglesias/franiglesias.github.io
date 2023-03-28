@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Principios de diseño"
+title: "Principios de diseño"
 tag: design-principles
 ---

@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Refactoring"
+title: "Refactoring"
 tag: refactoring
 ---

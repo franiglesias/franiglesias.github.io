@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: OOP"
+title: "OOP"
 tag: oop
 ---

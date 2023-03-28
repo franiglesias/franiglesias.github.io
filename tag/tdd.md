@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Test Driven Development"
+title: "Test Driven Development"
 tag: tdd
 ---

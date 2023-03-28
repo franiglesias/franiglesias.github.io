@@ -1,11 +1,55 @@
-{% if site.footerlinks.email %}<li><a href="mailto:{{ site.footerlinks.email }}" title="email"><img src="{{ site.url }}/assets/icons/mail.png" alt="Mail" width="24" height="24"></a></li>{% endif %}
-{% if site.footerlinks.github %}<li><a href="https://github.com/{{ site.footerlinks.github }}" title="github"><img src="{{ site.url }}/assets/icons/github.png" alt="Github" width="24" height="24"></a></li>{% endif %}
-{% if site.footerlinks.linkedin %}<li><a href="https://www.linkedin.com/in/{{ site.footerlinks.linkedin }}"
-                                                      title="LinkedIn"><img src="{{ site.url }}/assets/icons/linkedin.png" alt="Linkedin" width="24" height="24"></a></li>{% endif %}
-{% if site.footerlinks.mastodon %}<li><a href="https://mastodon.online/@{{ site.footerlinks.mastodon }}"
-                                                      title="Mastodon"><img src="{{ site.url }}/assets/icons/elephants.png" alt="Mastodon" width="24" height="24"></a></li>{% endif %}
-{% if site.footerlinks.youtube %}<li><a href="https://www.youtube.com/c/{{ site.footerlinks.youtube }}"
-                                                     title="Youtube"><img src="{{ site.url }}/assets/icons/youtube.png" alt="Youtube" width="24" height="24"></a></li>{% endif %}
-{% if site.footerlinks.leanpub %}<li><a href="https://leanpub.com/u/{{ site.footerlinks.leanpub }}" title="Leanpub"><img src="{{ site.url }}/assets/icons/ebooks.png" alt="Books" width="24" height="24"></a></li>{% endif %}
-<li><a href="https://www.lulu.com/spotlight/franiglesias/" title="Libros impresos"><img src="{{ site.url }}/assets/icons/book.png" alt="Libros impresos" width="24" height="24"></a></li>
-{% if site.footerlinks.rss %}<li><a href="{{ site.baseurl }}/feed.xml" title="RSS feed"><img src="{{ site.url }}/assets/icons/rss.png" alt="RSS" width="24" height="24"></a></li>{% endif %}
+{% if site.footerlinks.email %}
+<li>
+    <a href="mailto:{{ site.footerlinks.email }}" title="email">
+        <img src="{{ site.url }}/assets/icons/mail.png" alt="Envía un correo electrónico a franiglesias@mac.com" width="24" height="24">
+    </a>
+</li>
+{% endif %}
+{% if site.footerlinks.github %}
+<li>
+    <a href="https://github.com/{{ site.footerlinks.github }}" title="github">
+        <img src="{{ site.url }}/assets/icons/github.png" alt="Visita el repositorio de mis proyectos de código" width="24" height="24">
+    </a>
+</li>
+{% endif %}
+{% if site.footerlinks.linkedin %}
+<li>
+    <a href="https://www.linkedin.com/in/{{ site.footerlinks.linkedin }}" title="LinkedIn">
+        <img src="{{ site.url }}/assets/icons/linkedin.png" alt="Visita mi perfil en linkedin" width="24" height="24">
+    </a>
+</li>
+{% endif %}
+{% if site.footerlinks.mastodon %}
+<li>
+    <a href="https://mastodon.online/@{{ site.footerlinks.mastodon }}" title="Mastodon">
+        <img src="{{ site.url }}/assets/icons/elephants.png" alt="Mi página en Mastodon" width="24" height="24">
+    </a>
+</li>
+{% endif %}
+{% if site.footerlinks.youtube %}
+<li>
+    <a href="https://www.youtube.com/c/{{ site.footerlinks.youtube }}" title="Youtube">
+        <img src="{{ site.url }}/assets/icons/youtube.png" alt="Visita mis vídeos sobre programación en Youtube" width="24" height="24">
+    </a>
+</li>
+{% endif %}
+{% if site.footerlinks.leanpub %}
+<li>
+    <a href="https://leanpub.com/u/{{ site.footerlinks.leanpub }}" title="Leanpub">
+        <img src="{{ site.url }}/assets/icons/ebooks.png" alt="Conoce los libros electrónicos que he publicado" width="24" height="24">
+    </a>
+</li>
+{% endif %}
+<li>
+    <a href="https://www.lulu.com/spotlight/franiglesias/" title="Conoce los libros impresos que he publicado">
+        <img src="{{ site.url }}/assets/icons/book.png" alt="Libros impresos" width="24" height="24">
+    </a>
+</li>
+
+{% if site.footerlinks.rss %}
+<li>
+    <a href="{{ site.baseurl }}/feed.xml" title="RSS feed">
+        <img src="{{ site.url }}/assets/icons/rss.png" alt="Enlace al canal de suscripción por RSS" width="24" height="24">
+    </a>
+</li>
+{% endif %}

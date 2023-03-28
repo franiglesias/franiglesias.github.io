@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "Tag: Buenas prácticas"
+title: "Buenas prácticas"
 tag: good-practices
 ---

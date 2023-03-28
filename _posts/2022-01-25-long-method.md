@@ -7,7 +7,7 @@ tags: design-principles refactoring
 
 No hace mucho dejé caer en twitter que tener métodos de más de 10 líneas me parecía un smell. Por supuesto se levantó cierta polémica y hubo algunas respuestas a favor y en contra.
 
-En este artículo intentaré explicar mi postura con detalle. Por supu3esto, esto no es una prescripción. La longitud de diez líneas es un límite arbitrario que remite a la idea de que los métodos o funciones largas pueden ser problemáticos para la comprensión del código y su mantenimiento. Distintas personas sitúan este límite en una cifra diferente, que parece oscilar entre las 5 y las 200 líneas. Este gran abanico da una idea de lo controvertida que puede ser cualquier opinión al respecto.
+En este artículo intentaré explicar mi postura con detalle. Por supuesto, esto no es una prescripción. La longitud de diez líneas es un límite arbitrario que remite a la idea de que los métodos o funciones largas pueden ser problemáticos para la comprensión del código y su mantenimiento. Distintas personas sitúan este límite en una cifra diferente, que parece oscilar entre las 5 y las 200 líneas. Este gran abanico da una idea de lo controvertida que puede ser cualquier opinión al respecto.
 
 ## ¿Que número de líneas por método se recomienda?
 
@@ -157,7 +157,7 @@ La cohesión del método es relativamente baja, puesto que entre ambos bloques s
 
 En otras palabras, hemos revelado el primer nivel de abstracción, que consta de dos acciones: preparar los elementos del juego y ejecutar el bucle de juego.
 
-El hecho de que el método `prepare_game` devuelva tres resultados resulta molesto porque no son cohesivos. Me explico: `player_one` y `player_two` se pueden agrupar claramente: son los contendientes de la partida, mientras que `all_sprites` es un constructo técnico que necesitamos para poder visualizar los elementos en pantalla. Se podría decir una `player_one` y `player_two` son elementos del dominio y que `all_sprites` es de infraestructura.
+El hecho de que el método `prepare_game` devuelva tres resultados resulta molesto porque no son cohesivos. Me explico: `player_one` y `player_two` se pueden agrupar claramente: son los contendientes de la partida, mientras que `all_sprites` es un constructo técnico que necesitamos para poder visualizar los elementos en pantalla. Se podría decir que `player_one` y `player_two` son elementos del dominio y que `all_sprites` es de infraestructura.
 
 Esto empieza a oler a problemas de diseño. Se estarían mezclando responsabilidades del dominio del juego con responsabilidades de su presentación.
 

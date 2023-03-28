@@ -17,6 +17,6 @@ Para cubrir todas las circunstancias de funcionamiento, _edge cases_ y combinato
 
 Todo ello se relaciona con una buena arquitectura en la que la lógica de negocio, la que satisface las necesidades de las usuarias, está bien separada de la implementación concreta. Esta implementación es un detalle que debería poder cambiarse. Mucha gente objeta que nunca vas a cambiar de base de datos, por poner un ejemplo muy habitual. Pero la verdad es que siempre vas a cambiar de base de datos, porque en algún momento necesitarás cambiarla para hacer un test. Y si no es el _vendor_ de base de datos, es posible que cambien sus _drivers_, o que cambie su versión, tal vez introduciendo mejoras, o cambiando la forma de hacer ciertas cosas. Por esa razón, es necesario pensar en la tecnología como algo que puede cambiar y actuar en consecuencia.
 
-La mejor forma de gestionar eso es usar la inversión de dependencias y hacer que nuestra aplicación dependa de abstracciones, usualmente interfaces, de modo que podamos crear diversos adaptadores.
+La mejor forma de gestionar eso es usar la inversión de dependencias y hacer que nuestra aplicación dependa de abstracciones, usualmente interfaces, de modo que podamos crear diversos adaptadores. Podemos ver esto ilustrado en esta imagen:
 
-[Diagrama mostrando un patrón port and adapters en el que un caso de uso depende de una interfaz implementada por dos adaptadores](../assets/images/faking_repositories/invert_dependencies.png)
+![Diagrama mostrando un patrón port and adapters en el que un caso de uso depende de una interfaz implementada por dos adaptadores](/assets/images/faking_repositories/invert_dependencies.png)

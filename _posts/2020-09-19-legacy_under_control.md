@@ -196,7 +196,7 @@ class BlogAuctionTask
 }
 ```
 
-Para empezar a hacer un test, vamos a crear una versión testeable de la clase. Simplemente la extenderemos sobreescribiendo el método que acabamos `publishProposal` de extraer. De momento lo dejaremos vacío para que no se ejecute nada.
+Para empezar a hacer un test, vamos a crear una versión testeable de la clase. Simplemente, la extenderemos sobreescribiendo el método que acabamos `publishProposal` de extraer. De momento lo dejaremos vacío para que no se ejecute nada.
 
 Esto vamos a hacerlo en un test con una clase anónima. Así que empezamos escribiendo un test que realmente no testea nada, pero que nos servirá para ejecutar `BlogAuctionTask` sin que ocurra nada indeseado.
 

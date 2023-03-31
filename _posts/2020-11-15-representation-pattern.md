@@ -7,7 +7,7 @@ tags: php design-patterns
 
 O cómo resolver el problema de mover información entre las capas de una aplicación sin violar las leyes de dependencia ni exponer el dominio en infraestructura.
 
-Hace cosa de tres años publiqué un artículo sobre el [Presenter pattern](/presenter-pattern/), una forma de intentar resolver este problema. Como era de esperar, hoy por hoy lo plantearía todo de una manera un distinta.
+Hace cosa de tres años publiqué un artículo sobre el [Presenter pattern](/presenter-pattern/), una forma de intentar resolver este problema. Como era de esperar, hoy por hoy lo plantearía todo de una manera un poco distinta.
 
 ## Entendiendo el problema
 
@@ -16,33 +16,33 @@ La situación más común sería la siguiente: desde un punto de entrada a la ap
 El caso de uso normalmente sigue el patrón Command, posiblemente Command/Handler para poder usar un bus de mensajes, de modo que los parámetros van encapsulados en el Command y el Handler, si toca, devuelve una respuesta.
 
 ```php
-    public function byId(Request $request): Response
-    {
-        try {
-            $hotelId = $request->get('hotelId');
-            $getHotelById = new GetHotelById($hotelId);
+public function byId(Request $request): Response
+{
+    try {
+        $hotelId = $request->get('hotelId');
+        $getHotelById = new GetHotelById($hotelId);
 
-            $response = $this->dispatch($getHotelById);
+        $response = $this->dispatch($getHotelById);
 
-            return new JsonResponse(
-                ['hotel' => $response],
-                Response::HTTP_OK
-            );
-        } catch (HotelNotFoundException $notFoundException) {
-            return new JsonResponse(
-                [
-                    'error' => $notFoundException->getMessage()
-                ],
-                Response::HTTP_NOT_FOUND
-            );
-        } catch (Throwable $anyOtherException) {
-            return new JsonResponse(
-                [
-                    'error' => $anyOtherException->getMessage()
-                ], Response::HTTP_INTERNAL_SERVER_ERROR
-            );
-        }
+        return new JsonResponse(
+            ['hotel' => $response],
+            Response::HTTP_OK
+        );
+    } catch (HotelNotFoundException $notFoundException) {
+        return new JsonResponse(
+            [
+                'error' => $notFoundException->getMessage()
+            ],
+            Response::HTTP_NOT_FOUND
+        );
+    } catch (Throwable $anyOtherException) {
+        return new JsonResponse(
+            [
+                'error' => $anyOtherException->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
+}
 ```
 
 
@@ -59,7 +59,7 @@ Pero tampoco queremos tener objetos de dominio en un controlador o en un comando
 
 ## DTO
 
-La naturaleza de un Data Transfer Object es mover información entre sistemas. Es decir, son objetos sin comportamiento cuya función es ser contenedores de datos que representarán objetos en el sistema. En ese sentido podrían servirnos desde arrays o hashes a objetos con solo propiedades públicas, y que son fácilmente serializables para transmitir vía red, por ejemplo.
+La naturaleza de un _Data Transfer Object_ es mover información entre sistemas. Es decir, son objetos sin comportamiento cuya función es ser contenedores de datos que representarán objetos en el sistema. En ese sentido podrían servirnos desde arrays o hashes a objetos con solo propiedades públicas, y que son fácilmente serializables para transmitir vía red, por ejemplo.
 
 ```php
 class HotelRepresentation
@@ -80,7 +80,7 @@ Extendiendo la idea, podríamos mover datos entre las capas de una aplicación u
 
 Me explico: Supongamos un endpoint que devuelve un payload JSON. El controlador recibe del caso de uso un DTO que contiene datos en tipos escalares (string, int, float...) y solo tiene que serializarlo, posiblemente con una herramienta estándar provista por el propio lenguaje. Esto no debería tener mayor complicación, es bastante trivial.
 
-En nuestro ejemplo, basta pasar el DTO para crear una JsonReponse (Symfony):
+En nuestro ejemplo, basta pasar el DTO para crear una `JsonResponse` (Symfony):
 
 ```php
 return new JsonResponse(
@@ -105,7 +105,7 @@ Intentaré explicarlo por partes:
 
 Desde el punto de visto de la instancia usuaria del caso de uso (por ejemplo, un controlador), lo que espera es obtener una cierta implementación de la respuesta. Para esta instancia usuaria, el caso de uso es una caja negra a la que pide datos.
 
-Idealmente esta usuaria debería poder decir qué representación de los datos necesita. Pero, aparentemente, esto viola la ley de dependencia, que dice que la capa de aplicación (caso de uso) no puede depender de la de infraestructura (controlador). Aquí es donde entra el patrón *Strategy* que literalmente representa ese problema: que el consumidor de un servicio pueda decidir qué algoritmo ha de usar ese servicio.
+Idealmente, esta usuaria debería poder decir qué representación de los datos necesita. Pero, aparentemente, esto viola la ley de dependencia, que dice que la capa de aplicación (caso de uso) no puede depender de la de infraestructura (controlador). Aquí es donde entra el patrón *Strategy* que literalmente representa ese problema: que el consumidor de un servicio pueda decidir qué algoritmo ha de usar ese servicio.
 
 Esto en la práctica significa que el objeto devuelto por el caso de uso no debería ser instanciado por él, limitándose a rellenarlo con datos.
 
@@ -427,6 +427,4 @@ class GetHotelByIdHandler
 }
 ```
 
-Otra opción es usar automapeadores que utilicen reflection para acceder a las propiedades privadas de los objetos de dominio. Personalmente es una opción que evito cada vez más. No solo la configuración se complica, sino que suelen ser librerías pesadas, que intentan abarcar una infinidad de casos posibles y pueden recurrir a un montón de automagia y configuración.
-
-
+Otra opción es usar automapeadores que utilicen reflection para acceder a las propiedades privadas de los objetos de dominio. Personalmente, es una opción que evito cada vez más. No solo la configuración se complica, sino que suelen ser librerías pesadas, que intentan abarcar una infinidad de casos posibles y pueden recurrir a un montón de auto-magia y configuración.

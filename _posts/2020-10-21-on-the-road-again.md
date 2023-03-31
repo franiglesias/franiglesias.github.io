@@ -9,7 +9,7 @@ Pues aquí estamos, en el trabajo de buscar un nuevo trabajo.
 
 Hace algo más de tres años contaba mi experiencia cuando decidí dar un giro a mi vida laboral e introducirme profesionalmente en el campo del desarrollo de software.
 
-Probablemente haya sido una de las mejores decisiones de mi vida.
+Probablemente, haya sido una de las mejores decisiones de mi vida.
 
 Ahora vuelvo a estar en el proceso de buscar un nuevo proyecto al que incorporarme. Después de la experiencia de estos años mis sensaciones son muy diferentes.
 

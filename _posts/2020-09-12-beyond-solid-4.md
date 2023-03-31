@@ -7,7 +7,7 @@ tags: design-principles good-practices
 
 Hay mucha vida más allá de los principios SOLID y, sobre todo, mucho antes.
 
-GRASP, General Responsibility Assignment Software Patterns, es un conjunto de patrones o heurísticas para definir el reparto de responsabilidades de un sistema orientado a objetos. Básicamente nos ayudan a responder a la pregunta: ¿a qué clase pertenece esta responsabilidad? Así que se podría decir que cada uno de estos patrones nos proporciona una posible respuesta.
+GRASP, General Responsibility Assignment Software Patterns, es un conjunto de patrones o heurísticas para definir el reparto de responsabilidades de un sistema orientado a objetos. Básicamente, nos ayudan a responder a la pregunta: ¿a qué clase pertenece esta responsabilidad? Así que se podría decir que cada uno de estos patrones nos proporciona una posible respuesta.
 
 Los principios GRASP son el fundamento de otros muchos principios y nos ayudan a encontrar respuesta a preguntas bastante básicas.
 

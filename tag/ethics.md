@@ -1,5 +1,7 @@
 ---
 layout: tagpage
-title: "API REST"
+title: "Ética"
 tag: ethics
 ---
+
+Reflexiones éticas en torno al desarrollo de software.

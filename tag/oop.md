@@ -1,5 +1,5 @@
 ---
 layout: tagpage
-title: "OOP"
+title: "Programación Orientada a Objetos"
 tag: oop
 ---

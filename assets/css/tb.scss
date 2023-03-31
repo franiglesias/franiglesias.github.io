@@ -282,8 +282,7 @@ ul {
  */
 nav ul,
 nav ol {
-  list-style: none;
-  list-style-image: none;
+  list-style: none none;
 }
 
 /* =============================================================================
@@ -710,17 +709,18 @@ h2 {
   font-size: 1.3rem;
 }
 
-h4, h5, h6 {
-  color: $secondary_heading_color;
-  font-size: 1rem;
-}
-
 h3 {
-  font-size: 2rem;
+  font-size: 1.3rem;
   line-height: 1.5rem;
   font-weight: normal;
   color: $secondary_heading_color;
 }
+
+h4, h5, h6 {
+  color: $secondary_heading_color;
+  font-size: 1.2rem;
+}
+
 
 a {
   color: $link_color;
@@ -790,6 +790,14 @@ strong {
 
   h2 {
     font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4, h5, h6 {
+    font-size: 1.5rem;
   }
 }
 

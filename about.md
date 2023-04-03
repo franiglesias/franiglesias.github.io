@@ -6,6 +6,14 @@ permalink: /about/
 
 Hi, I'm Fran Iglesias. I'm a Senior Software Developer from Spain. I'm very interested in software design and agile technical practices.
 
+## Contact me
+
+I'm always open to a good conversation about programming, software design or whatever. So, don't hesitate to drop an email.
+
+Also, I will be more than happy if you think I can help with some free mentoring. Specially, if you have found some difficult to get help in your current personal situation or belong to an under-represented community.
+
+[franiglesias@mac.com](mailto:franiglesias@mac.com)
+
 ## Currently working at
 
 [The Hotels Network](https://thehotelsnetwork.com/es/)
@@ -42,10 +50,8 @@ You can see some of my talks (Spanish) in the following playlist.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLYT8quZ2BEna0KpNgSGw2v3cEF4ePivVC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### Contact me
 
-[franiglesias@mac.com](mailto:franiglesias@mac.com)
-
+## Extras
 
 ### Credits
 

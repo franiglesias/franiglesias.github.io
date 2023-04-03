@@ -14,7 +14,15 @@ Also, I will be more than happy if you think I can help with some free mentoring
 
 [franiglesias@mac.com](mailto:franiglesias@mac.com)
 
-## Currently working at
+## Employers and collaborations
+
+This site was created for my own opinions and contents, with occasional collaborators. 
+
+On the other hand, the site is not sponsored or endorsed by any company or organization. It is completely ad free and I don't have plans to monetize it, [apart from selling some books of mu own](https://leanpub.com/u/franiglesias).  
+
+Anyway, the contents could be influenced by my context during the time I wrote and published them. I'm sharing here the list of companies I've been working for and other organizations, so you can gain some knowledge about that context.
+
+### Currently working at
 
 [The Hotels Network](https://thehotelsnetwork.com/es/)
 
@@ -22,15 +30,20 @@ In _The Hotels Network_ we help hotels to increase sales through their direct ch
 
 My role here is Senior Software Engineer in one of the Backend teams. (Golang and PHP)
 
-## Former employers
+### Collaborating with
+
+* [Crafters Vigo](https://www.meetup.com/es-ES/craftersvigo/): local community of practice for improving our skills as developers.
+* [PulpoCon](https://pulpocon.es): annual developers conference inspired by the software crafters movement.
+
+### Former employers
 
 [Codurance](https://www.codurance.com) 
 
-As technical coach and trainer, I helped to deliver a Backend Developers Upskilling program in a large international client, with contents such as TDD, software design, refactoring, agile practices, pair and mob programming, etc. (Java)
+As a technical coach and trainer, I helped to deliver a Backend Developers Upskilling program in a large international client, with contents such as TDD, software design, refactoring, agile practices, pair and mob programming, etc. (Java)
 
 [DocPlanner](https://www.docplanner.com)
 
-As a member of the Developer Quality Team, I helped to define strategies to modernize the existing software, and conducted workshops about TDD and improve agile technical practices. I also contributed to the [tech blog of the company](https://medium.com/docplanner-tech). 
+As a member of the Developer Quality Team, I helped to define strategies to modernize the existing software, and conducted workshops about TDD and improve agile technical practices. I also contributed to the [tech blog of the company](https://medium.com/docplanner-tech). (PHP/Symfony) 
 
 [Pridatect](https://www.pridatect.es)
 
@@ -52,6 +65,12 @@ You can see some of my talks (Spanish) in the following playlist.
 
 
 ## Extras
+
+Information that doesn't fit in other categories.
+
+### Blog theme
+
+Designed by myself.
 
 ### Credits
 

@@ -13,6 +13,8 @@ $link_color: #1e1e88;
 $intro_text_color: #444444;
 $code_block_bg: #303030;
 $wrapper_bg: #ffffff;
+$copy_code_color: #d9d9d9;
+$copy_code_bg: #666;
 
 /* Tyography */
 $code_font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
@@ -1160,4 +1162,37 @@ h6 code.language-plaintext,
       family: $inline_code_font;
     };
 
+}
+
+/* COPY CODE BLOCKS */
+
+pre.highlight {
+  position: relative;
+}
+
+pre.highlight > button {
+  opacity: 0;
+}
+
+pre.highlight:hover > button {
+  opacity: 1;
+}
+
+pre.highlight > button:active,
+pre.highlight > button:focus {
+  opacity: 1;
+}
+
+
+pre.highlight > button {
+  background: $copy_code_bg;
+  color: $copy_code_color;
+  font: $site_font;
+  opacity: 0;
+  position: absolute;
+  right: 1.2rem;
+  top: 1.2rem;
+  transition: all .2s ease-out;
+  border-radius: 0.4rem;
+  border: 0;
 }

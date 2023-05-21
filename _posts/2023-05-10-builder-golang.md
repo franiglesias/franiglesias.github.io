@@ -352,7 +352,7 @@ func (b *PersonNameBuilder) BuildForTest() PersonName {
 
 Gracias a eso, podemos hacer tests en los que nos fijemos solo en una parte del objeto, en la confianza de que tendrá valores consistentes:
 
-```
+```go
 func TestPersonNameExample(t *testing.T) {
 	builder := PersonNameBuilder{}
 	person := builder.

@@ -156,7 +156,7 @@ Que es exactamente lo que estamos esperando que sea el output de la función.
 
 Así que el archivo `*.received.txt` contiene el output actual de nuestra pieza de código bajo tests. O más exactamente el valor que contenga
 
-```
+```php
 $items[0]->name
 ```
 
@@ -193,7 +193,7 @@ Ciertamente, el test que tenemos no verifica gran cosa. El nombre del producto n
 
 Si examinamos el código y pensamos en la descripción del problema del ejercicio nos daremos cuenta de que sería importante controlar tanto la propiedad `$sellIn`, que nos dice el número de días antes de que el producto caduque, como `$quality`, que nos dice su calidad en el momento actual.
 
-```
+```php
 final class Item implements \Stringable
 {
     public function __construct(
@@ -247,17 +247,11 @@ Este es nuestro nuevo criterio de aceptación que debemos aprobar. Recuerda: ren
 mv tests/approvals/GildedRoseTest.testFoo.received.txt tests/approvals/GildedRoseTest.testFoo.approved.txt
 ```
 
-Este snippet también sirve para este ejemplo en el que solo nos estamos ocupando de un test:
-
-```shell
-mv tests/approvals/*.received.txt tests/approvals/*.approved.txt
-```
-
 ### Alternativa: verifica objetos como JSON
 
 ¿Quieres un _snapshot_ más sofisticado? Puedes usar la verificación como JSON. Esto hará que el objeto se serialize como JSON y se genere un _snapshot_ en ese formato. Esto puede ser útil para verificar objetos complejos, cumpliendo la interfaz `JsonSerializable` para poder incluir propiedades privadas.
 
-En este ejemplo, dado que Item tiene todas sus propiedades públicas, el serializador es capaz de obtener toda la información que necesita:
+En este ejemplo, dado que `Item` tiene todas sus propiedades públicas, el serializador es capaz de obtener toda la información que necesita:
 
 He aquí el test:
 
@@ -308,9 +302,9 @@ class GildedRoseTest extends TestCase
 
 El test solo prueba un caso de los muchos posibles, lo que no revela mucha información acerca del comportamiento.
 
-De hecho, si ejecutamos el test con Coverage, comprobaríamos que solamente pasa por el 53% de las líneas, lo que deja casi la mitad del código sin proteger. Definitivamente, no es suficiente para proceder a un refactor.
+De hecho, si ejecutamos el test con _coverage_, comprobaríamos que solamente pasa por el 53% de las líneas, lo que deja casi la mitad del código sin proteger. Definitivamente, no es suficiente para proceder a un refactor.
 
-Por tanto, lo que queremos es poder generar muchos tests con diversas combinaciones de los parámetros: `name`, `sellIn` y `quality`.
+Por tanto, lo que queremos es poder generar muchos tests con diversas combinaciones de los parámetros: `$name`, `$sellIn` y `$quality`.
 
 Antes de ponernos a escribir un test para cada combinación, vamos a ver qué nos ofrece la librería `Approvals`.
 
@@ -418,7 +412,7 @@ class GildedRoseTest extends TestCase
 
 Nos interesa el método `CombinationApprovals::verifyAllCombinations3` porque tenemos tres parámetros en nuestra función. En otros lenguajes el método será `verifyAllCombinations` al disponer de sobrecarga.
 
-El primer parámetro es el `Callable`, en este caso la función anónima. En PHP podríamos pasar un método del test con el formato, con el que podemos referenciar un método del propio test.
+El primer parámetro es el `Callable`, en este caso la función anónima. En PHP podríamos pasar un método del test con este formato, con el que podemos referenciar un método del propio test.
 
 ```php
         CombinationApprovals::verifyAllCombinations3(
@@ -429,7 +423,7 @@ El primer parámetro es el `Callable`, en este caso la función anónima. En PHP
         );
 ```
 
-Los valores para los parámetros se pasan en forma de arrays, porque queremos pasar todos los posibles valores en los que estamos interesados. Dentro de un momento veremos cómo obtenerlos.
+Los valores para los parámetros se pasan en forma de _arrays_, porque queremos pasar todos los posibles valores en los que estamos interesados. Dentro de un momento veremos cómo obtenerlos.
 
 Si ejecutamos este test veremos que no pasa, ya que ha cambiado la forma en que se guarda el _snapshot_, que ahora tiene este aspecto:
 
@@ -481,7 +475,7 @@ class GildedRoseTest extends TestCase
 }
 ```
 
-Hecho esto, hago inline de las variables individuales:
+Hecho esto, hago _inline_ de las variables individuales:
 
 ```php
 class GildedRoseTest extends TestCase
@@ -684,7 +678,7 @@ Al ejecutar el test, vemos que sigue fallando. Es lo esperable dado que es la pr
 
 Si nos fijamos en el code coverage veremos que ha aumentado. En PHP nos indica que ahora se cubre hasta un 96% de las líneas, algo que es engañoso por la forma en que se elabora esta métrica, al menos en versiones de PHPUnit anteriores a la 10. ¿Por qué? Básicamente, porque en este momento a PHPUnit le basta con que se pase una vez por la condicional para considerarla cubierta. Para tener una información más realista, necesitamos que nos diga si ha pasado con todos los valores posibles.
 
-En otros lenguajes, como Java, es posible observar el branch o path coverage, lo cual nos permitirá saber si tenemos suficientes valores para probar una condicional.
+En otros lenguajes, como Java, es posible observar el _branch_ o _path_ coverage, lo cual nos permitirá saber si tenemos suficientes valores para probar una condicional.
 
 En cualquier caso, podemos hacerlo a mano.
 

@@ -1171,7 +1171,7 @@ pre.highlight {
 }
 
 pre.highlight > button {
-  opacity: 0;
+  opacity: 0.5;
 }
 
 pre.highlight:hover > button {
@@ -1188,7 +1188,7 @@ pre.highlight > button {
   background: $copy_code_bg;
   color: $copy_code_color;
   font: $site_font;
-  opacity: 0;
+  opacity: 0.6;
   position: absolute;
   right: 1.2rem;
   top: 1.2rem;

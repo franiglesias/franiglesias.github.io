@@ -5,7 +5,7 @@ categories: articles
 tags: refactoring
 ---
 
-Aprovechando que al hablar de Approval Test y la técnica Golden Master utilizamos la kata Gilded Rose, vamos a hablar de una técnica muy ingeniosa para reorganizar estructuras condicionales extremadamente intrincadas.
+Aprovechando que al hablar de _Approval Test_ y la técnica _Golden Master_ utilizamos la kata _Gilded Rose_, vamos a hablar de una técnica muy ingeniosa para reorganizar estructuras condicionales extremadamente intrincadas.
 
 _Uplift condition_ es el nombre de una técnica propuesta por Llewellyn Falco y que aplica muy bien al problema de la kata Gilded Rose. ¿Y cuál es este problema? Pues un código en el que se han ido añadiendo reglas de negocio en forma de condiciones anidadas en otras condiciones, de tal forma que la estructura resultante es confusa, difícil de seguir y con bastante riesgo de romper el comportamiento actual en caso de intentar modificarla.
 
@@ -168,8 +168,7 @@ Así que, poco a poco, vamos creando un bloque de código que consiste en estruc
 
 E imagínate que no haya tests automáticos cubriendo ese código.
 
-En el artículo sobre [Approval Tests]
-(/approval_testing/) vimos, justamente, una técnica para cubrir este tipo de códigos con tests de forma rápida, de tal manera que pudiésemos intervenir en el proyecto sin riesgo. 
+En el artículo sobre [Approval Tests](/approval_testing/) vimos, justamente, una técnica para cubrir este tipo de códigos con tests de forma rápida, de tal manera que pudiésemos intervenir en el proyecto sin riesgo. 
 
 Aquí tienes un test creado mediante la misma técnica para lograr cobertura del código que hemos ido desarrollando antes. Esto genera 105 combinaciones de datos que cubren todos los posibles flujos del código.
 
@@ -216,9 +215,9 @@ Para usar _uplift condition_ necesitaremos una herramienta de _coverage_, mejor 
 
 A grandes rasgos la técnica consiste en ejecutar el bloque de código en su totalidad bajo una condición y su contraria. Hecho esto, buscamos todo el código muerto, que nunca se ejecuta, bajo cada una de las ramas. Además, simplificamos todas aquellas condiciones que resultan ser siempre ciertas o siempre falsas, lo que nos lleva a aplanar las primeras o eliminar bloques de código en las segundas.
 
-El resultado es que en la rama true tendremos todo el código que se debe ejecutar si se cumple esa condición y en la rama else, el resto. Basta con ir aplicando iterativamente esta misma técnica a la rama else hasta que no tenemos más condiciones clave.
+El resultado es que en la rama `true` tendremos todo el código que se debe ejecutar si se cumple esa condición y en la rama `else`, el resto. Basta con ir aplicando iterativamente esta misma técnica a la rama `else` hasta que no tenemos más condiciones clave.
 
-Para entenderlo mejor, vamos a aplicarlo al ejemplo de Gilded Rose. Nos apoyamos en el hecho de que tenemos tests que cubren todos los flujos de ejecución gracias a utilizar la técnica Golden Master.
+Para entenderlo mejor, vamos a aplicarlo al ejemplo de _Gilded Rose_. Nos apoyamos en el hecho de que tenemos tests que cubren todos los flujos de ejecución gracias a utilizar la técnica _Golden Master_.
 
 ## Cómo se _elevan_ condicionales
 
@@ -381,7 +380,7 @@ final class GildedRose
 
 ### Decidir qué condiciones _elevar_
 
-Y vamos ahora con la técnica de _uplift condition_. Lo primero que necesitamos hacer es aislar el bloque de condicionales que vamos a refactorizar en un método, así que lo extraemos. Este refactor consiste en separar la iteración del iterado y es muy recomendable hacerlo como normal general cuando tenemos un bucle.
+Y vamos ahora con la técnica de _uplift condition_. Lo primero que necesitamos hacer es aislar el bloque de condicionales que vamos a refactorizar en un método, así que lo extraemos. Este refactor consiste en separar la iteración de lo iterado y es muy recomendable hacerlo como norma general cuando tenemos un bucle.
 
 ```php
 final class GildedRose
@@ -454,7 +453,7 @@ final class GildedRose
 
 Lo que queremos hacer ahora es "elevar" una de las condiciones de modo que separemos todo el código que se debe ejecutar cuando se cumple. Para ello, lo que tenemos que hacer introducir una estructura `if <condición a elevar>/else`, y ejecutar el mismo bloque de código en ambos.
 
-El razonamiento es que en la rama del true se ejecutarán solo las líneas de código necesarias cuando la condición elevada se cumple. Las demás líneas en esa rama se podrán eliminar porque nunca se ejecutan. Por otro lado, algunas condiciones existentes serán siempre verdaderas o falsas bajo la condición _elevada_, y podremos simplificarlas o eliminarlas según el caso.
+El razonamiento es que en la rama del `true` se ejecutarán solo las líneas de código necesarias cuando la condición elevada se cumple. Las demás líneas en esa rama se podrán eliminar porque nunca se ejecutan. Por otro lado, algunas condiciones existentes serán siempre verdaderas o falsas bajo la condición _elevada_, y podremos simplificarlas o eliminarlas según el caso.
 
 Por otro lado, en la rama del `false`, habrá líneas que nunca se ejecutarán y podremos eliminar. Y, del mismo modo que en la rama del `true`, algunas condiciones serán siempre verdaderas o siempre falsas.
 
@@ -502,7 +501,7 @@ final class GildedRose
 
 ```
 
-A continuación, introducimos la condición que queremos elevar. En este ejemplo está bastante claro que la clave es el tipo de producto, por lo que elevaremos ese tipo de condiciones. La primera que nos encontramos es verificar si el item es 'Aged Brie' o no, así que vamos a empezar por ahí. La condición elevada es _positiva_, queremos que se cumpla.
+A continuación, introducimos la condición que queremos elevar. En este ejemplo está bastante claro que la clave es el tipo de producto, por lo que elevaremos ese tipo de condiciones. La primera que nos encontramos es verificar si el item es 'Aged Brie' o no, así que vamos a empezar por ahí. La condición elevada es _positiva_: queremos que se cumpla.
 
 ```php
 protected function updateItemQuality(Item $item): void
@@ -515,7 +514,7 @@ protected function updateItemQuality(Item $item): void
 }
 ```
 
-Y ahora vamos a deshacer la extracción del método aplicando el refactor inline, lo que nos dará este resultado:
+Y ahora, vamos a deshacer la extracción del método aplicando el refactor _inline method_, lo que nos dará este resultado:
 
 ```php
 protected function updateItemQuality(Item $item): void
@@ -618,7 +617,7 @@ protected function updateItemQuality(Item $item): void
 
 Podríamos haber conseguido lo mismo mediante un simple copiar y pegar, pero esta solución es mucho más cómoda y precisa.
 
-Ya tenemos todo listo. Lo primero que nos llamará la atención es que el IDE empezará a señalarnos duplicaciones de código y otros avisos, como que algunas condiciones son siempre verdaderas o falsas. De momento, no nos vamos a fijar en ello y ejecutaremos los tests **con cobertura**.
+Ya tenemos todo listo. Lo primero que nos llamará la atención es que el IDE comenzará a señalarnos duplicaciones de código y otros avisos, como que algunas condiciones son siempre verdaderas o falsas. De momento, no nos vamos a fijar en ello y ejecutaremos los tests **con cobertura**.
 
 Veamos algunos ejemplos:
 
@@ -636,7 +635,7 @@ protected function updateItemQuality(Item $item): void
     // Removed code
 ```
 
-Este bloque aparece marcado en rojo porque no se ha ejecutado. La razón es que la condición bajo la que se ejecuta nunca se cumple, para empezar, porque contradice la principal:
+Este bloque aparece marcado en rojo porque no se ha ejecutado. La razón es que la condición bajo la que se ejecuta nunca se cumple. Para empezar, porque contradice la principal:
 
 ```php
 if ($item->quality > 0) {
@@ -758,7 +757,7 @@ if ($item->name !== 'Aged Brie' and $item->name !== 'Backstage passes to a TAFKA
 }
 ```
 
-La primera rama está vacía. En estos casos, lo mejor es invertir la condición, de forma que nos quedaremos con un `else` vacío que podemos eliminar sin riesgo:
+La primera rama está vacía. En estos casos, lo mejor es invertir la condición, de forma que nos quedaremos con un `else` vacío que podemos eliminar sin ningún tipo de riesgo:
 
 ```php
 if ($item->name === 'Aged Brie' or $item->name === 'Backstage passes to a TAFKAL80ETC concert') {
@@ -827,7 +826,7 @@ if ($item->name === 'Aged Brie') {
 }
 ```
 
-Por último, nos queda otra condición con una para "vacía".
+Por último, nos queda otra condición con una pata _vacía_.
 
 ```php
 if ($item->sellIn < 0) {
@@ -873,7 +872,7 @@ if ($item->name === 'Aged Brie') {
 }
 ```
 
-Ahora tenemos en un solo bloque todas las cosas que tienen que pasar en el caso de que el $item sea 'Aged Brie'.
+Ahora tenemos en un solo bloque todas las cosas que tienen que pasar en el caso de que el `$item` sea 'Aged Brie'.
 
 En la rama del `else`, también podemos quitar código aplicando la misma idea. Examinamos las condiciones y eliminamos los bloques bajo las que siempre son falsas y desempaquetamos las que siempre sean ciertas. También borramos los bloques vacíos y las condicionales que las controlan.
 
@@ -983,7 +982,7 @@ if ($item->sellIn < 0) {
 }
 ```
 
-Ahora reemplazamos la condición por true:
+Ahora reemplazamos la condición por `true`:
 
 ```php
 if ($item->sellIn < 0) {
@@ -1032,7 +1031,7 @@ if ($item->name !== 'Backstage passes to a TAFKAL80ETC concert') {
 }
 ```
 
-La condición `if ($item->name === 'Backstage passes to a TAFKAL80ETC concert')` siempre se cumple ahí donde está (en el `else` de la condición inversa), por lo que podemos desempaquetarla. Tras eso, el bloque else de la condición elevada nos queda así:
+La condición `if ($item->name === 'Backstage passes to a TAFKAL80ETC concert')` siempre se cumple ahí donde está (en el `else` de la condición inversa), por lo que podemos desempaquetarla. Tras eso, el bloque `else` de la condición elevada nos queda así:
 
 ```php
 if ($item->name !== 'Backstage passes to a TAFKAL80ETC concert') {
@@ -1143,7 +1142,7 @@ protected function updateAgedBrie(Item $item): void
 
 ### Repetir hasta elevar el resto de condiciones
 
-La cuestión ahora es seguir aislando otros items, para lo cual seguiremos el mismo procedimiento. La única diferencia es que esta vez trabajaremos con la rama `else` de la condición elevada. Como hicimos antes, extraeremos todo el código de esa rama a un método temporal, introduciremos la condicional elevada y volveremos a hacer un inline del método temporal.
+La cuestión ahora es seguir aislando otros items, para lo cual seguiremos el mismo procedimiento. La única diferencia es que esta vez trabajaremos con la rama `else` de la condición elevada. Como hicimos antes, extraeremos todo el código de esa rama a un método temporal, introduciremos la condicional elevada y volveremos a hacer un `inline method` del método temporal.
 
 Primero, extraemos todo el código:
 

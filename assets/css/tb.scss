@@ -1201,4 +1201,29 @@ pre.highlight > button {
 div.footnotes {
   margin-top: 3rem;
   border-top: 1px solid #555555;
+  padding-top: 2rem;
+
+  ol {
+    list-style: none ;
+    counter-reset: item;
+
+    li {
+      counter-increment: item;
+
+      &:before {
+        content: counter(item);
+        background: #555555;
+        border-radius: 20%;
+        color: white;
+        width: 1.5rem;
+        text-align: center;
+        display: inline-block;
+        float: left;
+        margin-left: -2rem;
+        font-size: .8rem
+      }
+    }
+  }
+
+
 }

@@ -95,7 +95,7 @@ Este es un test del estilo habitual en las librerías de testing del tipo _*Unit
 Ahora vamos a convertirlo en un test de aprobación, o Approval Test, introduciendo esta librería. El proyecto de Composer ya la incluye, por lo que ya estará instalada tras ejecutar el pertinente `composer install` inicial. En caso de que quisieras usarla en otro proyecto:
 
 ```shell
-composer require-dev approvals/approval-tests
+composer require-dev approvals/approval-tests dev-Main
 ```
 
 Para el caso de otros lenguajes, consulta las formas de instalación adecuadas.

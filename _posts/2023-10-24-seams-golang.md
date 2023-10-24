@@ -188,7 +188,7 @@ Lo ideal sería inyectar un servicio de reloj en construcción, que encapsule la
 
 Por eso, vamos a intentarlo con un seam.
 
-Veamos un escenario de ejemplo. En este caso, el servicio `RetrieveData` tiene un método `GetByKeyGivenFirstVisit` que recibe una clave y una fecha. Si la fecha es anterior a 24 horas antes de la hora actual, se usa `EarlyService` para recuperar los datos que estarían guardados en un almacén tipo Redis. Si la hora es posterior, se usa `LateService` que los recupera de un archivo, ya que expiran del almacenamiento temporal en ese plazo.
+Veamos un escenario de ejemplo. En este caso, el servicio `RetrieveData` tiene un método `GetByKeyGivenFirstVisit` que recibe una clave y un objeto de tiempo. Si no han transcurrido aún 24 horas, se usa `EarlyService` para recuperar los datos que estarían guardados en un almacén tipo Redis. Si han pasado más de 24 horas, se usa `LateService` que los recupera de un archivo, ya que habrán expirado del almacenamiento temporal en ese plazo.
 
 ```go
 type EarlyService struct {

@@ -728,6 +728,58 @@ class SpanishLanguage < Language
 end
 ```
 
+Este es el output generado:
+
+```
+0:00
+      Playing... Beep! Beep!
+1:00
+      Playing... Beep! Beep!
+2:00
+      Playing... Beep! Beep!
+3:00
+      Playing... Beep! Beep!
+4:00
+      Playing... Beep! Beep!
+5:00
+      Playing... Beep! Beep!
+6:00
+      Playing... Beep! Beep!
+7:00 -> Buenos días
+      Playing... Sounding Alarm!!!
+8:00
+      Playing... Beep! Beep!
+9:00
+      Playing... Beep! Beep!
+10:00
+      Playing... Beep! Beep!
+11:00
+      Playing... Beep! Beep!
+12:00
+      Playing... Beep! Beep!
+13:00
+      Playing... Beep! Beep!
+14:00
+      Playing... Beep! Beep!
+15:00
+      Playing... Beep! Beep!
+16:00
+      Playing... Beep! Beep!
+17:00
+      Playing... Beep! Beep!
+18:00
+      Playing... Beep! Beep!
+19:00
+      Playing... Beep! Beep!
+20:00
+      Playing... Beep! Beep!
+21:00
+      Playing... Beep! Beep!
+22:00 -> Buenas noches
+23:00
+      Playing... Beep! Beep!
+```
+
 ## Reflexiones
 
 Como se puede ver, la mayor parte de la lógica de la aplicación está en los pares comando/ejecutor.

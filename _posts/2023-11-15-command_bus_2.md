@@ -2,16 +2,18 @@
 layout: post
 title: Disfrutando del Command Bus
 categories: articles
-tags: design-patterns
+tags: design-patterns ruby
 ---
+
+En el artículo anterior, presentamos el concepto de _Command Bus_ y construimos uno sencillo para introducirlo 
 
 Antes de empezar la segunda parte de esta serie voy a organizar un poco el código en un repositorio y darle un poco de estructura.
 
 [Aquí tenemos el repositorio](https://github.com/franiglesias/ruby-dojo/tree/master/lib/alarm_clock)
 
-En este artículo:
+En este capítulo, veremos como podemos usar el _Command Bus_ para cambiar el comportamiento de la aplicación sin tocar su código, simplemente añadiendo nuevos ejecutores. Y, por otro lado, 
 
-## Cambiando la aplicación con el Command Bus
+## Cambiando la aplicación con el _Command Bus_
 
 Cambiar el comportamiento de nuestro reloj sin tocar su código es posible gracias al uso del Command Bus. 
 

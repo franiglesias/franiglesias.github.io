@@ -75,7 +75,7 @@ Para preparar el artículo he añadido un generador aleatorio que nos permite ge
 
 Aquí tenemos un ejemplo de los datos, para una única oficina durante un año.
 
-```csv
+```
 office,year,month,consumption
 1,2023,1,268199
 1,2023,2,99242

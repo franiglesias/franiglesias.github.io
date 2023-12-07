@@ -2,7 +2,7 @@
 layout: post
 title: Refactoring para quienes no refactorizan 3
 categories: articles
-tags: good-practices ruby refactroring
+tags: good-practices ruby refactoring
 ---
 
 En las entregas anteriores hemos mencionado varias veces la necesidad de mantener el tiempo de refactoring bajo control, evitando la tentación de llevarlo demasiado lejos.

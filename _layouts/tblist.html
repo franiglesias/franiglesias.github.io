@@ -3,13 +3,13 @@ layout: basic
 ---
 <h1>The talking list</h1>
 <p>El micro-blog de The Talking Bit</p>
-<div class="posts">
+<div class="posts tb-list">
     {% for post in site.tags[page.tag] %}
     <article class="post">
         <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
         <div class="entry">
             {{ post.content }}
-            ({{ post.date | date: "%Y/%m/%d" }})
+            <p class="date">({{ post.date | date: "%Y/%m/%d" }})</p>
         </div>
     </article>
     {% endfor %}

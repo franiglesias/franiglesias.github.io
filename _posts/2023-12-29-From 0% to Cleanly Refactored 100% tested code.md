@@ -14,6 +14,6 @@ Estas técnicas son:
 * Code Coverage como guía.
 * Refactorings probados que no necesitan tests.
 
-> The difference between a good programmer and a great programmer is that the great programmers are extermely lazy
+> The difference between a good programmer and a great programmer is that the great programmers are extremely lazy
 
 [From 0% to Cleanly Refactored 100% tested code](https://youtu.be/wp6oSVDdbXQ?si=z3nT57z7PIrvfFT7)

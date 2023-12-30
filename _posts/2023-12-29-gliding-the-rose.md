@@ -5,8 +5,7 @@ categories: articles
 tags: tb-list refactoring
 ---
 
-Una gran charla (en inglés) de Kevlin Henney que toma como punto de partida la kata Gilded Rose y habla del refactoring
-como eje central del desarrollo.
+Una gran charla (en inglés) de Kevlin Henney que toma como punto de partida la kata Gilded Rose y habla del refactoring como eje central del desarrollo.
 
 > Write tests for people. So who should you be writing the test for?
 

@@ -5,7 +5,7 @@ categories: articles
 tags: tb-list refactoring
 ---
 
-En este live coding, Llewellyn Falco introduce diversas técnicas para realizar un completo refactoring, pero es que además usa Test Commit || Revert para asegurar que cada paso que da mantiene la funcionalidad.
+En este live coding, Llewellyn Falco introduce diversas técnicas para realizar un completo refactoring, pero es que además usa Test Commit Or Revert para asegurar que cada paso que da mantiene la funcionalidad.
 
 Estas técnicas son:
 

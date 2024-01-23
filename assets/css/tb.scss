@@ -976,7 +976,7 @@ article.post.post.full-post .entry div.footnotes ol li p:first-child {
   margin: 0rem 0rem 1rem 0rem !important;
 }
 
-article.post.post.full-post .entry p:first-child {
+article.post.post.full-post .entry>p:first-child {
   color: #ccc;
   font-size: 130%;
   text-align: center;

@@ -35,6 +35,13 @@ My role here is Senior Software Engineer in one of the Backend teams. (Golang an
 * [Crafters Vigo](https://www.meetup.com/es-ES/craftersvigo/): local community of practice for improving our skills as developers.
 * [PulpoCon](https://pulpocon.es): annual developers conference inspired by the software crafters movement.
 
+
+### Open Source projects
+
+* [VersionTag](https://github.com/franiglesias/versiontag): shell utility to help you maintain your projects' semantic versioning.
+* [Golden](https://github.com/franiglesias/golden): golang library for snapshot, approval and combination testing.
+* [CSV](https://github.com/franiglesias/csv): pretty simple PHP library for reading and writing csv files.
+
 ### Former employers
 
 [Codurance](https://www.codurance.com) 

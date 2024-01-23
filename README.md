@@ -15,7 +15,7 @@ For local testing, use the following command:
 jekyll serve --incremental --livereload
 ```
 
-The `--incremental` flag only updates the changed files. Remove it if you experience problems when rendering the site locally. For example, because the index page will not updated if you change the title of a post, etc.
+The `--incremental` flag only updates the changed files. Remove it if you experience problems when rendering the site locally. For example, because the index page will not update if you change the title of a post, etc.
 
 Check [Jekyll documentation](https://jekyllrb.com/docs/configuration/options/#build-command-options) for details.
 

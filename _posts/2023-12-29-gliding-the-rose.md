@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: Gilding the Rose, Refactoring-Driven Development
 categories: articles
 tags: tb-list refactoring

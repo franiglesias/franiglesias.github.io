@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: Version Tag
 categories: articles
 tags: tb-list tools misc

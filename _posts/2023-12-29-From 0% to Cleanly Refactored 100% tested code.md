@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: From 0% to Cleanly Refactored 100% tested code
 categories: articles
 tags: tb-list refactoring

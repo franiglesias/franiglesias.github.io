@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: Messaging Flavours
 categories: articles
 tags: tb-list desgin-patterns

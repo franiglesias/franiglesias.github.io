@@ -970,20 +970,6 @@ article.post.post.full-post h1 {
   text-align: center;
 }
 
-article.post.post.full-post .entry div.footnotes ol li p:first-child {
-  text-align: left !important;
-  font-size: small !important;
-  margin: 0rem 0rem 1rem 0rem !important;
-}
-
-article.post.post.full-post .entry>p:first-child {
-  color: #ccc;
-  font-size: 130%;
-  text-align: center;
-  margin: 2rem 1rem 5rem 1rem;
-}
-
-
 p code {
   font: {
     size: inherit;
@@ -1028,7 +1014,7 @@ article {
           margin: 0 0 1rem 0 !important;
         }
 
-        p:first-child {
+        &>p:first-child {
           color: $intro_text_color;
           font-size: 2rem;
           line-height: 150%;

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: Some economics of refactoring
 categories: articles
 tags: tb-list refactoring

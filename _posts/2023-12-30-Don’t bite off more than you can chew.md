@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: Don’t bite off more than you can chew
 categories: articles
 tags: tb-list agile

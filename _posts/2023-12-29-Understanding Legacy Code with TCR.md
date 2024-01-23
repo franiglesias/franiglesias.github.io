@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: Understanding Legacy Code with TCR
 categories: articles
 tags: tb-list refactoring testing

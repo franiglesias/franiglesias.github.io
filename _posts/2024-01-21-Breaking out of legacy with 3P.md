@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: Breaking out of legacy with 3P
 categories: articles
 tags: tb-list refactoring

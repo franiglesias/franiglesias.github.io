@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: Fifty Quick Ideas to Improve Your Tests
 categories: articles
 tags: tb-list testing

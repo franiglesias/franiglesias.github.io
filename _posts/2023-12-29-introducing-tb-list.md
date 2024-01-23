@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: micro-post
 title: Presentando The Talking List
 categories: articles
 tags: tb-list

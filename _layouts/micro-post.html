@@ -1,0 +1,23 @@
+---
+layout: basic
+---
+<article class="post micro-post">
+    <h1>{{ page.title }}</h1>
+    <div class="entry">
+        {{ content }}
+    </div>
+
+    <div class="date">
+        <p>{{ page.date | date: "%B %e, %Y" }}</p>
+        <p>Etiquetas:
+            {% for tag in page.tags %}
+            {% capture tag_name %}{{ tag }}{% endcapture %}
+            <a href="/tag/{{ tag_name }}"><span class="tag">
+                <nobr>{{ tag_name }}</nobr>
+            </span>&nbsp;</a>
+            {% endfor %}
+        </p>
+    </div>
+</article>
+{% include comments.html %}
+<script src="../assets/js/code-blocks.js"></script>

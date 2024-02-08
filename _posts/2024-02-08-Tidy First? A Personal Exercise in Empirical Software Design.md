@@ -1,5 +1,5 @@
 ---
-layout: mini-post
+layout: micro-post
 title: Tidy First? A Personal Exercise in Empirical Software Design
 categories: articles
 tags: tb-list books

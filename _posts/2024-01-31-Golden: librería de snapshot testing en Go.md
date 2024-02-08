@@ -1,5 +1,5 @@
 ---
-layout: mini-post
+layout: micro-post
 title: Golden, librería de snapshot testing en Go
 categories: articles
 tags: tb-list golang testing

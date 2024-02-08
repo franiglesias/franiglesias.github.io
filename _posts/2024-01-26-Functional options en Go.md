@@ -1,5 +1,5 @@
 ---
-layout: mini-post
+layout: micro-post
 title: Functional options en Go
 categories: articles
 tags: tb-list golang good-practices

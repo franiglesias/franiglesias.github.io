@@ -1,5 +1,5 @@
 ---
-layout: mini-post
+layout: micro-post
 title: Software development is a learning process
 categories: articles
 tags: tb-list 

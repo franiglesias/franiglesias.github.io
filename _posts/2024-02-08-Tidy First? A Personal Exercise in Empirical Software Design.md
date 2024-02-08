@@ -2,7 +2,7 @@
 layout: micro-post
 title: Tidy First? A Personal Exercise in Empirical Software Design
 categories: articles
-tags: tb-list books
+tags: tb-list books refactoring
 ---
 
 Kent Beck tiene la virtud de expresar de una forma concisa conceptos complejos. Y eso es lo que hace en este libro. _Tidy First?_ no llega a las 100 páginas, pero propone todo un arsenal de técnicas y fundamentos con las que mejorar el código de un proyecto de software empezando hoy mismo.

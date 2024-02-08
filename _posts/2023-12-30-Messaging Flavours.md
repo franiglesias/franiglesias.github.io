@@ -2,7 +2,7 @@
 layout: micro-post
 title: Messaging Flavours
 categories: articles
-tags: tb-list desgin-patterns
+tags: tb-list design-patterns
 ---
 
 Siempre acabo volviendo a este artículo de Mathias Verraes en el que explica brevemente los diferentes tipos de

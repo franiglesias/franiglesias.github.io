@@ -9,7 +9,7 @@ Explorando cómo portar la librería Golden a PHP y aprendiendo algunas cosas cu
 
 Esto que aquí ves es un test que testea un test. Parece una tontería, pero para mí ha sido todo un descubrimiento.
 
-```injectablephp
+```php
 final class VerifyTest extends TestCase
 {
 
@@ -57,7 +57,7 @@ Así, mi primer spike fue probar con funciones. Por ejemplo, una función `Verif
 
 La forma más sencilla que se me ha ocurrido para ello es pasar el propio TestCase que se está ejecutando:
 
-```injectablephp
+```php
 function Verify(TestCase $testCase, $subject): void
 {
     // Code to generate snapshot if needed    
@@ -66,7 +66,7 @@ function Verify(TestCase $testCase, $subject): void
 
 Esto nos permite hacer aserciones usando las facilidades del TestCase, de tal manera que los resultados se incorporan a las estadísticas y el control de la ejecución del test sigue en manos de PHPUnit.
 
-```injectablephp
+```php
 function Verify(TestCase $testCase, $subject): void
 {
     // Code to generate snapshot if needed
@@ -77,7 +77,7 @@ function Verify(TestCase $testCase, $subject): void
 
 Una cosa que tenía clara que quería hacer era abstraer la creación de los snapshots. Esto es, en lugar de cuajar el código de Verify con toda la creación y mantenimiento de archivos de snapshot, quería tenerlo separado en un objeto responsable. Pero, ¿cómo acceder a ese objeto dentro de la función? Pues, ejem..., haciéndolo global. 
 
-```injectablephp
+```php
 global $storage;
 $storage = new Storage();
 
@@ -95,7 +95,7 @@ function Verify(TestCase $test,  $subject): void
 
 La alternativa sería pasarlo en cada invocación, pero hace que la firma de la función empiece a arrastrar muchas cosas y se hace inconveniente.
 
-```injectablephp
+```php
 function Verify(TestCase $test, Storage $storage, $subject): void
 {
     if (!$storage->exists($test->name())) {
@@ -109,7 +109,7 @@ function Verify(TestCase $test, Storage $storage, $subject): void
 
 El testing también tiene sus complicaciones. Vamos por partes:
 
-```injectablephp
+```php
 final class VerifyTest extends TestCase
 {
     #[Test]
@@ -132,7 +132,7 @@ final class VerifyTest extends TestCase
 
 El uso de la función es muy similar al de la original en Go:
 
-```injectablephp
+```php
 Verify($this, "This is the subject");
 ```
 
@@ -149,7 +149,7 @@ Pero en PHP pasar el TestCase ($this) no se siente natural. No es incorrecto y p
 La forma en que está escrito el test es un poco rara. El primer uso de Verify intenta probar que el test pasa cuando se verifica por primera vez un output y se genera el snapshot, ya que asumimos que ese output es correcto.
 
 
-```injectablephp
+```php
 final class VerifyTest extends TestCase
 {
     #[Test]
@@ -172,7 +172,7 @@ final class VerifyTest extends TestCase
 
 Pero no hay nada que lo demuestre. Faltaría añadir una línea que compruebe el outcome, verificando que se ha creado el snapshot en `$storage`.
 
-```injectablephp
+```php
 final class VerifyTest extends TestCase
 {
     #[Test]
@@ -196,7 +196,7 @@ final class VerifyTest extends TestCase
 
 Realmente, este test ahora debería partirse en dos:
 
-```injectablephp
+```php
 final class VerifyTest extends TestCase
 {
     #[Test]
@@ -242,7 +242,7 @@ Pero estoy divagando. En este caso lo que me planteo es: ¿qué tal sería usar 
 
 En lo que respecta a la API permite un lenguaje mucho más natural, sin tener que añadir parámetros, lo que deja espacio para las opciones que tendremos que admitir en el futuro:
 
-```injectablephp
+```php
 $this->verify("This is the subject")
 ```
 
@@ -250,7 +250,7 @@ Y puesto que el `Trait` tiene acceso al `TestCase` a través de `$this` se cumpl
 
 En lo que se refiere a testing, me encuentro también con muchas ventajas. La principal es que se separa el test de la librería de la simulación de hacer un test con la librería:
 
-```injectablephp
+```php
 final class VerifyTest extends TestCase
 {
     protected Storage $storage;
@@ -278,7 +278,7 @@ final class VerifyTest extends TestCase
 Esto es algo que se aprecia especialmente en el test del caso en el que el output actual es distinto del snapshot. Ahora el test comprueba que `$this->verify` falla, que es lo que queremos que pase: 
 
 
-```injectablephp
+```php
 final class VerifyTest extends TestCase
 {
     #[Test]
@@ -310,7 +310,7 @@ Así que necesito poder:
 
 Esta es mi primera solución, siendo `Storage` una interface. De momento, solo estoy usando la implementación `MemoryStorage`, pero en el futuro `init` instanciará la implementación basada en el sistema de archivos.
 
-```injectablephp
+```php
 trait Golden
 {
     private Storage $storage;

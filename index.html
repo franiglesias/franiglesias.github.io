@@ -3,15 +3,14 @@ layout: default
 ---
 
 <div class="posts">
-  {% for post in site.posts %}
-    {% unless post.tags and post.tags contains "dungeon" or post.tags contains "tb-list" %}
-    <article class="post">
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-      <div class="entry">
-        {{ post.excerpt }} ({{ post.date | date: "%Y/%m/%d" }})
-        <p><a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Leer artículo completo</a></p>
-      </div>
-    </article>
-    {% endunless %}
-  {% endfor %}
+    {% for post in site.posts %}
+        {% unless post.tags and post.tags contains "dungeon" or post.tags contains "tb-list" %}
+            <article class="post">
+                <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+                <div class="entry">
+                    <span class="date">{{ post.date | date: "%Y/%m/%d" }}</span> -- {{ post.excerpt | strip_html }}
+                </div>
+            </article>
+        {% endunless %}
+    {% endfor %}
 </div>

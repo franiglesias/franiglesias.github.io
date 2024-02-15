@@ -6,10 +6,10 @@ $tag_bg: #3535b6;
 $tag_color: #f6f6f6;
 $text_color: #030303;
 $body_bg: #f3eeec;
-$tags_bg: #d9d2d1;
-$heading_color: #0a0a0a;
+$tags_bg: #dbeaeb;
+$heading_color: #1c7a81;
 $secondary_heading_color: #333333;
-$link_color: #1e1e88;
+$link_color: #0f626b;
 $intro_text_color: #444444;
 $code_block_bg: #303030;
 $wrapper_bg: #ffffff;
@@ -1039,12 +1039,16 @@ article {
         color: $heading_color;
       }
     }
+
+    span.date {
+      color: $secondary_heading_color;
+    }
   }
 }
 
 
 $margin: 2rem;
-
+$tags_margin: 7rem;
 
 pre {
   margin-top: 3em;
@@ -1089,11 +1093,12 @@ span.tag {
 }
 
 section#tags {
-  margin-left: -$margin;
-  padding-left: $margin;
-  margin-right: -$margin;
-  padding-right: $margin;
+  margin-left: -$tags_margin;
+  padding-left: $tags_margin;
+  margin-right: -$tags_margin;
+  padding-right: $tags_margin;
   background-color: $tags_bg;
+  border-radius: 0.2rem;
 
   div {
     display: grid;
@@ -1103,10 +1108,21 @@ section#tags {
   }
 
   p {
-    margin: 0;
-    padding: 0.2rem 1rem;
-    word-break: break-all;
-    overflow-wrap: break-word;
+    margin: 0 0 0.5rem 0;
+    a {
+      word-break: break-all;
+      overflow-wrap: break-word;
+      padding: 0.2rem 1rem;
+      display: block;
+      background-color: #fff;
+      color: $secondary_heading_color;
+      text-align: center;
+      box-shadow: 0.1rem 0.1rem 0.2rem -0.1rem rgba(0, 0, 0, 0.40);
+      border-radius: 0.2rem;
+      &:hover {
+        box-shadow: 0.2rem 0.2rem 0.4rem -0.1rem rgba(0, 0, 0, 0.58);
+      }
+    }
   }
 }
 
@@ -1234,4 +1250,12 @@ div.footnotes {
       text-decoration: underline;
     }
   }
+}
+
+section#tags {
+
+  h2 {
+    margin-top: 1rem;
+  }
+
 }

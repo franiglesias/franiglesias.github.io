@@ -18,9 +18,9 @@ $copy_code_bg: #666;
 
 /* Tyography */
 $code_font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
-$site_font: "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$site_font: "M PLUS 1p", "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $heading_font: 'league_gothicregular', "Helvetica Neue", Helvetica, Arial, sans-serif;
-$inline_code_font: "m_1mregular", 'Fira Mono', Monaco, Terminal, Courier, monospace;
+$inline_code_font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
 
 /* Media */
 $breakpoint_tablet: 768px;
@@ -677,13 +677,13 @@ html {
 }
 
 body {
-  padding: 0px 0 20px 0px;
-  margin: 0px;
-  font: $site_font;
+  padding: 0 0 20px 0;
+  margin: 0;
+  font-family: $site_font;
   font-size: 1.2em;
-  line-height: 140%;
+  line-height: 150%;
   color: $text_color;
-  font-weight: normal;
+  font-weight: 500;
   background: $body_bg;
 }
 
@@ -1192,7 +1192,7 @@ pre.highlight > button:focus {
 pre.highlight > button {
   background: $copy_code_bg;
   color: $copy_code_color;
-  font: $site_font;
+  font-family: $site_font;
   opacity: 0.6;
   position: absolute;
   right: 0;

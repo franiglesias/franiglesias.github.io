@@ -2,7 +2,7 @@
 ---
 
 /* Colors */
-$tag_bg: #3535b6;
+$tag_bg: #0d5962;
 $tag_color: #f6f6f6;
 $text_color: #030303;
 $body_bg: #f3eeec;
@@ -683,7 +683,7 @@ body {
   font-size: 1.2em;
   line-height: 150%;
   color: $text_color;
-  font-weight: 500;
+  font-weight: 400;
   background: $body_bg;
 }
 
@@ -1089,7 +1089,10 @@ span.tag {
   background-color: $tag_bg;
   display: inline-block;
   padding: 0.1rem 0.8rem;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
+  font-family: $site_font;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
 section#tags {
@@ -1110,6 +1113,9 @@ section#tags {
   p {
     margin: 0 0 0.5rem 0;
     a {
+      font-family: $site_font;
+      font-size: 0.8rem;
+      text-transform: uppercase;
       word-break: break-all;
       overflow-wrap: break-word;
       padding: 0.2rem 1rem;

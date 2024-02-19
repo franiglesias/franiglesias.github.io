@@ -4,4 +4,6 @@ title: "Python"
 tag: python
 ---
 
-Artículos sobre el lenguaje de programación, o que usan ejemplos del mismo.
+Estos artículos tratan temas específicos sobre este lenguaje de programación o incluyen ejemplos escritos en él.
+
+No he trabajado profesionalmente con Python, aparte de alguna cuestión puntual, pero es un lenguaje que uso bastante en proyectos personales.

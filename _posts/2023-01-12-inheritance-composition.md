@@ -11,7 +11,7 @@ Recientemente, he visto algunos ejemplos de abuso de la herencia, lo que posible
 
 ## Herencia en orientación a objetos
 
-La _herencia_ es una propiedad de los lenguajes orientados a objetos gracias a la cual podemos crear nuevas clases a partir de otras, cambiando solo algunos aspectos de su comportamiento que nos interesa. El procedimiento para realizar la herencia se llama _extensión_. Cuando extendemos una clase, lo que hacemos introducir una nueva subclase que deriva de la base, sobreescribiendo algunos de sus métodos. 
+La _herencia_ es una propiedad de los lenguajes orientados a objetos gracias a la cual podemos crear nuevas clases a partir de otras, cambiando solo algunos aspectos de su comportamiento que nos interesan. El procedimiento para realizar la herencia se llama _extensión_. Cuando extendemos una clase, lo que hacemos introducir una nueva subclase que deriva de la base, sobreescribiendo algunos de sus métodos. 
 
 De este modo, la subclase podrá atender con su propio código algunos mensajes. Pero si recibe mensajes que no pueda manejar por sí misma, los delegará a su clase base.
 

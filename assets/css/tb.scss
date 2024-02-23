@@ -2,6 +2,7 @@
 ---
 
 /* Colors */
+
 $tag_bg: #0d5962;
 $tag_color: #f6f6f6;
 $text_color: #030303;
@@ -748,7 +749,7 @@ ul {
 }
 
 ul li {
-  line-height: 1.5rem;
+  line-height: 150%;
 }
 
 strong {
@@ -1103,6 +1104,10 @@ section#tags {
   background-color: $tags_bg;
   border-radius: 0.2rem;
 
+  h2 {
+    margin-top: 1rem;
+  }
+
   div {
     display: grid;
     grid-template-columns: 90%;
@@ -1145,6 +1150,12 @@ section#tags {
     div {
       grid-template-columns: 30% 30% 30%;
     }
+
+    p {
+      a {
+        font-size: 0.7rem;
+      }
+    }
   }
 }
 
@@ -1168,10 +1179,10 @@ h5 code.language-plaintext,
 h6 code.language-plaintext,
 {
   color: $text_color !important;
-    font: {
-      size: inherit;
-      family: $inline_code_font;
-    };
+  font: {
+    size: inherit;
+    family: $inline_code_font;
+  };
 
 }
 
@@ -1258,10 +1269,3 @@ div.footnotes {
   }
 }
 
-section#tags {
-
-  h2 {
-    margin-top: 1rem;
-  }
-
-}

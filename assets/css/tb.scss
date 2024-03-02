@@ -8,6 +8,7 @@ $tag_color: #f6f6f6;
 $text_color: #030303;
 $body_bg: #f3eeec;
 $tags_bg: #dbeaeb;
+$tag_bg_in_list: #639ea5;
 $heading_color: #1c7a81;
 $secondary_heading_color: #333333;
 $link_color: #0f626b;
@@ -1094,6 +1095,10 @@ span.tag {
   font-family: $site_font;
   font-size: 0.8rem;
   text-transform: uppercase;
+}
+
+article.list span.tag {
+  background-color: $tag_bg_in_list;
 }
 
 section#tags {

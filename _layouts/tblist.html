@@ -1,8 +1,12 @@
 ---
 layout: basic
 ---
-<h1>The talking list</h1>
-<p>El micro-blog de The Talking Bit</p>
+
+<div id="title">
+    <h1>The talking list</h1>
+    <p>El micro-blog de The Talking Bit</p>
+</div>
+
 <div class="posts tb-list">
     {% for post in site.tags[page.tag] %}
     <article class="post">

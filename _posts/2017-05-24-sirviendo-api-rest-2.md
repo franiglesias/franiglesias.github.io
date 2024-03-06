@@ -9,9 +9,9 @@ En esta entrega, voy a empezar a mostrar algo de código de un controlador que m
 
 Esta serie sobre **API Rest** tiene los siguientes artículos:
 
-[API-REST](/api-rest.md)  
-[Sirviendo API-REST 1](/sirviendo-api-rest-1.md)  
-[Sirviendo API-REST 2](/sirviendo-api-rest-2.md)
+[API-REST](/api-rest)  
+[Sirviendo API-REST 1](/sirviendo-api-rest-1)  
+[Sirviendo API-REST 2](/sirviendo-api-rest-2)
 
 Esta api devuelve una colección de artículos de un CMS para mostrar en las páginas índice de las diversas secciones de un sitio web. La idea era tener un único punto de entrada para obtener estas colecciones de artículos.
 

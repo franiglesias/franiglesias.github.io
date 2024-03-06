@@ -9,9 +9,9 @@ Voy a hacer un ejemplo de controlador que responde a peticiones por [API Rest](/
 
 Esta serie sobre **API Rest** tiene los siguientes artículos:
 
-[API-REST](/api-rest.md)  
-[Sirviendo API-REST 1](/sirviendo-api-rest-1.md)  
-[Sirviendo API-REST 2](/sirviendo-api-rest-2.md)
+[API-REST](/api-rest)  
+[Sirviendo API-REST 1](/sirviendo-api-rest-1)  
+[Sirviendo API-REST 2](/sirviendo-api-rest-2)
 
 En el fondo, y salvando las distancias, servir una API REST es poco más o menos que servir una página HTML.
 

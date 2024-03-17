@@ -29,7 +29,7 @@ Incluso si fuesen independientes, atacando ese 10% de tiempo dedicado al desplie
 
 En consecuencia, es preferible dedicar el esfuerzo al limitador más grande: percibiremos una mejora mayor y puede, incluso, que facilitemos eliminar otros o al menos reducir sus efectos.
 
-Pero bueno, existen infinidad de bloqueadores a la productividad y este análisis puede ayudarnos a detectarlos y ponerles solución.
+Existen infinidad de posibles bloqueadores a la productividad y muchas veces dependen de las circunstancias específicas de cada equipo o empresa, y este análisis puede ayudarnos a detectarlos y ponerles solución.
 
 ## Objetivos
 
@@ -56,8 +56,8 @@ Para este análisis, y dependiendo del alcance, pueden hacerse dos o tres sesion
 
 * Exponer brevemente la _Teoría de los Limitadores_ si las participantes no la conocen.
 * Exponer los objetivos del proceso.
-* Brainstorming durante unos pocos minutos de modo que cada miembro del equipo pueda añadir todos los bloqueadores o limitadores que percibe.
-* Una vez finalizado el brainstorming se clarifican todas las propuestas según sea necesario.
+* _Brainstorming_ durante unos pocos minutos de modo que cada miembro del equipo pueda añadir todos los bloqueadores o limitadores que percibe.
+* Una vez finalizado el _brainstorming_ se clarifican todas las propuestas según sea necesario.
 
 Notas:
 
@@ -77,8 +77,8 @@ El objetivo es quedarnos con los tres o cuatro más importantes por su efecto. M
 
 Una vez que has identificado los limitadores tienes que ordenarlos del que sea más bloqueante al que menos. Formas de evaluar esto pueden ser:
 
-* Cuantas más personas en el equipo lo identifiquen como bloqueo
-* Cuantificarlo en tiempo o porcentaje de tiempo que nos supone en un período dado
+* Cuantas personas en el equipo lo identifican como bloqueo
+* Tiempo o porcentaje de tiempo que nos supone en un período dado
 * Si condiciona o influye en otros limitadores identificados
 
 Obtendrás el mayor beneficio corrigiendo el primero y más limitante. Atacar los otros puede ayudar también, pero el efecto observable será menor.
@@ -173,7 +173,7 @@ Un limitante que me he encontrado a veces tiene que ver con los entornos de desa
 
 Demasiadas personas en un mismo proyecto pueden ser un limitador de la productividad. La Ley de Brooks se explica porque añadir _manos_ a un equipo require un proceso de aprendizaje que en realidad retrasa al equipo hasta que las nuevas incorporaciones alcanzan el nivel de conocimiento requerido.
 
-Por supuesto, demasiadas pocas personas para la carga de trabajo es otro limitador. Y en ese caso, la solución pasaría por reducir los lotes de trabajo a los que el equipo se compromete por iteración.
+Por supuesto, demasiadas pocas personas para la carga de trabajo es otro limitador. Y en ese caso, la solución pasaría por reducir los lotes de trabajo a los que el equipo se compromete en cada iteración.
 
 La multitarea de equipo también es un limitador de productividad. Si se trabaja a la vez en muchos proyectos poco relacionados, pueden pasar dos cosas:
 

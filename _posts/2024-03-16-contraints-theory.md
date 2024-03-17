@@ -130,7 +130,7 @@ En este caso podríamos, entre otras cosas:
 
 Siempre aparecerá un nuevo limitador. Nunca te des por satisfecha. 
 
-Como hemos visto, lo normal sería haber identificado varios limitadores, así que una vez que hemos conseguido atacar uno y mejorar en ese aspecto, podríamos plantearnos atacar el siguiente. 
+Como hemos visto, lo normal sería haber identificado varios limitadores, así que una vez que hemos conseguido atacar uno y mejorar en ese aspecto, podríamos plantearnos abordar el siguiente. 
 
 Pero también podrían descubrirse otros nuevos que estaban ocultos por el anterior.
 
@@ -180,19 +180,19 @@ La multitarea de equipo también es un limitador de productividad. Si se trabaja
 * Las mismas personas trabajan siempre en los mismos proyectos, generando silos de conocimiento y _bus factor_. Si cierta persona no está por la razón que sea, no se puede trabajar en ese proyecto.
 * Cuando una persona trabaja en un proyecto que no conoce, necesita tiempo para introducirse en él, lo que merma su productividad. Pero, a la vez, si otra persona del equipo le ayuda, deja de estar trabajando en otro proyecto.
 
-Aquí, por ejemplo, se podría reorganizar el equipo para que varias personas trabajen juntas en el mismo proyecto, haciendo pair programming, y facilitando así la distribución del conocimiento y reducción del _bus factor_. Pero también requeriría reducir la cantidad de proyectos simultáneos que un equipo puede gestionar.
+Aquí, por ejemplo, se podría reorganizar el equipo para que varias personas trabajen juntas en el mismo proyecto, haciendo _pair programming_, facilitando así la distribución del conocimiento y reducción del _bus factor_. Pero también requeriría reducir la cantidad de proyectos simultáneos que un equipo puede gestionar.
 
-Hay perfiles que pueden suponer un cuello de botella, incluso siendo excepcionalmente competentes. Por ejemplo, una desarrolladora que emprende modificaciones significativas en el código sin contar con el resto del equipo. Esto puede introducir fricciones cuando mezcla los cambios y obliga al sus compañeras a empezar de cero con nuevos frameworks, librarías o conceptos, forzándolas a utilizar tiempo en este aprendizaje y no en sus propias tareas. 
+Hay perfiles que pueden suponer un cuello de botella incluso siendo excepcionalmente competentes. Por ejemplo, una desarrolladora que emprende modificaciones significativas en el código sin contar con el resto del equipo. Esto puede introducir fricciones cuando mezcla los cambios y obliga a sus compañeras a empezar de cero con nuevos frameworks, librerías o conceptos, forzándolas a utilizar tiempo en este aprendizaje y no en sus propias tareas. 
 
 **Paradigma**: un limitador de paradigma es el causado por creencias. Por ejemplo, la creencia de que las líneas de código proporcionan una buena métrica por productividad, cuando lo opuesto suele ser cierto.
 
 Una metodología mal implementada puede ser un gran limitador. Por ejemplo, muchos equipos de desarrollo que dicen hacer _scrum_, aplican las reglas del proceso de una manera _sui generis_, lo que acaba provocando problemas de productividad. El framework fue desarrollado con unos objetivos y si no cumplimos sus especificaciones tampoco podemos esperar resultados. Así que, si la metodología o paradigma del equipo se percibe como bloqueante, es necesario examinarlo y modificarla.
 
-A medio camino entre metodología y personas estaría el tratamiento del trabajo no planificado. En un _scrum_ estricto, por ejemplo, el trabajo no planificado en forma de peticiones que llegan del otras partes de la organización durante un sprint no se debe realizar, sino que pasa a la lista de espera que es el _backlog_. Así que si detecta el trabajo no planificado como un limitador, hay que tomar medidas para controlarlo.
+A medio camino entre metodología y personas estaría el tratamiento del trabajo no planificado. En un _Scrum_ estricto, por ejemplo, el trabajo no planificado en forma de peticiones que llegan del otras partes de la organización durante un sprint no se debe realizar, sino que pasa a la lista de espera que es el _backlog_. Así que si entiendes el trabajo no planificado como un limitador, hay que tomar medidas para controlarlo.
 
-Pero incluso sin seguir una metodología scrum, el trabajo no planificado es algo que milita la productividad. Se hace necesario entonces definir qué hacer con él. A veces, es un tema de personas. Es frecuente que en el equipo exista alguna desarrolladora que, por las razones que sea, se siente obligada a responder a estas peticiones, lo que suele implicar que también existe una persona externa que sabe explotar esta característica. Así que puede ser necesario trabajar el aprender a decir no. Nadie dijo que mejorar la productividad de un equipo fuera fácil.
+Pero incluso sin seguir una metodología _Scrum_, el trabajo no planificado es algo que limita la productividad. Se hace necesario entonces definir qué hacer con él. A veces, es un tema de personas. Es frecuente que en el equipo exista alguna desarrolladora que, por las razones que sea, se siente obligada a responder a estas peticiones, lo que suele implicar que también existe una persona externa que sabe explotar esta característica. Así que puede ser necesario trabajar el aprender a decir no. Nadie dijo que mejorar la productividad de un equipo fuera fácil.
 
-**Mercado**: un limitador de mercado ocurre al distribuir el software a los consumidores, si estás introduciendo más de lo que se necesita, porque estás invirtiendo tiempo en crear cosas que los consumidores no quieren o no necesitan y, por tanto, no utilizan.
+**Mercado**: un limitador de mercado ocurre al distribuir el software a los consumidores, si estás introduciendo más de lo requerido, porque estás invirtiendo tiempo en crear cosas que los consumidores no quieren o no necesitan y, por tanto, no utilizan.
 
 Esto ocurre cuando se hacen desarrollos _por si acaso_ o haciendo suposiciones que no están validadas por los expertos del dominio como hipótesis plausibles, o que no están apoyadas por datos, ya sean de uso, de análisis de la competencia, etc. 
 

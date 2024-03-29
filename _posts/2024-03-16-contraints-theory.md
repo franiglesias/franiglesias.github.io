@@ -104,7 +104,7 @@ Decide qué puedes hacer en otras áreas para reducir el coste e impacto de la l
 
 Haz cambios mayores en el sistema para eliminar o romper la limitación, asignando o redistribuyendo recursos personales, técnicos o de conocimiento.
 
-Otras acciones podrían en este nivel podrían ser:
+Otras acciones en este nivel podrían ser:
 
 * Introducir una práctica o herramienta, como usar un sistema de control de versiones en el ejemplo que pusimos al principio. Pero también podría ser aprender e introducir una metodología, técnica, lenguaje de programación, framework...
 * Suprimir una práctica bloqueante o transformarla para que deje de serlo. Por ejemplo, automatizar testing para no hacer testing manual.

@@ -28,6 +28,7 @@ layout: basic
             </span>&nbsp;</a>
             {% endfor %}
         </p>
+        <p id="self-link">Enlace: {{site.url}}{{page.url}} <button type="button" class="tag" onClick="navigator.clipboard.writeText(window.location.href);">Copiar</button></p>
     </div>
 </article>
 {% include comments.html %}

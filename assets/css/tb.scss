@@ -1100,7 +1100,7 @@ pre {
   }
 }
 
-span.tag {
+span.tag, button.tag {
   color: $tag_color;
   background-color: $tag_bg;
   display: inline-block;

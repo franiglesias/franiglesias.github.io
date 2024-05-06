@@ -749,6 +749,11 @@ a small {
   display: block;
 }
 
+div.entry a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 ul {
   list-style: disc;
 }

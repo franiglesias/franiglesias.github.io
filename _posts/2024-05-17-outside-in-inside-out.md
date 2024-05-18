@@ -5,27 +5,27 @@ categories: articles
 tags: testing
 ---
 
-Una de las preguntas sobre TDD outside-in que más me hacen es acerca del uso de los mocks. Al fin y al cabo, acoplan los tests a la implementación y eso no está bien.
+Una de las preguntas sobre TDD _outside-in_ que más me hacen es acerca del uso de los _mocks_. Al fin y al cabo, acoplan los tests a la implementación y eso no está bien.
 
 La respuesta corta es que, normalmente, esos tests no los dejo así, sino que vuelvo sobre ellos y los modifico para que sean más útiles.
 
 La respuesta larga es este artículo.
 
-## TDD mockista
+## TDD _mockista_
 
-A _TDD outside-in_ se le suele llamar también mockista por la razón obvia de que se utilizan los mocks en los ciclos de TDD clásica con el objetivo de diseñar los objetos que van a trabajar juntos en un componente. [Sandro Mancuso tiene un artículo fundamental sobre este tema](https://www.codurance.com/publications/2018/10/18/mocking-as-a-design-tool).
+A _TDD outside-in_ se le suele llamar también _mockista_ por la razón obvia de que se utilizan _mocks_ en los ciclos de TDD clásica con el objetivo de diseñar los objetos que van a trabajar juntos en un componente. [Sandro Mancuso tiene un artículo fundamental sobre este tema](https://www.codurance.com/publications/2018/10/18/mocking-as-a-design-tool).
 
-Esto ha provocado algunas críticas. Como decíamos en la introducción, los mocks acoplan el test a la implementación, dado que establecen expectativas sobre los mensajes que los objetos van a intercambiar. Por tanto, si nos viésemos en la necesidad de cambiar loe mensaje, su orden o su número, el test podría fallar por razones ajenas a su comportamiento, al no cumplir las expectativas de los mocks.
+Esto ha provocado algunas críticas. Como decíamos en la introducción, los _mocks_ acoplan el test a la implementación, dado que establecen expectativas sobre los mensajes que los objetos van a intercambiar. Por tanto, si nos viésemos en la necesidad de cambiar los mensajes, su orden o su número, el test podría fallar por razones ajenas a su comportamiento, al no cumplir las expectativas de los _mocks_.
 
-Sin embargo, en TDD outside-in, una vez que hemos completado el desarrollo de una prestación, el test ya no está cumpliendo su función de ser herramienta de diseño. Podríamos plantearnos eliminarlo o transformarlo, para convertirlo en un test de QA más fiable y menos acoplado.
+Sin embargo, en _TDD outside-in_, una vez que hemos completado el desarrollo de una prestación, el test ya no está cumpliendo su función de ser herramienta de diseño. Podríamos plantearnos eliminarlo o transformarlo, para convertirlo en un test de QA más fiable y menos acoplado.
 
-Para ello lo que haremos será reemplazar los mocks por _fakes_ o por _stubs_ programables. Una cosa que me gustaría dejar muy clara es que todos los dobles de test, independientemente de la forma en que los obtengamos, ya sea mediante una librería o creando implementaciones propias, van a cumplir su función de simular el funcionamiento de una pieza de software de la que queremos tener controlado su comportamiento.
+Para ello lo que haremos será reemplazar los _mocks_ por _fakes_ o por _stubs_ programables. Una cosa que me gustaría dejar muy clara es que todos los dobles de test, independientemente de la forma en que los obtengamos, ya sea mediante una librería o creando implementaciones propias, van a cumplir su función de simular el funcionamiento de una pieza de software de la que queremos tener controlado su comportamiento.
 
-La diferencia, para el objetivo del artículo, reside en el acoplamiento entre el test y el código de producción. Como veremos, los mocks creados con una librería exponen muchos detalles de implementación en el propio test. Para simular el comportamiento tenemos que describir la forma en que usamos los colaboradores en el código de producción. En el otro caso, son implementaciones alternativas limitadas, pero que se ajustan al contrato definido por la interfaz.
+La diferencia, para el objetivo del artículo, reside en el acoplamiento entre el test y el código de producción. Como veremos, los _mocks_ creados con una librería exponen muchos detalles de implementación en el propio test. Para simular el comportamiento tenemos que describir la forma en que usamos los colaboradores en el código de producción. En el otro caso, son implementaciones alternativas limitadas, pero que se ajustan al contrato definido por la interfaz.
 
 ### Fakes
 
-Un Fake es un doble de test que implementa una interfaz, pero lo hace de una manera que sea barata para la ejecución del test. Por lo general, los mocks representan objetos que implementan tecnologías del mundo real, como bases de datos o servicios remotos. No es buena idea usar tecnologías reales en los tests dado que tienen costes de puesta en marcha, de performance y pueden introducir muchísimo ruido en los tests.
+Un _Fake_ es un doble de test que implementa una interfaz, pero lo hace de una manera que sea barata para la ejecución del test. Por lo general, los _mocks_ representan objetos que implementan tecnologías del mundo real, como bases de datos o servicios remotos. No es buena idea usar tecnologías reales en los tests dado que tienen costes de puesta en marcha, un coste de rendimiento y pueden introducir muchísimo ruido en los tests.
 
 Si hemos hecho una abstracción adecuada, podremos usar implementaciones alternativas que tengan un comportamiento similar, pero con un coste menor. Bien sea porque usan una tecnología mucho más barata, como podría ser implementar una base de datos sencilla en memoria, bien porque imitan un comportamiento en el que estamos interesadas.
 
@@ -35,13 +35,13 @@ A veces no es posible crear una implementación alternativa completa. En ese cas
 
 ### Inside-out
 
-Con frecuencia, cuando realizo esta sustitución de mocks por otros objetos, empiezo por los más internos en el ciclo de vida de la petición y me voy moviendo hacia afuera. Esto, en ocasiones, me permite reutilizar algunas de estas implementaciones.
+Con frecuencia, cuando realizo esta sustitución de _mocks_ por otros objetos, empiezo por los más internos en el ciclo de vida de la petición y me voy moviendo hacia afuera. Esto, en ocasiones, me permite reutilizar algunas de estas implementaciones.
 
 El resultado de este refactor va a ser un test más robusto, resistente a cambios de la implementación y, generalmente, mucho más fácil de entender.
 
 ## Ejemplos
 
-Para este artículo voy a utilizar el proyecto de la serie sobre _Vertical Slice Architecture_, puesto que tiene varios ejemplos de tests en los que se utilizan mocks.
+Para este artículo voy a utilizar el proyecto de la serie sobre _Vertical Slice Architecture_, puesto que tiene varios ejemplos de tests en los que se utilizan _mocks_.
 
 ### Stub mediante self-shunt
 
@@ -99,7 +99,7 @@ $retrieveProposal = $this->createMock(RetrieveProposal::class);
 $retrieveProposal->method('__invoke')->willReturn($proposal);
 ```
 
-Vamos a reemplazar el mock usando la técnica de _self shunt_. Consiste en usar el test como doble, haciéndole implementar la interfaz del colaborador y pasándoselo al handler. Ya he hablado anteriormente de esta técnica, que puede ser útil en casos sencillos, cuando no nos interesa crear una clase completamente nueva.
+Vamos a reemplazar el mock usando la técnica de _self shunt_. Consiste en usar el propio test como doble, haciéndole implementar la interfaz del colaborador y pasándoselo al _handler_. Ya he hablado anteriormente de esta técnica, que puede ser útil en casos sencillos, cuando no nos interesa crear una clase completamente nueva.
 
 Una ventaja adicional es que nos va a permitir esconder muchos detalles dejando el test muy limpio.
 
@@ -170,7 +170,7 @@ final class ReadProposalHandlerTest extends TestCase implements RetrieveProposal
 }
 ```
 
-Con este cambio el test no funcionará, tenemos que pasar el test como colaborador al handler:
+**Usar el test como colaborador**. Con este cambio el test no funcionará, tenemos que pasar el test como colaborador al handler:
 
 ```php
 final class ReadProposalHandlerTest extends TestCase implements RetrieveProposal
@@ -217,7 +217,7 @@ final class ReadProposalHandlerTest extends TestCase implements RetrieveProposal
 }
 ```
 
-Por último, podemos ocultar la verificación de `Proposal` a un método y todo quedará más claro:
+Por último, podemos ocultar la verificación de `Proposal` en un método y todo quedará más claro:
 
 ```php
 final class ReadProposalHandlerTest extends TestCase implements RetrieveProposal
@@ -270,13 +270,13 @@ final class ReadProposalHandlerTest extends TestCase implements RetrieveProposal
 
 Fíjate que ahora el código principal del test es sencillo y claro.
 
-La técnica de _self-shunt_ puede ser muy útil y práctica al evitarnos introducir nuevos objetos que solo tendrán un uso y permitiéndonos mantener mucha información accesible en el test, como en el caso de las constantes que hemos introducido para mantener la consistencia (en principio podríamos haber creado constantes para todos los campos de `Proposal`). 
+La técnica de _self-shunt_ puede ser muy útil y práctica al evitarnos introducir nuevos objetos que solo tendrán un uso y permitiéndonos mantener mucha información accesible en el test, como en el caso de las constantes que hemos introducido para mantener la consistencia. Incluso podríamos haber creado constantes para todos los campos de `Proposal`. 
 
-El lado negativo del _self-shunt_ es que puede ser desconcertante si no estás familiarizada con ella.
+El lado negativo del _self-shunt_ es que puede ser desconcertante si no estás familiarizada con esta técnica.
 
 ### Stub simple con clase anónima
 
-Si vamos de adentro hacia afuera en la feature _ReadProposal_ nos encontramos con un test unitario del controlador. En esta ocasión el objeto del que hacemos un _mock_ es el _Handler_ al que programamos que devuelva un objeto `ReadProposalResponse` cuando es invocado. Fíjate que no estamos fijando ninguna expectativa sobre la llamada, sino que simplemente describimos lo que tiene que pasar cuando enviemos el mensaje `__invoke` a `ReadProposalHandler`. Esto es básicamente un _stub_. Esta forma de hacerlo es la que acopla el test con la implementación.
+Si vamos de dentro hacia afuera en la feature _ReadProposal_ nos encontramos con un test unitario del controlador. En esta ocasión el objeto del que hacemos un _mock_ es el _Handler_ al que programamos que devuelva un objeto `ReadProposalResponse` cuando es invocado. Fíjate que no estamos estableciendo ninguna expectativa sobre la llamada, sino que simplemente describimos lo que tiene que pasar cuando enviemos el mensaje `__invoke` a `ReadProposalHandler`. Esto es básicamente un _stub_. Esta forma de hacerlo es la que acopla el test con la implementación.
 
 ```php
 final class ReadProposalControllerTest extends TestCase
@@ -344,20 +344,18 @@ final class ReadProposalControllerTest extends TestCase
 
 Dos observaciones importantes aquí:
 
-* No tenemos interfaz explícita del Handler, ya que no necesitamos implementaciones alternativas
-* La lógica interna del Handler está probada en el test anterior
+* No tenemos interfaz explícita del _Handler_, ya que no necesitamos implementaciones alternativas
+* La lógica interna del _Handler_ está probada en el test anterior
 
 ¿Qué opciones tenemos aquí aparte de dejarlo como está?
 
-La primera es extraer la interfaz del Handler, de este modo podríamos simularlo mediante _self-shunt_ o mediante una implementación _fake_.
+La primera es extraer la interfaz del _Handler_, de este modo podríamos simularlo mediante _self-shunt_ o mediante una implementación _fake_. El inconveniente de esta opción es introducir una interfaz que va a tener una única implementación.
 
-El inconveniente de esta opción es introducir una interfaz que va a tener una única implementación.
+La segunda es no doblar el _Handler_, sino sus colaboradores problemáticos. Exacto: lo mismo que hicimos en el test anterior. Ahora podrías decir que deberíamos haber hecho el doble de test de otra forma para poder reutilizarlo. De todos modos, hay que andarse con cuidado en el tipo de objetos que reutilizamos en los tests, algo de lo que me gustaría hablar en algún momento en el futuro.
 
-La segunda es no doblar el Handler, sino sus colaboradores problemáticos. Exacto: lo mismo que hicimos en el test anterior. Ahora podrías decir que deberíamos haber hecho el doble de test de otra forma para poder reutilizarlo. De todos modos, hay que andarse con cuidado en el tipo de objetos que reutilizamos en los tests.
+Con esta opción es cierto que testeamos dos veces el comportamiento del _Handler_, lo que podría introducir algo de ruido en el test del controlador, que deja de ser un test unitario en el sentido de una unidad de código aislada. Sin embargo, en la práctica, el test cubrirá una parte de código que siempre se ejecuta junta, como si fuese una unidad, lo que algunos autores denominan con el nombre de _test social_. La parte que doblamos es el acceso a la base de datos, que está en el límite del sistema y, por definición, siempre tendríamos que doblarla.
 
-Con esta opción es cierto que testeamos dos veces el comportamiento del _Handler_, lo que podría introducir algo de ruido en el test del controlador, que deja de ser un test unitario en el sentido de una unidad de código aislada. Sin embargo, en la práctica, el test cubrirá una parte de código que siempre se ejecuta junta, como si fuese una unidad. La parte que doblamos es el acceso a la base de datos, que está en el límite del sistema y, por definición, siempre tendríamos que doblarla.
-
-Para este ejemplo, voy a hacer un stub puro: un objeto que siempre devuelve lo mismo al ser utilizado. Lo vamos a instanciar mediante una clase anónima. Esto nos evita introducir objetos que se puedan reutilizar, o al menos, comunica claramente el mensaje de que su valor está en el ámbito del test que se crea. Como en el caso anterior, tenemos que pasar algunos valores a constantes de clase para que sea posible reutilizarlos. En este caso son públicas para que estén accesibles al crear el objeto doble. Alternativamente, podríamos pasarlas como parámetros al constructor de la clase anónima.
+Para este ejemplo, voy a hacer un _stub_ puro: un objeto que siempre devuelve lo mismo al ser utilizado. Lo vamos a instanciar mediante una clase anónima. Esto nos evita introducir objetos que se puedan reutilizar, o al menos, comunica claramente el mensaje de que su valor está en el ámbito del test que se crea. Como en el caso anterior, tenemos que pasar algunos valores a constantes de clase para que sea posible reutilizarlos. En este caso son públicas para que estén accesibles al crear el objeto doble. Alternativamente, podríamos pasarlas como parámetros al constructor de la clase anónima.
 
 ```php
 final class ReadProposalControllerTest extends TestCase
@@ -457,7 +455,7 @@ final class ReadProposalControllerTest extends TestCase
 }
 ```
 
-El siguiente paso consiste en inyectarlo al Handler para instanciar el controlador. Al hacerlo así, nos sobran las variables `$query` y `$response`, porque ya no tenemos que simular la invocación del Handler, lo que simplifica el test.
+El siguiente paso consiste en inyectarlo al _Handler_ para instanciar el controlador. Al hacerlo así, nos sobran las variables `$query` y `$response`, porque ya no tenemos que simular la invocación del _Handler_, simplificando el test de paso.
 
 ```php
 final class ReadProposalControllerTest extends TestCase
@@ -607,7 +605,7 @@ Alternativamente, podríamos reescribir estas construcciones usando el patrón _
 
 Para el siguiente apartado vamos a movernos a la prestación de escritura, `SendProposal` en la que tenemos que usar varios dobles de test, ya que encapsulamos un par de servicios no deterministas (el reloj del sistema y el generador de identidades) y un servicio que escribe en la base de datos. En el caso de este último, nos gustaría poder saber que recibirá los datos correctamente.
 
-Este es el test más interno, que resulta ser el del handler:
+Este es el test más interno, que resulta ser el del _handler_:
 
 ```php
 final class SendProposalHandlerTest extends TestCase
@@ -839,7 +837,7 @@ final class SendProposalHandlerTest extends TestCase
 }
 ```
 
-Para ganar claridad, nos merece la pena separar la parte de preparación en el `SetUp` y aquí tenemos el test entero. Vuelvo a destacar que el cuerpo principal del test queda muy sencillo y expresa tanto la forma de usar los objetos como lo que se intenta probar.
+Para ganar claridad, nos merece la pena separar la parte de preparación en el `setUp` y aquí tenemos el test entero. Vuelvo a destacar que el cuerpo principal del test queda muy sencillo y expresa tanto la forma de usar los objetos como lo que se intenta probar.
 
 ```php
 final class SendProposalHandlerTest extends TestCase
@@ -892,7 +890,7 @@ final class SendProposalHandlerTest extends TestCase
 
 ## El último test
 
-Nos queda el test del controlador de esta _feature_, que nos planteará problemas similares a los que ya hemos visto con anterioridad. El controlador usa el Handler como colaborador y no tenemos interfaz para implementar una nueva versión. Como vimos en el caso anterior, preferiríamos montar un nuevo Handler y doblar sus dependencias, ya que todas ellas representan un límite de la aplicación.
+Nos queda el test del controlador de esta _feature_, que nos planteará problemas similares a los que ya hemos visto con anterioridad. El controlador usa el _Handler_ como colaborador y no tenemos interfaz para implementar una nueva versión. Como vimos en el caso anterior, preferimos montar un nuevo _Handler_ y doblar sus dependencias, ya que todas ellas representan un límite de la aplicación.
 
 En este caso, además, podemos reutilizar los dobles que hemos creado anteriormente. Esta es una de las razones por las que hago este recorrido de refactor de dentro hacia afuera. Como ya hemos explicado estos dobles, no voy a extenderme mucho aquí.
 
@@ -953,7 +951,7 @@ final class SendProposalControllerTest extends TestCase
 }
 ```
 
-Y este es después de reemplazar el mock del Handler. Como podemos ver hemos podido quitar muchos detalles, y además ahora el test verifica el comportamiento del ciclo completo de la _request_.
+Y este es después de reemplazar el _mock_ del _Handler_. Como podemos ver hemos podido quitar muchos detalles, y además ahora el test verifica el comportamiento del ciclo completo de la _request_.
 
 ```php
 final class SendProposalControllerTest extends TestCase

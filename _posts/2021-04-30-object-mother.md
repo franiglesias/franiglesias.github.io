@@ -7,6 +7,8 @@ tags: testing tdd
 
 El patrón Object Mother nos ayuda a tener ejemplos de entidades y value objects coherentes en toda la suite.
 
+[Versión actualizada](/object-mother-2/)
+
 Parece que este patrón fue inventado en [ThoughtWorks](https://martinfowler.com/bliki/ObjectMother.html) y aunque el nombre que le han dado no me emociona mucho, lo uso siempre que tengo oportunidad.
 
 ## ¿Qué problema resuelve?
@@ -23,7 +25,7 @@ El patrón Object Mother nos proporciona una forma de obtener ejemplos de manera
 
 Un Object Mother se parece a una factoría y expone métodos que nos devuelven objetos completamente montados. Estos métodos aportan significado a nuestros ejemplos, de tal modo que podemos pedirle objetos que cumplan ciertas características.
 
-Veamos un ejemplo con una entidad Customer. Nos vamos a centrar en una propiedad _edad_.
+Veamos un ejemplo con una entidad `Customer`. Nos vamos a centrar en una propiedad _edad_.
 
 ```php
 class Customer
@@ -41,7 +43,7 @@ class Customer
 }
 ```
 
-Nuestro Object Mother se llama `CustomerExamples` y expone varios métodos cuyo nombre describe las características del objeto `Customer` que vamos a obtener.
+Nuestro _Object Mother_ se llama `CustomerExamples` y expone varios métodos cuyo nombre describe las características del objeto `Customer` que vamos a obtener.
 
 ```php
 class CustomerExamples
@@ -71,7 +73,7 @@ class CustomerExamples
 }
 ```
 
-Los métodos se definen estáticos para poder traernos fácilmente los ejemplos. En ese sentido, el Object Mother es más una colección de funciones que construyen objetos. No hay ninguna norma que nos oblique a hacerlo así, pero resulta cómoda:
+Los métodos se definen estáticos para poder traernos fácilmente los ejemplos. En ese sentido, el _Object Mother_ no sería más que una colección de funciones que construyen objetos. No hay ninguna norma que nos oblique a hacerlo así, pero resulta cómoda:
 
 ```php
 class CustomerTest extends TestCase
@@ -90,7 +92,7 @@ class CustomerTest extends TestCase
 
 El método `dummy` nos indica que es un objeto del que nos dan igual sus propiedades concretas. Un típico uso podría ser el de un objeto que se obtiene de un repositorio, se hace o no algún procesamiento y se envía a otro servicio.
 
-Por su parte, el método `random` generará un objeto variando cada vez una propiedad de manera aleatoria, lo que nos puede servir para escribir tests que nos demuestren que cierto comportamiento es independientes de esa variación.
+Por su parte, el método `random` generará un objeto variando cada vez una propiedad de manera aleatoria, lo que nos puede servir para escribir tests que nos demuestren que cierto comportamiento es independiente de esa variación.
 
 Los métodos `underAge` y `adult`, nos proporcionan ejemplos con una característica específica que nos interesa controlar. Es ideal para las particiones de clase equivalente. En lugar de ofrecer un ejemplo específico, podrías incluso aleatorizarlo dentro los límites de esa categoría:
 
@@ -126,7 +128,7 @@ class CustomerExamples
 
 Aparte del hecho de proporcionarnos un lugar único en el que obtener ejemplos para tests, conseguimos algunos beneficios extra:
 
-Por ejemplo, si la instanciación de los objetos cambiase con el tiempo, tendríamos un lugar único en el que realizar los cambios necesarios. Al fin y al cabo, no deja de ser una factoría.
+Por ejemplo, si la instanciación de los objetos cambiase con el tiempo, tendríamos un lugar único en el que realizar los cambios necesarios. Al fin y al cabo, no deja de ser un builder limitado.
 
 Los métodos semánticos nos permiten asociar ejemplos de diversos objetos entre sí en los tests de manera significativa para nosotras, creando conjuntos coherentes de condiciones. 
 
@@ -152,9 +154,9 @@ class CustomerTest extends TestCase
 }
 ```
 
-Otro beneficio es que es bastante fácil discutir acerca de ejemplos concretos. Están identificados y podemos referirnos a ellos de una manera completa (CustomerUnderAge) y los usamos en distintos tests.
+Otro beneficio es que es bastante fácil discutir acerca de ejemplos concretos. Están identificados y podemos referirnos a ellos de una manera completa (`CustomerUnderAge`) y los usamos en distintos tests.
 
-Además, siempre podemos añadir nuevos ejemplos fácilmente. Esto es, si los ejemplos existentes no nos convencen por la razón que sea, podemos añadir otros específicos para las necesidades de un test concreto o un conjunto de ellos. Si aparecen nuevas categorías de esa entidad concreta, podemos añadir nuevos ejemplos.
+Además, siempre podremos añadir nuevos ejemplos fácilmente. Esto es, si los ejemplos existentes no nos convencen por la razón que sea, podemos añadir otros específicos para las necesidades de un test concreto o un conjunto de ellos. Si aparecen nuevas categorías de esa entidad concreta, podemos añadir nuevos ejemplos.
 
 ## Uso avanzado
 

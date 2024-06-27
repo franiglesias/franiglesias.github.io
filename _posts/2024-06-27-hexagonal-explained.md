@@ -51,7 +51,7 @@ Este hecho ha sido tanto un motivo de sorpresa para los autores como una indicac
 
 > I'm noticing a whole lot of "when we do it wrong, it doesn't work. So: it doesn't work." for many "it"s. 
 > Drives me a little bonkers, because I never know really how to reply.
-> "Yep, when you do it wrong, it quite likely doesn't work. I hope you one day get to see how nicely it works when you do it right.
+> "Yep, when you do it wrong, it quite likely doesn't work. I hope you one day get to see how nicely it works when you do it right".
 
 [Alistair Cockburn](https://x.com/TotherAlistair/status/1806081310584168712)
 

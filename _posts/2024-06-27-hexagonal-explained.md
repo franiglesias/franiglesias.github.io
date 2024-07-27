@@ -83,6 +83,10 @@ Sin embargo, es un problema grave. Si existe un término y cada persona tiene un
 
 Esto es algo que veo frecuentemente en el sector: infinidad de versiones propias y distorsionadas de un montón de conceptos, que deberían tener un significado compartido.
 
+## Recurre a la fuente
+
+Felizmente, ahora contamos con este libro que recopila todos los recursos que necesitas para entender adecuadamente este patrón, incluyendo su formulación original. Por cierto, puedes [leerla en español en esta traducción](https://jmgarridopaz.github.io/content/arquitecturahexagonal.html).
+
 ## ¿Y qué hay de los artículos de The Talking Bit?
 
 Pues, ni tan mal. Claro que tiene un poco de trampa: tuve ayuda.

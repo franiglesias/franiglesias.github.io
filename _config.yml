@@ -87,4 +87,4 @@ exclude:
 
 theme: jekyll-theme-midnight
 
-future: true
+future: false

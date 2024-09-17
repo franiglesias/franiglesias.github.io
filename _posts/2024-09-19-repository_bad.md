@@ -15,7 +15,7 @@ Este repositorio, por definición, se comporta como una colección en memoria en
 
 En un mundo perfecto, el repositorio tiene disponibilidad inmediata, capacidad de almacenamiento infinita y persistencia infinita. Para simular eso necesitamos una base de datos física, pues no existe la memoria ilimitada ni eterna.
 
-El patrón repositorio se implementa como Dependencia Configurable. Se modela como una abstracción en el dominio en forma de interfaz y se implementan adaptadores que usan las tecnologías específicas.
+El patrón repositorio se implementa como [Dependencia Configurable](/configurable_dependency/). Se modela como una abstracción en el dominio en forma de interfaz y se implementan adaptadores que usan las tecnologías específicas.
 
 Ahora bien, desde el punto de vista del dominio el Repositorio se comporta como una colección en la que encontrar las entidades cuando las necesita. Los comportamientos que esperamos del repositorio son:
 
@@ -29,7 +29,7 @@ Y hasta aquí el patrón repositorio.
 
 Por lo general abusamos de los repositorios, lo que lleva a un montón de problemas. Y este abuso se produce porque no tenemos en cuenta la regla fundamental:
 
-Los repositorios no son la puerta de acceso a la base de datos.
+> Los repositorios no son la puerta de acceso a la base de datos.
 
 Cuando diseñes un repositorio debes concebirlo como una colección. Nunca como una tabla o conjunto de tablas en la base de datos.
 

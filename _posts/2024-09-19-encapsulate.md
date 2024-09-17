@@ -274,13 +274,61 @@ Esto nos lleva a las colecciones. Tanto si se trata de colecciones de conceptos,
 
 Los lenguajes suelen ofrecer algunas estructuras nativas para dar soporte a colecciones de datos, desde simples arrays a diccionarios, pilas o colas.
 
-Pero, de nuevo, como estructuras genéricas que son nos proporcionan toda una retahíla de métodos que pueden no tener sentido en el dominio. 
+Pero, de nuevo, como estructuras genéricas que son nos proporcionan toda una retahíla de métodos que pueden no tener sentido en el dominio. `listOfEmails` expone todos los métodos característicos de un _array_.
+
+```typescript
+const listOfEmails = [
+  new EmailString('pepa@example.com'),
+  new EmailString('fran@example.com'),
+  new EmailString('pulpo@example.com'),
+];
+```
+
+Como ya hemos visto, el problema es que eso permite manipular la colección de formas que seguramente no tienen sentido en el dominio. Podría ser un grupo de emails autorizados que debe recibir ciertas notificaciones, o que están autorizados a realizar ciertas operaciones, etc. Probablemente, no nos interesa que se pueda manipular. En cambio, a lo mejor sí necesitamos verificar que la lista incluye un cierto email.
 
 La opción más adecuada es definir objetos Colección que no extiendan de una estructura de datos nativa, o de un tipo de Colección abstracto que hayas definido, sino que la usen por composición. Internamente, los implementas con la estructura de datos que más te convenga, pero el código que los consume no lo sabe.
 
+```typescript
+const notifyTo = new MembersToNotify(['pepa@example.com', 'fran@example.com', 'pulpo@example.com']);
+
+if (notifyTo.includes('pulpo@example.com')) {
+    console.log('User must be notified');
+}
+```
+
+```typescript
+const notifyTo = new MembersToNotify(['pepa@example.com', 'fran@example.com', 'pulpo@example.com']);
+
+if (notifyTo.includes('pulpo@example.com')) {
+    console.log('User must be notified');
+}
+```
+
+La implementación interna nos da igual, puede ser un array u otro tipo de estructura.
+
 Estas colecciones deberán exponer aquellos métodos que tengan sentido en el dominio o contexto en que se usan. Así, por ejemplo, un objeto LineasDeFactura podría darnos métodos para calcular totales, desglose de impuestos. Si existe una regla de negocio que impida modificar una factura emitida, no tendría que exponer métodos para añadir, borrar, modificar líneas. Y, en caso de que sí, podríamos hacer uso de inmutabilidad.
 
+```typescript
+class InvoiceLines {
+    private lines: InvoiceLine[];
+    
+    totalAmount(): float {}
+    totalTaxes(): float {}
+    totalAmountBeforeTaxes() float {}
+}
+```
+
 Sandi Metz llega a recomendar que si usamos una estructura de datos dentro de una clase, nunca accedamos a ella directamente, sino que proporcionemos métodos privados para obtener datos o comportamientos. Se trata de que la propia clase sea ignorante de la implementación.
+
+```typescript
+class InvoiceLines {
+    private lines: InvoiceLine[];
+
+    private getLine(pos: integer): InvoiceLine {
+        return this.lines[pos];
+    }
+}
+```
 
 Como señalamos más arriba, este enfoque te permite modificar la implementación a placer sin que el resto del código se resienta, a la vez que proteges la integridad del estado interno de la colección. Todo ello, ayuda a reducir riesgos y costes de desarrollo.
 

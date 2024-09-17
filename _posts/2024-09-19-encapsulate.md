@@ -9,21 +9,264 @@ Los tipos nativos y estructuras de datos ofrecidos por los lenguajes suelen ser 
 
 ## Conceptos simples
 
-Consideremos, por ejemplo, el Email. Lo podríamos modelar con un tipo String. En muchos lenguajes, los objetos String exponen una gran variedad de métodos para manipularlos. Pero en el caso de un email, posiblemente solo nos interesaría tener algún método para extraer su dominio, quizá el nombre de usuario... y poco más.
+Consideremos, por ejemplo, el Email. Lo podríamos modelar con un tipo _String_. En muchos lenguajes, los objetos _String_ exponen una gran variedad de métodos para manipularlos. Pero en el caso de un email, posiblemente solo nos interesaría tener algún método para extraer su dominio, quizá el nombre de usuario... y poco más.
+
+```typescript
+const email = 'fran@example.com';
+
+const parts = email.split('@');
+
+const user = parts[0];
+const domain = parts[1];
+```
 
 De hecho, sería prudente no permitir que se puedan usar más métodos para manipular el email, que es un dato que queremos mantener íntegro desde que lo validamos al entrar en el sistema.
 
-Por eso, no es buena idea modelar un email, o cualquier otro concepto simple, mediante un objeto de tipo String. Pero tampoco es buena idea extender el tipo String mediante herencia para crear el tipo o clase Email. Eso nos hace arrastrar todos los métodos de String en Email, que es justo lo que queremos evitar. Por no decir, que nos vincula con absolutamente todos los demás tipos derivados, violando el principio de sustitución de Liskov. Ahí es nada.
+Por otro lado, validar que el email al menos tiene la estructura correcta también requiere de un cierto esfuerzo. Por ejemplo, añadir una función de validación:
+
+```typescript
+function validateEmail(email: string) {
+  const result = email
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    );
+  if (result == null) {
+    throw new Error('Invalid email');
+  }
+}
+```
+
+Y usarla siempre que vayamos a usar alguna variable que pueda ser un email. Pero hay que acordarse:
+
+```typescript
+const email = 'fran@example.com';
+
+validateEmail(email);
+
+const parts = email.split('@');
+
+const user = parts[0];
+const domain = parts[1];
+```
+
+Por eso, no es buena idea modelar un email, o cualquier otro concepto simple, mediante un objeto de tipo String. Pero tampoco es buena idea extender el tipo String mediante herencia para crear el tipo o clase Email. 
+
+```typescript
+class EmailString extends String {
+  domain(): string {
+    return this.split('@')[1];
+  }
+
+  user(): string {
+    return this.split('@')[0];
+  }
+}
+```
+
+Podemos añadir una validación, por supuesto. Y como se fuerza cada vez que creamos una instancia, no necesitamos preocuparnos, ya que si tenemos un objeto `EmailString` sabremos que es un email.
+
+```typescript
+class EmailString extends String {
+  constructor(email: string) {
+    const result = email
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      );
+    if (result == null) {
+      throw new Error('Invalid email');
+    }
+    super(email);
+  }
+  domain(): string {
+    return this.split('@')[1];
+  }
+
+  user(): string {
+    return this.split('@')[0];
+  }
+}
+```
+
+Sobre la validación en constructores hay debate, pero no vamos a entrar en ello ahora.
+
+El problema que tenemos es que este diseño nos hace arrastrar todos los métodos de String en Email, que es justo lo que queremos evitar. Por no decir que nos vincula con absolutamente todos los demás tipos derivados, violando el principio de sustitución de Liskov. Ahí es nada. En este ejemplo parece bastante inofensivo, pero... ¿Para qué demonios querríamos saber la longitud en caracteres de un email fuera de lo que son cuestiones de presentación? Los métodos de String son utilidades generales para cualquier string, pero un Email no necesita esos comportamientos.
+
+```typescript
+email = new EmailString('fran@example.com');
+
+const domain = email.domain();
+const user = email.user();
+
+const lenght = email.length;
+```
 
 La alternativa que nos queda es definir el tipo Email por composición. La propiedad que contiene su valor puede ser perfectamente de tipo String. Pero, al ser privada, sus métodos no son expuestos por Email, que ofrecerá una interfaz específica con todas las acciones que nuestro dominio requiera.
 
-Otro beneficio es que de este modo tenemos manos libres para implementar Email como nos venga mejor, sin que el resto del código tenga que enterarse. Así, si una actualización del lenguaje nos proporciona una forma mejor, podemos utilizarla sin afectar al conjunto de la aplicación.
+```typescript
+class Email {
+    private email: string;
+
+    constructor(email: string) {
+        this.email = email;
+    }
+
+    domain(): string {
+        return this.email.split('@')[1];
+    }
+
+    user(): string {
+        return this.email.split('@')[0];
+    }
+}
+```
+
+Podemos implementar validación:
+
+```typescript
+class Email {
+  private email: string;
+
+  constructor(email: string) {
+    const result = email
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      );
+    if (result == null) {
+      throw new Error('Invalid email');
+    }
+    this.email = email;
+  }
+
+  domain(): string {
+    return this.email.split('@')[1];
+  }
+
+  user(): string {
+    return this.email.split('@')[0];
+  }
+}
+```
+
+Otro beneficio es que de este modo tenemos manos libres para implementar Email como nos venga mejor, sin que el resto del código tenga que enterarse. Así, si una actualización del lenguaje nos proporciona una forma mejor, podemos utilizarla sin afectar al conjunto de la aplicación. También podemos refactorizar a un mejor diseño. Por ejemplo, extraigamos la validación a una función privada para mayor claridad:
+
+```typescript
+class Email {
+  private email: string;
+
+  constructor(email: string) {
+    this.assertIsEmail(email);
+    this.email = email;
+  }
+
+  domain(): string {
+    return this.email.split('@')[1];
+  }
+
+  user(): string {
+    return this.email.split('@')[0];
+  }
+
+  private assertIsEmail(email: string) {
+    const result = email
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      );
+    if (result == null) {
+      throw new Error('Invalid email');
+    }
+  }
+}
+```
 
 ## Conceptos complejos
 
-Aquí incluimos cualquier concepto que requiera dos o más datos simples. Como normalmente no existen tipos primitivos para estos conceptos, usamos Structs o Clases para modelarlos.
+Aquí incluimos cualquier concepto que requiera dos o más datos simples. Como normalmente no existen tipos primitivos para estos conceptos, usamos Structs o Clases para modelarlos. Lo bueno es que este tipo de objetos no pueden extenderse de otros.
+
+```typescript
+class FullName {
+    private name: string;
+    private surname: string;
+
+    constructor(name: string, surname: string) {
+        this.name = name;
+        this.surname = surname;
+    }
+}
+```
 
 Aplicaríamos los mismos principios. La clase que definimos solo expone aquellos métodos que tengan relevancia para el dominio y se ocupa de mantener la necesaria consistencia e integridad de su estado.
+
+Pero, ojo: no hay que crear abstracciones solo porque podemos y queremos _aprovechar_ funcionalidad en la clase madre. Algo como:
+
+```typescript
+abstract class FullName {
+    private name: string;
+    private surname: string;
+
+    constructor(name: string, surname: string) {
+        this.name = name;
+        this.surname = surname;
+    }
+}
+
+class CompanyName extends FullName {
+    
+} 
+```
+
+`CompanyName` no puede extender de `FullName` porque no constituye una especialización. Y además, se le obliga a arrastrar cosas de `FullName` que no requiere.
+
+El razonamiento de base en este tipo de jerarquías es que ambos serían nombres y, salvo la construcción, posiblemente necesiten el mismo tipo de funcionalidades. Pero la abstracción en este caso es incorrecta. Si históricamente `FullName` hubiese sido introducido antes que `CompanyName` lo suyo sería extraer una abstracción. Por ejemplo, una interfaz:
+
+```typescript
+interface EntityName {
+    full(): string;
+    list(): string;
+}
+```
+Y cada una de las clases la implementaría a su modo particular:
+
+```typescript
+class FullName implements EntityName{
+    private name: string;
+    private surname: string;
+
+    constructor(name: string, surname: string) {
+        this.name = name;
+        this.surname = surname;
+    }
+
+    full(): string {
+        return this.name + ' ' + this.surname;
+    }
+
+    list(): string {
+        return this.surname + ' ' + this.name;
+    }
+}
+```
+
+```typescript
+class CompanyName implements EntityName{
+    private name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    full(): string {
+        return this.name;
+    }
+
+    list(): string {
+        return this.name;
+    }
+}
+```
 
 ## Colecciones
 

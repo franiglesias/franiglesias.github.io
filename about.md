@@ -24,13 +24,11 @@ Anyway, the contents could be influenced by my context during the time I wrote a
 
 ### Currently working at
 
-[The Hotels Network](https://thehotelsnetwork.com/es/)
+[Qualifyze](https://www.qualifyze.com)
 
-In _The Hotels Network_ we help hotels to increase sales through their direct channel.
+We’re building the trust layer for global supply chains. I serve as Staff Software Engineer, helping all tech+product teams to grow in excellence.
 
-My role here is Senior Software Engineer in one of the Backend teams. (Golang and PHP)
-
-### Collaborating with
+### Organizer at
 
 * [Crafters Vigo](https://www.meetup.com/es-ES/craftersvigo/): local community of practice for improving our skills as developers.
 * [PulpoCon](https://pulpocon.es): annual developers conference inspired by the software crafters movement.
@@ -39,10 +37,16 @@ My role here is Senior Software Engineer in one of the Backend teams. (Golang an
 ### Open Source projects
 
 * [VersionTag](https://github.com/franiglesias/versiontag): shell utility to help you maintain your projects' semantic versioning.
-* [Golden](https://github.com/franiglesias/golden): golang library for snapshot, approval and combination testing.
+* [Golden](https://github.com/franiglesias/golden): golang library for snapshot, approval and combination testing (PHP version, too).
 * [CSV](https://github.com/franiglesias/csv): pretty simple PHP library for reading and writing csv files.
 
 ### Former employers
+
+[The Hotels Network](https://thehotelsnetwork.com/es/)
+
+_The Hotels Network_ help hotels to increase sales through their direct channel.
+
+My role here is Senior Software Engineer in one of the Backend teams. (Golang and PHP)
 
 [Codurance](https://www.codurance.com) 
 

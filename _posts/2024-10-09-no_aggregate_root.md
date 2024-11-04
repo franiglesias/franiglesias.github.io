@@ -137,6 +137,57 @@ El código es una simplificación, pero debería ser suficiente para entender el
 
 Soy consciente de que algunas personas estáis pensando en cosas como _¿y qué pasa si rehidrato mis agregados con reflection y nunca ejecuto su constructor?_. Pues nada: es cuestión de investigar un poco y hacer uso de un patrón tipo _lazy loading_ o, mejor aún: separar tus entidades de dominio del modelo de persistencia, que podrías construir con DTOs y que se líen ellos con las peculiaridades de tu ORM. 
 
+Aquí un ejemplo de como podríamos hacerlo:
+
+```typescript
+import {SomethingWasDone} from "./SomethingWasDone";
+import {ProducesEvents} from "./ProducesEvents";
+import {EventBag} from "./EventBag";
+import {DomainEvent} from "./DomainEvent";
+
+export class SomeEntityWithExtraCare implements ProducesEvents {
+    eventBag: EventBag;
+
+    constructor() {
+        this.eventBag = new EventBag();
+    }
+
+    public doSomething(): void {
+        const event = new SomethingWasDone('Something happened');
+        this.recordEvent(event);
+    }
+    
+    public getEvents(): DomainEvent[] {
+        return this.recordedEvents();
+    }
+
+    /*
+    * Protect ourselves from the possibility of the eventBag being undefined or
+    * event the concrete mechanism of recording events changing in the future. 
+    * */
+    private recordedEvents(): DomainEvent[] {
+        if (this.eventBag === undefined) {
+            this.eventBag = new EventBag();
+            return [];
+        }
+        const recorded = this.eventBag.getEvents();
+        this.eventBag = new EventBag();
+        return recorded;
+    }
+
+    /*
+    * Protect ourselves from the possibility of the eventBag being undefined or
+    * event the concrete mechanism of recording events changing in the future. 
+    * */
+    private recordEvent(event: SomethingWasDone): void {
+        if (this.eventBag === undefined) {
+            this.eventBag = new EventBag();
+        }
+        this.eventBag.record(event);
+    }
+}
+```
+
 [En este repo se puede ver el ejemplo más detallado](https://github.com/franiglesias/my-ts/tree/main/src/event-collecting-example).
 
 ## Conclusiones

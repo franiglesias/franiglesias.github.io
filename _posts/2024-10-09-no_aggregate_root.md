@@ -109,16 +109,26 @@ class EventBag {
 Como `EventBag` es un objeto `newable` lo podemos inicializar en cualquier momento, no es una dependencia que debamos inyectar. Nos quedaría algo así:
 
 ```typescript
-class SomeEntity implements ProducesEvents {
-    private eventBag:EventBag;
-    
-    constructor (){
+import {SomethingWasDone} from "./SomethingWasDone";
+import {ProducesEvents} from "./ProducesEvents";
+import {EventBag} from "./EventBag";
+import {DomainEvent} from "./DomainEvent";
+
+export class SomeEntity implements ProducesEvents {
+    eventBag: EventBag;
+
+    constructor() {
         this.eventBag = new EventBag();
-        this.eventBag.record(new SomeEntityWasCreated());
     }
-    
-    public getEvents():[] {
-        return this.eventBag().getEvents();
+
+    public doSomething() {
+        this.eventBag.record(new SomethingWasDone('Something happened'));
+    }
+
+    public getEvents(): DomainEvent[] {
+        const recorded = this.eventBag.getEvents();
+        this.eventBag = new EventBag()
+        return recorded;
     }
 }
 ```
@@ -126,6 +136,8 @@ class SomeEntity implements ProducesEvents {
 El código es una simplificación, pero debería ser suficiente para entender el uso de la composición en lugar de la herencia para resolver este problema.
 
 Soy consciente de que algunas personas estáis pensando en cosas como _¿y qué pasa si rehidrato mis agregados con reflection y nunca ejecuto su constructor?_. Pues nada: es cuestión de investigar un poco y hacer uso de un patrón tipo _lazy loading_ o, mejor aún: separar tus entidades de dominio del modelo de persistencia, que podrías construir con DTOs y que se líen ellos con las peculiaridades de tu ORM. 
+
+[En este repo se puede ver el ejemplo más detallado](https://github.com/franiglesias/my-ts/tree/main/src/event-collecting-example).
 
 ## Conclusiones
 

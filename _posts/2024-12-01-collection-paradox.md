@@ -30,7 +30,7 @@ class Order
     public function total(): float
     {
         $total = 0;
-        foreach ($this->items as $item) {
+        foreach ($this->allItems() as $item) {
             $total += $item->price();
         }
         return $total;
@@ -39,6 +39,11 @@ class Order
     private function item($position int): float
     {
         return $this->items[$position];
+    }
+    
+    private function allItems(): array
+    {
+        return $this->items;
     }
    
 }

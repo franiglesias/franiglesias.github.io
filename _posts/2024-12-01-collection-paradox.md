@@ -30,7 +30,7 @@ class Order
     public function total(): float
     {
         $total = 0;
-        foreach ($this->allItems() as $item) {
+        foreach ($this->items() as $item) {
             $total += $item->price();
         }
         return $total;
@@ -41,7 +41,7 @@ class Order
         return $this->items[$position];
     }
     
-    private function allItems(): array
+    private function items(): array
     {
         return $this->items;
     }
@@ -97,7 +97,7 @@ class Items
 }
 ```
 
-Tanto es así que sus los consumidores de `Items` no tienen ni por qué saber que se trata de una colección. Es tan solo un objeto al que podemos enviarle el mensaje `total()` y nos devolverá el total de los elementos que contiene.
+Tanto es así que los consumidores de `Items` no tienen ni por qué saber que se trata de una colección. Es tan solo un objeto al que podemos enviarle el mensaje `total()` y nos devolverá el total de los elementos que contiene.
 
 ```php
 class Order

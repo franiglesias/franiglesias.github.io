@@ -18,8 +18,8 @@ layout: basic
         {{ content }}
     </div>
 
-    <div class="date">
-        <p>{{ page.date | date: "%B %e, %Y" }}</p>
+    <div class="metadata">
+        <p>Publicado: {{ page.date | date: "%B %e, %Y" }}</p>
         <p>Etiquetas:
             {% for tag in page.tags %}
             {% capture tag_name %}{{ tag }}{% endcapture %}

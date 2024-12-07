@@ -13,7 +13,7 @@ layout: basic
         <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
         <div class="entry">
             {{ post.content }}
-            <p class="date">({{ post.date | date: "%Y/%m/%d" }})</p>
+            <p class="metadata">({{ post.date | date: "%Y/%m/%d" }})</p>
         </div>
     </article>
     {% endfor %}

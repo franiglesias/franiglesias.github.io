@@ -981,9 +981,10 @@ article div.authors {
 }
 
 article div.authors p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-style: oblique;
   text-align: center;
+  color: $copy_code_bg;
 }
 
 article.post {
@@ -991,7 +992,10 @@ article.post {
 }
 
 article.post.post.full-post h1 {
-  text-align: center;
+  text-align: left;
+  background-color: $tags_bg;
+  margin: -3rem -7rem 3rem -7rem;
+  padding: 2rem 7rem;
 }
 
 p code {
@@ -1040,7 +1044,7 @@ article {
 
         & > p:first-child {
           color: $intro_text_color;
-          font-size: 2rem;
+          font-size: 1.5rem;
           line-height: 150%;
           text-align: left;
           margin: 2rem 0 5rem 0;
@@ -1298,3 +1302,32 @@ div.footnotes {
   }
 }
 
+
+.metadata {
+  border: none;
+  padding: 2rem 1rem;
+  font-size: smaller;
+  font-family: $code_font;
+  border-radius: 0.3rem;
+  background-color: #EEE;
+  line-height: 1rem;
+  margin-top: 8rem;
+  color: $copy_code_bg;
+
+  .tag {
+    background-color: $tags_bg;
+    color: $tag_bg;
+    padding: 0.1rem 0.3rem;
+  }
+
+  button.tag {
+    border: none;
+    background-color: $tag_bg_in_list;
+    color: $tags_bg;
+
+    &:hover {
+      background-color: $tag_bg;
+      color: #ffffff;
+    }
+  }
+}

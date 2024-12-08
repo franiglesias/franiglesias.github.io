@@ -89,7 +89,7 @@ Si no podemos determinar la necesidad de capturar una excepción, lo mejor será
  
 ### Niveles de anidación de condicionales
  
-Las condicionales aumentan la complejidad del código y, si están anidadas, mucho más. Aquí tenemos hasta 6 niveles de anidación, con bloques `else` o `elseif` incluídos, además de patas de condicionales que incluyen nuevas condicionales. En este caso, parte del problema podría venir del hecho de que se esté aplicando un [patrón _single exit point_](/2017-10-21-lidiando-con-el-patron-single-exit-point) en lugar de _return early_, lo que fuerza en parte la complejidad del método.
+Las condicionales aumentan la complejidad del código y, si están anidadas, mucho más. Aquí tenemos hasta 6 niveles de anidación, con bloques `else` o `elseif` incluídos, además de patas de condicionales que incluyen nuevas condicionales. En este caso, parte del problema podría venir del hecho de que se esté aplicando un [patrón _single exit point_](/lidiando-con-el-patron-single-exit-point) en lugar de _return early_, lo que fuerza en parte la complejidad del método.
  
 Por ejemplo, el primer nivel de condicionales tras el bloque `try… catch` nos indica que hay tres cursos de acción posibles:
  
@@ -137,7 +137,7 @@ Una forma de abordarlo es ir identificando outputs que correspondan a determinad
 
 ### Primer test y primeros problemas
 
-El primer caso que parece fácil testear es el `elseif` de la línea 47, que comprueba si el pedido tiene asignado un localizador de proveedor y devuelve un mensaje de que no se ha podido realizar. En el test necesitaremos un [stub](/2017-05-19-del-ojimetro-al-tdd) de `Order` que devuelva el `providerLocator` vacío.
+El primer caso que parece fácil testear es el `elseif` de la línea 47, que comprueba si el pedido tiene asignado un localizador de proveedor y devuelve un mensaje de que no se ha podido realizar. En el test necesitaremos un [stub](/del-ojimetro-al-tdd) de `Order` que devuelva el `providerLocator` vacío.
 
 Dado que nuestras clases existentes no están bajo un namespace tenemos que configurar Composer para autocargarlas. Podemos utilizar la estrategia de _classmap_, indicando los directorios en los cuales queremos buscar las clases.
 
@@ -337,7 +337,7 @@ En la rama de proveedores no asociados nos encontraremos seguramente con varios 
 
 Por una parte, nuestros escenarios tienen de momento dos ejes de variación: una es el proveedor (o tipo de proveedor) y otro es el status del pedido. Ahora nos encontraremos con un tercer eje, que será el método de pago, y hasta con un cuarto: el Reseller: hemos podido ver que para ciertos Resellers hay que aplicar un trato especial.
 
-Es posible que, a estas alturas, hayas comenzado a vislumbrar posibles formas de atacar el refactor de este método (esto huele bastante a [Chain of Responsibility](/2016-12-05-cadena-de-responsabilidad) ). Pero no queremos ir demasiado rápido. En primer lugar, tenemos que caracterizar todo el comportamiento del método. En segundo lugar, es conveniente realizar el refactor aplicando el principio de _baby-steps_. Es decir, en lugar de reescribir el método, que sería lo que iba a ocurrir si intentamos aplicar un patrón CoR sin más dilación, iremos en pasos más cortos, limpiando la implementación actual hasta que el propio código nos revele (o no) que el patrón es aplicable.
+Es posible que, a estas alturas, hayas comenzado a vislumbrar posibles formas de atacar el refactor de este método (esto huele bastante a [Chain of Responsibility](/cadena-de-responsabilidad) ). Pero no queremos ir demasiado rápido. En primer lugar, tenemos que caracterizar todo el comportamiento del método. En segundo lugar, es conveniente realizar el refactor aplicando el principio de _baby-steps_. Es decir, en lugar de reescribir el método, que sería lo que iba a ocurrir si intentamos aplicar un patrón CoR sin más dilación, iremos en pasos más cortos, limpiando la implementación actual hasta que el propio código nos revele (o no) que el patrón es aplicable.
 
 ### Añadiendo el tercer eje de variación
 

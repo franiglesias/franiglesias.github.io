@@ -85,7 +85,7 @@ El cliente de Github es ligero y va muy bien en bastantes casos en los que no qu
 
 Es el gestor de paquetes con el que instalar utilidades y programas en línea de comandos. Simplifica mucho su mantenimiento. He visto que hay también una utilidad GUI, que puede ser interesante.
 
-[Homebrew](https://brew.sh/index_es.html)
+[Homebrew](https://brew.sh/es)
 [CakeBrew](https://www.cakebrew.com)
 
 ### Oh my zsh

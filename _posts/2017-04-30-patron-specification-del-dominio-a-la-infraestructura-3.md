@@ -11,7 +11,7 @@ En las entregas anteriores hemos hablado del patrón **Specification** y cómo i
 La serie **Specification: del dominio a la infraestructura** está compuesta de los siguientes artículos
 
 [Patrón Specification: del dominio a la infraestructura (1)](/patron-specification-del-dominio-a-la-infraestructura-1)  
-[Patrón Specification: del dominio a la infraestructura (2)](/patron-specificacion-del-dominio-a-la-infraestructura-2)  
+[Patrón Specification: del dominio a la infraestructura (2)](/patron-specification-del-dominio-a-la-infraestructura-2)  
 [Patrón Specification: del dominio a la infraestructura (3)](/patron-specification-del-dominio-a-la-infraestructura-3)
 
 De entrada, no hay ninguna norma que limite la complejidad de las specification. Es decir, el criterio para satisfacerla puede ser tan simple o enrevesado como sea necesario.

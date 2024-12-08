@@ -5,7 +5,7 @@ categories: articles
 tags: tb-list testing
 ---
 
-Este librito de Gojko Adzic, David Evans y Tom Roden ($10 en [Leanpub]((https://leanpub.com/50quickideas-tests))) propone exactamente 50 ideas a considerar para diseñar nuestra estrategia de testing. Me encanta particularmente esta serie de heurísticas emocionales para decidir qué tests hacer. Sencillamente genial:
+Este librito de Gojko Adzic, David Evans y Tom Roden ($10 en [Leanpub](https://leanpub.com/50quickideas-tests) propone exactamente 50 ideas a considerar para diseñar nuestra estrategia de testing. Me encanta particularmente esta serie de heurísticas emocionales para decidir qué tests hacer. Sencillamente genial:
 
 
 > Here is our set of emotional heuristics to stimulate test design, taking an emotional roller coaster of a ride along the way:

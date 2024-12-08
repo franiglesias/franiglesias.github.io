@@ -690,7 +690,7 @@ Pero nos queda bastante trabajo por hacer.
 
 Tenemos un test de aceptación que falla porque realmente no tenemos ninguna funcionalidad implementada. Sin embargo, ya hemos tomado algunas decisiones de diseño y ya empezamos a tener una idea de qué es lo que necesitamos escribir. Ya no partimos de cero, sino que tenemos un objetivo definido.
 
-En nuestra próxima entrega veremos cómo seguir adelante, moviéndonos desde el test de aceptación al nivel unitario con herramientas BDD, recurriendo a `PHPSpec`, [del cual ya hemos hablado alguna vez en este blog](/katando-PHPSpec-1).
+En nuestra próxima entrega veremos cómo seguir adelante, moviéndonos desde el test de aceptación al nivel unitario con herramientas BDD, recurriendo a `PHPSpec`, [del cual ya hemos hablado alguna vez en este blog](/katando-phpspec-1).
 
 Así que [nos vemos dentro de unos días aquí mismo](/bdd-example-2) :-)
 

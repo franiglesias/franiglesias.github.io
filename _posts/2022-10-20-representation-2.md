@@ -7,7 +7,7 @@ tags: good-practices oop php
 
 El problema: como obtener representaciones de un objeto, como DTO, serializaciones, etc., sin exponer _getters_ que únicamente se usarían para esa tarea.
 
-Anteriormente, he considerado un par de aproximaciones como el [Presenter pattern](/presenter-pattern/) o el [Representation Pattern](/representaion-pattern/), pero ninguna de las dos llegó a convencerme 100%. Sin embargo, la idea del Representation pattern estaba más o menos en el buen camino.
+Anteriormente, he considerado un par de aproximaciones como el [Presenter pattern](/presenter-pattern/) o el [Representation Pattern](/representation-pattern/), pero ninguna de las dos llegó a convencerme 100%. Sin embargo, la idea del Representation pattern estaba más o menos en el buen camino.
 
 Ha sido tras leer el capítulo [Printers instead of getters](https://www.yegor256.com/2016/04/05/printers-instead-of-getters.html) del libro _Elegant Objects_ de Yegor Bugayenko, que las piezas han empezado a encajar. El libro de Bugayenko me provoca una mezcla de sensaciones. Expone un montón de ideas interesantes y que me han ayudado a cuestionar y mejorar la forma en que programo en orientación a objetos. Sin embargo, a veces pienso que no se explica lo suficientemente bien o los ejemplos son demasiado simples o mal escogidos como para facilitar la comprensión de sus propuestas. O simplemente puede que nuestra manera de trabajar la OOP tenga poco que ver con la original.
 

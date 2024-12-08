@@ -9,10 +9,10 @@ Voy a intentar explicar cómo empezar a hacer BDD/TDD con PHPSpec.
 
 La serie **Katando PHPSpec** consta de los siguientes artículos:
 
-[Katando PHPSpec (1)](/katando-PHPSpec-1)  
-[Katando PHPSpec (2)](/katando-PHPSpec-2)  
-[Katando PHPSpec (3)](/katando-PHPSpec-3)  
-[Katando PHPSpec (4)](/katando-PHPSpec-4)
+[Katando PHPSpec (1)](/katando-phpspec-1)  
+[Katando PHPSpec (2)](/katando-phpspec-2)  
+[Katando PHPSpec (3)](/katando-phpspec-3)  
+[Katando PHPSpec (4)](/katando-phpspec-4)
 
 En esta primera parte, voy a tratar de hacer parte de [la string calculator kata](http://osherove.com/tdd-kata-1/) que nos va a permitir hacernos una idea de cómo trabajar con PHPSpec y la disciplina de TDD.
 
@@ -523,4 +523,4 @@ Sin embargo, es muy interesante percibir cómo el hecho de trabajar así nos ayu
 
 En la práctica, estos pasos llevan muy poquito tiempo y evitarán errores futuros. En muchos casos, si no en la mayoría, las clases construidas así funcionarán sin problemas cuando las integres con otras o, en todo caso, serán problemas de la comunicación entre ellas, pero no en las clases en sí mismas.
 
-En una [siguiente entrega](/katando-PHPSpec-2), seguiré avanzando en esta kata y veremos cómo el diseño final va emergiendo a partir de los requisitos que nos vamos proponiendo afrontar.
+En una [siguiente entrega](/katando-phpspec-2), seguiré avanzando en esta kata y veremos cómo el diseño final va emergiendo a partir de los requisitos que nos vamos proponiendo afrontar.

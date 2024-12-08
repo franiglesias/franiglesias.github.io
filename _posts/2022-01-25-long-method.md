@@ -11,7 +11,7 @@ En este artículo intentaré explicar mi postura con detalle. Por supuesto, esto
 
 ## ¿Que número de líneas por método se recomienda?
 
-Así, por ejemplo, en el libro [Five lines of code](https://www.manning.com/books/five-lines-of-code) Christian Clausen propone criterio de cinco líneas como máximo. [En este artículo, Jim Bird](https://dzone.com/articles/rule-30-–-when-method-class-or) sugiere una "regla de 30", tras comentar propuestas de varios autores como Steve McConnell, autor de [Code Complete]( https://www.amazon.es/dp/0735619670/ref=cm_sw_em_r_mt_dp_503FNJAJM3WXFA5N1BEH), que, a su vez, cita estudios que ponen los límites entre 65 y 200 líneas.
+Así, por ejemplo, en el libro [Five lines of code](https://www.manning.com/books/five-lines-of-code) Christian Clausen propone criterio de cinco líneas como máximo. [En este artículo, Jim Bird](https://dzone.com/articles/rule-30-–-when-method-class-or) sugiere una "regla de 30", tras comentar propuestas de varios autores como Steve McConnell, autor de [Code Complete](https://www.amazon.es/dp/0735619670/ref=cm_sw_em_r_mt_dp_503FNJAJM3WXFA5N1BEH), que, a su vez, cita estudios que ponen los límites entre 65 y 200 líneas.
 
 Una regla práctica que se suele mencionar es de la cantidad de código que cabe en una pantalla. Sin embargo, hoy por hoy esto es bastante relativo gracias a las posibilidades de personalización de los editores o incluso de los monitores disponibles. Puedes hacer caber en una pantalla casi cualquier cantidad de código y que sea legible. En ese sentido, yo trabajo habitualmente con cuerpos de letra grandes (18 puntos) en monitores HD (1080 pixels en vertical), así que un punto para los métodos pequeños en mi _setup_ particular.
 

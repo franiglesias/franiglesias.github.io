@@ -247,7 +247,7 @@ No hay una regla que nos obligue a utilizar una determinada propuesta de arquite
 
 Escoger la organización de código adecuada a nuestro proyecto es el tipo de habilidad que debemos desarrollar a través de la experiencia y la reflexión. De hecho, puedes crear tu propia arquitectura siempre que establezcas unas reglas claras y que las apliques consistentemente.
 
-Tengo sentimientos encontrados con respecto a _Vertical Slice Architecture_. Por un lado, sintonizo con la idea de organizar las aplicaciones en torno a sus prestaciones, algo que el énfasis en usar arquitecturas de capas parece que ha dejado de lado. Sin embargo, no es nada nuevo. En 1992, Ivar Jacobson ya publicaba su libro clásico [Object-Oriented Software Engineering: A Use Case Driven Approach](Object-Oriented Software Engineering: A Use Case Driven Approach).
+Tengo sentimientos encontrados con respecto a _Vertical Slice Architecture_. Por un lado, sintonizo con la idea de organizar las aplicaciones en torno a sus prestaciones, algo que el énfasis en usar arquitecturas de capas parece que ha dejado de lado. Sin embargo, no es nada nuevo. En 1992, Ivar Jacobson ya publicaba su libro clásico [Object-Oriented Software Engineering: A Use Case Driven Approach](https://www.ivarjacobson.com/publications/books/object-oriented-software-engineering-book).
 
 Por otro lado, el concepto de _feature_ tampoco es que esté muy bien definido: ¿Es un caso de uso específico? ¿Es un conjunto de casos de uso relacionados con un concepto de negocio? En este sentido, la idea de los puertos como conversaciones, tomada de la Arquitectura Hexagonal, me parece mucho más útil e incluso más coherente con la VSA que muchas de las propuestas y ejemplos que he consultado.
 

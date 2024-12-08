@@ -550,4 +550,4 @@ La conclusión de estos ejemplos es que normalmente podremos evitar el código m
 
 El código que miente es un gran enemigo de la sostenibilidad, nos hace perder el tiempo explorando pistas falsas, nos lleva por caminos equivocados y, sobre todo, nos hace tener que recorrerlo línea por línea para saber qué es lo que realmente hace.
 
-[Continuará](/codigo_mentiroso_2)
+[Continuará](/codigo-mentiroso-2)

@@ -58,7 +58,7 @@ Los *spies* son, igualmente, *dummies* o *stubs* que registran el modo en que nu
 
 La ventaja sobre los *mocks* es que con ellos podemos hacer aserciones de manera explícita en el test, es decir, una vez ejecutada la unidad bajo test le preguntamos al *spy* lo que nos interese controlar de su uso.
 
-En algunas librerías de test doubles existen métodos para usar los dobles como *spies*, pero los mocks nativos de PHPUnit son un poco pejigueros y no está bien documentado el [método para conseguirlos](https://lyte.id.au/2014/03/01/spying-with-PHPUnit/).
+En algunas librerías de test doubles existen métodos para usar los dobles como *spies*, pero los mocks nativos de PHPUnit son un poco pejigueros y no está bien documentado el [método para conseguirlos](https://lyte.id.au/2014/03/01/spying-with-phpunit/).
 
 El ejemplo anterior, podría convertirse en un spy de esta manera:
 

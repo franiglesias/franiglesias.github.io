@@ -459,4 +459,4 @@ La forma en que Golang trata los errores funciona muy bien en ciertos contextos.
 * [Handling errors only once and logging them with full context in Golang](https://www.orsolabs.com/post/go-errors-and-logs/)
 * [Top 6 Golang logging best practices](https://blog.boot.dev/golang/golang-logging-best-practices/)
 * [The Go error printing catastrophe](https://dr-knz.net/go-error-printing-catastrophe.html)
-* [Why Go's Error Handling is Awesome](https://rauljordan.com/2020/07/06/why-go-error-handling-is-awesome.html)
+* [Why Go's Error Handling is Awesome](https://rauljordan.com/why-go-error-handling-is-awesome/)

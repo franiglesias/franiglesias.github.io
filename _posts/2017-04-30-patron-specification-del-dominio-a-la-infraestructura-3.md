@@ -249,7 +249,6 @@ El beneficio es un código más explícito, como se puede ver en las líneas fin
 
 
 En la [entrega anterior](/patron-specification-del-dominio-a-la-infraestructura-2/) puse ejemplos de Specification para la capa de infraestructura.
-
 En líneas generales, la composición de especificaciones en esta capa funciona exactamente igual. Obviamente hay diferencias. En este caso, la especificación combinada es el resultado de combinar las cláusulas WHERE de cada una de las especificaciones que se combinan.
 
 En el siguiente ejemplo, uso el `ExpressionBuilder` de Doctrine para hacerlo (tal como se veía en el otro artículo). Aunque seguramente en la práctica llegue a prescindir de él, me pareció interesante añadir esta complicación para mostrar que el patrón es muy flexible. Veamos como se define el Composite AndSpecification (OrSpecification es similar):

@@ -18,7 +18,7 @@ $store[] = new AnotherClass();
 $store[] = 'random string';
 ```
 
-Es decir, la única forma de garantizar que almacenamos en un array objetos de un tipo determinado, y siempre del mismo, es controlarlo en el momento de añadirlo, pero también en el de usarlo ya que entre un punto y otro del flujo puede haber pasado cualquier cosa con nuestro array.
+Es decir, la única forma de garantizar que almacenamos en un array objetos de un tipo determinado, y siempre del mismo, es controlarlo en el momento de añadirlo, pero también en el de usarlo, ya que entre un punto y otro del flujo puede haber pasado cualquier cosa con nuestro array.
 
 Una solución es encapsular el array en algún tipo de objeto Collection, que se encargue de asegurar que solo incorporamos objetos válidos y que pueda realizar ciertas operaciones con ellos, garantizándonos la coherencia de los datos en todo momento.
 
@@ -34,7 +34,7 @@ Incluso parece que tendremos una implementación canónica en un futuro
 
 http://php.net/manual/en/class.ds-collection.php
 
-Sin embargo siempre es interesante reinventar la rueda para profundizar en un concepto, así que mi intención es desarrollar una clase Collection usando TDD e ilustrando el proceso de desarrollo. [El proyecto lo pongo en Github](https://github.com/franiglesias/collections) por si te interesa seguirlo más en detalle.
+Sin embargo, siempre es interesante reinventar la rueda para profundizar en un concepto, así que mi intención es desarrollar una clase Collection usando TDD e ilustrando el proceso de desarrollo. [El proyecto lo pongo en Github](https://github.com/franiglesias/collections) por si te interesa seguirlo más en detalle.
 
 ## ¿Qué tendría que tener una clase Collection?
 
@@ -71,7 +71,7 @@ class CollectionTest extends TestCase
 }
 ```
 
-Es posible este test acabe desapareciendo, una vez que hayamos hecho avanzar un poco el código. La ventaja es que no hay que hacer mucho más que definir la clase para que el test pase, lo que viene siendo un código mínimo de producción.
+Es posible este test, termine por desaparecer, una vez que hayamos hecho avanzar un poco el código. La ventaja es que no hay que hacer mucho más que definir la clase para que el test pase, lo que viene siendo un código mínimo de producción.
 
 ```php
 <?php
@@ -121,7 +121,7 @@ class Collection
 }
 ```
 
-En fin, puede que te parezca que de momento vamos muy lentos. Esto es lo que Kent Beck llama _baby steps_ (acabo de leerme su libro de TDD by example, así que déjame posturear un poco). También dice que cada quien tiene que encontrar el tamaño ideal de sus _baby steps_ incluso dependiendo de cómo nos estemos encontrando en cada fase de desarrollo. Es decir, no hay una medida fija de cuál es el mínimo test o el mínimo código de producción, sino que es algo que podemos modular en función de las necesidades que percibimos al trabajar.
+En fin, puede que te parezca que de momento vamos muy lentos. Esto es lo que Kent Beck llama _baby steps_ (acabo de leerme su libro de _TDD by example_, así que déjame _posturear_ un poco). También dice que cada quien tiene que encontrar el tamaño ideal de sus _baby steps_ incluso dependiendo de cómo nos estemos encontrando en cada fase de desarrollo. Es decir, no hay una medida fija de cuál es el mínimo test o el mínimo código de producción, sino que es algo que podemos modular en función de las necesidades que percibimos al trabajar.
 
 ## Pongamos un poco de comportamiento aquí
 
@@ -172,7 +172,7 @@ Dos cosas interesantes aquí:
 
 La primera es: ¿por qué testeamos ahora y no antes la capacidad de añadir elementos a la lista? Este es un pequeño debate que mantuve conmigo mismo mientras iba escribiendo. Lo cierto es que el test de la colección vacía es más pequeño y el código que me pide añadir es también menor. Una colección vacía no deja de ser una colección. La siguiente cosa más complicada es tener una colección con al menos un elemento.
 
-La segunda está en la línea `$this->append(new class{});`. Se trata de una [clase anónima](http://php.net/manual/es/language.oop5.anonymous.php "PHP: Clases anónimas - Manual"). Es un constructo del lenguaje bastante interesante, con ciertas similitudes con las funciones anónimas, para definir clases sobre la marcha. En este caso nos sirve para obtener un objeto sin tener que definir una clase particular.
+La segunda está en la línea `$this->append(new class{});`. Se trata de una [clase anónima](http://php.net/manual/es/language.oop5.anonymous.php). Es un constructo del lenguaje bastante interesante, con ciertas similitudes con las funciones anónimas, para definir clases sobre la marcha. En este caso nos sirve para obtener un objeto sin tener que definir una clase particular.
 
 Y esta es mi propuesta para pasar el test:
 
@@ -259,7 +259,7 @@ Repasemos lo conseguido hasta ahora:
 
 Para asegurar que los elementos que añadimos a la colección sean objetos y que sean de un tipo lo primero que tenemos que hacer es un test que lo pruebe. Lo cierto es que si podemos asegurar que son objetos de una clase, automáticamente estamos validando la condición de que sean objetos.
 
-Si pasamos un objeto de la clase incorrecta deberíamos tener una excepción. En este caso he optado por `UnexpectedValueException`. Podríamos cambiarla más adelante por otra más explícita ya que no es lo más importante de nuestro proyecto.
+Si pasamos un objeto de la clase incorrecta deberíamos tener una excepción. En este caso he optado por `UnexpectedValueException`. Podríamos cambiarla más adelante por otra más explícita, ya que no es lo más importante de nuestro proyecto.
 
 Y es ahora cuando empiezan los problemas: ¿Cómo testeamos esto? ¿Cómo sabe Collection qué tipos son válidos y cuáles no? Empecemos por el test más básico:
 
@@ -658,9 +658,9 @@ Por fin, podemos tachar algunos elementos de nuestra lista:
 
 ## Antes de terminar, hagamos unos arreglos
 
-Ahora mismo hemos cubierto la mitad de nuestra lista pero, como mencioné antes, tenemos un problema conceptual importante que no hemos afrontado.
+Ahora mismo hemos cubierto la mitad de nuestra lista, pero como mencioné antes, tenemos un problema conceptual importante que no hemos afrontado.
 
-Nuestra Collection maneja un tipo específico de datos, pero actualmente permitimos que se puedan crear instancias de Collection sin especificar tipo. Si hacemos que el tipo sea obligatorio en la construcción romperemos buena parte de los tests, por lo cual deberíamos refactorizarlos de nuevo. Y el caso es que nuestra anterior refactorización nos ayuda al centralizar la creación de Collections para tests.
+Nuestra `Collection` maneja un tipo específico de datos, y actualmente permitimos que se puedan crear instancias de `Collection` sin especificar tipo. Si hacemos que el tipo sea obligatorio en la construcción romperemos buena parte de los tests, por lo cual deberíamos refactorizarlos de nuevo. Y el caso es que nuestra anterior refactorización nos ayuda al centralizar la creación de Collections para tests.
 
 Lo haré en varios pasos.
 
@@ -733,7 +733,7 @@ class CollectionTest extends TestCase
 }
 ```
 
-Esto hace que fallen los tests que controlan que podemos añadir objetos a la colección. Era de esperar ya que estamos pasando clases anónimas, cambiemos eso haciendo un self-shunt.
+Esto hace que fallen los tests que controlan que podemos añadir objetos a la colección. Era de esperar, ya que estamos pasando clases anónimas, cambiemos eso haciendo un self-shunt.
 
 ```php
 <?php
@@ -802,7 +802,7 @@ class CollectionTest extends TestCase
 }
 ```
 
-Ok. Ahora los tests pasan. Todavía podemos hacer un arreglillo: `getCollection` y `getTypedCollection` hacen exactamente lo mismo, así que podemos quitar uno de los dos. Creo que podemos dejar `getCollection` y que se quede con el código del otro método. Cambiamos las llamadas en los tests que hagan falta y el TestCase nos queda así.
+Ok. Ahora los tests pasan. Todavía podemos hacer un arreglo: `getCollection` y `getTypedCollection` hacen exactamente lo mismo, así que podemos quitar uno de los dos. Creo que podemos dejar `getCollection` y que se quede con el código del otro método. Cambiamos las llamadas en los tests que hagan falta y el TestCase nos queda así.
 
 ```php
 <?php
@@ -869,7 +869,7 @@ class CollectionTest extends TestCase
 
 Fíjate que siguen pasando los tests y que, en cierto modo, hemos usado el código de producción como "test del test" para hacer este refactoring.
 
-Ahora ya podemos tocar la clase Collection y ver si al hacer obligatoria la definición del tipo se rompe algo. La respuesta es que no. Además, podemos quitar el feo control de null, ya que ahora el parámetro siempre estará presente. Por cierto, que al ser privado y pasarse solo en el constructor, resulta que es inmatuble desde fuera de Collection y eso es bueno.
+Ahora ya podemos tocar la clase `Collection` y ver si al hacer obligatoria la definición del tipo se rompe algo. La respuesta es que no. Además, podemos quitar el feo control de `null`, ya que ahora el parámetro siempre estará presente. Por cierto, que al ser privado y pasarse solo en el constructor, resulta que es inmutable desde fuera de `Collection` y eso es bueno.
 
 ```php
 <?php
@@ -1035,7 +1035,7 @@ class Collection
 
 ## Fin del primer acto
 
-Con esto terminamos la primera parte, nuestra clase Collection admite objetos de una clase y sus subclases. También permite objetos que implmenten la misma interfaz, algo que no hemos hecho explícito en los tests, pero que podría ser innecesario ya que el mecanismo de control de tipo funciona tanto para clases como para interfaces.
+Con esto terminamos la primera parte, nuestra clase Collection admite objetos de una clase y sus subclases. También permite objetos que implementen la misma interfaz, algo que no hemos hecho explícito en los tests, pero que podría ser innecesario, ya que el mecanismo de control de tipo funciona tanto para clases como para interfaces.
 
 Lo interesante creo que está en el proceso seguido y en algunas técnicas que hemos ido aplicando. Por ejemplo:
 
@@ -1053,7 +1053,7 @@ Recuerda que el [código del proyecto puedes verlo en github](https://github.com
 La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
 
 [TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
-[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
-[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
+[TDD en PHP: un ejemplo con colecciones (2): el método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
+[TDD en PHP: un ejemplo con colecciones (3): el método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
 [TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
 [TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)

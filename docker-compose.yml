@@ -1,0 +1,12 @@
+services:
+  jekyll-build:
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: >
+      sh -c 'bundle install &&
+             bundle exec jekyll serve --host 0.0.0.0 -w --drafts --force_polling --config "_config.yml"'

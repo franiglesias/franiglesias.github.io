@@ -7,6 +7,15 @@ Read [The talking bit](https://franiglesias.github.io)
 
 ## Development notes
 
+### Development with Docker
+
+```shell
+docker compose up
+```
+
+That's all. The site will be available at `http://localhost:4000`.
+
+
 ### Local
 
 For local testing, use the following command:

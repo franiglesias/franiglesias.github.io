@@ -73,7 +73,7 @@ Lo que nos está diciendo la **primera forma normal** es que debemos extraer la 
 | person_id | email |
 |---:|-------|
 |  1 | pepa.lopez@example.com |
-|  2 | jaime2123@example.com |
+|  2 | j.r@example.com |
 |  2 | jaime2123@example.com |
 
 Ahora las tablas están en primera forma normal. A mí me recuerda al *Single Reponsibility Principle* en el sentido de buscamos que cada tabla se ocupe de una sola entidad y de que cada columna se ocupe de un único atributo.

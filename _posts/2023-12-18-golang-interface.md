@@ -70,7 +70,7 @@ Será implementada por:
 ```go
 type SqlProductRepository struct {}
 
-func (r SqlProductRepository) name(ctx context.Context, pid ProductId) (Product, error)  {
+func (r SqlProductRepository) Retrieve(ctx context.Context, pid ProductId) (Product, error)  {
 	// Implementation
 }
 ```

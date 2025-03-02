@@ -36,6 +36,8 @@ Aquí tienes el índice del artículo, por si prefieres saltar directamente a al
   * [Conclusiones](#conclusiones)
 <!-- TOC -->
 
+Y puedes encontrar el [código en este repositorio: birthday-service-kata](https://github.com/franiglesias/birthday-service-kata).
+
 ## Deja de llamarlos Mocks
 
 Lo primero de todo es un tema de _nomenclatura_. Deja de llamar _Mocks_ a todos los dobles de test. Los dobles de test pueden ser _dummies_, _stubs_, _fakes_, _spies_ o _mocks_. _Mock_ no solamente es un tipo específico de doble de test, sino uno del que no vamos a hablar mucho en este artículo, porque puedes vivir sin él en la mayor parte de los casos.

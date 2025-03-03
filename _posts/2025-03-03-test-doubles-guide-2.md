@@ -11,6 +11,18 @@ En esta ocasión vamos a analizar un caso un poco más complejo de dependencia t
 
 Aquí tienes el índice del artículo, por si prefieres saltar directamente a alguno de los puntos:
 
+<!-- TOC -->
+* [El caso de la dependencia acoplada](#el-caso-de-la-dependencia-acoplada)
+  * [Seams: una solución temporal](#seams-una-solución-temporal)
+  * [Inversión de dependencias al rescate](#inversión-de-dependencias-al-rescate)
+* [Dobles de test que simulan fallos](#dobles-de-test-que-simulan-fallos)
+  * [Base de datos innacesible](#base-de-datos-innacesible)
+* [Lógica justificada en un doble de test](#lógica-justificada-en-un-doble-de-test)
+  * [Valores distintos en cada llamada](#valores-distintos-en-cada-llamada)
+  * [Stubs que fallan unas veces y otras no](#stubs-que-fallan-unas-veces-y-otras-no)
+  * [Más sobre reintentos](#más-sobre-reintentos)
+* [Conclusiones](#conclusiones)
+<!-- TOC -->
 
 Puedes encontrar el [código en este repositorio: birthday-service-kata](https://github.com/franiglesias/birthday-service-kata).
 

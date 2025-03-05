@@ -19,6 +19,12 @@
     <!--[if lt IE 8]>
     <link rel="stylesheet" href="{{ '/assets/css/ie.css' | relative_url }}">
     <![endif]-->
+    <!-- _includes/head-custom.html -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({startOnLoad:true,theme:'dark'})
+        await mermaid.run({querySelector:'code.language-mermaid'})
+    </script>
 	
 </head>
 <body>

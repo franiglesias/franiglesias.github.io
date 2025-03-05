@@ -158,6 +158,20 @@ Podemos seguir el sistema a continuación para escoger el test doble adecuado. U
   * **Sí**: usa un _Stub_.
   * **No**: usa un _Spy_ (o un _Mock_)
 
+O si lo prefieres, utiliza este gráfico creado por [Dídac Ríos](https://www.linkedin.com/in/didacrios/) usando Mermaid.
+
+```mermaid
+graph TD;
+A["El colaborador, ¿toca una tecnología del mundo real?"] -->|No| B["Usa directamente el colaborador"]
+A -->|Sí| C["La unidad bajo test, ¿va a usar el colaborador en ese test?"]
+C -->|No| D["Usa un Dummy"]
+C -->|Sí| E["El colaborador, ¿debería fallar cuando le llamen?"]
+E -->|Sí| F["Usa un Stub con un fallo programado"]
+E -->|No| G["El colaborador, ¿devuelve una respuesta?"]
+G -->|Sí| H["Usa un Stub"]
+G -->|No| I["Usa un Spy (o un Mock)"]
+```
+
 ## Patrones de uso y buenas prácticas
 
 Es importante reconocer que la función de los dobles de test es reemplazar colaboradores de la unidad bajo test de tal manera que nos permitan controlar su comportamiento de forma que sea predecible y económico en términos de performance y recursos.

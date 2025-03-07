@@ -7,6 +7,9 @@ tags: good-practices oop php
 
 El problema: como obtener representaciones de un objeto, como DTO, serializaciones, etc., sin exponer _getters_ que únicamente se usarían para esa tarea.
 
+**Actualización 7/3/2025:** He cambiado los ejemplos para evitar una ambigüedad en el nombre del método `PersonName->fill` y el de la interfaz `Fillabe->fill` que podía dar la impresión de que el código estaba mal construido. [He actualizado los ejemplos también en el repositorio](https://github.com/franiglesias/representation-pattern). Gracias a [Manuel Rivero](https://www.linkedin.com/in/manuel-rivero-54411271/) por señalarlo.
+
+
 Anteriormente, he considerado un par de aproximaciones como el [Presenter pattern](/presenter-pattern/) o el [Representation Pattern](/representation-pattern/), pero ninguna de las dos llegó a convencerme 100%. Sin embargo, la idea del Representation pattern estaba más o menos en el buen camino.
 
 Ha sido tras leer el capítulo [Printers instead of getters](https://www.yegor256.com/2016/04/05/printers-instead-of-getters.html) del libro _Elegant Objects_ de Yegor Bugayenko, que las piezas han empezado a encajar. El libro de Bugayenko me provoca una mezcla de sensaciones. Expone un montón de ideas interesantes y que me han ayudado a cuestionar y mejorar la forma en que programo en orientación a objetos. Sin embargo, a veces pienso que no se explica lo suficientemente bien o los ejemplos son demasiado simples o mal escogidos como para facilitar la comprensión de sus propuestas. O simplemente puede que nuestra manera de trabajar la OOP tenga poco que ver con la original.
@@ -322,7 +325,7 @@ final class PersonNamePrinter
 }
 ```
 
-Sí, se parece mucho a PersonName, pero solo es una coincidencia. Ya veremos que al final será diferente.
+Sí, se parece mucho a `PersonName`, pero solo es una coincidencia. Ya veremos que al final será diferente.
 
 Ahora, voy a introducir un cambio que me permita inyectar `PersonNamePrinter` para obtener los datos necesarios. No muestro los métodos `listName`, `fullName` y `dni` para no meter ruido, pero aún no los he eliminado.
 
@@ -377,7 +380,7 @@ class PersonNameRepresentationTest extends TestCase
 
     public function assertListName(PersonName $name, string $expected): void
     {
-        $printer = $name->fill(new PersonNamePrinter());
+        $printer = $name->representAs(new PersonNamePrinter());
         $listName = $printer->listName();
         $this->assertEquals($expected, $listName);
     }
@@ -428,21 +431,21 @@ class PersonNameRepresentationTest extends TestCase
 
     public function assertListName(PersonName $name, string $expected): void
     {
-        $printer = $name->fill(new PersonNamePrinter());
+        $printer = $name->representAs(new PersonNamePrinter());
         $listName = $printer->listName();
         $this->assertEquals($expected, $listName);
     }
 
     public function assertFullName(PersonName $name, string $expected): void
     {
-        $printer = $name->fill(new PersonNamePrinter());
+        $printer = $name->representAs(new PersonNamePrinter());
         $fullName = $printer->fullName();
         $this->assertEquals($expected, $fullName);
     }
 
     public function assertDniName(PersonName $name, string $expected): void
     {
-        $printer = $name->fill(new PersonNamePrinter());
+        $printer = $name->representAs(new PersonNamePrinter());
         $dniName = $printer->dni();
         $this->assertEquals($expected, $dniName);
     }
@@ -471,7 +474,7 @@ final class PersonName
         $this->surname = $surname;
     }
 
-    public function fill(PersonNamePrinter $printer): PersonNamePrinter
+    public function representAs(PersonNamePrinter $printer): PersonNamePrinter
     {
         $printer->setName($this->name);
         $printer->setSurname($this->surname);
@@ -538,7 +541,7 @@ final class PersonName
         $this->surname = $surname;
     }
 
-    public function fill(PersonNamePrinter $printer): PersonNamePrinter
+    public function representAs(PersonNamePrinter $printer): PersonNamePrinter
     {
         $printer->fill('name', $this->name);
         $printer->fill('surname', $this->surname);
@@ -591,7 +594,7 @@ final class PersonName
         $this->surname = $surname;
     }
 
-    public function fill(Fillable $printer): Fillable
+    public function representAs(Fillable $printer): Fillable
     {
         $printer->fill('name', $this->name);
         $printer->fill('surname', $this->surname);
@@ -674,7 +677,7 @@ class PersonNameRepresentationTest extends TestCase
     
     public function assertListName(PersonName $name, string $expected): void
     {
-        $printer = $name->fill(new ListNamePrinter());
+        $printer = $name->representAs(new ListNamePrinter());
         $listName = $printer->print();
         $this->assertEquals($expected, $listName);
     }
@@ -770,21 +773,21 @@ class PersonNameRepresentationTest extends TestCase
 
     public function assertListName(PersonName $name, string $expected): void
     {
-        $printer  = $name->fill(new ListNamePrinter());
+        $printer  = $name->representAs(new ListNamePrinter());
         $listName = $printer->print();
         $this->assertEquals($expected, $listName);
     }
 
     public function assertFullName(PersonName $name, string $expected): void
     {
-        $printer  = $name->fill(new FullNamePrinter());
+        $printer  = $name->representAs(new FullNamePrinter());
         $fullName = $printer->print();
         $this->assertEquals($expected, $fullName);
     }
 
     public function assertDniName(PersonName $name, string $expected): void
     {
-        $printer = $name->fill(new OCRDniPrinter());
+        $printer = $name->representAs(new OCRDniPrinter());
         $dniName = $printer->ocr();
         $this->assertEquals($expected, $dniName);
     }
@@ -840,7 +843,7 @@ class PersonNameRepresentationTest extends TestCase
 
     public function assertDto(PersonName $name, DBPersonName $expected): void
     {
-        $printer = $name->fill(new MapToORMEntity());
+        $printer = $name->representAs(new MapToORMEntity());
         $dniName = $printer->dto();
         $this->assertEquals($expected, $dniName);
     }

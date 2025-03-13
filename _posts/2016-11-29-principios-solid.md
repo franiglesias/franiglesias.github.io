@@ -45,9 +45,7 @@ Cuando creamos nuevas clases es importante tener en cuenta este principio para f
 
 ## Principio de sustitución de Liskov
 
-En una jerarquía de clases, las clases base y las subclases deben poder intercambiarse sin tener que alterar el código que las utiliza.
-
-Esto no quiere decir que tengan que hacer exactamente lo mismo, sino que han de poder reemplazarse.
+En una jerarquía de clases, las clases base y las subclases deben poder intercambiarse sin tener que alterar el código que las utiliza. Esto no quiere decir que tengan que hacer exactamente lo mismo, sino que han de poder reemplazarse.
 
 El reverso de este principio es que no debemos extender clases mediante herencia por el hecho de aprovechar código de las clases bases o por conseguir forzar que una clase sea una "hija de" y superar un _type hinting_ si no existe una relación que justifique la herencia (ser clases con el mismo tipo de comportamiento, pero que lo realizan de manera diferente). En ese caso, es preferible basar el polimorfismo en una interfaz (ver el Principio de segregación de interfaces).
 

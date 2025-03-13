@@ -19,16 +19,14 @@ La cadena de responsabilidad puede ejemplificarse de una manera muy sencilla:
 – Sí, por supuesto. Esta es la respuesta.  
 – Gracias.
 
-El problema que la Cadena de Responsabilidad resuelve es el de que tenemos un conjunto de objetos que podrían atender una petición, pero no sabemos a priori cuál de ellos lo hará. Por lo tanto, lo que hacemos es probar con uno de los objetos, si este no lo puede manejar, se lo pedimos al siguiente, y así sucesivamente hasta que uno de ellos nos puede dar la respuesta.
+El problema que resuelve la Cadena de Responsabilidad es el de que tenemos un conjunto de objetos que podrían atender una petición, pero no sabemos a priori cuál de ellos lo hará. Por lo tanto, lo que hacemos es probar con uno de los objetos, si este no lo puede manejar, se lo pedimos al siguiente, y así sucesivamente hasta que uno de ellos nos puede dar la respuesta.
 
 Los elementos de este patrón son:
 
 * El cliente, que hace la petición
 * Los objetos candidatos que pueden responderla
 
-Cada uno de los objetos candidatos, mantiene un puntero (o referencia) a otro objeto, de modo que el primero que recibe la petición puede: o bien responderla, o bien delegársela al siguiente.
-
-Esta estructura es una lista enlazada (linked list) de tipo FIFO (First In - First Out).
+Cada uno de los objetos candidatos, mantiene un puntero (o referencia) a otro objeto, de modo que el primero que recibe la petición puede: o bien responderla, o bien delegársela al siguiente. Esta estructura es una lista enlazada (linked list) de tipo FIFO (First In - First Out).
 
 Hay que contemplar la situación de que ninguno de los objetos pueda responderla, o dicho de otro modo, que el último de los objetos consultados no tenga respuesta y no pueda delegar.
 
@@ -45,7 +43,7 @@ Si los objetos no van a ser de la misma clase, entonces nos interesa definir una
 
 ## Ejemplo
 
-El servicio de comedor de un colegio tiene que atender a un gran número de estudiantes, por lo que es necesario organizarlos en varios turnos. Los criterios para realizar la asignación de cada estudiante a su turno dependen de varios factores: curso que estudia, día de la semana o participación en actividades extra escolares. El turno se debe asignar cada día, porque hay muchos estudiantes que usan el servicio solo en determinados días. En resumen: no podemos saber con antelación qué regla se aplicará para cada estudiante concreto.
+El servicio de comedor de un colegio tiene que atender a un gran número de estudiantes, por lo que es necesario organizarlos en varios turnos. Los criterios para realizar la asignación de cada estudiante a su turno dependen de varios factores: curso que estudia, día de la semana o participación en actividades extraescolares. El turno se debe asignar cada día, porque hay muchos estudiantes que usan el servicio solo en determinados días. En resumen: no podemos saber con antelación qué regla se aplicará para cada estudiante concreto.
 
 En este caso he optado por utilizar el patrón de Cadena de Responsabilidad para realizar la asignación de turnos de comedor. Para cada estudiante se recorre la cadena de reglas hasta que una de ellas le asigna el turno.
 

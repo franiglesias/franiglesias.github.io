@@ -1331,3 +1331,22 @@ div.footnotes {
     }
   }
 }
+
+.highlighter-rouge {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.language-label {
+  position: absolute;
+  top: 6px;
+  left: -6rem;
+  padding: 1px 10px;
+  background-color: $tags_bg;
+  border-radius: 20px;
+  font-size: 10px;
+  color: #666;
+  min-width: 5rem;
+  max-width: 5rem;
+  text-align: center;
+}

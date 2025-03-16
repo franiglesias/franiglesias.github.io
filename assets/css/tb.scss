@@ -975,7 +975,6 @@ section #title {
 }
 
 
-
 article div.authors {
   padding-top: 2rem;
 }
@@ -1235,18 +1234,31 @@ pre.highlight > button:focus {
   opacity: 1;
 }
 
+pre.highlight {
+  margin-left: -2rem;
+  padding-left: 2rem;
+  margin-right: -2rem;
+  padding-right: 2rem;
+  padding-top: 3rem;
+}
+
 
 pre.highlight > button {
-  background: $copy_code_bg;
-  color: $copy_code_color;
+  background-color: $copy_code_bg;
+  color: $tags_bg;
   font-family: $site_font;
   opacity: 0.6;
   position: absolute;
   right: 0;
-  top: 1.2rem;
+  top: 0.6rem;
   transition: all .2s ease-out;
   border-radius: 0.4rem;
   border: 0;
+  padding: 0 1rem;
+  font-size: 0.8rem;
+  min-width: 5rem;
+  max-width: 5rem;
+  text-align: center;
 }
 
 
@@ -1337,16 +1349,19 @@ div.footnotes {
   margin-bottom: 20px;
 }
 
+
 .language-label {
+  color: #639ea5;
+  font-family: $site_font;
   position: absolute;
-  top: 6px;
-  left: -6rem;
-  padding: 1px 10px;
-  background-color: $tags_bg;
-  border-radius: 20px;
-  font-size: 10px;
-  color: #666;
-  min-width: 5rem;
-  max-width: 5rem;
-  text-align: center;
+  left: -2rem;
+  top: 0.4rem;
+  border: 0;
+  padding: 0 2rem;
+  font-size: 0.8rem;
+  text-align: left;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #777;
+  margin-right: 0;
 }

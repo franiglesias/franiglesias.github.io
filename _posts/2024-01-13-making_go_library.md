@@ -78,7 +78,7 @@ Los diferentes tipos de output se deberían normalizar para conseguir una versi�
 
 En principio, la forma más sencilla que se me ha ocurrido es serializarlos como JSON y hacer una limpieza básica del resultado con funciones de Trim. En muchos casos, generar JSON es bastante trivial en Go: los tipos básicos implementan serialización JSON. Los objetos definidos por las aplicaciones pueden serializarse implementando las interfaces `JsonMarshal` y `JsonUnmarshal`.
 
-Aparte de eso, para otros casos puede ser necesario permitir introducir normalizaciones personalizadas por test, por lo que necesitamos incluir un mecanismo que le de soporte. 
+Aparte de eso, para otros casos puede ser necesario permitir introducir normalizaciones personalizadas por test, por lo que necesitamos incluir un mecanismo que le dé soporte. 
 
 En realidad la normalización no es más que una función de transformación que convierte el output de la unidad bajo test en una serialización que se puede guardar fácilmente en un archivo, recuperar y comparar con otro output igualmente normalizado.
 
@@ -149,7 +149,7 @@ type Golden struct{
 }
 ```
 
-Al que se asocian métodos como `InFolder`, `UseSnapshot`, `Verify`... y otros.
+Al que se asocian métodos como `InFolder`, `UseSnapshot`, `Verify`... Y otros.
 
 ```go
 func (g Golden) Verify(t *testing.T, subject any) {

@@ -301,7 +301,7 @@ class UnknownProduct implements Error {
 
 Con el test pasando, voy a mover los objetos creados a sus ubicaciones. Este sería el resultado provisional, que consolido con un commit:
 
-```terminaloutput
+```plaintext
 src
 ├── index.ts
 └── inventory
@@ -320,7 +320,7 @@ La carpeta `inventory` representa la aplicación, o hexágono, por tanto, los pu
 
 La interacción `GetCurrentStock` tiene ya cuatro elementos. A medida que el puerto incorpore vocabulario para la conversación está claro que la carpeta se va a complicar. Dependiendo del estilo de código o las prácticas comunes del lenguaje, estos archivos podrían empaquetarse en una carpeta, o unificarse en un solo archivo si los estándares del lenguaje lo permiten o recomiendan. En este caso, lo voy a empaquetar en una carpeta:
 
-```terminaloutput
+```plaintext
 src
 ├── index.ts
 └── inventory
@@ -413,7 +413,7 @@ export class GetCurrentStockResponse {
 
 Este salto me parece un poco grande para este momento, pero como tengo más o menos claro que me interesa este tipo de objeto lo voy a aceptar. La consecuencia es que _UnkownProduct_ queda sin finalidad y, al menos temporalmente, debería desaparecer. Incluso pensando en que podría volver en el futuro.
 
-```terminaloutput
+```plaintext
 src
 ├── index.ts
 └── inventory
@@ -794,7 +794,7 @@ export interface ForRetrievingProducts {
 
 Y ahora, lo suyo es mover `InMemoryProducts` a su lugar como Adapter de esta interfaz. Así que lo llevamos a una carpeta `driven/forRetrievingProducts`
 
-```terminaloutput
+```plaintext
 src
 ├── driven
 │   └── forRetrievingProducts
@@ -1422,7 +1422,7 @@ Este rediseño del Handler me gusta bastante más. Quedan algunos detalles más 
 
 Así es cómo ha quedado la aplicación:
 
-```terminaloutput
+```plaintext
 src
 ├── driven
 │   └── forRetrievingProducts

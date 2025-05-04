@@ -1226,9 +1226,6 @@ div.highlight {
   position: relative;
 }
 
-pre.highlight > button {
-  opacity: 0.5;
-}
 
 pre.highlight:hover > button {
   opacity: 1;
@@ -1264,6 +1261,7 @@ pre.highlight > button {
   min-width: 5rem;
   max-width: 5rem;
   text-align: center;
+  z-index: 9999
 }
 
 

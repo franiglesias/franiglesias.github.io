@@ -8,6 +8,23 @@ tags: software-design design-patterns typescript tdd hexagonal
 [En el artículo anterior](/hexagonal-tdd-1/), vimos cómo aplicar TDD clásica a un caso de uso simple utilizando la
 arquitectura hexagonal. En este artículo, vamos a aplicar TDD London School.
 
+<!-- TOC -->
+  * [TDD London School. Las primeras diferencias](#tdd-london-school-las-primeras-diferencias)
+  * [Primer test](#primer-test)
+  * [Moviéndonos hacia adentro](#moviéndonos-hacia-adentro)
+  * [Una vez en verde, volvemos al ciclo externo](#una-vez-en-verde-volvemos-al-ciclo-externo)
+  * [Y, otra vez, adentro](#y-otra-vez-adentro)
+  * [Definiendo puertos secundarios](#definiendo-puertos-secundarios)
+  * [Regresar al ciclo exterior](#regresar-al-ciclo-exterior)
+  * [_Happy path_ finalizado, o casi](#_happy-path_-finalizado-o-casi)
+  * [Turno de los _unhappy paths_](#turno-de-los-_unhappy-paths_)
+    * [El producto no existe](#el-producto-no-existe)
+    * [Algunos pensamientos hasta ahora](#algunos-pensamientos-hasta-ahora)
+    * [El producto sin existencias](#el-producto-sin-existencias)
+    * [Datos no válidos](#datos-no-válidos)
+  * [Reflexiones sobre _Outside-in London School_](#reflexiones-sobre-_outside-in-london-school_)
+<!-- TOC -->
+
 ## TDD London School. Las primeras diferencias
 
 La primera diferencia práctica es que en TDD London School el primer test puede venirnos mejor si es un ejemplo de

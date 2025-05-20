@@ -5,23 +5,37 @@ categories: articles
 tags: software-design design-patterns typescript tdd hexagonal
 ---
 
-Retomo en este artículo el repaso al desarrollo de una aplicación diseñada con Arquitectura Hexagonal y dirigido por tests.
+Retomo en este artículo el repaso al desarrollo de una aplicación diseñada con Arquitectura Hexagonal y dirigida por tests.
+
+
+<!-- TOC -->
+  * [La tercera vía outside-in](#la-tercera-vía-outside-in)
+  * [Walking Skeleton Mix](#walking-skeleton-mix)
+  * [Empezando con un test](#empezando-con-un-test)
+  * [Configurator](#configurator)
+  * [Empezando a colocar la funcionalidad](#empezando-a-colocar-la-funcionalidad)
+    * [De constante a variable, o algo así](#de-constante-a-variable-o-algo-así)
+    * [Delegando](#delegando)
+    * [Un nuevo salto](#un-nuevo-salto)
+    * [Finalmente, guardamos el producto](#finalmente-guardamos-el-producto)
+  * [Una tercera vía TDD outside-in, o no](#una-tercera-vía-tdd-outside-in-o-no)
+<!-- TOC -->
 
 ## La tercera vía outside-in
 
-¿Se puede hablar de que existe una tercera vía entre los enfoques clasicista y London School de TDD outside-in? La verdad es que no lo sé, pero en la práctica ser demasiado puristas nos puede llevar a callejones de los que es difícil salir. Por eso, si bien conocer las prácticas, sus características, y sus limitaciones, es importantísimo. Es responsabilidad nuestra decidir qué herramientas utilizar y cuando saltarse las reglas.
+¿Se puede hablar de que existe una tercera vía entre los enfoques clasicista y London School de TDD outside-in? La verdad es que no lo sé, pero en la práctica, ser demasiado puristas nos puede llevar a callejones de los que es difícil salir. Por eso, si bien conocer las prácticas, sus características y sus limitaciones es importantísimo, es responsabilidad nuestra decidir qué herramientas utilizar y cuándo saltarse las reglas.
 
 Como he mencionado en los artículos anteriores de la serie, la vía clasicista me había llevado a peores decisiones en la descomposición en objetos, mientras que la vía londinense, al priorizar la descomposición sobre la implementación, me obligaba a tener en cuenta el diseño general de la arquitectura. Con la primera se trata de tener la funcionalidad o comportamiento establecido cuanto antes. Con la segunda, nos interesa que esa funcionalidad esté bien construida desde el principio, aunque pospongamos las decisiones de implementación.
 
-También señalamos que una de las críticas que recibe London School es el uso de _mocks_ como herramientas para diseñar la comunicación o interface entre objetos. Introducimos estos _mocks_ en tanto no tenemos implementaciones concretas, lo que hace que se tengan muchas dudas acerca de la fragilidad de estos tests, pues estarían acoplados a la implementación. Personalmente, no es una cuestión que me quite el sueño, pues nada me impide optar por soluciones que minimicen ese potencial efecto negativo, ya sea usar dobles de test que seam implementaciones limitadas de las interfaces, ya sea reemplazando los mocks por objetos _reales_ o fakes en el refactor posterior. 
+También señalamos que una de las críticas que recibe London School es el uso de _mocks_ como herramientas para diseñar la comunicación o interfaz entre objetos. Introducimos estos _mocks_ en tanto no tenemos implementaciones concretas, lo que hace que se tengan muchas dudas acerca de la fragilidad de estos tests, pues estarían acoplados a la implementación. Personalmente, no es una cuestión que me quite el sueño, pues nada me impide optar por soluciones que minimicen ese potencial efecto negativo, ya sea usar dobles de test que sean implementaciones limitadas de las interfaces, o reemplazando los mocks por objetos _reales_ o fakes en el refactor posterior.
 
-En parte creo que la discusión, en último término, gira en torno a si usar librerías de _mocks_ o no usarlas empleando implementaciones reducidas de las interfaz, que es más o menos lo que propone James Shore con su Nullables.
+En parte, creo que la discusión, en último término, gira en torno a si usar librerías de _mocks_ o no usarlas, empleando implementaciones reducidas de las interfaces, que es más o menos lo que propone James Shore con sus Nullables.
 
 ## Walking Skeleton Mix
 
 Alistair Cockburn sugiere usar la metáfora del Walking Skeleton para desarrollar aplicaciones en el libro de Hexagonal Architecture Explained. 
 
-La idea de usar un Walking Skeleton es empezar disponiendo los elementos más importantes de la arquitectura con el comportamiento mínimo necesario para que funcionen. No para implementar la funcionalidad, sino para el sistema pueda levantarse y dar una respuesta. Posteriormente, iremos colgando la funcionalidad requerida (el músculo) en ese esqueleto.
+La idea de usar un Walking Skeleton es empezar disponiendo los elementos más importantes de la arquitectura con el comportamiento mínimo necesario para que funcionen. No para implementar la funcionalidad, sino para que el sistema pueda levantarse y dar una respuesta. Posteriormente, iremos colgando la funcionalidad requerida (el músculo) en ese esqueleto.
 
 Si combinamos esto con una metodología TDD nos sale algo que podría estar a medio camino entre la aproximación clásica y la londinense, tomando un poco de cada una. Y esto es lo que voy a intentar explicar a continuación. En este caso, vamos a desarrollar la capacidad de añadir productos a nuestro almacén.
 
@@ -54,9 +68,9 @@ describe('For Managing Products Port', () => {
 
 Para verificar que el producto ha sido guardado, lo mejor que puedo hacer es interrogar al sistema para que me lo proporcione por sus propios medios. Por eso le lanzo la query GetCurrentStock, funcionalidad que ya tenemos implementada. Esto podríamos extraerlo para aligerar el test.
 
-Por otro lado, tenemos la función `GetCurrentStockHandler`, que si recuerdas, era nuestro _proto-Configurator_. En todo caso, necesitaremos pasar la misma instancia del adaptador de base de datos a `AddProductHandler` para que el test funcione, pues se ha de escribir y leer en el mismo. Eso nos va a requerir desarrollar un poco más la capacidad del _Configurator_, para que se encargue de montar ambos _Handlers_ y todo lo que venga en el futuro.
+Por otro lado, tenemos la función `GetCurrentStockHandler`, que si recuerdas, era nuestro _proto-Configurator_. En todo caso, necesitaremos pasar la misma instancia del adaptador de base de datos a `AddProductHandler` para que el test funcione, pues se ha de escribir y leer en el mismo almacenamiento. Eso nos va a requerir desarrollar un poco más la capacidad del _Configurator_, para que se encargue de montar ambos _Handlers_ y todo lo que venga en el futuro.
 
-Otro comentario que hay que hacer es que `AppProductHandler`, pese a ser un comando, va a devolver un objeto de respuesta que contendrá el `id` asignado al nuevo producto, o el error que se haya producido en caso de fallo.
+Otro comentario que hay que hacer es que `AddProductHandler`, pese a ser un comando, va a devolver un objeto de respuesta que contendrá el `id` asignado al nuevo producto, o el error que se haya producido en caso de fallo.
 
 Vamos a ello.
 
@@ -143,7 +157,7 @@ function BuildGetCurrentStockHandler(): GetCurrentStockHandler {
 }
 ```
 
-En este punto me interesa más tener un objeto `InventoryConfigurator` que una función, por lo que voy a introducirlo y moverle esta funcionalidad. Después de darle unas vueltas, consigo lo siguiente. Es como un contendor de inyección de dependencias rudimentario, pero suficiente para lo que necesitamos en este momento.
+En este punto, me interesa más tener un objeto `InventoryConfigurator` que una función, por lo que voy a introducirlo y moverle esta funcionalidad. Después de darle unas vueltas, consigo lo siguiente. Es como un contenedor de inyección de dependencias rudimentario, pero suficiente para lo que necesitamos en este momento.
 
 ```typescript
 export class InventoryConfigurator {
@@ -249,7 +263,7 @@ describe('For Managing Products Port', () => {
 })
 ```
 
-Pero lo que queremos es añadir productos así que volvamos al test inicial, actualizado con el configurador y separando el chequeo de que el producto ha sido añadido:
+Pero lo que queremos es añadir productos, así que volvamos al test inicial, actualizado con el configurador y separando el chequeo de que el producto ha sido añadido:
 
 ```typescript
 describe('For Managing Products Port', () => {
@@ -282,7 +296,7 @@ describe('For Managing Products Port', () => {
 })
 ```
 
-Añadamos lo necesario para que el test pueda ejecutarse. Para ello lo voy lanzando y añado cada cosa que me dice que falta. Primero el comando:
+Añadamos lo necesario para que el test pueda ejecutarse. Para ello, lo voy lanzando y añado cada cosa que me dice que falta. Primero el comando:
 
 ```typescript
 export class AddProduct {
@@ -299,7 +313,7 @@ export class AddProduct {
 A continuación, añadimos un método al configurador para que nos instancie el handler:
 
 ```typescript
-    buildAddProductHandler() {
+buildAddProductHandler() {
         return new AddProductHandler()
     }
 ```
@@ -379,7 +393,7 @@ Y ejecutando el test, tenemos el siguiente error, que ya es el fallo que queremo
 Error: Product Id new-product-id doesn't exist
 ```
 
-Podríamos considerar que, en lo que respecta a `AddProduct` lo que tenemos es un esqueleto andante de la funcionalidad, que nos garantiza que las piezas están ahí y están correctamente articuladas, aunque todavía tengamos que ponerles el músculo que las haga funcionar como queremos.
+Podríamos considerar que, en lo que respecta a `AddProduct`, lo que tenemos es un esqueleto andante de la funcionalidad, que nos garantiza que las piezas están ahí y est��n correctamente articuladas, aunque todavía tengamos que ponerles el músculo que las haga funcionar como queremos.
 
 ## Empezando a colocar la funcionalidad
 
@@ -392,7 +406,7 @@ Al ejecutar el comando podemos verificar que se ha completado y devuelve una res
 Una posibilidad es separar ambas partes del test, de esta forma:
 
 ```typescript
-    describe('When we add a product that is not in our database', () => {
+describe('When we add a product that is not in our database', () => {
     let result: AddProductResponse
     beforeAll(async () => {
         const command = new AddProduct('ProductName', 100)
@@ -422,7 +436,7 @@ El primer test verifica que en algún momento se genera un `id` y se llega a dev
 Así que para empezar, nos saltamos el segundo test para que no se ejecute.
 
 ```typescript
-    describe('When we add a product that is not in our database', () => {
+describe('When we add a product that is not in our database', () => {
     let result: AddProductResponse
     beforeAll(async () => {
         const command = new AddProduct('ProductName', 100)
@@ -513,7 +527,7 @@ buildAddProductHandler() {
 }
 ```
 
-Y esto en `Inventory`. Como se puede ver, hemos movido la generación del `id` a este nuevo método `registerProduct`. De nuevo, aplicamos el concepto de esqueleto andante, introduciendo un comportamiento hard coded, que nos ayuda a definir y colocar en su lugar los elementos que necesitamos poner en juego. 
+Y esto en `Inventory`. Como se puede ver, hemos movido la generación del `id` a este nuevo método `registerProduct`. De nuevo, aplicamos el concepto de esqueleto andante, introduciendo un comportamiento hardcoded, que nos ayuda a definir y colocar en su lugar los elementos que necesitamos poner en juego. 
 
 ```typescript
 export class Inventory {
@@ -606,7 +620,7 @@ export class InMemoryProductStorage implements ForStoringProducts {
 }
 ```
 
-En este punto, `IdentityProvider` nos plantea la siguiente cuestión. Teniendo en cuenta de que se trata de un generador no determinista, ¿deberíamos considerarlo como un actor secundario y establecer un puerto en la aplicación?
+En este punto, `IdentityProvider` nos plantea la siguiente cuestión. Teniendo en cuenta que se trata de un generador no determinista, ¿deberíamos considerarlo como un actor secundario y establecer un puerto en la aplicación?
 
 Por supuesto, podemos hacerlo.
 
@@ -650,7 +664,7 @@ export class Inventory {
 
 Esto nos obliga a hacer algunos cambios en varios lugares, como el `Configurator` y en algunos tests que ya teníamos. No los voy a mostrar aquí.
 
-En todo caso, nos ha servido para mostrar como a veces descubrimos la necesidad de nuevos puertos secundarios, algo que comentamos en el primer artículo de la serie.
+En todo caso, nos ha servido para mostrar cómo a veces descubrimos la necesidad de nuevos puertos secundarios, algo que comentamos en el primer artículo de la serie.
 
 Y finalmente, tenemos todos los tests pasando, con lo cual es tiempo de hacer un nuevo commit y volver a activar el test que nos estábamos saltando.
 
@@ -679,11 +693,11 @@ export class InMemoryProductStorage implements ForStoringProducts {
 
 Y con esto, el test pasa.
 
-Hablando en propiedad, no hemos terminado del todo esta fase. Es cierto que hemos implementado el comportamiento requerido, pero hay varios detalles que tendremos que rematar. Por ejemplo, el generador de identidades actualmente no es muy útil, y necesitaríamos una versión determinista para usar en tests.
+Hablando con propiedad, no hemos terminado del todo esta fase. Es cierto que hemos implementado el comportamiento requerido, pero hay varios detalles que tendremos que rematar. Por ejemplo, el generador de identidades actualmente no es muy útil, y necesitaríamos una versión determinista para usar en tests.
 
 `InventoryConfigurator` también necesita cariño, para que sea una herramienta útil.
 
-Por otro lado, hay varios detalles al respecto del uso de primitivos o la falta de uso de objetos en según que lugares.
+Por otro lado, hay varios detalles al respecto del uso de primitivos o la falta de uso de objetos en según qué lugares.
 
 Además, también tendríamos que desarrollar el comportamiento del sistema ante problemas. ¿Qué pasa si no nos podemos comunicar con el Storage? ¿Qué pasa si el producto está mal especificado o con valores no válidos? Por supuesto, esto lo tenemos que describir en tests.
 
@@ -737,8 +751,9 @@ Dejo el [código de este capítulo aquí](https://github.com/franiglesias/invent
 
 En este artículo he mostrado una forma de hacer TDD outside-in que, de alguna manera, toma elementos entre la escuela clásica y la London School.
 
-Esto es posible gracias a la aplicación de la idea del Walking Skeleton. Al hacerlo así añadimos elementos de la arquitectura de la aplicación (estilo London), mientras que mantenemos los tests pasando (estilo clásico).
+Esto es posible gracias a la aplicación de la idea del Walking Skeleton. Al hacerlo así, añadimos elementos de la arquitectura de la aplicación (estilo London), mientras que mantenemos los tests pasando (estilo clásico).
 
 Personalmente, me ha parecido una forma pragmática de trabajar y que mantiene los elementos que me parecen más útiles de ambas escuelas. Por un lado, ayuda a posponer decisiones de implementación, a la vez que la red de seguridad proporcionada por los tests que pasan.
 
 Por otro lado, la introducción de componentes con poco comportamiento, o con un comportamiento fijado, ayuda a gestionar la proliferación de dobles propia de la London School. De esta forma, los dobles que se usan acaban siendo actores para el entorno de tests (y creados con librerías si fuese necesario), mientras que los componentes internos simplemente van enriqueciendo su comportamiento a medida que nuevos tests nos obligan a seguir desarrollando. 
+`

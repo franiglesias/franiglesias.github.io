@@ -7,6 +7,16 @@ tags: software-design design-patterns typescript tdd hexagonal
 
 En esta entrega comparo mis impresiones sobre ambas escuelas de TDD outside-in.
 
+<!-- TOC -->
+  * [Clasicista vs London School ¿Es un enfoque mejor que otro?](#clasicista-vs-london-school-es-un-enfoque-mejor-que-otro)
+  * [Diseño up-front](#diseño-up-front)
+  * [Implementación](#implementación)
+  * [Tests](#tests)
+  * [Completar la tarea](#completar-la-tarea)
+  * [I ❤️ London](#i--london)
+<!-- TOC -->
+
+
 ## Clasicista vs London School ¿Es un enfoque mejor que otro?
 
 Voy directo a lo que podría ser una conclusión tras haber comparado los pros y contras de ambas opciones, pero es que tengo clara la respuesta antes incluso de hacerlo. No hay un enfoque mejor o peor, siempre que los apliques con honestidad y buena metodología. Cada una de las aproximaciones conlleva una serie de compromisos a cambio de sus ventajas.

@@ -392,7 +392,7 @@ La tercera opción, un método que admita un objeto de dominio y pueble la repre
 
 ## La entrega de la *carga*
 
-El objeto representación podría tener que darnos acceso a su contenido, bien exponiendo sus propiedades o bien a través de métodos que nos proporcionen la representación serializada o lista para serializar, si no se trata de un DTO puro. Pero esta ya es una cuestión que depende más del consumidor, desde el punto de vista del domino la interfaz nos dice cómo poblar la representación y al dominio no le importa lo que se haga con esos datos.
+El objeto representación podría tener que darnos acceso a su contenido, bien exponiendo sus propiedades o bien a través de métodos que nos proporcionen la representación serializada o lista para serializar, si no se trata de un DTO puro. Pero esta ya es una cuestión que depende más del consumidor, desde el punto de vista del dominio la interfaz nos dice cómo poblar la representación y al dominio no le importa lo que se haga con esos datos.
 
 En general, el objeto Representation se centra más en los datos que tiene que portar, dejando en manos de su consumidor cómo usarlos o transformarlos si es el caso. Sin embargo, no se tiene por qué descartar que la representación pueda entregar una versión particular. 
 

@@ -1254,3 +1254,13 @@ Para eso necesitamos reducir en lo posible el coste del cambio. Si nuestras meto
 Así, por ejemplo, salvo en lo que se refiere al cambio al patrón _Result_ genérico que hemos hecho al final, nuestros tests _e2e_ han resultado ser bastante resilientes. Hemos podido cambiar bastantes cosas dentro del código sin afectar al comportamiento de manera grave.
 
 Esto no ha ocurrido con los test interiores, generados al usar el modelo London School. Tales tests se rompieron por una mala elección de los dobles introducidos, lo cual nos lleva a una recomendación práctica muy sencilla: **en Arquitectura Hexagonal solo debemos hacer dobles de los puertos**. Si es un objeto que vive en el interior del hexágono no se dobla, aunque puede que tenga dependencias que sí.
+
+---
+
+**Serie TDD outside-in con arquitectura hexagonal:**
+
+- [TDD outside-in con arquitectura hexagonal (1)](/hexagonal-tdd-1/)
+- [TDD outside-in con arquitectura hexagonal (2)](/hexagonal-tdd-2/)
+- [TDD outside-in con arquitectura hexagonal (3)](/hexagonal-tdd-3/)
+- [TDD outside-in con arquitectura hexagonal (4)](/hexagonal-tdd-4/)
+- [TDD outside-in con arquitectura hexagonal (5)](/hexagonal-tdd-5/)

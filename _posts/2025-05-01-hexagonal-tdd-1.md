@@ -1456,3 +1456,13 @@ Personalmente, tengo la impresión de que este enfoque me ha llevado con cierta 
 En muchos aspectos, esta forma de desarrollo nos va a requerir buenas técnicas de gestión de código legacy y técnicas de refactor.
 
 En el artículo siguiente, intentaré desarrollar lo mismo, pero usando una metodología más próxima a la London School, con Just-In-Time design y comparar. Obviamente, me voy a ver influido por lo que ya he trabajado aquí.
+
+---
+
+**Serie TDD outside-in con arquitectura hexagonal:**
+
+- [TDD outside-in con arquitectura hexagonal (1)](/hexagonal-tdd-1/)
+- [TDD outside-in con arquitectura hexagonal (2)](/hexagonal-tdd-2/)
+- [TDD outside-in con arquitectura hexagonal (3)](/hexagonal-tdd-3/)
+- [TDD outside-in con arquitectura hexagonal (4)](/hexagonal-tdd-4/)
+- [TDD outside-in con arquitectura hexagonal (5)](/hexagonal-tdd-5/)

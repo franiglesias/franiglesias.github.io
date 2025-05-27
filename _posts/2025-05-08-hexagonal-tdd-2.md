@@ -1233,12 +1233,4 @@ Empezar a testear por el _Happy Path_ se siente natural en este enfoque, ya que 
 
 Algo que destacaría es que una vez establecida la estructura general, añadir casos particulares para el tratamiento de errores resulta muy sencillo. Y, como he indicado antes, se adecúa muy bien a la resolución de bugs. Podemos reproducir el bug reportado usando el test exterior, y no tenemos más que seguir las pistas que nos señala para localizar en dónde tendríamos que intervenir.
 
----
-
-**Serie TDD outside-in con arquitectura hexagonal:**
-
-- [TDD outside-in con arquitectura hexagonal (1)](/hexagonal-tdd-1/)
-- [TDD outside-in con arquitectura hexagonal (2)](/hexagonal-tdd-2/)
-- [TDD outside-in con arquitectura hexagonal (3)](/hexagonal-tdd-3/)
-- [TDD outside-in con arquitectura hexagonal (4)](/hexagonal-tdd-4/)
-- [TDD outside-in con arquitectura hexagonal (5)](/hexagonal-tdd-5/)
+{% include_relative series/hexagonal-tdd.md %}

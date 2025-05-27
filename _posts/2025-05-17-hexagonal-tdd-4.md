@@ -758,12 +758,4 @@ Personalmente, me ha parecido una forma pragmática de trabajar y que mantiene l
 Por otro lado, la introducción de componentes con poco comportamiento, o con un comportamiento fijado, ayuda a gestionar la proliferación de dobles propia de la London School. De esta forma, los dobles que se usan acaban siendo actores para el entorno de tests (y creados con librerías si fuese necesario), mientras que los componentes internos simplemente van enriqueciendo su comportamiento a medida que nuevos tests nos obligan a seguir desarrollando. 
 
 
----
-
-**Serie TDD outside-in con arquitectura hexagonal:**
-
-- [TDD outside-in con arquitectura hexagonal (1)](/hexagonal-tdd-1/)
-- [TDD outside-in con arquitectura hexagonal (2)](/hexagonal-tdd-2/)
-- [TDD outside-in con arquitectura hexagonal (3)](/hexagonal-tdd-3/)
-- [TDD outside-in con arquitectura hexagonal (4)](/hexagonal-tdd-4/)
-- [TDD outside-in con arquitectura hexagonal (5)](/hexagonal-tdd-5/)
+{% include_relative series/hexagonal-tdd.md %}

@@ -729,3 +729,5 @@ El hecho de no poder acceder al estado de los objetos es beneficioso para evitar
 ## ¿Fin? No todavía
 
 Con esta entrega finaliza esta serie de artículos sobre la aplicación de las reglas de Object Calisthenics. Sin embargo, próximamente habrá un artículo de resumen y continuación con algunas conclusiones y lecciones aprendidas de este experimento.
+
+{% include_relative series/calisthenics.md %}

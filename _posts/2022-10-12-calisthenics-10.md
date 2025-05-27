@@ -434,3 +434,5 @@ class Performances:
 ## ¿Fin? 
 
 Esta vez, sí. Lo cierto es que probablemente todavía podríamos introducir mejoras en el código. Hay algunas clases que no me convencen del todo, como `ExtraAmountByAudience` o `StatementPrinter`. Seguramente esconden aún problemas en el diseño que no he sido capaz de ver.
+
+{% include_relative series/calisthenics.md %}

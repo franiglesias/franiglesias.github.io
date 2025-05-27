@@ -1450,3 +1450,5 @@ El código ha evolucionado muchísimo tras aplicar la regla de encapsular primit
 Si observamos el código desde el punto de vista de refactoring está claro que aún nos queda mucho trabajo por hacer y algunos _smells_ son evidentes y no están siendo tratados. Esto tienen un motivo en el contexto de estos artículos y no es otro que queremos ver si aplicar las reglas de forma sistemática nos conduce eventualmente a un mejor diseño. Hasta ahora creo que puede decirse que sí, con algunas salvedades, pero también es cierto que estamos aplicando cada regla una por una. En otras circunstancias estaríamos usando las reglas allí donde se viesen aplicables sin importar el orden.
 
 En cualquier caso, en este momento podemos observar algunos efectos positivos, ya que las responsabilidades se han ido distribuyendo en objetos y funciones.
+
+{% include_relative series/calisthenics.md %}

@@ -153,3 +153,5 @@ Con las propiedades (o variables de instancia) ocurre lo mismo. Cuantas más hay
 ## El resultado
 
 [Puedes consultar el proyecto en Github](https://github.com/franiglesias/theatrical-plays-kata) 
+
+{% include_relative series/calisthenics.md %}

@@ -294,3 +294,5 @@ def statement(invoice_data, plays):
 
     return printer.output()
 ```
+
+{% include_relative series/calisthenics.md %}

@@ -563,3 +563,5 @@ Por supuesto, no siempre es posible forzar un método a tener un determinado tam
 ## El resultado
 
 [Puedes consultar el proyecto en Github](https://github.com/franiglesias/theatrical-plays-kata) 
+
+{% include_relative series/calisthenics.md %}

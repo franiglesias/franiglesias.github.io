@@ -110,3 +110,5 @@ Esto ocurre también con nombres cortos, pero demasiado genéricos, como `get`, 
 ## Por qué funciona
 
 No usar abreviaturas nos fuerza a pensar nombres significativos, lo que ayuda a que el código se explique mejor por sí mismo. Esto permite que sea más fácil incorporar más personas a los proyectos y hacerlo más mantenible en el largo plazo. Puede que con el tiempo nos olvidemos de lo que significaban las abreviaturas, por lo que usar nombres completos será una ventaja.
+
+{% include_relative series/calisthenics.md %}

@@ -36,13 +36,15 @@
             <h1>{{ site.title | default: site.github.repository_name }}</h1>
             <p>{{ site.description | default: site.github.project_tagline }}</p>
             <hr>
-            <span class="credits left">Blog de <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
+            <span class="credits left">Blog de <a
+                    href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
             <span class="credits left"> | @GitHub Pages</span>
             <span class="credits right"><a href="/about/"> | Acerca de mi</a></span>
             <span class="credits right"><a href="/tag/tb-list/">The Talking List</a></span>
         </div>
 
         <section id="tags">
+            <h2 id="tags-toggle">Temas <span id="tags-arrow" style="font-size:1rem;">►</span></h2>
             {% include archive.html %}
         </section>
 
@@ -51,5 +53,23 @@
     </section>
 
 </div>
+<script>
+    $(function () {
+        $('#tags-content').hide();
+        $('#tags-toggle').css('cursor', 'pointer');
+        // Estado inicial: cerrado
+        $('#tags-arrow').text('►');
+        $('#tags-toggle').click(function () {
+            $('#tags-content').slideToggle(200, function() {
+                var arrow = $('#tags-arrow');
+                if ($('#tags-content').is(':visible')) {
+                    arrow.text('▼');
+                } else {
+                    arrow.text('►');
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

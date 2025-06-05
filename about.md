@@ -4,90 +4,87 @@ title: About
 permalink: /about/
 ---
 
-Hi, I'm Fran Iglesias. I'm a Senior Software Developer from Spain. I'm very interested in software design and agile technical practices.
+Hello, my name is Fran Iglesias. I am a Senior Software Developer based in Spain, with a strong focus on software design and agile technical practices.
 
-## Contact me
+## Contact
 
-I'm always open to a good conversation about programming, software design or whatever. So, don't hesitate to drop an email.
+I am always open to engaging discussions about programming, software design, or related topics. Please feel free to contact me via email.
 
-Also, I will be more than happy if you think I can help with some free mentoring. Specially, if you have found some difficult to get help in your current personal situation or belong to an under-represented community.
+Additionally, I am happy to offer free mentoring, particularly to those who may face challenges accessing support due to their personal circumstances or who belong to underrepresented communities.
 
 [franiglesias@mac.com](mailto:franiglesias@mac.com)
 
-## Employers and collaborations
+## Employers and Collaborations
 
-This site was created for my own opinions and contents, with occasional collaborators. 
+This site reflects my personal opinions and content, with occasional contributions from collaborators.
 
-On the other hand, the site is not sponsored or endorsed by any company or organization. It is completely ad free and I don't have plans to monetize it, [apart from selling some books of mu own](https://leanpub.com/u/franiglesias).  
+It is not sponsored or endorsed by any company or organization. The site is entirely ad-free, and I have no plans to monetize it, [except for selling some of my own books](https://leanpub.com/u/franiglesias).
 
-Anyway, the contents could be influenced by my context during the time I wrote and published them. I'm sharing here the list of companies I've been working for and other organizations, so you can gain some knowledge about that context.
+Nevertheless, the content may be influenced by my professional context at the time of writing and publication. For transparency, I have listed below the companies and organizations with which I have been associated.
 
-### Currently working at
+### Current Position
 
 [Qualifyze](https://www.qualifyze.com)
 
-We’re building the trust layer for global supply chains. I serve as Staff Software Engineer, helping all tech+product teams to grow in excellence.
+I contribute as a Staff Software Engineer, supporting the growth and excellence of all technology and product teams as we build the trust layer for global supply chains (Typescript).
 
-### Organizer at
+### Community
 
-* [Crafters Vigo](https://www.meetup.com/es-ES/craftersvigo/): local community of practice for improving our skills as developers.
-* [PulpoCon](https://pulpocon.es): annual developers conference inspired by the software crafters movement.
+* [Crafters Vigo](https://www.meetup.com/es-ES/craftersvigo/): Local community of practice focused on continuous improvement of development skills.
+* [PulpoCon](https://pulpocon.es): Annual developer conference inspired by the Software Crafters movement.
 
+### Open Source Projects
 
-### Open Source projects
+* [VersionTag](https://github.com/franiglesias/versiontag): Shell utility to facilitate semantic versioning for your projects.
+* [Golden](https://github.com/franiglesias/golden): Go library for snapshot, approval, and combination testing ([also available in PHP](https://github.com/franiglesias/php-golden)).
+* [CSV](https://github.com/franiglesias/csv): Simple PHP library for reading and writing CSV files.
 
-* [VersionTag](https://github.com/franiglesias/versiontag): shell utility to help you maintain your projects' semantic versioning.
-* [Golden](https://github.com/franiglesias/golden): golang library for snapshot, approval and combination testing (PHP version, too).
-* [CSV](https://github.com/franiglesias/csv): pretty simple PHP library for reading and writing csv files.
-
-### Former employers
+### Previous Experience
 
 [The Hotels Network](https://thehotelsnetwork.com/es/)
 
-_The Hotels Network_ help hotels to increase sales through their direct channel.
+_The Hotels Network_ helps hotels increase sales through their direct channel.
 
-My role here is Senior Software Engineer in one of the Backend teams. (Golang and PHP)
+I served as Senior Software Engineer in one of the Backend teams (Golang and PHP).
 
 [Codurance](https://www.codurance.com) 
 
-As a technical coach and trainer, I helped to deliver a Backend Developers Upskilling program in a large international client, with contents such as TDD, software design, refactoring, agile practices, pair and mob programming, etc. (Java)
+As a technical coach and trainer, I delivered a Backend Developers Upskilling program for a large international client, covering topics such as TDD, software design, refactoring, agile practices, pair and mob programming, among others (Java).
 
 [DocPlanner](https://www.docplanner.com)
 
-As a member of the Developer Quality Team, I helped to define strategies to modernize the existing software, and conducted workshops about TDD and improve agile technical practices. I also contributed to the [tech blog of the company](https://medium.com/docplanner-tech). (PHP/Symfony) 
+As a member of the Developer Quality Team, I contributed to defining modernization strategies for existing software and conducted workshops on TDD and agile technical practices. I also contributed to the company's [tech blog](https://medium.com/docplanner-tech). (PHP/Symfony)
 
 [Pridatect](https://www.pridatect.es)
 
-As Senior Software Engineer, I helped the team to modernize existing software and to introduce testing and other technical practices (PHP/Symfony)
+As a Senior Software Engineer, I supported the team in modernizing existing software and introducing testing and other technical practices (PHP/Symfony).
 
 [Holaluz](https://holaluz.com)
 
-As Software Engineer I contributed to the internal tools and solar teams. I also helped the team to improve testing and other practices. (PHP/Symfony and, occasionally, Go, Python and Java)
+As a Software Engineer, I contributed to the internal tools and solar teams, helping to improve testing and development practices (PHP/Symfony, and occasionally Go, Python, and Java).
 
 [Atrapalo](https://atrapalo.com)
 
-As Backend developer, I worked in the Flights team (PHP)
+As a Backend Developer, I worked in the Flights team (PHP).
 
 ## Talks
 
-You can see some of my talks (Spanish) in the following playlist.
+Some of my talks (in Spanish) can be found in the following playlist:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLYT8quZ2BEna0KpNgSGw2v3cEF4ePivVC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-
 ## Extras
 
-Information that doesn't fit in other categories.
+Additional information not covered in other sections.
 
-### Blog theme
+### Blog Theme
 
 Designed by myself.
 
 ### Credits
 
-Icon images credits:
+Icon image credits:
 
-* <a href="https://www.flaticon.com/free-icons/elephant" title="elephant icons">Elephant icons created by Hery Mery - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created by Fathema Khanom - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Fathema Khanom - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/github" title="github icons">Github icons created by Pixel perfect - Flaticon</a>

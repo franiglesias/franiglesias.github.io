@@ -21,7 +21,7 @@ $copy_code_bg: #666;
 $title_bg: #0d5962;
 $title_color: #dbeaeb;
 $title_secondary: #639ea5;
-$page_radius: 7px;
+$page_radius: 0.5rem;
 
 /* Tyography */
 $code_font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
@@ -1090,7 +1090,7 @@ pre {
   background: $code_block_bg;
   overflow: auto;
   overflow-y: hidden;
-  border-radius: 0.2rem;
+  border-radius: $page_radius;
 
   &.highlight {
     margin-left: -$margin;

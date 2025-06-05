@@ -21,7 +21,7 @@ $copy_code_bg: #666;
 $title_bg: #0d5962;
 $title_color: #dbeaeb;
 $title_secondary: #639ea5;
-
+$page_radius: 7px;
 
 /* Tyography */
 $code_font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
@@ -776,6 +776,7 @@ strong {
   position: relative;
   padding: 0 1rem;
   background-color: $wrapper_bg;
+  border-radius: $page_radius
 }
 
 @media (min-width: $breakpoint_phone) {
@@ -940,6 +941,7 @@ section #title {
   padding: 4rem 7rem 3rem 7rem;
   margin: -3rem -7rem -7rem -7rem;
   background-color: $title_bg;
+  border-radius: $page_radius $page_radius 0 0;
 
   h1 {
     font-size: 6rem;
@@ -1000,6 +1002,7 @@ article.post.post.full-post h1 {
   background-color: $tags_bg;
   margin: -3rem -7rem 3rem -7rem;
   padding: 2rem 7rem;
+  border-radius: $page_radius $page_radius 0 0;
 }
 
 p code {
@@ -1134,7 +1137,7 @@ section#tags {
   margin-right: -$tags_margin;
   padding-right: $tags_margin;
   background-color: $tags_bg;
-  border-radius: 0.2rem;
+  border-radius: 0 0 $page_radius $page_radius;
 
   h2 {
     margin-top: 1rem;

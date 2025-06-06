@@ -50,6 +50,12 @@ permalink: /:title/
 # The release of Jekyll Now that you're using
 version: v1.2.0
 
+# Especificar explícitamente que no se use un tema
+theme: null
+# O si prefieres usar minima que es más neutral
+# theme: minima
+sass_dir: assets/css
+
 # Jekyll 3 now only supports Kramdown for Markdown
 kramdown:
   # Use GitHub flavored markdown, including triple backtick fenced code blocks
@@ -62,6 +68,7 @@ kramdown:
 
 # Set the Sass partials directory, as we're using @imports
 sass:
+  load_paths: assets/css
   style: expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
@@ -82,7 +89,5 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
-
-theme: jekyll-theme-midnight
 
 future: false

@@ -7,32 +7,42 @@
 
 /* Colors */
 
-$color_main: #0d5962;
-$color_accent: #f6c667; // Amarillo suave para acentos
-$color_success: #4caf50; // Verde para éxito
-$color_warning: #ffb300; // Amarillo para advertencias
-$color_error: #e57373; // Rojo para errores
-$color_dark_bg: #183c3f; // Fondo oscuro
-$color_text_secondary: #7a8a8d; // Gris azulado para texto secundario
-$color_heading: #1c7a81;
-$color_secondary_heading: #333333;
-$color_link: #0f626b;
-$color_intro_text: #444444;
-$color_code_block_bg: #303030;
-$color_bkg_main: #ffffff;
-$color_copy_code: #d9d9d9;
-$color_copy_code_bg: #666;
-$color_text: #000;
+// Colores primarios
+$primary: #1a3c5b;       // Azul marino como color principal
+$primary-light: #2c5282; // Variante más clara del principal
+$primary-dark: #0a2942;  // Variante más oscura del principal
 
-$tag_color: #f6f6f6;
-$body_bg: #f3eeec;
-$tags_bg: #d6e7e8;
-$tag_bg_in_list: #639ea5;
+// Color de acento
+$accent: #ce9580;        // Salmón (opuesto al azul celeste)
 
-$title_bg: $color_main;
-$title_color: #dbeaeb;
-$title_secondary: #639ea5;
-$page_radius: 0.5rem;
+// Colores neutros
+$neutral-100: #ffffff;   // Blanco
+$neutral-200: #f3eeec;   // Fondo claro
+$neutral-300: #d6e7e8;   // Gris muy claro con tono azulado
+$neutral-400: #607d8b;   // Gris medio con tono azulado
+$neutral-500: #333333;   // Gris oscuro
+$neutral-900: #1e2a38;   // Casi negro con tinte azul
+
+// Colores de estado
+$success: #26a69a;       // Verde azulado
+$warning: #f4b942;       // Amarillo ámbar
+$error: #e57373;         // Rojo suave
+
+// Asignaciones específicas
+$body-bg: $neutral-200;
+$text-color: $neutral-500;
+$heading-color: $primary;
+$link-color: $primary-light;
+$title-bg: $primary;
+$title-color: $neutral-100;
+$title-secondary: $accent;
+$tags-bg: $neutral-300;
+$tag-color: $neutral-100;
+$tag-bg-in-list: $accent;
+$code-block-bg: $neutral-900;
+$blockquote-border: $accent;
+
+$page-radius: 0.5rem;
 
 /* Tyography */
 $code_font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
@@ -56,13 +66,13 @@ body {
   font-family: $site_font;
   font-size: 1.2em;
   line-height: 150%;
-  color: $color_text;
+  color: $text-color;
   font-weight: 400;
-  background: $body_bg;
+  background: $body-bg;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: $color_heading;
+  color: $heading-color;
   margin: 0 0 10px;
   font-family: $heading_font;
   font-weight: normal;
@@ -94,29 +104,30 @@ h3 {
   font-size: 1.3rem;
   line-height: 1.5rem;
   font-weight: normal;
-  color: $color_secondary_heading;
+  color: $primary-light;
   margin-top: 3rem;
   margin-bottom: 2rem;
 }
 
 h4, h5, h6 {
-  color: $color_secondary_heading;
+  color: $primary-light;
   font-size: 1.2rem;
 }
 
 
 a {
-  color: $color_link;
+  color: $link-color;
   text-decoration: none;
 }
 
 a:hover {
-  color: #3939b2;
+  color: $accent;
+  transition: color 0.3s ease;
 }
 
 a small {
   font-size: 0.8rem;
-  color: $color_link;
+  color: $link-color;
   margin-top: -0.6rem;
   display: block;
 }
@@ -142,8 +153,9 @@ strong {
   margin: 0 auto;
   position: relative;
   padding: 0 1rem;
-  background-color: $color_bkg_main;
-  border-radius: $page_radius
+  background-color: $neutral-100;
+  border-radius: $page_radius;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: $breakpoint_phone) {
@@ -151,7 +163,7 @@ strong {
     margin: 0 auto;
     position: relative;
     padding: 0 5rem;
-    background-color: $color_bkg_main;
+    background-color: $neutral-100;
   }
 
   h1 {
@@ -170,7 +182,7 @@ strong {
     margin: 0 auto;
     position: relative;
     padding: 0 7rem;
-    background-color: $color_bkg_main;
+    background-color: $neutral-100;
   }
 
   h1 {
@@ -196,7 +208,7 @@ section img {
 }
 
 blockquote {
-  border-left: 0.3rem solid #d26010;
+  border-left: 0.3rem solid $blockquote-border;
   margin: 0;
   padding: 0 0 0 1rem;
   font-style: italic;
@@ -243,7 +255,7 @@ dt {
   top: 0;
   width: 100%;
   position: fixed;
-  background-color: #313131;
+  background-color: $primary-dark;
 
   nav {
     display: flex;
@@ -272,14 +284,15 @@ dt {
       }
 
       a {
-        color: #bbbbbb;
+        color: $neutral-300;
         border: none;
         background-color: transparent;
         display: inline-block;
         box-shadow: none;
 
         &:hover {
-          color: white;
+          color: $neutral-100;
+          transition: color 0.2s ease;
         }
       }
     }
@@ -307,35 +320,35 @@ section #title {
   outline: none;
   padding: 4rem 7rem 3rem 7rem;
   margin: -3rem -7rem -7rem -7rem;
-  background-color: $title_bg;
+  background-color: $title-bg;
   border-radius: $page_radius $page_radius 0 0;
 
   h1 {
     font-size: 6rem;
     text-align: left;
     line-height: 120%;
-    color: $title_color;
+    color: $title-color;
   }
 
   p {
-    color: $title_secondary;
+    color: $title-secondary;
     font-family: $site_font;
     font-size: 1.3rem;
     text-align: left;
   }
 
   a {
-    color: $title_color;
+    color: $title-color;
 
     &:hover {
-      color: #fff;
+      color: $neutral-100;
     }
   }
 
   .credits {
     font-size: 1.5rem;
     font-family: $heading_font;
-    color: $title_secondary;
+    color: $title-secondary;
     margin-top: -10px;
 
     &.left {
@@ -348,7 +361,6 @@ section #title {
   }
 }
 
-
 article div.authors {
   padding-top: 2rem;
 }
@@ -357,7 +369,7 @@ article div.authors p {
   font-size: 1.5rem;
   font-style: oblique;
   text-align: center;
-  color: $color_code_block_bg;
+  color: $neutral-400;
 }
 
 article.post {
@@ -366,7 +378,7 @@ article.post {
 
 article.post.post.full-post h1 {
   text-align: left;
-  background-color: $tags_bg;
+  background-color: $tags-bg;
   margin: -3rem -7rem 3rem -7rem;
   padding: 2rem 7rem;
   border-radius: $page_radius $page_radius 0 0;
@@ -417,7 +429,7 @@ article {
         }
 
         & > p:first-child {
-          color: $color_intro_text;
+          color: $neutral-500;
           font-size: 1.5rem;
           line-height: 150%;
           text-align: left;
@@ -435,12 +447,12 @@ article {
       font-size: 3rem;
 
       a {
-        color: $color_heading;
+        color: $heading-color;
       }
     }
 
     span.date {
-      color: $color_secondary_heading;
+      color: $neutral-400;
     }
   }
 }
@@ -454,7 +466,7 @@ pre {
   margin-bottom: 3em;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  background: $color_code_block_bg;
+  background: $code-block-bg;
   overflow: auto;
   overflow-y: hidden;
   border-radius: $page_radius;
@@ -470,7 +482,7 @@ pre {
     }
 
     code {
-      color: #efefef;
+      color: $neutral-200;
       text-shadow: 0 1px 0 #000;
       margin: 0;
       padding: 0;
@@ -484,8 +496,8 @@ pre {
 }
 
 span.tag, button.tag {
-  color: $tag_color;
-  background-color: $color_main;
+  color: $tag-color;
+  background-color: $primary;
   display: inline-block;
   padding: 0.1rem 0.8rem;
   border-radius: 0.4rem;
@@ -495,7 +507,7 @@ span.tag, button.tag {
 }
 
 article.list span.tag {
-  background-color: $tag_bg_in_list;
+  background-color: $tag-bg-in-list;
 }
 
 section#tags {
@@ -503,7 +515,7 @@ section#tags {
   padding-left: $tags_margin;
   margin-right: -$tags_margin;
   padding-right: $tags_margin;
-  background-color: $tags_bg;
+  background-color: $tags-bg;
   border-radius: 0 0 $page_radius $page_radius;
 
   h2 {
@@ -528,8 +540,8 @@ section#tags {
       overflow-wrap: break-word;
       padding: 0.2rem 1rem;
       display: block;
-      background-color: #fff;
-      color: $color_secondary_heading;
+      background-color: $neutral-100;
+      color: $primary;
       text-align: center;
       box-shadow: 0.1rem 0.1rem 0.2rem -0.1rem rgba(0, 0, 0, 0.40);
       border-radius: 0.2rem;
@@ -582,7 +594,7 @@ h4 code.language-plaintext,
 h5 code.language-plaintext,
 h6 code.language-plaintext,
 {
-  color: $color_text !important;
+  color: $text-color !important;
   font: {
     size: inherit;
     family: $inline_code_font;
@@ -616,8 +628,8 @@ pre.highlight {
 
 
 pre.highlight > button {
-  background-color: $color_code_block_bg;
-  color: $tags_bg;
+  background-color: $primary-dark;
+  color: $neutral-200;
   font-family: $site_font;
   opacity: 0.6;
   position: absolute;
@@ -637,7 +649,7 @@ pre.highlight > button {
 
 div.footnotes {
   margin-top: 3rem;
-  border-top: 1px solid #555555;
+  border-top: 1px solid $neutral-400;
   padding-top: 2rem;
 
   ol {
@@ -649,9 +661,9 @@ div.footnotes {
 
       &:before {
         content: counter(item);
-        background: #555555;
+        background: $primary;
         border-radius: 20%;
-        color: white;
+        color: $neutral-100;
         width: 1.5rem;
         text-align: center;
         display: inline-block;
@@ -672,13 +684,13 @@ div.footnotes {
   blockquote {
     margin: 0 0 1rem 0;
     padding: 0.5rem 0.5rem 0.01rem 1rem;
-    background-color: $tags_bg;
+    background-color: $tags-bg;
   }
 
   p {
     &.date {
       font-size: 0.8rem;
-      color: $color_intro_text;
+      color: $neutral-400;
     }
 
     a {
@@ -694,25 +706,26 @@ div.footnotes {
   font-size: smaller;
   font-family: $code_font;
   border-radius: 0.3rem;
-  background-color: #EEE;
+  background-color: $neutral-200;
   line-height: 1rem;
   margin-top: 8rem;
-  color: $color_code_block_bg;
+  color: $neutral-500;
 
   .tag {
-    background-color: $tags_bg;
-    color: $color_main;
+    background-color: $tags-bg;
+    color: $primary;
     padding: 0.1rem 0.3rem;
   }
 
   button.tag {
     border: none;
-    background-color: $tag_bg_in_list;
-    color: $tags_bg;
+    background-color: $tag-bg-in-list;
+    color: $neutral-100;
 
     &:hover {
-      background-color: $color_main;
-      color: #ffffff;
+      background-color: $primary;
+      color: $neutral-100;
+      transition: background-color 0.2s ease;
     }
   }
 }
@@ -724,7 +737,7 @@ div.footnotes {
 
 
 .language-label {
-  color: #639ea5;
+  color: $accent;
   font-family: $site_font;
   position: absolute;
   left: -2rem;
@@ -735,6 +748,6 @@ div.footnotes {
   text-align: left;
   display: block;
   width: 100%;
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid $neutral-400;
   margin-right: 0;
 }

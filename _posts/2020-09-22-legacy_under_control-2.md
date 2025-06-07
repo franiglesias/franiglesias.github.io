@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Trabajar con legacy y entender el dominio 2
+title: Extracción de conceptos
+subtitle: Trabajar con legacy y entender el dominio (2)
 categories: articles
 tags: design-principles good-practices refactoring
 ---
@@ -1410,3 +1411,5 @@ También nos podría interesar replantear el modo en que se expresan las accione
 Y luego, veremos que con la nueva organización del código, es posible detectar algunas áreas de mejora.
 
 Pero eso lo dejaremos para una tercera parte. Esta kata está dando mucho de sí.
+
+{% include_relative series/legacy-under-control.md %}

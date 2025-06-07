@@ -515,6 +515,13 @@ pre {
   }
 }
 
+.language-plaintext div.highlight pre.highlight code {
+  color: $success;
+  font-family: $inline_code_font;
+  font-size: 1rem;
+}
+
+
 $small-font-size: 0.8rem;
 $default-padding-x: 2rem;
 $default-radius: 0.4rem;

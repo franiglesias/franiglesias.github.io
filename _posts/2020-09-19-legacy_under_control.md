@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Trabajar con legacy y entender el dominio
+title: Poner el código bajo test
+subtitle: Trabajar con legacy y entender el dominio (1)
 categories: articles
 tags: design-principles good-practices refactoring
 ---
@@ -957,7 +958,7 @@ $proposal = $proposal % 2 === 0 ? 3.14 * $proposal : 3.15
 
 ```
 
-`MarkerStudyVendor` debería entregar un `1`, lo que dará `6.28` como valor de `$proposal`.
+`MarketStudyVendor` debería entregar un `1`, lo que dará `6.28` como valor de `$proposal`.
 
 He aquí el test:
 
@@ -1994,7 +1995,8 @@ class Application
 
 Con esto ya podemos quitar la instanciación dentro la clase y forzar la inyección de dependencias.
 
-```php<?php
+```php
+<?php
 
 namespace Quotebot;
 
@@ -2263,3 +2265,5 @@ Aunque todavía quedan algunas cosas pendientes en cuanto a estructura y organiz
 Lo que hemos conseguido con el trabajo realizado es tener una aplicación testeable, hemos tomado control de las dependencias y hemos comenzado a entender la estructura del software, lo que nos ha permitido corregir algunos puntos y, en general, hemos podido ganar confianza en este código.
 
 La próxima entrega tratará sobre todo de cómo construir un dominio rico y significativo.
+
+{% include_relative series/legacy-under-control.md %}

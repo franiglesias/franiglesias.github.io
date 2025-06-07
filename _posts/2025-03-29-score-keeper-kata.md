@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Lecciones aprendidas del patrón observer
+subtitle: Patrones de diseño
 categories: articles
 tags: software-design design-patterns typescript
 ---

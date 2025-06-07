@@ -8,25 +8,25 @@
 /* Colors */
 
 // Colores primarios
-$primary: #1a3c5b;       // Azul marino como color principal
+$primary: #1a3c5b; // Azul marino como color principal
 $primary-light: #2c5282; // Variante más clara del principal
-$primary-dark: #0a2942;  // Variante más oscura del principal
+$primary-dark: #0a2942; // Variante más oscura del principal
 
 // Color de acento
-$accent: #ce9580;        // Salmón (opuesto al azul celeste)
+$accent: #ce9580; // Salmón (opuesto al azul celeste)
 
 // Colores neutros
-$neutral-100: #ffffff;   // Blanco
-$neutral-200: #f3eeec;   // Fondo claro
-$neutral-300: #d6e7e8;   // Gris muy claro con tono azulado
-$neutral-400: #607d8b;   // Gris medio con tono azulado
-$neutral-500: #333333;   // Gris oscuro
-$neutral-900: #1e2a38;   // Casi negro con tinte azul
+$neutral-100: #ffffff; // Blanco
+$neutral-200: #f3eeec; // Fondo claro
+$neutral-300: #d6e7e8; // Gris muy claro con tono azulado
+$neutral-400: #607d8b; // Gris medio con tono azulado
+$neutral-500: #333333; // Gris oscuro
+$neutral-900: #1e2a38; // Casi negro con tinte azul
 
 // Colores de estado
-$success: #26a69a;       // Verde azulado
-$warning: #f4b942;       // Amarillo ámbar
-$error: #e57373;         // Rojo suave
+$success: #26a69a; // Verde azulado
+$warning: #f4b942; // Amarillo ámbar
+$error: #e57373; // Rojo suave
 
 // Asignaciones específicas
 $body-bg: $neutral-200;
@@ -384,6 +384,17 @@ article.post.post.full-post header.post-header {
   margin: -3rem -7rem 3rem -7rem;
   padding: 2rem 7rem;
   border-radius: $page_radius $page_radius 0 0;
+
+  h2.subtitle {
+    font-size: 2.5rem;
+    margin-bottom: -3rem;
+    color: $primary-light;
+  }
+
+  span.date {
+    font-size: 1rem;
+    color: $neutral-400;
+  }
 }
 
 

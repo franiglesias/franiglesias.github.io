@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TDD outside-in con arquitectura hexagonal 3
+title: TDD outside-in con arquitectura hexagonal (3) Comparativa práctica y conclusiones
 categories: articles
 tags: software-design design-patterns typescript tdd hexagonal
 ---

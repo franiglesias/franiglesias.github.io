@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TDD outside-in con arquitectura hexagonal 6
+title: TDD outside-in con arquitectura hexagonal (6) Añadiendo funcionalidad y resolviendo problemas
 categories: articles
 tags: software-design design-patterns typescript tdd hexagonal
 ---
@@ -1018,7 +1018,7 @@ Sin embargo, nos queda un caso más. No queremos que se pueda pasar una cantidad
 ```typescript
 describe('When we try to restock products without correct data', () => {
     // Code removed for clarity
-    
+
     it('should fail if a negative or zero quantity is provided', async () => {
         const result = forManagingProducts.RestockProduct('existing-product-id', -10)
         expect(result.error()).toBeInstanceOf(InvalidProductQuantity)
@@ -1106,12 +1106,12 @@ describe('For managing products', () => {
     describe('When consuming a product that we have registered', () => {
         it('Should decrease the stock of the product', async () => {
             const result = forManagingProducts.ConsumeProduct('existing-product-id', 5)
-            expect(result.unwrap()).toBeNull()
+            expect(result.successful()).toBe(true)
             const currentStock = forManagingProducts.GetCurrentStock('existing-product-id')
             expect(currentStock.unwrap()).toEqual({
                 id: 'existing-product-id',
                 name: 'existing-product-name',
-                stock: 5 // 10 initial stock + 5 consumed
+                stock: 5 // 10 initial stock - 5 consumed
             })
         })
     })
@@ -1190,7 +1190,7 @@ export class ConsumeProductHandler {
 
 Hasta que finalmente obtenemos el error esperado:
 
-```typescript
+```plaintext
 Error: ConsumeProductHandle.handle Method not implemented.
 ```
 
@@ -1314,387 +1314,25 @@ export class Inventory {
 }
 ```
 
-Ahora fallará porque el método consume no existe en `Product`, por lo que igualmente nos movemos un paso más y un nuevo test.
+Ahora fallará el test de `Product`, porque no existe el método `consume`. Así que, como ya hemos hecho varias veces, vamos a añadir el test correspondiente:
 
 ```typescript
 describe('Product', () => {
     it('should be able to consume units of product', () => {
         const product = Product.register('product-01', 'Test Product', 10);
+        const updated = product.consume(5);
+        expect(updated.isExhausted()).toBe(false);
+    })
+
+    it('should be able to consume all units of product', () => {
+        const product = Product.register('product-01', 'Test Product', 10);
         const updated = product.consume(10);
         expect(updated.isExhausted()).toBe(true);
     })
-})
-```
 
-Test que hacemos pasar con:
-
-```typescript
-export class Product {
-    private readonly id: string
-    private readonly name: string
-    private readonly stock: number
-
-    private constructor(id: string, name: string, stock: number) {
-        this.id = id
-        this.name = name
-        this.stock = stock
-    }
-
-    // Code removed for clarity
-    
-    consume(quantity: number): Product {
-        return new Product(this.id, this.name, this.stock - quantity)
-    }
-}
-```
-
-Pero no es el único test que pasa, ya que ahora el test de `Inventory` también lo hace, así como el del _Handler_. Y, también, el test exterior con el que iniciamos toda la secuencia. De hecho, pasan todos los tests que tenemos, que ya son 31.
-
-Al seguir la metodología London School hemos generado muchos tests unitarios. Uno por cada paso de mensajes entre objetos, a decir verdad. Esto nos proporcionará resolución en los pasos siguientes. Vamos a ver de qué forma.
-
-### Validaciones y reglas de negocio
-
-Tal y como hicimos en el caso de uso de `RestockProduct`, vamos a tratar ahora con los casos de datos no válidos. Si tuviésemos el software en producción, estaríamos hablando de bugs. Es por eso que a veces prefiero hablar de defectos, porque no son prestaciones en sí mismas, pero son necesarias para que la aplicación funcione satisfactoriamente.
-
-Empecemos añadiendo tests exteriores, que empezarán fallando.
-
-```typescript
-describe('When we try to consume products without correct data', () => {
-    it('should fail if a valid id is not provided', async () => {
-        const result = forManagingProducts.ConsumeProduct(undefined, 100)
-        expect(result.error()).toBeInstanceOf(InvalidProductId)
-    })
-})
-```
-
-El test que necesitamos es en el nivel del _Handler_, ya que lo que intentamos verificar es que se valida el identificador proporcionado, así que necesitamos un test muy parecido:
-
-```typescript
-describe('When we try to consume products without correct data', () => {
-    it('should fail if a valid id is not provided', async () => {
-        const result = handler.handle(new ConsumeProduct(undefined, 100))
-        expect(result.error()).toBeInstanceOf(InvalidProductId)
-    })
-})
-```
-
-Este test lo hacemos pasar con:
-
-```typescript
-export class ConsumeProductHandler {
-    private inventory: Inventory
-
-    constructor(inventory: Inventory) {
-        this.inventory = inventory
-    }
-
-    handle(command: ConsumeProduct): Result<null> {
-        if (typeof command.productId != 'string') {
-            return new FailedResult(new InvalidProductId(command.productId))
-        }
-        this.inventory.consumeProduct(command.productId, command.quantity)
-
-        return new SuccessResult(null)
-    }
-}
-```
-
-Y, puesto que sabemos la forma que va a tomar el código en el próximo paso hacemos un refactor preparatorio antes del siguiente test:
-
-```typescript
-export class ConsumeProductHandler {
-    private inventory: Inventory
-
-    constructor(inventory: Inventory) {
-        this.inventory = inventory
-    }
-
-    handle(command: ConsumeProduct): Result<null> {
-        try {
-            this.assertCommand(command)
-            this.inventory.consumeProduct(command.productId, command.quantity)
-
-            return new SuccessResult(null)
-        } catch (e: unknown) {
-            return new FailedResult(e as Error)
-        }
-    }
-
-    private assertCommand(command: ConsumeProduct) {
-        if (typeof command.productId != 'string') {
-            throw new InvalidProductId(command.productId)
-        }
-    }
-}
-```
-
-No necesitamos profundizar más, pues en este nivel ya gestionamos todo lo necesario.
-
-El siguiente test es el esperable, de nuevo en el ciclo exterior:
-
-```typescript
-describe('When we try to consume products without correct data', () => {
-    it('should fail if a valid id is not provided', async () => {
-        const result = forManagingProducts.ConsumeProduct(undefined, 100)
-        expect(result.error()).toBeInstanceOf(InvalidProductId)
-    })
-
-    it('should fail if a valid quantity is not provided', async () => {
-        const result = forManagingProducts.ConsumeProduct('existing-product-id', undefined)
-        expect(result.error()).toBeInstanceOf(InvalidProductQuantity)
-    })
-})
-```
-
-Y hacemos lo mismo que antes. Nos movemos al siguiente nivel y escribimos el test necesario, que fallará:
-
-```typescript
-describe('When we try to consume products without correct data', () => {
-    it('should fail if a valid id is not provided', async () => {
-        const result = handler.handle(new ConsumeProduct(undefined, 100))
-        expect(result.error()).toBeInstanceOf(InvalidProductId)
-    })
-
-    it('should fail if a valid quantity is not provided', async () => {
-        const result = handler.handle(new ConsumeProduct('existing-product-id', undefined))
-        expect(result.error()).toBeInstanceOf(InvalidProductQuantity)
-    })
-})
-```
-
-Y que se puede hacer pasar fácilmente:
-
-```typescript
-export class ConsumeProductHandler {
-    private inventory: Inventory
-
-    constructor(inventory: Inventory) {
-        this.inventory = inventory
-    }
-
-    handle(command: ConsumeProduct): Result<null> {
-        try {
-            this.assertCommand(command)
-            this.inventory.consumeProduct(command.productId, command.quantity)
-
-            return new SuccessResult(null)
-        } catch (e: unknown) {
-            return new FailedResult(e as Error)
-        }
-    }
-
-    private assertCommand(command: ConsumeProduct) {
-        if (typeof command.productId != 'string') {
-            throw new InvalidProductId(command.productId)
-        }
-
-        if (typeof command.quantity != 'number') {
-            throw new InvalidProductQuantity(command.quantity)
-        }
-    }
-}
-```
-
-El siguiente test ya nos habla de una regla que podemos considerar como de negocio. No se pueden indicar cantidades negativas:
-
-```typescript
-describe('When we try to consume products without correct data', () => {
-    it('should fail if a valid id is not provided', async () => {
-        const result = forManagingProducts.ConsumeProduct(undefined, 100)
-        expect(result.error()).toBeInstanceOf(InvalidProductId)
-    })
-
-    it('should fail if a valid quantity is not provided', async () => {
-        const result = forManagingProducts.ConsumeProduct('existing-product-id', undefined)
-        expect(result.error()).toBeInstanceOf(InvalidProductQuantity)
-    })
-
-    it('should fail if a negative quantity is provided', async () => {
-        const result = forManagingProducts.ConsumeProduct('existing-product-id', -10)
-        expect(result.error()).toBeInstanceOf(InvalidProductQuantity)
-    })
-})
-```
-
-Ahora tendríamos que ir moviéndonos componente a componente hasta llegar al nivel en que pensamos que puede tener sentido que se realice la acción. En el cuerpo del _Handler_ vemos que no se hace ninguna operación, todo se delega a `Inventory`. Cualquier error que venga de allí será capturado y comunicado en el objeto `Result`, así que tampoco tendríamos nada que hacer al respecto.
-
-```typescript
-handle(command: ConsumeProduct): Result<null> {
-    try {
-        this.assertCommand(command)
-        this.inventory.consumeProduct(command.productId, command.quantity)
-
-        return new SuccessResult(null)
-    } catch (e: unknown) {
-        return new FailedResult(e as Error)
-    }
-}
-```
-
-Una opción _clasicista_ sería implementar esa validación en este nivel y, una vez establecido el comportamiento, refactorizar hasta llevarla a su lugar propio. En London School, preferimos pensar algo así como: ¿quién se encarga de esto?. El código ya nos está diciendo que preguntemos en `Inventory`.
-
-```typescript
-export class Inventory {
-    private readonly storage: ForStoringProducts
-    private readonly identityProvider: ForGettingIdentities
-
-    constructor(storage: ForStoringProducts, identityProvider: ForGettingIdentities) {
-        this.storage = storage
-        this.identityProvider = identityProvider
-    }
-
-    // Code removed for clarity
-
-    
-    restockProduct(productId: string, quantity: number): void {
-        const product = this.storage.getById(productId)
-        if (!product) {
-            throw new UnknownProduct(productId)
-        }
-
-        const updatedProduct = product.restock(quantity)
-
-        this.storage.store(productId, updatedProduct)
-    }
-
-    consumeProduct(productId: string, quantity: number): void {
-        const product = this.storage.getById(productId)
-
-        const updatedProduct = product!.consume(quantity)
-
-        this.storage.store(productId, updatedProduct)
-    }
-}
-```
-
-Examinando `Inventory` vemos que también delega en `Product`. He dejado visible también el código de `restockProduct` para comparar con una acción similar. `Inventory` le pasa a `Product` la `quantity` recibida y no la examina, por lo que la posible validación la hace `Product`. Y allá que vamos:
-
-```typescript
-export class Product {
-    private readonly id: string
-    private readonly name: string
-    private readonly stock: number
-
-    private constructor(id: string, name: string, stock: number) {
-        this.id = id
-        this.name = name
-        this.stock = stock
-    }
-
-    // Code removed for clarity
-
-    restock(quantity: number): Product {
-        if (quantity < 1) {
-            throw new InvalidProductQuantity(quantity)
-        }
-        return new Product(this.id, this.name, this.stock + quantity)
-    }
-
-    consume(quantity: number): Product {
-        return new Product(this.id, this.name, this.stock - quantity)
-    }
-}
-```
-
-Ante este código podemos observar dos cosas. La primera es que ya no se delega en ningún otro objeto, y se hacen validaciones en este nivel como podemos ver en `restock`. Así que hemos encontrado el lugar en el que tiene sentido intervenir. Pero antes, un test:
-
-```typescript
-describe('Product', () => {
-    it('should be able to consume units of product', () => {
-        const product = ProductExamples.existingProduct()
-        const updated = product.consume(10)
-        expect(updated.isExhausted()).toBe(true)
-    })
-
-    it('should not allow to consume negative quantities', () => {
-        const product = ProductExamples.existingProduct()
-        expect(() => product.consume(-5)).toThrow(InvalidProductQuantity)
-    })
-})
-```
-
-Como el test falla, lo hacemos pasar así, lo que también hará pasar el test exterior.
-
-```typescript
-export class Product {
-    private readonly id: string
-    private readonly name: string
-    private readonly stock: number
-
-    private constructor(id: string, name: string, stock: number) {
-        this.id = id
-        this.name = name
-        this.stock = stock
-    }
-
-    // Code removed for clarity
-
-    consume(quantity: number): Product {
-        if (quantity < 1) {
-            throw new InvalidProductQuantity(quantity)
-        }
-
-        return new Product(this.id, this.name, this.stock - quantity)
-    }
-}
-```
-
-Además, nos hemos adelantado al otro test que teníamos previsto para no permitir pasar cantidades cero.
-
-
-```typescript
-describe('When we try to consume products without correct data', () => {
-    it('should fail if a valid id is not provided', async () => {
-        const result = forManagingProducts.ConsumeProduct(undefined, 100)
-        expect(result.error()).toBeInstanceOf(InvalidProductId)
-    })
-
-    it('should fail if a valid quantity is not provided', async () => {
-        const result = forManagingProducts.ConsumeProduct('existing-product-id', undefined)
-        expect(result.error()).toBeInstanceOf(InvalidProductQuantity)
-    })
-
-    it('should fail if a negative quantity is provided', async () => {
-        const result = forManagingProducts.ConsumeProduct('existing-product-id', -10)
-        expect(result.error()).toBeInstanceOf(InvalidProductQuantity)
-    })
-
-    it('should fail if a zero quantity is provided', async () => {
-        const result = forManagingProducts.ConsumeProduct('existing-product-id', 0)
-        expect(result.error()).toBeInstanceOf(InvalidProductQuantity)
-    })
-})
-```
-
-Test que también deberíamos incluir.
-
-```typescript
-it('should not allow to consume zero quantities', () => {
-    const product = ProductExamples.existingProduct()
-    expect(() => product.consume(0)).toThrow(InvalidProductQuantity)
-})
-```
-
-Se podría discutir acerca de si las anteriores son reglas de negocio como tales o más bien son validaciones de los datos. Sin embargo, la siguiente es bastante clara. No se pueden retirar cantidades de producto mayores que las existencias actuales:
-
-```typescript
-describe('When we try to consume products without correct data', () => {
-    it('should fail if we want to consume more than current stock', async () => {
-        const result = forManagingProducts.ConsumeProduct('existing-product-id', 20)
-        expect(result.error()).toBeInstanceOf(InvalidProductQuantity)
-    })
-})
-```
-
-Ya sabemos que este conocimiento está en `Product` y, por tanto, es a donde tenemos que dirigirnos.
-
-
-```typescript
-describe('Product', () => {
-    it('should be able to consume units of product', () => {
-        const product = ProductExamples.existingProduct()
-        const updated = product.consume(10)
-        expect(updated.isExhausted()).toBe(true)
+    it('should not allow to consume more than available', () => {
+        const product = Product.register('product-01', 'Test Product', 10);
+        expect(() => product.consume(11)).toThrow(InvalidProductQuantity)
     })
 
     it('should not allow to consume negative quantities', () => {
@@ -1702,14 +1340,14 @@ describe('Product', () => {
         expect(() => product.consume(-5)).toThrow(InvalidProductQuantity)
     })
 
-    it('should not allow to consume negative quantities', () => {
+    it('should not allow to consume zero quantities', () => {
         const product = ProductExamples.existingProduct()
-        expect(() => product.consume(20)).toThrow(InvalidProductQuantity)
+        expect(() => product.consume(0)).toThrow(InvalidProductQuantity)
     })
 })
 ```
 
-Veamos la solución:
+Y la implementación:
 
 ```typescript
 export class Product {

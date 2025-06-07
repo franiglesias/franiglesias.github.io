@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TDD outside-in con arquitectura hexagonal 2
+title: TDD outside-in con arquitectura hexagonal (2) London School, doble ciclo y comparativa
 categories: articles
 tags: software-design design-patterns typescript tdd hexagonal
 ---
@@ -1234,3 +1234,4 @@ Empezar a testear por el _Happy Path_ se siente natural en este enfoque, ya que 
 Algo que destacaría es que una vez establecida la estructura general, añadir casos particulares para el tratamiento de errores resulta muy sencillo. Y, como he indicado antes, se adecúa muy bien a la resolución de bugs. Podemos reproducir el bug reportado usando el test exterior, y no tenemos más que seguir las pistas que nos señala para localizar en dónde tendríamos que intervenir.
 
 {% include_relative series/hexagonal-tdd.md %}
+

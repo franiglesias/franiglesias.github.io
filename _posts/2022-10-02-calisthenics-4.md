@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. Colecciones de primera clase
+subtitle: Object Calisthenics
+title: Colecciones de primera clase
 categories: articles
 tags: good-practices refactoring
 ---

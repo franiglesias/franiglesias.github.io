@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. Empaquetar primitivas en objetos
+subtitle: Object Calisthenics
+title: Empaquetar primitivas en objetos
 categories: articles
 tags: good-practices refactoring
 ---

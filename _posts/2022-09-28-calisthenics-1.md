@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. Solo un nivel de indentación.
+subtitle: Object Calisthenics
+title: Solo un nivel de indentación.
 categories: articles
 tags: good-practices refactoring
 ---

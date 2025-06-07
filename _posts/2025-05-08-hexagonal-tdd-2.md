@@ -1,6 +1,7 @@
 ---
 layout: post
-title: TDD outside-in con arquitectura hexagonal (2) London School, doble ciclo y comparativa
+subtitle: TDD outside-in con arquitectura hexagonal (2) 
+title: London School, doble ciclo y comparativa
 categories: articles
 tags: software-design design-patterns typescript tdd hexagonal
 ---

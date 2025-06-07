@@ -378,13 +378,14 @@ article.post {
   margin-bottom: 5rem;
 }
 
-article.post.post.full-post h1 {
+article.post.post.full-post header.post-header {
   text-align: left;
   background-color: $tags-bg;
   margin: -3rem -7rem 3rem -7rem;
   padding: 2rem 7rem;
   border-radius: $page_radius $page_radius 0 0;
 }
+
 
 p code {
   font: {
@@ -451,6 +452,11 @@ article {
       a {
         color: $heading-color;
       }
+    }
+
+    p.subtitle {
+      margin-bottom: -2rem;
+      color: $primary-light
     }
 
     span.date {

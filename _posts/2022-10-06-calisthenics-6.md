@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. No usar abreviaturas
+subtitle: Object Calisthenics
+title: No usar abreviaturas
 categories: articles
 tags: good-practices refactoring
 ---

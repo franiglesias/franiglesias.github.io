@@ -2,7 +2,13 @@
 layout: basic
 ---
 <article class="post full-post">
+    <header class="post-header">
+    {% if page.subtitle %}
+    <h2 class="subtitle">{{ page.subtitle }}</h2>
+    {% endif %}
+
     <h1>{{ page.title }}</h1>
+    </header>
     <div class="authors">
         <p>por
             {% if page.author %}

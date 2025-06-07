@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. Comentarios finales
+subtitle: Object Calisthenics
+title: Comentarios finales
 categories: articles
 tags: good-practices refactoring
 ---

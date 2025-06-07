@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. No más de dos variables de instancia por clase
+subtitle: Object Calisthenics
+title: No más de dos variables de instancia por clase
 categories: articles
 tags: good-practices refactoring
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
-title: TDD outside-in con arquitectura hexagonal (4) Walking Skeleton y vía intermedia pragmática
+subtitle: TDD outside-in con arquitectura hexagonal (4)
+title: Walking Skeleton y vía intermedia pragmática
 categories: articles
 tags: software-design design-patterns typescript tdd hexagonal
 ---

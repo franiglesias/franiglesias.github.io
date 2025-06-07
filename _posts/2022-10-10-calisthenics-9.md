@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. No user getters, setters o propiedades públicas
+subtitle: Object Calisthenics
+title: No user getters, setters o propiedades públicas
 categories: articles
 tags: good-practices refactoring
 ---

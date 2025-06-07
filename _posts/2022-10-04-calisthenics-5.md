@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. Un punto por línea
+subtitle: Object Calisthenics
+title: Un punto por línea
 categories: articles
 tags: good-practices refactoring
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. No usar la palabra clave ELSE
+subtitle: Object Calisthenics
+title: No usar la palabra clave ELSE
 categories: articles
 tags: good-practices refactoring
 ---

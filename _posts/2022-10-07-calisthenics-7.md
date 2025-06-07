@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Object Calisthenics. Mantener todas las entidades pequeñas
+subtitle: Object Calisthenics
+title: Mantener todas las entidades pequeñas
 categories: articles
 tags: good-practices refactoring
 ---

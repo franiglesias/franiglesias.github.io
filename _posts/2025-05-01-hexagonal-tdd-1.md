@@ -1,6 +1,7 @@
 ---
 layout: post
-title: TDD outside-in con arquitectura hexagonal (1) Enfoque clásico, paso a paso y reflexiones
+subtitle: TDD outside-in con arquitectura hexagonal (1) 
+title: Enfoque clásico, paso a paso y reflexiones
 categories: articles
 tags: software-design design-patterns typescript tdd hexagonal
 ---

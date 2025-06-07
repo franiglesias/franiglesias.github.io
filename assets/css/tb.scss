@@ -22,6 +22,7 @@ $neutral-300: #d6e7e8; // Gris muy claro con tono azulado
 $neutral-400: #607d8b; // Gris medio con tono azulado
 $neutral-500: #333333; // Gris oscuro
 $neutral-900: #1e2a38; // Casi negro con tinte azul
+$neutral-950: #1d3434; // Casi negro con tinte verde
 
 // Colores de estado
 $success: #26a69a; // Verde azulado
@@ -39,7 +40,7 @@ $title-secondary: $accent;
 $tags-bg: $neutral-300;
 $tag-color: $neutral-100;
 $tag-bg-in-list: $accent;
-$code-block-bg: $neutral-900;
+$code-block-bg: $neutral-950;
 $blockquote-border: $accent;
 
 $page-radius: 0.5rem;
@@ -648,6 +649,7 @@ pre.highlight {
   margin-right: -2rem;
   padding-right: 2rem;
   padding-top: 3rem;
+  background-color: $code-block-bg;
 }
 
 
@@ -658,11 +660,11 @@ pre.highlight > button {
   opacity: 0.6;
   position: absolute;
   right: 0;
-  top: 0.6rem;
+  top: 0.1rem;
   transition: all .2s ease-out;
   border-radius: $default-radius;
-  border: 0;
-  padding: 0 1rem;
+  border: 1px solid $neutral-400;
+  padding: 1px 0.2rem;
   font-size: $small-font-size;
   min-width: 5rem;
   max-width: 5rem;
@@ -784,27 +786,28 @@ div.footnotes {
   gap: 0.5rem;
   margin-bottom: 1rem;
   font-size: 1rem;
+
+  .credits {
+    margin: 0;
+    white-space: nowrap;
+    border-left: 4px solid $accent;
+    padding-left: 0.7rem;
+    font-weight: 500;
+
+    a {
+      color: inherit;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    &:hover a {
+      color: $neutral-100;
+      background: $accent;
+      border-radius: 0.2em;
+      padding: 0.1em 0.3em;
+    }
+  }
 }
 
-.credits-bar .credits {
-  margin: 0;
-  white-space: nowrap;
-  border-left: 4px solid $accent;
-  padding-left: 0.7rem;
-  font-weight: 500;
-}
-
-.credits-bar .credits a {
-  color: inherit;
-  transition: color 0.2s, background 0.2s;
-}
-
-.credits-bar .credits:hover a {
-  color: $neutral-100;
-  background: $accent;
-  border-radius: 0.2em;
-  padding: 0.1em 0.3em;
-}
 
 @media (max-width: 600px) {
   .credits-bar {
@@ -812,9 +815,9 @@ div.footnotes {
     align-items: flex-start;
     gap: 0.2rem;
     font-size: 0.95rem;
-  }
 
-  .credits-bar .credits {
-    white-space: normal;
+    .credits {
+      white-space: normal;
+    }
   }
 }

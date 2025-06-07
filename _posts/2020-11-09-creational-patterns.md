@@ -1,6 +1,7 @@
 ---
 layout: post
 title: New no. Lo siguiente
+subtitle: Patrones de diseño
 categories: articles
 tags: design-patterns
 ---

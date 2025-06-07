@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Strategy pattern
+subtitle: Patrones de diseño
 categories: articles
 tags: php design-patterns
 ---

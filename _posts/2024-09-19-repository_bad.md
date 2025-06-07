@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A donde vamos, no necesitamos repositorios
+subtitle: Patrones de diseño
 categories: articles
 tags: software-design design-patterns pulpoCon
 ---

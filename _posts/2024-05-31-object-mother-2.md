@@ -1,6 +1,7 @@
 ---
 layout: post
 title: El patrón Object Mother
+subtitle: Patrones de diseño
 categories: articles
 tags: testing tdd
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: El patrón State
+subtitle: Patrones de diseño
 categories: articles
 tags: design-patterns good-practices
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Representation pattern (obsoleto)
+subtitle: Patrones de diseño
 categories: articles
 tags: php design-patterns
 ---

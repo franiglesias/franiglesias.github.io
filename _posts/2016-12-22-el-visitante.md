@@ -1,5 +1,6 @@
 ---
 layout: post
+subtitle: Patrones de diseño
 title: El patrón visitante
 categories: articles
 tags: php design-patterns

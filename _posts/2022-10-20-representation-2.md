@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Generar representaciones de un objeto sin exponer getters
+subtitle: Patrones de diseño
 categories: articles
 tags: good-practices oop php
 ---

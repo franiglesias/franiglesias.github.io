@@ -1,5 +1,6 @@
 ---
 layout: post
+subtitle: Patrones de diseño
 title: El patrón Specification del dominio a la infraestructura (3)
 published: true
 categories: articles
@@ -7,12 +8,6 @@ tags: php design-patterns
 ---
 
 En las entregas anteriores hemos hablado del patrón **Specification** y cómo implementarlo en las diversas capas de arquitectura con la ayuda de **Abstract Factory**. Ahora toca ver cómo combinar **Specification** mediante el patrón **Composite** para construir especificaciones complejas a partir de otras más simples.
-
-La serie **Specification: del dominio a la infraestructura** está compuesta de los siguientes artículos
-
-[Patrón Specification: del dominio a la infraestructura (1)](/patron-specification-del-dominio-a-la-infraestructura-1)  
-[Patrón Specification: del dominio a la infraestructura (2)](/patron-specification-del-dominio-a-la-infraestructura-2)  
-[Patrón Specification: del dominio a la infraestructura (3)](/patron-specification-del-dominio-a-la-infraestructura-3)
 
 De entrada, no hay ninguna norma que limite la complejidad de las specification. Es decir, el criterio para satisfacerla puede ser tan simple o enrevesado como sea necesario.
 
@@ -353,3 +348,5 @@ abstract class CompositeDbalSpecification implements DbalSpecification
 ```
 
 Y, con esto, termino esta serie sobre **Specification** y sus implementaciones en distintas capas de la aplicación.
+
+{% include_relative series/specification.md %}

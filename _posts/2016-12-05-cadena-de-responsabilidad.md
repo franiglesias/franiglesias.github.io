@@ -1,5 +1,6 @@
 ---
 layout: post
+subtitle: Patrones de diseño
 title: Cadena de responsabilidad
 categories: articles
 tags: php design-patterns

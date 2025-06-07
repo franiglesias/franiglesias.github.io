@@ -1,5 +1,6 @@
 ---
 layout: post
+subtitle: Patrones de diseño
 title: El patrón Specification del dominio a la infraestructura (1)
 published: true
 categories: articles
@@ -8,11 +9,7 @@ tags: php design-patterns
 
 El patrón specification es sumamente útil, pero implementarlo tiene su intríngulis. Este artículo tiene tres partes:
 
-La serie **Specification: del dominio a la infraestructura** está compuesta de los siguientes artículos
-
-[Patrón Specification: del dominio a la infraestructura (1)](/patron-specification-del-dominio-a-la-infraestructura-1)  
-[Patrón Specification: del dominio a la infraestructura (2)](/patron-specification-del-dominio-a-la-infraestructura-2)  
-[Patrón Specification: del dominio a la infraestructura (3)](/patron-specification-del-dominio-a-la-infraestructura-3)
+{% include_relative series/specification.md %}
 
 ## Definiendo
 
@@ -148,3 +145,5 @@ Pero también necesitamos una abstracción, a fin de no hacernos dependientes de
 Abstract Factory es un patrón que consiste en crear una interfaz para una factoría y diversas implementaciones concretas de la misma. Cada implementación devuelve objetos propios de ese tipo de infraestructura, peo el código depende de la interfaz, que es abstracta. Esto nos garantiza que siempre habrá un método que devuelva tal o cual tipo de Specification para la infraestructura concreta que estemos implementando.
 
 Para ver un ejemplo real tendrás que esperar un poco. Nos vemos en la próxima entrega.
+
+{% include_relative series/specification.md %}

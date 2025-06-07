@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Patrón Builder en Golang
+subtitle: Patrones de diseño
 categories: articles
 tags: golang design-patterns
 ---

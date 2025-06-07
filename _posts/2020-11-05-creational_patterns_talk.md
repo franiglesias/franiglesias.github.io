@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Charla. New no, lo siguiente.
+subtitle: Patrones de diseño
 categories: articles
 tags: misc
 ---

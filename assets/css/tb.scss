@@ -57,7 +57,7 @@ $breakpoint_phone: 380px;
 /* Global Styles */
 html {
   font-size: 16px;
-  line-height: 130%;
+  line-height: 1.5;
 }
 
 body {
@@ -65,7 +65,6 @@ body {
   margin: 0;
   font-family: $site_font;
   font-size: 1.2em;
-  line-height: 150%;
   color: $text-color;
   font-weight: 400;
   background: $body-bg;
@@ -73,7 +72,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: $heading-color;
-  margin: 0 0 10px;
+  margin-bottom: 10px;
   font-family: $heading_font;
   font-weight: normal;
 }

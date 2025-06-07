@@ -236,11 +236,12 @@ td {
 }
 
 hr {
-  border: 0;
-  outline: none;
-  height: 3px;
-  background: transparent url("../images/hr.gif") center center repeat-x;
-  margin: 0 0 20px;
+  border: none;
+  height: 4px;
+  background: linear-gradient(90deg, $accent 0%, $neutral-100 100%);
+  border-radius: 2px;
+  margin: 2.5em 0;
+  opacity: 0.8;
 }
 
 dt,
@@ -327,6 +328,8 @@ section #title {
     text-align: left;
     line-height: 120%;
     color: $title-color;
+    margin-top: 1.5rem;
+    margin-bottom: 3.5rem;
   }
 
   p {
@@ -511,6 +514,8 @@ span.tag, button.tag {
 
 article.list span.tag {
   background-color: $tag-bg-in-list;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
 }
 
 section#tags {
@@ -754,3 +759,45 @@ div.footnotes {
   margin-right: 0;
 }
 
+.credits-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.credits-bar .credits {
+  margin: 0;
+  white-space: nowrap;
+  border-left: 4px solid $accent;
+  padding-left: 0.7rem;
+  font-weight: 500;
+}
+
+.credits-bar .credits a {
+  color: inherit;
+  transition: color 0.2s, background 0.2s;
+}
+
+.credits-bar .credits:hover a {
+  color: $neutral-100;
+  background: $accent;
+  border-radius: 0.2em;
+  padding: 0.1em 0.3em;
+}
+
+@media (max-width: 600px) {
+  .credits-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    font-size: 0.95rem;
+  }
+
+  .credits-bar .credits {
+    white-space: normal;
+  }
+}

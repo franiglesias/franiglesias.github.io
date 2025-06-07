@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/tb.css?v=' | append: site.github.build_revision | relative_url }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -35,12 +34,14 @@
             <h1>{{ site.title | default: site.github.repository_name }}</h1>
             <p>{{ site.description | default: site.github.project_tagline }}</p>
             <hr>
-            <span class="credits left">Blog de <a
-                    href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
-            <span class="credits left"> | @GitHub Pages</span>
-            <span class="credits right"><a href="/about/"> | About me 🇬🇧</a></span>
-            <span class="credits right"><a href="/about/es/"> | Acerca de mi 🇪🇸</a></span>
-            <span class="credits right"><a href="/tag/tb-list/">The Talking List</a></span>
+            <div class="credits-bar">
+                <span class="credits">Blog de <a
+                        href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
+                <span class="credits">@GitHub Pages</span>
+                <span class="credits"><a href="/about/">About me 🇬🇧</a></span>
+                <span class="credits"><a href="/about/es/">Acerca de mi 🇪🇸</a></span>
+                <span class="credits"><a href="/tag/tb-list/">The Talking List</a></span>
+            </div>
         </div>
 
         <section id="tags">

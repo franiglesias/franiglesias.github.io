@@ -379,7 +379,8 @@ article.post {
   margin-bottom: 5rem;
 }
 
-article.post.post.full-post header.post-header {
+.full-post header.post-header,
+.micro-post header.post-header {
   text-align: left;
   background-color: $tags-bg;
   margin: -3rem -7rem 3rem -7rem;

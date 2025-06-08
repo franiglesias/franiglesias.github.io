@@ -47,7 +47,7 @@ Además, se ha establecido un [código de conducta](https://pulpocon.es/codigo-d
 
 ## ¿Qué te parecería patrocinar un evento como este?
 
-![Shut up and gimme that sponsor slot](https://imgflip.com/i/9wm9dm)
+![Shut up and gimme that sponsor slot](/assets/images/9wm9dm.jpg)
 
 
 > PulpoCon 🐙 is the #gastrotech event / conference that brings the crafter movement and clean code to the developer

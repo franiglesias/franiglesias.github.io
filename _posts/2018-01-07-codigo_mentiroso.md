@@ -27,7 +27,7 @@ public function getPrice()
 
 Este ejemplo puede parecer un poco exagerado, pero ilustra bien la idea: los conceptos no solo parecen estar mal representados, sino que encima son incoherentes entre la estructura interna del objeto y su interfaz pública.
 
-_Amount_, en inglés, puede referirse tanto a cantidad (no una cantidad concreta) como al importe total de una cuenta, por lo que por una parte tenemos un uso correcto, o más o menos correcto, en tanto que nos devolvería la cantidad, y por otra tenemos un uso incorrecto, porque internamente llamamos _amount_ a otro concepto que es el precio.
+_Amount_, en inglés, puede referirse tanto a cantidad (no una cantidad concreta) como al importe total de una cuenta, por lo que, por una parte, tenemos un uso correcto, o más o menos correcto, en tanto que nos devolvería la cantidad, y por otra tenemos un uso incorrecto, porque internamente llamamos _amount_ a otro concepto que es el precio.
 
 Veamos un ejemplo un poco menos exagerado que, sin ser una corrección del anterior, también tiene cierto peligro:
 
@@ -104,7 +104,7 @@ public function getSomething()
 
 ¿Cómo te quedas?
 
-En el ámbito público este método devuelve información del objeto sobre el que se llama pero, a la vez, cambia su estado interno. Es decir, pedir la información tiene efectos colaterales sin que lo sepamos.
+En el ámbito público este método devuelve información del objeto sobre el que se llama, pero, a la vez, cambia su estado interno. Es decir, pedir la información tiene efectos colaterales sin que lo sepamos.
 
 En programación, decimos que una función tiene efectos colaterales (_side effects_) si produce algún cambio en el estado del sistema, o de una parte del sistema. Ojo: que los llamemos _side effects_ no quiere decir que sean efectos indeseados. En algunos contextos de uso son indeseados y en otros es justo lo que queremos que ocurra.
 
@@ -118,11 +118,11 @@ Esto lo podemos reescribir de esta manera: a los objetos podemos enviarles mensa
 * cambien su estado (side effect)
 * nos informen sobre su estado
 
-Al primer tipo de métodos/mensajes los solemos llamar commands (comandos, órdenes), el otro tipo son queries (preguntas).
+Al primer tipo de métodos/mensajes los solemos llamar _commands_ (comandos, órdenes), el otro tipo son _queries_ (preguntas).
 
 Es decir: los comandos producen side effects y las queries, no.
 
-Existe un patrón de diseño llamado CQS (Command Query Separation, en el que se basa CQRS) que nos dice justamente que los Commands no deben devolver información, mientras que las Queries no deben producir side effects.
+Existe un principio de diseño llamado CQS (Command Query Separation, en el que se basa CQRS) que nos dice justamente que los Commands no deben devolver información, mientras que las queries no deben producir side effects.
 
 Si no respetamos esta separación el código se convierte en mentiroso: nos dice que no pasan cosas, cuando en realidad sí están pasando, o viceversa.
 
@@ -158,7 +158,7 @@ class Car
 }
 ```
 
-¿Cómo podemos averiguar la velocidad actual de Car?
+¿Cómo podemos averiguar la velocidad actual de `Car`?
 
 Si atendemos a su interfaz pública resulta que, aparentemente, no podemos preguntarle al coche por su velocidad actual.
 
@@ -203,9 +203,9 @@ public function test_a_new_car_does_not_move()
 }
 ```
 
-Entonces el test pasa, pero no porque la velocidad sea cero, que lo es, sino porque **en ese único caso**, casualmente, ejecutar el comando deccelerate no altera la velocidad pues el coche ya está parado. Y para saber eso, necesitamos conocer el código por dentro.
+Entonces el test pasa, pero no porque la velocidad sea cero, que lo es, sino porque **en ese único caso**, casualmente, ejecutar el comando `deccelerate` no altera la velocidad, pues el coche ya está parado. Y para saber eso, necesitamos conocer el código por dentro.
 
-Así que, para liarla más, el test también nos engaña ya que es un sutil caso de test acoplado a la implementación y, por tanto, un test frágil.
+Así que, para liarla más, el test también nos engaña, ya que es un sutil caso de test acoplado a la implementación y, por tanto, un test frágil.
 
 La solución de este problema aplicando CQS es sencilla:
 
@@ -264,7 +264,7 @@ public function test_a_car_accelerates()
 
 ### La pregunta hacendosa
 
-Una query que produce side effects es código mentiroso porque cambia el estado del sistema mmientras nos informa sobre él. Intentaré poner un ejemplo:
+Una query que produce side effects es código mentiroso porque cambia el estado del sistema mientras nos informa sobre él. Intentaré poner un ejemplo:
 
 ```php
 class Product
@@ -296,7 +296,7 @@ public function test_it_applies_a_discount()
 
 Resulta que el test pasa. De momento, vamos bien.
 
-Ahora, en producción, queremos hacer una de esas promociones en las que el descuento es distinto según el número de unidades: hasta 5 unidades hacermos un 10% y un 20% a partir de 6 en adelante. Así que para mostrar la tabla, hacemos algo así:
+Ahora, en producción, queremos hacer una de esas promociones en las que el descuento es distinto según el número de unidades: hasta 5 unidades aplicamos un 10% y un 20% a partir de 6 en adelante. Así que para mostrar la tabla, escribimos algo así:
 
 ```php
 $firstFiveUnitsDiscountedPrice = $product->getPriceWithDiscount(.10);
@@ -328,9 +328,9 @@ WTF! ¡Este test falla! La función no es **idempotente**.
 
 Idempotente. Se dice de una función que es **idempotente** cuando al ejecutarla con los mismos argumentos devuelve siempre los mismos resultados, da igual las veces que lo repitas.
 
-Nuestro ejemplo no es idempotente, ya que si lo ejecutamos varias veces con el mismo argumento devuelve resultados diferentes cada vez. El caso es que debería serlo pues si tenemos un precio base y le aplicamos un descuento, el precio con descuento debería ser siempre el mismo. Eso nos indica que hay algo influyendo en esa función que no tendría que estar ahí.
+Nuestro ejemplo no es idempotente, ya que si lo ejecutamos varias veces con el mismo argumento devuelve resultados diferentes cada vez. El caso es que debería serlo, pues si tenemos un precio base y le aplicamos un descuento, el precio con ese descuento debería ser siempre el mismo. Eso nos indica que hay algo influyendo en esa función que no tendría que estar ahí.
 
-En nuestro caso es fácil de ver mirando el código: la función cambia el estado interno de nuestro objeto Product al almacenar el precio descontado de nuevo en la propiedad price. La próxima vez que la apliquemos el precio de Product será otro.
+En nuestro caso es fácil de ver mirando el código: la función cambia el estado interno de nuestro objeto `Product` al almacenar el precio descontado de nuevo en la propiedad `price`. La próxima vez que la apliquemos el precio de `Product` será otro.
 
 El arreglo es también sencillo:
 
@@ -399,7 +399,7 @@ class Post
 }
 ```
 
-En la clase `Post` se ha aislado la obtención de la hora actual en un método privado `getCurrentTime` y, como aplicamos DRY, pues lo utilizamos tanto tanto al asignar la fecha de publicación como para compararla.
+En la clase `Post` se ha aislado la obtención de la hora actual en un método privado `getCurrentTime` y, como aplicamos DRY, pues lo utilizamos tanto al asignar la fecha de publicación como para compararla.
 
 El problema es que no podríamos testear esta clase tal cual está. Incluso pasando una fecha "cuidadosamente estudiada" para probar una publicación por adelantado, llegará un día en que la fecha del sistema adelantará a la fecha de publicación futura y el test fallaría.
 
@@ -414,7 +414,7 @@ public function test_can_set_pubTime_in_advance_and_post_is_not_published()
 
 Es decir, el test pasará, pero un día dejará de hacerlo.
 
-Así que, para evitar estos problemas, es frecuente crear Testables que extienden la clase que queremos poner a prueba sobreescribiendo el método para devolver un valor conocido, lo que llamamos stub.
+Así que, para evitar estos problemas, es frecuente crear _Testables_ que extienden la clase que queremos poner a prueba sobreescribiendo el método para devolver un valor conocido, lo que llamamos _stub_.
 
 ```php
 class TestablePost extends Post
@@ -426,7 +426,7 @@ class TestablePost extends Post
 }
 ```
 
-De este modo, podemos comprobar el estado de un post en relación a la fecha preprogramada:
+De este modo, podemos comprobar el estado de un post en relación con la fecha pre-programada:
 
 ```php
 public function test_can_set_pubTime_in_advance_and_post_is_not_published()
@@ -437,19 +437,21 @@ public function test_can_set_pubTime_in_advance_and_post_is_not_published()
 }
 ```
 
-Dado que, para nuestro TestablePost, hemos congelado el tiempo en el día 6 de diciembre de 2017, si fijamos la fecha de publicación de nuestro TestablePost al día de Reyes de 2018, se supone que no estará publicado y, por tanto, el test pasará. 
+Dado que, para nuestro `TestablePost`, hemos congelado el tiempo en el día 6 de diciembre de 2017, si fijamos la fecha de publicación de nuestro `TestablePost` al día de Reyes de 2018, se supone que no estará publicado y, por tanto, el test pasará. 
 
-Pero imagina que estás haciendo el test justamente el día 6 de enero de 2018. Pues resulta que el test falla, nuestro TestablePost ha sido publicado: ¿habrán sido los Reyes Magos?.
+Pero imagina que estás haciendo el test justamente el día 6 de enero de 2018. Pues resulta que el test falla, nuestro `TestablePost` ha sido publicado: ¿habrán sido los Reyes Magos?.
 
 No es magia, es una cuestión de visibilidad y de que la clase `TestablePost` nos está engañando.
 
-Este test falla ahora porque el método `getCurrentTime` es privado y cuando lo llamamos desde métodos que están definidos en la clase `Post` (y no en `TestablePost`) se ejecuta el de la `Post`, no el de `TestablePost`. Por tanto, `getCurrentTime` devuelve la hora del sistema, no la que hemos preprogramado.
+Este test falla ahora porque el método `getCurrentTime` es privado y cuando lo llamamos desde métodos que están definidos en la clase `Post` (y no en `TestablePost`) se ejecuta el de la `Post`, no el de `TestablePost`. Por tanto, `getCurrentTime` devuelve la hora del sistema, no la que hemos pre-programado.
 
-Si cambio la visibilidad del método en `TestablePost` no voy a cambiar este resultado. Tendría que cambiar la visibilidad en `Post` a `protected`, algo que no es precisamente una buena práctica.
+Si cambio la visibilidad del método en `TestablePost` no voy a cambiar este resultado. Tendría que cambiar la visibilidad en `Post` a `protected`. Esto nos permite habilitar la técnica de _Seams_ o _costuras_. Pero no deberíamos tener que tocar el código existente para hacer tests, podemos buscar formas alternativas.
 
-Lo ideal sería que Post no tuviese que depender de `time()`, y esto se puede lograr de varias formas. 
+Lo ideal sería que `Post` no tuviese que depender de `time()`, y esto se puede lograr de varias formas. 
 
-Por ejemplo, utilizando una Specification para decidir si un Post está publicado o no. En buena medida, no es responsabilidad del Post saber cuándo le toca mostrarse como publicado, tan solo conocer su fecha de publicación. De este modo, es posible testear la Specification con Posts a medida que se publiquen en la fecha anterior o siguiente a la actual, así como testear Post sin tener que saber en qué día lo estamos haciendo.
+Por ejemplo, utilizando una _Specification_ para decidir si un `Post` está publicado o no. En buena medida, no es responsabilidad del `Post` saber cuándo le toca mostrarse como publicado, tan solo conocer su fecha de publicación. De este modo, es posible testear la _Specification_ con `Posts` a medida que se publiquen en la fecha anterior o siguiente a la actual, así como testear `Post` sin tener que saber en qué día lo estamos haciendo.
+
+_Nota 2025-06-08_: Una buena alternativa es [crear una interfaz `Clock`](/decoupling_from_system/) e inyectar una implementación adecuada cuando tengamos que lidiar con cuestiones relacionadas con el tiempo.  
 
 En muchos casos, desarrollar la clase con la ayuda de TDD nos obliga a considerar estos problemas de diseño desde el primer momento y resolverlos antes de que se presenten siquiera.
 
@@ -469,7 +471,7 @@ public function getStudents(StudentCollection $students, Criteria $criteria)
 
 ¿Qué hace esta función? ¿Dónde están mis estudiantes?
 
-El nombre getStudents sugiere bastante poderosamente que esa función sirve para obtener una lista de estudiantes, pero la verdad es que no devuelve nada. Entonces, ¿qué pasa?
+El nombre _getStudents_ sugiere bastante poderosamente que esa función sirve para obtener una lista de estudiantes, pero la verdad es que no devuelve nada. Entonces, ¿qué pasa?
 
 Aprovechando que los objetos en PHP siempre se pasan por referencia, podemos pasarlos como parámetros de una función o método y, por tanto, los cambios que hagamos en ellos se mantendrán. Es decir, algo así como esto:
 
@@ -485,14 +487,14 @@ $students->doSomething();
 
 Veamos:
 
-* Por el nombre del método, deducimos que es una query, pero no devuelve nada, así que es un command. Por tanto, miente.
-* Sin embargo, el command obtiene una información, luego, es una query. Miente otra vez.
+* Por el nombre del método, deducimos que es una _query_, pero no devuelve nada, así que es un _command_. Por tanto, miente.
+* Sin embargo, el _command_ obtiene una información, luego, es una _query_. Miente otra vez.
 
 Aquí nada es lo que parece.
 
 En realidad, el problema es que el sistema está mal diseñado.
 
-Para empezar, `StudentRepository::findAllBy($criteria)` bien podría devolver directamente un objeto StudentCollection. Seguramente devuelve un array, lo que podría ser correcto (no lo es, pero eso es otra discusión).
+Para empezar, `StudentRepository::findAllBy($criteria)` bien podría devolver directamente un objeto `StudentCollection`. Seguramente devuelve un array, lo que podría ser correcto (no lo es, pero eso es otra discusión).
 
 Pero incluso en ese caso, ¿qué sentido tiene que `getStudents` no devuelva nada? Para eso tenemos dos opciones:
 
@@ -541,7 +543,7 @@ En este caso tenemos otras opciones y una de las más sencillas sería tener un 
 La conclusión de estos ejemplos es que normalmente podremos evitar el código mentiroso mediante un mejor diseño:
 
 * asignando mejores nombres a los conceptos y siendo coherentes en su uso
-* separarando commands de queries
+* separando commands de queries
 * asegurándonos de testear la idempotencia de las funciones que necesiten esta propiedad
 * aislando aquellas funciones que producen resultados no predecibles
 * evitando los artificios para testear que pueden disimular estos problemas

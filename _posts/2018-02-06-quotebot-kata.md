@@ -27,7 +27,7 @@ Si no usas uno de estos IDE tampoco es que haya mucho problema. Un refactor bast
 * Selecciona el bloque de código que realiza esa operación.
 * Copia y pega el bloque como implementación del método privado que creaste al principio.
 * Ajusta los parámetros y el valor de retorno del método.
-* Sutituye el bloque de código por una llamada al método recién creado.
+* Sustituye el bloque de código por una llamada al método recién creado.
 
 Dicho así, suena más complicado de lo que parece, pero es realmente sencillo.
 

@@ -114,18 +114,18 @@ Por tanto, para garantizar que esté bien cubierto, y sabiendo que el bloque ha 
 **Condicion1 OR Condicion2:** en este caso el bloque bajo la expresión condicional se ejecutará si al menos una de las dos condiciones se cumple. Para cubrirlo completamente, necesitamos que la expresión se ejecute cuatro veces y el bloque que controla, lo haga al menos tres veces.
 
 | Condición 1 | Condición 2 | Resultado | ¿Se ejecuta? |
-| :---: | :---: | :---: | :---: |
-| true | true | true | Sí |
-| true | false | true | Sí |
-| false | true | true | Sí |
-| false | false | false | No |
+|:-----------:|:-----------:|:---------:|:------------:|
+|    true     |    true     |   true    |      Sí      |
+|    true     |    false    |   true    |      Sí      |
+|    false    |    true     |   true    |      Sí      |
+|    false    |    false    |   false   |      No      |
 
 **Condición negada** las expresiones condicionales de negación deberían ejecutarse dos veces y el bloque que controlan al menos una vez.
 
 | Condición 1 | Resultado | ¿Se ejecuta? |
-| :---: | :---: | :---: |
-| true | false | No |
-| false | true | Sí |
+|:-----------:|:---------:|:------------:|
+|    true     |   false   |      No      |
+|    false    |   true    |      Sí      |
 
 A partir de aquí, las expresiones condicionales complejas requerirán un número de hits acorde con sus posibles estados. Cubrir solo dos casos (la expresión se cumple o no se cumple) puede ocultarnos información, particularmente en el caso de expresiones que incluyan operadores OR.
 

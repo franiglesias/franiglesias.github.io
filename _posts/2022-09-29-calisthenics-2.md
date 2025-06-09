@@ -1,6 +1,6 @@
 ---
 layout: post
-series: calisthenicsseries: calisthenics
+series: calisthenics
 title: No usar la palabra clave ELSE
 categories: articles
 tags: good-practices refactoring

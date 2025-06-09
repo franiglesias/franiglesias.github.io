@@ -9,7 +9,7 @@ tags: php design-patterns
 
 En las entregas anteriores hemos hablado del patrón **Specification** y cómo implementarlo en las diversas capas de arquitectura con la ayuda de **Abstract Factory**. Ahora toca ver cómo combinar **Specification** mediante el patrón **Composite** para construir especificaciones complejas a partir de otras más simples.
 
-{% include_relative series/specification.md %}
+{% include_relative parts/specification.md %}
 
 De entrada, no hay ninguna norma que limite la complejidad de las specification. Es decir, el criterio para satisfacerla puede ser tan simple o enrevesado como sea necesario.
 

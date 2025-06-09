@@ -1342,4 +1342,4 @@ También resultaría interesante eliminar el uso de arrays en `AdSpaceProvider` 
 
 Estos y otros ejercicios pueden sernos útiles para aplicar luego en proyectos reales. Como hemos visto, no siempre es necesario, ni conveniente, tratar de empezar de cero un nuevo proyecto para reemplazar un código desfasado. A veces es mejor ir cambiándolo usando estas estrategias que te permitirán un downtime mínimo y no tener que lidiar con migraciones de datos o usuarios.
 
-{% include_relative series/legacy-under-control.md %}
+{% include_relative parts/legacy-under-control.md %}

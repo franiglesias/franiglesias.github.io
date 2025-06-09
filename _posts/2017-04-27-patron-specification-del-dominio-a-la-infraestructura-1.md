@@ -9,7 +9,7 @@ tags: php design-patterns
 
 El patrón specification es sumamente útil, pero implementarlo tiene su intríngulis. Este artículo tiene tres partes:
 
-{% include_relative series/specification.md %}
+{% include_relative parts/specification.md %}
 
 ## Definiendo
 

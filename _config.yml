@@ -52,9 +52,6 @@ version: v1.2.0
 
 # Especificar explícitamente que no se use un tema
 theme: null
-# O si prefieres usar minima que es más neutral
-# theme: minima
-sass_dir: assets/css
 
 # Jekyll 3 now only supports Kramdown for Markdown
 kramdown:

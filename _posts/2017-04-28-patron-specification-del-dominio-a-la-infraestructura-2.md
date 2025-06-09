@@ -9,7 +9,7 @@ tags: php design-patterns
 
 En esta entrega veremos como usar el patrón Abstract Factory para poder tener Specification adecuadas a diferentes capas e implementaciones.
 
-{% include_relative series/specification.md %}
+{% include_relative parts/specification.md %}
 
 Hace tiempo descubrí que tenía una vinculación curiosa con Martin Fowler. Resulta que el colegio para el que trabajaba mantiene intercambios de estudiantes con un colegio inglés del que Fowler es ex-alumno. En fin, una de esas curiosidades que sirve para hacer una introducción a un post.
 

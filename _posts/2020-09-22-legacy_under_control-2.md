@@ -1412,4 +1412,4 @@ Y luego, veremos que con la nueva organización del código, es posible detectar
 
 Pero eso lo dejaremos para una tercera parte. Esta kata está dando mucho de sí.
 
-{% include_relative series/legacy-under-control.md %}
+{% include_relative parts/legacy-under-control.md %}

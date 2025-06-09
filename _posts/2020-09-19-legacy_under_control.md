@@ -2266,4 +2266,4 @@ Lo que hemos conseguido con el trabajo realizado es tener una aplicación testea
 
 La próxima entrega tratará sobre todo de cómo construir un dominio rico y significativo.
 
-{% include_relative series/legacy-under-control.md %}
+{% include_relative parts/legacy-under-control.md %}

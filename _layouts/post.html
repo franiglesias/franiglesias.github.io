@@ -40,8 +40,8 @@ layout: basic
             {% endfor %}
         </p>
         <p id="self-link">Enlace: {{site.url}}{{page.url}}
-            <button type="button" class="tag" onclick="copiarConFecha(event)" title="Copia el link con una marca de tiempo para citas académicas">Copiar con fecha</button>
-            <button type="button" class="tag" onclick="copiarEnlace(event)" title="Copia el link">Copiar</button>
+            <button type="button" class="tag" onclick="copyAsQuote(event)" title="Copia el link con una marca de tiempo para citas académicas">Copiar con fecha</button>
+            <button type="button" class="tag" onclick="copyLink(event)" title="Copia el link">Copiar</button>
         </p>
         <script src="/assets/js/copy-link.js"></script>
     </div>

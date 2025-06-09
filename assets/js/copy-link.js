@@ -8,25 +8,25 @@ function setButtonCopied(btn, originalText) {
     }, 1500);
 }
 
-function copiarTexto(texto, btn) {
+function copyTextToClipboard(text, btn) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(texto)
+        navigator.clipboard.writeText(text)
             .then(function () {
                 setButtonCopied(btn, btn.dataset.originalText || btn.innerText);
             })
             .catch(function (err) {
                 console.log('Fallo Clipboard API, usando fallback:', err);
-                fallbackCopyTextToClipboard(texto, btn);
+                fallbackCopyTextToClipboard(text, btn);
             });
     } else {
         console.log('Clipboard API no disponible, usando fallback.');
-        fallbackCopyTextToClipboard(texto, btn);
+        fallbackCopyTextToClipboard(text, btn);
     }
 }
 
-function fallbackCopyTextToClipboard(texto, btn) {
+function fallbackCopyTextToClipboard(text, btn) {
     const textArea = document.createElement("textarea");
-    textArea.value = texto;
+    textArea.value = text;
     textArea.style.position = 'fixed';
     textArea.style.top = '-1000px';
     textArea.style.left = '-1000px';
@@ -47,13 +47,13 @@ function fallbackCopyTextToClipboard(texto, btn) {
     document.body.removeChild(textArea);
 }
 
-function copiarConFecha(event) {
-    const texto = `${window.location.href} recuperado el día ${new Date().toLocaleString('es-ES')}`;
+function copyAsQuote(event) {
+    const text = `${window.location.href} recuperado el día ${new Date().toLocaleString('es-ES')}`;
     const btn = event.currentTarget;
-    copiarTexto(texto, btn);
+    copyTextToClipboard(text, btn);
 }
 
-function copiarEnlace(event) {
+function copyLink(event) {
     const btn = event.currentTarget;
-    copiarTexto(window.location.href, btn);
+    copyTextToClipboard(window.location.href, btn);
 }

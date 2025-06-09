@@ -1,0 +1,27 @@
+{% assign current_series = page.series %}
+{% if current_series %}
+  {% assign series_info = site.data.series[current_series] %}
+  {% assign series_posts = site.posts | where: "series", current_series | sort: "date" %}
+  <hr />
+  <div class="seriesNote">
+
+    {% if series_info %}
+    <h4>Serie: {{ series_info.title }}</h4>
+      <p>{{ series_info.description }} ({{ series_posts | size }} partes)</p>
+    {% else %}
+      <p>Esta entrada forma parte de la serie <strong>{{ current_series }}</strong> ({{ series_posts | size }} partes):</p>
+    {% endif %}
+    <ul>
+      {% for post in series_posts %}
+        <li>
+          <strong>{{ forloop.index }}</strong> -
+          {% if post.url == page.url %}
+            <span>{{ post.title }} (Este artículo)</span>
+          {% else %}
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

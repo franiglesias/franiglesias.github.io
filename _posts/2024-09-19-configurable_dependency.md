@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Evita el acoplamiento fuerte con configurable dependency
-subtitle: Patrones de diseño
+series: design-patterns
 categories: articles
 tags: software-design pulpoCon
 ---

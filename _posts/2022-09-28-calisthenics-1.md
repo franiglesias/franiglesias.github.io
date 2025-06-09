@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Object Calisthenics
+series: calisthenics
 title: Solo un nivel de indentación.
 categories: articles
 tags: good-practices refactoring
@@ -623,4 +623,3 @@ def statement(invoice, plays):
 
 Como puedes comprobar, se han introducido muchos `else`, lo que nos llevará a aplicar una nueva regla. Pero eso será en otra entrega.
 
-{% include_relative series/calisthenics.md %}

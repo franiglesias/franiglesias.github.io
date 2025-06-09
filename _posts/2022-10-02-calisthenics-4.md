@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Object Calisthenics
+series: calisthenics
 title: Colecciones de primera clase
 categories: articles
 tags: good-practices refactoring
@@ -432,4 +432,3 @@ Y usarlo de esta otra forma:
 
 Object Calisthenics nos está ayudando a despejar el diseño del código, identificando objetos y repartiendo responsabilidades. Gracias a ello tenemos un código que, aunque es más grande, está organizado en objetos cada vez más especializados en sus tareas, de modo que la comprensión del sistema es mejor, a la vez que se hace más mantenible y, como acabamos de ver, incluso más optimizable.
 
-{% include_relative series/calisthenics.md %}

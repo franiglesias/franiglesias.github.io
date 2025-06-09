@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Object Calisthenics
+series: calisthenics
 title: Empaquetar primitivas en objetos
 categories: articles
 tags: good-practices refactoring
@@ -1452,4 +1452,3 @@ Si observamos el código desde el punto de vista de refactoring está claro que 
 
 En cualquier caso, en este momento podemos observar algunos efectos positivos, ya que las responsabilidades se han ido distribuyendo en objetos y funciones.
 
-{% include_relative series/calisthenics.md %}

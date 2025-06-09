@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Patrones de diseño
+series: design-patterns
 title: El patrón Specification del dominio a la infraestructura (2)
 published: true
 categories: articles
@@ -8,6 +8,8 @@ tags: php design-patterns
 ---
 
 En esta entrega veremos como usar el patrón Abstract Factory para poder tener Specification adecuadas a diferentes capas e implementaciones.
+
+{% include_relative series/specification.md %}
 
 Hace tiempo descubrí que tenía una vinculación curiosa con Martin Fowler. Resulta que el colegio para el que trabajaba mantiene intercambios de estudiantes con un colegio inglés del que Fowler es ex-alumno. En fin, una de esas curiosidades que sirve para hacer una introducción a un post.
 
@@ -329,5 +331,3 @@ En mi caso concreto, BlogService es usando por varios controladores web.
 En el [próximo capítulo](/patron-specification-del-dominio-a-la-infraestructura-3) hablaré de cómo usar el patrón Composite para crear Specification sencillas y combinarlas para hacer selecciones más complejas.
 
 De momento, espero que este os pueda ser útil.
-
-{% include_relative series/specification.md %}

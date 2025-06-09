@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Object Calisthenics
+series: calisthenics
 title: Mantener todas las entidades pequeñas
 categories: articles
 tags: good-practices refactoring
@@ -565,4 +565,3 @@ Por supuesto, no siempre es posible forzar un método a tener un determinado tam
 
 [Puedes consultar el proyecto en Github](https://github.com/franiglesias/theatrical-plays-kata) 
 
-{% include_relative series/calisthenics.md %}

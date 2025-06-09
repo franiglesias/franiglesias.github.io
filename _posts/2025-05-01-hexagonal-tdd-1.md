@@ -3,6 +3,7 @@ layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (1) 
 title: Enfoque clásico, paso a paso y reflexiones
 categories: articles
+series: outside-in-ha
 tags: software-design design-patterns typescript tdd hexagonal
 ---
 
@@ -1458,5 +1459,4 @@ En muchos aspectos, esta forma de desarrollo nos va a requerir buenas técnicas 
 
 En el artículo siguiente, intentaré desarrollar lo mismo, pero usando una metodología más próxima a la London School, con Just-In-Time design y comparar. Obviamente, me voy a ver influido por lo que ya he trabajado aquí.
 
-{% include_relative series/hexagonal-tdd.md %}
 

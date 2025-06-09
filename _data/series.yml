@@ -1,0 +1,12 @@
+vsa:
+  title: "Vertical Slice Architecture"
+  description: "Explicamos y reflexionamos sobre el patrón Vertical Slice Architecture con un ejemplo de su posible implementación."
+outside-in-ha:
+  title: "TDD Outside-In con Arquitectura Hexagonal"
+  description: "Donde mostramos cómo aplicar TDD Outside-In con Arquitectura Hexagonal, usando diferentes aproximaciones."
+calisthenics:
+  title: "Object Calisthenics"
+  description: "Un ejemplo práctico de cómo usar estar reglas para dirigir un refactor en nuestro código."
+design-patterns:
+  title: "Patrones de Diseño"
+  description: "Un repaso a los patrones de diseño más comunes y cómo aplicarlos en nuestro código."

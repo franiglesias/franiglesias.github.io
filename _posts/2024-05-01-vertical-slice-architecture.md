@@ -2,6 +2,7 @@
 layout: post
 title: Vertical Slice Architecture
 categories: articles
+series: vsa
 tags: design-patterns
 ---
 
@@ -261,3 +262,4 @@ _Vertical Slice Architecture_ es una propuesta interesante, pero no la veo como 
 
 Mi plan era intentar construir una aplicación basándome en ideas de VSA, así que vamos a intentarlo en próximos artículos.
 
+{% include series_list.html %}

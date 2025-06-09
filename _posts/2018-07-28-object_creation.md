@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Patrones de creación de objetos
-subtitle: Patrones de diseño
+series: design-patterns
 categories: articles
 tags: php
 ---

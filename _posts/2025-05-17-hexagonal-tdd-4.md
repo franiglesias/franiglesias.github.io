@@ -3,6 +3,7 @@ layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (4)
 title: Walking Skeleton y vía intermedia pragmática
 categories: articles
+series: outside-in-ha
 tags: software-design design-patterns typescript tdd hexagonal
 ---
 
@@ -758,5 +759,3 @@ Personalmente, me ha parecido una forma pragmática de trabajar y que mantiene l
 
 Por otro lado, la introducción de componentes con poco comportamiento, o con un comportamiento fijado, ayuda a gestionar la proliferación de dobles propia de la London School. De esta forma, los dobles que se usan acaban siendo actores para el entorno de tests (y creados con librerías si fuese necesario), mientras que los componentes internos simplemente van enriqueciendo su comportamiento a medida que nuevos tests nos obligan a seguir desarrollando. 
 
-
-{% include_relative series/hexagonal-tdd.md %}

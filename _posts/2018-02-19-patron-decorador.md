@@ -1,7 +1,7 @@
 ---
 layout: post
 title: El patrón decorador
-subtitle: Patrones de diseño
+series: design-patterns
 categories: articles
 tags: design-patterns
 ---

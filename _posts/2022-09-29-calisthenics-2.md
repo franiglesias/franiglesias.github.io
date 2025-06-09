@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Object Calisthenics
+series: calisthenicsseries: calisthenics
 title: No usar la palabra clave ELSE
 categories: articles
 tags: good-practices refactoring
@@ -391,4 +391,3 @@ def statement(invoice, plays):
 
 Parece muy claro que conceptos como obra (play) y actuación (performance) están pugnando por salir. Y alguno más. Lo veremos en el artículo siguiente.
 
-{% include_relative series/calisthenics.md %}

@@ -3,6 +3,7 @@ layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (3) 
 title: Comparativa práctica y conclusiones
 categories: articles
+series: outside-in-ha
 tags: software-design design-patterns typescript tdd hexagonal
 ---
 
@@ -67,5 +68,3 @@ En todo caso, en ambos casos es importante definir los requisitos de la tarea pa
 En fin. Creo que mi preferencia personal está muy clara. Esto no significa que siempre sea estricto a la hora de aplicar la metodología. A veces, el tipo de proyecto o tarea me lleva por otros planteamientos.
 
 Además, me siento solo en esta preferencia, ya que no es precisamente frecuente que sea compartida por otras desarrolladoras.
-
-{% include_relative series/hexagonal-tdd.md %}

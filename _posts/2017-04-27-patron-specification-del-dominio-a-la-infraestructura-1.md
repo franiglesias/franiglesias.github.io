@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Patrones de diseño
+series: design-patterns
 title: El patrón Specification del dominio a la infraestructura (1)
 published: true
 categories: articles
@@ -145,5 +145,3 @@ Pero también necesitamos una abstracción, a fin de no hacernos dependientes de
 Abstract Factory es un patrón que consiste en crear una interfaz para una factoría y diversas implementaciones concretas de la misma. Cada implementación devuelve objetos propios de ese tipo de infraestructura, peo el código depende de la interfaz, que es abstracta. Esto nos garantiza que siempre habrá un método que devuelva tal o cual tipo de Specification para la infraestructura concreta que estemos implementando.
 
 Para ver un ejemplo real tendrás que esperar un poco. Nos vemos en la próxima entrega.
-
-{% include_relative series/specification.md %}

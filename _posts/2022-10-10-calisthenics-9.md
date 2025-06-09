@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Object Calisthenics
+series: calisthenics
 title: No user getters, setters o propiedades públicas
 categories: articles
 tags: good-practices refactoring
@@ -731,4 +731,3 @@ El hecho de no poder acceder al estado de los objetos es beneficioso para evitar
 
 Con esta entrega finaliza esta serie de artículos sobre la aplicación de las reglas de Object Calisthenics. Sin embargo, próximamente habrá un artículo de resumen y continuación con algunas conclusiones y lecciones aprendidas de este experimento.
 
-{% include_relative series/calisthenics.md %}

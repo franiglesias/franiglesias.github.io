@@ -2,6 +2,7 @@
 layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (6) 
 title: Añadiendo funcionalidad y resolviendo problemas
+series: outside-in-ha
 categories: articles
 tags: software-design design-patterns typescript tdd hexagonal
 ---
@@ -1482,5 +1483,3 @@ src
 
 13 directories, 38 files
 ```
- 
-{% include_relative series/hexagonal-tdd.md %}

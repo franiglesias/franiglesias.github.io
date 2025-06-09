@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Object Calisthenics
+series: calisthenics
 title: Un punto por línea
 categories: articles
 tags: good-practices refactoring
@@ -296,4 +296,3 @@ def statement(invoice_data, plays):
     return printer.output()
 ```
 
-{% include_relative series/calisthenics.md %}

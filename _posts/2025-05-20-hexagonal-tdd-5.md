@@ -3,6 +3,7 @@ layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (5) 
 title: Sad paths, validaciones y robustez en los tests
 categories: articles
+series: outside-in-ha
 tags: software-design design-patterns typescript tdd hexagonal
 ---
 
@@ -1255,6 +1256,4 @@ Para eso necesitamos reducir en lo posible el coste del cambio. Si nuestras meto
 Así, por ejemplo, salvo en lo que se refiere al cambio al patrón _Result_ genérico que hemos hecho al final, nuestros tests _e2e_ han resultado ser bastante resilientes. Hemos podido cambiar bastantes cosas dentro del código sin afectar al comportamiento de manera grave.
 
 Esto no ha ocurrido con los test interiores, generados al usar el modelo London School. Tales tests se rompieron por una mala elección de los dobles introducidos, lo cual nos lleva a una recomendación práctica muy sencilla: **en Arquitectura Hexagonal solo debemos hacer dobles de los puertos**. Si es un objeto que vive en el interior del hexágono no se dobla, aunque puede que tenga dependencias que sí.
-
-{% include_relative series/hexagonal-tdd.md %}
 

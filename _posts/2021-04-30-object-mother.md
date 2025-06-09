@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ejemplos para tus tests con Object Mother
-subtitle: Patrones de diseño
+series: design-patterns
 categories: articles
 tags: testing tdd
 ---

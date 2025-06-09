@@ -24,6 +24,8 @@ layout: basic
         {{ content }}
     </div>
 
+    {% include series_list.html %}
+
     <div class="metadata">
         <p>Publicado: {{ page.date | date: "%B %e, %Y" }}</p>
         <p>Etiquetas:

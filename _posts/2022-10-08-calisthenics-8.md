@@ -1,6 +1,6 @@
 ---
 layout: post
-subtitle: Object Calisthenics
+series: calisthenics
 title: No más de dos variables de instancia por clase
 categories: articles
 tags: good-practices refactoring
@@ -155,4 +155,3 @@ Con las propiedades (o variables de instancia) ocurre lo mismo. Cuantas más hay
 
 [Puedes consultar el proyecto en Github](https://github.com/franiglesias/theatrical-plays-kata) 
 
-{% include_relative series/calisthenics.md %}

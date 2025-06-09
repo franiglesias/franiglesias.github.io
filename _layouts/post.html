@@ -3,11 +3,14 @@ layout: basic
 ---
 <article class="post full-post">
     <header class="post-header">
-    {% if page.subtitle %}
-    <h2 class="subtitle">{{ page.subtitle }}</h2>
-    {% endif %}
-
-    <h1>{{ page.title }}</h1>
+        {% if page.series %}
+        <h2 class="subtitle">{{ site.data.series[page.series].title }}</h2>
+        {% else %}
+            {% if page.subtitle %}
+            <h2 class="subtitle">{{ page.subtitle }}</h2>
+            {% endif %}
+        {% endif %}
+        <h1>{{ page.title }}</h1>
     </header>
     <div class="authors">
         <p>por
@@ -36,7 +39,10 @@ layout: basic
             </span>&nbsp;</a>
             {% endfor %}
         </p>
-        <p id="self-link">Enlace: {{site.url}}{{page.url}} <button type="button" class="tag" onClick="navigator.clipboard.writeText(window.location.href);">Copiar</button></p>
+        <p id="self-link">Enlace: {{site.url}}{{page.url}}
+            <button type="button" class="tag" onClick="navigator.clipboard.writeText(window.location.href);">Copiar
+            </button>
+        </p>
     </div>
 </article>
 {% include comments.html %}

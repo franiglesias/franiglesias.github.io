@@ -2,6 +2,7 @@
 layout: post
 title: Preparando un proyecto Symfony para experimentar con Vertical Slice Architecture
 categories: articles
+series: vsa
 tags: php design-patterns
 ---
 

@@ -34,7 +34,7 @@ function fallbackCopyTextToClipboard(texto, btn) {
     textArea.focus();
     textArea.select();
     try {
-        var successful = document.execCommand('copy');
+        const successful = document.execCommand('copy');
         if (successful) {
             setButtonCopied(btn, btn.dataset.originalText || btn.innerText);
         } else {
@@ -48,7 +48,7 @@ function fallbackCopyTextToClipboard(texto, btn) {
 }
 
 function copiarConFecha(event) {
-    const texto = `link recuperado el día ${new Date().toLocaleString('es-ES')}: ${window.location.href}`;
+    const texto = `${window.location.href} recuperado el día ${new Date().toLocaleString('es-ES')}`;
     const btn = event.currentTarget;
     copiarTexto(texto, btn);
 }

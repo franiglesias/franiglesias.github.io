@@ -261,5 +261,3 @@ Y, ¿a dónde me lleva eso?
 _Vertical Slice Architecture_ es una propuesta interesante, pero no la veo como una arquitectura, sino como una metodología que puedo combinar perfectamente con otras metodologías de desarrollo, y que puedo combinar con otros modelos de arquitectura.
 
 Mi plan era intentar construir una aplicación basándome en ideas de VSA, así que vamos a intentarlo en próximos artículos.
-
-{% include series_list.html %}

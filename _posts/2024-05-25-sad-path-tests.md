@@ -2,6 +2,7 @@
 layout: post
 title: Testeando lo que puede ir mal
 categories: articles
+series: vsa
 tags: testing php
 ---
 

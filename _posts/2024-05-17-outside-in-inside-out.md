@@ -2,6 +2,7 @@
 layout: post
 title: TDD outside-in y testing inside-out
 categories: articles
+series: vsa
 tags: testing
 ---
 

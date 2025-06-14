@@ -10,3 +10,6 @@ calisthenics:
 design-patterns:
   title: "Patrones de Diseño"
   description: "Un repaso a los patrones de diseño más comunes y cómo aplicarlos en nuestro código."
+golden-cookbook:
+  title: "Golden Cookbook"
+  description: "Recipes for snapshot, approval and combinatory testing with Golden for Go an PHP-Golden for PHP"

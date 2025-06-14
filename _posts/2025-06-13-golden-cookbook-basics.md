@@ -27,6 +27,9 @@ Here you have a typical assertion for equality:
 ```go
 assert.Equal(t, "Expected", output)
 ```
+```php
+$this->assertEqual("Expected", $output)
+```
 
 This works very well for TDD and for testing simple outputs. However, it is tedious if you need to test complex objects, generated files, and other big outputs. Also, it is not always the best tool for testing code that you don't know well or that was not created with testing in mind.
 
@@ -37,26 +40,45 @@ And this is how you achieve that:
 ```go
 golden.Verify(t, subject)
 ```
+```php
+$this->verify($subject)
+```
 
-As you can see, the main difference with the assertion is that we don't specify any expectations about the subject. `Verify` will store the `subject` value in a file the first time it runs and will be used as the expected value to compare in subsequent runs.
 
-**Golden** automates the snapshot creation process the first time the test is run, and uses that same snapshot as a criterion in subsequent runs. We call this workflow "Verification mode": the goal of the test is to verify that the output is the same as the first snapshot. As you can easily guess, this works as a regression test.
+As you can see, the main difference with the assertion is that we don't specify any expectations about the subject. `Verify` will store the `subject` value in a file the first time it runs and will be used as the expected value to compare in later runs.
 
-Snapshot testing is a very good first approach to put legacy code under test or to introduce tests in a codebase without tests. You don't need to know how that code works. You only need a way to capture the output of the existing code.
+**Golden** automates the snapshot creation process the first time the test is run, and uses that same snapshot as a criterion in later runs. We call this workflow "Verification mode": the goal of the test is to verify that the output is the same as the first snapshot. As you can easily guess, this works as a regression test.
+
+Snapshot testing is a great first approach to put legacy code under test or to introduce tests in a codebase without tests. You don't need to know how that code works. You only need a way to capture the output of the existing code.
 
 However, testing legacy or unknown code is not the only use case for snapshot testing.
 
-Snapshot testing is a very good choice for testing complex objects or outputs such as generated HTML, XML, JSON, code, etc. Provided that you can create a file with a serialized representation of the response, you can compare the snapshot with subsequent executions of the same unit of code. Suppose you need to generate an API response with lots of data. Instead of trying to figure out how to check every possible field value, you generate a snapshot with the data. After that, you will be using that snapshot to verify the execution.
+Snapshot testing is a great choice for testing complex objects or outputs such as generated HTML, XML, JSON, code, etc. Provided that you can create a file with a serialized representation of the response, you can compare the snapshot with later executions of the same unit of code. Suppose you need to generate an API response with lots of data. Instead of trying to figure out how to check every possible field value, you generate a snapshot with the data. After that, you will be using that snapshot to verify the execution.
 
 ### Basic Usage: Verify against an auto-generated snapshot
 
-A snapshot test is pretty easy to write. Capture the output of the subject under test in a variable and pass it to `golden.Verify()`. `Golden` will take care of all. You can use any type that suits you well.
+A snapshot test is pretty straightforward to write. Capture the output of the subject under test in a variable and pass it to `golden.Verify()`. `Golden` will take care of all. You can use any type that suits you well.
 
 ```go
 func TestSomething(t *testing.T) {
     output := SomeFunction("param1", "param2")
     
     golden.Verify(t, output)
+}
+```
+
+In PHP Golden is a Trait, so you have to declare that you are using the Golden trait in your PHPUnit test. That's all. Now, you have a `verify` method.
+
+```php
+class ParrotTest extends TestCase
+{
+    use Golden;
+    
+    public function testSpeedOfEuropeanParrot(): void
+    {
+        $parrot = $this->getParrot(ParrotTypeEnum::EUROPEAN, 0, 0, false);
+        $this->verify($parrot->getSpeed());
+    }
 }
 ```
 
@@ -101,6 +123,18 @@ func TestSomething(t *testing.T) {
     golden.Verify(t, output, golden.WaitApproval())
 }
 ```
+```php
+class ParrotTest extends TestCase
+{
+    use Golden;
+    
+    public function testSpeedOfEuropeanParrot(): void
+    {
+        $parrot = $this->getParrot(ParrotTypeEnum::EUROPEAN, 0, 0, false);
+        $this->verify($parrot->getSpeed(), waitApproval());
+    }
+}
+```
 
 Once you or the domain expert approves the snapshot, remove the `golden.WaitApproval()` option. That's all. The last generated snapshot will be used as a criterion.
 
@@ -109,6 +143,18 @@ func TestSomething(t *testing.T) {
     output := SomeFunction("param1", "param2")
     
     golden.Verify(t, output)
+}
+```
+```php
+class ParrotTest extends TestCase
+{
+    use Golden;
+    
+    public function testSpeedOfEuropeanParrot(): void
+    {
+        $parrot = $this->getParrot(ParrotTypeEnum::EUROPEAN, 0, 0, false);
+        $this->verify($parrot->getSpeed());
+    }
 }
 ```
 
@@ -129,6 +175,9 @@ If you work like me, you probably will start by generating an empty object and a
 ```go
 golden.Verify(t, theOutput)
 ```
+```php
+$this->verify($theOutput)
+```
 
 But if you work in "verification mode" you will have to delete every snapshot that is created when running the test. Instead of that, you can use the _approval mode_. It is very easy: you simply have to pass the `golden.WaitApproval()` function as an option until the snapshot reflects exactly what you or the domain expert want.
 
@@ -137,6 +186,19 @@ func TestSomething(t *testing.T) {
     output := SomeFunction("param1", "param2")
     // Use the approval mode
     golden.Verify(t, output, golden.WaitApproval())
+}
+```
+```php
+class ParrotTest extends TestCase
+{
+    use Golden;
+    
+    public function testSpeedOfEuropeanParrot(): void
+    {
+        $parrot = $this->getParrot(ParrotTypeEnum::EUROPEAN, 0, 0, false);
+        // Verify waiting for approval so the test will always fail
+        $this->verify($parrot->getSpeed(), waitApproval());
+    }
 }
 ```
 
@@ -151,6 +213,20 @@ func TestSomething(t *testing.T) {
     golden.Verify(t, output)
 }
 ```
+```php
+class ParrotTest extends TestCase
+{
+    use Golden;
+    
+    public function testSpeedOfEuropeanParrot(): void
+    {
+        $parrot = $this->getParrot(ParrotTypeEnum::EUROPEAN, 0, 0, false);
+        // Back to standard verification mode
+        $this->verify($parrot->getSpeed());
+    }
+}
+```
+
 
 Other libraries require you to use some sort of external tool to rename or mark a snapshot as approved. **Golden** puts this distinction to the test itself. The fact that it fails, even after you've got the approval, allows you to remember that you will need to do something with the test.
 
@@ -196,10 +272,84 @@ func TestWithGoldenMaster(t *testing.T) {
     gld.Master(t, f, golden.Combine(dividend, divisor))
 }
 ```
+```php
+class GildedRoseTest extends TestCase
+{
+    use Golden;
+    public function testFoo(): void
+    {
+        $sut = function(...$params): string {
+            $items = [new Item($params[0], $params[1], $params[2])];
+            $gildedRose = new GildedRose($items); ;
+            $gildedRose->updateQuality();
+            return $items[0]->__toString();
+        };
+
+        $names = [
+            'foo',
+            'Aged Brie',
+            'Sulfuras, Hand of Ragnaros',
+            'Backstage passes to a TAFKAL80ETC concert',
+            'Conjured'
+        ];
+        $sellIns = [
+            -1,
+            0,
+            1,
+            10,
+            20,
+            30
+        ];
+        $qualities = [
+            0,
+            1,
+            10,
+            50,
+            80,
+            100
+        ];
+        $this->master($sut, Combinations::of($names, $sellIns, $qualities));
+    }
+}
+```
 
 #### How it works
 
 The first time you run the test, a snapshot file will be generated at `testdata/TestWithGoldenMaster.snap.json` in the same package of the test. This will be a JSON file with a description of the inputs and outputs of each generated test. The test itself will pass except if you use the `golden.WaitApproval()` option.
+
+```json
+[
+    {
+        "id": 1,
+        "params": [
+            "foo",
+            -1,
+            0
+        ],
+        "output": "foo, -2, 0"
+    },
+    {
+        "id": 2,
+        "params": [
+            "Aged Brie",
+            -1,
+            0
+        ],
+        "output": "Aged Brie, -2, 2"
+    },
+    {
+        "id": 3,
+        "params": [
+            "Sulfuras, Hand of Ragnaros",
+            -1,
+            0
+        ],
+        "output": "Sulfuras, Hand of Ragnaros, -1, 0"
+    },
+...
+]
+```
+
 
 As a bonus, you can use GoldenMaster tests in Approval mode.
 
@@ -220,6 +370,29 @@ func Border(title string, part string, span int) string {
 
 The signature has three parameters: the first two are strings and the third is an integer. We want to test the function with different values for each parameter.
 
+For PHP, I will use a test from the GildedRose Refactoring kata as an example.
+
+```php
+final class GildedRose
+{
+    /**
+     * @var Item[]
+     */
+    private $items;
+
+    public function __construct(array $items)
+    {
+        $this->items = $items;
+    }
+
+    public function updateQuality(): void
+    {
+        // A bunch of nested conditionals    
+    }
+}
+```
+
+
 #### Wrap the subject under test
 
 The first thing we need is a wrapper function that takes any number of parameters of `any` type and returns something. We are going to pass this function to the `Master` method.
@@ -228,6 +401,12 @@ The first thing we need is a wrapper function that takes any number of parameter
 f := func(args ...any) any {
     ...
 }
+```
+
+```php
+$sut = function(...$params): string {
+    // ...
+};
 ```
 
 The body of the wrapper must convert the received parameters back to the types required by the SUT. How to do this is totally up to you and depends on the concrete types. This example is pretty simple, and we only need to perform a type assertion. As you can see in the code, we receive the params as a slice of `any`, so you will identify the correspondent parameter by its position.
@@ -243,6 +422,21 @@ f := func(args ...any) any {
     return Border(title, part, span)
 }
 ```
+```php
+$sut = function(...$params): string {
+    $name = $params[0];
+    $sellIn = $params[1];
+    $quality = $params[2];
+    
+    $items = [new Item($name, $sellIn, $quality)];
+    
+    $gildedRose = new GildedRose($items); ;
+    $gildedRose->updateQuality();
+    
+    return $items[0]->__toString();
+};
+```
+
 
 **What can I do if the SUT returns an error?** The best thing is to return the error using the `Error()` method. It should appear in the snapshot as is, so you will know what input combination generated it. Let's see an example. This is the function we want to test:
 
@@ -268,6 +462,28 @@ f := func(args ...any) any {
 }
 ```
 
+Let's imagine that the GildedRose class could throw an exception for whatever reason.
+
+```php
+$sut = function(...$params): string {
+    $name = $params[0];
+    $sellIn = $params[1];
+    $quality = $params[2];
+    
+    $items = [new Item($name, $sellIn, $quality)];
+    
+    $gildedRose = new GildedRose($items);
+    
+    try {
+        $gildedRose->updateQuality();
+    } catch (\Exception $e) {
+        return $e->getMessage();
+    }
+
+    return $items[0]->__toString();
+};
+```
+
 **What can I do if the SUT doesn't return an output?** A suggested technique for this is to add some kind of logging facility that you can retrieve after exercising the subject under tests and retrieve that logged output.
 
 #### Prepare lists of values for each parameter
@@ -280,11 +496,44 @@ parts := []any{"-", "=", "*", "#"}
 times := []any{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 ```
 
+```php
+$names = [
+    'foo',
+    'Aged Brie',
+    'Sulfuras, Hand of Ragnaros',
+    'Backstage passes to a TAFKAL80ETC concert',
+    'Conjured'
+];
+$sellIns = [
+    -1,
+    0,
+    1,
+    10,
+    20,
+    30
+];
+$qualities = [
+    0,
+    1,
+    10,
+    50,
+    80,
+    100
+];
+```
+
+
 You will pass the collections of values with the convenience function `golden.Combine()`:
 
 ```go
 golden.Combine(titles, parts, times)
 ```
+
+```php
+$this->master($sut, Combinations::of($names, $sellIns, $qualities));
+```
+
+In fact, `Combinations::of()` if a constructor for an object that will manage and generate all possible values combinations.
 
 **How should I choose the values?** It is an interesting question. In this example, it doesn't matter the specific values because the code only has one execution flow. In many cases, you can find interesting values in conditionals, that control the execution flow, allowing you to obtain the most code coverage executing all possible branches. The precedent and following values of those are also interesting. If you are unsure, you can even use a batch with several random values. Remember that once you set up the test, adding or removing values is very easy.
 
@@ -314,6 +563,59 @@ func TestGoldenMaster(t *testing.T) {
 
 This example will generate 132 tests: 3 titles * 4 parts * 11 times.
 
+```php
+public function testFoo(): void
+{
+    // wrapper function that exercise the subject under test and return a result for each combination
+    $sut = function(...$params): string {
+        $name = $params[0];
+        $sellIn = $params[1];
+        $quality = $params[2];
+
+        $items = [new Item($name, $sellIn, $quality)];
+
+        $gildedRose = new GildedRose($items);
+
+        try {
+            $gildedRose->updateQuality();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return $items[0]->__toString();
+    };
+    
+    // define lists of values for each parameter
+    $names = [
+        'foo',
+        'Aged Brie',
+        'Sulfuras, Hand of Ragnaros',
+        'Backstage passes to a TAFKAL80ETC concert',
+        'Conjured'
+    ];
+    $sellIns = [
+        -1,
+        0,
+        1,
+        10,
+        20,
+        30
+    ];
+    $qualities = [
+        0,
+        1,
+        10,
+        50,
+        80,
+        100
+    ];
+    // generates all combinations and run the wrapper function for each of them
+    $this->master($sut, Combinations::of($names, $sellIns, $qualities));
+}
+```
+
+This example will generate 180 tests: 5 products * 6 sellIn * 6 qualities.
+
 `Master` method will invoke `Verify` under the hood, using the result of executing all the combinations as the subject to create the snapshot. This is a very special snapshot, by the way. First of all, it is a JSON file containing an array of JSON objects, each of them representing one example. Like this:
 
 
@@ -337,6 +639,40 @@ This example will generate 132 tests: 3 titles * 4 parts * 11 times.
   
 ]
 ```
+
+```json
+[
+  {
+    "id": 1,
+    "params": [
+      "foo",
+      -1,
+      0
+    ],
+    "output": "foo, -2, 0"
+  },
+  {
+    "id": 2,
+    "params": [
+      "Aged Brie",
+      -1,
+      0
+    ],
+    "output": "Aged Brie, -2, 2"
+  },
+  {
+    "id": 3,
+    "params": [
+      "Sulfuras, Hand of Ragnaros",
+      -1,
+      0
+    ],
+    "output": "Sulfuras, Hand of Ragnaros, -1, 0"
+  },
+  // ...
+]
+```
+
 
 I think this will help you to understand the snapshot, identify easily interesting cases, and even post-process the result if you need to.
 

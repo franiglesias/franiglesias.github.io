@@ -52,7 +52,7 @@ Vamos a verlo con un ejemplo y quedará muy claro.
 Imaginemos un sistema de pagos por suscripción en el que vamos a desarrollar el caso de uso en el que un usuario actualiza un plan. Necesitaremos modelos para Usuario, Plan, repositorios para ambas entidades y el caso de uso en sí. Reducido al mínimo, quedaría algo así:
 
 ```go
-ype UserId struct {
+type UserId struct {
 	Id string
 }
 
@@ -125,7 +125,7 @@ Como se puede ver, en los métodos de los repositorios se pasa el contexto, lo q
 
 La cuestión es, que si queremos testear esto necesitaremos hacer dobles de esos mismos repositorios. Los métodos `UserRepository.GetById` y `PlanRepository.GetById` serán _stubs_, mientras que `UserRepository.Store` debería permitirnos, cuando menos, espiar su comportamiento.
 
-Implementar un stub usando el `context` es sencillo. Simplemente, tenemos que mirar si en este último viene un valor en una clave arbitraria que hayamos decidido. En caso de que se haya especificado, lo devolvemos, no sin antes hacer una _type assertion_ ya que Value devuelve `interface{}` (o `any`).
+Implementar un stub usando el `context` es sencillo. Simplemente, tenemos que mirar si en este último viene un valor en una clave arbitraria que hayamos decidido. En caso de que se haya especificado, lo devolvemos, no sin antes hacer una _type assertion_, ya que `Value` devuelve `interface{}` (o `any`).
 
 ```go
 type UserRepositoryDouble struct {

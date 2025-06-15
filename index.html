@@ -4,7 +4,7 @@ layout: default
 
 <div class="posts">
     {% for post in site.posts %}
-        {% unless post.tags and post.tags contains "dungeon" or post.tags contains "tb-list" %}
+        {% unless post.tags and post.tags contains "dungeon" or post.tags contains "tb-list" or post.hide %}
             <article class="post list">
                 {% if post.series %}
                 <p class="subtitle">{{ site.data.series[post.series].title }}</p>

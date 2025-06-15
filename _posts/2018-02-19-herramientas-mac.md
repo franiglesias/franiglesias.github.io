@@ -69,7 +69,7 @@ Javier Esteban nos recuerda Postman como herramienta para desarrollar APIs, que 
 
 ### SourceTree
 
-Félix Gómez comenta SourceTree para gestionar repositorios en proyectos complejos. La verdad es que si tocas el código con diversas herramientas a veces se agradece poder examinarlo en una aplicación dedicada como ésta y no tener que tirar de CLI.
+Félix Gómez comenta SourceTree para gestionar repositorios en proyectos complejos. La verdad es que si tocas el código con diversas herramientas a veces se agradece poder examinarlo en una aplicación dedicada como esta y no tener que tirar de CLI.
 
 [Sourcetree](https://www.atlassian.com/software/sourcetree)
 

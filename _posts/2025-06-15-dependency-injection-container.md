@@ -800,7 +800,7 @@ describe('When using the container', () => {
 
 ## Toques finales
 
-Las clases `Transient` y `Singleton` comparten mucho código. Creo que podemos hacerlas descender de una clase base `Dependency` en lugar de implementar una interfaz. La única variación de comportamiento que tienen es la forma en que obtienen la instancia:
+Las clases `Transient` y `Singleton` comparten mucho código. Creo que podemos hacerlas descender de una clase base `Dependency` en lugar de implementar una interfaz. La única variación de comportamiento que tienen es la forma en que obtienen la instancia. Lo que hacemos aquí es aplicar un patrón _Template_ para que la lógica común sea implementada por la clase base y únicamente el detalle de instanciar la dependencia sea realizado por cada subclase a su manera.
 
 ```typescript
 abstract class Dependency<T> {

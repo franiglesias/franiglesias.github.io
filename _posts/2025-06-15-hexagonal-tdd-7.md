@@ -991,7 +991,7 @@ function configureContainer(env: string, fixtures?: Map<string, any>) {
             return new InMemoryProductStorage(new Map<string, Product>())
         })
         dic.registerSingleton('ForGettingIdentities', (dic: Dicky) => {
-            return new ConfigurableIdentityProvider('3')
+            return new SequentialIdProvider()
         })
     }
 

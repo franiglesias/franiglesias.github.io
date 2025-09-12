@@ -18,13 +18,13 @@ arquitectura hexagonal. En este artículo, vamos a aplicar TDD London School.
   * [Y, otra vez, adentro](#y-otra-vez-adentro)
   * [Definiendo puertos secundarios](#definiendo-puertos-secundarios)
   * [Regresar al ciclo exterior](#regresar-al-ciclo-exterior)
-  * [_Happy path_ finalizado, o casi](#_happy-path_-finalizado-o-casi)
-  * [Turno de los _unhappy paths_](#turno-de-los-_unhappy-paths_)
-    * [El producto no existe](#el-producto-no-existe)
-    * [Algunos pensamientos hasta ahora](#algunos-pensamientos-hasta-ahora)
-    * [El producto sin existencias](#el-producto-sin-existencias)
-    * [Datos no válidos](#datos-no-válidos)
-  * [Reflexiones sobre _Outside-in London School_](#reflexiones-sobre-_outside-in-london-school_)
+  * [_Happy path_ finalizado, o casi](#happy-path-finalizado-o-casi)
+  * [Turno de los _unhappy paths_](#turno-de-los-unhappy-paths)
+      * [El producto no existe](#el-producto-no-existe)
+      * [Algunos pensamientos hasta ahora](#algunos-pensamientos-hasta-ahora)
+      * [El producto sin existencias](#el-producto-sin-existencias)
+      * [Datos no válidos](#datos-no-válidos)
+    * [Reflexiones sobre _Outside-in London School_](#reflexiones-sobre-outside-in-london-school)
 <!-- TOC -->
 
 ## TDD London School. Las primeras diferencias
@@ -552,6 +552,7 @@ describe('For Managing Products Port', () => {
 
 Y, finalmente, este test pasa, indicándonos que la funcionalidad está implementada.
 
+<a id="happy-path-finalizado-o-casi"></a>
 ## _Happy path_ finalizado, o casi
 
 Esta es la estructura:
@@ -636,6 +637,7 @@ Ahora la carpeta test se va a dedicar a los tests _desde fuera_, que manejan la 
 como tests `e2e`. Podría, en el futuro, haber una carpeta `integration`, en la que podría ejecutar tests desde
 adaptadores primarios. Los tests que podríamos considerar _unitarios_, los pongo cerca del código.
 
+<a id="turno-de-los-unhappy-paths"></a>
 ## Turno de los _unhappy paths_
 
 Por supuesto tenemos que ocuparnos de los flujos de ejecución fallidos. En el artículo anterior, los implementamos primero, porque en la aproximación clásica nos favorece al evitar tomar decisiones de diseño tempranas.
@@ -1218,6 +1220,7 @@ src
 
 Puedes ver [el código aquí](https://github.com/franiglesias/inventory/pull/2). En este artículo he sido menos cuidadoso y no lo tengo detallado por commits.
 
+<a id="reflexiones-sobre-outside-in-london-school"></a>
 ## Reflexiones sobre _Outside-in London School_
 
 Fricciones al inicio. Con frecuencia mi proceso de desarrollo con _Outside-in London School_ empieza más afuera de lo que he ejemplificado en este artículo. En términos de Arquitectura Hexagonal estaría escribiendo un test que ejercita un adaptador primario (API Rest, CLI...), así como adaptadores secundarios. Pero tratando de ser más fieles al patrón, el

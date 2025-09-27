@@ -22,12 +22,12 @@ Hagámoslo con TDD, ya que estamos. Para el ejemplo, usaré Typescript, porque e
 Para empezar de forma sencilla, vamos a definir los básicos de la interfaz. Para registrar una dependencia necesitamos esta información:
 
 * **Un nombre para identificarla**: el nombre será un string que debería ser único para cada entorno de ejecución y nos permitirá reclamarla cuando la necesitemos.
-* **Una forma de construir una instancia o factoría**: lo más sencillo es pasar una función que tenga acceso al propio contenedor, así un componente puede construirse con 
+* **Una forma de construir una instancia o factoría**: lo más sencillo es pasar una función que tenga acceso al propio contenedor, así un componente puede construirse con dependencias que ya tengamos registradas.
 * **Si queremos que sea singleton o nueva cada vez**: podría bastar un flag booleano, pero es mejor práctica tener métodos específicos para cada uno de los dos estados.
 
 Voy a llamar a este contenedor `Dicky` (Dependency Injection Container: DIC). Además, Dicky, en inglés, se puede usar como sinónimo de debilucho, que nos viene bien para un container que no va a ser muy bueno, pero que será suficiente para entender cómo funciona.
 
-De acuerdo a este último punto, voy a empezar por las dependencias transitorias, que son un poco más sencillas de implementar. Para ello, introduzco este test. De momento, no vamos a usar objetos para ir poco a poco.
+De acuerdo a este último punto, voy a empezar por las dependencias transitorias (de las que obtenemos una instancia nueva cada vez), que son un poco más sencillas de implementar. Para ello, introduzco este test. De momento, no vamos a usar objetos para ir poco a poco.
 
 ```typescript
 describe('Dicky', () => {
@@ -40,7 +40,7 @@ describe('Dicky', () => {
 })
 ```
 
-Vamos poniendo cosas en su lugar, y así tenemos un primer código que todavía no hacer pasar el test.
+Vamos poniendo cosas en su lugar, y así tenemos un primer código que todavía no hace pasar el test.
 
 ```typescript
 class Dicky {
@@ -91,7 +91,7 @@ describe('Dicky', () => {
 })
 ```
 
-Algo que podemos resolver así. Lo que tenemos que hacer es guardar las _factorías_ que vamos registrando en un mapa para que sea fácil acceder a las que necesitemos. En `resolve` obtenemos la factoría deseada del mapa y la ejecutamos para que devuelva la instancia generada.
+Algo que podemos resolver como se verá a continuación. Lo que tenemos que hacer es guardar las _factorías_ que vamos registrando en un mapa para que sea fácil acceder a las que necesitemos. En `resolve` obtenemos la factoría deseada del mapa y la ejecutamos para que devuelva la instancia generada.
 
 ```typescript
 export class Dicky {
@@ -277,7 +277,7 @@ export class Dicky {
 }
 ```
 
-Y con un pequeño cambio en el propio test, tipando `resolved`, eliminamos alguna advertencia del linter:
+Y con un pequeño cambio en el propio test, el tipado de `resolved`, eliminamos alguna advertencia del linter:
 
 ```typescript
 it('should register and resolve any type of dependency', () => {
@@ -321,7 +321,7 @@ export class Dicky {
 }
 ```
 
-Tomo nota mental de que me falta definir el comportamiento cuando intentamos registrar con el mismo nombre una dependencia que ya esté registrada. No tiene mucho sentido definir una dependencia y sobrescribirla inmediatamente. Si se lanza un error, podemos prevenir bugs difíciles de descubrir. Por otro lado, me parece que falta un test que verifique que las dependencias transient nos pueden dar distintas instancias cada vez. Añado estos tests y aprovecho para reorganizarlos un poco:
+Tomo nota mental de que me falta definir el comportamiento cuando intentamos registrar con el mismo nombre una dependencia que ya esté registrada. No tiene mucho sentido definir una dependencia y sobrescribirla inmediatamente. Si se lanza un error, podemos prevenir bugs difíciles de descubrir. Por otro lado, me parece que falta un test que verifique que las dependencias _transient_ nos pueden dar distintas instancias cada vez. Añado estos tests y aprovecho para reorganizarlos un poco:
 
 ```typescript
 describe('Dicky', () => {
@@ -436,7 +436,7 @@ He visto que en algún framework a las dependencias _singleton_ también se las 
 
 En muchos casos nos interesa tener una única instancia de un componente. Por ejemplo, cuando este componente posee un conocimiento que puede ser necesario en varias partes de nuestra aplicación. Si estás siguiendo la serie de TDD outside-in, te puedes imaginar que `InMemoryProductStorage` es uno de esos casos. Sin embargo, no lo usamos de forma estática, sino que es una instancia de un objeto que consumen otros objetos que necesitan almacenar o buscar productos.
 
-Así que vamos a ver cómo implementar dependencias singleton. La primera cosa que pienso hacer es un refactor porque quiero tratar las dependencias como objetos. En último término, tenemos un caso de polimorfismo. Empezaré creando una clase:
+Así que vamos a ver cómo implementar dependencias _singleton_. La primera cosa que pienso hacer es un refactor porque quiero tratar las dependencias como objetos. En último término, tenemos un caso de polimorfismo. Empezaré creando una clase:
 
 ```typescript
 class Transient<T> {
@@ -526,12 +526,12 @@ export class Dicky {
 }
 ```
 
-## Dependencias singleton
+## Dependencias _singleton_
 
-La principal característica de las dependencias singleton es que siempre se nos entrega la misma instancia. El siguiente test define justo esto:
+La principal característica de las dependencias _singleton_ es que siempre se nos entrega la misma instancia. El siguiente test define justo esto:
 
 ```typescript
-    describe('When managing Singleton Dependencies', () => {
+describe('When managing Singleton Dependencies', () => {
 
     it('should resolve to the same instance each time', () => {
         const dicky = new Dicky()

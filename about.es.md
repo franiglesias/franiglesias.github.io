@@ -28,6 +28,10 @@ No obstante, los contenidos pueden estar influenciados por mi contexto profesion
 
 Contribuyo como Staff Software Engineer, apoyando el crecimiento y la excelencia de los equipos de tecnología y producto en la construcción de la capa de confianza para las cadenas de suministro globales (Typescript).
 
+[Formador en Vitae Consultores](https://www.vitaedigital.com/)
+
+Colaboro como formador en cursos sobre TDD o Refactoring.
+
 ### Comunidad
 
 * [Crafters Vigo](https://www.meetup.com/es-ES/craftersvigo/): Comunidad local orientada a la mejora continua de habilidades como desarrolladores.

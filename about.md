@@ -28,6 +28,10 @@ Nevertheless, the content may be influenced by my professional context at the ti
 
 I contribute as a Staff Software Engineer, supporting the growth and excellence of all technology and product teams as we build the trust layer for global supply chains (Typescript).
 
+[Trainer @ Vitae Consultores](https://www.vitaedigital.com/)
+
+I contribute as a trainer in TDD or Refactoring.
+
 ### Community
 
 * [Crafters Vigo](https://www.meetup.com/es-ES/craftersvigo/): Local community of practice focused on continuous improvement of development skills.

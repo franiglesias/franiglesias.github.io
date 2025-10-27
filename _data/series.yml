@@ -12,4 +12,7 @@ design-patterns:
   description: "Un repaso a los patrones de diseño más comunes y cómo aplicarlos en nuestro código."
 golden-cookbook:
   title: "Golden Cookbook"
-  description: "Recipes for snapshot, approval and combinatory testing with Golden for Go an PHP-Golden for PHP"
+  description: "Recipes for snapshot, approval and combinatory testing, with Golden for Go and PHP-Golden for PHP."
+code-smells:
+  title: "Code Smells"
+  description: "Repaso de los code smells más frecuentes, con un ejemplo en el que se analiza como entorpece el desarrollo y estrategias para solucionarlos."

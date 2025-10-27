@@ -1,9 +1,6 @@
-vsa:
-  title: "Vertical Slice Architecture"
-  description: "Explicamos y reflexionamos sobre el patrón Vertical Slice Architecture con un ejemplo de su posible implementación."
-outside-in-ha:
-  title: "TDD Outside-In con Arquitectura Hexagonal"
-  description: "Donde mostramos cómo aplicar TDD Outside-In con Arquitectura Hexagonal, usando diferentes aproximaciones."
+code-smells:
+  title: "Code Smells"
+  description: "Repaso de los code smells más frecuentes, con un ejemplo en el que se analiza como entorpece el desarrollo y estrategias para solucionarlos."
 calisthenics:
   title: "Object Calisthenics"
   description: "Un ejemplo práctico de cómo usar estar reglas para dirigir un refactor en nuestro código."
@@ -13,6 +10,9 @@ design-patterns:
 golden-cookbook:
   title: "Golden Cookbook"
   description: "Recipes for snapshot, approval and combinatory testing, with Golden for Go and PHP-Golden for PHP."
-code-smells:
-  title: "Code Smells"
-  description: "Repaso de los code smells más frecuentes, con un ejemplo en el que se analiza como entorpece el desarrollo y estrategias para solucionarlos."
+outside-in-ha:
+  title: "TDD Outside-In con Arquitectura Hexagonal"
+  description: "Donde mostramos cómo aplicar TDD Outside-In con Arquitectura Hexagonal, usando diferentes aproximaciones."
+vsa:
+  title: "Vertical Slice Architecture"
+  description: "Explicamos y reflexionamos sobre el patrón Vertical Slice Architecture con un ejemplo de su posible implementación."

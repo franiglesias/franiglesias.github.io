@@ -6,8 +6,7 @@ series: code-smells
 tags: code-smells refactoring typescript
 ---
 
-Un code smell en el que es fácil caer es _Long Method_. Añades línes y más líneas a una función o método hasta que
-empieza a ser difícil de leer y de intervenir.
+Un code smell en el que es fácil caer es _Long Method_. Añades línes y más líneas a una función o método hasta que empieza a ser difícil de leer y de intervenir. Y un método largo, requiere un artículo largo.
 
 ## Definición
 
@@ -3126,6 +3125,12 @@ Podríamos seguir refinando cada pieza mucho más, pero estamos escribiendo uno 
 
 En esencia, todo lo que hemos hecho es mover código desde un lugar en donde estaba todo concentrado hacia clases especializadas, identificando responsabilidades y extrayéndolas. De hecho, hasta ahora hemos seguido trabajando con el test original porque todo nuestro trabajo ha consistido en refactorizar, garantizando con el test que no cambiamos ni el más mínimo aspecto del comportamiento del software.
 
+Para mover este código hemos usado principalmente tres tipos de refactor:
+
+* **Extract method**: para separar las responsabilidades dentro de la misma clase en métodos privados.
+* **Extract class**: para llevar esas responsabilidades a clases independientes que luego podemos inyectar.
+* **Introduce/Move method**: para llevar comportamientos a clases a las que pertenezcan (como entidades y value objects). De hecho, esto es algo que nos ha quedado pendiente. 
+
 Este test tendrá que desaparecer pronto, para permitirnos introducir nuevas funcionalidades. Recuerda: es un test de caracterización que describe el comportamiento que tiene el software cuando empezamos a trabajar con él.
 
-Este trabajo no lo vamos a hacer en este artículo, pero en este punto, la situación para hacerlo es mucho más favorable.
+Este trabajo no lo vamos a hacer en este artículo, pero en este punto, la situación para hacerlo es mucho más favorable. Puede que lo veamos en otro artículo, aunque preferiría moverme a otros _smells_.

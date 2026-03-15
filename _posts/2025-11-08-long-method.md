@@ -736,23 +736,20 @@ orderService.process(order)
 Ahora, tenemos que actualizar el _snapshot_ para que coincida con el nuevo valor de `dbRecordId`. Lo podemos hacer
 borrando el archivo de _snapshot_, o usando las facilidades que nos ofrezca la librería de testing.
 
-Si ejecutamos el test por primera vez (o hemos actualizado el _snapshot_), veremos que pasa. Al ejecutarlo de nuevo, en
-cambio, veremos que falla. Sin embargo, ya falla de forma diferente, puesto que la línea
+Si ejecutamos el test por primera vez (o hemos actualizado el _snapshot_), veremos que pasa. Al ejecutarlo de nuevo, en cambio, veremos que falla. Sin embargo, ya falla de forma diferente, puesto que la línea
 
 ```text
 [DB] Serializando registro 67234 (517 bytes) para Server=fake.db.local;Database=orders;User=demo;Password=demo
 [DB] Intento 1/3: guardando pedido 67234 con total $155.18
 ```
 
-No solo refleja el valor de `dbRecordId` que hemos incrustado en la clase _testable_, sino que esa línea ya no muestra
-diferencias entre el _snapshot_ y el resultado obtenido. Obviamente, otras líneas muestran diferencias:
+No solo refleja el valor de `dbRecordId` que hemos incrustado en la clase _testable_, sino que esa línea ya no muestra diferencias entre el _snapshot_ y el resultado obtenido. Obviamente, otras líneas muestran diferencias:
 
 ```text
 [AUDIT] Registro: {"type":"ORDER_SAVED","orderId":67234,"actor":"system","at":"2025-11-03T17:21:31.140Z","metadata":{"ip":"127.0.0.1","userAgent":"OrderService/1.0"}}
 ```
 
-Aquí la diferencia está en la marca de tiempo, que es un valor no determinista, que obtenemos del reloj del sistema.
-Este valor es obtenido aquí, concretamente al instanciar un objeto `Date`.
+Aquí la diferencia está en la marca de tiempo, que es un valor no determinista, proporcionado por el reloj del sistema. Este valor es obtenido aquí, concretamente al instanciar un objeto `Date`.
 
 ```typescript
 const auditLogEntry = {
@@ -767,16 +764,11 @@ const auditLogEntry = {
 }
 ```
 
-Tiene sentido extraer solamente la instanciación de `Date`. Esto hace que sea más reutilizable y que la intervención sea
-minimalista.
+Tiene sentido extraer solamente la instanciación de `Date`. Esto hace que sea más reutilizable y que la intervención sea minimalista.
 
 ```typescript
-protected
-getCurrentDate()
-:
-Date
-{
-    return new Date();
+protected getCurrentDate(): Date {
+  return new Date();
 }
 ```
 

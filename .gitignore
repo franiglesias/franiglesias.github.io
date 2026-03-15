@@ -12,4 +12,7 @@ package.json
 *.iml
 
 .idea/
+scripts/
+.junie
+CLAUDE.md
 

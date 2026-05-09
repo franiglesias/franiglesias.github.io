@@ -33,15 +33,17 @@
     </nav>
 </div><!-- end header -->
 <div class="wrapper">
-    <section class="main-content">
-        {{ content }}
-    </section>
-    <aside class="sidebar">
-        <section id="tags">
-            <h2>Temas</h2>
-            {% include archive.html %}
+    <div class="page-body">
+        <section class="main-content">
+            {{ content }}
         </section>
-    </aside>
+        <aside class="sidebar">
+            <section id="tags">
+                <h2>Temas</h2>
+                {% include archive.html %}
+            </section>
+        </aside>
+    </div>
 </div>
 
 </body>

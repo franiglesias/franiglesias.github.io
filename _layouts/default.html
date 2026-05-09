@@ -29,31 +29,32 @@
 </div><!-- end header -->
 <div class="wrapper">
 
-    <section class="main-content">
-        <div id="title">
-            <h1>{{ site.title | default: site.github.repository_name }}</h1>
-            <p>{{ site.description | default: site.github.project_tagline }}</p>
-            <hr>
-            <div class="credits-bar">
-                <span class="credits">Blog de <a
-                        href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
-                <span class="credits"><a href="/series/">Series</a></span>
-                <span class="credits"><a href="/about/">About me</a></span>
-                <span class="credits"><a href="/about/es/">Acerca de mi</a></span>
-                <span class="credits"><a href="/tag/tb-list/">The Talking List</a></span>
-            </div>
+    <div id="title">
+        <h1>{{ site.title | default: site.github.repository_name }}</h1>
+        <p>{{ site.description | default: site.github.project_tagline }}</p>
+        <hr>
+        <div class="credits-bar">
+            <span class="credits">Blog de <a
+                    href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
+            <span class="credits"><a href="/series/">Series</a></span>
+            <span class="credits"><a href="/about/">About me</a></span>
+            <span class="credits"><a href="/about/es/">Acerca de mi</a></span>
+            <span class="credits"><a href="/tag/tb-list/">The Talking List</a></span>
         </div>
+    </div>
 
-        {{ content }}
-
-    </section>
-
-    <aside class="sidebar">
-        <section id="tags">
-            <h2>Temas</h2>
-            {% include archive.html %}
+    <div class="page-body">
+        <section class="main-content">
+            {{ content }}
         </section>
-    </aside>
+
+        <aside class="sidebar">
+            <section id="tags">
+                <h2>Temas</h2>
+                {% include archive.html %}
+            </section>
+        </aside>
+    </div>
 
 </div>
 </body>

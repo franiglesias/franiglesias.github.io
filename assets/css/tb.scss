@@ -183,6 +183,9 @@ strong {
     position: relative;
     padding: 0;
     background-color: $neutral-100;
+  }
+
+  .page-body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -193,12 +196,12 @@ strong {
     padding-right: 7rem;
     flex: 1;
     min-width: 0;
+    margin-top: 0;
   }
 
   .sidebar {
     width: 16rem;
     flex-shrink: 0;
-    margin-top: 7rem;
     padding: 2rem 1.5rem 3rem;
     border-left: 1px solid $neutral-300;
     position: sticky;
@@ -335,16 +338,21 @@ dt:where(:not([style*="font-family"])) {
 
 section {
   padding: 3rem 0 5rem 0;
-  margin: 7rem 0 2rem;
+  margin: 0 0 2rem;
+}
+
+// When page-body is first in wrapper (no #title above it), clear the fixed header
+.wrapper > .page-body:first-child {
+  margin-top: 7rem;
 }
 
 
-section #title {
+#title {
   outline: none;
-  padding: 4rem 7rem 3rem 7rem;
-  margin: -3rem -7rem 3rem -7rem;
+  padding: 4rem 7rem 3rem;
+  margin-top: 7rem;
   background-color: $title-bg;
-  border-radius: $page_radius $page_radius $page_radius $page_radius;
+  border-radius: $page_radius $page_radius 0 0;
 
   h1 {
     font-size: 6rem;

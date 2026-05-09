@@ -4,6 +4,10 @@ widgets:
     description: "Una selección de posts para nuevos visitantes"
     limit: 6
 
+  - type: latest
+    title: "Últimas entradas"
+    limit: 8
+
   - type: series
     title: "TDD Outside-In con Arquitectura Hexagonal"
     series: outside-in-ha
@@ -24,6 +28,12 @@ widgets:
     tag: software-design
     limit: 5
 
-  - type: latest
-    title: "Últimas entradas"
-    limit: 8
+  - type: series
+    title: "Patrones de Diseño"
+    series: design-patterns
+    limit: 5
+
+  - type: series
+    title: "Golden Cookbook"
+    series: golden-cookbook
+    limit: 5

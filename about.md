@@ -26,7 +26,7 @@ Nevertheless, the content may be influenced by my professional context at the ti
 
 [Qualifyze](https://www.qualifyze.com)
 
-I contribute as a Staff Software Engineer, supporting the growth and excellence of all technology and product teams as we build the trust layer for global supply chains (Typescript).
+I contribute as a ~~Staff~~ Senior Software Engineer, supporting the growth and excellence of all technology and product teams as we build the trust layer for global supply chains (Typescript).
 
 [Trainer @ Vitae Consultores](https://www.vitaedigital.com/)
 

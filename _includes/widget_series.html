@@ -2,13 +2,15 @@
 {% assign widget_series_key = include.series %}
 {% assign widget_series_data = site.data.series[widget_series_key] %}
 {% assign widget_shown = 0 %}
+{% assign widget_series_posts_asc = site.posts | where: "series", widget_series_key | sort: "date" %}
+{% assign widget_first_post = widget_series_posts_asc | first %}
 <section class="widget">
   <h2 class="widget__title">{{ include.title }}</h2>
   {% if widget_series_data.description %}
     <span class="widget__description">{{ widget_series_data.description }}</span>
   {% endif %}
   <ul class="widget__list">
-    {% assign series_posts = site.posts | where: "series", widget_series_key | reverse %}
+    {% assign series_posts = widget_series_posts_asc | reverse %}
     {% for post in series_posts %}
       {% if widget_shown < widget_limit %}
         <li class="widget__item">
@@ -19,4 +21,7 @@
       {% endif %}
     {% endfor %}
   </ul>
+  {% if widget_first_post %}
+    <a class="widget__more" href="{{ widget_first_post.url }}">Empezar la serie →</a>
+  {% endif %}
 </section>

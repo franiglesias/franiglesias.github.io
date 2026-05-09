@@ -1,6 +1,6 @@
 {% assign widget_limit = include.limit | default: 5 %}
 {% assign widget_shown = 0 %}
-<section class="widget">
+<section class="widget widget--featured">
   <h2 class="widget__title">{{ include.title }}</h2>
   <ul class="widget__list">
     {% for post in site.posts %}

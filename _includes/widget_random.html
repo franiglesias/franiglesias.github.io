@@ -1,0 +1,23 @@
+<section class="sidebar-widget">
+  <h2 class="sidebar-widget__title">El post del día</h2>
+  <div id="random-post">
+    <noscript><p style="font-size:0.85rem">Activa JavaScript para ver un artículo aleatorio.</p></noscript>
+  </div>
+</section>
+<script>
+(function () {
+  var posts = [
+    {% for post in site.posts %}{% unless post.tags contains 'misc' or post.tags contains 'dungeon' or post.tags contains 'tb-list' or post.hide %}{"t":{{ post.title | jsonify }},"u":{{ post.url | jsonify }},"d":{{ post.date | date: "%d/%m/%Y" | jsonify }}},
+    {% endunless %}{% endfor %}
+    null
+  ].filter(Boolean);
+  if (!posts.length) return;
+  var now = new Date();
+  var seed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+  var pick = posts[seed % posts.length];
+  var el = document.getElementById('random-post');
+  if (el) {
+    el.innerHTML = '<a href="' + pick.u + '">' + pick.t + '</a><time>' + pick.d + '</time>';
+  }
+}());
+</script>

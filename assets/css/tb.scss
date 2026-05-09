@@ -574,17 +574,41 @@ article.list span.tag {
   padding-bottom: 0.3rem;
 }
 
-// Sidebar tag section heading
-#tags {
-  h2 {
-    font-family: $heading_font;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: $primary;
-    margin: 0 0 1rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 2px solid $accent;
+// Sidebar section headings (shared style)
+#tags h2,
+.sidebar-widget__title {
+  font-family: $site_font;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $primary;
+  margin: 0 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid $accent;
+}
+
+// Random post sidebar widget
+.sidebar-widget {
+  margin-top: 2rem;
+
+  #random-post {
+    a {
+      display: block;
+      color: $primary-light;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 0.35rem;
+      text-decoration: none;
+
+      &:hover { color: $accent; }
+    }
+
+    time {
+      display: block;
+      font-size: 0.75rem;
+      color: $neutral-400;
+    }
   }
 }
 

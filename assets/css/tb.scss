@@ -65,10 +65,16 @@ body {
   padding: 0 0 20px 0;
   margin: 0;
   font-family: $site_font;
-  font-size: 1.2em;
+  font-size: 1.05em;
   color: $text-color;
   font-weight: 400;
   background: $body-bg;
+}
+
+@media (min-width: $breakpoint_tablet) {
+  body {
+    font-size: 1.2em;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -162,7 +168,7 @@ strong {
   .wrapper {
     margin: 0 auto;
     position: relative;
-    padding: 0 5rem;
+    padding: 0 1rem;
     background-color: $neutral-100;
   }
 
@@ -349,24 +355,24 @@ section {
 
 #title {
   outline: none;
-  padding: 4rem 7rem 3rem;
-  margin-top: 7rem;
+  padding: 2rem 1.25rem 1.5rem;
+  margin-top: 5rem;
   background-color: $title-bg;
   border-radius: $page_radius $page_radius 0 0;
 
   h1 {
-    font-size: 6rem;
+    font-size: 2.5rem;
     text-align: left;
     line-height: 120%;
     color: $title-color;
-    margin-top: 1.5rem;
-    margin-bottom: 3.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
   }
 
   p {
     color: $title-secondary;
     font-family: $site_font;
-    font-size: 1.3rem;
+    font-size: 1rem;
     text-align: left;
   }
 
@@ -394,6 +400,23 @@ section {
   }
 }
 
+@media (min-width: $breakpoint_tablet) {
+  #title {
+    padding: 4rem 7rem 3rem;
+    margin-top: 7rem;
+
+    h1 {
+      font-size: 6rem;
+      margin-top: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+    }
+  }
+}
+
 article div.authors {
   padding-top: 2rem;
 }
@@ -413,19 +436,32 @@ article.post {
 .micro-post header.post-header {
   text-align: left;
   background-color: $tags-bg;
-  margin: -3rem -7rem 3rem -7rem;
-  padding: 2rem 7rem;
+  margin: 0 0 2rem 0;
+  padding: 1.5rem 1rem;
   border-radius: $page_radius $page_radius 0 0;
 
   h2.subtitle {
-    font-size: 2.5rem;
-    margin-bottom: -3rem;
+    font-size: 1.5rem;
+    margin-bottom: -1rem;
     color: $primary-light;
   }
 
   span.date {
     font-size: 1rem;
     color: $neutral-400;
+  }
+}
+
+@media (min-width: $breakpoint_tablet) {
+  .full-post header.post-header,
+  .micro-post header.post-header {
+    margin: -3rem -7rem 3rem -7rem;
+    padding: 2rem 7rem;
+
+    h2.subtitle {
+      font-size: 2.5rem;
+      margin-bottom: -3rem;
+    }
   }
 }
 
@@ -476,14 +512,21 @@ article {
 
         & > p:first-child {
           color: $neutral-500;
-          font-size: 1.5rem;
+          font-size: 1.15rem;
           line-height: 150%;
           text-align: left;
-          margin: 2rem 0 5rem 0;
+          margin: 1rem 0 2.5rem 0;
         }
       }
 
     }
+  }
+}
+
+@media (min-width: $breakpoint_tablet) {
+  article.post.full-post .entry > p:first-child {
+    font-size: 1.5rem;
+    margin: 2rem 0 5rem 0;
   }
 }
 

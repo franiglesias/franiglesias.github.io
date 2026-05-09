@@ -10,7 +10,7 @@ En una de las últimas sesiones del Coding Dojo de CraftersVigo propusimos la ka
 
 Los ejercicios de código son herramientas poderosas de aprendizaje. Al no tener las presiones de un proyecto real, podemos explorar soluciones que, de otra forma, podrían conllevar un nivel de riesgo poco aceptable. Por otro, lado, el hecho de que los problemas que buscamos solucionar en estos ejercicios sean bastante sencillos, nos dejan explorar los básicos de los patrones que queremos aprender. Gracias a esto, nos podemos preparar mejor para aplicarlos en situaciones más complejas.
 
-Debo confesar que propuse la introducción del patrón _observer_ en este ejercicio sin un motivo especial. Me explico. El ejercicio consiste en programar un sistema de marcador para un partido de baloncesto, de tal modo que habrá un método para cada posible canasta de cada equipo: tiro libre (1 punto), canasta normal (2 puntos) y triple (3 puntos). En total, seis métodos. Además, un método extra para obtener el marcador actual con un formato concreto. Es un ejercicio muy sencillo, por lo ue me pareció adecuado añadirle algunos requisitos más para poder estirarlo y hacerlo más atractivo.
+Debo confesar que propuse la introducción del patrón _observer_ en este ejercicio sin un motivo especial. Me explico. El ejercicio consiste en programar un sistema de marcador para un partido de baloncesto, de tal modo que habrá un método para cada posible canasta de cada equipo: tiro libre (1 punto), canasta normal (2 puntos) y triple (3 puntos). En total, seis métodos. Además, un método extra para obtener el marcador actual con un formato concreto. Es un ejercicio muy sencillo, por lo que me pareció adecuado añadirle algunos requisitos más para poder estirarlo y hacerlo más atractivo.
 
 ## El patrón _observer_
 
@@ -18,7 +18,7 @@ Supongo que la idea del patrón _observer_ me vino a la mente por esto último, 
 
 La programación orientada a objetos consiste fundamentalmente en **la colaboración entre objetos mediante el paso de mensajes**. Los objetos pueden saber a qué otros objetos dirigirse y de qué modo hacerlo para contribuir a una tarea, sin tener ni idea de cómo lo hacen.
 
-En nuestro ejemplo, tendremos un _ScoreKeeper_ que sabe tomar nota de los puntos que se anotan en un partido de baloncesto y llevar la cuenta del resultado, y de un _ScoreDisplay_, que sabe mostrar el marcador en un formato concreto. A ninguno de ellos le interesa saber cómo trabaja el otro internamente, pero necesitan comunicarse. Pero, en nuestro caso, _ScoreDisplay_ tiene que saber cuando debe actualizarse el marcador, que obviamente es cuando se anota cada canasta y eso es algo que ocurre frecuentemente en un partido. Podríamos decir que _ScoreDisplay_ debe ser capaz de reaccionar a los cambios de _ScoreKeeper_.
+En nuestro ejemplo, tendremos un _ScoreKeeper_ que sabe tomar nota de los puntos que se anotan en un partido de baloncesto y llevar la cuenta del resultado, y de un _ScoreDisplay_, que sabe mostrar el marcador en un formato concreto. A ninguno de ellos le interesa saber cómo trabaja el otro internamente, pero necesitan comunicarse. Pero, en nuestro caso, _ScoreDisplay_ tiene que saber cuándo debe actualizarse el marcador, que obviamente es cuando se anota cada canasta y eso es algo que ocurre frecuentemente en un partido. Podríamos decir que _ScoreDisplay_ debe ser capaz de reaccionar a los cambios de _ScoreKeeper_.
 
 Este tipo de comunicación puede hacerse de distintas formas. _ScoreDisplay_ podría consultar con cierta frecuencia a _ScoreKeeper_ para saber si ha habido cambios, algo que sería ineficiente y poco elegante. Otra opción sería que _ScoreKeeper_ notificase a _ScoreDisplay_ cada vez que se anota una canasta. Esta es la idea detrás del patrón _observer_.
 
@@ -26,7 +26,7 @@ La primera opción es lo que solemos llamar _pull_, porque _ScoreDisplay_ "tira"
 
 Esta solución es mejor en nuestro caso por varias razones. En primer lugar, refleja mejor la realidad. _ScoreKeeper_ detecta un cambio en el entorno (se ha conseguido una canasta) e informa a _ScoreDisplay_ de lo que ha ocurrido y de los nuevos valores que tiene que mostrar, de forma que el público puede seguir en tiempo real y con todo detalle la evolución del partido. En segundo lugar, no requiere un sistema de _polling_, haciendo que _ScoreDisplay_ consulte repetidamente el estado de _ScoreKeeper_, lo que es poco eficiente debido a que habrá muchas ocasiones en las que aún no haya habido nuevos puntos. Y, en otros casos, entre consulta y consulta podrían haberse producido varios cambios, dejando _ScoreDisplay_ de estar actualizado y generando una inconsistencia eventual que haría difícil entender lo que pasa en el campo de juego.
  
-El patrón _observer_ es un precursor de lo que consideramos un sistema de eventos. Pese a que hay muchas diferencias, los aspectos similares son suficientes para permitirnos entender como funcionan los eventos en un sistema de software. Y, además, no deja de ser útil, per se, para solucionar diversos problemas de comunicación entre objetos.
+El patrón _observer_ es un precursor de lo que consideramos un sistema de eventos. Pese a que hay muchas diferencias, los aspectos similares son suficientes para permitirnos entender cómo funcionan los eventos en un sistema de software. Y, además, no deja de ser útil, per se, para solucionar diversos problemas de comunicación entre objetos.
 
 ## Los elementos del patrón _observer_
 
@@ -317,7 +317,7 @@ export class ScoreDisplay {
 }
 ```
 
-De hecho, en un lenguaje con sobrecarga de métodos, esta última es una solución muy elegante, ya que podemos introducir tantos métodos `notify` como eventos soporte el observador. Otra ventaja de esta solución es que es más compacta en términos de signatura del método, que solo recibe un parámetro, el cual debe saber como desempaquetar.
+De hecho, en un lenguaje con sobrecarga de métodos, esta última es una solución muy elegante, ya que podemos introducir tantos métodos `notify` como eventos soporte el observador. Otra ventaja de esta solución es que es más compacta en términos de signatura del método, que solo recibe un parámetro, el cual debe saber cómo desempaquetar.
 
 ### Objetos en todas partes
 
@@ -533,7 +533,7 @@ export class ScoreKeeper {
 }
 ```
 
-Con esto, hemos implementado de forma tosca el patrón _observer_. Me imagino que algunas personas estáis pensando que se trata de un código un poco feo, cuando menos, debido a las repeticiones. El caso es que el ejercicio original pedía exponer estos métodos. En cualquier caso, el bloque de registro/notificación es bastante claro: tenemos un método que registra observadores para un evento y otro método que recorre la lista de observadores notificando a cada uno de ellos del evento en que están interesados.
+Con esto, hemos implementado de forma tosca el patrón _observer_. Me imagino que algunas personas estáis pensando que se trata de un código un poco feo, cuanto menos, debido a las repeticiones. El caso es que el ejercicio original pedía exponer estos métodos. En cualquier caso, el bloque de registro/notificación es bastante claro: tenemos un método que registra observadores para un evento y otro método que recorre la lista de observadores notificando a cada uno de ellos del evento en que están interesados.
 
 ```typescript
 export class ScoreKeeper {

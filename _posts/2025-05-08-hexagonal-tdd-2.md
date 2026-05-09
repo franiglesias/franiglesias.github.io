@@ -408,7 +408,7 @@ export class ProductId {
 
 ## Regresar al ciclo exterior
 
-Todo este código nos permite hacer pasar el test de `Inventory`, pero ¿qué pasa con el test exterior?. Al ejecutarlo
+Todo este código nos permite hacer pasar el test de `Inventory`, pero ¿qué pasa con el test exterior? Al ejecutarlo
 nuevamente, fallará porque `Inventory` no se puede montar, ya que ahora requiere inyectarle un adaptador del puerto
 `ForStoringProducts`. Este adaptador, por su parte, tiene que ser adecuado para usarse en este nivel de test. En este
 caso, me parece ideal tener una implementación en memoria que sea funcional y permita guardar y recuperar objetos. Pero,
@@ -1228,7 +1228,7 @@ test tendría que hablar directamente con el puerto primario y contar con adapta
 
 En ese caso, se puede generar un poco de confusión. El test de aceptación, que ejercita la prestación completa, requiere adaptadores secundarios que sean realistas, implementando el puerto de forma completa. Por otro lado, los test unitarios necesitan dobles de test como _stubs_ y espías, cuando necesitamos implementaciones de esos adaptadores.
 
-En el artículo hemos podido ver un caso un poco ambigüo: el Caso de Uso, que es quien efectúa la interacción con el puerto primario desde el interior de la aplicación se testea como "puerto" en el test externo de aceptación, y se testea también unitariamente para diseñarlo.
+En el artículo hemos podido ver un caso un poco ambiguo: el Caso de Uso, que es quien efectúa la interacción con el puerto primario desde el interior de la aplicación se testea como "puerto" en el test externo de aceptación, y se testea también unitariamente para diseñarlo.
 
 Diseño antes, el necesario. Esta escuela de TDD presupone un cierto nivel de diseño previo. A decir verdad, en cualquier aplicación que ya exista o bien en cualquier aplicación que intente seguir un cierto patrón de arquitectura, ya hay unas decisiones de diseño tomadas. En nuestro caso, es seguir el patrón de Arquitectura Hexagonal, por lo que ya sabemos o prevemos que vamos a necesitar ciertos elementos, y organizarlos de cierta manera. Son los detalles específicos de cada prestación lo que iremos descubriendo o definiendo durante el desarrollo.
 

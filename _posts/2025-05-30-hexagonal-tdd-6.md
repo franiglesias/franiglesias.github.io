@@ -17,7 +17,7 @@ También, podemos observar que nuestros tests son dependientes a través de sus 
 
 ## Generador de identidades
 
-El generador de identidades debería darnos algún tipo de identificador diferente cada vez que lo llamamos. Hoy por hoy, solemos preferir identificadores no predecibles, como los UUID o los ULID, por razones de seguridad. En los tests es frecuente que necesitemos _saber_ qué identificador se está usando en un momento dato para que el test mismo pueda ser determinista, por eso necesitamos dobles de test para este tipo de generadores.
+El generador de identidades debería darnos algún tipo de identificador diferente cada vez que lo llamamos. Hoy por hoy, solemos preferir identificadores no predecibles, como los UUID o los ULID, por razones de seguridad. En los tests es frecuente que necesitemos _saber_ qué identificador se está usando en un momento dado para que el test mismo pueda ser determinista, por eso necesitamos dobles de test para este tipo de generadores.
 
 Nuestro proveedor de identidades actual es básicamente un _stub_:
 
@@ -146,7 +146,7 @@ let identityProvider = new ConfigurableIdentityProvider(
 
 ## Los tests deberían ser independientes
 
-Para garantizar que los tests independientes tendremos que usar varias tácticas. Entre otras cosas, necesitamos asegurar que cada escenario de test está bien definido, con sus propios ejemplos, y que los recursos que se puedan compartir quedan correctamente liberados una vez ejecutado el test.
+Para garantizar que los tests sean independientes tendremos que usar varias tácticas. Entre otras cosas, necesitamos asegurar que cada escenario de test está bien definido, con sus propios ejemplos, y que los recursos que se puedan compartir quedan correctamente liberados una vez ejecutado el test.
 
 ### Definir los datos del escenario
 
@@ -548,7 +548,7 @@ describe('For Managing Products Port', () => {
 
 Hemos trabajado mucho para simplificar los tests y hacerlos más fáciles de escribir y leer. Ahora queremos avanzar en el progreso del producto, por lo que vamos a añadir prestaciones y capacidades nuevas.
 
-Lo primero que vamos a hacer es corregir un defecto. Ahora mismo la aplicación permite ejecutar `AddProduct` tantas veces como queramos, introduciendo productos en almacén que tienen el mismo nombre. Esto puede dar lugar a resultados engañosos, asi que queremos asegurar que no se puede hacer. La aplicación lo comprobará y lanzará un error.
+Lo primero que vamos a hacer es corregir un defecto. Ahora mismo la aplicación permite ejecutar `AddProduct` tantas veces como queramos, introduciendo productos en almacén que tienen el mismo nombre. Esto puede dar lugar a resultados engañosos, así que queremos asegurar que no se puede hacer. La aplicación lo comprobará y lanzará un error.
 
 Esto lo vamos a definir mediante un test exterior. Gracias al trabajo anterior, este test no solo es fácil de escribir, sino que es fácil de entender. De momento, vamos a poner el segundo test en `skip`. Este test, por cierto, pasa porque la segunda inserción del producto lo añade con un nuevo id y el que se controla es el de la primera, que es el único identificador que se debería conservar.
 
@@ -665,7 +665,7 @@ export class InMemoryProductStorage implements ForStoringProducts {
 }
 ```
 
-Con este cambio, el test pasa y también podemos quitar el `skip` del segundo test. Este test también pasará, confirmando que los resultados son consistentes, aunque es un test relativamente frágil. Ya veremos como fortalecerlo.
+Con este cambio, el test pasa y también podemos quitar el `skip` del segundo test. Este test también pasará, confirmando que los resultados son consistentes, aunque es un test relativamente frágil. Ya veremos cómo fortalecerlo.
 
 ## Tell, don't ask
 

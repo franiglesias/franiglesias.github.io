@@ -3,7 +3,7 @@ layout: post
 title: El configurador y la aplicación revisados
 series: outside-in-ha
 categories: articles
-tags: software-design design-patterns typescript tdd hexagonal
+tags: software-design design-patterns typescript tdd hexagonal pulpoCon
 ---
 
 Una vuelta al tema del configurador después de hablar sobre Arquitectura Hexagonal _siguiendo el libro_ en la

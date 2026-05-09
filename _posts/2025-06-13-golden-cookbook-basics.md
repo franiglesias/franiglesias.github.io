@@ -3,7 +3,7 @@ layout: post
 title: What is golden and how to start with snapshot testing
 series: golden-cookbook
 categories: articles
-tags: testing golang
+tags: testing golang php
 ---
 
 Golden and PHP-Golden are libraries for snapshot based testing. In this recipe we will introduce the basics.
@@ -230,7 +230,7 @@ class ParrotTest extends TestCase
 
 Other libraries require you to use some sort of external tool to rename or mark a snapshot as approved. **Golden** puts this distinction to the test itself. The fact that it fails, even after you've got the approval, allows you to remember that you will need to do something with the test.
 
-Given the nature of the approval flow, the test will always fail even if the snapshot and the current output have no differences. This means that you are not adding more changes that modify the output. Usually, this can work as a rule of thumb to consider the snapshot as _approved_ and to remove de `golden.WaitApproval()` option.
+Given the nature of the approval flow, the test will always fail even if the snapshot and the current output have no differences. This means that you are not adding more changes that modify the output. Usually, this can work as a rule of thumb to consider the snapshot as _approved_ and to remove the `golden.WaitApproval()` option.
 
 ---
 
@@ -244,7 +244,7 @@ The technique requires the creation of a big batch of tests for the same unit of
 
 There are several techniques to guess the best values you should use. You could, for example, study the code and look for significant values in conditionals with the help of a graphical coverage tool that shows you what parts of the code are executed or not depending on the values.
 
-Once you complete the collection of possible values for each parameter, you will use the combination tools that will generate a batch of tests for you. The amount of tests is the product of multiplying the number of values per parameter. You can easily achieve tenths and even hundreds of tests for the same code unit.
+Once you complete the collection of possible values for each parameter, you will use the combination tools that will generate a batch of tests for you. The amount of tests is the product of multiplying the number of values per parameter. You can easily achieve tens and even hundreds of tests for the same code unit.
 
 As you have probably guessed, **Golden** takes its name from this technique... and because it starts with "Go". Anyway, I've just found that lots of packages are using the very same name, even in the std library.
 
@@ -533,7 +533,7 @@ golden.Combine(titles, parts, times)
 $this->master($sut, Combinations::of($names, $sellIns, $qualities));
 ```
 
-In fact, `Combinations::of()` if a constructor for an object that will manage and generate all possible values combinations.
+In fact, `Combinations::of()` is a constructor for an object that will manage and generate all possible values combinations.
 
 **How should I choose the values?** It is an interesting question. In this example, it doesn't matter the specific values because the code only has one execution flow. In many cases, you can find interesting values in conditionals, that control the execution flow, allowing you to obtain the most code coverage executing all possible branches. The precedent and following values of those are also interesting. If you are unsure, you can even use a batch with several random values. Remember that once you set up the test, adding or removing values is very easy.
 

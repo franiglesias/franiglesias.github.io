@@ -3,10 +3,10 @@ layout: post
 title: Long method
 categories: articles
 series: code-smells
-tags: code-smells refactoring typescript
+tags: code-smells refactoring typescript testing
 ---
 
-Un code smell en el que es fácil caer es _Long Method_. Añades línes y más líneas a una función o método hasta que empieza a ser difícil de leer y de intervenir. Y un método largo, requiere un artículo largo.
+Un code smell en el que es fácil caer es _Long Method_. Añades líneas y más líneas a una función o método hasta que empieza a ser difícil de leer y de intervenir. Y un método largo, requiere un artículo largo.
 
 ## Definición
 
@@ -679,7 +679,7 @@ vez, veremos que el test falla. Esto es debido a que hay algunos datos no determ
 Tenemos dos formas principales de resolver esto:
 
 * Reemplazar los datos no deterministas antes de generar el snapshot, mediante técnicas buscar y reemplazar patrones.
-  Esto se denomina _scrubbing_, pero suele ser tedioso y propenso a generar problems.
+  Esto se denomina _scrubbing_, pero suele ser tedioso y propenso a generar problemas.
 * Introducir _seams_ en el código para tener bajo control la generación datos no deterministas.
 
 Esta segunda opción es la que vamos a usar y forma parte del arsenal de técnicas de test. Además, nos va a permitir
@@ -702,7 +702,7 @@ El número del registro se genera en esta línea que usa la librería `Math` par
 const dbRecordId = Math.floor(Math.random() * 1000000)
 ```
 
-Aplicamos el refactor _Extract Method_ para crear el _seam_. Un seam es un punto del código que podemos cambiar si
+Aplicamos el refactor _Extract Method_ para crear el _seam_. Un seam es un punto del código que podemos cambiar sin
 afectar a la funcionalidad del programa.
 
 ```typescript
@@ -904,7 +904,7 @@ eliminar todas las fuentes no deterministas y ya tenemos una buena base con la q
 
 #### Golden Master
 
-Una cuestión interesante es que nuestro código tiene varios flujos de ejecución posibles. Por ejemplo, sie el cliente es
+Una cuestión interesante es que nuestro código tiene varios flujos de ejecución posibles. Por ejemplo, si el cliente es
 Normal o VIP el cálculo será diferente porque los clientes VIP tienen un descuento. También hay un coste de envío si el
 total del pedido es inferior a 50, mientras que es gratis a partir de ese importe. Se hacen también algunas validaciones
 para ver si el pedido es procesable, etc.
@@ -2077,7 +2077,7 @@ class ClockStub implements Clock {
 }
 ```
 
-Ahora cambiamos el test para montar `OrderService` con todo lo que necsitamos:
+Ahora cambiamos el test para montar `OrderService` con todo lo que necesitamos:
 
 ```typescript
 describe('long method', () => {
@@ -2715,7 +2715,7 @@ export interface Order {
 }
 ```
 
-`PendingOrder` solo puede intentar validarse, pero no procesarse. Al validarse devuelve una intancia de `ValidatedOrder` que tiene un identificador asignado.
+`PendingOrder` solo puede intentar validarse, pero no procesarse. Al validarse devuelve una instancia de `ValidatedOrder` que tiene un identificador asignado.
 
 ```typescript
 export class PendingOrder implements Order {
@@ -2758,7 +2758,7 @@ export class PendingOrder implements Order {
 }
 ```
 
-`ValidatedOrder` solo puede procesarse. Si se intenta validar devuelve su propia isntancia.
+`ValidatedOrder` solo puede procesarse. Si se intenta validar devuelve su propia instancia.
 
 ```typescript
 export class ValidatedOrder implements Order {

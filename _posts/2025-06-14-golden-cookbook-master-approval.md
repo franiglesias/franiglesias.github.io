@@ -3,7 +3,7 @@ layout: post
 title: The Golden Master technique, with approval mode
 series: golden-cookbook
 categories: articles
-tags: testing php
+tags: testing php legacy refactoring
 ---
 
 In this recipe we will learn how to use Golden to use the Golden Master technique to generate a lot of tests covering 100% of a legacy code that we need to refactor.
@@ -183,7 +183,7 @@ Fortunately, Golden provides a pretty nice way to set up and generate Golden Mas
 
 We will use the approval mode for this. In the approval mode, the test never passes and the snapshot is automatically updated for you. This means that you can try things and examine the snapshot and the coverage. When you are happy with all the generated tests, you simply "approve" the current snapshot and you can start refactoring like a champ.
 
-Instead of trying to create a list of items combining all the possible values, we are going to create lots of list of only one item combining this values. The results will be the same for out intent.
+Instead of trying to create a list of items combining all the possible values, we are going to create lots of list of only one item combining this values. The results will be the same for our intent.
 
 ## Golden Master with Golden
 
@@ -376,7 +376,7 @@ As we can see, for a general `Item`, sellIn decreased one unit and quality remai
 
 Nice! We have a test. But, how good is it?
 
-If we run the test with Coverage, we can see that there a lot of code that was not exercised. In fact, only 54.55% of branch coverage is achieved.
+If we run the test with Coverage, we can see that there is a lot of code that was not exercised. In fact, only 54.55% of branch coverage is achieved.
 
 ![after_first_test.png](/assets/images/golden/after_first_test.png)
 
@@ -650,7 +650,7 @@ Ok. Let's run the test. Remember: the test is in _approval mode_, so **it will f
 ]
 ```
 
-We've just ran 24 tests without too much effort. The best part is that we now have 100% line and branch coverage. Not bad. This should guarantee that we have enough tests to start refactoring. But, I think we will need some more.
+We've just run 24 tests without too much effort. The best part is that we now have 100% line and branch coverage. Not bad. This should guarantee that we have enough tests to start refactoring. But, I think we will need some more.
 
 At this point we would need to study _path coverage_, but in its current state, Golden is not able to execute every scenario as an individual test in PHP, so the path coverage report will not be useful for our purposes because it will show inaccurate data. We know that we execute all the branches of the flow, but we can't be sure that we explore all possible paths. But we can do something about it by reading the code.
 

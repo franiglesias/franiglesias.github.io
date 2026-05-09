@@ -2,7 +2,7 @@
 layout: post
 title: El patrón Result
 categories: articles
-tags: software-design design-patterns
+tags: software-design design-patterns typescript
 ---
 
 El patrón Result nos proporciona una forma explícita de gestionar los errores que se producen en el código.
@@ -25,7 +25,7 @@ El módulo llamante puede tener el contexto adecuado para gestionar el problema 
 
 También se evita proseguir la ejecución del programa cuando no tiene sentido hacerlo. 
 
-Aquí podemos una ilustración del principio. Cuando se produce un error en el `ComponentB` se comunica al `ComponentA` que, en este caso, lo comunica al usuario. De esta forma, nunca se llama a `ComponentC`.
+Aquí tenemos una ilustración del principio. Cuando se produce un error en el `ComponentB` se comunica al `ComponentA` que, en este caso, lo comunica al usuario. De esta forma, nunca se llama a `ComponentC`.
 
 ```mermaid
 ---
@@ -321,7 +321,7 @@ Este diseño es simple y cubre bastante bien las necesidades básicas de una apl
 
 ## Aplicabilidad
 
-El patron `Result` busca forzarnos a tener en cuenta los errores que puede devolver un módulo y gestionarlos de forma explícita.
+El patrón `Result` busca forzarnos a tener en cuenta los errores que puede devolver un módulo y gestionarlos de forma explícita.
 
 Las excepciones se pueden _dejar pasar_ para que otro módulo de orden superior acabe capturándolas. Esto puede dar lugar a que excepciones de un nivel de infraestructura o de librerías puedan llegar muy _arriba_ en nuestra aplicación.
 

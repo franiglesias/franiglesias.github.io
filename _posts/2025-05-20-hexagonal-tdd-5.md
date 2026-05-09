@@ -220,7 +220,7 @@ Esto hace pasar el test, así que el comportamiento estaría establecido y podre
 
 ## ¿Dónde viven las validaciones?
 
-Esta es una discusión recurrente. La validación de las entradas de datos al sistema responder a distintas finalidades, por lo que debería ocurrir en distintos lugares. Y esto implica que el mismo dato puede pasar por distintas fases de validación.
+Esta es una discusión recurrente. La validación de las entradas de datos al sistema responde a distintas finalidades, por lo que debería ocurrir en distintos lugares. Y esto implica que el mismo dato puede pasar por distintas fases de validación.
 
 Ahora bien, ¿cómo se gestiona en Arquitectura Hexagonal?
 
@@ -812,7 +812,7 @@ describe('Inventory', () => {
 
 Este cambio también nos introduce una reflexión interesante. La posibilidad de reutilizar dobles entre distintos tests. Y es que en este ejemplo, podríamos perfectamente usar el mismo Stub que definimos para el test anterior ya que es un doble cuya función es devolvernos el `Product` que le hayamos definido o undefined, cuando no queremos que lo haga.
 
-Todo esto ayuda a simplificar nuestro código y su mantenimiento. Y los problemas que nos estamos encontrando nos ayudan a entender el riego que introduce London School si no escogemos con cuidado los dobles.
+Todo esto ayuda a simplificar nuestro código y su mantenimiento. Y los problemas que nos estamos encontrando nos ayudan a entender el riesgo que introduce London School si no escogemos con cuidado los dobles.
 
 ```typescript
 export class ForStoringProductsOneProductStub implements ForStoringProducts {
@@ -1112,7 +1112,7 @@ He puesto `Result.ts` dentro de la carpeta driving porque, al menos de momento, 
 
 Otro tema que tenemos que solucionar es la forma en que la información del Producto es representada en la respuesta que se devuelve por el puerto _ForManagingProducts_. Los objetos Product no deberían salir de la aplicación y lo más lógico sería que hacia afuera se pasen representaciones de la información adecuadas para el tipo de necesidad que tienen los actores interesados.
 
-En este sentido, puede ayudarlos en patrón _Representation_ que [hemos usado otras veces en el blog](/representation-pattern/). En este patrón, el objeto que queremos representar puede recibir a otro objeto que será poblado con sus datos. Para ello expone una interfaz que le permite recibir datos de tal forma que el objeto representado no expone sus propiedades, sino que pasa valores etiquetados con una clave que el objeto destinatario puede usar como le parezca.
+En este sentido, puede ayudarnos el patrón _Representation_ que [hemos usado otras veces en el blog](/representation-pattern/). En este patrón, el objeto que queremos representar puede recibir a otro objeto que será poblado con sus datos. Para ello expone una interfaz que le permite recibir datos de tal forma que el objeto representado no expone sus propiedades, sino que pasa valores etiquetados con una clave que el objeto destinatario puede usar como le parezca.
 
 Esta es la interfaz que usaremos:
 

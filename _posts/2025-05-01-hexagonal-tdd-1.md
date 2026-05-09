@@ -9,7 +9,7 @@ tags: software-design design-patterns typescript tdd hexagonal
 
 A medida que profundizo en Arquitectura Hexagonal más me parece que es uno de los patrones arquitectónicos más útiles y versátiles. Es cierto que se suele hacer muy mal, pero si sigues el patrón tal como está definido tienes muchas garantías de llegar a construir una aplicación fácil para desarrollar y mantener.
 
-Una de sus grandes ventajas es la testabilidad. De hecho, el patrón está diseñado, entre otras cosas, para que la aplicación se pueda poner fácilmente bajo test. Es algo que sus autores han incluído de forma explícita en su definición: los tests son actores que han de poder usar la aplicación a través de sus puertos.
+Una de sus grandes ventajas es la testabilidad. De hecho, el patrón está diseñado, entre otras cosas, para que la aplicación se pueda poner fácilmente bajo test. Es algo que sus autores han incluido de forma explícita en su definición: los tests son actores que han de poder usar la aplicación a través de sus puertos.
 
 Precisamente, la idea de los puertos también es muy útil como punto de partida para estructurar el código. Los puertos representan distintas conversaciones que el mundo exterior puede querer mantener con la aplicación (puertos primarios o drivers), o que esta necesita iniciar para cumplir sus propósitos (puertos secundarios o driven). 
 
@@ -88,9 +88,9 @@ En _London School_ se usan dobles de test para describir el paso de mensajes ent
 
 Por ejemplo, si estuviésemos escribiendo una API Rest usando esta variante tendríamos una primera capa que es el controlador. En nuestro caso, este controlador podría requerir un _Command Bus_ y un _Mapper_ que convierta la _payload_ entrante en el objeto _Command_ que vayamos a pasar al _Bus_. Debería sobrar decir que objetos como la _payload_ o el _Command_ no se doblan.
 
-Para desarrollar el controlador, lo haríamos mediante tests unitarios y tendríamos que doblar el _Command Bus_ en forma de _Espía_, para poder verificar que ha recibido el _Command_ correcto. Esto suele ser necesario porque habitualmente implementaremos un _Command Bus_ mediante alguna libería CQRS, pero también porque no vamos a tener todavía el _Handler_ que reciba y ejecute el _Command_. 
+Para desarrollar el controlador, lo haríamos mediante tests unitarios y tendríamos que doblar el _Command Bus_ en forma de _Espía_, para poder verificar que ha recibido el _Command_ correcto. Esto suele ser necesario porque habitualmente implementaremos un _Command Bus_ mediante alguna librería CQRS, pero también porque no vamos a tener todavía el _Handler_ que reciba y ejecute el _Command_. 
 
-En un buen diseño no usaríamos directamente librerías o componentes de terceras partes, sino que aplicando el patron Adapter habremos definido una interfaz e implementado un adaptador fino.
+En un buen diseño no usaríamos directamente librerías o componentes de terceras partes, sino que aplicando el patrón Adapter habremos definido una interfaz e implementado un adaptador fino.
 
 Con el _Mapper_ ocurre algo parecido: todavía _no sabemos_ cómo se va a comportar, por lo que inicialmente podría ser un _Stub_, devolviendo un objeto _Command_ precalculado, suficiente para que los tests unitarios pasen.
 
@@ -165,7 +165,7 @@ Los puertos primarios se pueden definir mediante _Commands_ y _Queries_ que los 
 
 Los puertos secundarios son un poco más difíciles de prever. En algunos casos pueden estar claros desde el principio. Por ejemplo, casi todas las aplicaciones necesitan algún tipo de persistencia de datos, por lo que es casi seguro que necesitaremos una solución técnica para eso, lo que va a definir un puerto.
 
-Pero puede ocurrir que no tengamos perfectamente definido como vamos a resolver algunas cuestiones o no las tengamos previstas. En ese caso, es posible que surja la necesidad una vez comenzado el desarrollo.
+Pero puede ocurrir que no tengamos perfectamente definido cómo vamos a resolver algunas cuestiones o no las tengamos previstas. En ese caso, es posible que surja la necesidad una vez comenzado el desarrollo.
 
 En nuestro ejemplo, parece claro que necesitaremos almacenar los datos de existencias, pero también un histórico de movimientos. Otros dos puertos, esta vez secundarios:
 
@@ -188,7 +188,7 @@ Para cada puerto definiremos uno o más adaptadores. En el caso de los puertos p
 
 Lo interesante es que para desarrollar la aplicación en sí no vamos a necesitar escribir estos adaptadores. Necesitaremos tests que interactúen con la aplicación.
 
-En cuando a los puertos secundarios, necesitaremos adaptadores creados para ser usados en situación de test. De hecho, Los autores de Arquitectura Hexagonal los consideran actores driven más que adaptadores, ya que pueden hablar directamente con la aplicación.
+En cuanto a los puertos secundarios, necesitaremos adaptadores creados para ser usados en situación de test. De hecho, los autores de Arquitectura Hexagonal los consideran actores driven más que adaptadores, ya que pueden hablar directamente con la aplicación.
 
 Así que para nuestro ejemplo, si bien no nos haría falta llegar a escribir ningún adaptador primario real, sí es seguro que tendremos que escribir actores de test que actúen como:
 
@@ -1451,7 +1451,7 @@ Puedes ver [esta versión del código en el repositorio](https://github.com/fran
 
 ## Reflexiones sobre Outside-in clásica
 
-En este artículo he tratado de ceñirme a esta forma de desarrollo. Sin embargo, no es posible dejar de tener en mente un cierto diseño general del sistema que oriente los pasos de los sucesivos refactors. Tratándose de Arquitectura Hexagonal, lo cierto es hay unos elementos organizativos que hay que cumplir, y que ayudan a tomar decisiones sobre cómo estructurar el código.
+En este artículo he tratado de ceñirme a esta forma de desarrollo. Sin embargo, no es posible dejar de tener en mente un cierto diseño general del sistema que oriente los pasos de los sucesivos refactors. Tratándose de Arquitectura Hexagonal, lo cierto es que hay unos elementos organizativos que hay que cumplir, y que ayudan a tomar decisiones sobre cómo estructurar el código.
 
 Personalmente, tengo la impresión de que este enfoque me ha llevado con cierta facilidad por caminos indeseados. Al empezar por lo que viene siendo un _transaction script_, es fácil mezclar responsabilidades y niveles de abstracción, lo que dificulta el refactor. De hecho, aunque no siempre lo he reflejado en el texto, he tenido que deshacer cambios más de una vez.
 

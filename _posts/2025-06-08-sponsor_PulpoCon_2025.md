@@ -17,7 +17,7 @@ Los días 18, 19 y 20, se celebrará la quinta edición de la PulpoCon. Y no deb
 
 Es difícil escoger algo para empezar. Por supuesto, es una conferencia sobre desarrollo de software. Lo que la hace diferente de otras es el **foco**. Desde la primera celebrada en 2019, PulpoCon procura mantener la temática y contenidos muy centrados. El objetivo es que nadie se vaya con la sensación de haber perdido el tiempo. Al contrario, se busca que todas las asistentes se vuelvan a casa con el convencimiento de haber aprendido algo nuevo y valioso, temas para pensar, ideas para aplicar en su entorno de trabajo, nuevos nombres a quienes seguir la pista.
 
-Para conseguirlo, es necesario mantener unos hilos conductores que ayuden a estructurar y escoger los temas, decidir que ponentes invitar y generar espacios que ayuden no solo a trabajarlos, sino también a reflexionarlos.
+Para conseguirlo, es necesario mantener unos hilos conductores que ayuden a estructurar y escoger los temas, decidir qué ponentes invitar y generar espacios que ayuden no solo a trabajarlos, sino también a reflexionarlos.
 
 A diferencia de otras iniciativas, en PulpoCon se mantiene el foco de las asistentes mediante tracks únicos. Es cierto que se ofrecen 5 tracks el viernes (cuatro de workshops y uno de charlas), pero no es posible saltar entre ellos. ¿El motivo? Es múltiple: lograr una audiencia especialmente motivada en cada uno de los tracks, posibilitar asociaciones entre los distintos temas de cada track y ayudar a mantener un foco y que se puedan producir conversaciones productivas entre quienes participan.
 
@@ -31,7 +31,7 @@ Para que haya conversaciones, tiene que haber tiempos y espacios adecuados. No s
 
 La fama es que en Galicia se come como en ninguna otra parte. ¡Qué van a decir en Galicia! Tópico o no, la comida es un punto importantísimo de la experiencia de la PulpoCon. En Galicia, como en muchas culturas, la comida es un momento de reunión y, muchas veces, no es tanto la comida como la larga sobremesa de conversaciones que se inicia con ella.
 
-Por eso, la PulpoCon está aliada con el mejor catering de la ciudad para ofrecer un menú inclusivo durante todos los momentos de descanso de las sesiones, desde el desayuno a la comida. Este menú cuenta con elaboraciones tradicionales y modernas, basadas en la gastronomía gallega más característica. Además, presta atención a la diversidad de asistentes de forma inclusiva: el menú general incorpora platos veganos y vegetarianos. Se proporciona, además, un menú y individualizado para cada persona que lo requiera, tanto por intolerancias, alergias u opciones personales. 
+Por eso, la PulpoCon está aliada con el mejor catering de la ciudad para ofrecer un menú inclusivo durante todos los momentos de descanso de las sesiones, desde el desayuno a la comida. Este menú cuenta con elaboraciones tradicionales y modernas, basadas en la gastronomía gallega más característica. Además, presta atención a la diversidad de asistentes de forma inclusiva: el menú general incorpora platos veganos y vegetarianos. Se proporciona, además, un menú individualizado para cada persona que lo requiera, tanto por intolerancias, alergias u opciones personales. 
 
 ## Cuidado de las ponentes
 

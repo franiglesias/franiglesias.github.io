@@ -3,7 +3,7 @@ layout: post
 title: Primitive Obsession
 categories: articles
 series: code-smells
-tags: code-smells refactoring typescript
+tags: code-smells refactoring typescript ddd design-patterns
 ---
 
 _Primitive Obsession_ es el último de los _bloaters_, una categoría de _code smells_ que se caracterizan por hacer que nuestro código sea grande y complejo, introduciendo muchas oportunidades para la aparición de bugs y comportamiento inconsistente.
@@ -220,7 +220,7 @@ _Introduce Value Object_ es el refactor apropiado para _Primitive Obsession_. Co
 * Garantizan su consistencia: no se pueden instanciar con valores no válidos.
 * Encapsulación: los value objects atraen el comportamiento relacionado con su valor.
 
-Vamos a ver estas cómo algunas de estas propiedades nos benefician en comparación con modelar conceptos con primitivos. Por ejemplo, en el caso de la moneda.
+Vamos a ver cómo algunas de estas propiedades nos benefician en comparación con modelar conceptos con primitivos. Por ejemplo, en el caso de la moneda.
 
 * Inmutabilidad: al modelar la moneda (currency) con un string no podemos evitar que algún proceso pueda cambiarla.
 * Consistencia: con un string podríamos tener diversas formas equivalentes de expresar una misma moneda (`USD`, `US$`, `dollars`, `$`, etc.) que tendríamos que controlar en cada uso. Un Value Object nos proporciona una representación consistente todo el tiempo.
@@ -441,7 +441,7 @@ class Order {
 }
 ```
 
-Una pregunta que te puedes estar haciendo ahora es por qué no estamos construyendo `Order` con una propiedad `customerEmail` de tipo `Email`, ya sea pasándosela directamente, ya sea intanciándola en construcción. Por ejemplo, así:
+Una pregunta que te puedes estar haciendo ahora es por qué no estamos construyendo `Order` con una propiedad `customerEmail` de tipo `Email`, ya sea pasándosela directamente, ya sea instanciándola en construcción. Por ejemplo, así:
 
 ```typescript
 class Order {
@@ -473,11 +473,11 @@ class Order {
 }
 ```
 
-Bien, la principal razón es que ahora la construcción de `Order` puede fallar cuando antes no lo hacía, cambiando el comportamiento esperado del constructor. Esto puede ser importante si tenemos que mantener compatibilidad con muchos usos existentes de la clase que contaban con un constructor que no hace validaciones y, por tanto, no esperan que falle y no toman tienen medidas protectoras.
+Bien, la principal razón es que ahora la construcción de `Order` puede fallar cuando antes no lo hacía, cambiando el comportamiento esperado del constructor. Esto puede ser importante si tenemos que mantener compatibilidad con muchos usos existentes de la clase que contaban con un constructor que no hace validaciones y, por tanto, no esperan que falle y no toman medidas protectoras.
 
 #### Amount y Currency
 
-`Amount` y `Currency` son dos conceptos que representan un valor monetario, aunque no exactamente de un `Money`. `Money` representa cualquier cantidad de dinero en una unidad monetaria dada, pero en nuestro ejemplo, `Amount` no puede ser cero ni negativo. Podríamos pensar en un `InvoiceAmount`, compuesto de `Amount` y `Currency` en su lugar, cada uno de ellos con su propio Value Object.
+`Amount` y `Currency` son dos conceptos que representan un valor monetario, aunque no exactamente un `Money`. `Money` representa cualquier cantidad de dinero en una unidad monetaria dada, pero en nuestro ejemplo, `Amount` no puede ser cero ni negativo. Podríamos pensar en un `InvoiceAmount`, compuesto de `Amount` y `Currency` en su lugar, cada uno de ellos con su propio Value Object.
 
 ```typescript
 class Amount {
@@ -523,7 +523,7 @@ class Currency {
 }
 ```
 
-Fíjate como aplicamos un patrón de _Double Dispatch_ para que ninguno de los Value Objects tenga que conocer las propiedades del otro.
+Fíjate cómo aplicamos un patrón de _Double Dispatch_ para que ninguno de los Value Objects tenga que conocer las propiedades del otro.
 
 El Value Object compuesto:
 
@@ -582,7 +582,7 @@ class Order {
 }
 ```
 
-Ahora que hemos refactorizado la forma en que se representa Currency podemos pensar en como dar soporte a distintas monedas y sus formatos. Podemos aplicar herencia y hacer de `valid` método factoría.
+Ahora que hemos refactorizado la forma en que se representa Currency podemos pensar en cómo dar soporte a distintas monedas y sus formatos. Podemos aplicar herencia y hacer de `valid` método factoría.
 
 ```typescript
 abstract class Currency {
@@ -700,7 +700,7 @@ class Address {
 }
 ```
 
-Adicionalmente, la también podríamos extender `Address` para dar soporte a distintos tipos de direcciones según el país.
+Adicionalmente, también podríamos extender `Address` para dar soporte a distintos tipos de direcciones según el país.
 
 #### CustomerName
 

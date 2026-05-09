@@ -3,10 +3,10 @@ layout: post
 title: Long Parameter List
 categories: articles
 series: code-smells
-tags: code-smells refactoring typescript
+tags: code-smells refactoring typescript design-patterns
 ---
 
-Otro _smell_ de la familia de los _Bloaters_. _Long Parameter List_ ocurre cuando una función o método recibe más de tres ó cuatro parámetros.
+Otro _smell_ de la familia de los _Bloaters_. _Long Parameter List_ ocurre cuando una función o método recibe más de tres o cuatro parámetros.
 
 ## Definición
 
@@ -331,7 +331,7 @@ describe('Long Parameter List', () => {
 ```
 
 
-Ahora, vamos a copiar el cuerpo de `generateReport` en `generate` y cambiaremos lo necesario para que pueda funcionar, ya que no es compatible con la firma actual. Esto require introducir algunos métodos en los Value Objects. Empezamos así:
+Ahora, vamos a copiar el cuerpo de `generateReport` en `generate` y cambiaremos lo necesario para que pueda funcionar, ya que no es compatible con la firma actual. Esto requiere introducir algunos métodos en los Value Objects. Empezamos así:
 
 ```typescript
 export class ReportGenerator {
@@ -570,7 +570,7 @@ export class ReportGeneratorBuilder {
 }
 ```
 
-Usaremos el `Builder` cuando necesitemos tener una instancia de `ReportGenerator`. En este ejemplo, estamos usando opciones por defecto. Dentro de un momento veremos como requerir que ciertos valores se definan de forma obligatoria. Fíjate como usando la interfaz fluída obtenemos una construcción muy expresiva:
+Usaremos el `Builder` cuando necesitemos tener una instancia de `ReportGenerator`. En este ejemplo, estamos usando opciones por defecto. Dentro de un momento veremos como requerir que ciertos valores se definan de forma obligatoria. Fíjate como usando la interfaz fluida obtenemos una construcción muy expresiva:
 
 ```typescript
 it('Generates a report with Value Objects', () => {

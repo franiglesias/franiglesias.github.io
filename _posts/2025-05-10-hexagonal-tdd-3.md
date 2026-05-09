@@ -39,7 +39,7 @@ En lo que se refiere a diseño, prefiero la metodología londinense porque norma
 
 ## Implementación
 
-Así como en el método clasicista posponemos el diseño, en el método de Londres posponemos la implementación hasta el último momento posible. Esto es porque en esta escuela se prioriza definir qué objetos van a participar en un determinado punto y como van a interactuar, sin que nos preocupe, por el momento, cómo va a funcionar cada uno. Es cuando tenemos lo primero, que nos focalizamos en lo segundo.
+Así como en el método clasicista posponemos el diseño, en el método de Londres posponemos la implementación hasta el último momento posible. Esto es porque en esta escuela se prioriza definir qué objetos van a participar en un determinado punto y cómo van a interactuar, sin que nos preocupe, por el momento, cómo va a funcionar cada uno. Es cuando tenemos lo primero, que nos focalizamos en lo segundo.
 
 En el modelo clasicista, lo habitual es empezar implementando un _transaction script_ que luego vamos refactorizando hasta alcanzar el diseño que mejor nos funciona. Esta ventaja también se diluye un poco cuando trabajamos en un proyecto que ya tendrá muchos componentes que reutilizaremos en nuestro código, haciendo que trabajemos más próximas al planteamiento de Londres de lo que podría parecer.
 

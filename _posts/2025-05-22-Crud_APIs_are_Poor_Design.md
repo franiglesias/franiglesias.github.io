@@ -2,7 +2,7 @@
 layout: micro-post
 title: Crud APIs Are Poor Design
 categories: articles
-tags: tb-list API
+tags: tb-list api
 ---
 
 Diseñar API CRUD puede parecer simple, pero pocos negocios son realmente una cuestión de poner y extraer datos de una

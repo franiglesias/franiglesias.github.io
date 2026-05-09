@@ -3,7 +3,7 @@ layout: post
 title: Testing existing code with snapshot testing
 series: golden-cookbook
 categories: articles
-tags: testing golang
+tags: testing golang legacy
 ---
 
 In this recipe we will learn how to use **Golden** to introduce some basic tests for a piece of code that is unknown for us and has no tests. We will use snapshots to put the code under test and start understanding how it works.
@@ -131,7 +131,7 @@ func TestBasicStatementPrinter(t *testing.T) {
 		t.Fatalf("error: %s", err.Error())
 	}
 	
-	// Verify creating an snapshot
+	// Verify creating a snapshot
 	golden.Verify(t, statement, golden.Folder("testdata"))
 }
 ```
@@ -181,7 +181,7 @@ It seems that `Performance` holds a reference to a `Play`, but it sounds strange
 
 So, `PlayID` could be anything, a number, or a name, provided that it acts as an identifier for a unique `Play`.
 
-On the other hand, `Audience` is an `int` and it probably means the number of people who attended the `Performance`, so it should be important to compute the amount owed. We can several important values of `Audience` in the conditionals that decide different execution paths:
+On the other hand, `Audience` is an `int` and it probably means the number of people who attended the `Performance`, so it should be important to compute the amount owed. We can see several important values of `Audience` in the conditionals that decide different execution paths:
 
 ```go
 if perf.Audience > 30 {
@@ -292,7 +292,7 @@ Amount owed is $2,595.00
 You earned 18 credits
 ```
 
-The test provides 95.8% coverage. The only execution path that doesn't run is the case in which the Play Type is unknown. This looks as a pretty good test to start.
+The test provides 95.8% coverage. The only execution path that doesn't run is the case in which the Play Type is unknown. This looks like a pretty good test to start.
 
 ## Wrapping up
 

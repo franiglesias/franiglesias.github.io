@@ -395,7 +395,7 @@ Y ejecutando el test, tenemos el siguiente error, que ya es el fallo que queremo
 Error: Product Id new-product-id doesn't exist
 ```
 
-Podríamos considerar que, en lo que respecta a `AddProduct`, lo que tenemos es un esqueleto andante de la funcionalidad, que nos garantiza que las piezas están ahí y est��n correctamente articuladas, aunque todavía tengamos que ponerles el músculo que las haga funcionar como queremos.
+Podríamos considerar que, en lo que respecta a `AddProduct`, lo que tenemos es un esqueleto andante de la funcionalidad, que nos garantiza que las piezas están ahí y están correctamente articuladas, aunque todavía tengamos que ponerles el músculo que las haga funcionar como queremos.
 
 ## Empezando a colocar la funcionalidad
 

@@ -12,7 +12,7 @@ El configurador es el quinto elemento del patrón, junto con la aplicación, los
 
 En la medida en que montar el árbol de dependencias puede hacerse complicado, es interesante considerar el uso de un contenedor de inyección de dependencias que nos ayude a gestionarlo. Este tipo de necesidades probablemente nos llevará a utilizar librerías o frameworks, a poco que nuestra aplicación tenga una cierta envergadura.
 
-Pero, por otro lado, hay algo que aún no tenemos y es algún adaptador primario que permita interactuar con la aplicación a un actor humano. De hecho, sí que tenemos un configurador, pero está espacialmente adaptado a su uso en el entorno de test. Los tests, en Arquitectura Hexagonal, son actores primarios. Sin embargo, un actor humano necesita algún tipo de adaptador con el que traducir sus acciones en un lenguaje que el puerto pueda entender. 
+Pero, por otro lado, hay algo que aún no tenemos y es algún adaptador primario que permita interactuar con la aplicación a un actor humano. De hecho, sí que tenemos un configurador, pero está especialmente adaptado a su uso en el entorno de test. Los tests, en Arquitectura Hexagonal, son actores primarios. Sin embargo, un actor humano necesita algún tipo de adaptador con el que traducir sus acciones en un lenguaje que el puerto pueda entender. 
 
 ## Un poco de front-end
 
@@ -61,7 +61,7 @@ export default App;
 
 ```
 
-Como se puede ver, tenemos que usar el proveedor de identidades configurable porque no tenemos uno de producción, que nos de _id_ adecuados e _infinitos_. Por otro lado, vemos que Junie necesita saber muchas cosas para instanciar el configurador. No debería saber todas estas cosas, sino únicamente pedir una instancia del configurador adecuada.
+Como se puede ver, tenemos que usar el proveedor de identidades configurable porque no tenemos uno de producción, que nos dé _id_ adecuados e _infinitos_. Por otro lado, vemos que Junie necesita saber muchas cosas para instanciar el configurador. No debería saber todas estas cosas, sino únicamente pedir una instancia del configurador adecuada.
 
 Y, ¿cómo usa la SPA a la aplicación? Aquí podemos ver un ejemplo en el que la `addProduct` instancia un comando `AddProduct` y le pide al configurador el `AddProductHandler` ya listo para usar.
 
@@ -109,7 +109,7 @@ En fin. Ahora que tenemos un adaptador para humanos, vamos a centrarnos en const
 
 ## ForGettingIdentities, pero de verdad
 
-Hasta ahora, hemos ido creando adaptadores en función de nuestras necesidades de desarrollo del hexágono en ujn proceso más o menos orgánico. Ahora vamos a ver cómo sería desarrollar un adaptador a partir del puerto, que proporciona una interfaz requerida específica.
+Hasta ahora, hemos ido creando adaptadores en función de nuestras necesidades de desarrollo del hexágono en un proceso más o menos orgánico. Ahora vamos a ver cómo sería desarrollar un adaptador a partir del puerto, que proporciona una interfaz requerida específica.
 
 He aquí la interfaz, que no tiene mayores misterios.
 
@@ -281,7 +281,7 @@ export class Inventory {
 
 Ahora mismo, esto hace fallar varios tests, aunque no tantos como se podría pensar. La razón es que estamos usando identificadores que no cumplen esta regla que acabamos de introducir y que, por supuesto, no hemos definido todavía en ningún sitio. Podrías estar preguntándote qué sentido tiene hacerlo de esta forma, y si de todos modos no podría el adaptador ocuparse de generar los identificadores completamente formados.
 
-Por supuesto, la razón es que el adaptador no sabe nada del interior de la aplicación y no es responsable de que su cumplan reglas del dominio, aunque pueda contribuir a implementarlas. Estas reglas deberían verificarse, en todo caso, en los tests de la aplicación, no en tests de adaptadores.
+Por supuesto, la razón es que el adaptador no sabe nada del interior de la aplicación y no es responsable de que se cumplan reglas del dominio, aunque pueda contribuir a implementarlas. Estas reglas deberían verificarse, en todo caso, en los tests de la aplicación, no en tests de adaptadores.
 
 Te propongo una vuelta de tuerca más: imagina que el identificador ha de construirse con las primeras tres letras del nombre del producto en lugar del genérico "prd". Ese conocimiento solo existe en la aplicación. Es cierto que se le podría pasar una especie de plantilla al adaptador para que nos monte el formato deseado, pero supone añadir responsabilidades y complejidad a un elemento que no lo necesita.
 
@@ -1046,10 +1046,10 @@ export class InventoryConfigurator {
 
 ## Conclusiones
 
-En esta entrega hemos hablando del _quinto elemento_ de la Arquitectura Hexagonal, el Configurador. Este componente nos permite coser la aplicación para que se pueda usar en un entorno de trabajo real.
+En esta entrega hemos hablado del _quinto elemento_ de la Arquitectura Hexagonal, el Configurador. Este componente nos permite coser la aplicación para que se pueda usar en un entorno de trabajo real.
 
 En el artículo hemos presentado varias formas de abordarlo, introduciendo elementos como un Contenedor de Inyección de Dependencias o un Bus de mensajes. Es importante señalar que estas son patrones tácticos con los que desarrollar el configurador, pero no son imprescindibles ni forman parte del patrón como tal.
 
 El contenedor de inyección de dependencias puede complicar innecesariamente aplicaciones sencillas, por lo que es una opción que hay que usar con cierta precaución.
 
-Por otro lado, el Bus de Mensajes sí que puede ser una buena adición, pues reduce el acoplamiento de los adaptadores a los puertos, sin que perdamos un apice de testabilidad.
+Por otro lado, el Bus de Mensajes sí que puede ser una buena adición, pues reduce el acoplamiento de los adaptadores a los puertos, sin que perdamos un ápice de testabilidad.

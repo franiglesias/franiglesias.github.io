@@ -3,14 +3,14 @@ layout: post
 title: Data Clump
 series: code-smells
 categories: articles
-tags: code-smells refactoring typescript
+tags: code-smells refactoring typescript design-patterns
 ---
 
 Aprovechando material que he preparado para un curso de Refactoring, voy a empezar una serie de artículos sobre code smells. El primero que vamos a tratar es el Data Clump.
 
 ## Definición
 
-**Data Clump** (Grupo de Datos o Pegote de datos), es un code smells que se caracteriza porque el mismo grupo de campos de datos viaja junto por muchos lugares, lo que sugiere la necesidad de un Value Object y duplicación.
+**Data Clump** (Grupo de Datos o Pegote de datos), es un code smell que se caracteriza porque el mismo grupo de campos de datos viaja junto por muchos lugares, lo que sugiere la necesidad de un Value Object y duplicación.
 
 Esos campos que viajan siempre juntos pueden requerir validaciones, formateos, etc., y tendremos que repetirlos en muchos lugares. El problema de esto es la posibilidad de introducir inconsistencias o errores, además de la dificultad de mantenerlos.
 
@@ -762,7 +762,7 @@ El code smell Data Clump complica innecesariamente el mantenimiento de nuestras 
 
 La solución es introducir Value Objects, que encapsulan los conceptos que representan y sus comportamientos propios, garantizando una única representación autoritativa en el código. Esto facilita el mantenimiento.
 
-Una objeción que puede que tengas es si introducir varias clases nuevas no aumenta la complejidad. Si bien es cierto que introducir varias clases puede hacer parecer que el sistema se vuelve más complejo, lo cierto es que la complejidad disminuye en la medida en las nuevas clases cumplan el principio KISS (Keep it simply stupid).
+Una objeción que puede que tengas es si introducir varias clases nuevas no aumenta la complejidad. Si bien es cierto que introducir varias clases puede hacer parecer que el sistema se vuelve más complejo, lo cierto es que la complejidad disminuye en la medida en las nuevas clases cumplan el principio KISS (Keep it simple, stupid).
 
 Veamos un ejemplo sin resolver el data clump. `print` tiene una complejidad ciclomática de 3 y crecería con cada nuevo tipo de dirección a la que tengamos que dar soporte.
 
@@ -838,7 +838,7 @@ export class AddressFactory {
 }
 ```
 
-Sin embargo, podríamos refactorizarla para que la complejidad disminuya a 1, incluso añadiendo nuevas clases, gracias a user un mapa que nos relaciona el país con la constructora del tipo de dirección adecuado.
+Sin embargo, podríamos refactorizarla para que la complejidad disminuya a 1, incluso añadiendo nuevas clases, gracias a usar un mapa que nos relaciona el país con la constructora del tipo de dirección adecuado.
 
 ```typescript
 export class AddressFactory {

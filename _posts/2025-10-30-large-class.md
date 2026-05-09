@@ -3,7 +3,7 @@ layout: post
 title: Large Class
 categories: articles
 series: code-smells
-tags: code-smells refactoring typescript
+tags: code-smells refactoring typescript design-principles
 ---
 
 Otro _code smell_ bastante habitual es tener clases muy grandes, que van acumulando muchas responsabilidades no relacionadas.
@@ -726,7 +726,7 @@ La autenticación de doble factor funciona más o menos de la siguiente manera:
 
 * El usuario hace login, este login no es definitivo y tiene que confirmarse
 * Se genera un código de un solo uso que se notifica al usuario
-* El usuario envia de vuelta a este código confirmando el login
+* El usuario envía de vuelta este código confirmando el login
 
 La idea es que la aplicación genera un código de un solo uso que solo el usuario real podría conocer porque se lo comunicamos por un medio que asumimos está bajo su control: ya sea con un mensaje directo o a través de una aplicación específica.
 
@@ -1365,7 +1365,7 @@ export class AuthenticateUserWithTwoFactor extends BaseManagesAuthentication {
 }
 ```
 
-En fin, podríamos seguir refinando este código pero el artículo se está haciendo más largo de lo pensando.
+En fin, podríamos seguir refinando este código pero el artículo se está haciendo más largo de lo pensado.
 
 ## Conclusiones
 

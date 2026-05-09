@@ -29,7 +29,7 @@
 </div><!-- end header -->
 <div class="wrapper">
 
-    <section>
+    <section class="main-content">
         <div id="title">
             <h1>{{ site.title | default: site.github.repository_name }}</h1>
             <p>{{ site.description | default: site.github.project_tagline }}</p>
@@ -44,16 +44,17 @@
             </div>
         </div>
 
-        <section id="tags">
-            <h2 id="tags-toggle">Temas <span id="tags-arrow" style="font-size:1rem;">►</span></h2>
-            {% include archive.html %}
-        </section>
-
         {{ content }}
 
     </section>
 
+    <aside class="sidebar">
+        <section id="tags">
+            <h2>Temas</h2>
+            {% include archive.html %}
+        </section>
+    </aside>
+
 </div>
-<script src="{{ '/assets/js/tags-toggle.js' | relative_url }}"></script>
 </body>
 </html>

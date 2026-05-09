@@ -1,4 +1,4 @@
-<div id="tags-content">
+<div class="tag-cloud">
 {% capture temptags %}
 {% for tag in site.tags %}
 {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
@@ -7,9 +7,13 @@
 {% assign sortedtemptags = temptags | split:' ' | sort | reverse %}
 {% for temptag in sortedtemptags %}
 {% assign tagitems = temptag | split: '#' %}
-{% capture tagname %}{{ tagitems[1] }}{% endcapture %}
-<p class="tag"><a href="/tag/{{ tagname }}">
-    <nobr>{{ tagname }}</nobr>
-</a></p>
+{% assign tagname = tagitems[1] %}
+{% assign tagcount = tagitems[2] | plus: 0 %}
+{% if tagcount >= 15 %}{% assign cloud_size = "cloud--xl" %}
+{% elsif tagcount >= 8 %}{% assign cloud_size = "cloud--lg" %}
+{% elsif tagcount >= 4 %}{% assign cloud_size = "cloud--md" %}
+{% elsif tagcount >= 2 %}{% assign cloud_size = "cloud--sm" %}
+{% else %}{% assign cloud_size = "cloud--xs" %}{% endif %}
+<a href="/tag/{{ tagname }}" class="tag-cloud__item {{ cloud_size }}" title="{{ tagcount }} posts">{{ tagname }}</a>
 {% endfor %}
 </div>

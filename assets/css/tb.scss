@@ -178,11 +178,33 @@ strong {
 
 @media (min-width: $breakpoint_tablet) {
   .wrapper {
-    max-width: 50rem;
+    max-width: 72rem;
     margin: 0 auto;
     position: relative;
-    padding: 0 7rem;
+    padding: 0;
     background-color: $neutral-100;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  section.main-content {
+    padding-left: 7rem;
+    padding-right: 7rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sidebar {
+    width: 16rem;
+    flex-shrink: 0;
+    margin-top: 7rem;
+    padding: 2rem 1.5rem 3rem;
+    border-left: 1px solid $neutral-300;
+    position: sticky;
+    top: 5rem;
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
   }
 
   h1 {
@@ -320,9 +342,9 @@ section {
 section #title {
   outline: none;
   padding: 4rem 7rem 3rem 7rem;
-  margin: -3rem -7rem -7rem -7rem;
+  margin: -3rem -7rem 3rem -7rem;
   background-color: $title-bg;
-  border-radius: $page_radius $page_radius 0 0;
+  border-radius: $page_radius $page_radius $page_radius $page_radius;
 
   h1 {
     font-size: 6rem;
@@ -544,77 +566,46 @@ article.list span.tag {
   padding-bottom: 0.3rem;
 }
 
-section#tags {
-  margin-left: -$tags_margin;
-  padding-left: $tags_margin;
-  margin-right: -$tags_margin;
-  padding-right: $tags_margin;
-  background-color: $tags-bg;
-  border-radius: 0 0 $page_radius $page_radius;
-
+// Sidebar tag section heading
+#tags {
   h2 {
-    margin-top: 1rem;
-  }
-
-  div {
-    display: grid;
-    grid-template-columns: 90%;
-    grid-auto-flow: row;
-    justify-content: space-between;
-  }
-
-  p {
-    margin: 0 0 0.5rem 0;
-
-    a {
-      font-family: $site_font;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      word-break: break-all;
-      overflow-wrap: break-word;
-      padding: 0.2rem 1rem;
-      display: block;
-      background-color: $neutral-100;
-      color: $primary;
-      text-align: center;
-      box-shadow: 0.1rem 0.1rem 0.2rem -0.1rem rgba(0, 0, 0, 0.40);
-      border-radius: 0.2rem;
-
-      &:hover {
-        box-shadow: 0.2rem 0.2rem 0.4rem -0.1rem rgba(0, 0, 0, 0.58);
-      }
-    }
+    font-family: $heading_font;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $primary;
+    margin: 0 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid $accent;
   }
 }
 
-@media (min-width: $breakpoint_phone) {
-  section#tags {
-    div {
-      grid-template-columns: 45% 45%;
-    }
-  }
-}
+// Tag cloud
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.25rem;
+  line-height: 1;
 
-@media (min-width: $breakpoint_tablet) {
-  section#tags {
-    div {
-      grid-template-columns: 30% 30% 30%;
+  &__item {
+    display: inline-block;
+    color: $primary;
+    background: $neutral-200;
+    border-radius: 3px;
+    padding: 0.2rem 0.45rem;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover {
+      background: $accent;
+      color: $neutral-100;
     }
 
-    p {
-      a {
-        font-size: 0.7rem;
-      }
-    }
-  }
-}
-
-
-@media (min-width: $breakpoint_tablet) {
-  section#tags {
-    div {
-      grid-template-columns: 22% 22% 22% 22%;
-    }
+    &.cloud--xs { font-size: 0.65rem; }
+    &.cloud--sm { font-size: 0.8rem; }
+    &.cloud--md { font-size: 0.95rem; font-weight: 500; }
+    &.cloud--lg { font-size: 1.15rem; font-weight: 500; }
+    &.cloud--xl { font-size: 1.4rem; font-weight: 500; }
   }
 }
 
@@ -804,14 +795,14 @@ div.footnotes {
 
     a {
       color: inherit;
+      border-radius: 0.2em;
+      padding: 0.1em 0.3em;
       transition: color 0.2s, background 0.2s;
     }
 
     &:hover a {
       color: $neutral-100;
       background: $accent;
-      border-radius: 0.2em;
-      padding: 0.1em 0.3em;
     }
   }
 }

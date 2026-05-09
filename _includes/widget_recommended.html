@@ -1,0 +1,21 @@
+{% assign widget_limit = include.limit | default: 6 %}
+{% assign widget_shown = 0 %}
+<section class="widget widget--featured">
+  <h2 class="widget__title">{{ include.title }}</h2>
+  {% if include.description %}
+    <p class="widget__description">{{ include.description }}</p>
+  {% endif %}
+  <ul class="widget__list">
+    {% for post in site.posts %}
+      {% if post.recommended %}
+        {% if widget_shown < widget_limit %}
+          <li class="widget__item">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>
+          </li>
+          {% assign widget_shown = widget_shown | plus: 1 %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>

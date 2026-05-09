@@ -829,3 +829,101 @@ div.footnotes {
     }
   }
 }
+
+// === Widget Grid (home page) ===
+
+.widgets-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  @media (min-width: $breakpoint_tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.widget {
+  background: $neutral-100;
+  border-top: 3px solid $primary;
+  padding: 1.25rem 1.5rem;
+
+  &__title {
+    font-family: $heading_font;
+    font-size: 1.1rem;
+    color: $primary;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__description {
+    font-size: 0.85rem;
+    color: $neutral-400;
+    margin: 0 0 0.75rem;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid $neutral-200;
+    font-size: 0.9rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      flex: 1;
+      color: $primary-light;
+      text-decoration: none;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+
+    time {
+      white-space: nowrap;
+      font-size: 0.75rem;
+      color: $neutral-400;
+    }
+  }
+
+  &__more {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: $accent;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &--featured {
+    @media (min-width: $breakpoint_tablet) {
+      grid-column: span 2;
+    }
+
+    .widget__list {
+      @media (min-width: $breakpoint_tablet) {
+        columns: 2;
+        column-gap: 2rem;
+      }
+    }
+
+    .widget__item {
+      break-inside: avoid;
+    }
+  }
+}

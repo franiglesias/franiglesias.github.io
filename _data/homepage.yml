@@ -1,0 +1,29 @@
+widgets:
+  - type: recommended
+    title: "Para empezar"
+    description: "Una selección de posts para nuevos visitantes"
+    limit: 6
+
+  - type: series
+    title: "TDD Outside-In con Arquitectura Hexagonal"
+    series: outside-in-ha
+    limit: 5
+
+  - type: tag
+    title: "TDD"
+    tag: tdd
+    limit: 5
+
+  - type: series
+    title: "Code Smells"
+    series: code-smells
+    limit: 5
+
+  - type: tag
+    title: "Diseño de Software"
+    tag: software-design
+    limit: 5
+
+  - type: latest
+    title: "Últimas entradas"
+    limit: 8

@@ -1,0 +1,22 @@
+{% assign widget_limit = include.limit | default: 5 %}
+{% assign widget_series_key = include.series %}
+{% assign widget_series_data = site.data.series[widget_series_key] %}
+{% assign widget_shown = 0 %}
+<section class="widget">
+  <h2 class="widget__title">{{ include.title }}</h2>
+  {% if widget_series_data.description %}
+    <span class="widget__description">{{ widget_series_data.description }}</span>
+  {% endif %}
+  <ul class="widget__list">
+    {% assign series_posts = site.posts | where: "series", widget_series_key | reverse %}
+    {% for post in series_posts %}
+      {% if widget_shown < widget_limit %}
+        <li class="widget__item">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>
+        </li>
+        {% assign widget_shown = widget_shown | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>

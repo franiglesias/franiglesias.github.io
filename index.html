@@ -2,29 +2,16 @@
 layout: default
 ---
 
-<div class="posts">
-    {% for post in site.posts %}
-        {% unless post.tags and post.tags contains "dungeon" or post.tags contains "tb-list" or post.hide %}
-            <article class="post list">
-                {% if post.series %}
-                <p class="subtitle">{{ site.data.series[post.series].title }}</p>
-                {% else %}
-                    {% if post.subtitle %}
-                    <p class="subtitle">{{ post.subtitle }}</p>
-                    {% endif %}
-                {% endif %}
-                <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-                <p><span class="date">{{ post.date | date: "%Y/%m/%d" }}</span> -- {{ post.excerpt | strip_html }}
-                </p>
-                <p>
-                    {% for tag in post.tags %}
-                        {% capture tag_name %}{{ tag }}{% endcapture %}
-                        <a href="/tag/{{ tag_name }}"><span class="tag {{ tag_name }}">
-                            <nobr>{{ tag_name }}</nobr>
-                        </span>&nbsp;</a>
-                    {% endfor %}
-                </p>
-            </article>
-        {% endunless %}
-    {% endfor %}
+<div class="widgets-grid">
+  {% for widget in site.data.homepage.widgets %}
+    {% if widget.type == "latest" %}
+      {% include widget_latest.html title=widget.title limit=widget.limit %}
+    {% elsif widget.type == "series" %}
+      {% include widget_series.html title=widget.title series=widget.series limit=widget.limit %}
+    {% elsif widget.type == "tag" %}
+      {% include widget_tag.html title=widget.title tag=widget.tag limit=widget.limit %}
+    {% elsif widget.type == "recommended" %}
+      {% include widget_recommended.html title=widget.title description=widget.description limit=widget.limit %}
+    {% endif %}
+  {% endfor %}
 </div>

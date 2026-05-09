@@ -1,0 +1,18 @@
+{% assign widget_limit = include.limit | default: 5 %}
+{% assign widget_shown = 0 %}
+<section class="widget">
+  <h2 class="widget__title">{{ include.title }}</h2>
+  <ul class="widget__list">
+    {% for post in site.posts %}
+      {% unless post.tags contains 'dungeon' or post.tags contains 'tb-list' or post.hide %}
+        {% if widget_shown < widget_limit %}
+          <li class="widget__item">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>
+          </li>
+          {% assign widget_shown = widget_shown | plus: 1 %}
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+  </ul>
+</section>

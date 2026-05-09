@@ -3,6 +3,7 @@ layout: post
 title: El falso dilema. Calidad versus velocidad
 categories: articles
 tags: misc good-practices
+recommended: true
 ---
 
 De vez en cuando me encuentro con artículos o comentarios que mencionan la idea de que, a veces, tenemos que aparcar las buenas prácticas al programar en aras a cumplir un plazo de entrega o salir a producción.

@@ -3,6 +3,7 @@ layout: post
 title: La kata del DNI para aprender TDD
 categories: articles
 tags: tdd testing
+recommended: true
 ---
 
 Una vez que comprendemos el concepto, no es difícil hacer TDD. Pero ese primer paso necesario para arrancar suele necesitar ayuda. Lo mejor es encontrar un ejercicio de programación que sea sencillo sin ser trivial y que ayude a poner de manifiesto los elementos más importantes de la metodología TDD.
@@ -423,7 +424,7 @@ class Dni
 }
 ```
 
-Aplicamos este cambio y ejecutamos los testa para comprobar que siguen pasando.
+Aplicamos este cambio y ejecutamos los tests para comprobar que siguen pasando.
 
 Otra duplicación la podemos ver en las dos condicionales que controlan la longitud de la cadena. Lo cierto es que nos bastaría con lanzar la excepción si la longitud es distinta de nueve. Por ejemplo, así:
 
@@ -739,7 +740,7 @@ class Dni
 
 De nuevo, posponemos la solución de ese problema a la siguiente iteración. El caso es que, con el último test, hemos definido ya todas las condiciones que debería cumplir una cadena de caracteres para poder ser un DNI aunque, recordemos, en realidad todavía no hemos implementado todo ese comportamiento ya que necesitamos un nuevo tests que nos obligue a ello. 
 
-Ahora mos toca entrar en el terreno del algoritmo del validación en sí.
+Ahora nos toca entrar en el terreno del algoritmo de validación en sí.
 
 Este algoritmo se basa en obtener el resto de la división de la parte numérica del DNI entre 23. Con este resto buscamos la letra de control en la tabla de correspondencias y la comparamos con la que finaliza la cadena. Si coinciden, el DNI es válido. Si no coinciden, lanzaremos una excepción.
 
@@ -1488,7 +1489,7 @@ public function testShouldConstructValidNIEStartingWithX() : void
 }
 ```
 
-El algortimo de validación dice que debemos sustituir la Y por un 1 y proceder de la manera habitual:
+El algoritmo de validación dice que debemos sustituir la Y por un 1 y proceder de la manera habitual:
 
 ```php
 <?php

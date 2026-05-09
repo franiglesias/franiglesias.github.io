@@ -3,6 +3,7 @@ layout: post
 title: Principio de separación de intereses
 categories: articles
 tags: design-principles
+recommended: true
 ---
 
 [Edsger W. Dijkstra](https://es.wikipedia.org/wiki/Edsger_Dijkstra) (1930-2002) es todo un personaje en el campo de las ciencias de la computación, no solo por la cantidad y calidad de sus aportaciones, sino también por su particular carácter y algunas frases lapidarias.

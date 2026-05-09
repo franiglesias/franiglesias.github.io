@@ -3,6 +3,7 @@ layout: post
 title: Test doubles (1)
 categories: articles
 tags:  testing php
+recommended: true
 ---
 
 Estaba pensando en comenzar el artículo con la manida metáfora de los *test doubles* como especialistas de cine, los que doblan a los actores en ciertas escenas, no necesariamente peligrosas. Pero cuando más vueltas le doy, menos claro tengo que sea un buen símil.
@@ -27,7 +28,7 @@ En algunos casos podríamos eliminarlas. Por ejemplo, hacer un experimento en un
 
 En otros casos no podemos hacer eso y tenemos que recurrir a otras técnicas, como puede ser aleatorizarlas, lo que nos dará un margen de error previsible en la medida del cambio que estamos observando, o controlarlas: saber exactamente en qué condiciones hacemos el experimento, al respecto de esas variables y repetirlo bajo distintos conjuntos de condiciones.
 
-Pues bien, en el tema de los *tests doubles* la estrategia va por ahí. El objetivo es que los tengan un efecto nulo sobre el comportamiento de nuestra unidad bajo test o que podamos tenerlo controlado.
+Pues bien, en el tema de los *tests doubles* la estrategia va por ahí. El objetivo es que tengan un efecto nulo sobre el comportamiento de nuestra unidad bajo test o que podamos tenerlo controlado.
 
 ## Por qué y para qué de los tests doubles
 

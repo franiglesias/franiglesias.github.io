@@ -3,6 +3,7 @@ layout: post
 title: Refactor cotidiano
 categories: articles
 tags: good-practices refactoring
+recommended: true
 ---
 
 Presentamos el primer curso/guía de The Talking Bit.

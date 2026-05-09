@@ -3,6 +3,7 @@ layout: post
 title: Cómo poner nombres
 categories: articles
 tags: php good-practices
+recommended: true
 ---
 
 ¿Por qué razón poner nombres a las cosas se considera uno de los aspectos más difíciles de la programación?

@@ -3,6 +3,7 @@ layout: post
 title: Dependencias y acoplamiento
 categories: articles
 tags: php good-practices
+recommended: true
 ---
 
 Cómo aplicar el principio de inversión de dependencias, entendiendo qué es dependencia y qué acoplamiento. ¡Ah! Y cómo saber cuándo necesitamos usar inyección o instanciación al crear objetos.

@@ -3,6 +3,7 @@ layout: post
 title: El drama de los objetos anémicos
 categories: articles
 tags: php design-principles good-practices
+recommended: true
 ---
 
 Pululan por nuestras bases de código como almas en pena, transportando datos de un lugar a otro. Sin embargo, podrían dar esplendor a nuestras aplicaciones si les damos un poco de atención.
@@ -144,7 +145,7 @@ El método `Player->score()` devuelve un objeto Score, pero el código cliente n
 Como se puede ver en los ejemplos anteriores, todos los servicios que modifican la puntuación repiten esa lógica. Aquí tenemos tres repeticiones, pero podría haber unas cuantas más fácilmente. Estas repeticiones generan los consabidos problemas de sostenibilidad del código: 
 
 * Si la lógica precisa algún tipo de cambio en el futuro, son muchos puntos en donde hay que tocar y se nos puede pasar alguno por alto.
-* Si ocurre algún error, tenemos que examinar un montón de lugares para encontrar la cause.
+* Si ocurre algún error, tenemos que examinar un montón de lugares para encontrar la causa.
 
 ### Problemas de testeo
 

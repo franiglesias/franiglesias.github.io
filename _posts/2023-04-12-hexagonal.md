@@ -3,6 +3,7 @@ layout: post
 title: Introducción a la Arquitectura Hexagonal
 categories: articles
 tags: design-patterns hexagonal
+recommended: true
 ---
 
 Nunca hasta ahora me había atrevido a tocar el tema de la arquitectura hexagonal, pero después de bastantes lecturas, varias charlas y algunas conversaciones, voy a intentar explicarla con mis propias palabras.

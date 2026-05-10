@@ -1,0 +1,21 @@
+<section class="sidebar-widget sidebar-widget--about">
+  <h2 class="sidebar-widget__title">Sobre mí</h2>
+  <div class="about-card">
+    {% if site.avatar %}
+      <img class="about-card__avatar" src="{{ site.avatar }}" alt="Foto de {{ site.about.name | default: 'Fran Iglesias' }}" loading="lazy">
+    {% endif %}
+    <p class="about-card__name">{{ site.about.name | default: "Fran Iglesias" }}</p>
+    {% if site.about.tagline %}
+      <p class="about-card__tagline">{{ site.about.tagline }}</p>
+    {% endif %}
+    {% if site.about.bio %}
+      <p class="about-card__bio">{{ site.about.bio }}</p>
+    {% endif %}
+    <ul class="about-card__links">
+      {% include menu.html %}
+    </ul>
+    {% if site.about.link_url %}
+      <a class="about-card__more" href="{{ site.about.link_url }}">{{ site.about.link_text | default: "Acerca de mi →" }}</a>
+    {% endif %}
+  </div>
+</section>

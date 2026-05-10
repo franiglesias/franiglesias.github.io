@@ -1000,6 +1000,83 @@ div.footnotes {
   }
 }
 
+.about-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+
+  &__avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0.25rem;
+  }
+
+  &__name {
+    font-family: $heading_font;
+    font-size: 1.05rem;
+    color: $primary;
+    margin: 0;
+  }
+
+  &__tagline {
+    font-size: 0.8rem;
+    color: $neutral-400;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  &__bio {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin: 0.25rem 0 0;
+  }
+
+  &__links {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+
+    li {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease;
+
+      &:hover { transform: translateY(-2px); }
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+  }
+
+  &__more {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: $accent;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
 .books-carousel {
   position: relative;
   margin: 0.5rem 0 0.25rem;

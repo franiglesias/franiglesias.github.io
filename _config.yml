@@ -12,6 +12,14 @@ description: Personal learning journal about programming, maybe more.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars2.githubusercontent.com/u/16079996?s=460&v=4
+
+# Short profile shown by the about widget on the home page
+about:
+  name: Fran Iglesias
+  tagline: "Senior Software Developer · Diseño de software y prácticas ágiles"
+  bio: "Escribo aquí sobre TDD, refactor, diseño de software y prácticas técnicas, sobre todo en español. También publico libros en Leanpub."
+  link_url: /about/es/
+  link_text: "Acerca de mi →"
 #
 # Flags below are optional
 #

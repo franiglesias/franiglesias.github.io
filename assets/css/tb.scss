@@ -1055,15 +1055,20 @@ div.footnotes {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.15s ease;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      opacity: 0.65;
 
-      &:hover { transform: translateY(-2px); }
+      &:hover {
+        transform: translateY(-2px);
+        opacity: 1;
+      }
     }
 
     img {
       width: 20px;
       height: 20px;
       display: block;
+      filter: invert(1);
     }
   }
 

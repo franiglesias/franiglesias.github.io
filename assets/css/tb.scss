@@ -992,4 +992,99 @@ div.footnotes {
       break-inside: avoid;
     }
   }
+
+  &--books .widget__list {
+    @media (min-width: $breakpoint_tablet) {
+      columns: auto;
+    }
+  }
+}
+
+.books-carousel {
+  position: relative;
+  margin: 0.5rem 0 0.25rem;
+
+  &__track {
+    list-style: none;
+    margin: 0;
+    padding: 0.25rem 0.25rem 1rem;
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+  }
+
+  &__item {
+    flex: 0 0 auto;
+    width: 130px;
+    scroll-snap-align: start;
+    border: none;
+    padding: 0;
+
+    @media (min-width: $breakpoint_tablet) {
+      width: 160px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: $primary-light;
+    transition: transform 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-3px);
+      color: $accent;
+    }
+  }
+
+  &__cover {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+  }
+
+  &__title {
+    font-size: 0.78rem;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: $primary;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    display: none;
+
+    @media (min-width: $breakpoint_tablet) {
+      display: block;
+    }
+
+    &:hover {
+      background: $accent;
+      color: #fff;
+    }
+
+    &--prev { left: -0.5rem; }
+    &--next { right: -0.5rem; }
+  }
 }

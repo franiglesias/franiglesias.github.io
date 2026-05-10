@@ -12,6 +12,8 @@ layout: default
       {% include widget_tag.html title=widget.title tag=widget.tag limit=widget.limit %}
     {% elsif widget.type == "recommended" %}
       {% include widget_recommended.html title=widget.title description=widget.description limit=widget.limit %}
+    {% elsif widget.type == "books" %}
+      {% include widget_books.html title=widget.title description=widget.description %}
     {% endif %}
   {% endfor %}
 </div>

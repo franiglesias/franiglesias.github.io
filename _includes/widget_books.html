@@ -1,0 +1,70 @@
+<section class="widget widget--featured widget--books">
+  <h2 class="widget__title">{{ include.title }}</h2>
+  {% if include.description %}
+    <p class="widget__description">{{ include.description }}</p>
+  {% endif %}
+  <div class="books-carousel" data-books-carousel>
+    <button class="books-carousel__nav books-carousel__nav--prev" type="button" aria-label="Anterior" data-books-prev>‹</button>
+    <ul class="books-carousel__track" data-books-track>
+      {% for book in site.data.books %}
+        <li class="books-carousel__item">
+          <a href="https://leanpub.com/{{ book.slug }}" target="_blank" rel="noopener" class="books-carousel__link">
+            <img src="{{ book.cover }}" alt="Portada de {{ book.title }}" loading="lazy" class="books-carousel__cover">
+            <span class="books-carousel__title">{{ book.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    <button class="books-carousel__nav books-carousel__nav--next" type="button" aria-label="Siguiente" data-books-next>›</button>
+  </div>
+  <a class="widget__more" href="https://leanpub.com/u/franiglesias" target="_blank" rel="noopener">Ver todos en Leanpub →</a>
+</section>
+<script>
+(function () {
+  var root = document.currentScript.previousElementSibling;
+  if (!root) return;
+  var track = root.querySelector('[data-books-track]');
+  var prev = root.querySelector('[data-books-prev]');
+  var next = root.querySelector('[data-books-next]');
+  if (!track) return;
+
+  function step() {
+    var item = track.querySelector('.books-carousel__item');
+    if (!item) return 240;
+    var style = window.getComputedStyle(track);
+    var gap = parseFloat(style.columnGap || style.gap || 0) || 0;
+    return item.getBoundingClientRect().width + gap;
+  }
+
+  function scrollBy(dir) {
+    track.scrollBy({ left: dir * step(), behavior: 'smooth' });
+  }
+
+  if (prev) prev.addEventListener('click', function () { scrollBy(-1); });
+  if (next) next.addEventListener('click', function () { scrollBy(1); });
+
+  var auto = null;
+  function start() {
+    stop();
+    auto = setInterval(function () {
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      if (atEnd) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollBy(1);
+      }
+    }, 4000);
+  }
+  function stop() { if (auto) { clearInterval(auto); auto = null; } }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    start();
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+    track.addEventListener('touchstart', stop, { passive: true });
+  }
+}());
+</script>

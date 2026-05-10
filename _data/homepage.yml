@@ -8,6 +8,10 @@ widgets:
     title: "Últimas entradas"
     limit: 8
 
+  - type: books
+    title: "Mis libros"
+    description: "Disponibles en Leanpub"
+
   - type: series
     title: "TDD Outside-In con Arquitectura Hexagonal"
     series: outside-in-ha

@@ -1,0 +1,27 @@
+- slug: refactorcotidiano
+  title: La guía del refactor cotidiano
+  cover: https://d2sofvawe08yqg.cloudfront.net/refactorcotidiano/s_featured2x
+
+- slug: deagilealaz
+  title: De agile a la z
+  cover: https://d2sofvawe08yqg.cloudfront.net/deagilealaz/s_featured2x
+
+- slug: tddcourse
+  title: Aprende Test Driven Development
+  cover: https://d2sofvawe08yqg.cloudfront.net/tddcourse/s_featured2x
+
+- slug: calisthenics
+  title: Pon tu código en forma con calistenia
+  cover: https://d2sofvawe08yqg.cloudfront.net/calisthenics/s_featured2x
+
+- slug: pppsd
+  title: Raciones de diseño de software
+  cover: https://d2sofvawe08yqg.cloudfront.net/pppsd/s_featured2x
+
+- slug: testingytddparaphp
+  title: Testing y TDD para PHP
+  cover: https://d2sofvawe08yqg.cloudfront.net/testingytddparaphp/s_featured2x
+
+- slug: testingcondoblesenphp
+  title: Testing con dobles en PHP
+  cover: https://d2sofvawe08yqg.cloudfront.net/testingcondoblesenphp/s_featured2x

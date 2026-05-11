@@ -198,22 +198,29 @@ strong {
   }
 
   section.main-content {
-    padding-left: 7rem;
-    padding-right: 7rem;
+    padding-left: clamp(1.5rem, 7vw, 7rem);
+    padding-right: clamp(1.5rem, 7vw, 7rem);
     flex: 1;
     min-width: 0;
     margin-top: 0;
   }
 
   .sidebar {
-    width: 16rem;
+    width: 13rem;
     flex-shrink: 0;
-    padding: 2rem 1.5rem 3rem;
+    padding: 2rem 1.25rem 3rem;
     border-left: 1px solid $neutral-300;
     position: sticky;
     top: 5rem;
     max-height: calc(100vh - 6rem);
     overflow-y: auto;
+  }
+
+  @media (min-width: 1200px) {
+    .sidebar {
+      width: 16rem;
+      padding: 2rem 1.5rem 3rem;
+    }
   }
 
   h1 {
@@ -902,9 +909,10 @@ div.footnotes {
   display: grid;
   gap: 2rem;
   margin-top: 2rem;
+  grid-template-columns: minmax(0, 1fr);
 
   @media (min-width: $breakpoint_tablet) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -912,6 +920,7 @@ div.footnotes {
   background: $neutral-100;
   border-top: 3px solid $primary;
   padding: 1.25rem 1.5rem;
+  min-width: 0;
 
   &__title {
     font-family: $heading_font;
@@ -959,7 +968,7 @@ div.footnotes {
 
     time {
       white-space: nowrap;
-      font-size: 0.75rem;
+      font-size: 0.5rem;
       color: $neutral-400;
     }
   }
@@ -1085,8 +1094,10 @@ div.footnotes {
 .books-carousel {
   position: relative;
   margin: 0.5rem 0 0.25rem;
+  min-width: 0;
 
   &__track {
+    min-width: 0;
     list-style: none;
     margin: 0;
     padding: 0.25rem 0.25rem 1rem;

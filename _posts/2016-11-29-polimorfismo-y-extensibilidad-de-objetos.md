@@ -3,12 +3,12 @@ layout: post
 title: Polimorfismo y extensibilidad de objetos
 categories: articles
 author: [Fran Iglesias]
-tags: design-principles
+tags: design-principles oop
 ---
 
 En Programación Orientada a Objetos el **polimorfismo** es una característica que nos permite enviar el mismo mensaje, desde el punto de vista sintáctico, a distintos objetos para que cada uno de ellos lo realice con un comportamiento específico.
 
-En la práctica, eso significa que si disponemos de varios objetos que tienen un mismo método con la misma signatura podemos usar el mismo código para invocarlos, sin necesidad de preguntarles por su clase previamente.
+En la práctica, eso significa que si disponemos de varios objetos que tienen un mismo método con la misma signatura podemos usar el mismo código para invocarlos, sin necesidad de preguntarles previamente por su clase.
 
 El ejemplo clásico es el de un programa de dibujo en el que se manejan distintos tipos de formas. Cada forma se define mediante una clase con un método para dibujarla (por ejemplo, `draw`) que cada una ejecuta de distinta manera. Se recorre la lista de objetos activos y se va pidiendo a cada uno que se dibuje sin que tengamos que preocuparnos de saber de antemano de qué clase es.
 
@@ -16,7 +16,7 @@ Otro ejemplo: todos los empleados de una empresa son de la clase **Empleados**, 
 
 Algunos autores sobre Programación Orientada a Objetos dicen que cuando hacemos una llamada a un método de un objeto le enviamos un mensaje para que se ponga a ejecutar alguna tarea, de ahí nuestra primera definición. Al decir que es el mismo mensaje desde el punto de vista sintáctico queremos decir que es una llamada a métodos con el mismo nombre que cada objeto puede interpretar de manera más o menos diferente (punto de vista semántico).
 
-Pongamos por ejemplo la gestión de una biblioteca. Supongamos que tenemos las clases `Book` y `Review` y que ambas definen el método `lend()` para indicar que son prestadas. Entonces es posible escribir un código similar a este:
+Pongamos por ejemplo la gestión de una biblioteca. Supón que tenemos las clases `Book` y `Review` y que ambas definen el método `lend()` para indicar que son prestadas. Entonces es posible escribir un código similar a este:
 
 ```php
 $objects = array(
@@ -28,7 +28,7 @@ foreach($objects as $theObject) {
 }
 ```
 
-Sencillamente, tenemos una lista de objetos que quire retirar un lector. Vamos recorriendo la colección uno por uno invocando el método `lend`, y no tenemos que comprobar su tipo, simplemente les decimos que "sean prestados". Aunque los objetos son distintos ambos pueden responder al mismo mensaje.
+Sencillamente, tenemos una lista de objetos que quire retirar un lector. Vamos recorriendo la colección uno por uno invocando el método `lend`, y no tenemos que comprobar su tipo, simplemente les decimos que hagan lo que tengan que hacer para ser prestados. Aunque los objetos son distintos, ambos pueden responder al mismo mensaje.
 
 Hasta cierto punto, para los programadores en PHP esto no debería resultar muy sorprendente, pero los programadores de otros lenguajes se removerían inquietos en sus asientos, así que hay que hacer un intermedio para hablar un momento acerca de los tipos de datos en los lenguajes.
 
@@ -48,9 +48,9 @@ Sin embargo, ¿cómo es posible que el tipado fuerte o, en su caso, el *type hin
 
 Pues a través de mecanismos que permiten que una clase pueda responder como si, de hecho, fuese de varios tipos simultáneamente. Estos mecanismos son la herencia y las interfaces.
 
-A través de la **herencia** podemos derivar unas clases a partir de otras, de modo que las clases "hijas" también son del mismo tipo que sus clases padres y, de hecho, que todos sus ascendientes.
+A través de la **herencia** podemos derivar unas clases a partir de otras, de modo que las clases derivadas también son del mismo tipo que sus clases padres y, de hecho, que todos sus ascendientes.
 
-Las **interfaces** nos permiten que las clases "se comprometan" a cumplir ciertas condiciones asumiendo ser del tipo definido por la interfaz. Es habitual referirse a esto como un _contrato_. El cumplimiento del mismo es asegurado por el intérprete de PHP que lanza un error si la clase no implementa correctamente la interfaz.
+Las **interfaces** hacen que las clases se comprometan a cumplir ciertas condiciones asumiendo ser del tipo definido por la interfaz. Es habitual referirse a esto como un _contrato_. El cumplimiento del mismo es asegurado por el intérprete de PHP que lanza un error si la clase no implementa correctamente la interfaz.
 
 En ambos casos nos queda garantizado que los objetos instanciados serán capaces de responder a ciertos métodos, que es lo que nos interesa desde el punto de vista del código cliente, aparte de respetar la integridad del sistema de tipado.
 
@@ -62,7 +62,9 @@ La herencia es un mecanismo para crear clases extendiendo otras clases base. La 
 
 Normalmente, utilizaremos la herencia para crear especializaciones de una clase más general. Es decir, no extendemos una clase para conseguir que la nueva contenga métodos de la clase extendida, sino que lo hacemos porque la nueva clase es semánticamente equivalente a la clase base, pero más específica o concreta. Por ejemplo, podemos tener una clase que gestiona la conexión genérica a una base de datos y extenderla con varias clases hijas para manejar drivers específicos (MySQL, SQLite, Postgre, MongoDB, etc.).
 
-La nueva clase puede tener nuevos métodos y propiedades, o bien puede sobreescribir los existentes, según sea necesario. Como resultado tenemos una clase nueva, que además de por su propio tipo, puede ser identificada por el mismo que su "clase madre" aunque se comporte de manera diferente.
+La nueva clase podría tener nuevos métodos[^1] y propiedades, o bien puede sobreescribir los existentes, según sea necesario. Como resultado tenemos una clase nueva, que además de por su propio tipo, puede ser identificada por el mismo que su "clase madre" aunque se comporte de manera diferente.
+
+[^1]: Nada te lo impide, pero no debes hacerlo para respetar el [Principio de Sustitución de Liskov](/principios-solid/).
 
 Retomamos la reflexión sobre el sistema de biblioteca. Resulta que ella no solo hay libros, sino revistas, discos, películas y otros medios disponibles para los usuarios. Podríamos crear clases para cada tipo, pero ¿cómo asegurarnos de que todas van a poder responder a los métodos necesarios?. Examinando la cuestión nos damos cuenta de que todas ellas podrían ser *hijas* de una clase más general, una *superclase*, que vamos a llamar `Media`. De esta manera los libros serían `Media`, así como las revistas, los discos o las películas.
 
@@ -173,7 +175,7 @@ Por otra parte, en el código de ejemplo tenemos una clase `Logger` que puede re
 
 Puesto que `Logger` no tiene que preocuparse de la manera concreta en que los objetos `Loggable` registrados realizan el método `write` resulta que en una única llamada podemos tener escrituras en diferentes archivos de logs, a la vez que otros envían un email a un administrador y otros lo registran en una tabla de una base de datos.
 
-En el ejemplo se puede ver que hay una duplicación de código entre las clases que implementan `Loggable` (es casi el mismo código) y eso podría hacernos plantear la pregunta: ¿y no podemos hacer lo mismo con herencia?. Sí y no. Bien, si estas clases se utilizasen en un proyecto real no sería difícil darse cuenta de que tienen poco que ver una con la otra: una de ellas sería una clase para enviar emails y la otra para conectarse a una base de datos. Seguramente nos interesa que ambas tengan la capacidad de escribir logs para poder hacer un seguimiento de su actividad y detectar fallos, pero eso no es motivo para que ambas hereden de una superclase `Loggable`. Por eso usamos interfaces, aunque supongan escribir el código aparentemente común.
+En el ejemplo se puede ver que hay una duplicación de código entre las clases que implementan `Loggable` (es casi el mismo código) y eso podría hacernos plantear la pregunta: ¿y no podemos hacer lo mismo con herencia?. Sí y no. Bien, si estas clases se utilizasen en un proyecto real no sería difícil darse cuenta de que tienen poco que ver una con la otra: una de ellas sería una clase para enviar emails y la otra para conectarse a una base de datos. Seguramente, nos interesa que ambas tengan la capacidad de escribir logs para poder hacer un seguimiento de su actividad y detectar fallos, pero eso no es motivo para que ambas hereden de una superclase `Loggable`. Por eso usamos interfaces, aunque supongan escribir el código aparentemente común.
 
 Las últimas versiones de PHP dan soporte a **traits**, que son una forma de reutilizar código entre diferentes clases. Un **trait** nos permite definir métodos y propiedades que luego podríamos utilizar en diferentes clases. Sin embargo, no debemos confundir eso con la idea de las interfaces. El hecho de que dos clases, como en el ejemplo, tengan algún método idéntico nos permitiría utilizar un trait para no duplicar código (el método `log` es un claro candidato en el ejemplo), pero ambas siguen teniendo que implementar la misma interfaz para beneficiarnos del polimorfismo.
 

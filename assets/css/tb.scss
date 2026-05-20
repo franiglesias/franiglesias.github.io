@@ -462,8 +462,8 @@ article.post {
 @media (min-width: $breakpoint_tablet) {
   .full-post header.post-header,
   .micro-post header.post-header {
-    margin: -3rem -7rem 3rem -7rem;
-    padding: 2rem 7rem;
+    margin: -3rem calc(-1 * clamp(1.5rem, 7vw, 7rem)) 3rem;
+    padding: 2rem clamp(1.5rem, 7vw, 7rem);
 
     h2.subtitle {
       font-size: 2.5rem;

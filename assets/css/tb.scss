@@ -5,51 +5,131 @@
 @import 'typography';
 @import 'hightlight';
 
-/* Colors */
+/* Theme tokens — CSS custom properties */
 
-// Colores primarios
-$primary: #1a3c5b; // Azul marino como color principal
-$primary-light: #2c5282; // Variante más clara del principal
-$primary-dark: #0a2942; // Variante más oscura del principal
+:root,
+:root[data-theme="light"] {
+  // Light theme tokens
+  --color-primary:        #1a3c5b;
+  --color-primary-light:  #2c5282;
+  --color-primary-dark:   #0a2942;
+  --color-accent:         #ce9580;
 
-// Color de acento
-$accent: #ce9580; // Salmón (opuesto al azul celeste)
+  --color-neutral-100:    #ffffff;
+  --color-neutral-200:    #f3eeec;
+  --color-neutral-300:    #d6e7e8;
+  --color-neutral-400:    #607d8b;
+  --color-neutral-500:    #333333;
+  --color-neutral-900:    #1e2a38;
+  --color-neutral-950:    #002b36;
 
-// Colores neutros
-$neutral-100: #ffffff; // Blanco
-$neutral-200: #f3eeec; // Fondo claro
-$neutral-300: #d6e7e8; // Gris muy claro con tono azulado
-$neutral-400: #607d8b; // Gris medio con tono azulado
-$neutral-500: #333333; // Gris oscuro
-$neutral-900: #1e2a38; // Casi negro con tinte azul
-$neutral-950: #002b36; // Casi negro con tinte verde
+  --color-success: #26a69a;
+  --color-warning: #f4b942;
+  --color-error:   #e57373;
 
-// Colores de estado
-$success: #26a69a; // Verde azulado
-$warning: #f4b942; // Amarillo ámbar
-$error: #e57373; // Rojo suave
+  --body-bg:           var(--color-neutral-200);
+  --text-color:        var(--color-neutral-500);
+  --heading-color:     var(--color-primary);
+  --link-color:        var(--color-primary-light);
+  --title-bg:          var(--color-primary);
+  --title-color:       var(--color-neutral-100);
+  --title-secondary:   var(--color-accent);
+  --tags-bg:           var(--color-neutral-300);
+  --tag-color:         var(--color-neutral-100);
+  --tag-bg-in-list:    var(--color-accent);
+  --code-block-bg:     var(--color-neutral-950);
+  --code-text-color:   var(--color-neutral-200);
+  --blockquote-border: var(--color-accent);
 
-// Asignaciones específicas
-$body-bg: $neutral-200;
-$text-color: $neutral-500;
-$heading-color: $primary;
-$link-color: $primary-light;
-$title-bg: $primary;
-$title-color: $neutral-100;
-$title-secondary: $accent;
-$tags-bg: $neutral-300;
-$tag-color: $neutral-100;
-$tag-bg-in-list: $accent;
-$code-block-bg: $neutral-950;
-$blockquote-border: $accent;
+  --site-font:    "M PLUS 1p", "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --heading-font: 'league_gothicregular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --code-font:    'Fira Mono', Monaco, Terminal, Courier, monospace;
+
+  --icon-invert: 1;
+}
+
+:root[data-theme="dark"] {
+  // CRT phosphor-green terminal vibe — vintage computer aesthetic.
+  // Primary = phosphor green, accent = amber (classic terminal alt color).
+  --color-primary:        #58f077;
+  --color-primary-light:  #8effa1;
+  --color-primary-dark:   #050807;
+
+  --color-accent:         #f4b942;
+
+  --color-neutral-100:    #0e1612;
+  --color-neutral-200:    #131c17;
+  --color-neutral-300:    #1d2a22;
+  --color-neutral-400:    #6a8e7a;
+  --color-neutral-500:    #b5e8b5;
+  --color-neutral-900:    #050807;
+  --color-neutral-950:    #020403;
+
+  --body-bg:           #0a100c;
+  --text-color:        var(--color-neutral-500);
+  --heading-color:     var(--color-primary-light);
+  --link-color:        var(--color-accent);
+  --title-bg:          #0e1612;
+  --title-color:       var(--color-primary-light);
+  --title-secondary:   var(--color-accent);
+  --tags-bg:           #131c17;
+  --tag-color:         var(--color-primary-light);
+  --tag-bg-in-list:    #1d2a22;
+  --code-block-bg:     #050807;
+  --code-text-color:   #d4f0d4;
+  --blockquote-border: var(--color-accent);
+
+  --site-font:    'JetBrains Mono', 'IBM Plex Mono', 'Fira Mono', Monaco, monospace;
+  --heading-font: 'VT323', 'JetBrains Mono', monospace;
+  --code-font:    'JetBrains Mono', 'Fira Mono', Monaco, monospace;
+
+  --icon-invert: 0;
+
+  // Glow tuning — used by the rules below
+  --glow-heading: 0 0 6px rgba(142, 255, 161, 0.35);
+  --glow-link:    0 0 6px rgba(244, 185, 66, 0.30);
+}
+
+/* SCSS aliases — keep existing usages working through CSS variables */
+
+$primary:        var(--color-primary);
+$primary-light:  var(--color-primary-light);
+$primary-dark:   var(--color-primary-dark);
+$accent:         var(--color-accent);
+
+$neutral-100:    var(--color-neutral-100);
+$neutral-200:    var(--color-neutral-200);
+$neutral-300:    var(--color-neutral-300);
+$neutral-400:    var(--color-neutral-400);
+$neutral-500:    var(--color-neutral-500);
+$neutral-900:    var(--color-neutral-900);
+$neutral-950:    var(--color-neutral-950);
+
+$success: var(--color-success);
+$warning: var(--color-warning);
+$error:   var(--color-error);
+
+$body-bg:           var(--body-bg);
+$text-color:        var(--text-color);
+$heading-color:     var(--heading-color);
+$link-color:        var(--link-color);
+$title-bg:          var(--title-bg);
+$title-color:       var(--title-color);
+$title-secondary:   var(--title-secondary);
+$tags-bg:           var(--tags-bg);
+$tag-color:         var(--tag-color);
+$tag-bg-in-list:    var(--tag-bg-in-list);
+$code-block-bg:     var(--code-block-bg);
+$code-text-color:   var(--code-text-color);
+$blockquote-border: var(--blockquote-border);
 
 $page-radius: 0.5rem;
 
-/* Tyography */
-$code_font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
-$site_font: "M PLUS 1p", "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$heading_font: 'league_gothicregular', "Helvetica Neue", Helvetica, Arial, sans-serif;
-$inline_code_font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
+/* Typography */
+$code_font:        var(--code-font);
+$site_font:        var(--site-font);
+$heading_font:     var(--heading-font);
+$inline_code_font: var(--code-font);
 
 /* Media */
 $breakpoint_tablet: 768px;
@@ -262,8 +342,8 @@ th,
 th:where(:not([style*="font-family"])) {
   text-align: left;
   padding: 5px 10px;
-  border-bottom: 1px solid #434343;
-  color: #b6b6b6;
+  border-bottom: 1px solid $neutral-400;
+  color: $neutral-400;
   font-family: 'OpenSansSemibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
@@ -271,7 +351,7 @@ th:where(:not([style*="font-family"])) {
 td {
   text-align: left;
   padding: 5px 10px;
-  border-bottom: 1px solid #434343;
+  border-bottom: 1px solid $neutral-400;
 }
 
 hr {
@@ -285,7 +365,7 @@ hr {
 
 dt,
 dt:where(:not([style*="font-family"])) {
-  color: #F0E7D5;
+  color: $text-color;
   font-family: 'OpenSansSemibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
@@ -309,10 +389,10 @@ dt:where(:not([style*="font-family"])) {
       font-family: $site_font;
       list-style: none;
       display: inline;
-      color: white;
+      color: $neutral-100;
       text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
       font-size: 1em;
-      border-right: 1px solid gray;
+      border-right: 1px solid $neutral-400;
       padding: 0.5rem 0.6rem;
 
 
@@ -346,6 +426,45 @@ dt:where(:not([style*="font-family"])) {
       width: 75%;
     }
   }
+}
+
+// Theme toggle button (lives inside the header nav)
+.theme-toggle-item {
+  border-right: none !important;
+  padding: 0.25rem 0.4rem !important;
+  display: inline-flex !important;
+  align-items: center;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: $neutral-300;
+  padding: 0.2rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    color: $neutral-100;
+    border-color: $neutral-400;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
+
+  .theme-toggle__icon { display: none; }
+}
+
+:root[data-theme="dark"] .theme-toggle__icon--sun,
+:root:not([data-theme="dark"]) .theme-toggle__icon--moon {
+  display: block;
 }
 
 
@@ -583,7 +702,7 @@ pre {
     }
 
     code {
-      color: $neutral-200;
+      color: $code-text-color;
       text-shadow: 0 1px 0 #000;
       margin: 0;
       padding: 0;
@@ -736,7 +855,7 @@ pre.highlight {
 
 pre.highlight > button {
   background-color: $primary-dark;
-  color: $neutral-200;
+  color: $code-text-color;
   font-family: $site_font;
   opacity: 0.6;
   position: absolute;
@@ -839,7 +958,7 @@ div.footnotes {
   button.tag {
     border: none;
     background-color: $tag-bg-in-list;
-    color: $neutral-100;
+    color: $tag-color;
 
     &:hover {
       background-color: $primary;
@@ -1089,7 +1208,7 @@ div.footnotes {
       width: 20px;
       height: 20px;
       display: block;
-      filter: invert(1);
+      filter: unquote("invert(var(--icon-invert, 1))");
     }
   }
 
@@ -1171,7 +1290,7 @@ div.footnotes {
     height: 2rem;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.9);
+    background: $neutral-100;
     color: $primary;
     font-size: 1.4rem;
     line-height: 1;
@@ -1186,10 +1305,79 @@ div.footnotes {
 
     &:hover {
       background: $accent;
-      color: #fff;
+      color: $neutral-100;
     }
 
     &--prev { left: -0.5rem; }
     &--next { right: -0.5rem; }
+  }
+}
+
+/* ============================================================
+   Dark theme — CRT terminal effects
+   ============================================================ */
+
+:root[data-theme="dark"] {
+  // VT323 is decorative — render headings larger so it reads well
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: var(--glow-heading);
+    letter-spacing: 0.02em;
+  }
+
+  // Phosphor glow on accent links (skip in-text underlined article links to keep them legible)
+  a {
+    text-shadow: var(--glow-link);
+  }
+  div.entry a,
+  .metadata a {
+    text-shadow: none;
+  }
+
+  // Subtle scanline overlay on the body — purely decorative, ignored by pointer events
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15) 0,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+  }
+
+  // The cursor-style block (header has dark green background already via $primary-dark)
+  #header {
+    border-bottom: 1px solid var(--color-primary);
+
+    // Nav text (title + any text links) reads light on the near-black header
+    nav li a {
+      color: var(--color-neutral-500);
+
+      &:hover {
+        color: var(--color-primary-light);
+      }
+    }
+  }
+
+  // 8-bit / phosphor treatment for sidebar imagery — pixel-snap any scaling
+  // and shift toward the CRT green palette
+  .about-card__avatar,
+  .books-carousel__cover {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    filter: contrast(1.15) saturate(0.75) sepia(0.35) hue-rotate(60deg);
+  }
+
+  // Icons render light (invert is 0 in dark mode) — push them into phosphor green
+  .about-card__links img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    filter: sepia(1) saturate(4) hue-rotate(60deg) brightness(1.1);
   }
 }

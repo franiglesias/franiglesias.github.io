@@ -6,7 +6,7 @@ categories: articles
 tags: php design-patterns
 ---
 
-El patrón Cadena de Responsabilidad (Chain of Responsibility) nos permite manejar una petición que puede ser atendida por varios objetos, sin saber a priori cuál de ellos lo hará.
+El patrón Cadena de Responsabilidad (_Chain of Responsibility_) nos permite manejar una petición que puede ser atendida por varios objetos, sin saber a priori cuál de ellos lo hará.
 
 ----
 Este patrón es uno de los clásicos del libro de [Gang of Four](https://www.amazon.es/Design-Patterns-Elements-Reusable-Object-Oriented-ebook/dp/B000SEIBB8).
@@ -50,8 +50,6 @@ En este caso he optado por utilizar el patrón de Cadena de Responsabilidad para
 
 
 ```php
-<?php 
-
 namespace Milhojas\Domain\Cantine; 
 
 use Milhojas\Domain\Utils\Schedule\WeeklySchedule; 
@@ -240,9 +238,3 @@ En resumidas cuentas, si el objeto no puede dar una respuesta a `assignsUserToTu
 Una señal de que podemos querer aplicar una Cadena de Responsabilidad es aquella situación en la que tenemos que recorrer un array de objetos hasta encontrar uno que puede manejar o responder al mensaje que le pasamos.
 
 Si tenemos que pasar necesariamente por todos, el array puede ser una solución suficiente, recorriéndola con un bucle `foreach` o bien con `array_map` o `array_walk`.
-
- 
-
- 
-
- 

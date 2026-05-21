@@ -27,7 +27,7 @@ El patrón visitante tiene dos elementos principales:
 
 El visitante tendría un método `visit` en el cual recibe una instancia del visitado y lo utiliza mediante sus métodos públicos. El punto clave es que necesitamos un método `visit` por cada tipo de objeto que el visitante deba manejar. En otros lenguajes, el polimorfismo permite tener métodos con el mismo nombre y que se distinguen por recibir distintos tipos de parámetros, pero en PHP necesitaremos escribir un método adecuado para cada clase que deba manejar el visitante.
 
-Los anfitriones tendrían un método  `accept` cuya única función sería llamar al método `visit` del Visitante pasándole una referencia a sí mismo (`$this` en PHP). A este patrón de relación entre dos clases se le llama **double dispatch** porque un objeto llama a otro para que éste llame de nuevo al primero. De esta forma conseguimos que un objeto miembro **privado** de otro, pueda pasarse a un solicitante externo.
+Los anfitriones tendrían un método `accept` cuya única función sería llamar al método `visit` del Visitante pasándole una referencia a sí mismo (`$this` en PHP). A este patrón de relación entre dos clases se le llama **double dispatch** porque un objeto llama a otro para que este llame de nuevo al primero. De esta forma conseguimos que un objeto miembro **privado** de otro, pueda pasarse a un solicitante externo.
 
 En ambos casos, puede ser interesante definir clases abstractas que implementen la funcionalidad común (por ejemplo, el método `accept`) y establezcan métodos abstractos para el resto de métodos que serán requeridos.
 

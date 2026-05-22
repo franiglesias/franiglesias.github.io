@@ -13,7 +13,7 @@
         }
 
         // Inicializa la nueva instancia usando la variable de Jekyll
-        window.commentBoxInstance = commentBox('{{ site.commentbox }}', {
+        window.commentBoxInstance = commentBox(window.COMMENTBOX_PROJECT_ID, {
             backgroundColor: isDark ? '#1a1a1a' : '#ffffff',
             textColor: isDark ? '#f5f5f5' : '#2c3e50',
             subtextColor: isDark ? '#999999' : '#7f8c8d'

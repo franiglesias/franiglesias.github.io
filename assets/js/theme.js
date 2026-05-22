@@ -7,8 +7,11 @@
     function updateCommentBox(theme) {
         var isDark = theme === 'dark';
 
-        // Destruye la instancia anterior si ya existe
-        if (window.commentBoxInstance) {
+        // Comprobamos que commentBox exista en la ventana global
+        if (typeof commentBox !== 'function') return;
+
+        // Si ya hay una instancia/función de limpieza activa, la ejecutamos
+        if (typeof window.commentBoxInstance === 'function') {
             window.commentBoxInstance();
         }
 
@@ -22,15 +25,20 @@
 
     function apply(theme) {
         root.setAttribute('data-theme', theme);
-        try { localStorage.setItem('theme', theme); } catch (e) {}
+        try {
+            localStorage.setItem('theme', theme);
+        } catch (e) {
+        }
 
         // Aplica el cambio de color a los comentarios al cambiar de tema
         updateCommentBox(theme);
     }
 
-    // Carga inicial: lee el tema actual del HTML (o usa 'light' por defecto)
-    var initialTheme = root.getAttribute('data-theme') || 'light';
-    updateCommentBox(initialTheme);
+    // CORRECCIÓN CLAVE: Esperamos a que la página se cargue por completo
+    window.addEventListener('load', function () {
+        var initialTheme = root.getAttribute('data-theme') || 'light';
+        updateCommentBox(initialTheme);
+    });
 
     btn.addEventListener('click', function () {
         var current = root.getAttribute('data-theme') || 'light';

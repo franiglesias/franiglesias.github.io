@@ -13,7 +13,6 @@
     <title>{{ site.title }}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    {% include load-comment-box.html %}
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,6 +69,9 @@
     </div>
 
 </div>
+<script>
+    window.COMMENTBOX_PROJECT_ID = '{{ site.commentbox }}';
+</script>
 <script src="/assets/js/theme.js" defer></script>
 </body>
 </html>

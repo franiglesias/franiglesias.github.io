@@ -9,7 +9,7 @@
 
         // Destruye la instancia anterior si ya existe
         if (window.commentBoxInstance) {
-            window.commentBoxInstance.destroy();
+            window.commentBoxInstance();
         }
 
         // Inicializa la nueva instancia usando la variable de Jekyll

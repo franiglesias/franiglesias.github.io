@@ -15,6 +15,11 @@
             window.commentBoxInstance();
         }
 
+        var boxContainer = document.querySelector('.commentbox') || document.querySelector('[id*="commentbox"]');
+        if (boxContainer) {
+            boxContainer.classList.add('commentbox');
+        }
+
         // Inicializa la nueva instancia usando la variable de Jekyll
         window.commentBoxInstance = commentBox(window.COMMENTBOX_PROJECT_ID, {
             backgroundColor: isDark ? '#1a1a1a' : '#ffffff',

@@ -1380,4 +1380,9 @@ div.footnotes {
     image-rendering: crisp-edges;
     filter: sepia(1) saturate(4) hue-rotate(60deg) brightness(1.1);
   }
+  
+  .comment-body {
+    color: var(--color-neutral-300);
+  }
 }
+

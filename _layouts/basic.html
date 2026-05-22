@@ -7,7 +7,8 @@
                 var saved = localStorage.getItem('theme');
                 var pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                 document.documentElement.setAttribute('data-theme', saved || pref);
-            } catch (e) {}
+            } catch (e) {
+            }
         })();
     </script>
     <title>{{ site.short }}: {{ page.title }}</title>
@@ -15,7 +16,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=JetBrains+Mono:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=JetBrains+Mono:wght@400;500;700&family=VT323&display=swap"
+          rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/tb.css?v=' | append: site.github.build_revision | relative_url }}">
@@ -29,8 +31,9 @@
     <!-- _includes/head-custom.html -->
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({startOnLoad:true,theme:'dark'})
-        await mermaid.run({querySelector:'code.language-mermaid'})
+
+        mermaid.initialize({startOnLoad: true, theme: 'dark'})
+        await mermaid.run({querySelector: 'code.language-mermaid'})
     </script>
 
 </head>
@@ -39,7 +42,8 @@
     <nav>
         {% include menu.html %}
         {% include theme-toggle.html %}
-        <li class="title"><a href="{{ '/' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a></li>
+        <li class="title"><a href="{{ '/' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a>
+        </li>
     </nav>
 </div><!-- end header -->
 <div class="wrapper">
@@ -55,10 +59,13 @@
         </aside>
     </div>
 </div>
-{% include load-comment-box.html %}
+{% if site.commentbox %}
+<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+
 <script>
     window.COMMENTBOX_PROJECT_ID = '{{ site.commentbox }}';
 </script>
+{% endif %}
 <script src="/assets/js/theme.js" defer></script>
 </body>
 </html>

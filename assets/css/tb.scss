@@ -10,40 +10,40 @@
 :root,
 :root[data-theme="light"] {
   // Light theme tokens
-  --color-primary:        #1a3c5b;
-  --color-primary-light:  #2c5282;
-  --color-primary-dark:   #0a2942;
-  --color-accent:         #ce9580;
+  --color-primary: #1a3c5b;
+  --color-primary-light: #2c5282;
+  --color-primary-dark: #0a2942;
+  --color-accent: #ce9580;
 
-  --color-neutral-100:    #ffffff;
-  --color-neutral-200:    #f3eeec;
-  --color-neutral-300:    #d6e7e8;
-  --color-neutral-400:    #607d8b;
-  --color-neutral-500:    #333333;
-  --color-neutral-900:    #1e2a38;
-  --color-neutral-950:    #002b36;
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #f3eeec;
+  --color-neutral-300: #d6e7e8;
+  --color-neutral-400: #607d8b;
+  --color-neutral-500: #333333;
+  --color-neutral-900: #1e2a38;
+  --color-neutral-950: #002b36;
 
   --color-success: #26a69a;
   --color-warning: #f4b942;
-  --color-error:   #e57373;
+  --color-error: #e57373;
 
-  --body-bg:           var(--color-neutral-200);
-  --text-color:        var(--color-neutral-500);
-  --heading-color:     var(--color-primary);
-  --link-color:        var(--color-primary-light);
-  --title-bg:          var(--color-primary);
-  --title-color:       var(--color-neutral-100);
-  --title-secondary:   var(--color-accent);
-  --tags-bg:           var(--color-neutral-300);
-  --tag-color:         var(--color-neutral-100);
-  --tag-bg-in-list:    var(--color-accent);
-  --code-block-bg:     var(--color-neutral-950);
-  --code-text-color:   var(--color-neutral-200);
+  --body-bg: var(--color-neutral-200);
+  --text-color: var(--color-neutral-500);
+  --heading-color: var(--color-primary);
+  --link-color: var(--color-primary-light);
+  --title-bg: var(--color-primary);
+  --title-color: var(--color-neutral-100);
+  --title-secondary: var(--color-accent);
+  --tags-bg: var(--color-neutral-300);
+  --tag-color: var(--color-neutral-100);
+  --tag-bg-in-list: var(--color-accent);
+  --code-block-bg: var(--color-neutral-950);
+  --code-text-color: var(--color-neutral-200);
   --blockquote-border: var(--color-accent);
 
-  --site-font:    "M PLUS 1p", "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --site-font: "M PLUS 1p", "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --heading-font: 'league_gothicregular', "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --code-font:    'Fira Mono', Monaco, Terminal, Courier, monospace;
+  --code-font: 'Fira Mono', Monaco, Terminal, Courier, monospace;
 
   --icon-invert: 1;
 }
@@ -51,84 +51,84 @@
 :root[data-theme="dark"] {
   // CRT phosphor-green terminal vibe — vintage computer aesthetic.
   // Primary = phosphor green, accent = amber (classic terminal alt color).
-  --color-primary:        #58f077;
-  --color-primary-light:  #8effa1;
-  --color-primary-dark:   #050807;
+  --color-primary: #58f077;
+  --color-primary-light: #8effa1;
+  --color-primary-dark: #050807;
 
-  --color-accent:         #f4b942;
+  --color-accent: #f4b942;
 
-  --color-neutral-100:    #0e1612;
-  --color-neutral-200:    #131c17;
-  --color-neutral-300:    #1d2a22;
-  --color-neutral-400:    #6a8e7a;
-  --color-neutral-500:    #b5e8b5;
-  --color-neutral-900:    #050807;
-  --color-neutral-950:    #020403;
+  --color-neutral-100: #0e1612;
+  --color-neutral-200: #131c17;
+  --color-neutral-300: #1d2a22;
+  --color-neutral-400: #6a8e7a;
+  --color-neutral-500: #b5e8b5;
+  --color-neutral-900: #050807;
+  --color-neutral-950: #020403;
 
-  --body-bg:           #0a100c;
-  --text-color:        var(--color-neutral-500);
-  --heading-color:     var(--color-primary-light);
-  --link-color:        var(--color-accent);
-  --title-bg:          #0e1612;
-  --title-color:       var(--color-primary-light);
-  --title-secondary:   var(--color-accent);
-  --tags-bg:           #131c17;
-  --tag-color:         var(--color-primary-light);
-  --tag-bg-in-list:    #1d2a22;
-  --code-block-bg:     #050807;
-  --code-text-color:   #d4f0d4;
+  --body-bg: #0a100c;
+  --text-color: var(--color-neutral-500);
+  --heading-color: var(--color-primary-light);
+  --link-color: var(--color-accent);
+  --title-bg: #0e1612;
+  --title-color: var(--color-primary-light);
+  --title-secondary: var(--color-accent);
+  --tags-bg: #131c17;
+  --tag-color: var(--color-primary-light);
+  --tag-bg-in-list: #1d2a22;
+  --code-block-bg: #050807;
+  --code-text-color: #d4f0d4;
   --blockquote-border: var(--color-accent);
 
-  --site-font:    'JetBrains Mono', 'IBM Plex Mono', 'Fira Mono', Monaco, monospace;
+  --site-font: 'JetBrains Mono', 'IBM Plex Mono', 'Fira Mono', Monaco, monospace;
   --heading-font: 'VT323', 'JetBrains Mono', monospace;
-  --code-font:    'JetBrains Mono', 'Fira Mono', Monaco, monospace;
+  --code-font: 'JetBrains Mono', 'Fira Mono', Monaco, monospace;
 
   --icon-invert: 0;
 
   // Glow tuning — used by the rules below
   --glow-heading: 0 0 6px rgba(142, 255, 161, 0.35);
-  --glow-link:    0 0 6px rgba(244, 185, 66, 0.30);
+  --glow-link: 0 0 6px rgba(244, 185, 66, 0.30);
 }
 
 /* SCSS aliases — keep existing usages working through CSS variables */
 
-$primary:        var(--color-primary);
-$primary-light:  var(--color-primary-light);
-$primary-dark:   var(--color-primary-dark);
-$accent:         var(--color-accent);
+$primary: var(--color-primary);
+$primary-light: var(--color-primary-light);
+$primary-dark: var(--color-primary-dark);
+$accent: var(--color-accent);
 
-$neutral-100:    var(--color-neutral-100);
-$neutral-200:    var(--color-neutral-200);
-$neutral-300:    var(--color-neutral-300);
-$neutral-400:    var(--color-neutral-400);
-$neutral-500:    var(--color-neutral-500);
-$neutral-900:    var(--color-neutral-900);
-$neutral-950:    var(--color-neutral-950);
+$neutral-100: var(--color-neutral-100);
+$neutral-200: var(--color-neutral-200);
+$neutral-300: var(--color-neutral-300);
+$neutral-400: var(--color-neutral-400);
+$neutral-500: var(--color-neutral-500);
+$neutral-900: var(--color-neutral-900);
+$neutral-950: var(--color-neutral-950);
 
 $success: var(--color-success);
 $warning: var(--color-warning);
-$error:   var(--color-error);
+$error: var(--color-error);
 
-$body-bg:           var(--body-bg);
-$text-color:        var(--text-color);
-$heading-color:     var(--heading-color);
-$link-color:        var(--link-color);
-$title-bg:          var(--title-bg);
-$title-color:       var(--title-color);
-$title-secondary:   var(--title-secondary);
-$tags-bg:           var(--tags-bg);
-$tag-color:         var(--tag-color);
-$tag-bg-in-list:    var(--tag-bg-in-list);
-$code-block-bg:     var(--code-block-bg);
-$code-text-color:   var(--code-text-color);
+$body-bg: var(--body-bg);
+$text-color: var(--text-color);
+$heading-color: var(--heading-color);
+$link-color: var(--link-color);
+$title-bg: var(--title-bg);
+$title-color: var(--title-color);
+$title-secondary: var(--title-secondary);
+$tags-bg: var(--tags-bg);
+$tag-color: var(--tag-color);
+$tag-bg-in-list: var(--tag-bg-in-list);
+$code-block-bg: var(--code-block-bg);
+$code-text-color: var(--code-text-color);
 $blockquote-border: var(--blockquote-border);
 
 $page-radius: 0.5rem;
 
 /* Typography */
-$code_font:        var(--code-font);
-$site_font:        var(--site-font);
-$heading_font:     var(--heading-font);
+$code_font: var(--code-font);
+$site_font: var(--site-font);
+$heading_font: var(--heading-font);
 $inline_code_font: var(--code-font);
 
 /* Media */
@@ -459,7 +459,9 @@ dt:where(:not([style*="font-family"])) {
     outline-offset: 2px;
   }
 
-  .theme-toggle__icon { display: none; }
+  .theme-toggle__icon {
+    display: none;
+  }
 }
 
 :root[data-theme="dark"] .theme-toggle__icon--sun,
@@ -770,7 +772,9 @@ article.list span.tag {
       margin-bottom: 0.35rem;
       text-decoration: none;
 
-      &:hover { color: $accent; }
+      &:hover {
+        color: $accent;
+      }
     }
 
     time {
@@ -802,11 +806,28 @@ article.list span.tag {
       color: $neutral-100;
     }
 
-    &.cloud--xs { font-size: 0.65rem; }
-    &.cloud--sm { font-size: 0.8rem; }
-    &.cloud--md { font-size: 0.95rem; font-weight: 500; }
-    &.cloud--lg { font-size: 1.15rem; font-weight: 500; }
-    &.cloud--xl { font-size: 1.4rem; font-weight: 500; }
+    &.cloud--xs {
+      font-size: 0.65rem;
+    }
+
+    &.cloud--sm {
+      font-size: 0.8rem;
+    }
+
+    &.cloud--md {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    &.cloud--lg {
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+
+    &.cloud--xl {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
   }
 }
 
@@ -1218,7 +1239,9 @@ div.footnotes {
     color: $accent;
     text-decoration: none;
 
-    &:hover { text-decoration: underline; }
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -1308,8 +1331,13 @@ div.footnotes {
       color: $neutral-100;
     }
 
-    &--prev { left: -0.5rem; }
-    &--next { right: -0.5rem; }
+    &--prev {
+      left: -0.5rem;
+    }
+
+    &--next {
+      right: -0.5rem;
+    }
   }
 }
 
@@ -1328,6 +1356,7 @@ div.footnotes {
   a {
     text-shadow: var(--glow-link);
   }
+
   div.entry a,
   .metadata a {
     text-shadow: none;
@@ -1341,11 +1370,11 @@ div.footnotes {
     pointer-events: none;
     z-index: 9999;
     background-image: repeating-linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.15) 0,
-      rgba(0, 0, 0, 0.15) 1px,
-      transparent 1px,
-      transparent 3px
+            to bottom,
+            rgba(0, 0, 0, 0.15) 0,
+            rgba(0, 0, 0, 0.15) 1px,
+            transparent 1px,
+            transparent 3px
     );
     opacity: 0.4;
     mix-blend-mode: multiply;
@@ -1379,9 +1408,5 @@ div.footnotes {
     image-rendering: pixelated;
     image-rendering: crisp-edges;
     filter: sepia(1) saturate(4) hue-rotate(60deg) brightness(1.1);
-  }
-  
-  .commentbox-comment-body {
-    color: var(--color-neutral-300);
   }
 }

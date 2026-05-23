@@ -1,4 +1,7 @@
 {% if site.commentbox %}
 <div class="commentbox"></div>
-<script>commentBox('{{ site.commentbox }}')</script>
+<script defer src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+<script>
+    window.COMMENTBOX_PROJECT_ID = '{{ site.commentbox }}';
+</script>
 {% endif %}

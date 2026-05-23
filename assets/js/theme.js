@@ -1,27 +1,26 @@
 (function () {
-    var root = document.documentElement;
-    var btn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
     if (!btn) return;
 
     function updateCommentBox(theme) {
-        var isDark = theme === 'dark';
+        const isDark = theme === 'dark';
 
-        // CORRECCIÓN PROTECTORA: Si el script de CommentBox no ha cargado aún, 
-        // no hacemos nada para evitar el ReferenceError. El evento 'load' o el clic reintentarán más tarde.
+        // Si la librería de CommentBox aún no está lista, salimos de forma segura
         if (typeof commentBox !== 'function' || !window.COMMENTBOX_PROJECT_ID) return;
 
-        // Destruimos la instancia previa si existe
+        // Limpieza de la instancia anterior
         if (typeof window.commentBoxInstance === 'function') {
             window.commentBoxInstance();
         }
 
-        // Restauramos el contenedor limpio
-        var boxContainer = document.querySelector('.commentbox') || document.querySelector('[id*="commentbox"]');
+        // Recuperamos el contenedor y restauramos su clase CSS estructural
+        const boxContainer = document.querySelector('.commentbox') || document.querySelector('[id*="commentbox"]');
         if (boxContainer) {
             boxContainer.className = 'commentbox';
         }
 
-        // Forzamos un retraso asíncrono para que el DOM se asiente
+        // Breve pausa para permitir al navegador asentar el cambio CSS antes de pedir el iframe
         setTimeout(function() {
             if (typeof commentBox === 'function') {
                 window.commentBoxInstance = commentBox(window.COMMENTBOX_PROJECT_ID, {
@@ -30,7 +29,7 @@
                     subtextColor: isDark ? '#999999' : '#7f8c8d'
                 });
             }
-        }, 80);
+        }, 50);
     }
 
     function apply(theme) {
@@ -39,21 +38,22 @@
         updateCommentBox(theme);
     }
 
-    // EJECUCIÓN INICIAL SEGURA: 
-    // Si la librería ya está en memoria, la cargamos. Si no, esperamos a que todo cargue ('load')
-    if (typeof commentBox === 'function') {
-        var initialTheme = root.getAttribute('data-theme') || 'light';
-        updateCommentBox(initialTheme);
-    } else {
-        window.addEventListener('load', function() {
-            var initialTheme = root.getAttribute('data-theme') || 'light';
+    // CONTROL DE CARGA INICIAL PARA DEFER:
+    // Si ya existe la función, inicializa. Si no, comprueba cada 50ms hasta que la CDN responda.
+    function initWhenReady() {
+        if (typeof commentBox === 'function' && window.COMMENTBOX_PROJECT_ID) {
+            const initialTheme = root.getAttribute('data-theme') || 'light';
             updateCommentBox(initialTheme);
-        });
+        } else {
+            setTimeout(initWhenReady, 50);
+        }
     }
+    initWhenReady();
 
+    // EVENTO DE CLIC INMEDIATO
     btn.addEventListener('click', function () {
-        var current = root.getAttribute('data-theme') || 'light';
-        var nextTheme = current === 'dark' ? 'light' : 'dark';
+        const current = root.getAttribute('data-theme') || 'light';
+        const nextTheme = current === 'dark' ? 'light' : 'dark';
         apply(nextTheme);
     });
 })();

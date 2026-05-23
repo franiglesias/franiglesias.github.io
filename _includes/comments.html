@@ -1,7 +1,9 @@
 {% if site.commentbox %}
-<div class="commentbox"></div>
-<script defer src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
-<script>
-    window.COMMENTBOX_PROJECT_ID = '{{ site.commentbox }}';
-</script>
+<!--<div class="commentbox"></div>-->
+<!--<script defer src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>-->
+<!--<script>-->
+<!--    window.COMMENTBOX_PROJECT_ID = '{{ site.commentbox }}';-->
+<!--</script>-->
+<iframe id="commentbox-iframe" src="/commentbox-bridge.html?theme=light" style="width: 100%; border: none; min-height: 500px; background: transparent;" scrolling="no"></iframe>
+
 {% endif %}

@@ -46,12 +46,6 @@ layout: basic
         <script src="/assets/js/copy-link.js"></script>
     </div>
 </article>
-{% if site.commentbox %}
-<div class="commentbox"></div>
-<script defer src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
-<script>
-    window.COMMENTBOX_PROJECT_ID = '{{ site.commentbox }}';
-</script>
-{% endif %}
+{% include comments.html %}
 <script src="../assets/js/code-blocks.js"></script>
 <script src="../assets/js/code-labels.js"></script>

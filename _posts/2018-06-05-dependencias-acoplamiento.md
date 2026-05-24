@@ -8,11 +8,11 @@ recommended: true
 
 Cómo aplicar el principio de inversión de dependencias, entendiendo qué es dependencia y qué acoplamiento. ¡Ah! Y cómo saber cuándo necesitamos usar inyección o instanciación al crear objetos.
 
-En programación decimos que se establece una **dependencia** cuando un módulo de software utiliza otro para realizar su trabajo. Si hablamos de clases, decimos que una clase (cliente) tiene un dependencia de otra (servicio) cuando cliente usa servicio para llevar a cabo sus propias responsabilidades. La dependencia se manifiesta porque la clase Cliente no puede funcionar sin la clase Servicio.
+En programación decimos que se establece una **dependencia** cuando un módulo de software utiliza otro para realizar su trabajo. Si hablamos de clases, decimos que una clase (Cliente) tiene una dependencia de otra (Servicio) cuando _Cliente_ usa _Servicio_ para llevar a cabo sus propias responsabilidades. La dependencia se manifiesta porque la clase _Cliente_ no puede funcionar sin la clase _Servicio_.
 
-Las dependencias de software no son malas en sí mismas (tal y como se habla de ellas en algunos artículos parecería que sí). El problema de las dependencias es de grado. Es decir, hay dependencias muy fuertes y dependencias ligeras. La clave es cómo las gestionamos para que sean lo más flojas posibles.
+Las dependencias de software no son malas en sí mismas (tal y como se habla de ellas en algunos artículos parecería que sí). El problema de las dependencias es de grado. Es decir, hay dependencias muy fuertes y dependencias ligeras. La clave es cómo las gestionamos para que sean lo más flojas posible.
 
-De hecho, la existencia de dependencias es un buen indicio ya que podría indicar que estamos respetando el principio de Responsabilidad Única haciendo que unas clases deleguen en otras las tareas que no les corresponden.
+De hecho, la existencia de dependencias es un buen indicio, ya que podría indicar que estamos respetando el _principio de Responsabilidad Única_ haciendo que unas clases deleguen en otras las tareas que no les corresponden.
 
 Al grado de dependencia entre dos unidades de software la llamamos **acoplamiento**. Decimos que hay un alto acoplamiento (*thigh coupling*) cuando tenemos que reescribir la clase Cliente si quisiéramos cambiar la clase Servicio por otra. Esto es una violación del principio Abierto/Cerrado. Por el contrario, decimos que hay un bajo acoplamiento (*loose coupling*) cuando podemos cambiar la clase Servicio por otra, sin tener que tocar a Cliente.
 
@@ -80,7 +80,7 @@ $client = new Client(new Service());
 $client->doSomething();
 ```
 
-Así de simple. Se trata de cargar la dependencia a través del constructor (o de un setter). Ahora la dependencia es visible. Todavía hay un alto acoplamiento, pero ya empezamos a tener más libertad pues sabemos cómo se relacionan ambas clases.
+Así de simple. Se trata de cargar la dependencia a través del constructor (o de un setter). Ahora la dependencia es visible. Todavía hay un alto acoplamiento, pero ya empezamos a tener más libertad, pues sabemos cómo se relacionan ambas clases.
 
 ## Inversión de dependencias
 
@@ -181,7 +181,7 @@ $client = new Client(new ServiceAdapter(new Service()));
 $client->doSomething();
 ```
 
-La llamada se ha complicado un poco, pero los beneficios son enormes ya que hemos reducido el acoplamiento al mínimo posible:
+La llamada se ha complicado un poco, pero los beneficios son enormes, ya que hemos reducido el acoplamiento al mínimo posible:
 
 A partir de ahora, las clases `Client` y `Service` pueden cambiar independientemente una de la otra con la condición de que la interfaz no cambie (y las interfaces están pensadas para ser estables en el tiempo salvo motivos muy justificados). Si fuese necesario tendríamos que modificar `ServiceAdapter` en el caso de que `Service` cambiase su interfaz.
 
@@ -307,13 +307,13 @@ $client2->doSomething();
 
 ### Sobre los Adaptadores
 
-Entre los Adaptadores y las clases adaptadas existe una dependencia o acoplamiento muy estrechos. Es obvio que no podemos desacoplarlos. Este acoplamiento no es problema ya que para los efectos de nuestro Cliente, el Adaptador *es* el Servicio y no le preocupa cómo está implementado con tal de que respete la interfaz. Además, el Adaptador es una clase con un código trivial, se limita a *traducir* los mensajes entre el Cliente y el Servicio.
+Entre los Adaptadores y las clases adaptadas existe una dependencia o acoplamiento muy estrechos. Es obvio que no podemos desacoplarlos. Este acoplamiento no es problema, ya que para los efectos de nuestro Cliente, el Adaptador *es* el _Servicio_ y no le preocupa cómo está implementado con tal de que respete la interfaz. Además, el Adaptador es una clase con un código trivial, se limita a *traducir* los mensajes entre el Cliente y el Servicio.
 
 Esto nos podría llevar a pensar en ocultar la dependencia y hacerla implícita, como forma de ahorrar un poco de código al instanciar el adaptador, pero no es muy buena idea. Todas las dependencias deberían ser explícitas.
 
 ## Cuando la Inyección de dependencias se complica
 
-Como se puede ver en los ejemplos anteriores, el desacoplamiento aumenta un poco la complejidad en el momento de instanciar la clase Cliente. Si ésta tiene varias dependencias, las cuales pueden utilizar Adaptadores, la inyección de dependencias se hace tediosa y prolija aunque no especialmente complicada. Sin embargo, eso quiere decir que hay que repetir un buen pedazo de código en diversas partes de una aplicación para conseguir instanciar un cierto objeto.
+Como se puede ver en los ejemplos anteriores, el desacoplamiento aumenta un poco la complejidad en el momento de instanciar la clase Cliente. Si esta tiene varias dependencias, las cuales pueden utilizar Adaptadores, la inyección de dependencias se hace tediosa y prolija aunque no especialmente complicada. Sin embargo, eso quiere decir que hay que repetir un buen pedazo de código en diversas partes de una aplicación para conseguir instanciar un cierto objeto.
 
 La solución para eso es utilizar algunos de los diferentes patrones de construcción de objetos, como factorías, constructores, pools o prototipos que automaticen esa instanciación.
 
@@ -321,13 +321,13 @@ Otra solución es lo que se llama un Contenedor de Inyección de Dependencias (D
 
 ## No siempre hay que desacoplar
 
-El acoplamiento debemos considerarlo en el contexto del comportamiento de la clase Cliente. Ésta utiliza un comportamiento de la clase Servidor para poder llevar a cabo su propio comportamiento.
+El acoplamiento debemos considerarlo en el contexto del comportamiento de la clase _Cliente_. Esta utiliza un comportamiento de la clase _Servidor_ para poder llevar a cabo su propio comportamiento.
 
-Esto no se cumple en ciertos casos. Por ejemplo, cuando hablamos de Value Objects, éstos no contribyuen al comportamiento de la clase usuaria del mismo modo. Los Value Objects se utilizan como si fuesen tipos primitivos del lenguaje y su comportamiento está destinado a proporcionar servicios a la clase protegiendo sus propias invariantes. Los Value Objects son inmutables y además no tienen dependencias externas o, si las tienen, son de otros Value Objects. Por lo tanto son objetos que pueden ser instanciados sin más con `new` o con un constructor estático si lo hemos diseñado así.
+Esto no se cumple en ciertos casos. Por ejemplo, cuando hablamos de Value Objects, estos no contribuyen al comportamiento de la clase usuaria del mismo modo. Los Value Objects se utilizan como si fuesen tipos primitivos del lenguaje y su comportamiento está destinado a proporcionar servicios a la clase protegiendo sus propias invariantes. Los Value Objects son inmutables y además no tienen dependencias externas o, si las tienen, son de otros Value Objects. Por lo tanto, son objetos que pueden ser instanciados sin más con `new` o con un constructor estático si lo hemos diseñado así.
 
-Así que podemos distinguir entre objetos "newables" y objetos "inyectables". [Miško Hevery lo explica muy bien](http://misko.hevery.com/2008/09/30/to-new-or-not-to-new/ "To &#8220;new&#8221; or not to &#8220;new&#8221;&#8230;"). En resumen:
+Así que podemos distinguir entre objetos _newables_ y objetos _injectables_. [Miško Hevery lo explica muy bien](http://misko.hevery.com/2008/09/30/to-new-or-not-to-new/ "To &#8220;new&#8221; or not to &#8220;new&#8221;&#8230;"). En resumen:
 
-Los objetos **newables** son aquellos que necesitan algún parámetro variable en el momento de su creación. De hecho, necesitaremos un objeto nuevo cada vez. Imagina una clase Email que represente una dirección de email o incluso un mensaje (ojo, no lo envía, solo lo representa, pero también se encarga de validarlo y asegurarse de que está bien construido). Necesitamos un objeto distinto por cada dirección de email o mensaje. Veamos un ejemplo:
+Los objetos **_newables_** son aquellos que necesitan algún parámetro variable en el momento de su creación. De hecho, necesitaremos un objeto nuevo cada vez. Imagina una clase `Email` que represente una dirección de email o incluso un mensaje (ojo, no lo envía, solo lo representa, pero también se encarga de validarlo y asegurarse de que está bien construido). Necesitamos un objeto distinto por cada dirección de email o mensaje. Veamos un ejemplo:
 
 ```php
 class Email {
@@ -351,12 +351,12 @@ $myEmail = new Email('franiglesias@mac.com');
 $otherEmail = new Email('other@example.com');
 ```
 
-Los objetos newables no se pueden inyectar porque el contenedor de inyección de dependencias no puede saber qué parámetros necesita cada instancia concreta. Podríamos tener una factoría a la que pasarle el parámetro y que nos devuelva el objeto construido, pero ¿para qué? `new`, en este caso, es una factoría tan buena como cualquiera. Y en realidad es la mejor.
+Los objetos _newables_ no se pueden inyectar porque el contenedor de inyección de dependencias no puede saber qué parámetros necesita cada instancia concreta. Podríamos tener una factoría a la que pasarle el parámetro y que nos devuelva el objeto construido, pero ¿para qué? `new`, en este caso, es una factoría tan buena como cualquiera. Y en realidad es la mejor.
 
-Los newables no necesitan de interfaces explícitas porque no tienes que tener un abanico de opciones. En cualquier caso un objeto newable podría extender otro por herencia y, en ese caso, la clase base sería "la interfaz" si respetamos el principio de sustitución de Liskov, de modo que ambas clases sean intercambiables.
+Los _newables_ no necesitan de interfaces explícitas porque no tienes que tener un abanico de opciones. En cualquier caso un objeto newable podría extender otro por herencia y, en ese caso, la clase base sería "la interfaz" si respetamos el principio de sustitución de Liskov, de modo que ambas clases sean intercambiables.
 
 Los objetos inyectables, por su parte, son objetos que se pueden construir mediante un DIC porque no necesita parámetros que cambien en cada instanciación. Normalmente tienen interfaces porque han de ser sustituibles, es decir, queremos que las clases usuarias tengan un bajo acoplamiento con ellos.
 
-Los inyectables y los newables no se deben mezclar. Es decir, un inyectable no puede construirse con algún newable, y tampoco un newable puede construirse pasándole un injectable. Eso no quiere decir que unos no puedan usar otros, pero han de pasarse como parámetros en métodos.
+Los inyectables y los _newables_ no se deben mezclar. Es decir, un inyectable no puede construirse con algún newable, y tampoco un newable puede construirse pasándole un injectable. Eso no quiere decir que unos no puedan usar otros, pero han de pasarse como parámetros en métodos.
 
 

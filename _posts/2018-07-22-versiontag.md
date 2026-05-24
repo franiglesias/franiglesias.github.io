@@ -15,7 +15,7 @@ Os presento **versiontag** una utilidad de línea de comandos para automatizar e
 
 He estado trabajando a ratos en esta pequeña herramienta para automatizar el versionado semántico en repositorios de git. Reconozco que prácticamente ha sido un "stackoverflow driven development" porque aunque no es mi primer script complejo en bash, lo cierto es que es algo que trabajo esporádicamente y de una vez para otra se me olvidan las cosas.
 
-En cualquier caso es un *pet project* divertido e incluso útil. Lo he escrito en ratos sueltos y estoy seguro de que tiene mucho margen de mejora (por supuesto, puedes hacer forks, pull request, etc, etc.)
+En cualquier caso es un *pet project* divertido e incluso útil. Lo he escrito en ratos sueltos y estoy seguro de que tiene mucho margen de mejora (por supuesto, puedes hacer forks, pull request, etc., etc.)
 
 Por lo demás, su uso no tiene mayor misterio. Cuando todo está listo para hacer la tag, no tienes más que invocar **versiontag** indicando qué nivel de versión quieres actualizar y ya está. Te mostrará la versión actual, la nueva y te pedirá confirmación para añadirla y para hacer el push al remoto.
 

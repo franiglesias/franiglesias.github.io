@@ -45,4 +45,4 @@ $splFileObject = $this->getMockBuilder(SplFileObject::class)
     ->getMock();
 ```
 
-Hacemos que se ejecute el constructor original y le pasamos como argumento la ruta `/dev/null`, lo cual nos permite cumplir la condición para que se puede generar el doble, pero no se necesita manipular ningún archivo para ello.
+Hacemos que se ejecute el constructor original y le pasamos como argumento la ruta `/dev/null`, lo cual nos permite cumplir la condición para que se pueda generar el doble, pero no se necesita manipular ningún archivo para ello.

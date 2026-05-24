@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+gem 'github-pages' 
+gem 'jekyll-tagging'
+gem 'jekyll-sitemap'
+gem 'jekyll-feed'
+gem 'jekyll-gist'

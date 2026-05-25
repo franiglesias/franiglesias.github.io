@@ -2,8 +2,8 @@
 layout: post
 title: TalkingBit testing booklets
 published: true
-categories: articles
-tags: tdd testing
+categories: [articles]
+tags: [tdd, testing]
 ---
 
 Here you have some resources to help in testing and tdd workshops. Hope you will find them useful.

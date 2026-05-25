@@ -1,8 +1,8 @@
 ---
 layout: post 
 title: Outside-in y Behavior Driven Development 4 
-categories: articles 
-tags: tdd php bdd
+categories: [articles]
+tags: [tdd, php, bdd]
 ---
 
 Vamos a trabajar con bugs.

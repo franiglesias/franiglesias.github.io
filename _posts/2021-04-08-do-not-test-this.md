@@ -1,8 +1,8 @@
 ---
 layout: post
 title: No hagas estos tests
-categories: articles
-tags: testing tdd
+categories: [articles]
+tags: [testing, tdd]
 ---
 
 O al menos, no de esta manera.

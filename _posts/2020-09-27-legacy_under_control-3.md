@@ -2,8 +2,8 @@
 layout: post
 title: Dar estructura a la aplicación
 subtitle: Trabajar con legacy y entender el dominio (3)
-categories: articles
-tags: design-principles good-practices refactoring
+categories: [articles]
+tags: [design-principles, good-practices, refactoring]
 ---
 
 Seguimos estirando la kata QuoteBot. Ya que estamos, vamos a intentar llevar esta aplicación a un nuevo nivel.

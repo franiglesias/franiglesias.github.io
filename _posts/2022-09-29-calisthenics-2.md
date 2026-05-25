@@ -2,8 +2,8 @@
 layout: post
 series: calisthenics
 title: No usar la palabra clave ELSE
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 Una serie de restricciones que te ayudarán a escribir mejor código. En esta ocasión, evitaremos usar la clave `ELSE`.

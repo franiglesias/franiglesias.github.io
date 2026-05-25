@@ -1,8 +1,8 @@
 ---
 layout: post 
 title: Outside-in y Behavior Driven Development 2 
-categories: articles 
-tags: tdd php bdd
+categories: [articles]
+tags: [tdd, php, bdd]
 ---
 
 El segundo escenario de nuestro proyecto de lista de tareas comienza donde dejamos el primero: la lista de tareas está vacía y vamos a añadir la primera de ellas.

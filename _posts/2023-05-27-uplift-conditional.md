@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Despejar una maraña de condicionales
-categories: articles
-tags: refactoring
+categories: [articles]
+tags: [refactoring]
 ---
 
 Aprovechando que al hablar de _Approval Test_ y la técnica _Golden Master_ utilizamos la kata _Gilded Rose_, vamos a hablar de una técnica muy ingeniosa para reorganizar estructuras condicionales extremadamente intrincadas.

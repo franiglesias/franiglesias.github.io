@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Version Tag
-categories: articles
-tags: tb-list tools misc
+categories: [articles]
+tags: [tb-list, tools, misc]
 ---
 
 Hace tiempo creé una herramienta para gestionar las versiones de proyectos git. Nada nuevo bajo el sol, pero por algún motivo llamó la atención de algunas personas, que se animaron a hacer forks y a colaborar en el desarrollo. Así que podríamos considerarlo como mi primer proyecto Open Source.

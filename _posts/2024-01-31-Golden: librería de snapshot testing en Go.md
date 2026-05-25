@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Golden, librería de snapshot testing en Go
-categories: articles
-tags: tb-list golang testing
+categories: [articles]
+tags: [tb-list, golang, testing]
 ---
 
 **Golden** es una librería de _snapshot testing_ que he creado para Go. Después de unas semanas de trabajo, ya está declarada estable y he publicado la versión v1.0.0.

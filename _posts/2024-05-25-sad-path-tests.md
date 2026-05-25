@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Testeando lo que puede ir mal
-categories: articles
+categories: [articles]
 series: vsa
-tags: testing php
+tags: [testing, php]
 ---
 
 Este artículo puede considerarse una continuación del [que publicamos sobre reemplazar mocks por implementaciones alternativas](/outside-in-inside-out/). La diferencia es que esta vez, necesitamos simular los problemas, en lugar de los éxitos.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Desacoplarse del sistema
-categories: articles
-tags: golang testing good-practices refactoring
+categories: [articles]
+tags: [golang, testing, good-practices, refactoring]
 ---
 
 Es muy posible que estés trabajando en algún proyecto que necesite manejar fechas u horas, o incluso algo de aleatoridad. Todos los lenguajes incluyen alguna librería estándar para gestionar estos datos. O bien existen paquetes alternativos para responder a ciertas necesidades. Por ahí estamos bien servidas, pero hay un aspecto que con frecuencia pasamos por alto: trabajar con fechas, horas o números aleatorios nos acopla al sistema.

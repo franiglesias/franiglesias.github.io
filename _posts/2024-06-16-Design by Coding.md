@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Design by Coding
-categories: articles
-tags: tb-list good-practices agile
+categories: [articles]
+tags: [tb-list, good-practices, agile]
 ---
 
 Allen Holub presenta en este breve vídeo una introducción a la técnica de Design by Coding. En pocas palabras, explica como dirigir el desarrollo de un software a partir de historias de usuario, que se codifican en forma de tests (de aceptación y TDD) en los que vamos inventando, sobre la marcha, las interfaces con las que deseamos interactuar.

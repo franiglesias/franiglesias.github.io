@@ -1,8 +1,8 @@
 ---
 layout: post
 title: DDD, el lenguaje ubicuo
-categories: articles
-tags: good-practices design-principles ddd
+categories: [articles]
+tags: [good-practices, design-principles, ddd]
 ---
 
 Creo que una de las cosas que provocan que se *haga bola* la parte estratégica del DDD tiene que ver con que se trata de una metodología muy orgánica. Es difícil incluso definir un principio y un final del proceso. De hecho, diría que el DDD bien entendido no termina nunca mientras el negocio evoluciona.

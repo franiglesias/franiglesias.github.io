@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Pong en Python. Convivencia entre legacy y código nuevo
-categories: articles
-tags: python good-practices
+categories: [articles]
+tags: [python, good-practices]
 ---
 
 En este primer paso quiero mover el código chusco del prototipo a un objeto App, que será el nuevo punto de entrada de la aplicación. De este modo, el código del prototipo es tratado como *legacy*, pero puede convivir con la aplicación *moderna* y no perdemos la funcionalidad mientras mejoramos el código.

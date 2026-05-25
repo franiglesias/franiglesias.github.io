@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Arreglando una suite de tests rota
-categories: articles
-tags: testing good-practices
+categories: [articles]
+tags: [testing, good-practices]
 ---
 
 En este artículo intentaré contar como suelo "entrar" en un proyecto.

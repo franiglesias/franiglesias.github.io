@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactoring para quienes no refactorizan
-categories: articles
-tags: good-practices refactoring ruby
+categories: [articles]
+tags: [good-practices, refactoring, ruby]
 ---
 
 Me he dado cuenta de que no había escrito nunca un artículo sobre _refactoring_ dirigido a personas que no saben lo que es, o que no lo entienden correctamente.

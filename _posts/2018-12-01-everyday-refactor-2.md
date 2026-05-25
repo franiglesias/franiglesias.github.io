@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactor cotidiano (2). Mejora los nombres
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 La segunda entrega de la guía del refactor cotidiano trata de los nombres y cómo mejorarlos.

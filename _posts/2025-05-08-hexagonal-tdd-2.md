@@ -2,9 +2,9 @@
 layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (2) 
 title: London School, doble ciclo y comparativa
-categories: articles
+categories: [articles]
 series: outside-in-ha
-tags: software-design design-patterns typescript tdd hexagonal
+tags: [software-design, design-patterns, typescript, tdd, hexagonal]
 ---
 
 [En el artículo anterior](/hexagonal-tdd-1/), vimos cómo aplicar TDD clásica a un caso de uso simple utilizando la

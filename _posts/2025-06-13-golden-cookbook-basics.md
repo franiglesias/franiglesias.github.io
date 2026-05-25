@@ -2,8 +2,8 @@
 layout: post
 title: What is golden and how to start with snapshot testing
 series: golden-cookbook
-categories: articles
-tags: testing golang php
+categories: [articles]
+tags: [testing, golang, php]
 ---
 
 Golden and PHP-Golden are libraries for snapshot based testing. In this recipe we will introduce the basics.

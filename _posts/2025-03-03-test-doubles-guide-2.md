@@ -1,8 +1,8 @@
 ---
 layout: post
 title: La guía definitiva de los dobles de test 2
-categories: articles
-tags: testing tdd typescript
+categories: [articles]
+tags: [testing, tdd, typescript]
 ---
 
 Vamos por la segunda parte de este artículo en la que seguimos explicando como usar dobles de test.

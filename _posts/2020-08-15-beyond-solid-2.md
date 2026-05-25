@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Más allá de SOLID, los cimientos
-categories: articles
-tags: design-principles good-practices
+categories: [articles]
+tags: [design-principles, good-practices]
 ---
 
 A veces, cuando se habla de principios de diseño de software parece que solo existiesen estos cinco. Así que los repasaremos con un poco de contexto.

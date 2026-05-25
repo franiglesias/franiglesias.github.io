@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Cláusulas de guarda con asserts
-categories: articles
-tags: tips good-practices
+categories: [articles]
+tags: [tips, good-practices]
 ---
 
 Las cláusulas de guarda nos permiten asegurar que se cumplen las condiciones necesarias para ejecutar un método.

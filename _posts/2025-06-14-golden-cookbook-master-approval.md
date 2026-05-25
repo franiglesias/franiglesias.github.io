@@ -2,8 +2,8 @@
 layout: post
 title: The Golden Master technique, with approval mode
 series: golden-cookbook
-categories: articles
-tags: testing php legacy refactoring
+categories: [articles]
+tags: [testing, php, legacy, refactoring]
 ---
 
 In this recipe we will learn how to use Golden to use the Golden Master technique to generate a lot of tests covering 100% of a legacy code that we need to refactor.

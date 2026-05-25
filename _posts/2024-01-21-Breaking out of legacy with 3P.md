@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Breaking out of legacy with 3P
-categories: articles
-tags: tb-list refactoring
+categories: [articles]
+tags: [tb-list, refactoring]
 ---
 
 Me ha llamado la atención esta receta 3P de Johan Martinsson. A la hora de iniciar el trabajo en una historia de usuario o tarea:

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Normalización de bases de datos
-categories: articles
-tags: bbdd sql
+categories: [articles]
+tags: [bbdd, sql]
 ---
 
 La normalización de las bases de datos es un proceso que persigue reducir la redundancia de datos y controlar las dependencias entre las entidades representadas en las tablas, de modo que éstas puedan evolucionar fácilmente y se reduzcan los errores que generen inconsistencia de datos.

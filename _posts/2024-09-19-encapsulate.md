@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Encapsular primitivos y colecciones
-categories: articles
-tags: software-design pulpoCon
+categories: [articles]
+tags: [software-design, pulpoCon]
 ---
 
 Los tipos nativos y estructuras de datos ofrecidos por los lenguajes suelen ser insuficientes para modelar los conceptos que nos interesan. Pero además, puesto que tratan de ser genéricos suelen ofrecernos más de lo que necesitamos.

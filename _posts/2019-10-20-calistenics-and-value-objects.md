@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Object Calisthenics para mejorar el diseño de las clases
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 En este artículo presentamos un ejercicio que puede servir para adquirir soltura a la hora de reconocer patrones que nos permitan organizar objetos complejos mediante value objects.

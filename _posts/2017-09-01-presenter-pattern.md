@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Presenter pattern (obsoleto)
-categories: articles
-tags: php design-patterns
+categories: [articles]
+tags: [php, design-patterns]
 ---
 
 Existen una serie de patrones de diseño de sóftware básicos, pero nada nos impide crear nuevos patrones a partir de alguno de los clásicos, con el fin de adaptarlos a situaciones más específicas. Sencillamente, son patrones menos generales.

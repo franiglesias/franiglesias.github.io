@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactor cotidiano (4). Sustituye escalares por objetos
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 PHP viene de serie con un conjunto de tipos de datos básicos que denominamos escalares: bool, int, float, string…, que utilizamos para representar cosas y operar con ellas. La parte mala es que son tipos genéricos y, a veces, necesitaríamos algo con más significado.

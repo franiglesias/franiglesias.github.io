@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Tratar casos especiales en una colección de objetos
-categories: articles
-tags: legacy refactoring
+categories: [articles]
+tags: [legacy, refactoring]
 ---
 
 A veces tenemos que hacer cosas específicamente con algunos objetos de una colección. En este artículo planteo una forma de encarar este problema.

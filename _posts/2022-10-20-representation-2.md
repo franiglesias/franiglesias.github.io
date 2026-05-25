@@ -2,8 +2,8 @@
 layout: post
 title: Generar representaciones de un objeto sin exponer getters
 series: design-patterns
-categories: articles
-tags: good-practices oop php
+categories: [articles]
+tags: [good-practices, oop, php]
 ---
 
 El problema: como obtener representaciones de un objeto, como DTO, serializaciones, etc., sin exponer _getters_ que únicamente se usarían para esa tarea.

@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Understanding Legacy Code with TCR
-categories: articles
-tags: tb-list refactoring testing
+categories: [articles]
+tags: [tb-list, refactoring, testing]
 ---
 
 Una sesión de live coding con Kent Beck y Kelly Sutton explicando cómo puedes usar el workflow Test Commit Or Revert para probar hipótesis sobre un código que no conoces.

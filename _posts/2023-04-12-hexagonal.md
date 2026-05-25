@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Introducción a la Arquitectura Hexagonal
-categories: articles
-tags: design-patterns hexagonal
+categories: [articles]
+tags: [design-patterns, hexagonal]
 recommended: true
 ---
 

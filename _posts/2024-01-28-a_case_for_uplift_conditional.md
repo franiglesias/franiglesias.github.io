@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Un caso de Uplift Conditional
-categories: articles
-tags: golang refactoring
+categories: [articles]
+tags: [golang, refactoring]
 ---
 
 El refactor _uplift conditional_ puede ayudarnos a estructurar mejor un código cuajado de condicionales.

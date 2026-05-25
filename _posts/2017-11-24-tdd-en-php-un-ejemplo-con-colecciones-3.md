@@ -1,8 +1,8 @@
 ---
 layout: post
 title: TDD en PHP. Un ejemplo con colecciones (3)
-categories: articles
-tags:  tdd php 
+categories: [articles]
+tags: [tdd, php]
 ---
 
 Ahora implementaremos *pipelining*, para encadenar operaciones en una colección.

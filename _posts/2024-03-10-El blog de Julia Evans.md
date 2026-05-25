@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: El blog de Julia Evans
-categories: articles
-tags: tb-list misc tools
+categories: [articles]
+tags: [tb-list, misc, tools]
 ---
 
 Llevo un buen rato intentando escoger algo concreto del blog de Julia Evans para mostrar aquí, pero está tan lleno de buenos artículos que es casi imposible quedarse con alguno.

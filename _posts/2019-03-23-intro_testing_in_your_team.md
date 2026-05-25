@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Como introducir o aumentar el testing en tu aplicación
-categories: articles
+categories: [articles]
 author: [fran]
-tags: testing good-practices
+tags: [testing, good-practices]
 ---
 
 Supongamos que te planteas introducir testing en un proyecto que no lo tiene o que no está suficientemente testeado.

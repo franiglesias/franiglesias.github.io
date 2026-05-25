@@ -1,8 +1,8 @@
 ---
 layout: post 
 title: Outside-in y Behavior Driven Development 6 
-categories: articles 
-tags: tdd php bdd
+categories: [articles]
+tags: [tdd, php, bdd]
 ---
 
 Consideraciones sobre el desarrollo con Behavior Driven Development

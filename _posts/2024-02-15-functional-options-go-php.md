@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Opciones funcionales en Go y en PHP
-categories: articles
-tags: golang php
+categories: [articles]
+tags: [golang, php]
 ---
 
 Las opciones funcionales son un patrón bastante habitual en Go... que se puede usar también en PHP.

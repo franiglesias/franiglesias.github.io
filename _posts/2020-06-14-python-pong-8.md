@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Pong en Python. Desarrollo ágil
-categories: articles
-tags: python good-practices
+categories: [articles]
+tags: [python, good-practices]
 ---
 
 Agile debería ser una forma de pensar, un *mindset*, no una metodología de gestión de proyectos.

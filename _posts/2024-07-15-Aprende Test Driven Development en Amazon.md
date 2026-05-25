@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Aprende Test Driven Development en Amazon
-categories: articles
-tags: tb-list books tdd
+categories: [articles]
+tags: [tb-list, books, tdd]
 ---
 
 ¡Sorpresa! Después de tenerlo un tiempo disponible para impresión bajo demanda en Lulu y aprovechando unos días lluviosos de vacaciones, estuve haciendo algunos arreglos en el libro _Aprende Test Driven Development_ y lo he vuelto a publicar, pero esta vez en Amazon.

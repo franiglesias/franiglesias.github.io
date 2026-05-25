@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Mutation Testing
-categories: articles
-tags: testing
+categories: [articles]
+tags: [testing]
 ---
 
 

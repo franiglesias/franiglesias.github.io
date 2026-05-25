@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Haciendo un spike para crear una librería de Go
-categories: articles
-tags: golang good-practices
+categories: [articles]
+tags: [golang, good-practices]
 ---
 
 He iniciado un side project para hacer una librería de snapshot testing en Go.

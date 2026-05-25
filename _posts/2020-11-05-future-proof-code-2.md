@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Escribir código a prueba de futuro 2
-categories: articles
-tags: good-practices refactoring python
+categories: [articles]
+tags: [good-practices, refactoring, python]
 ---
 
 Aprovechando el refactor del juego de Pong, vamos a ver más ejemplos de cómo orientarlo para mejorar su solidez y capacidad de cambio futuro.

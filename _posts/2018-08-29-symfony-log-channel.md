@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Crear y usar un canal de log en Symfony
-categories: articles
-tags: tools tips
+categories: [articles]
+tags: [tools, tips]
 --- 
 De vez en cuando nos puede interesar disponer de un log específico para una parte concreta de una aplicación. Fundamentalmente lo que pretendemos es aislar esos mensajes para poder analizarlos con facilidad.
 

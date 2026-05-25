@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Snapshot Testing in the Backend
-categories: articles
-tags: tb-list testing
+categories: [articles]
+tags: [tb-list, testing]
 ---
 
 Hace un tiempo me contactaron desde [The Test Tribe](https://www.thetesttribe.com/about-us/), una comunidad de testers en India, para invitarme a colaborar en su blog. Toda una sorpresa que hubiesen encontrado un artículo mío en inglés. Aprovechando que estaba en pleno desarrollo de [Golden](https://github.com/franiglesias/golden), escribí un artículo sobre snapshot testing en el backend. Gracias a Shrutika Ranjan, por la invitación.

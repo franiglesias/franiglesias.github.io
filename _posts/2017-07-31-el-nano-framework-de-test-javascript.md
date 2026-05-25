@@ -1,8 +1,8 @@
 ---
 layout: post
 title: El nano framework de test con el que aprendo javascript
-categories: articles
-tags: tdd javascript
+categories: [articles]
+tags: [tdd, javascript]
 ---
 
 Llevo un tiempo volviendo a aprender Javascript y estoy empezando a entender este lenguaje. Casi hasta me gusta.

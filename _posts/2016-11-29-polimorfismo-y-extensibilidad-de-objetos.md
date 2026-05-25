@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Polimorfismo y extensibilidad de objetos
-categories: articles
+categories: [articles]
 author: [Fran Iglesias]
-tags: design-principles oop
+tags: [design-principles, oop]
 ---
 
 En Programación Orientada a Objetos el **polimorfismo** es una característica que nos permite enviar el mismo mensaje, desde el punto de vista sintáctico, a distintos objetos para que cada uno de ellos lo realice con un comportamiento específico.

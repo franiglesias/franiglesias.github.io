@@ -2,8 +2,8 @@
 layout: post
 title: Strategy pattern
 series: design-patterns
-categories: articles
-tags: php design-patterns
+categories: [articles]
+tags: [php, design-patterns]
 ---
 
 El patrón Strategy (estrategia) se basa en encapsular una familia de algoritmos de modo que sean intercambiables.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Practical Object Oriented Design. Sandi Metz.
-categories: articles
-tags: books design-principles ruby
+categories: [articles]
+tags: [books, design-principles, ruby]
 ---
 
 Desde que leí este libro no he parado de buscar charlas, libros y otros artículos de la autora. No me había encontrado con una mejor explicación de la orientación a objetos que esta.

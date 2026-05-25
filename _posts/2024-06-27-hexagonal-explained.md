@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Hexagonal Architecture Explained
-categories: articles
-tags: hexagonal books software-design
+categories: [articles]
+tags: [hexagonal, books, software-design]
 ---
 
 ¡Por fin! 

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactorizar trata sobre conocimiento y significado
-categories: articles
-tags: php good-practices legacy
+categories: [articles]
+tags: [php, good-practices, legacy]
 recommended: true
 ---
 

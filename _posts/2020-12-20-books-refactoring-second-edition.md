@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactoring second edition. Martin Fowler.
-categories: articles
-tags: books refactoring javascript
+categories: [articles]
+tags: [books, refactoring, javascript]
 ---
 
 Habrán pasado unos tres años desde que leí la primera edición de Refactoring. Esta actualización de 2019 ha rejuvenecido el material original, sin perder una pizca de utilidad.

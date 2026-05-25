@@ -2,8 +2,8 @@
 layout: post
 series: calisthenics
 title: Colecciones de primera clase
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 Una serie de restricciones que te ayudarán a escribir mejor código. En esta ocasión hablaremos de poner las colecciones en primera clase.

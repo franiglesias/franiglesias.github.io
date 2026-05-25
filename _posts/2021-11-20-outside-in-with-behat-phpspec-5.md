@@ -1,8 +1,8 @@
 ---
 layout: post 
 title: Outside-in y Behavior Driven Development 5 
-categories: articles 
-tags: tdd php bdd
+categories: [articles]
+tags: [tdd, php, bdd]
 ---
 
 Nuevas iteraciones nos permiten introducir funcionalidad de la que carecía el producto.

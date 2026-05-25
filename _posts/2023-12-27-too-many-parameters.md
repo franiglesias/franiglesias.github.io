@@ -1,8 +1,8 @@
 ---
 layout: post
 title: ¿Cuantos parámetros por función?
-categories: articles
-tags: good-practices refactoring typescript ruby
+categories: [articles]
+tags: [good-practices, refactoring, typescript, ruby]
 ---
 
 Menos es más. O más es menos.

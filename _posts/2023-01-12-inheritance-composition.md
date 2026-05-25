@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Sobre herencia, composición y cosas de encapsulación
-categories: articles
-tags: python good-practices oop
+categories: [articles]
+tags: [python, good-practices, oop]
 ---
 
 Me apetecía volver a abordar algunos temas más teóricos sobre OOP y así romper un poco la monotemática de la serie de Dungeon. Aun así, tomaré algunos ejemplos del juego.

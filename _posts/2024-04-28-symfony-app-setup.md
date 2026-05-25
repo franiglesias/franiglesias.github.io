@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Preparando un proyecto Symfony para experimentar con Vertical Slice Architecture
-categories: articles
+categories: [articles]
 series: vsa
-tags: php design-patterns
+tags: [php, design-patterns]
 ---
 
 A raíz de una pregunta sobre Vertical Slice Architecture estaba intentando empezar a escribir una pequeña aplicación para investigar la propuesta y voy a tratar de documentar el proceso.

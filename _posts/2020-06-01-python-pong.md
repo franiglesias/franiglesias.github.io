@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Pong en Python. Los prototipos como punto de partida de un proyecto de software
-categories: articles
-tags: python good-practices
+categories: [articles]
+tags: [python, good-practices]
 ---
 
 Una mezcla de cosas me ha traído aquí. Este fin de semana he empezado un proyecto para recrear el juego Pong! en Python.

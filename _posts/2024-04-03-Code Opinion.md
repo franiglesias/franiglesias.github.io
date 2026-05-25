@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Code Opinion
-categories: articles
-tags: tb-list good-practices design-patterns
+categories: [articles]
+tags: [tb-list, good-practices, design-patterns]
 ---
 
 Derek Comartin tiene este blog y canal de Youtube en el que trata numerosos temas relacionados con el diseño y

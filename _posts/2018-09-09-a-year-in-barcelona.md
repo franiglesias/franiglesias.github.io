@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Un año en Barcelona
-categories: articles
-tags: misc soft-skills
+categories: [articles]
+tags: [misc, soft-skills]
 ---
 O las aventuras de un junior de 50 años.
 

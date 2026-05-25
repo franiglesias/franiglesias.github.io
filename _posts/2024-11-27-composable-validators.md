@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Validadores componibles
-categories: articles
-tags: software-design php typescript
+categories: [articles]
+tags: [software-design, php, typescript]
 ---
 
 Llevo unos días dando vueltas en la cabeza a una idea que me parece interesante: la de los validadores componibles. Es un poco experimento, un poco juego, aunque no creo que sea algo nuevo en realidad.

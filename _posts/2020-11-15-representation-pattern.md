@@ -2,8 +2,8 @@
 layout: post
 title: Representation pattern (obsoleto)
 series: design-patterns
-categories: articles
-tags: php design-patterns
+categories: [articles]
+tags: [php, design-patterns]
 ---
 
 O cómo resolver el problema de mover información entre las capas de una aplicación sin violar las leyes de dependencia ni exponer el dominio en infraestructura.

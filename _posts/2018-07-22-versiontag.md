@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Automatiza tags de version semántica con git
-categories: articles
-tags: tools
+categories: [articles]
+tags: [tools]
 ---
 
 Acabo de desarrollar una pequeña herramienta puede ayudarte a automatizar la creación de tags de versión semántica con git.

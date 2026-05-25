@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Commits, tags y branches en git
-categories: articles
-tags: tools
+categories: [articles]
+tags: [tools]
 ---
 
 Trabajar de forma individual hace que, a veces, descuides aspectos del flujo de trabajo que son cruciales en equipos. Uno de estos aspectos es la gestión de versiones y la ramificación de proyectos.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: OOP e Inyección de dependencias en Go
-categories: articles
-tags: golang
+categories: [articles]
+tags: [golang]
 ---
 
 Golang es un lenguaje multiparadigma. Puedes trabajar con orientación a objetos y, por tanto, aplicar patrones y principios de este paradigma. Pero a Golang le gusta hacerlo a su manera.

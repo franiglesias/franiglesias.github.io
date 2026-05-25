@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: The class is not the unit in the London school style of TDD
-categories: articles
-tags: tb-list testing tdd
+categories: [articles]
+tags: [tb-list, testing, tdd]
 ---
 
 Artículo muy interesante de Manuel Rivero en el blog de Codesai sobre el concepto de Unidad en testing y TDD, particularmente en la escuela _outside-in mockista_. Por cierto, [no os perdáis sus muy intersantes y recomendables cursos](https://codesai.com/cursos/refactoring/).

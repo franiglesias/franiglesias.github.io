@@ -2,9 +2,9 @@
 layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (1) 
 title: Enfoque clásico, paso a paso y reflexiones
-categories: articles
+categories: [articles]
 series: outside-in-ha
-tags: software-design design-patterns typescript tdd hexagonal
+tags: [software-design, design-patterns, typescript, tdd, hexagonal]
 ---
 
 A medida que profundizo en Arquitectura Hexagonal más me parece que es uno de los patrones arquitectónicos más útiles y versátiles. Es cierto que se suele hacer muy mal, pero si sigues el patrón tal como está definido tienes muchas garantías de llegar a construir una aplicación fácil para desarrollar y mantener.

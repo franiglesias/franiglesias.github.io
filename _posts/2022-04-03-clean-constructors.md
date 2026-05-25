@@ -1,8 +1,8 @@
 ---
 layout: post 
 title: Constructores limpios 
-categories: articles 
-tags: java good-practices 
+categories: [articles]
+tags: [java, good-practices]
 ---
 
 Después de haber leído los dos volúmenes de [Elegant Objects](https://www.yegor256.com/elegant-objects.html), tengo un montón de ideas dando vueltas en la cabeza. Así que para darles salida he empezado a dedicar un rato a practicar algunas de las recomendaciones de la obra. O, al menos, intentarlo.

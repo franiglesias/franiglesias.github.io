@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Descuento del 50% en CodelyTV Pro con el libro
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 Hace unos días anunciábamos que el libro *Testing y TDD para PHP* estaría incluido gratis para los suscriptores de CodelyTV Pro. Ahora, además, si compras el libro tienes un 50% de descuento en el primer mes de suscripción.

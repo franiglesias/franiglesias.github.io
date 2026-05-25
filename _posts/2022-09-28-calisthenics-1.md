@@ -2,8 +2,8 @@
 layout: post
 series: calisthenics
 title: Solo un nivel de indentación.
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 Una serie de restricciones que te ayudarán a escribir mejor código. Empezamos por la primera: un sólo nivel de indentación por método.

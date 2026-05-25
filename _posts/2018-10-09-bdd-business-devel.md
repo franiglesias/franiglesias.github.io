@@ -2,8 +2,8 @@
 layout: post
 title: BDD. Tendiendo puentes entre negocio y desarrollo
 published: true
-categories: articles
-tags: php bdd soft-skills
+categories: [articles]
+tags: [php, bdd, soft-skills]
 ---
 
 Vamos a cambiar un poco de enfoque antes de continuar con otros aspectos y ejemplos técnicos del Desarrollo Guiado por Comportamiento. Vamos a ocuparnos del BDD como herramienta de comunicación.

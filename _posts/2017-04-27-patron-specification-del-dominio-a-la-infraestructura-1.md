@@ -3,8 +3,8 @@ layout: post
 series: design-patterns
 title: El patrón Specification del dominio a la infraestructura (1)
 published: true
-categories: articles
-tags: php design-patterns
+categories: [articles]
+tags: [php, design-patterns]
 ---
 
 El patrón specification es sumamente útil, pero implementarlo tiene su intríngulis. Este artículo tiene tres partes:

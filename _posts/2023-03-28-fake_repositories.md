@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Tests y repositorios
-categories: articles
-tags: good-practices testing
+categories: [articles]
+tags: [good-practices, testing]
 ---
 
 Para testear casos de uso es frecuente que utilice dobles de repositorios u otros servicios de almacenamiento. Estos dobles guardan su contenido en memoria durante la ejecución del test y son realmente rápidos. Pero para poder hacer esto, es necesario tener un buen diseño.

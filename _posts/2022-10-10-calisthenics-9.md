@@ -2,8 +2,8 @@
 layout: post
 series: calisthenics
 title: No user getters, setters o propiedades públicas
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 Una serie de restricciones que te ayudarán a escribir mejor código. La última regla consiste en no usar getters, setters o propiedades públicas.

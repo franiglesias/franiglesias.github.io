@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Mis problemas gestionando errores en Golang
-categories: articles
-tags: golang good-practices
+categories: [articles]
+tags: [golang, good-practices]
 ---
 
 El manejo de errores en Golang es uno de los puntos que más me cuesta de este lenguaje. Y, a juzgar por comentarios y artículos, es uno de los puntos que más le cuesta a casi todo el mundo. Y eso que es, aparentemente, sencillo.

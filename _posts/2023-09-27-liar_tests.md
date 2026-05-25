@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Los tests mentirosos
-categories: articles
-tags: testing good-practices
+categories: [articles]
+tags: [testing, good-practices]
 ---
 
 Hacerse trampas al solitario para conseguir una _vanity metric_: la cobertura de tests.

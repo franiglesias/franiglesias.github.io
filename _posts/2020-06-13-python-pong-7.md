@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Pong en Python. Nuevas features, nuevos tests
-categories: articles
-tags: python good-practices
+categories: [articles]
+tags: [python, good-practices]
 ---
 
 Después de un tiempo con foco en otras tareas, llega el momento de introducir nuevas capacidades en el juego.

@@ -2,8 +2,8 @@
 layout: post
 series: calisthenics
 title: No más de dos variables de instancia por clase
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 Una serie de restricciones que te ayudarán a escribir mejor código. Siguiendo con la tónica de mantener pequeños nuestros objetos, ahora solo tendremos dos propiedades como máximo.

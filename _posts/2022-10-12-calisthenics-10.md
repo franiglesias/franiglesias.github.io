@@ -2,8 +2,8 @@
 layout: post
 series: calisthenics
 title: Comentarios finales
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 En este artículo reviso algunas cuestiones que se han planteado y exploro algunas líneas de desarrollo que quedaban pendientes.

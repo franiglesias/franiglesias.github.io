@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactor para quienes no refactorizan 2
-categories: articles
-tags: good-practices refactoring ruby
+categories: [articles]
+tags: [good-practices, refactoring, ruby]
 ---
 
 Segunda entrega de esta serie de introducción al refactoring, si es que no refactorizas. O si quieres impulsar esta práctica en tu equipo.

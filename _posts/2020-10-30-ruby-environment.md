@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Entorno de desarrollo sencillo para Ruby
-categories: articles
-tags: ruby
+categories: [articles]
+tags: [ruby]
 ---
 
 Hace un tiempo que estoy estudiando algo de Ruby y estoy tratando de encontrar o preparar un entorno de desarrollo sencillo para practicar.

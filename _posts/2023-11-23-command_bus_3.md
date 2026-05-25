@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Mensajería variada
-categories: articles
-tags: design-patterns
+categories: [articles]
+tags: [design-patterns]
 ---
 
 

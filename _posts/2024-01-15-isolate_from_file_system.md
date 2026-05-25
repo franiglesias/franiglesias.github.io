@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Aislarse del sistema de archivos y una técnica de testing
-categories: articles
-tags: golang good-practices
+categories: [articles]
+tags: [golang, good-practices]
 ---
 
 Evitar depender directamente del sistema de archivos nos permite construir aplicaciones más fáciles de testear.

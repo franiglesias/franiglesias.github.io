@@ -1,8 +1,8 @@
 ---
 layout: post
 title: TDD en PHP. Un ejemplo con colecciones (5)
-categories: articles
-tags:  tdd php 
+categories: [articles]
+tags: [tdd, php]
 ---
 
 Terminamos con esta serie sobre la disciplina TDD en la que he aprendido un montón de cosas.

@@ -2,9 +2,9 @@
 layout: post
 title: Null coalesce operator
 published: true
-categories: articles
+categories: [articles]
 author: [paula, fran]
-tags: php tips
+tags: [php, tips]
 ---
 
 El operador ternario comparte con null coalesce el símbolo de la interrogación, pero ahí se acaba el parecido.

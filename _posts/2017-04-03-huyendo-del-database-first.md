@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Huyendo del database-first
-categories: php, articles
-tags: bbdd
+categories: [php, articles]
+tags: [bbdd]
 ---
 
 Database-first: al principio puede parecer fácil y hasta lógico. Es como el reverso tenebroso de la Fuerza, pero con datos.

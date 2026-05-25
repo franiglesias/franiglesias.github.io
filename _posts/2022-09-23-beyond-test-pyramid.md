@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Más allá de la pirámide de tests
-categories: articles
-tags: tdd testing good-practices
+categories: [articles]
+tags: [tdd, testing, good-practices]
 ---
 
 Un repaso a la(s) pirámide(s) de tests y un vistazo al testing minimalista de Sandi Metz.

@@ -2,8 +2,8 @@
 layout: post
 title: El patrón Object Mother
 series: design-patterns
-categories: articles
-tags: testing tdd
+categories: [articles]
+tags: [testing, tdd]
 ---
 
 El patrón Object Mother nos ayuda a tener ejemplos de objetos en toda la suite de test.

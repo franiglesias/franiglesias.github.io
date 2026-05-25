@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Más allá de SOLID, los principios olvidados
-categories: articles
-tags: design-principles good-practices
+categories: [articles]
+tags: [design-principles, good-practices]
 ---
 
 Hay mucha vida más allá de los principios SOLID y, sobre todo, mucho antes.

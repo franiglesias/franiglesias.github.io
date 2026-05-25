@@ -2,8 +2,8 @@
 layout: post
 title: Patrón Builder en Golang
 series: design-patterns
-categories: articles
-tags: golang design-patterns
+categories: [articles]
+tags: [golang, design-patterns]
 ---
 
 

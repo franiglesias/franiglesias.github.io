@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactor cotidiano (8). Dónde poner el conocimiento
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 En anteriores entregas hemos propuesto refactorizar código a Value Objects o aplicar principios como la *ley de Demeter* o *Tell, don't ask* para mover código a un lugar más adecuado. En este capítulo vamos a analizarlo desde un punto de vista más general.

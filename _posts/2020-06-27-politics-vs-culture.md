@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Acerca de la cultura
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 Muchas empresas presumen de su cultura, pero ¿qué es la cultura y cuáles son sus límites?

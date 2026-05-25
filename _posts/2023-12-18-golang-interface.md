@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Interfaces en Go
-categories: articles
-tags: good-practices design-patterns golang
+categories: [articles]
+tags: [good-practices, design-patterns, golang]
 ---
 
 Las interfaces en Go pueden ser un poco desconcertantes cuando vienes de otros lenguajes, como Java o PHP, pero es una de las cosas que más me está gustando últimamente.

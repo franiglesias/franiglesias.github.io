@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Sirviendo API rest (2)
-categories: articles
-tags: api
+categories: [articles]
+tags: [api]
 ---
 
 En esta entrega, voy a empezar a mostrar algo de código de un controlador que maneja una API.

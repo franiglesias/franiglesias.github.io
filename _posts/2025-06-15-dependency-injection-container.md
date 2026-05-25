@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Como funciona un contenedor de inyección de dependencias
-categories: articles
-tags: software-design typescript design-patterns tdd
+categories: [articles]
+tags: [software-design, typescript, design-patterns, tdd]
 ---
 
 El contenedor de inyección de dependencias es un componente que nos ayuda a gestionar los árboles de objetos en una aplicación.

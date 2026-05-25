@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Principio de separación de intereses
-categories: articles
-tags: design-principles
+categories: [articles]
+tags: [design-principles]
 recommended: true
 ---
 

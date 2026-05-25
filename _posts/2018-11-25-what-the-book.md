@@ -1,8 +1,8 @@
 ---
 layout: post
 title: What the book
-categories: articles
-tags: misc testing tdd
+categories: [articles]
+tags: [misc, testing, tdd]
 ---
 
 Después de darle vueltas a la idea una temporada hemos agrupado varios artículos del blog sobre testing en un libro.

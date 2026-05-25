@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Introducción a Behavior Driven Development en PHP (2)
-categories: articles
-tags: php bdd testing
+categories: [articles]
+tags: [php, bdd, testing]
 ---
 
 En el [artículo anterior](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta behat. Al final del mismo, nos habíamos quedado con una feature escrita en Gherkin y un test de aceptación vinculado fallando.

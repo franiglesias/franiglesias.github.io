@@ -2,9 +2,9 @@
 layout: post
 title: Some key concepts on Git
 published: true
-categories: articles
+categories: [articles]
 author: [paula, fran]
-tags: tools
+tags: [tools]
 ---
 
 Some key concepts explained to know what's happening when you work with this VCS.

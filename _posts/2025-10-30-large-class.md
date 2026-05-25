@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Large Class
-categories: articles
+categories: [articles]
 series: code-smells
-tags: code-smells refactoring typescript design-principles
+tags: [code-smells, refactoring, typescript, design-principles]
 ---
 
 Otro _code smell_ bastante habitual es tener clases muy grandes, que van acumulando muchas responsabilidades no relacionadas.

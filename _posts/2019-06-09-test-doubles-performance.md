@@ -1,8 +1,8 @@
 ---
 layout: post
 title: La performance de los métodos para crear test doubles
-categories: articles
-tags: testing
+categories: [articles]
+tags: [testing]
 ---
 
 Hace algunos meses estuve haciendo análisis sobre la performance de los diversos métodos para crear test doubles y cómo impactan en nuestras suites de tests. Ahora lo he retomado con mejores herramientas.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: De condicionales a polimorfismo
-categories: articles
-tags: refactoring good-practices
+categories: [articles]
+tags: [refactoring, good-practices]
 ---
 
 Con este artículo vamos a finalizar el trabajo de refactorizar el código de Gilded Rose.

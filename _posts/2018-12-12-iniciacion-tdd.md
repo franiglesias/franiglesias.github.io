@@ -1,8 +1,8 @@
 ---
 layout: post
 title: La kata del DNI para aprender TDD
-categories: articles
-tags: tdd testing
+categories: [articles]
+tags: [tdd, testing]
 recommended: true
 ---
 

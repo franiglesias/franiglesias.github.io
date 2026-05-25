@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Ejercicio de refactoring (3) Intervenir y seguir o no refactorizando
-categories: articles
-tags: refactoring legacy
+categories: [articles]
+tags: [refactoring, legacy]
 ---
 
 En el artículo anterior colé un error en la estrategia de refactoring y, antes de continuar, voy a detenerme en ese problema porque es realmente interesante.

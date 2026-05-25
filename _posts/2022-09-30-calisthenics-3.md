@@ -2,8 +2,8 @@
 layout: post
 series: calisthenics
 title: Empaquetar primitivas en objetos
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 Una serie de restricciones que te ayudarán a escribir mejor código. La tercera entrega trata sobre empaquetar primitivas en objetos.

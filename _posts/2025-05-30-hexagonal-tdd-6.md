@@ -3,8 +3,8 @@ layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (6) 
 title: Añadiendo funcionalidad y resolviendo problemas
 series: outside-in-ha
-categories: articles
-tags: software-design design-patterns typescript tdd hexagonal
+categories: [articles]
+tags: [software-design, design-patterns, typescript, tdd, hexagonal]
 ---
 
 En esta entrega vamos a intentar terminar las features de añadir y retirar cantidades de producto del inventario. Pero antes, debemos resolver algunos problemas que todavía no hemos afrontado.

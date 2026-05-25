@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Historia de una reescritura (5) tests
-categories: articles
-tags: legacy
+categories: [articles]
+tags: [legacy]
 ---
 
 Mientras el proceso de reescribir vistas avanza, vamos a darle vueltas a una cuestión importante.

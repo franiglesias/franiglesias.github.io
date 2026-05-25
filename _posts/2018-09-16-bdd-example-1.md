@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Introducción a Behavior Driven Development en PHP (1)
-categories: articles
-tags: php bdd testing
+categories: [articles]
+tags: [php, bdd, testing]
 ---
 
 Como desarrolladores nos gusta que las historias de usuario que definen nuestros Product Owners estén bien escritas, de modo que podamos implementar lo que se nos pide. Lo mejor de todo es que existe una herramienta conceptual y técnica para lograr eso.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Como mejorar tus tests
-categories: articles
-tags: python testing good-practices refactoring
+categories: [articles]
+tags: [python, testing, good-practices, refactoring]
 ---
 
 En este artículo tomaré algunos ejemplos del proyecto Dungeon y explicaré cómo mejorar tests usando distintas técnicas y

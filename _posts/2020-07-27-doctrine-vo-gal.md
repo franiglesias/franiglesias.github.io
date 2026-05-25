@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Value Objects con Doctrine
-categories: articles
-tags: php bbdd good-practices
+categories: [articles]
+tags: [php, bbdd, good-practices]
 ---
 
 Como xa saberedes, os Value Objects son obxectos do dominio que representan conceptos que nos interesan polo ser valor, son inmutables, non teñen identidade, nin ciclo de vida.

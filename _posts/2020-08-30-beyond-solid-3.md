@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Más allá de SOLID, los consejos prácticos
-categories: articles
-tags: design-principles good-practices
+categories: [articles]
+tags: [design-principles, good-practices]
 ---
 
 Los principios SOLID están sobrevalorados y otras perlas de sabiduría práctica.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Ejercicio de refactor (1) Los tests de caracterización
-categories: articles
-tags: refactoring testing legacy
+categories: [articles]
+tags: [refactoring, testing, legacy]
 ---
 
 ¿Qué tal si hablamos de refactor?

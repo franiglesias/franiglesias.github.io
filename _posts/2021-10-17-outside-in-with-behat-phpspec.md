@@ -1,8 +1,8 @@
 ---
 layout: post 
 title: Outside-in y Behavior Driven Development 1 
-categories: articles 
-tags: tdd php bdd
+categories: [articles]
+tags: [tdd, php, bdd]
 ---
 
 _Outside-in TDD_ se ha convertido en mi primera opción para desarrollar nuevas features en los proyectos en los que trabajo. Hasta ahora he estado trabajando únicamente con **phpunit**, pero estoy preparando una especie de _side-project_ para cambiar el modo en que hago los tests de aceptación.

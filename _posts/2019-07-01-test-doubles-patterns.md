@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Patrones de uso de dobles de test
-categories: articles
-tags: testing
+categories: [articles]
+tags: [testing]
 ---
 
 En este artículo proponemos varios patrones prácticos para crear y utilizar test doubles.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Gracias Juan Manuel
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 

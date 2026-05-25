@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Some economics of refactoring
-categories: articles
-tags: tb-list refactoring
+categories: [articles]
+tags: [tb-list, refactoring]
 ---
 
 Buscando información histórica sobre la técnica Golden Master, me encontré con el blog de Johan Martinsson, que tiene esta entrada en la que compara el retorno de inversión del refactoring según cuando lo hagas.

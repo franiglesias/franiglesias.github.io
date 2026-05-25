@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactoriza rompiendo cosas
-categories: articles
-tags: refactoring good-practices
+categories: [articles]
+tags: [refactoring, good-practices]
 ---
 
 En el artículo anterior sobre la técnica [Uplift conditional](/uplift-conditional/) comenté que mostraría alguna otra técnica de refactoring alternativa sobre el mismo problema. Esta vez, la propone ni más ni menos que la gran Sandi Metz, aunque le voy a dar un par de _twists_ de mi cosecha.

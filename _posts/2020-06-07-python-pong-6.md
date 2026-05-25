@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Pong en Python. Eliminando deuda técnica.
-categories: articles
-tags: python good-practices
+categories: [articles]
+tags: [python, good-practices]
 ---
 
 Vamos a seguir mejorando el manejo de textos para tener más agilidad en el futuro.

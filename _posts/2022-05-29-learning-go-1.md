@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Aprendiendo Go con TDD 1
-categories: articles
-tags: golang tdd
+categories: [articles]
+tags: [golang, tdd]
 ---
 
 Pues nada, que me ha dado por aprender **Golang** y para ilustrar algunas de las ideas de este lenguaje he pensado en hacerlo mediante _katas_ de TDD.

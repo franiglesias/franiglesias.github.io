@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Dependencias y acoplamiento
-categories: articles
-tags: php good-practices
+categories: [articles]
+tags: [php, good-practices]
 recommended: true
 ---
 

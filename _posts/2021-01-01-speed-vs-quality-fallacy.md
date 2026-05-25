@@ -1,8 +1,8 @@
 ---
 layout: post
 title: El falso dilema. Calidad versus velocidad
-categories: articles
-tags: misc good-practices
+categories: [articles]
+tags: [misc, good-practices]
 recommended: true
 ---
 

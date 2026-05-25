@@ -2,8 +2,8 @@
 layout: post
 title: Extracción de conceptos
 subtitle: Trabajar con legacy y entender el dominio (2)
-categories: articles
-tags: design-principles good-practices refactoring
+categories: [articles]
+tags: [design-principles, good-practices, refactoring]
 ---
 
 En el artículo anterior el código ha quedado algo mejor estructurado de lo que estaba y, sobre todo, las dependencias están ahora bajo nuestro control. En esta ocasión querríamos avanzar un poco más en esa misma área de organización de código y, sobre todo, conseguir que la capa de domino sea capaz de contarnos la historia acerca de qué trata la aplicación.

@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Don’t bite off more than you can chew
-categories: articles
-tags: tb-list agile
+categories: [articles]
+tags: [tb-list, agile]
 ---
 
 Gran post de Javier López sobre cómo la organización de equipos influye en el lead time (el tiempo desde que se pide una feature hasta que sale a producción). Introduce una idea interesante que podríamos llamar "multitarea de equipo", que también afecta negativamente.

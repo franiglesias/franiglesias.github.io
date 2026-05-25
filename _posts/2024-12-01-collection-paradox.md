@@ -1,8 +1,8 @@
 ---
 layout: post
 title: La paradoja de las colecciones
-categories: articles
-tags: software-design php refactoring
+categories: [articles]
+tags: [software-design, php, refactoring]
 ---
 
 Las reglas de Object Calisthenics nos piden encapsular todas las estructuras de datos que representan alguna colección

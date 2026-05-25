@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactor cotidiano (3). Acondiciona las condicionales
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 La tercera entrega de la guía del refactor cotidiano trata sobre cómo mejorar las estructuras condicionales.

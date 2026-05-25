@@ -3,8 +3,8 @@ layout: post
 series: design-patterns
 title: El patrón Specification del dominio a la infraestructura (3)
 published: true
-categories: articles
-tags: php design-patterns
+categories: [articles]
+tags: [php, design-patterns]
 ---
 
 En las entregas anteriores hemos hablado del patrón **Specification** y cómo implementarlo en las diversas capas de arquitectura con la ayuda de **Abstract Factory**. Ahora toca ver cómo combinar **Specification** mediante el patrón **Composite** para construir especificaciones complejas a partir de otras más simples.

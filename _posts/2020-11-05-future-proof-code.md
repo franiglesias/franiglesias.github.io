@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Escribir código a prueba de futuro
-categories: articles
-tags: good-practices refactoring python
+categories: [articles]
+tags: [good-practices, refactoring, python]
 ---
 
 Estas ideas pueden aplicarse tanto al escribir código nuevo como ser usadas como guía para refactoring.

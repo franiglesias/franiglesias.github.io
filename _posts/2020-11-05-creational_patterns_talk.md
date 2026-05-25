@@ -2,8 +2,8 @@
 layout: post
 title: Charla. New no, lo siguiente.
 series: design-patterns
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 El pasado martes (3/11/2020) hice una charla en el meetup de PHPVigo.

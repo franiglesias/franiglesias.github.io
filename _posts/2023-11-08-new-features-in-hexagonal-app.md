@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Como añadir features en arquitectura hexagonal
-categories: articles
-tags: good-practices design-patterns hexagonal
+categories: [articles]
+tags: [good-practices, design-patterns, hexagonal]
 ---
 
 En un equipo de desarrollo orientado a producto las nuevas prestaciones solo tienen sentido si la usuaria o cliente puede usarlas.

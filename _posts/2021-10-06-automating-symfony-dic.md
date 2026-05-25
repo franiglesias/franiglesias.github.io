@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Automatizando el contenedor de dependencias de Symfony con tags y CompilerPass
-categories: articles
-tags: tips
+categories: [articles]
+tags: [tips]
 ---
 
 No es frecuente que escriba este tipo de artículos, pero seguro que me viene bien para el futuro.

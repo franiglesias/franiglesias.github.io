@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Código mentiroso
-categories: articles
-tags: design-principles refactoring php
+categories: [articles]
+tags: [design-principles, refactoring, php]
 ---
 
 En esencia, el código mentiroso es todo código que dice que hace algo, pero en realidad no lo hace, o hace algo diferente, o desvía nuestra atención de algo que deberíamos saber.

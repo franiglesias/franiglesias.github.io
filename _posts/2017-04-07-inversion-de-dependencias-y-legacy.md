@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Inversión de dependencias y legacy
-categories: articles
-tags: design-principles legacy
+categories: [articles]
+tags: [design-principles, legacy]
 ---
 
 He aquí una estrategia sencilla para reescribir una clase legacy de manera ordenada, aplicando el principio de Inversión de Dependencia.

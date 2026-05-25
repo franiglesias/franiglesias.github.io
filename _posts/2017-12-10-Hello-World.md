@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Mudando el blog de The Talking Bit
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 ## Hello (again)

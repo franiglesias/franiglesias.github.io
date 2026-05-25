@@ -2,8 +2,8 @@
 layout: post
 series: calisthenics
 title: Un punto por línea
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 Una serie de restricciones que te ayudarán a escribir mejor código. En este artículo veremos como aplicar la regla de un solo punto por línea.

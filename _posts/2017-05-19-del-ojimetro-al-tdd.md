@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Del ojímetro al tdd
-categories: articles
-tags: tdd testing
+categories: [articles]
+tags: [tdd, testing]
 ---
 
 Porque todos tenemos spaghetti apestando en el armario.

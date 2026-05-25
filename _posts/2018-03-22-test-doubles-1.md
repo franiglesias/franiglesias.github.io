@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Test doubles (1)
-categories: articles
-tags:  testing php
+categories: [articles]
+tags: [testing, php]
 recommended: true
 ---
 

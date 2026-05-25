@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Buscando trabajo como desarrollador. El final de la historia
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 Mi historia ha tenido final feliz: a mediados de agosto me incorporo como desarrollador a una empresa genial.

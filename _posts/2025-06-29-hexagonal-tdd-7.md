@@ -2,8 +2,8 @@
 layout: post
 title: El configurador y la aplicación
 series: outside-in-ha
-categories: articles
-tags: software-design design-patterns typescript tdd hexagonal
+categories: [articles]
+tags: [software-design, design-patterns, typescript, tdd, hexagonal]
 ---
 
 El patrón de Arquitectura Hexagonal no determina nada acerca de como implementar el configurador, más allá de ser el lugar donde la aplicación se cose y se prepara para funcionar.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Como funciona un bus de mensajes
-categories: articles
-tags: design-patterns
+categories: [articles]
+tags: [design-patterns]
 ---
 
 Hace un tiempo que se me ocurrió la idea de explicar algunos componentes relativamente comunes de las aplicaciones construyéndolos. Y me apetecía hacerlo con los buses de mensajes.

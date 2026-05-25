@@ -1,8 +1,8 @@
 ---
 layout: post
 title: So long, and thanks for all the fish
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 Lo he intentado, pero The Talking Bit se acaba aquí.

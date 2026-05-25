@@ -2,8 +2,8 @@
 layout: post
 title: Testing existing code with snapshot testing
 series: golden-cookbook
-categories: articles
-tags: testing golang legacy
+categories: [articles]
+tags: [testing, golang, legacy]
 ---
 
 In this recipe we will learn how to use **Golden** to introduce some basic tests for a piece of code that is unknown for us and has no tests. We will use snapshots to put the code under test and start understanding how it works.

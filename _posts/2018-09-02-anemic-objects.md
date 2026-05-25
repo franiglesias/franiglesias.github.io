@@ -1,8 +1,8 @@
 ---
 layout: post
 title: El drama de los objetos anémicos
-categories: articles
-tags: php design-principles good-practices
+categories: [articles]
+tags: [php, design-principles, good-practices]
 recommended: true
 ---
 

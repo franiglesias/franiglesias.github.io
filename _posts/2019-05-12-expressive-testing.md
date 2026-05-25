@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Testing expresivo
-categories: articles
-tags: php testing tdd bdd
+categories: [articles]
+tags: [php, testing, tdd, bdd]
 ---
 
 Desde hace un tiempo estoy explorando una forma de organizar el código de mis tests, al menos de una parte de ellos. A falta de un nombre mejor he decidido llamar a esta organización **testing expresivo**.

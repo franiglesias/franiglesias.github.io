@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactor cotidiano (7). Refactoriza de single return a return early
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 En el blog ya hemos hablado del patrón clásico [Single Exit Point](/lidiando-con-el-patron-single-exit-point/) y cómo acabó derivando en *single return*. También algún momento de esta guía de refactor hemos hablado también del *return early*. Ahora vamos a retomarlos conjuntamente porque seguramente nos los encontraremos más de una vez.

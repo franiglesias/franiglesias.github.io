@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Tests y excepciones
-categories: articles
-tags: testing good-practices
+categories: [articles]
+tags: [testing, good-practices]
 ---
 
 Habitualmente no usamos las excepciones en los tests. Como mucho, esperamos que la unidad bajo prueba lance una excepción y ahí se queda todo:

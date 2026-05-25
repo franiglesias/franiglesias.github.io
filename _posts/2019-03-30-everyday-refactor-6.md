@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactor cotidiano (6). Aplica Tell, Don't Ask y la Ley de Demeter
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 En este capítulo veremos refactors basados en la redistribución de responsabilidades.

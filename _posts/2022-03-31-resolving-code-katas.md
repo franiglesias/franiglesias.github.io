@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Como hacer una kata de código 
-categories: articles
-tags: tdd good-practices
+categories: [articles]
+tags: [tdd, good-practices]
 ---
 
 Con cierta frecuencia he escrito sobre katas de código, especialmente de TDD o refactoring, pero creo que puede ser 

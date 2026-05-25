@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Luhn Test kata en Python
-categories: articles
-tags: python tdd
+categories: [articles]
+tags: [python, tdd]
 ---
 
 Hoy voy a hacer un experimento interesante: una kata en Pyhton. Llevo una temporada jugueteando un poco con el lenguaje y he podido probar algunas cosillas.

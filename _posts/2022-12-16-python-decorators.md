@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Decoradores en Python
-categories: articles
-tags: python good-practices
+categories: [articles]
+tags: [python, good-practices]
 ---
 
 El proyecto Dungeon me está sirviendo para aprender Python más a fondo, así que voy a dedicar algunos artículos a cuestiones específicas que me interesan más allá del proyecto en sí. En esta ocasión hablaré de los decoradores en Python.

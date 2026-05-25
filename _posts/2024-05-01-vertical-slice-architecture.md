@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Vertical Slice Architecture
-categories: articles
+categories: [articles]
 series: vsa
-tags: design-patterns
+tags: [design-patterns]
 ---
 
 En este artículo plasmo mis primeras reflexiones acerca de _Vertical Slice Architecture_. No trato de hacer una descripción de la propuesta como tal, que tampoco es que esté muy definida que digamos.

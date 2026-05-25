@@ -2,8 +2,8 @@
 layout: post
 title: New no. Lo siguiente
 series: design-patterns
-categories: articles
-tags: design-patterns
+categories: [articles]
+tags: [design-patterns]
 ---
 
 Artículo transcripción de la charla.

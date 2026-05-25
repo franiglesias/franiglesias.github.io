@@ -1,9 +1,9 @@
 ---
 layout: post
 title: La ética de las buenas prácticas (1)
-categories: articles
+categories: [articles]
 author: [paula, fran]
-tags: testing soft-skills ethics
+tags: [testing, soft-skills, ethics]
 ---
 
 La ética es la rama de la filosofía que se ocupa del "buen vivir". Pero no en el sentido hedonista que podrías imaginar por la expresión, sino en el sentido de la manera correcta de vivir.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Usar el code coverage para mejorar los tests
-categories: articles
-tags: testing
+categories: [articles]
+tags: [testing]
 ---
 
 El code coverage es una métrica que conviene coger con pinzas y examinar con mucho cuidado.

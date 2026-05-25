@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Guía para testear con dobles (2)
-categories: articles
-tags: testing
+categories: [articles]
+tags: [testing]
 ---
 
 En esta continuación hablaremos de los *mocks* y los *spies*.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Métodos largos
-categories: articles
-tags: design-principles refactoring
+categories: [articles]
+tags: [design-principles, refactoring]
 ---
 
 No hace mucho dejé caer en twitter que tener métodos de más de 10 líneas me parecía un smell. Por supuesto se levantó cierta polémica y hubo algunas respuestas a favor y en contra.

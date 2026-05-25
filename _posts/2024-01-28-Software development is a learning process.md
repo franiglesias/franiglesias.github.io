@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Software development is a learning process
-categories: articles
-tags: tb-list 
+categories: [articles]
+tags: [tb-list]
 ---
 
 Vlad Khononov citando a Alberto Brandolini en su libro "Learning Domain Driven Design":

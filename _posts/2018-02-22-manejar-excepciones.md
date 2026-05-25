@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Manejar excepciones
-categories: articles
-tags: php good-practices
+categories: [articles]
+tags: [php, good-practices]
 ---
 
 Las excepciones son elementos del lenguaje que nos permiten indicar situaciones que rompen el flujo normal de un programa. Cuando se lanza una excepción, ésta asciende la pila de llamadas del lenguaje hasta encontrar algún punto en que sea gestionada. Si no lo encuentra, el flujo del programa se detiene y se muestra un error.

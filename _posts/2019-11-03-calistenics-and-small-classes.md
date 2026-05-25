@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Object Calisthenics para adelgazar las clases
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 ---
 
 En este artículo presentamos un ejercicio que puede servir para adquirir soltura a la hora de escribir clases más compactas con métodos más expresivos y sencillos de entender.

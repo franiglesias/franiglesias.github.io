@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Testing y TDD para PHP gratis en CodelyTV Pro
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 Nuestro canal formativo favorito nos ha hecho una propuesta que no hemos podido rechazar.

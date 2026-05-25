@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Dobles de tests y clases finales
-categories: articles
-tags: testing tdd
+categories: [articles]
+tags: [testing, tdd]
 ---
 
 Las clases marcadas como `final` indican que no pueden ser extendidas. Eso añade un extra de dificultad en ciertos tests.

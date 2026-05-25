@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: No, Domain-Application-Infrastructure no es arquitectura hexagonal
-categories: articles
-tags: tb-list design-patterns
+categories: [articles]
+tags: [tb-list, design-patterns]
 ---
 
 No pasa un día en que no me encuentre con un post, un vídeo o un comentario en alguna red en la que alguien diga algo así como: "en mi equipo estamos haciendo arquitectura hexagonal y tenemos la capa de dominio, la de aplicación y la de infraestructura".

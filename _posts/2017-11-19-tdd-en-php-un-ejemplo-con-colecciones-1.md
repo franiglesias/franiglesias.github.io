@@ -1,8 +1,8 @@
 ---
 layout: post
 title: TDD en PHP. Un ejemplo con colecciones (1)
-categories: articles
-tags:  tdd php 
+categories: [articles]
+tags: [tdd, php]
 ---
 
 Arrays… 

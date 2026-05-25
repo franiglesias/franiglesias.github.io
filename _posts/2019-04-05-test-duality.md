@@ -1,8 +1,8 @@
 ---
 layout: post
 title: La dualidad del testing
-categories: articles
-tags: good-practices testing
+categories: [articles]
+tags: [good-practices, testing]
 ---
 
 Para ser una disciplina dedicada a que el software se comporte correctamente, lo cierto es que cuando hablamos de testing usamos el lenguaje con muy poca precisión.

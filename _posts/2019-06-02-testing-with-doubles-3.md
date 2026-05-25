@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Guía para testear con dobles (3)
-categories: articles
-tags: testing
+categories: [articles]
+tags: [testing]
 ---
 
 En esta entrada vamos a hablar de dobles que no son dobles: los `fakes`.

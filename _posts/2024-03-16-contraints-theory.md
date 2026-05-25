@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Teoría de constraints y mejora de equipos
-categories: articles
-tags: misc good-practices
+categories: [articles]
+tags: [misc, good-practices]
 recommended: true
 ---
 

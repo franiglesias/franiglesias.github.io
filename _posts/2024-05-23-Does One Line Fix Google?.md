@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Does One Line Fix Google?
-categories: articles
-tags: tb-list tools
+categories: [articles]
+tags: [tb-list, tools]
 ---
 
 ¿Recuerdas cuando Google molaba? Un pequeño truco puede permitirte usar el buscador quitando la mayor parte del ruido. Se puede aplicar a varios navegadores, incluyendo Chrome y Firefox, aunque no a Safari.

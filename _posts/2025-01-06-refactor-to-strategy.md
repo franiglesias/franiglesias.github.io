@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactorizar al patrón strategy
-categories: articles
-tags: software-design testing tdd design-patterns
+categories: [articles]
+tags: [software-design, testing, tdd, design-patterns]
 ---
 
 En este artículo voy a usar diversas técnicas para refactorizar un código para usar el patrón _strategy_ y, así, hacer más fácil agregar nuevas funcionalidades a un código existente.

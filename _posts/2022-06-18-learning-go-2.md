@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Aprendiendo Go con TDD 2
-categories: articles
-tags: golang tdd
+categories: [articles]
+tags: [golang, tdd]
 ---
 
 Vamos con la segunda entrega de este diario de aprendizaje de Golang con TDD.

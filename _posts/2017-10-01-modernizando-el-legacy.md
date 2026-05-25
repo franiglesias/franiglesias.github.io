@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Modernizando el legacy
-categories: articles
-tags: legacy refactoring
+categories: [articles]
+tags: [legacy, refactoring]
 ---
 
 Hace unos días trabajamos en una de esas historias que mola porque puedes reducir un poco de legacy code y refactorizar, contribuyendo a mejorar la calidad del código y su extensibilidad futura. 

@@ -1,8 +1,8 @@
 ---
 layout: micro-post
 title: Self-referential functions and the design of options 
-categories: articles
-tags: tb-list golang
+categories: [articles]
+tags: [tb-list, golang]
 ---
 
 Me guardo este artículo de Rob Pike que explica como usar funciones autorreferenciales para pasar parámetros a funciones en Go. Ya, yo también me quedo un poco igual con este título, la verdad, pero resuelve un problema bastante interesante: diseñar signaturas de funciones que puedan recibir un número indeterminado de parámetros de una forma bastante limpia.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Mi código en producción ya es legacy
-categories: articles
-tags: legacy good-practices
+categories: [articles]
+tags: [legacy, good-practices]
 ---
 
 Artículo que [versiona la charla](/peum-conf-2020).

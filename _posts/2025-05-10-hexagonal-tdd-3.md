@@ -2,9 +2,9 @@
 layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (3) 
 title: Comparativa práctica y conclusiones
-categories: articles
+categories: [articles]
 series: outside-in-ha
-tags: software-design design-patterns typescript tdd hexagonal
+tags: [software-design, design-patterns, typescript, tdd, hexagonal]
 ---
 
 En esta entrega comparo mis impresiones sobre ambas escuelas de TDD outside-in.

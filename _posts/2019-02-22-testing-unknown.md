@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Testeando lo desconocido (1)
-categories: articles
-tags: testing
+categories: [articles]
+tags: [testing]
 ---
 
 Recientemente he comenzado a trabajar en otro proyecto dentro de la empresa ayudando con el testing. Es una parte del negocio que conozco poco todavía y la aplicación con la que estoy trabajando es, por supuesto, distinta, aunque similar en planteamiento.

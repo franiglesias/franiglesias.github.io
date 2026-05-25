@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Let it fail
-categories: articles
-tags: testing soft-skills ethics
+categories: [articles]
+tags: [testing, soft-skills, ethics]
 ---
 
 Artículo sobre antipatrones en el uso de dobles de tests y algunas heurísticas útiles para hacer buenos tests cuando necesitamos dobles.

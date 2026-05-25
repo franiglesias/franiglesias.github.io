@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Katando PHPSpec 2
-categories: articles
-tags: tdd bdd
+categories: [articles]
+tags: [tdd, bdd]
 ---
 
 Continuamos con la kata iniciada en el artículo anterior.

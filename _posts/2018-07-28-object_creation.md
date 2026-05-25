@@ -2,8 +2,8 @@
 layout: post
 title: Patrones de creación de objetos
 series: design-patterns
-categories: articles
-tags: php
+categories: [articles]
+tags: [php]
 ---
 
 Cada vez que necesitamos instanciar objetos en una aplicación tenemos que resolver un pequeño problema.

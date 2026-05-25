@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Los principios SOLID
-categories: articles
-tags: design-principles oop
+categories: [articles]
+tags: [design-principles, oop]
 recommended: true
 ---
 

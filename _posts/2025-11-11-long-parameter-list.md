@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Long Parameter List
-categories: articles
+categories: [articles]
 series: code-smells
-tags: code-smells refactoring typescript design-patterns
+tags: [code-smells, refactoring, typescript, design-patterns]
 ---
 
 Otro _smell_ de la familia de los _Bloaters_. _Long Parameter List_ ocurre cuando una función o método recibe más de tres o cuatro parámetros.

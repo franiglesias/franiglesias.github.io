@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Guía para testear con dobles (1)
-categories: articles
-tags: testing
+categories: [articles]
+tags: [testing]
 ---
 
 Se diría que uno de los puntos más problemáticos a la hora de testear sea, para muchas personas, el utilizar dobles: cuándo usarlos, cómo y un largo etcétera de preguntas. En este artículo voy a proponer una serie de consideraciones para testear con dobles y no sufrir.

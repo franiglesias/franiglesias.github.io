@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 99 bottles of OOP. Sandi Metz.
-categories: articles
-tags: books design-principles ruby php javascript
+categories: [articles]
+tags: [books, design-principles, ruby, php, javascript]
 ---
 
 Otro libro imprescindible de Sandi Metz, que puedes conseguir en versiones para ruby, php y javascript.

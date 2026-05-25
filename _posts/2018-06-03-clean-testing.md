@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Clean testing
-categories: articles
-tags: php testing tdd good-practices
+categories: [articles]
+tags: [php, testing, tdd, good-practices]
 ---
 
 Algunas estrategias con las que intento que mis tests sean cada vez más limpios y legibles y, por tanto, más capaces de comunicar lo que hace el software que escribo.

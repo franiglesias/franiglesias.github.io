@@ -2,8 +2,8 @@
 layout: post
 title: El patrón State
 series: design-patterns
-categories: articles
-tags: design-patterns good-practices
+categories: [articles]
+tags: [design-patterns, good-practices]
 ---
 
 Cómo modelar propiedades de estado de una entidad y sus transformaciones.

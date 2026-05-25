@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Historia de una reescritura (1)
-categories: articles
-tags: legacy
+categories: [articles]
+tags: [legacy]
 ---
 
 Hace unos 15 años comencé a escribir mi primera aplicación seria en PHP. Esta aplicación fue creciendo y sufriendo diversos cambios y prestaciones. Ahora ha llegado el momento de replantearla.

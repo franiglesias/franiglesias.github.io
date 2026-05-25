@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Buscando nuevo trabajo
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 Pues aquí estamos, en el trabajo de buscar un nuevo trabajo.

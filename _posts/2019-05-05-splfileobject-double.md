@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Un doble para SplFileObject
-categories: articles
-tags: testing tips
+categories: [articles]
+tags: [testing, tips]
 ---
 
 La _Standard PHP Library_ incluye unas cuantas clases que merece la pena conocer, entre ellas `SplFileObject` de la cual nos ocupamos en este artículo. Sin embargo, a veces tienen alguna sorpresa oculta.

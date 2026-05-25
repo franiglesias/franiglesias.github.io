@@ -1,8 +1,8 @@
 ---
 layout: post
 title: De abstracciones y duplicaciones
-categories: articles
-tags: design-principles good-practices
+categories: [articles]
+tags: [design-principles, good-practices]
 ---
 
 De vez en cuando encuentro algunos debates sobre el tema de que es mejor una duplicación que una mala abstracción. [Como esta en twitter, por ejemplo](https://twitter.com/c0rvid0/status/1350826080639324161).

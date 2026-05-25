@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Dos semanas
-categories: articles
-tags: misc
+categories: [articles]
+tags: [misc]
 ---
 
 Mañana miércoles se cumplen dos semanas de mi nueva etapa profesional.

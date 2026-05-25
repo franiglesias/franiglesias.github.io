@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Practica el refactoring con la Quotebot Kata
-categories: articles
-tags: legacy refactoring testing
+categories: [articles]
+tags: [legacy, refactoring, testing]
 ---
 
 Hace unos días subí al repositorio una versión para PHP de la [Quotebot Kata](https://github.com/franiglesias/legacy-testing-kata), un ejercicio propuesto por Cyrille Martraire en el que se presenta un código que inicialmente es imposible de testear (y prácticamente de ejecutar en tu local).

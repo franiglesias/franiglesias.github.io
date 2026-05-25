@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Al menos uno
-categories: articles
-tags: tips refactoring
+categories: [articles]
+tags: [tips, refactoring]
 ---
 
 Un ejemplo sencillo que refleja el proceso de refinamiento iterativo que es escribir software.

@@ -2,9 +2,9 @@
 layout: post
 subtitle: TDD outside-in con arquitectura hexagonal (5) 
 title: Sad paths, validaciones y robustez en los tests
-categories: articles
+categories: [articles]
 series: outside-in-ha
-tags: software-design design-patterns typescript tdd hexagonal
+tags: [software-design, design-patterns, typescript, tdd, hexagonal]
 ---
 
 En esta ocasión, vamos a centrarnos en los sad-paths, validación y gestión de errores.

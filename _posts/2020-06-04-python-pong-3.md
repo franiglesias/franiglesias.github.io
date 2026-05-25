@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Pong en Python. Reubicar el legacy y automatizar los tests
-categories: articles
-tags: python good-practices
+categories: [articles]
+tags: [python, good-practices]
 ---
 
 En esta etapa, introducimos conceptos nuevos que nos forzarán a ir desmontando el legacy.

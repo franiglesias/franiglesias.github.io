@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Poniendo un test bajo test en PHP
-categories: articles
-tags: php testing
+categories: [articles]
+tags: [php, testing]
 ---
 
 Explorando cómo portar la librería Golden a PHP y aprendiendo algunas cosas curiosas.

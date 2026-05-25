@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Refactor cotidiano
-categories: articles
-tags: good-practices refactoring
+categories: [articles]
+tags: [good-practices, refactoring]
 recommended: true
 ---
 

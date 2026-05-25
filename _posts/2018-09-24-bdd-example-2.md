@@ -11,15 +11,15 @@ Antes de continuar me gustaría puntualizar algunas cosas cuya ausencia podríai
 
 ## Hagamos un inciso
 
-**Qué hay de los tests de navegador**. Muchas personas sabéis que es frecuente hacer tests de navegador con ayuda de estas herramientas ya que es el modo en que el usuario va a interactuar con la aplicación. En su lugar he planteado un test más centrado en el *backend*. Primero porque es un terreno más familiar para mi, pero también me parece que es más fácil entender el funcionamiento del ecosistema BDD sin introducir dificultades extras, como es instalar, configurar y hacer funcionar el navegador de test.
+**Qué hay de los tests de navegador**. Muchas personas sabéis que es frecuente hacer tests de navegador con ayuda de estas herramientas, ya que es el modo en que el usuario va a interactuar con la aplicación. En su lugar he planteado un test más centrado en el *backend*. Primero porque es un terreno más familiar para mí, pero también me parece que es más fácil entender el funcionamiento del ecosistema BDD sin introducir dificultades extras, como es instalar, configurar y hacer funcionar el navegador de test.
 
 Sin embargo, mi plan es cubrir ese tipo de pruebas más adelante. 
 
-**Tests de integración con behat**. Con relación a lo anterior, decir que es perfectamente válido utilizar Gherkin y behat para plantear tests de integración de esta forma. Asumo que en cada equipo de desarrollo y en cada proyecto las cosas pueden ser distintas pero en mi caso esta aproximación sería suficiente en la mayor parte de ocasiones.
+**Tests de integración con behat**. Con relación a lo anterior, decir que es perfectamente válido utilizar Gherkin y behat para plantear tests de integración de esta forma. Asumo que en cada equipo de desarrollo y en cada proyecto las cosas pueden ser distintas, aunque en mi caso esta aproximación sería suficiente en la mayor parte de ocasiones.
 
-**¿Esta cosa es configurable?** Bajando a aspectos más prácticos, todavía no me parado en introducir los detalles de configuración de behat. Con toda razón habrá quien se pregunte si no es posible guardar los archivos en otra parte o generar más tests que el `FeatureContext` que se crea por defecto. Por supuesto que es posible personalizar la herramienta pero, de nuevo, me ha parecido más fácil centrarnos en entender bien el flujo de trabajo antes de tratar de personalizarlo sin saber por qué o para qué.
+**¿Esta cosa es configurable?** Bajando a aspectos más prácticos, todavía no me he parado en introducir los detalles de configuración de behat. Con toda razón habrá quien se pregunte si no es posible guardar los archivos en otra parte o generar más tests que el `FeatureContext` que se crea por defecto. Por supuesto que es posible personalizar la herramienta, pero, de nuevo, me ha parecido más fácil centrarnos en entender bien el flujo de trabajo antes de tratar de personalizarlo sin saber por qué o para qué.
 
-**¿Otro entorno de test? ¿Tengo que aprender PHPSpec?** En la entrega anterior mencioné que usaríamos **PHPSpec** para la siguiente fase de desarrollo BDD. Sin embargo, no es estrictamente necesario ya que con **PHPUnit** podemos desarrollar el mismo tipo de test, aunque nos exige algo más de disciplina. Como ya he comentado anteriormente, y la documentación de **PHPSpec** insiste, se trata de un framework de test con opiniones muy marcadas acerca de cómo deberías programar.
+**¿Otro entorno de test? ¿Tengo que aprender PHPSpec?** En la entrega anterior mencioné que usaríamos **PHPSpec** para la siguiente fase de desarrollo BDD. Sin embargo, no es estrictamente necesario, ya que con **PHPUnit** podemos desarrollar el mismo tipo de test, aunque nos exige algo más de disciplina. Como ya he comentado anteriormente, y la documentación de **PHPSpec** insiste, se trata de un framework de test con opiniones muy marcadas acerca de cómo deberías programar.
 
 PHPSpec impone muchas restricciones que son buenas para forzarnos a respetar los principios de diseño y construir un código desacoplado y sostenible guiados por ejemplos. 
 
@@ -290,7 +290,7 @@ Feature: Massively update product prices when needed
 
 Tenemos un primer test que nos dice que no hay nada implementado, así que tenemos que empezar a pensar en añadir código. Un posible planteamiento es pensar que esta *Feature* se reflejaría en un *Use Case*.
 
-Nuestro *Use Case* provocará un efecto en el sistema, modificando su estado. Posiblemente necesitará colaboradores, pero no queremos ocuparnos de eso ahora. Ya veremos lo que necesita.
+Nuestro *Use Case* provocará un efecto en el sistema, modificando su estado. Posiblemente, necesitará colaboradores, pero no queremos ocuparnos de eso ahora. Ya veremos lo que necesita.
 
 El *Use Case* tendrá como nombre, al menos de momento, `UpdatePricesFromUploadedFile` lo que refleja bastante bien la *Feature* que estamos desarrollando. Como hemos decidido no ocuparnos de los colaboradores, vamos a empezar a escribir nuestro test de aceptación implementando los pasos en los que `UpdatePricesFromUploadedFile` tiene una intervención directa, que serán los pasos **When**. 
 
@@ -390,7 +390,7 @@ class FeatureContext implements Context
 }
 ```
 
-Si ejecuto `behat` la feature fallará puesto que no existe el *Use Case*, sin embargo me gustaría fijarme en un par de puntos antes de seguir adelante:
+Si ejecuto `behat` la feature fallará, puesto que no existe el *Use Case*. Sin embargo, me gustaría fijarme en un par de puntos antes de seguir adelante:
 
 * He inicializado el *Use Case* en el constructor de `FeatureContext` que es justamente el lugar más adecuado para inicializar elementos que necesiten ser usados en varios lugares. `FeatureContext` no deja de ser una clase como otra cualquiera.
 * He supuesto que el *Use Case* se usará con el método `usingFile`, que todavía no existe y al que se le pasa como parámetro `$this->filePath`. Esto es así porque el paso en el que la feature Gherkin "pasa" ese parámetro es otro diferente, por lo que usamos propiedades como forma de poder recoger elementos en un paso y utilizarlos en otro. Ya volveremos luego a ese punto.
@@ -419,7 +419,7 @@ Requerimos `PHPSpec` mediante `composer` para incluirlo en nuestras dependencias
 composer require --dev PHPSpec/PHPSpec
 ```
 
-Nuestro composer.json necesitará la adición de una clave para autoload PSR-0:
+Nuestro `composer.json` necesitará la adición de una clave para aplicar _autoload PSR-0_:
 
 ```json
 {
@@ -458,11 +458,11 @@ Nuestro composer.json necesitará la adición de una clave para autoload PSR-0:
 }
 ```
 
-Al igual que con **behat**, de momento no nos vamos a preocupar de los detalles de configuración pues para empezar ya nos va bien con su comportamiento por defecto. Excepto por una cosa: el informe.
+Al igual que con **behat**, de momento no nos vamos a preocupar de los detalles de configuración, pues para empezar ya nos va bien con su comportamiento por defecto. Excepto por una cosa: el informe.
 
 ### Embelleciendo el informe del test
 
-Aunque el reporte por omisión del PHPSpec funciona bien por lo general, queda muy mal si la presentación del mismo es en monocromática como en este artículo, por lo que para tener un mejor visión de lo que ocurre con nuestra especificación vamos a cambiar su formato con esta opción:
+Aunque el reporte por omisión del PHPSpec funciona bien por lo general, queda muy mal si la presentación del mismo es en monocromática como en este artículo, por lo que para tener una mejor visión de lo que ocurre con nuestra especificación vamos a cambiar su formato con esta opción:
 
 ```bash
 bin/PHPSpec run --format pretty
@@ -495,7 +495,7 @@ Hay varios formatos de reporte, así que puedes escoger el que más útil te res
 
 El núcleo de la feature que vamos a desarrollar es el *Use Case* llamado `UpdatePricesFromUploadedFile`.
 
-`UpdatePricesFromUploadedFile` será el responsable de realizar la *feature* y podemos intuir que necesitará ayuda. Incluso, por experiencia, podemos tener una idea bastante clara de cómo debería montarse el sistema. En ese sentido, nuestro planteamiento es correcto. Pero, en lugar de entrar en detalles de cómo deben funcionar los colaboradores, lo que vamos a  hacer es dejar que sea el diseño de `UpdatePricesFromUploadedFile` el que nos lleve a cómo deberían funcionar cuando los necesitemos.
+`UpdatePricesFromUploadedFile` será el responsable de realizar la *feature* y podemos intuir que necesitará ayuda. Incluso, por experiencia, podemos tener una idea bastante clara de cómo debería montarse el sistema. En ese sentido, nuestro planteamiento es correcto. Pero, en lugar de entrar en detalles de cómo deben funcionar los colaboradores, lo que vamos a hacer es dejar que sea el diseño de `UpdatePricesFromUploadedFile` el que nos lleve a cómo deberían funcionar cuando los necesitemos.
 
 Así que empezamos por *describir* el comportamiento de nuestro *Use Case*:
 
@@ -583,7 +583,7 @@ Class TalkingBit\BddExample\UpdatePricesFromUploadedFile created in /Users/frank
 85ms
 ```
 
-Se muestran las estadísticas de la ejecución del test, que ahora pasa ya que se ha creado un archivo con una definición básica de la clase, que ahora ya es inicializable (¡yuhu!):
+Se muestran las estadísticas de la ejecución del test, que ahora pasa, ya que se ha creado un archivo con una definición básica de la clase, que ahora ya es inicializable (¡yuhu!):
 
 ```php
 <?php
@@ -596,7 +596,7 @@ class UpdatePricesFromUploadedFile
 
 ```
 
-No es que sea una clase con mucho contenido, pero ya nos vale para hacer funcionar el test de aceptación. ¿Lo probamos? Sólo tenemos que añadir la siguiente línea a FeatureContext:
+No es que sea una clase con mucho contenido, pero ya nos vale para hacer funcionar el test de aceptación. ¿Lo probamos? Solo tenemos que añadir la siguiente línea a `FeatureContext`:
 
 ```php
 use TalkingBit\BddExample\UpdatePricesFromUploadedFile;
@@ -608,7 +608,7 @@ Y ejecutar `behat`:
 bin/behat
 ```
 
-Ahora el test se puede ejecutar, aunque todavía no es útil ya que nos quedan varios pasos por implementar (para empezar todos los **Given**, lo que nos mantiene detenidos todos los escenarios al principio). Sin embargo, todavía no podemos hacerlo, pues no tenemos ni idea de cómo.
+Ahora el test se puede ejecutar, aunque todavía no es útil, ya que nos quedan varios pasos por implementar (para empezar todos los **Given**, lo que nos mantiene detenidos todos los escenarios al principio). Sin embargo, todavía no podemos hacerlo, pues no tenemos ni idea de cómo.
 
 Sigamos profundizando en la especificación.
 
@@ -624,7 +624,7 @@ La cuestión ahora es que debemos describir cómo queremos que se comporte este 
 
 En este caso sigue un patrón Comando y, como tal, provoca un efecto en el sistema, como es leer un archivo y actualizar una tabla de precios. Si se encuentra con algún problema para realizar esta tarea fallará (lanzando una excepción). En cambio, si la ejecuta no comunicará nada: 'no news are good news', tendremos que examinar su efecto en el sistema.
 
-Para ello el *Use Case* necesita saber la ubicación del archivo y la de la tabla de precios. La primera la conocerá en el momento de ejecutarse, mientras que la segunda la sabrá a priori porque estará en un lugar determinado del sistema.
+Para ello el *Use Case* necesita saber la ubicación del archivo y la de la tabla de precios. La primera la conocerá en el momento de ejecutarse, mientras que la segunda la sabrá a priori, puesto que estará en un lugar determinado del sistema.
 
 Esto nos da alguna pista:
 
@@ -658,7 +658,7 @@ class UpdatePricesFromUploadedFileSpec extends ObjectBehavior
 }
 ```
 
-Como primera cosa a destacar, señalar que los ejemplos se escriben comenzando por `it_` o `its_` (de forma similar a como los test en `PHPUnit` se escriben comenzando por `test`). Además los nombres se escriben con *underscore* o *snake-case*. Esto va contra las recomendaciones de PSR, pero creo que podremos lidiar con ello.
+Como primera cosa a destacar, señalar que los ejemplos se escriben comenzando por `it_` o `its_` (de forma similar a como los test en `PHPUnit` se escriben comenzando por `test`). Además, los nombres se escriben con *underscore* o *snake-case*. Esto va contra las recomendaciones de PSR, pero creo que podremos lidiar con ello.
 
 No esperamos que este método retorne nada, solo que exista, así que si ejecutamos nos dará un fallo. De nuevo, además de las estadísticas y resultados del test, nos indica que el problema es que no existe el método y nos ofrece crearlo.
 
@@ -973,7 +973,7 @@ Interface TalkingBit\BddExample\VO\FilePath created in /Users/frankie/Sites/csvr
 190ms
 ```
 
-El test sigue fallando. Nos dice que ahora `usingFile` no acepta el tipo de objeto que le estamos pasando ya que esperaba un `string`. Cambiemos eso para volver a verde, eliminando el contenido del método usingFile que ya no tiene sentido:
+El test sigue fallando. Nos dice que ahora `usingFile` no acepta el tipo de objeto que le estamos pasando, ya que esperaba un `string`. Cambiemos eso para volver a verde, eliminando el contenido del método usingFile que ya no tiene sentido:
 
 ```
 <?php
@@ -1256,7 +1256,7 @@ Hay un montón de cosas nuevas aquí, por lo que vamos a analizarlas:
 
 ### Let y beConstructedWith
 
-*let* es un método que se ejecuta antes de cada ejemplo, lo que nos permite preparar todo lo necesario y que sea común para todos los ejemplos. En `PHPUnit` sería `setUp`.
+`let` es un método que se ejecuta antes de cada ejemplo, lo que nos permite preparar todo lo necesario y que sea común para todos los ejemplos. En `PHPUnit` sería `setUp`.
 
 En este caso, lo que hacemos es inicializar nuestro *subject under specification*, haciendo que sea construido con un colaborador, una nueva clase cuya interfaz se llamará `FileReader`. Es cierto que queremos una implementación que lea CSV, pero ya que estamos, vamos a desligarnos de eso y ya dejaremos para luego esa implementación concreta. El método `beConstructedWith` es una especie de factoría que nos permite pasarle los parámetros que requerirá el constructor. Y, sí, también existe una versión para constructores estáticos.
 
@@ -1392,7 +1392,7 @@ Ahora mismo, `UpdatePricesFromUploadedFile` ya puede tener la información proce
 
 En la *Feature* no hemos definido detalles acerca de la estructura del archivo ni de cómo está almacenada la información en el sistema. Así que haremos algunas suposiciones en este momento para poder avanzar. En una próxima entrega modificaremos algunos detalles del código para ser más rigurosos, pero el tiempo apremia y queremos presentar un MVP.
 
-Así que vamos a suponer que el archivo se compone de dos simples columnas: el id del producto y el nuevo precio que se le asignará, en euros.
+Así que vamos a suponer que el archivo se compone de dos simples columnas: el _ID_ del producto y el nuevo precio que se le asignará, en euros.
 
 Por ejemplo (no necesitamos muchísimos):
 
@@ -1421,7 +1421,7 @@ Por tanto, escribiremos un ejemplo que describa justamente eso:
     }
 ```
 
-Desgraciadamente, el ejemplo pasa, lo que es malo porque no hemos implementado nada que explique que pase. Nos faltan unas cuantas cosas. Para empezar, necesitamos una forma de saber que `UpdatePricesFromUploadedFile` hace su trabajo, pasando la nueva información a `ProductRepository`, al cual no hemos invitado todavía a participar.
+Desgraciadamente, el ejemplo pasa, lo que es malo porque no hemos implementado nada que explique qué pase. Nos faltan unas cuantas cosas. Para empezar, necesitamos una forma de saber que `UpdatePricesFromUploadedFile` hace su trabajo, pasando la nueva información a `ProductRepository`, al cual no hemos invitado todavía a participar.
 
 `ProductRepository` es un colaborador que debería pasarse en construcción y debemos simular algunos comportamientos. Concretamente, para poder asumir que `UpdatePricesFromUploadedFile` hace lo que debe, debemos fijar unas expectativas en `ProductRepository`, convirtiéndolo en un **Mock**.
 

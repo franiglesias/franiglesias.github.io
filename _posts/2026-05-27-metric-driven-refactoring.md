@@ -6,18 +6,11 @@ tags: [ refactoring, good-practices ]
 recommended: true
 ---
 
-Lejos de ser una cuestión estética o academicista, el refactoring es una herramienta de control de costes del desarrollo
-de software. Incluso en tiempos de Inteligencia Artificial.
+Lejos de ser una cuestión estética o academicista, el refactoring es una herramienta de control de costes del desarrollo de software. Incluso en tiempos de Inteligencia Artificial.
 
-La calidad del software es medible, aunque sus métricas no siempre son fáciles de gestionar. Por lo general, decimos que
-la calidad está relacionada con la baja complejidad y la facilidad de cambio y mantenimiento, que implican a su vez una
-gran inteligibilidad. Un software fácil de cambiar, es un software que se puede adaptar rápidamente a las necesidades de
-negocios en transformación constante. Por tanto, cuanto más podamos hacer hoy por mejorar su calidad, mejores serán las
-condiciones que nos encontraremos en el futuro para trabajar con él.
+La calidad del software es medible, aunque sus métricas no siempre son fáciles de gestionar. Por lo general, decimos que la calidad está relacionada con la baja complejidad y la facilidad de cambio y mantenimiento, que implican a su vez una gran inteligibilidad. Un software fácil de cambiar, es un software que se puede adaptar rápidamente a las necesidades de negocios en transformación constante. Por tanto, cuanto más podamos hacer hoy por mejorar su calidad, mejores serán las condiciones que nos encontraremos en el futuro para trabajar con él.
 
-Se podría argumentar que, con la extensión del uso de asistentes y agentes de código esta necesidad ya no existe. Total:
-cualquier LLM puede entender el código por enrevesado que esté. Sin embargo, el coste de uso del LLM será menor cuanto
-más mantenible sea el código con el que tiene que lidiar.
+Se podría argumentar que, con la extensión del uso de asistentes y agentes de código esta necesidad ya no existe. Total: cualquier LLM puede entender el código por enrevesado que esté. Sin embargo, el coste de uso del LLM será menor cuanto más mantenible sea el código con el que tiene que lidiar.
 
 ## Como medir la calidad del software
 
@@ -27,28 +20,20 @@ Tenemos dos formas principales: heurísticas y métricas.
 
 ### Heurísticas
 
-Las heurísticas nos proporcionan una aproximación sencilla a la complejidad. En este contexto, una heurística es un
-método aproximativo de medición. Partiendo de signos que podemos identificar de forma sencilla, nos permite obtener,
-como mínimo, una indicación de que aquello que estamos examinando se ajusta o no a un criterio determinado. Aunque no
+Las heurísticas nos proporcionan una aproximación sencilla a la complejidad. En este contexto, una heurística es un método aproximativo de medición. Partiendo de signos que podemos identificar de forma sencilla, nos permite obtener, como mínimo, una indicación de que aquello que estamos examinando se ajusta o no a un criterio determinado. Aunque no
 tengamos una medida precisa.
 
 Tenemos dos familias de heurísticas bastante conocidas: las reglas de calistenia y los code smells.
 
-Las reglas de calistenia son nueve reglas propuestas por Jeff Bay como ejercicio para mejorar el código orientado a
-objetos. Se pueden utilizar perfectamente como proxy de medidas de complejidad más precisas.
+Las [reglas de calistenia](/calisthenics-1/) son nueve reglas propuestas por Jeff Bay como ejercicio para mejorar el código orientado a objetos. Se pueden utilizar perfectamente como proxy de medidas de complejidad más precisas.
 
-Los code smells describen patrones de código identificables que se relacionan con algún tipo de problema ligado a la
-complejidad, la cohesión o el acoplamiento. Igualmente, pueden actuar como proxy de una medición precisa.
+Los code smells describen patrones de código identificables que se relacionan con algún tipo de problema ligado a la complejidad, la cohesión o el acoplamiento. Igualmente, pueden actuar como proxy de una medición precisa.
 
-Es decir, ambas familias de heurísticas nos proporcionan una forma sencilla de detectar áreas problemáticas de la
-calidad del software que escribimos.
+Es decir, ambas familias de heurísticas nos proporcionan una forma sencilla de detectar áreas problemáticas de la calidad del software que escribimos.
 
-Esto no quiere decir que sean medidas subjetivas. Por ejemplo: decir que un código es elegante es una forma de describir
-un código bien hecho, pero es una descripción subjetiva. La elegancia es muy difícil de definir, aunque podamos
-percibirla. Sin embargo, estas heurísticas se basan en rasgos concretos e identificables del código.
+Esto no quiere decir que sean medidas subjetivas. Decir que un código es elegante es una forma de describir un código bien hecho, pero es una descripción subjetiva. La elegancia es muy difícil de definir, aunque podamos percibirla. Sin embargo, estas heurísticas se basan en rasgos concretos e identificables del código.
 
-Por ejemplo, la regla de calistenia "un solo nivel de indentación por método" se puede identificar fácilmente. Basta
-contar. El siguiente código tiene un único nivel de indentación:
+Tomemos por ejemplo, la regla de calistenia "un solo nivel de indentación por método" se puede identificar fácilmente. Basta con contar. El siguiente código tiene un único nivel de indentación:
 
 ```typescript
 class MyClass {
@@ -64,7 +49,7 @@ class MyClass {
 }
 ```
 
-Pero ya podemos ver dos en el siguiente:
+Pero ya podemos ver dos en el siguiente, lo que nos dice que es más complejo que el anterior:
 
 ```typescript
 class MyClass {
@@ -85,31 +70,20 @@ class MyClass {
 }
 ```
 
-El code smell "condicionales anidadas" es igualmente fácil de identificar en el código anterior, pues se trata de otra
-forma de enunciar el mismo problema. De hecho, basta con mirar el margen izquierdo del código. El hecho de que tenga una
-forma de dientes de sierra nos está señalando el problema. Así que bastaría con un vistazo para identificar un problema
-de complejidad.
+El code smell "condicionales anidadas" es igualmente fácil de identificar en el código mostrado, pues se trata de otra forma de enunciar el mismo problema. De hecho, basta con mirar el margen izquierdo del código. El hecho de que tenga una forma de dientes de sierra nos está señalando el problema. Así que bastaría con un vistazo para identificar el riesgo
+de tener alta complejidad.
 
-La métrica a la que estas dos heurísticas sirven de _proxy_ es la Complejidad Ciclomática, de la que hablaremos
-seguidamente. Esta métrica cuantifica la complejidad de un código basándose en el conteo de posibles flujos de
-ejecución.
+La métrica a la que estas dos heurísticas sirven de _proxy_ es la Complejidad Ciclomática, de la que hablaremos seguidamente. Esta métrica cuantifica la complejidad de un código basándose en el conteo de posibles flujos de ejecución.
 
 ### Métricas
 
-Frente a las heurísticas, las métricas nos proporcionan una cuantificación del rasgo o la característica en que estamos
-interesadas. Esta cuantificación, además, permite establecer umbrales para clasificar y comparaciones, lo que nos
-habilita para priorizar esfuerzos.
+Frente a las heurísticas, las métricas nos proporcionan una cuantificación del rasgo o la característica en que estamos interesadas. Esta cuantificación, además, permite establecer umbrales para clasificar y nos permite comparar ejemplos de código entre sí, lo que nos habilita para priorizar esfuerzos.
 
-De este modo, podemos definir umbrales para decidir si debemos intervenir o no en el código, clasificando los valores en
-distintas categorías. Por otro lado, podemos comparar partes del mismo software para decidir cuáles requieren de nuestra
-atención y priorizar las acciones que podamos planear.
+De este modo, podemos definir umbrales para decidir si debemos intervenir o no en el código, clasificando los valores en distintas categorías. Por otro lado, podemos comparar partes del mismo software para decidir cuáles requieren de nuestra atención y priorizar las acciones que podamos planear.
 
 ## Complejidad Ciclomática
 
-Esta métrica fue introducida por Thomas J. McCabe en 1976, en este
-artículo: [A Complexity Measure](http://www.literateprogramming.com/mccabe.pdf)[^1]. Se trata de analizar el bloque de
-código como un grafo de control y contar sus aristas, nodos y componentes conectados. Es posible hacer una simplicación
-de la fórmula, que queda reducida a:
+Esta métrica fue introducida por Thomas J. McCabe en 1976, en el artículo [A Complexity Measure](http://www.literateprogramming.com/mccabe.pdf)[^1]. Se trata de analizar el bloque de código como un grafo de control y contar sus aristas, nodos y componentes conectados. Es posible hacer una simplicación de la fórmula, que queda reducida a:
 
 ```
 Cyclomatic Complexity = Number of conditonals + 1
@@ -140,9 +114,7 @@ class MyClass {
 
 ### Pero, ¿qué nos indica la complejidad ciclomática?
 
-Como te podrás imaginar, la complejidad ciclomática nos dice como de complejo es un código. Cuanto más complejo, más
-esfuerzo tendremos que invertir para entenderlo, pero también para cambiarlo. El grado de complejidad se puede
-evaluar con esta tabla:
+Como te podrás imaginar, la complejidad ciclomática nos dice como de complejo es el flujo de control de un código. Cuanto más complejo, más esfuerzo tendremos que invertir para entenderlo, pero también para cambiarlo. El grado de complejidad se puede evaluar con esta tabla:
 
 | Complejidad Ciclomática | Complejidad |
 |-------------------------|-------------|
@@ -151,15 +123,15 @@ evaluar con esta tabla:
 | 21-50                   | Alta        |
 | 50 o más                | Muy alta    |
 
-En nuestro ejemplo, la complejidad se mantiene todavía baja, pues no deja de ser un ejemplo bastante sencillo. Sin embargo, teniendo en cuenta la cantidad de líneas, podría justificar intervenir.
+En nuestro caso, la complejidad se mantiene todavía baja, pues no deja de ser un ejemplo bastante sencillo. Sin embargo, teniendo en cuenta la cantidad de líneas, podría justificarse intervenir en él.
 
 Otro aspecto muy importante es que la complejidad ciclomática nos proporciona una cota mínima del número de tests que deberíamos escribir para cubrir todos los flujos. Decimos que es una cota mínima porque podríamos necesitar más tests para blindarnos ante mutaciones.
 
 ### Podemos reducir la complejidad basándonos en la métrica
 
-Por supuesto. Precisamente al tener una métrica podemos comparar distintas versiones del mismo código.
+Por supuesto. Precisamente al tener una métrica podemos comparar distintas versiones del mismo código y decidir la que nos conviene usar.
 
-Pero vamos a empezar aplicando la heurística y reducir los niveles de indentación a 1.
+Pero vamos a empezar aplicando la heurística para reducir los niveles de indentación a 1.
 
 ```typescript
 class MyClass {
@@ -180,7 +152,7 @@ class MyClass {
 }
 ```
 
-Esto mantiene la misma complejidad de 4 (3 condicionales + 1 retornos), pero nos ayuda al poner de manifiesto ciertos rasgos del código. En último término, nos dice que cada rama aplica un factor multiplicador diferente: 4, 1/3, 1/2 y 1.
+Esto mantiene la misma complejidad de 4 (3 condicionales + 1 retornos), lo que revela una limitación del índice de la que hablaremos luego. Pero nos ayuda al poner de manifiesto ciertos rasgos del código. En último término, nos dice que cada rama aplica un factor multiplicador diferente: 4, 1/3, 1/2 y 1.
 
 ```typescript
 class MyClass {
@@ -202,7 +174,7 @@ class MyClass {
 }
 ```
 
-La complejidad ciclomática sigue siendo 4. No es mucho avance, pero nos ayuda a poner de manifiesto una cierta incoherencia. Una de las condicionales usa el operador `<=`, mientras que las otras dos usan el operador `>`. ¿Qué pasa si intentamos hacerlas más similares?
+La complejidad ciclomática sigue siendo 4. No es mucho avance, pero pone de manifiesto una cierta incoherencia. Una de las condicionales usa el operador `<=`, mientras que las otras dos usan el operador `>`. ¿Qué pasa si intentamos hacer más similares todas las estructuras?
 
 ```typescript
 class MyClass {
@@ -224,7 +196,7 @@ class MyClass {
 }
 ```
 
-Mantenemos la complejidad en 4. Pero ahora podemos ver un patrón y optar por otra aproximación. Aquí tenemos una versión cuya complejidad ciclomática es 1.
+Mantenemos la complejidad en 4, ya que no hemos cambiado nada en el aspecto estructural. Pero ahora podemos ver un patrón y optar por otra aproximación distinta. Aquí tenemos una versión cuya complejidad ciclomática es 1.
 
 ```typescript
 class MyClass {
@@ -252,7 +224,7 @@ Por otro lado, el refactoring no siempre va a suponer una mejora de la métrica,
 
 ## Complejidad Cognitiva
 
-Como acabamos de ver, la Complejidad Ciclomática no es sensible a la anidación de condicionales, por lo que obtenemos el mismo resultado en estructuras anidades que cuando las aplanamos a un solo nivel de indentación.
+Como acabamos de ver, la Complejidad Ciclomática no es sensible a la anidación de condicionales, por lo que obtenemos el mismo resultado ya sean estructuras anidades ya sean aplanadas a un solo nivel de indentación.
 
 Las estructuras anidadas son más costosas de mantener y cambiar porque requieren mayor esfuerzo cognitivo. Cada vez que llegamos a una nueva rama tenemos que tomar nota del lugar a donde volver antes de tomar la rama. Si, una vez dentro, nos encontramos con una nueva bifurcación, debemos añadir un nuevo punto de regreso a nuestra "pila de memoria". Cuantos más elementos tengamos que mantener en la pila, porque estamos entrando en niveles profundos de anidación, más apuramos la capacidad de nuestra memoria de trabajo. En consecuencia, un bloque de condicionales anidadas supone un esfuerzo extra para comprenderlo.
 
@@ -269,7 +241,7 @@ La métrica aplica tres reglas:
    * Bucles: for, while, do while
    * switch
    * catch
-   * Operadores lógicos encadenados (&&, ||)
+   * Operadores lógicos encadenados (&&, \|\|)
    * Recursión
 2. Penalización por anidamiento (+n) siendo n es el nivel de anidamiento en el que aparece la estructura. Cada nivel adicional suma un punto extra.
 3. Sin penalización para estructuras que no añaden dificultad de lectura real, como else después de un return (que en la práctica no se ejecuta secuencialmente).
@@ -391,42 +363,42 @@ class MyClass {
 ```
 
 | Operador | Apariciones |
-|---|:---:|
-| `if` | 3 |
-| `else` | 1 |
-| `return` | 4 |
-| `>` | 3 |
-| `*` | 4 |
-| `/` | 2 |
-| `.` | 4 |
-| `()` | 1 |
-| `{}` | 4 |
+|----------|:-----------:|
+| `if`     |      3      |
+| `else`   |      1      |
+| `return` |      4      |
+| `>`      |      3      |
+| `*`      |      4      |
+| `/`      |      2      |
+| `.`      |      4      |
+| `()`     |      1      |
+| `{}`     |      4      |
 
 **n1 = 9** operadores distintos, **N1 = 26** apariciones totales
 
-| Operando | Apariciones |
-|---|:---:|
-| `param` | 7 |
-| `this` | 4 |
-| `aProperty` | 4 |
-| `10` | 1 |
-| `20` | 1 |
-| `15` | 1 |
-| `3` | 1 |
-| `2` | 1 |
-| `4` | 1 |
+| Operando    | Apariciones |
+|-------------|:-----------:|
+| `param`     |      7      |
+| `this`      |      4      |
+| `aProperty` |      4      |
+| `10`        |      1      |
+| `20`        |      1      |
+| `15`        |      1      |
+| `3`         |      1      |
+| `2`         |      1      |
+| `4`         |      1      |
 
 **n2 = 9** operandos distintos, **N2 = 21** apariciones totales
 
-| Métrica | Fórmula | Resultado |
-|---|---|:---:|
-| Vocabulario | n = 9 + 9 | **18** |
-| Longitud | N = 26 + 21 | **47** |
-| Volumen | V = 47 × log₂(18) | **196,3** |
-| Dificultad | D = (9/2) × (21/9) | **10,5** |
-| Esfuerzo | E = 10,5 × 196,3 | **2.061** |
-| Tiempo | T = 2.061 / 18 | **114 seg** |
-| Bugs estimados | B = 196,3 / 3000 | **0,065** |
+| Métrica        | Fórmula            |  Resultado  |
+|----------------|--------------------|:-----------:|
+| Vocabulario    | n = 9 + 9          |   **18**    |
+| Longitud       | N = 26 + 21        |   **47**    |
+| Volumen        | V = 47 × log₂(18)  |  **196,3**  |
+| Dificultad     | D = (9/2) × (21/9) |  **10,5**   |
+| Esfuerzo       | E = 10,5 × 196,3   |  **2.061**  |
+| Tiempo         | T = 2.061 / 18     | **114 seg** |
+| Bugs estimados | B = 196,3 / 3000   |  **0,065**  |
 
 Halstead no definió umbrales ni una clasificación del código basada en estas métricas. Por tanto, no podemos decir una función es compleja o muy compleja. Las métricas nos sirven de forma relativa. Podemos medir un código antes y después de un refactor para saber si merece la pena el esfuerzo, o podemos comparar implementaciones entre sí.
 
@@ -453,7 +425,7 @@ function processData(a: number, b: number, c: number, d: number): number {
 Estas son las métricas de esta función, fíjate como el Volumen (V) es bastante alto siendo una función de 5 líneas sin condicionales.
 
 | Métrica        | Valor |
-| -------------- | ----- |
+|----------------|-------|
 | n1             | 9     |
 | n2             | 9     |
 | N1             | 26    |
@@ -462,6 +434,82 @@ Estas son las métricas de esta función, fíjate como el Volumen (V) es bastant
 | Length (N)     | 60    |
 | Volume (V)     | ~250  |
 
+
+¿Recuerdas el refactor que nos permitió reducir a 1 la complejidad del ejemplo original?
+
+```typescript
+class MyClass {
+    private aProperty: number
+    private readonly MULTIPLIERS = [
+        { threshold: 20, factor: 1/3 },
+        { threshold: 15, factor: 1/2 },
+        { threshold: 10, factor: 1   },
+    ]
+
+    doSomething(param: number): number {
+        const { factor } = this.MULTIPLIERS.find(({ threshold }) => param > threshold)
+        ?? { factor: 4 }
+        return this.aProperty * param * factor
+    }
+}
+```
+
+Veamos sus métricas Halstead:
+
+La cuenta de operadores:
+
+| Operador | Apariciones |
+|----------|:-----------:|
+| `const`  |      1      |
+| `=`      |      1      |
+| `{}`     |      2      |
+| `.`      |      2      |
+| `()`     |      2      |
+| `=>`     |      1      |
+| `>`      |      1      |
+| `??`     |      1      |
+| `return` |      1      |
+| `*`      |      2      |
+
+**n1 = 10** operadores distintos, **N1 = 14** apariciones totales
+
+La cuenta de operandos:
+
+| Operando      | Apariciones |
+|---------------|:-----------:|
+| `factor`      |      3      |
+| `this`        |      2      |
+| `MULTIPLIERS` |      1      |
+| `find`        |      1      |
+| `threshold`   |      2      |
+| `param`       |      2      |
+| `4`           |      1      |
+| `aProperty`   |      1      |
+
+
+**n2 = 8** operandos distintos, **N2 = 13** apariciones totales
+
+Las métricas derivadas:
+
+| Métrica        | Fórmula             |  Resultado   |
+|----------------|---------------------|:------------:|
+| Vocabulario    | n = 10 + 8          |    **18**    |
+| Longitud       | N = 14 + 13         |    **27**    |
+| Volumen        | V = 27 × log₂(18)   |  **112,8**   |
+| Dificultad     | D = (10/2) × (13/8) |   **8,1**    |
+| Esfuerzo       | E = 8,1 × 112,8     |  **913,7**   |
+| Tiempo         | T = 913,7 / 18      | **50,8 seg** |
+| Bugs estimados | B = 112,8 / 3000    |  **0,038**   |
+
+Y aquí comparamos las métricas de la versión original con la nueva. Fíjate que el refactor no solo ha mejorado las métricas de complejidad, sino que también ha logrado una mejora sustancial en estos índices, convirtiéndolo en un refactor particularmente bien fundamentado.
+
+| Métrica        | Original | Refactor (tabla) |  Δ   |
+|----------------|:--------:|:----------------:|:----:|
+| Volumen (V)    |  196,3   |      112,8       | −42% |
+| Dificultad (D) |   10,5   |       8,1        | −23% |
+| Esfuerzo (E)   |  2.061   |      913,7       | −56% |
+| Tiempo (seg)   |   114    |       50,8       | −56% |
+| Bugs estimados |  0,065   |      0,038       | −42% |
 
 ## Métricas de tamaño
 
@@ -485,7 +533,7 @@ Estas métricas nacen de la crítica a las anteriores, consideradas demasiado pr
 
 [^5]: Chidamber, S. R., & Kemerer, C. F. (1994). A metrics suite for object oriented design. IEEE Transactions on Software Engineering, 20(6), 476–493.
 
-Las seis métricas son:
+Las seis métricas, denominadas a veces como métricas CK por las iniciales de sus autores, son:
 
 * WMC (Weighted Methods per Class): suma de la complejidad ciclomática de los métodos de una clase. Si es alto es que probablemente la clase hace demasiadas cosas.
 * DIT (Depth of Inheritance Tree): Profundidad en la jerarquía de herencia. Si es alto la herencia es excesiva.
@@ -624,7 +672,7 @@ Esto nos da un CBO de 6, que para una clase pequeña es bastante alto. Un cambio
 
 El número de métodos que pueden ejecutarse en respuesta a un mensaje recibido por un objeto de la clase. Incluye los métodos propios de la clase más todos los métodos externos que estos invocan directamente.
 
-Fórmula: RFC = |RS|, donde RS es el conjunto de respuesta (métodos propios + métodos llamados). 
+Fórmula: RFC = \|RS\|, donde RS es el conjunto de respuesta (métodos propios + métodos llamados). 
 
 Si RFC es alto, sería señal de que el comportamiento de la clase es difícil de predecir y testear, porque una sola llamada puede desencadenar una cadena larga de ejecución. Es especialmente útil para estimar el esfuerzo de testing: a más RFC, más casos de prueba necesarios.
 
@@ -652,7 +700,7 @@ Un LCOM alto, nos dice que los métodos de la clase operan sobre datos distintos
 
 Si el LCOM es 0, sería un caso de cohesión perfecta, todos los métodos trabajan sobre los mismos datos.
 
-LCOM es la métrica más criticada de las seis porque la fórmula original tiene anomalías al poder dar valores negativos, por lo que necesita la corrección `max(0,...)`. Existen variantes posteriores, LCOM3 y LCOM4, que corrigen estos problemas.
+LCOM es la métrica más criticada de las seis porque la fórmula original tiene anomalías al poder dar valores negativos, por lo que necesita la corrección `max(0,...)`. Existen variantes posteriores que corrigen estos problemas.
 
 Para nuestro ejemplo, veamos una tabla de las variables de instancia usadas (que en este caso coinciden con las dependencias)
 
@@ -677,15 +725,15 @@ Como todos los pares de métodos comparten al menos una variable:
 
 Esto nos dice que la clase es bastante cohesiva, pero también expone las limitaciones de la métrica.
 
-#### LCOM3, alternativas a LCOM
+#### LCOM3, alternativa a LCOM
 
-Brian Henderson-Sellers propuso en 1996 una nueva versión de LCOM que se conoce como LCOM3 o LCOM-HS[^8] and [^9]. Esta nueva métrica se propone superar las limitaciones de LCOM y obtener un resultado más preciso e interpretable, comparable entre clases y con un buen fundamento matemático. 
+Brian Henderson-Sellers propuso en 1996 una nueva versión de LCOM que se conoce como LCOM3 o LCOM-HS[^8] y [^9]. Esta nueva métrica se propone superar las limitaciones de LCOM y obtener un resultado más preciso e interpretable, comparable entre clases y con un buen fundamento matemático. 
 
-[^8]: Henderson-Sellers, B.; Constantine, L.; Graham, I. Coupling and Cohesion (Towards a Valid Metrics Suite for Object-Oriented Analysis and Design). Object Oriented Systems, vol. 3(3), pp.143–158, 1996.
+[^8]: Henderson-Sellers, B.; Constantine, L.; Graham, I. Coupling and Cohesion (Towards a Valid Metrics Suite for Object-Oriented Analysis and Design). Object-Oriented Systems, vol. 3(3), pp.143–158, 1996.
 
 [^9]: Henderson-Sellers, B. Object-Oriented Metrics: Measures of Complexity. Prentice Hall, 1996.
 
-La fórmula original de LCOM3 es la siguiente:
+La fórmula original de LCOM-HS es la siguiente:
 
 ```
 LCOM_HS = (m - avg_methods_per_attribute) / (m - 1)
@@ -714,7 +762,7 @@ Esto indica una cohesión bastante buena, pero hay que tener en cuenta que algun
 
 ## Índice de mantenibilidad (MI)
 
-Esta métrica agrega otras para producir un valor único que permita caracterizar la dificultad de mantener un código. Fue propuesta por Paul Oman y Jack Hagemeister en 1992[^6] (y revisada en 1994[^7]) derivándola empíricamente del análisis de diversos proyectos de software, cuya mantenibilidad fue evaluada por expertos. 
+Esta métrica agrega otras para producir un valor único que permita caracterizar la dificultad de mantener un código. Fue propuesta por Paul Oman y Jack Hagemeister en 1992[^6] (revisada en 1994[^7]) derivándola empíricamente del análisis de diversos proyectos de software, cuya mantenibilidad fue evaluada por expertos. 
 
 [^6]: Oman, P., & Hagemeister, J. (1992). Metrics for assessing a software system's maintainability. Proceedings of the International Conference on Software Maintenance (ICSM), 337–344. IEEE.
 
@@ -734,7 +782,7 @@ Siendo:
 
 Las constantes de la fórmula han sido derivadas de forma empírica.
 
-Microsoft ha incluido una variante de MI en Visual Studio 2019, que normaliza los valores en el rango de 0 a 100, lo que hace más fácil interpretarlos:
+Microsoft ha incluido una variante del Índice de Mantenibilidad en Visual Studio 2019, que normaliza los valores en el rango de 0 a 100, lo que hace más fácil interpretarlos:
 
 MI_VS = max(0, (171 - 5.2 × ln(V) - 0.23 × CC - 16.2 × ln(LOC)) × 100 / 171)
 
@@ -748,32 +796,32 @@ La clasificación es:
 
 Las métricas para medir la complejidad, calidad o mantenibilidad del código nos proporcionan visiones parciales, por lo que necesitamos combinar diversas medidas para obtener una visión más completa y tomar decisiones de refactoring basadas en ellas.
 
-La siguiente tabla recoge un resumen de todas las métricas que hemos examinado en el artículo, con una indicación de qué mide cada una y qué tipo de refactoring podríamos abordar en caso de un valor desfavorable. 
+La siguiente tabla recoge un resumen de todas las métricas que hemos examinado en el artículo, con una indicación de qué mide cada una y qué tipo de refactoring podríamos abordar en caso de obtener un valor desfavorable. 
 
-| Métrica                       | Qué mide | Nivel | Señal de refactor | Umbral orientativo |
-|-------------------------------|---|:---:|---|:------------------:|
-| **Complejidad Ciclomática**   | Caminos de ejecución independientes | Función | Extraer métodos, simplificar lógica |        > 10        |
-| **Complejidad Cognitiva**     | Esfuerzo mental de lectura | Función | Reducir anidamiento, aplanar estructura |        > 15        |
-| **Volumen (Halstead)**        | Cantidad de información del programa | Función | Simplificar expresiones, renombrar |       > 1000       |
-| **Dificultad (Halstead)**     | Propensión a errores | Función | Reducir variedad de operadores y operandos |        > 10        |
-| **Esfuerzo (Halstead)**       | Carga mental de implementación | Función | Comparativo entre versiones |         —          |
-| **Bugs estimados (Halstead)** | Errores esperados estadísticamente | Función | Comparativo entre versiones |         —          |
-| **LOC**                       | Tamaño físico | Función/Clase | Extraer métodos o clases |  > 200 (función)   |
-| **WMC**                       | Lógica total de la clase | Clase | Dividir clase, mover responsabilidades |        > 50        |
-| **DIT**                       | Profundidad de herencia | Jerarquía | Aplanar herencia, preferir composición |        > 5         |
-| **NOC**                       | Amplitud de herencia | Jerarquía | Revisar abstracción de clase base |        > 10        |
-| **CBO**                       | Acoplamiento con otras clases | Clase | Reducir dependencias, introducir interfaces |        > 14        |
-| **RFC**                       | Alcance de ejecución ante un mensaje | Clase | Reducir responsabilidades, extraer servicios |        > 50        |
-| **LCOM**                      | Cohesión interna de la clase | Clase | Dividir clase |        > 5         |
-| **LCOM-HS**                   | Cohesión interna de la clase | Clase | Dividir clase |     tiende a 1     |
-| **MI**                        | Mantenibilidad agregada | Módulo | Priorizar qué refactorizar primero |     < 20 (VS)      |
+| Métrica                       | Qué mide                             |     Nivel     | Señal de refactor                            | Umbral orientativo |
+|-------------------------------|--------------------------------------|:-------------:|----------------------------------------------|:------------------:|
+| **Complejidad Ciclomática**   | Caminos de ejecución independientes  |    Función    | Extraer métodos, simplificar lógica          |        > 10        |
+| **Complejidad Cognitiva**     | Esfuerzo mental de lectura           |    Función    | Reducir anidamiento, aplanar estructura      |        > 15        |
+| **Volumen (Halstead)**        | Cantidad de información del programa |    Función    | Simplificar expresiones, renombrar           |       > 1000       |
+| **Dificultad (Halstead)**     | Propensión a errores                 |    Función    | Reducir variedad de operadores y operandos   |        > 10        |
+| **Esfuerzo (Halstead)**       | Carga mental de implementación       |    Función    | Comparativo entre versiones                  |         —          |
+| **Bugs estimados (Halstead)** | Errores esperados estadísticamente   |    Función    | Comparativo entre versiones                  |         —          |
+| **LOC**                       | Tamaño físico                        | Función/Clase | Extraer métodos o clases                     |  > 200 (función)   |
+| **WMC**                       | Lógica total de la clase             |     Clase     | Dividir clase, mover responsabilidades       |        > 50        |
+| **DIT**                       | Profundidad de herencia              |   Jerarquía   | Aplanar herencia, preferir composición       |        > 5         |
+| **NOC**                       | Amplitud de herencia                 |   Jerarquía   | Revisar abstracción de clase base            |        > 10        |
+| **CBO**                       | Acoplamiento con otras clases        |     Clase     | Reducir dependencias, introducir interfaces  |        > 14        |
+| **RFC**                       | Alcance de ejecución ante un mensaje |     Clase     | Reducir responsabilidades, extraer servicios |        > 50        |
+| **LCOM**                      | Cohesión interna de la clase         |     Clase     | Dividir clase                                |        > 5         |
+| **LCOM-HS**                   | Cohesión interna de la clase         |     Clase     | Dividir clase                                |     tiende a 1     |
+| **MI**                        | Mantenibilidad agregada              |    Módulo     | Priorizar qué refactorizar primero           |     < 20 (VS)      |
 
 ## Herramientas
 
-He recopilado una tabla resumen con herramientas con las que obtener y analizar estas métricas para algunos lenguajes habituales.
+He recopilado esta tabla resumen con herramientas con las que obtener y analizar estas métricas para algunos lenguajes habituales.
 
 | Herramienta   | TS | PHP | Java | Go | C# | Nivel        |
-| ------------- | -- | --- | ---- | -- | -- | ------------ |
+|---------------|----|-----|------|----|----|--------------|
 | SonarQube     | ✓  | ✓   | ✓    | ✓  | ✓  | Enterprise   |
 | ESLint        | ✓  | –   | –    | –  | –  | Ligero       |
 | PhpMetrics    | –  | ✓   | –    | –  | –  | OO PHP       |
@@ -796,12 +844,12 @@ He utilizado al propio Claude para desarrollar la skill. Para ello, le proporcio
 * Esta skill tiene como objetivo utilizar métricas estándares de la industria para proponer refactors aplicables a una unidad de código.
 * Se analizará la unidad de código indicada
 * Las métricas utilizadas serán:
-  * Complejidad cognitiva
-  * Métricas de Halsted
-  * Índice de Mantenibilidad
-  * Métricas CK orientadas a objetos
-* Se pide un resumen de estas métricas y una valoración brevemente fundamentada
-* El resultado de la skill serán tres propuestas de refactor ordenadas de mayor a menor impacto
+  * Complejidad cognitiva (más sensible que la complejidad ciclomática)
+  * Métricas de Halsted (complementa la métrica de complejidad)
+  * Índice de Mantenibilidad (puede actuar como _canary test_ para señalar unidades potencialmente problemáticas)
+  * Métricas CK orientadas a objetos (para analizar las relaciones de la unidad examinada con el resto del código)
+* Se quiere un resumen de estas métricas y una valoración fundamentada brevemente
+* El resultado de la skill serán tres propuestas de refactor ordenadas de mayor a menor impacto, explicadas
 * No incluyas refactors que no tengan un impacto significativo
 * No escribas nada de código, yo te indicaré qué refactors aplicar
 * Si la unidad de código no cuenta con suficientes tests, indícalo y haz una propuesta
@@ -812,7 +860,7 @@ Como se puede desprender del artículo, las heurísticas y las métricas de comp
 
 Un código fácil de entender y mantener es crucial para poder introducir cambios, nuevas prestaciones e incluso para corregir errores de forma rápida y eficaz. No debemos olvidar que, en la mayoría de los casos, el desarrollo de software es un coste de la empresa y debemos aprender a mantener ese coste bajo control.
 
-Las heurísticas, como las reglas de calistenia o los code smells, nos señalan los puntos donde nuestro código puede tener oportunidades de mejora, actuando muchas veces como proxies de las métricas. Pero son las métricas las que nos permiten cuantificarlo y, por tanto, comparar y priorizar la necesidad de intervenir en el código.
+Las heurísticas, como las _reglas de calistenia_ o los _code smells_, nos señalan los puntos donde nuestro código puede tener oportunidades de mejora, actuando muchas veces como _proxies_ de las métricas. Pero son las métricas las que nos permiten cuantificarlo y, por tanto, comparar y priorizar la necesidad de intervenir en el código.
 
 El refactoring dirigido por métricas se convierte así en una práctica de ingeniería de software fundamentada en evidencias.
 

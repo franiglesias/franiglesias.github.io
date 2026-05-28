@@ -33,7 +33,7 @@ Es decir, ambas familias de heurísticas nos proporcionan una forma sencilla de 
 
 Esto no quiere decir que sean medidas subjetivas. Decir que un código es elegante es una forma de describir un código bien hecho, pero es una descripción subjetiva. La elegancia es muy difícil de definir, aunque podamos percibirla. Sin embargo, estas heurísticas se basan en rasgos concretos e identificables del código.
 
-Tomemos por ejemplo, la regla de calistenia "un solo nivel de indentación por método" se puede identificar fácilmente. Basta con contar. El siguiente código tiene un único nivel de indentación:
+Tomemos por ejemplo la regla de calistenia "un solo nivel de indentación por método" se puede identificar fácilmente. Basta con contar. El siguiente código tiene un único nivel de indentación:
 
 ```typescript
 class MyClass {
@@ -454,7 +454,7 @@ class MyClass {
 }
 ```
 
-Veamos sus métricas Halstead:
+Calculemos sus métricas Halstead:
 
 La cuenta de operadores:
 
@@ -521,7 +521,7 @@ Si contamos las líneas de código, podemos obtener estas tres medidas:
 
 Las métricas de tamaño nos pueden ayudar a poner otras métricas en contexto. Así, una unidad de código pequeña (LOC lógico bajo) probablemente no tenga una complejidad muy alta en valor absoluto, pero la perspectiva cambia si ponemos en relación esa complejidad con el número de líneas.
 
-En cualquier caso, un número muy alto de líneas de código suele ser indicativo de que se están muchas responsabilidades y, seguramente, niveles de abstracción. Esa unidad de código está intentando hacer muchas cosas. 
+En cualquier caso, un número muy alto de líneas de código suele ser indicativo de que se están asumiendo muchas responsabilidades y, seguramente, niveles de abstracción. Esa unidad de código está intentando hacer muchas cosas. 
 
 En consecuencia, deberíamos plantearnos un refactor dividiendo la unidad en partes más pequeñas y cohesivas. Por ejemplo, si se trata de un método largo, una posibilidad sería juntar grupos de líneas que sean cohesivas entre sí y extraerlas juntas a método con un nombre descriptivo.
 
@@ -689,7 +689,7 @@ Cualquier test de `processOrder` puede desencadenar hasta 8 llamadas externas, l
    
 Definición: número de pares de métodos que no comparten ninguna variable de instancia, menos el número de pares que sí comparten al menos una. Si el resultado es negativo, se toma como 0.
 
-Fórmula: LCOM = max(0, |P| - |Q|)
+Fórmula: LCOM = max(0, \|P\| - \|Q\|)
 
 Siendo:
 
@@ -727,7 +727,7 @@ Esto nos dice que la clase es bastante cohesiva, pero también expone las limita
 
 #### LCOM3, alternativa a LCOM
 
-Brian Henderson-Sellers propuso en 1996 una nueva versión de LCOM que se conoce como LCOM3 o LCOM-HS[^8] y [^9]. Esta nueva métrica se propone superar las limitaciones de LCOM y obtener un resultado más preciso e interpretable, comparable entre clases y con un buen fundamento matemático. 
+Brian Henderson-Sellers propuso en 1996 una nueva versión de LCOM que se conoce como LCOM-HS (o también LCOM3)[^8][^9]. Esta nueva métrica se propone superar las limitaciones de LCOM y obtener un resultado más preciso e interpretable, comparable entre clases y con un buen fundamento matemático. 
 
 [^8]: Henderson-Sellers, B.; Constantine, L.; Graham, I. Coupling and Cohesion (Towards a Valid Metrics Suite for Object-Oriented Analysis and Design). Object-Oriented Systems, vol. 3(3), pp.143–158, 1996.
 
@@ -762,7 +762,7 @@ Esto indica una cohesión bastante buena, pero hay que tener en cuenta que algun
 
 ## Índice de mantenibilidad (MI)
 
-Esta métrica agrega otras para producir un valor único que permita caracterizar la dificultad de mantener un código. Fue propuesta por Paul Oman y Jack Hagemeister en 1992[^6] (revisada en 1994[^7]) derivándola empíricamente del análisis de diversos proyectos de software, cuya mantenibilidad fue evaluada por expertos. 
+Esta métrica agrega otras para producir un valor único que permita caracterizar la dificultad de mantener un código. Fue propuesta por Paul Oman y Jack Hagemeister en 1992[^6] (revisada en 1994[^7]) obtenida empíricamente del análisis de diversos proyectos de software, cuya mantenibilidad fue evaluada por expertos. 
 
 [^6]: Oman, P., & Hagemeister, J. (1992). Metrics for assessing a software system's maintainability. Proceedings of the International Conference on Software Maintenance (ICSM), 337–344. IEEE.
 
@@ -831,7 +831,7 @@ He recopilado esta tabla resumen con herramientas con las que obtener y analizar
 | NDepend       | –  | –   | –    | –  | ✓  | Muy profundo |
 | VS Metrics    | –  | –   | –    | –  | ✓  | Integrado    |
 
-SonarQube es un habitual de nuestros _pipelines_ de integración contínua, pero a veces querríamos tener la herramienta más a mano, para que nos ayude a tomar decisiones de refactoring cuando estamos abordando problemas de mantenibilidad. Cierto es que SonarQube se puede integrar en algunos IDE, con lo que tienes su información en el propio código.
+SonarQube es un habitual de nuestros _pipelines_ de integración continua, pero a veces querríamos tener la herramienta más a mano, para que nos ayude a tomar decisiones de refactoring cuando estamos abordando problemas de mantenibilidad. Cierto es que SonarQube se puede integrar en algunos IDE, con lo que tienes su información en el propio código.
 
 ### LLM en tu ayuda
 

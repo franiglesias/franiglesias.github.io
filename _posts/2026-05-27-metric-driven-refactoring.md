@@ -89,7 +89,7 @@ Esta métrica fue introducida por Thomas J. McCabe en 1976, en el artículo [A C
 Cyclomatic Complexity = Number of conditonals + 1
 ```
 
-[^1]: IEEE Transactions On Software Engineering, Vol. Se-2, No.4, December 1976
+[^1]: McCabe, T.J. (1976). A Complexity Measure. IEEE Transactions on Software Engineering, Vol. SE-2, No. 4, pp. 308–320.
 
 Por tanto, el método `doSomething` tendría una complejidad de 4: 3 condicionales + 1.
 

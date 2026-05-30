@@ -55,7 +55,7 @@ Son preguntas que no atañen solo al software, sino que cuestionan la forma en q
 
 ## El esqueleto de un framework
 
-Una de las problemáticas habituales en los códigos que consideramos legacy es la presencia de un framework. No me entiendas mal, para desarrollar software de producto de una manera medianamente rápida y segura, necesitamos partir de una serie de elementos básicos que los frameworks nos puede proporcionar. Pero, un framework no es solo código, sino una serie de decisiones que pueden condicionar la capacidad de nuestro software para expresar nuestro modelo mental del negocio en el que nos encontramos.
+Una de las problemáticas habituales en los códigos que consideramos legacy es la presencia de un framework. No me entiendas mal, para desarrollar software de producto de una manera medianamente rápida y segura, necesitamos partir de una serie de elementos básicos que los frameworks nos pueden proporcionar. Pero, un framework no es solo código, sino una serie de decisiones que pueden condicionar la capacidad de nuestro software para expresar nuestro modelo mental del negocio en el que nos encontramos.
 
 Así, los típicos frameworks MVC suelen proponer una estructura de carpetas muy "técnica" que no dice mucho acerca de cómo se estructura nuestro negocio. Más allá de eso, pueden haber optado por decisiones técnicas que complican su evolución, como la apuesta generalizada de estos frameworks por patrones como Active Record, o el propio MVC.
 
@@ -63,18 +63,18 @@ El beneficio de la velocidad para poner en marcha un proyecto puede no verse com
 
 En cambio, una arquitectura limpia, que estructure el software por capas y con reglas claras de dependencia, nos permite mayor libertad en todos los ámbitos y, sobre todo, mantener el control de la representación del conocimiento.
 
-Así, el conocimiento de negocio puede reflejarse en una capa de dominio rica, estructurada en torno a los conceptos, procesos y reglas de negocio.,
+Así, el conocimiento de negocio puede reflejarse en una capa de dominio rica, estructurada en torno a los conceptos, procesos y reglas de negocio.
 
-Las necesidades de las usuarias quedarían recogidas en una capa de aplicación estructurada en tornos a los casos de uso.
+Las necesidades de las usuarias quedarían recogidas en una capa de aplicación estructurada en torno a los casos de uso.
 
 Y, finalmente, toda la tecnología necesaria para la implementación quedaría en una capa de infraestructura, supeditada a las necesidades de la capa de dominio y organizada de forma significativa, en la que, por cierto, cabría un framework MVC destinada al que es su espacio natural en la UI.
 
 ## Refactor
 
-En este planteamiento, el objetivo del refactor es mejorar la representación del conocimiento (refactor for insight, en palabras de Eric Evans). Básicamente con refactors que hagan que el código exprese intenciones y moviendo lógica de negocio hacia el dominio.
+En este planteamiento, el objetivo del refactor es mejorar la representación del conocimiento (_refactor for insight_, en palabras de Eric Evans). Básicamente con refactors que hagan que el código exprese intenciones y moviendo lógica de negocio hacia el dominio.
 
 ## Reflexión final
 
-Pensar que todo el código es legacy es una idea liberadora. Nos ayuda a pensar que no necesitamos saberlo todo desde el principio. Del mismo modo en que el conocimiento evoluciona el software debe cambiar para adaptarse.
+Pensar que todo el código es _legacy_ es una idea liberadora. Nos ayuda a pensar que no necesitamos saberlo todo desde el principio. Del mismo modo en que el conocimiento evoluciona el software debe cambiar para adaptarse.
 
 En realidad, ni siquiera es una idea nueva, toda la base del desarrollo ágil gira en torno a la premisa de que el software es, ni más y menos, una concreción de lo que podemos saber del negocio en un momento dado y de que la mejor forma de desarrollarlo es ponerlo a funcionar, obtener feedback y actuar en consecuencia con ese feedback.

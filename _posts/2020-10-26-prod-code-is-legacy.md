@@ -31,7 +31,7 @@ En resumidas cuentas, todo el código en producción es legacy eventualmente.
 
 Los tests son otra representación del dominio, que está orientada a describir el comportamiento esperado del software. Como tal representación en código es, del mismo modo, eventualmente inconsistente con el conocimiento del dominio.
 
-Así, el código de producción representa la estructura del conocimiento del dominio (conceptos, procesos y reglas de negocio), y el código de producción representa el comportamiento esperado o deseado del software a partir de la observación de sus *outcomes*.
+Así, el código de producción representa la estructura del conocimiento del dominio (conceptos, procesos y reglas de negocio), y el código de test representa el comportamiento esperado o deseado del software a partir de la observación de sus *outcomes*.
 
 ## Legacy
 

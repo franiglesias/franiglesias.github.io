@@ -593,6 +593,10 @@ article.post {
   margin: 0 0 2rem 0;
   padding: 1.5rem 1rem;
   border-radius: $page_radius $page_radius 0 0;
+  background-size: cover;       /* Fills the container completely */
+  background-position: center;   /* Centers the image to avoid weird cropping */
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
 
   h2.subtitle {
     font-size: 1.5rem;
@@ -1454,4 +1458,8 @@ div.footnotes {
     };
   }
 
+  .full-post header.post-header,
+  .micro-post header.post-header {
+    background-blend-mode: soft-light;
+  }
 }

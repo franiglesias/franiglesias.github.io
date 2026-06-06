@@ -3,7 +3,7 @@ layout: post
 title: La kata del DNI para aprender TDD
 categories: [articles]
 tags: [tdd, testing]
-recommended: true
+recommended: false
 ---
 
 Una vez que comprendemos el concepto, no es difícil hacer TDD. Pero ese primer paso necesario para arrancar suele necesitar ayuda. Lo mejor es encontrar un ejercicio de programación que sea sencillo sin ser trivial y que ayude a poner de manifiesto los elementos más importantes de la metodología TDD.

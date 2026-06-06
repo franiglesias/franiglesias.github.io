@@ -2,7 +2,7 @@ widgets:
   - type: recommended
     title: "Para empezar"
     description: "Una selección de posts para nuevos visitantes"
-    limit: 6
+    limit: 10
 
   - type: latest
     title: "Últimas entradas"

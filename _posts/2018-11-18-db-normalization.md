@@ -13,11 +13,11 @@ La normalización de las bases de datos es un proceso que persigue reducir la re
 
 El proceso de normalización consiste en verificar que las tablas cumplan una serie de condiciones llamadas "formas normales". Estas formas normales establecen unos criterios mediante los que determinamos si la tabla está normalizada o no y en qué grado.
 
-Podríamos hablar de las formas normales de un modo similar a los principios SOLID de la programación orientada a objetos. Son criterios que nos ayudan a entender si una Entidad está bien diseñada y qué forma debería tener para estolo. La dificultad que presentan las formas normales es que son bastante difíciles de recordar, no solo por su formulación abstracta, sino porque su nombre no hace ninguna referencia a su contenido y resulta difícil vincularlas a criterios concretos.
+Podríamos hablar de las formas normales de un modo similar a los principios SOLID de la programación orientada a objetos. Son criterios que nos ayudan a entender si una Entidad está bien diseñada y qué forma debería tener para serlo. La dificultad que presentan las formas normales es que son bastante difíciles de recordar, no solo por su formulación abstracta, sino porque su nombre no hace ninguna referencia a su contenido y resulta difícil vincularlas a criterios concretos.
 
 Normalmente, cuando se dice que una tabla no cumple una determinada Forma Normal nos está indicando que parte de la información que contiene debería estar en otra tabla. De este modo, podemos comenzar el diseño de una base de datos a partir de una estructura básica y aplicar sucesivamente las formas normales para obtener el diseño definitivo. Algo así como un refactor de datos.
 
-Por otro lado, aunque al diseñar entidades en Domain Driven Design no debemos depender de cuestiones relacionadas con la base de datos, que es un detalle de implementación, sí me parece que existe un paralelismo interesante en el proceso de normalización y en el diseño de esas entidades. Con todo, muchas veces aplicamos la normalización de forma más o menos intuitiva o en piloto automático, por lo que no está de más tener presentas las distintas formas normales.
+Por otro lado, aunque al diseñar entidades en Domain Driven Design no debemos depender de cuestiones relacionadas con la base de datos, que es un detalle de implementación, sí me parece que existe un paralelismo interesante en el proceso de normalización y en el diseño de esas entidades. Con todo, muchas veces aplicamos la normalización de forma más o menos intuitiva o en piloto automático, por lo que no está de más tener presentes las distintas formas normales.
 
 En este artículo no trataremos todas las formas normales y llegaremos hasta la quinta. La sexta forma normal y sus variantes tratan con datos temporales y se escapa un poco de nuestro objetivo.
 
@@ -38,8 +38,6 @@ El punto 4 es el más visible de todos y se refiere al hecho de que la entidad p
 Esta condición nos dice que una tabla no puede contener grupos repetidos de una o más columnas y tampoco puede condensarse esa información en una sola columna para guardar múltiples valores.
 
 Los ejemplos típicos son los datos de contacto de una persona, que puede tener varios teléfonos, emails o incluso direcciones postales (como cuando una tienda online nos permite definir varias direcciones de envío).
-
-Ahora bien, los motores de bases de datos nos permiten usar tipos de columnas como JSONB, en los cuales podemos almacenar varios elementos. Esta característica proporciona una solución práctica al problema de guardar metadatos u otra información de estructura variable, en las que no buscamos una especial eficiencia. El enfoque clásico es más robusto para las relaciones bien definidas, ya que permirte realizar búsquedas eficientes, facilita las relaciones entre tablas, y optimiza operaciones como la ordenación.
 
 Para representarlo de manera sencilla utilizaré el ejemplo de una tabla de personas de las que queremos guardar varios emails.
 
@@ -182,7 +180,7 @@ Pues bien, debido a eso, esta tabla no cumple la **segunda forma normal**. Para 
 |---------|---------|------|
 | fruits | 001 | oranges |
 | fruits | 002 | apples |
-| dairy  | 001 | greek yoghourt |
+| dairy  | 001 | greek yogurt |
 | bakery | 001 | bread |
 | bakery | 002 | donut |
 
@@ -300,7 +298,47 @@ Ahora el nombre de cada proyecto se guarda en un único lugar, en `coordinators`
 
 La cuarta forma normal nos permite lidiar con lo que solemos denominar **dependencias multivaluadas**. Una dependencia multivaluada aparece cuando, para un mismo valor de la clave, un atributo puede tomar varios valores de forma independiente de los valores que tome otro atributo. La definición es más o menos así: una tabla está en **cuarta forma normal** si está en **forma normal de Boyce-Codd** y, además, no contiene dos o más relaciones multivaluadas independientes entre sí.
 
-Partiendo de la solución anterior, supongamos que, además de pertenecer a un equipo, cada empleado puede participar en varios proyectos internos, y que un empleado puede pertenecer a varios equipos a la vez (ya vimos que esto obliga a modelar la relación con una tabla intermedia):
+**teams**
+
+| id | team_name   |
+|----|-------------|
+| 1  | Sales       |
+| 2  | Techonology |
+| 3  | Accounts    |
+
+La tabla employees representa realmente dos relaciones que son independientes entre sí: *identidad -> nombre* e *identidad -> equipo*, por lo que deberían separarse.
+
+¿Qué ocurre si un empleado puede formar parte de varios equipos? No podríamos añadir filas para contemplar eso, ya que romperíamos **la primera forma normal** por tener filas repetidas con la misma clave primaria:
+
+**employees**
+
+| id | name             | team_id |
+|----|------------------|:-------:|
+| 1  | Ebenizer Scrooge | 3       |
+| 2  | Michael Caine    | 2       |
+| 3  | Mary Shelley     | 2       |
+| 4  | Jane Austen      | 1       |
+| 3  | Mary Shelley     | 3       |
+| 4  | Jane Austen      | 2       |
+
+Así que esta sería otra forma de intentar resolver el problema anterior:
+
+**employees**
+
+| id | name             |
+|----|------------------|
+| 1  | Ebenizer Scrooge |
+| 2  | Michael Caine    |
+| 3  | Mary Shelley     |
+| 4  | Jane Austen      |
+
+**teams**
+
+| id | team_name  |
+|----|------------|
+| 1  | Sales      |
+| 2  | Technology |
+| 3  | Accounts   |
 
 **employees_teams**
 

@@ -7,9 +7,7 @@ updated: 2026-09-27
 ---
 La normalización de las bases de datos es un proceso que persigue reducir la redundancia de datos y controlar las dependencias entre las entidades representadas en las tablas, de modo que estas puedan evolucionar fácilmente y se reduzcan los errores que generen inconsistencia de datos.
 
-## Actualización
-
-2026-09-27: Se han cambiado algunos ejemplos y la redacción a partir del apartado sobre la Forma Normal de Boyce-Codd, debido a que los ejemplos no eran adecuados y existían algunas incorrecciones técnicas.
+{% include post_update.html date="2026-09-27" text="Se han cambiado algunos ejemplos y la redacción a partir del apartado sobre la Forma Normal de Boyce-Codd, debido a que los ejemplos no eran adecuados y existían algunas incorrecciones técnicas." %}
 
 El proceso de normalización consiste en verificar que las tablas cumplan una serie de condiciones llamadas "formas normales". Estas formas normales establecen unos criterios mediante los que determinamos si la tabla está normalizada o no y en qué grado.
 

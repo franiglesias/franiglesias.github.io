@@ -290,7 +290,17 @@ kata/Calculator
 
 Pero como PHPSpec es así de amable, nos pide permiso para crear al método add, permiso que le damos encantados.
 
-{% gist decee289fedd8a0b0ebde89ba5eef8fe %}
+```php
+namespace kata;
+
+class Calculator
+{
+    public function add($argument1)
+    {
+        // TODO: write logic here
+    }
+}
+```
 
 De acuerdo, no es que PHPSpec se haya matado creando el método, pero ya nos ha dado un mínimo para trabajar y nos recuerda que hay que escribir algo. De hecho, el ejemplo sigue fallando porque el método no devuelve nada más que null y debería devolver 0.
 

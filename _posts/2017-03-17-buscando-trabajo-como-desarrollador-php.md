@@ -110,7 +110,7 @@ Las pruebas técnicas son de lo mejor que te puede pasar, aunque a veces sean ch
 Las pruebas técnicas pueden incluir ejercicios de código o preguntas técnicas. En dos de las que hice hubo preguntas técnicas. Obviamente puedes buscar respuestas en Internet para responderlas, pero no puedes limitarte a un copia-pega ciego. Hay que ser una persona honesta y realista.
 
 * Si un tema te supera realmente porque no sabes ni por dónde empezar, mejor reconócelo y no contestes. No te creas que se selecciona a quien lo contesta todo, sino al que demuestra que entiende de lo que está hablando.
-* Si no tienes experiencia en un asunto, pero entiendes de qué va y puedes explicarlo en tus propias palabras, con un poco de ayuda de algún lugar de referencia, hazlo, pero indica que no has trabajado con ello (tal vez nunca has tenido necesidad, pero que puedas hablar de ello indica por una parte interés, y por otra, que posiblemente con un poco de trabajo te pongas al día).
+* Si no tienes experiencia en un asunto, pero entiendes de qué va y puedes explicarlo en tus propias palabras, con un poco de ayuda de algún lugar de referencia, hazlo, pero indica que no has trabajado con ello (tal vez nunca has tenido necesidad, pero que puedas hablar de ello indica, por una parte, interés, y por otra, que posiblemente con un poco de trabajo te pongas al día).
 * Y si el tema lo dominas y tienes experiencia, recurre a tus propios ejemplos y explicaciones.
 
 Como me dijeron en mi última entrevista: "La única respuesta incorrecta es que me digas que no lo sabes y no te interesa saberlo".
@@ -123,7 +123,7 @@ En otro caso, los problemas fueron realmente bastante fastidiados y encima con l
 
 Aquí cuenta tanto que tengas una cierta formación en algoritmos estructuras de datos, para no reinventar ruedas, así como identificar los elementos del problema y representarlo adecuadamente. Obviamente, puedes destacar si haces usos inteligentes de los recursos del lenguaje, aquí el ser capaz de utilizar <em>one liners</em> o una función o estructura que encaje en el problema, pero que es poco conocida es un plus.
 
-Lo que me gusta es cuando hay que hacer miniproyectos de programación orientada a objetos. Te plantean un problema real y te piden que prepares una solución.
+Lo que me gusta es cuando hay que hacer mini proyectos de programación orientada a objetos. Te plantean un problema real y te piden que prepares una solución.
 
 En los dos casos que tuve que hacer algo de esto, preparé un proyecto organizado con una arquitectura tipo hexagonal, y fui modelando clases con PHPSpec (o PHPUnit, si haces TDD tienes mucho ganado tanto para realizar un trabajo digno como para que tengas posibilidades de ser contratado).
 
@@ -143,7 +143,7 @@ Lo que no sabía era que había una segunda prueba, en la que tenía que realiza
 
 Unos días después, apareció un mensaje en mi correo que se puede resumir así: "has superado las pruebas técnicas y vamos a tener una entrevista de RRHH contigo".
 
-La entrevista fue bien y muy agradable. Esa fue la persona que me dijo que no íbamos a hablar de cuestiones técnicas. Hablamos un poquito de mi perfil, de mis posibilidades y me explicó las condiciones. Solo voy a decir que son fantabulosas.
+La entrevista fue bien y muy agradable. Esa fue la persona que me dijo que no íbamos a hablar de cuestiones técnicas. Hablamos un poquito de mi perfil, de mis posibilidades y me explicó las condiciones. Solo voy a decir que son _fantabulosas_.
 
 La respuesta fue que en unos días sabría algo.
 
@@ -155,7 +155,7 @@ Tuve la oportunidad de explicarme, poner mis propios ejemplos, etc. También rec
 
 ¿El resultado? Pues de momento es una incógnita, aunque he tenido una ayuda inesperada que puede hacer subir mis puntos en este proceso.
 
-Quizás no llegue a conseguir este puesto en concreto, pero el camino, con sus altibajos, está siendo una buena experiencia en muchos sentidos. Obviamente hay momentos de desánimo, los rechazos no gustan a nadie, y de cierto miedo pensar que igual no estoy a la altura para tal o cual entrevista (algo que se va reduciendo con el tiempo).
+Quizás no llegue a conseguir este puesto en concreto, pero el camino, con sus altibajos, está siendo una buena experiencia en muchos sentidos. Obviamente, hay momentos de desánimo, los rechazos no gustan a nadie, y de cierto miedo pensar que igual no estoy a la altura para tal o cual entrevista (algo que se va reduciendo con el tiempo).
 
 También los hay muy buenos. La mayoría de las entrevistas que he tenido han sido muy gratificantes por las personas con las que traté y porque me han ayudado a mejorar mi preparación, me han dado pistas para trabajar y aprender.
 

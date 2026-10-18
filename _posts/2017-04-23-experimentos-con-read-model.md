@@ -59,11 +59,75 @@ Y es ahora cuando entran en juego los Read Model. En cierto sentido, son similar
 
 Aquí tienes un ejemplo de interfaz:
 
-{% gist 962b9da7c3ba5b145e2f3771657b9c24 %}
+```php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: frankie
+ * Date: 23/4/17
+ * Time: 18:13
+ */
+
+namespace Mh13\plugins\contents\application\readmodel;
+
+use Mh13\plugins\contents\application\service\catalog\ArticleRequest;
+
+
+interface ArticleReadModel
+{
+    /**
+     * @param $specification
+     *
+     * @return array
+     * @internal param ArticleRequest $request
+     *
+     */
+    public function getArticle($specification);
+
+    public function findArticles($specification);
+
+
+}
+```
 
 Esta es la implementación para DBAL:
 
-{% gist d81cee9f3e20f4932c74147b73666673 %}
+```php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Fran Iglesias <franiglesias@mac.com>
+ * Date: 19/4/17
+ * Time: 17:01
+ */
+
+namespace Mh13\plugins\contents\infrastructure\persistence\dbal;
+
+
+use Mh13\plugins\contents\application\service\catalog\ArticleRequest;
+use Mh13\plugins\contents\application\readmodel\ArticleReadModel;
+use Mh13\plugins\contents\domain\ArticleSpecificationFactory;
+
+
+class DBalArticleReadModel implements ArticleReadModel
+{
+
+    public function getArticle($specification)
+    {
+        $statement =  $specification->getQuery()->execute();
+        return $statement->fetch();
+    }
+
+    public function findArticles($specification)
+    {
+        $statement = $specification->getQuery()->execute();
+        return $statement->fetchAll();
+
+     }
+
+
+}
+```
 
 Por simplificar he decidido hacer Read Models con varios métodos en lugar de varios Read Model específicos para cada vista, lo que los convierte en una especie de Read Only Repositories. Ya veremos si esto cambia en el futuro, pero queda la puerta abierta a, por ejemplo, tener un servidor de base de datos para escritura y una réplica para lecturas si la demanda subiese significativamente, o bien diferentes tablas para diferentes vistas generadas con proyecciones en un modelo dirigido por eventos.
 
@@ -73,7 +137,81 @@ Para manejar los Read Model he creado unas clases Service bastante simples que l
 
 Aquí, un ejemplo de servicio, en el que se puede ver un mapeado simple entre el array de resultados y el que espera la vista:
 
-{% gist 45769d2d4269baeb2291b4f8391e23c7 %}
+```php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: frankie
+ * Date: 23/4/17
+ * Time: 20:14
+ */
+
+namespace Mh13\plugins\contents\application\service;
+
+
+use Mh13\plugins\contents\application\readmodel\ArticleReadModel;
+use Mh13\plugins\contents\application\service\catalog\ArticleRequest;
+use Mh13\plugins\contents\domain\ArticleSpecificationFactory;
+
+
+class ArticleService
+{
+
+    /**
+     * @var ArticleReadModel
+     */
+    private $readmodel;
+    /**
+     * @var ArticleSpecificationFactory
+     */
+    private $specificationFactory;
+
+    public function __construct(ArticleReadModel $readmodel, ArticleSpecificationFactory $specificationFactory)
+    {
+
+        $this->readmodel = $readmodel;
+        $this->specificationFactory = $specificationFactory;
+    }
+
+    public function getArticleBySlug(string $slug)
+    {
+        $specification = $this->specificationFactory->createPublishedArticleWithSlug($slug);
+        $article = $this->readmodel->getArticle($specification);
+        return $article;
+    }
+
+    public function getArticlesFromRequest(ArticleRequest $request)
+    {
+        $specification = $this->specificationFactory->createFromCatalogRequest($request);
+        $articles = $this->readmodel->findArticles($specification);
+        $result = [];
+        foreach ($articles as $article) {
+            $result[] = [
+                'article' => [
+                    'id' => $article['article_id'],
+                    'title' => $article['article_title'],
+                    'slug' => $article['article_slug'],
+                    'content' => $article['article_content'],
+                    'pubDate' => $article['article_pubDate'],
+                    'expiration' => $article['article_expiration'],
+                ],
+                'blog' => [
+                    'title' => $article['blog_title'],
+                    'slug' => $article['blog_slug'],
+                ],
+                'image' => [
+                    'path' => $article['image_path'],
+
+                ]
+            ];
+        }
+
+        return $result;
+
+    }
+
+}
+```
 
  
 

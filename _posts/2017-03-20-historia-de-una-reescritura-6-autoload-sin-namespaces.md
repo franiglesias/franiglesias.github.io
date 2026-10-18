@@ -24,7 +24,28 @@ Una idea es aprovechar composer para tener un autoloader basado en un classmap, 
 
 Aquí el ejemplo del que estoy usando:
 
-{% gist f73fc32a4207e0bd6eaa1c68184700fa %}
+```json
+"autoload": {
+    "classmap": [
+      "plugins/",
+      "app_model.php",
+      "app_controller.php",
+      "app_helper.php",
+      "app_error.php",
+    ],
+    "exclude-from-classmap": [
+      "/vendors/cakephp/",
+      "/tests/",
+      "/spec/",
+      "/src/"
+    ],
+    "psr-4": {
+      "Milhojas\\": [
+        "src/Milhojas/"
+      ]
+    }
+  },
+```
 
 En el caso de CakePHP hay que tener cuidado, ya que el framework incluye unas cuantas clases fallback, con lo cual hay un buen número de ellas que se definen en varios archivos, uno de los cuales es tu versión y los otros son o bien plantillas o bien fallbacks, lo que provoca que Composer encuentre varios duplicados. Un ejemplo es AppController.
 

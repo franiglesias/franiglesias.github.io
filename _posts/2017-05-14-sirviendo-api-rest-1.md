@@ -58,7 +58,16 @@ La ruta podría tener un algún prefijo tipo "/api" o similar para separar disti
 
 Todos los frameworks tienen su sistema para definir rutas. En Symfony puedes hacerlo en un archivo de configuración o puedes hacerlo con anotaciones. En Silex se hace de una forma particular que me gusta mucho. Este es un ejemplo:
 
-{% gist 0da12821d16b74b1ad4dbd81281372e3 %}
+```php
+<?php
+  ...
+  
+  $app = new \Silex\Application();
+  
+  ...
+  
+  $articles->get('/articles', ArticleController::class."::feed");
+```
 
 No quiero entrar en detalles de Silex para no liar el artículo. Baste decir que el index.php normalmente crea una instancia de Application, la cual es tanto un contenedor de inyección de dependencias (extiende Pimple) y un router HTTP que nos permite asociar un verbo HTTP, una ruta y un callable que será el controlador.
 

@@ -17,11 +17,129 @@ Esta api devuelve una colección de artículos de un CMS para mostrar en las pá
 
 Este es el código:
 
-{% gist c9378c6ee7155b3bbac9706f1bc1b3e3 %}
+```php
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Fran Iglesias <franiglesias@mac.com>
+ * Date: 7/4/17
+ * Time: 12:46
+ */
 
-La mayor parte del trabajo la realiza ArticleService, que busca los artículos en la solución de persistencia, a partir de una ArticleRequest. ArticleRequest es un objeto que extrae los filtros de la URL de la petición y es utilizado por ArticleService para montar una Specification compuesta y aplicar ciertos criterios de ordenación.
+namespace Mh13\plugins\contents\infrastructure\api;
 
-En cualquier caso, lo que importa es que ArticleService devuelve un array con los artículos encontrados y ArticleController solo tiene que dar la respuesta adecuada a la petición.
+
+use Doctrine\DBAL\Exception\ConnectionException;
+use Mh13\plugins\contents\application\service\article\ArticleRequestBuilder;
+use Mh13\plugins\contents\application\service\ArticleService;
+use Mh13\plugins\contents\application\service\SiteService;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+
+class ArticleController
+{
+    /**
+     * @var SiteService
+     */
+    private $siteService;
+    /**
+     * @var ArticleService
+     */
+    private $articleService;
+    /**
+     * @var ArticleRequestBuilder
+     */
+    private $articleRequestBuilder;
+
+    public function __construct(ArticleRequestBuilder $articleRequestBuilder, ArticleService $articleService)
+    {
+        $this->articleService = $articleService;
+        $this->articleRequestBuilder = $articleRequestBuilder;
+    }
+
+    public function feed(Request $request): JsonResponse
+    {
+        try {
+            $articleRequest = $this->articleRequestBuilder->buildFromQueryData($request->query);
+            $articles = $this->articleService->getArticlesFromRequest($articleRequest);
+            if (!$articles) {
+                return new JsonResponse(
+                    ['code' => 204, 'message' => 'No articles found for this query.'],
+                    Response::HTTP_NO_CONTENT
+                );
+            }
+
+            $currentPage = $articleRequest->getPage();
+            $maxPages = $articleRequest->maxPages($this->articleService->getArticlesCountForRequest($articleRequest));
+
+            return new JsonResponse(
+                $articles, Response::HTTP_OK, [
+                             'X-Max-Pages' => $maxPages,
+                             'X-Current-Page' => $currentPage,
+                             'Link' => $this->computeLinks($request, $currentPage, $maxPages),
+                         ]
+            );
+
+        } catch (ConnectionException $exception) {
+            return new JsonResponse(
+                ['code' => 502, 'message' => 'Estamos teniendo un problema con nuestro servidor de contenidos. Sentimos las molestias.'],
+                Response::HTTP_BAD_GATEWAY
+            );
+        } catch (\Exception $e) {
+            return new JsonResponse(
+                ['code' => 500, 'message' => $e->getMessage().' '.get_class($e)],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @param         $currentPage
+     * @param         $maxPages
+     *
+     * @return array
+     */
+    protected function computeLinks(Request $request, $currentPage, $maxPages): array
+    {
+        $url = $this->prepareTemplateURL($request);
+
+
+        $links = [
+            ['name' => 'first', 'page' => 1],
+            ['name' => 'prev', 'page' => $currentPage > 1 ? $currentPage - 1 : 1],
+            ['name' => 'next', 'page' => $currentPage < $maxPages ? $currentPage + 1 : $maxPages],
+        ];
+
+        return array_map(
+            function ($link) use ($url) {
+                return sprintf('<%s&page=%s>; rel=%s', $url, $link['page'], $link['name']);
+            },
+            $links
+        );
+
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return mixed|string
+     */
+    protected function prepareTemplateURL(Request $request)
+    {
+        $url = str_replace(['&url=articles', '%2F'], '', $request->getUri());
+
+        return preg_replace('/[&]?page=\d+/', '', $url);
+    }
+
+}
+```
+
+La mayor parte del trabajo la realiza `ArticleService`, que busca los artículos en la solución de persistencia, a partir de una `ArticleRequest`. `ArticleRequest` es un objeto que extrae los filtros de la URL de la petición y es utilizado por `ArticleService` para montar una Specification compuesta y aplicar ciertos criterios de ordenación.
+
+En cualquier caso, lo que importa es que `ArticleService` devuelve un array con los artículos encontrados y ArticleController solo tiene que dar la respuesta adecuada a la petición.
 
 En el [artículo anterior](/sirviendo-api-rest-1) comentaba que se podían dar diferentes resultados y que deberíamos dar una respuesta adecuada.
 
@@ -31,7 +149,7 @@ El "happy path" sería que se encuentren artículos y se le pueda dar una respue
 
 En resumidas cuentas, se calcula cuál es la página actual de resultados y cuántas son en total para esas condiciones y se devuelve una respuesta en formato JSON, con status 200 (HTTP_OK) y varias cabeceras, entre ellas, Link.
 
-En este caso, uso la clase JsonResponse de Symfony HttpFoundation, aunque eso es indiferente. También utilizo las constantes de Response que representan los distintos códigos de estado HTTP, lo que permite que el código sea más expresivo.
+En este caso, uso la clase `JsonResponse` de Symfony HttpFoundation, aunque eso es indiferente. También utilizo las constantes de Response que representan los distintos códigos de estado HTTP, lo que permite que el código sea más expresivo.
 
 Las cabeceras personalizadas **X-Max-Pages** y **X-Current-Page** podrían ayudar al consumidor a dar información al usuario sobre su situación en el listado global de artículos. No son preceptivas, sin embargo a mí me pareció útil enviar esta información. Al hacerlo en la cabecera evitamos contaminar el array JSON, que el cliente puede usar con la confianza de saber que solo va a tener artículos.
 
@@ -69,7 +187,22 @@ Las rutas son dependientes del framework o router específico que vayamos a util
 
 He decidido que la ruta que sirve la API sea **/api/articles**, por tanto, en mi **index.php** aparece algo así:
 
-{% gist e6ca0eab400154d8311016d9854473af %}
+```php
+<?php
+
+$app = new \Silex\Application();
+
+$app['debug'] = true;
+
+...
+...
+
+$app['api.article.controller'] = function () use ($app) {
+    return new ApiArticleController($app['article.request.builder'], $app['article.service']);
+};
+
+$app->get('/api/articles',"api.article.controller:feed")->when("request.headers.get('Accept') matches '/application\\\\/json/'");
+```
 
 En este ejemplo, el controlador se declara como servicio, para que esté lo más desacoplado posible.
 

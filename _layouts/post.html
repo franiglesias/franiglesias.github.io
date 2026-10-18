@@ -24,6 +24,13 @@ layout: basic
         </p>
     </div>
     <div class="entry">
+        {% if page.update_notice %}
+            {% if page.update_notice.text %}
+                {% include post_update.html title=page.update_notice.title date=page.update_notice.date text=page.update_notice.text %}
+            {% else %}
+                {% include post_update.html date=page.updated text=page.update_notice %}
+            {% endif %}
+        {% endif %}
         {{ content }}
     </div>
 

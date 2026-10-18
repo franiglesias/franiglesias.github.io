@@ -7,7 +7,7 @@ updated: 2026-10-18
 ---
 Si trabajas con un buen IDE puede que te quedes con la sensación de que no necesitas nada más, pero todo ayuda.
 
-Actualización: 2018-02-20. Añado una entrada sobre MacMD Viewer.
+{% include post_update.html date="2018-02-20" text="Añado una entrada sobre MacMD Viewer." %}
 
 Después de muchos años desarrollando acabas creando unos hábitos en torno a un conjunto de herramientas. La primera, por supuesto, es el IDE. En mi caso, como en el de muchísimos más, el elegido es PHPStorm, de JetBrains. La verdad es que es tan completo que prácticamente no necesitas otra cosa. Además de la gestión del proyecto, integración con diversos frameworks de aplicación y de testing y todo lo necesario para trabajar en PHP, tienes terminal, cliente HTTP, integración con gestores de versiones, bases de datos, etc. Puedes pasarte la jornada de trabajo sin salir del entorno.
 

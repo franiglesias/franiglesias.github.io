@@ -1597,6 +1597,87 @@ div.footnotes {
   margin-top: 0.15rem;
 }
 
+// === Post Update Section ===
+
+.post-update {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background-color: $neutral-200;
+  border-left: 4px solid $accent;
+  border-radius: 0 $page-radius $page-radius 0;
+  box-sizing: border-box;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.65rem;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.65rem;
+    background-color: $accent;
+    color: $neutral-100;
+    font-family: $site_font;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 3px;
+    line-height: 1;
+
+    svg,
+    .post-update__icon {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+    }
+  }
+
+  &__date {
+    font-family: $code_font;
+    font-size: 0.85rem;
+    color: $neutral-400;
+    font-weight: 500;
+  }
+
+  &__content,
+  &__body {
+    color: $neutral-500;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    p {
+      margin: 0 0 0.5rem 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      color: $link-color;
+      text-decoration: underline;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+
+    code {
+      font-family: $code_font;
+      font-size: 0.9em;
+      background: $neutral-300;
+      padding: 0.15em 0.35em;
+      border-radius: 3px;
+    }
+  }
+}
+
 /* ============================================================
    Dark theme — CRT terminal effects
    ============================================================ */
@@ -1687,5 +1768,34 @@ div.footnotes {
   .full-post header.post-header,
   .micro-post header.post-header {
     background-blend-mode: soft-light;
+  }
+
+  .post-update {
+    background-color: var(--color-neutral-200);
+    border-left-color: var(--color-accent);
+    box-shadow: 0 0 10px rgba(244, 185, 66, 0.08);
+
+    &__badge {
+      background-color: var(--color-accent);
+      color: var(--color-neutral-900);
+    }
+
+    &__date {
+      color: var(--color-neutral-400);
+    }
+
+    &__content,
+    &__body {
+      color: var(--color-neutral-500);
+
+      a {
+        text-shadow: none;
+      }
+
+      code {
+        background-color: var(--color-neutral-300);
+        color: var(--color-neutral-500);
+      }
+    }
   }
 }

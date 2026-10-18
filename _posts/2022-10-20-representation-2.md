@@ -8,7 +8,7 @@ updated: 2026-05-25
 ---
 El problema: como obtener representaciones de un objeto, como DTO, serializaciones, etc., sin exponer _getters_ que únicamente se usarían para esa tarea.
 
-**Actualización 7/3/2025:** He cambiado los ejemplos para evitar una ambigüedad en el nombre del método `PersonName->fill` y el de la interfaz `Fillabe->fill` que podía dar la impresión de que el código estaba mal construido. [He actualizado los ejemplos también en el repositorio](https://github.com/franiglesias/representation-pattern). Gracias a [Manuel Rivero](https://www.linkedin.com/in/manuel-rivero-54411271/) por señalarlo.
+{% include post_update.html date="2025-03-07" text="He cambiado los ejemplos para evitar una ambigüedad en el nombre del método `PersonName->fill` y el de la interfaz `Fillabe->fill` que podía dar la impresión de que el código estaba mal construido. [He actualizado los ejemplos también en el repositorio](https://github.com/franiglesias/representation-pattern). Gracias a [Manuel Rivero](https://www.linkedin.com/in/manuel-rivero-54411271/) por señalarlo." %}
 
 
 Anteriormente, he considerado un par de aproximaciones como el [Presenter pattern](/presenter-pattern/) o el [Representation Pattern](/representation-pattern/), pero ninguna de las dos llegó a convencerme 100%. Sin embargo, la idea del Representation pattern estaba más o menos en el buen camino.

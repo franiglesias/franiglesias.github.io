@@ -11,21 +11,21 @@ La suite de tests de Holaluz ha crecido mucho y me preocupa un poco cómo compag
 
 Una suite de test que tarda mucho en ejecutarse pierde utilidad porque el feedback no llega tan rápido como se desea y comienza a verse como un estorbo más que una herramienta necesaria en el trabajo.
 
-## Actualización
-
-He modificado bastante los detalles de la metodología para lanzar los test, por lo que he actualizado el artículo con los nuevos resultados. No alteran mucho las conclusiones, pero creo ahora son más confiables.
+{% include post_update.html date="2019-06-10" text="He modificado bastante los detalles de la metodología para lanzar los test, por lo que he actualizado el artículo con los nuevos resultados. No alteran mucho las conclusiones, pero creo ahora son más confiables.
 
 El cambio es que ahora los test se lanzan en procesos diferentes y aislados. En conjunto hace que sea más lento, por lo que he reducido las repeticiones por defecto a 50.
 
 Por otro lado, la información del consumo de memoria también cambia. Aparte de que sea debido a la nueva forma de lanzar los test, he intentado evitar un efecto de posición: el primer test parecía consumir una cantidad de memoria desproporcionadamente grande. Para evitarlo, lo que ahora se hace es ejecutar una primera vez cada test y medir la memoria solo tras esa primera ejecución. Este aspecto de la memoria es el menos fiable, por lo que no comentaré el dato hasta tener una metodología que me convenza.
 
-Un último comentario es que hay un margen de error en la medida. Si ejecutas los tests en tu propio entorno podrías observar resultados ligeramente diferentes o distinto orden en cada ejecución entre métodos que arrojan tiempos parecidos. Parece que existe un pequeño elemento de aleatoriedad, supongo que dependiendo de procesos que puedan estar corriendo en tu máquina en un momento dado. 
+Un último comentario es que hay un margen de error en la medida. Si ejecutas los tests en tu propio entorno podrías observar resultados ligeramente diferentes o distinto orden en cada ejecución entre métodos que arrojan tiempos parecidos. Parece que existe un pequeño elemento de aleatoriedad, supongo que dependiendo de procesos que puedan estar corriendo en tu máquina en un momento dado.
 
-Gracias a [Sergio Susa](https://github.com/sergiosusa) por sus observaciones sobre el efecto de orden en los tests.
+Gracias a [Sergio Susa](https://github.com/sergiosusa) por sus observaciones sobre el efecto de orden en los tests." %}
+
+
 
 ## Velocidad de los tests según la metodología para crear dobles
 
-Son muchos los factores que influyen en el tiempo de ejecución de una suite de tests y, de momento, voy a centrarme en un aspecto concreto: los métodos para generar test doubles. En varios artículos del blog hemos hablado de ellos. Fundamentalmente me interesaba comprar los dobles generados con librerías de mocking frente a usar las clases originales o instanciar clases anónimas como dobles.
+Son muchos los factores que influyen en el tiempo de ejecución de una suite de tests y, de momento, voy a centrarme en un aspecto concreto: los métodos para generar test doubles. En varios artículos del blog hemos hablado de ellos. Fundamentalmente, me interesaba comparar los dobles generados con librerías de mocking frente a usar las clases originales o instanciar clases anónimas como dobles.
 
 Después de unos primeros análisis bastante simples, los resultados fueron un tanto inesperados, ya que el método más eficiente resultó ser la creación de dobles nativos de **PHPUnit** (los que se obtienen con `createMock`), con bastante diferencia sobre usar las clases originales y sobre los dobles usando la librería **prophecy**, integrada también en **PHPUnit**.
 

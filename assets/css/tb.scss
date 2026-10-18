@@ -626,7 +626,6 @@ article.post {
 
 p code {
   font: {
-    size: inherit;
     family: $inline_code_font;
   };
 }
@@ -789,9 +788,13 @@ article.list span.tag {
   border-bottom: 2px solid $accent;
 }
 
-// Random post sidebar widget
+// Sidebar widgets
 .sidebar-widget {
   margin-top: 2rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
 
   #random-post {
     a {
@@ -811,6 +814,80 @@ article.list span.tag {
       display: block;
       font-size: 0.75rem;
       color: $neutral-400;
+    }
+  }
+
+  &--search {
+    .search-box {
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.45rem 0.65rem;
+      font-family: $site_font;
+      font-size: 0.85rem;
+      color: $neutral-500;
+      background: $neutral-100;
+      border: 1px solid $neutral-300;
+      border-radius: 4px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+
+      &::placeholder {
+        color: $neutral-400;
+      }
+
+      &:focus {
+        border-color: $accent;
+        box-shadow: 0 0 0 2px rgba(206, 149, 128, 0.25);
+      }
+    }
+
+    .search-results-list {
+      list-style: none;
+      margin: 0.5rem 0 0;
+      padding: 0;
+
+      &:empty {
+        margin: 0;
+      }
+
+      .search-result-item {
+        padding: 0.4rem 0;
+        border-bottom: 1px dotted $neutral-300;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        a {
+          display: block;
+          color: $primary-light;
+          font-size: 0.85rem;
+          line-height: 1.35;
+          text-decoration: none;
+
+          &:hover {
+            color: $accent;
+          }
+        }
+
+        time {
+          display: block;
+          font-size: 0.75rem;
+          color: $neutral-400;
+          margin-top: 0.15rem;
+        }
+      }
+
+      .search-no-results {
+        padding: 0.4rem 0;
+        font-size: 0.8rem;
+        color: $neutral-400;
+        font-style: italic;
+      }
     }
   }
 }
@@ -872,7 +949,6 @@ h5 code.language-plaintext,
 h6 code.language-plaintext {
   color: $text-color;
   font: {
-    size: inherit;
     family: $inline_code_font;
   };
 }
@@ -1453,7 +1529,6 @@ div.footnotes {
   h6 code.language-plaintext {
     color: var(--code-text-color);
     font: {
-      size: inherit;
       family: $inline_code_font;
     };
   }

@@ -1,0 +1,18 @@
+---
+layout: null
+---
+[
+  {% assign first = true %}
+  {% for post in site.posts %}
+    {% unless post.hide %}
+      {% if first %}{% assign first = false %}{% else %},{% endif %}
+      {
+        "title"    : {{ post.title | jsonify }},
+        "url"      : {{ post.url | relative_url | jsonify }},
+        "tags"     : {{ post.tags | join: ", " | jsonify }},
+        "date"     : {{ post.date | date: "%d/%m/%Y" | jsonify }},
+        "content"  : {{ post.content | strip_html | strip_newlines | truncatewords: 50 | jsonify }}
+      }
+    {% endunless %}
+  {% endfor %}
+]

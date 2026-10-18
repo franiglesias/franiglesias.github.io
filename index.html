@@ -4,11 +4,11 @@ layout: default
 
 <div class="widgets-grid">
   {% for widget in site.data.homepage.widgets %}
-    {% if widget.type == "latest" %}
+    {% if widget.type == "updated" %}
+      {% include widget_updated.html title=widget.title limit=widget.limit %}
+    {% elsif widget.type == "latest" %}
       {% include widget_latest.html title=widget.title limit=widget.limit %}
-  {% elsif widget.type == "updated" %}
-    {% include widget_updated.html title=widget.title limit=widget.limit %}
-  {% elsif widget.type == "series" %}
+    {% elsif widget.type == "series" %}
       {% include widget_series.html title=widget.title series=widget.series limit=widget.limit %}
     {% elsif widget.type == "tag" %}
       {% include widget_tag.html title=widget.title tag=widget.tag limit=widget.limit %}

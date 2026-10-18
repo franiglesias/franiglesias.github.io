@@ -1,0 +1,25 @@
+<section class="sidebar-widget sidebar-widget--search">
+  <h2 class="sidebar-widget__title">Buscar</h2>
+  <div class="search-box">
+    <input type="search" id="search-input" class="search-input" placeholder="Buscar en el blog..." aria-label="Buscar en el blog" autocomplete="off">
+    <ul id="search-results-container" class="search-results-list"></ul>
+  </div>
+</section>
+<script src="{{ '/assets/js/simple-jekyll-search.min.js' | relative_url }}"></script>
+<script>
+  (function () {
+    var searchInput = document.getElementById('search-input');
+    var resultsContainer = document.getElementById('search-results-container');
+    if (searchInput && resultsContainer && window.SimpleJekyllSearch) {
+      SimpleJekyllSearch({
+        searchInput: searchInput,
+        resultsContainer: resultsContainer,
+        json: '{{ "/search.json" | relative_url }}',
+        searchResultTemplate: '<li class="search-result-item"><a href="{url}">{title}</a><time>{date}</time></li>',
+        noResultsText: '<li class="search-no-results">No se encontraron artículos</li>',
+        limit: 8,
+        fuzzy: false
+      });
+    }
+  })();
+</script>

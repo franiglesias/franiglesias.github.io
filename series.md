@@ -6,12 +6,13 @@ permalink: /series/
 
 <div class="posts">
 
-{% for serie_id in site.data.series %}
-    {% assign serie_posts = site.posts | where: "series", serie_id[0] | sort: "date" %}
-    {% assign primer_post = serie_posts | first %}
+{% for serie_entry in site.data.series %}
+    {% assign serie_slug = serie_entry[0] %}
+    {% assign serie_data = serie_entry[1] %}
+    {% assign serie_posts = site.posts | where: "series", serie_slug | sort: "date" %}
 
-    <h2>{{ site.data.series[primer_post.series].title }}</h2>
-    <p>{{ site.data.series[primer_post.series].description }}</p>
+    <h2>{{ serie_data.title }}</h2>
+    <p>{{ serie_data.description }}</p>
 
     {% if serie_posts.size > 0 %}
         <ol class="post-list">

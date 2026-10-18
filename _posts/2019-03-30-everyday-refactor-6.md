@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Refactor cotidiano (6). Aplica Tell, Don't Ask y la Ley de Demeter
+series: everyday-refactor
 categories: [articles]
 tags: [good-practices, refactoring]
 updated: 2026-05-25

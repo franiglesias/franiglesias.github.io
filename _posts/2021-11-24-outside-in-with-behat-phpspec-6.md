@@ -1,19 +1,12 @@
 ---
 layout: post 
 title: Outside-in y Behavior Driven Development 6 
+series: outside-in-bdd
 categories: [articles]
 tags: [tdd, php, bdd]
 updated: 2026-05-25
 ---
 Consideraciones sobre el desarrollo con Behavior Driven Development
-
-1. [Introducción, herramientas y ejemplo](/outside-in-with-behat-phpspec/)
-2. [Desarrollo del segundo escenario](/outside-in-with-behat-phpspec-2/)
-3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
-4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
-5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
-6. [Consideraciones sobre BDD](/outside-in-with-behat-phpspec-6/)
-7. [Usar un cliente Http](/outside-in-with-behat-phpspec-7/)
 
 ## Outside-in TDD vs BDD
 

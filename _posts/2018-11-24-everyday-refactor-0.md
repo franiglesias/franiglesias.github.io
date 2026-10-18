@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Refactor cotidiano
+series: everyday-refactor
 categories: [articles]
 tags: [good-practices, refactoring]
 recommended: false

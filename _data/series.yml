@@ -16,3 +16,72 @@ outside-in-ha:
 vsa:
   title: "Vertical Slice Architecture"
   description: "Explicamos y reflexionamos sobre el patrón Vertical Slice Architecture con un ejemplo de su posible implementación."
+historia-reescritura:
+  title: "Historia de una reescritura"
+  description: "Crónica paso a paso sobre el proceso de reescritura de una aplicación legacy hacia una arquitectura limpia y testeable."
+api-rest:
+  title: "API Rest"
+  description: "Conceptos, diseño y buenas prácticas para servir y consumir APIs RESTful en PHP."
+katando-phpspec:
+  title: "Katando PHPSpec"
+  description: "Serie práctica resolviendo una kata de código guiada por especificaciones con PHPSpec."
+tdd-colecciones:
+  title: "TDD en PHP con colecciones"
+  description: "Desarrollo paso a paso guiado por tests (TDD) para modelar e implementar estructuras de colecciones orientadas a objetos en PHP."
+ejercicio-refactor:
+  title: "Ejercicio de refactoring"
+  description: "Ejemplo práctico de refactorización progresiva: desde tests de caracterización hasta el diseño final limpio."
+codigo-mentiroso:
+  title: "Código mentiroso"
+  description: "Análisis de patrones en el código que engañan sobre su verdadero comportamiento y cómo corregirlos."
+test-doubles-intro:
+  title: "Test doubles"
+  description: "Introducción y principios de diseño fundamentales al trabajar con dobles de test."
+bdd-php:
+  title: "Introducción a BDD en PHP"
+  description: "Guía práctica de Behavior Driven Development en PHP utilizando herramientas como Behat y PHPSpec."
+everyday-refactor:
+  title: "Refactor cotidiano"
+  description: "Técnicas y hábitos diarios de refactorización para mejorar continuamente la legibilidad y mantenibilidad del código."
+testing-with-doubles:
+  title: "Guía para testear con dobles"
+  description: "Guía completa y detallada sobre el uso apropiado de dobles de test (mocks, stubs, fakes, spies y dummies)."
+the-way-to-ddd:
+  title: "De Directory Driven a DDD"
+  description: "Transición paso a paso desde una arquitectura guiada por carpetas hacia Domain-Driven Design."
+python-pong:
+  title: "Pong en Python"
+  description: "Desarrollo ágil de un juego Pong en Python, abordando legacy, refactoring, tests automatizados y gestión de sprints."
+beyond-solid:
+  title: "Más allá de SOLID"
+  description: "Reflexiones sobre principios de diseño de software fundamentales que complementan y trascienden a SOLID."
+legacy-control:
+  title: "Trabajar con legacy y entender el dominio"
+  description: "Estrategias para poner código legacy bajo test, extraer conceptos y estructurar la aplicación descubriendo el dominio."
+future-proof-code:
+  title: "Código a prueba de futuro"
+  description: "Técnicas y decisiones de diseño para escribir código sostenible, extensible y resistente al paso del tiempo."
+outside-in-bdd:
+  title: "Outside-in y Behavior Driven Development"
+  description: "Desarrollo de aplicaciones siguiendo el ciclo Outside-In con BDD usando Behat y PHPSpec."
+learning-go:
+  title: "Aprendiendo Go con TDD"
+  description: "Exploración del lenguaje Go aprendiendo sus fundamentos y características mediante Test-Driven Development."
+dungeon:
+  title: "Dungeon Crawler en Python"
+  description: "Serie completa sobre el desarrollo de un juego Dungeon en Python aplicando diseño incremental."
+hexagonal-bdd:
+  title: "Arquitectura Hexagonal con BDD"
+  description: "Construcción de aplicaciones basadas en Puertos y Adaptadores (Arquitectura Hexagonal) guiadas por BDD."
+gilded-rose-refactor:
+  title: "Refactoring Gilded Rose"
+  description: "Estrategias avanzadas de refactorización del clásico kata Gilded Rose: Golden Master, condicionales y polimorfismo."
+command-bus:
+  title: "Bus de mensajes y Command Bus"
+  description: "Explicación detallada del funcionamiento, beneficios e implementación práctica de buses de comandos y mensajería."
+intro-refactor:
+  title: "Refactoring para quienes no refactorizan"
+  description: "Introducción accesible al refactoring con pasos sencillos y pragmáticos para perder el miedo a mejorar el código existente."
+test-doubles-guide-2025:
+  title: "La guía definitiva de los dobles de test"
+  description: "Guía revisada y exhaustiva sobre dobles de test: definiciones claras, cuándo utilizarlos y antipatrones a evitar."

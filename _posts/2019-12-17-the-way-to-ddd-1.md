@@ -1,6 +1,7 @@
 ---
 layout: post
 title: De directory driven a DDD paso a paso
+series: the-way-to-ddd
 categories: [articles]
 tags: [good-practices, design-principles, ddd]
 updated: 2026-05-25

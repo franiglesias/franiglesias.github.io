@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Pong en Python. Eliminando deuda técnica.
+series: python-pong
 categories: [articles]
 tags: [python, good-practices]
 updated: 2026-05-25

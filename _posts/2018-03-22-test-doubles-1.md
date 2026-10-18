@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Test doubles (1)
+series: test-doubles-intro
 categories: [articles]
 tags: [testing, php]
 recommended: true

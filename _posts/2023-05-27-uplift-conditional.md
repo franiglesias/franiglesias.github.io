@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Despejar una maraña de condicionales
+series: gilded-rose-refactor
 categories: [articles]
 tags: [refactoring]
 updated: 2026-05-25

@@ -1,19 +1,12 @@
 ---
 layout: post 
 title: Outside-in y Behavior Driven Development 3 
+series: outside-in-bdd
 categories: [articles]
 tags: [tdd, php, bdd]
 updated: 2026-05-25
 ---
 En esta entrega, veremos cómo completar el segundo y tercer escenario de nuestra feature.
-
-1. [Introducción, herramientas y ejemplo](/outside-in-with-behat-phpspec/)
-2. [Desarrollo del segundo escenario](/outside-in-with-behat-phpspec-2/)
-3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
-4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
-5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
-6. [Consideraciones sobre BDD](/outside-in-with-behat-phpspec-6/)
-7. [Usar un cliente Http](/outside-in-with-behat-phpspec-7/)
 
 Personalmente encuentro que una de las grandes ventajas de trabajar con metodologías TDD o BDD es que resulta bastante fácil parar tu trabajo y retomarlo en otro momento. No tienes más que ejecutar los tests y ver cuál es el siguiente que falla.
 

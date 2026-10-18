@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Como funciona un bus de mensajes
+series: command-bus
 categories: [articles]
 tags: [design-patterns]
 updated: 2026-05-25

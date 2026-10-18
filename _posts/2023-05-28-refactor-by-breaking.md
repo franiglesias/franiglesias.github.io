@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Refactoriza rompiendo cosas
+series: gilded-rose-refactor
 categories: [articles]
 tags: [refactoring, good-practices]
 updated: 2026-05-25

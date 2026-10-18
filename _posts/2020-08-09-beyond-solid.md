@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Más allá de SOLID, principios básicos
+series: beyond-solid
 categories: [articles]
 tags: [good-practices, design-principles]
 updated: 2026-05-25

@@ -1,18 +1,14 @@
 ---
 layout: post
 title: Ejercicio de refactoring (4) Finalizando
+series: ejercicio-refactor
 categories: [articles]
 tags: [refactoring, testing, legacy]
 updated: 2026-05-25
 ---
 En el artículo anterior quedaron pendientes algunos refactors en nuestro proyecto. En esta entrega mi intención es tratar de rematarlos, así como hacer alguna reflexión sobre los resultados obtenidos y sus consecuencias.
 
-La serie **Ejercicio de refactoring** consta de los siguientes artículos:
-
-[Ejercicio de refactoring (1): Los test de caracterización](/ejercicio-de-refactor-1)  
-[Ejercicio de refactoring (2): Extraer hasta la última gota](/ejercicio-de-refactor-2)  
-[Ejercicio de refactoring (3): Intervenir y seguir o no refactorizando](/ejercicio-de-refactor-3)  
-[Ejercicio de refactoring (4): Finalizando](/ejercicio-de-refactor-4)  
+  
 
 Pero antes de empezar, debo señalar que la propuesta de refactor que se muestra aquí no tiene que ser ni la única posible, ni la mejor. Lo interesante de esta serie no es tanto el resultado concreto, como el proceso mediante el que se llega al mismo. Y, particularmente, lo que más me llama la atención es el modo en que, a medida que vamos reorganizando el código, vamos refinando los conceptos, descubriendo patrones y abriendo vías para mejores diseños.
 

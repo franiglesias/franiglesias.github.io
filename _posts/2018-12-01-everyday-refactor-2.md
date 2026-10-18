@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Refactor cotidiano (2). Mejora los nombres
+series: everyday-refactor
 categories: [articles]
 tags: [good-practices, refactoring]
 updated: 2026-05-25

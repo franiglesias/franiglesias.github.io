@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Poner el código bajo test
+series: legacy-control
 subtitle: Trabajar con legacy y entender el dominio (1)
 categories: [articles]
 tags: [design-principles, good-practices, refactoring]

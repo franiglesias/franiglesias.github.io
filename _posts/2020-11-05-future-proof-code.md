@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Escribir código a prueba de futuro
+series: future-proof-code
 categories: [articles]
 tags: [good-practices, refactoring, python]
 updated: 2026-05-25

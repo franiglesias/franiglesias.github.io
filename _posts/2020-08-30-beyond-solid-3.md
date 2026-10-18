@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Más allá de SOLID, los consejos prácticos
+series: beyond-solid
 categories: [articles]
 tags: [design-principles, good-practices]
 updated: 2026-05-25

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Guía para testear con dobles (3)
+series: testing-with-doubles
 categories: [articles]
 tags: [testing]
 updated: 2026-05-25

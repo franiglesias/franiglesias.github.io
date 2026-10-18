@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Pong en Python. Los prototipos como punto de partida de un proyecto de software
+series: python-pong
 categories: [articles]
 tags: [python, good-practices]
 updated: 2026-05-25

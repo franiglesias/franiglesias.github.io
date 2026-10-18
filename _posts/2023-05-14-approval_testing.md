@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Cobertura de test rápida con Golden Master
+series: gilded-rose-refactor
 categories: [articles]
 tags: [good-practices, refactoring]
 updated: 2026-05-25

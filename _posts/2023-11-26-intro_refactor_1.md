@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Refactoring para quienes no refactorizan
+series: intro-refactor
 categories: [articles]
 tags: [good-practices, refactoring, ruby]
 updated: 2026-05-25

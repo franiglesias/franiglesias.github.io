@@ -1,6 +1,7 @@
 ---
 layout: post
 title: De ddd a DDD paso a paso 2. Del repositorio al dominio.
+series: the-way-to-ddd
 categories: [articles]
 tags: [good-practices, design-principles, ddd]
 updated: 2026-05-25

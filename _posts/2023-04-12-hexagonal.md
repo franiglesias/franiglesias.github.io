@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Introducción a la Arquitectura Hexagonal
+series: hexagonal-bdd
 categories: [articles]
 tags: [design-patterns, hexagonal]
 updated: 2026-06-06

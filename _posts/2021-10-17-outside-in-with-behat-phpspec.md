@@ -1,19 +1,12 @@
 ---
 layout: post 
 title: Outside-in y Behavior Driven Development 1 
+series: outside-in-bdd
 categories: [articles]
 tags: [tdd, php, bdd]
 updated: 2026-05-25
 ---
 _Outside-in TDD_ se ha convertido en mi primera opción para desarrollar nuevas features en los proyectos en los que trabajo. Hasta ahora he estado trabajando únicamente con **phpunit**, pero estoy preparando una especie de _side-project_ para cambiar el modo en que hago los tests de aceptación.
-
-1. [Introducción, herramientas y ejemplo](/outside-in-with-behat-phpspec/)
-2. [Desarrollo del segundo escenario](/outside-in-with-behat-phpspec-2/)
-3. [Desarrollo del tercer escenario](/outside-in-with-behat-phpspec-3/)
-4. [Manejando bugs con BDD](/outside-in-with-behat-phpspec-4/)
-5. [Añadiendo nuevas features](/outside-in-with-behat-phpspec-5/)
-6. [Consideraciones sobre BDD](/outside-in-with-behat-phpspec-6/)
-7. [Usar un cliente Http](/outside-in-with-behat-phpspec-7/)
 
 A medida que he ido profundizando en _outside-in TDD_, me he dado cuenta de que está muy cerca de Behavior Driven Development. De hecho, normalmente acabo refactorizando esos tests, que escribo en **phpunit**, hasta que se parecen a escenarios de BDD.
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Como añadir features en arquitectura hexagonal
+series: hexagonal-bdd
 categories: [articles]
 tags: [good-practices, design-patterns, hexagonal]
 updated: 2026-05-25

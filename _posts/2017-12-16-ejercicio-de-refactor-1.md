@@ -1,18 +1,14 @@
 ---
 layout: post
 title: Ejercicio de refactor (1) Los tests de caracterización
+series: ejercicio-refactor
 categories: [articles]
 tags: [refactoring, testing, legacy]
 updated: 2026-05-25
 ---
 ¿Qué tal si hablamos de refactor?
 
-La serie **Ejercicio de refactoring** consta de los siguientes artículos:
-
-[Ejercicio de refactoring (1): Los test de caracterización](/ejercicio-de-refactor-1)  
-[Ejercicio de refactoring (2): Extraer hasta la última gota](/ejercicio-de-refactor-2)  
-[Ejercicio de refactoring (3): Intervenir y seguir o no refactorizando](/ejercicio-de-refactor-3)  
-[Ejercicio de refactoring (4): Finalizando](/ejercicio-de-refactor-4)  
+  
 
 Estoy leyendo el libro de referencia sobre estos temas: [Working effectively with legacy code, de Michael Feathers](https://www.amazon.es/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052), y me gustaría ir poniendo en práctica algunas de las técnicas que propone. Para ello, he preparado un ejemplo adaptando ligeramente un caso real.
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: TDD en PHP. Un ejemplo con colecciones (2)
+series: tdd-colecciones
 categories: [articles]
 tags: [tdd, php]
 updated: 2026-05-25
@@ -277,11 +278,3 @@ Además, existen una serie de métodos que podrían ser útiles para conocer el 
 * Método isEmpty que nos diga si la colección está vacía
 
 Pero, por hoy ya ha sido bastante. [Puedes ver el proyecto en Github](https://github.com/franiglesias/collections).
-
-La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
-
-[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
-[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
-[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
-[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
-[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)

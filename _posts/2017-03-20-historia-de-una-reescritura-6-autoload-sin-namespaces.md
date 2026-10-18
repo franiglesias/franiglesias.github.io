@@ -1,20 +1,12 @@
 ---
 layout: post
 title: Historia de una reescritura (6) autoload sin namespaces
+series: historia-reescritura
 categories: [articles]
 tags: [misc]
 updated: 2026-05-25
 ---
 Como añadir autoload a un proyecto sin namespaces.
-
-La serie **Historia de una reescritura** está compuesta de los siguientes artículos
-
-[Historia de una reescritura (1):](/historia-de-una-reescritura-1)  
-[Historia de una reescritura (2): El problema con MVC](/historia-de-una-reescritura-2-el-problema-con-mvc)  
-[Historia de una reescritura (3): Empezar con la vista](/historia-de-una-reescritura-3-empezar-con-la-vista)  
-[Historia de una reescritura (4): El código tóxico](/historia-de-una-reescritura-4-codigo-toxico)  
-[Historia de una reescritura (5): Tests](/historia-de-una-reescritura-5-tests)  
-[Historia de una reescritura (6): Autoload sin namespaces](/historia-de-una-reescritura-6-autoload-sin-namespaces)
 
 CakePHP 1.3 tiene muchos problemas derivados de su antigüedad, como el hecho de no tener namespaces, carecer de un autoloader y otro muchos, como hacer un montón de llamadas estáticas a métodos que no lo son.
 

@@ -1,18 +1,12 @@
 ---
 layout: post
 title: Katando PHPSpec 4
+series: katando-phpspec
 categories: [articles]
 tags: [tdd, bdd]
 updated: 2026-05-25
 ---
 En las entregas anteriores de la serie he tratado de explicar cómo hacer TDD usando PHPSpec. En esta última, voy a mostrar cómo dar un "salto" en el desarrollo, usando los test existentes como protección.
-
-La serie **Katando PHPSpec** consta de los siguientes artículos:
-
-[Katando PHPSpec (1)](/katando-phpspec-1)  
-[Katando PHPSpec (2)](/katando-phpspec-2)  
-[Katando PHPSpec (3)](/katando-phpspec-3)  
-[Katando PHPSpec (4)](/katando-phpspec-4)
 
 Si recuerdas, esta era la última implementación de la clase **Calculator**. La pongo aquí para referencia:
 

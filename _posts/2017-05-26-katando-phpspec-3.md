@@ -1,18 +1,12 @@
 ---
 layout: post
 title: Katando PHPSpec 3
+series: katando-phpspec
 categories: [articles]
 tags: [tdd, bdd]
 updated: 2026-05-25
 ---
 En esta tercera entrega, vamos a examinar cómo los nuevos requisitos nos pueden llevar a refactorizar una solución existente y discutiremos lo que define la sobreingeniería.
-
-La serie **Katando PHPSpec** consta de los siguientes artículos:
-
-[Katando PHPSpec (1)](/katando-phpspec-1)  
-[Katando PHPSpec (2)](/katando-phpspec-2)  
-[Katando PHPSpec (3)](/katando-phpspec-3)  
-[Katando PHPSpec (4)](/katando-phpspec-4)
 
 En el [capítulo anterior](/katando-phpspec-2/) implementamos los primeros tres requisitos de la kata. Al final del mismo mencionamos varias oportunidades de *refactoring*, puesto que podíamos ver algunos puntos potencialmente apestosos del código.
 

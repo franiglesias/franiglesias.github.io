@@ -1,18 +1,12 @@
 ---
 layout: post
 title: Katando PHPSpec 1
+series: katando-phpspec
 categories: [articles]
 tags: [tdd, bdd]
 updated: 2026-05-25
 ---
 Voy a intentar explicar cómo empezar a hacer BDD/TDD con PHPSpec.
-
-La serie **Katando PHPSpec** consta de los siguientes artículos:
-
-[Katando PHPSpec (1)](/katando-phpspec-1)  
-[Katando PHPSpec (2)](/katando-phpspec-2)  
-[Katando PHPSpec (3)](/katando-phpspec-3)  
-[Katando PHPSpec (4)](/katando-phpspec-4)
 
 En esta primera parte, voy a tratar de hacer parte de [la string calculator kata](http://osherove.com/tdd-kata-1/) que nos va a permitir hacernos una idea de cómo trabajar con PHPSpec y la disciplina de TDD.
 

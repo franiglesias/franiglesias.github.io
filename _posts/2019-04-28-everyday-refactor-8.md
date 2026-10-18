@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Refactor cotidiano (8). Dónde poner el conocimiento
+series: everyday-refactor
 categories: [articles]
 tags: [good-practices, refactoring]
 updated: 2026-05-25

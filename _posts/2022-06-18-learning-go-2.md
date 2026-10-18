@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Aprendiendo Go con TDD 2
+series: learning-go
 categories: [articles]
 tags: [golang, tdd]
 updated: 2026-05-25

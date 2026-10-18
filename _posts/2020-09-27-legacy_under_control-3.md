@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dar estructura a la aplicación
+series: legacy-control
 subtitle: Trabajar con legacy y entender el dominio (3)
 categories: [articles]
 tags: [design-principles, good-practices, refactoring]

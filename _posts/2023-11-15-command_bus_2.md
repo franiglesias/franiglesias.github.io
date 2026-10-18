@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Disfrutando del Command Bus
+series: command-bus
 categories: [articles]
 tags: [design-patterns, ruby]
 updated: 2026-05-25

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: La guía definitiva de los dobles de test 2
+series: test-doubles-guide-2025
 categories: [articles]
 tags: [testing, tdd, typescript]
 updated: 2026-05-25

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: De condicionales a polimorfismo
+series: gilded-rose-refactor
 categories: [articles]
 tags: [refactoring, good-practices]
 updated: 2026-05-25

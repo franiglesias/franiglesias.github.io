@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Extracción de conceptos
+series: legacy-control
 subtitle: Trabajar con legacy y entender el dominio (2)
 categories: [articles]
 tags: [design-principles, good-practices, refactoring]

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: TDD en PHP. Un ejemplo con colecciones (5)
+series: tdd-colecciones
 categories: [articles]
 tags: [tdd, php]
 updated: 2026-05-25
@@ -1256,13 +1257,3 @@ Por supuesto, se admiten sugerencias de mejora. [Puedes comentar en el repositor
 Como he comentado en alguna ocasión, el objetivo de esta serie de artículos no es hablar sobre colecciones, sino sobre cómo desarrollar usando la disciplina TDD.
 
 Y eso es todo.
-
-Los anteriores artículos de la serie son:
-
-La serie **TDD en PHP: un ejemplo con colecciones** está compuesta de los siguientes artículos:
-
-[TDD en PHP: un ejemplo con colecciones (1)](/tdd-en-php-un-ejemplo-con-colecciones-1)  
-[TDD en PHP: un ejemplo con colecciones (2): método each](/tdd-en-php-un-ejemplo-con-colecciones-2)  
-[TDD en PHP: un ejemplo con colecciones (3): método map](/tdd-en-php-un-ejemplo-con-colecciones-3)  
-[TDD en PHP: un ejemplo con colecciones (4): filter y getBy](/tdd-en-php-un-ejemplo-con-colecciones-4)  
-[TDD en PHP: un ejemplo con colecciones (5): métodos de utilidad](/tdd-en-php-un-ejemplo-con-colecciones-5)

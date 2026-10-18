@@ -1,18 +1,12 @@
 ---
 layout: post
 title: Katando PHPSpec 2
+series: katando-phpspec
 categories: [articles]
 tags: [tdd, bdd]
 updated: 2026-05-25
 ---
 Continuamos con la kata iniciada en el artículo anterior.
-
-La serie **Katando PHPSpec** consta de los siguientes artículos:
-
-[Katando PHPSpec (1)](/katando-phpspec-1)  
-[Katando PHPSpec (2)](/katando-phpspec-2)  
-[Katando PHPSpec (3)](/katando-phpspec-3)  
-[Katando PHPSpec (4)](/katando-phpspec-4)
 
 El siguiente requisito que vamos a implementar en nuestra Calculator es:
 

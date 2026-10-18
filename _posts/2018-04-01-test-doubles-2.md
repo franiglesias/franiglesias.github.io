@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Test doubles (2) Principios de diseño
+series: test-doubles-intro
 categories: [articles]
 tags: [testing, php]
 updated: 2026-05-25

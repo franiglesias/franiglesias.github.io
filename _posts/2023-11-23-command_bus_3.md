@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Mensajería variada
+series: command-bus
 categories: [articles]
 tags: [design-patterns]
 updated: 2026-05-25

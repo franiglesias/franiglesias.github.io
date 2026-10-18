@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Introducción a Behavior Driven Development en PHP (4)
+series: bdd-php
 published: true
 categories: [articles]
 tags: [php, bdd, testing]

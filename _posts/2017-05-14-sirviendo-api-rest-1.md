@@ -1,17 +1,12 @@
 ---
 layout: post
 title: Sirviendo API rest (1)
+series: api-rest
 categories: [articles]
 tags: [api]
 updated: 2026-05-25
 ---
 Voy a hacer un ejemplo de controlador que responde a peticiones por [API Rest](/api-rest/) distribuido en varias entregas. Me voy a limitar a lo más básico y en futuros artículos iré añadiendo los elementos de seguridad, etc. En la primera parte, quiero centrarme en la parte de diseño.
-
-Esta serie sobre **API Rest** tiene los siguientes artículos:
-
-[API-REST](/api-rest)  
-[Sirviendo API-REST 1](/sirviendo-api-rest-1)  
-[Sirviendo API-REST 2](/sirviendo-api-rest-2)
 
 En el fondo, y salvando las distancias, servir una API REST es poco más o menos que servir una página HTML.
 

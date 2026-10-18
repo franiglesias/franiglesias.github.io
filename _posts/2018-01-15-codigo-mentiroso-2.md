@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Código mentiroso (2) más ejemplos
+series: codigo-mentiroso
 categories: [articles]
 tags: [design-principles, refactoring, php]
 updated: 2026-05-25

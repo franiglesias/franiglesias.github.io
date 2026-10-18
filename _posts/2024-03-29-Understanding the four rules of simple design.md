@@ -3,8 +3,8 @@ layout: micro-post
 title: Understanding the four rules of simple design
 categories: [articles]
 tags: [tb-list, design-principles]
+updated: 2026-05-25
 ---
-
 Este libro de Corey Haines (LeanPub, $17.99) contiene una serie de ejemplos y consejos para mejorar el diseño de software, basados en las cuatro reglas del diseño simple de Kent Beck. Y también unas cuantas sugerencias para organizar un Code Retreat en torno al Juego de la Vida de Conway.
 
 Haines propone varias reflexiones acerca de cómo representamos los distintos conceptos en el código. Es posible que algunas de ellas te vuelen un poco la cabeza, pero una vez que las entiendes es difícil volver atrás. Si vienes de un mundo de programación procedural, o de un entorno superficialmente orientado a objetos, las propuestas del libro elevarán la calidad de tu código.

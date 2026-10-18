@@ -3,8 +3,8 @@ layout: post
 title: Testeando lo impredecible
 categories: [articles]
 tags: [php, tdd]
+updated: 2026-05-25
 ---
-
 ¿Cómo testear lo que no podemos predecir? En muchos sentidos los tests se basan en que el comportamiento del código es predecible: si hacemos ciertas operaciones con ciertos datos podemos esperar ciertos resultados y no otros. Pero esto no siempre se cumple, a veces tenemos que testear algo que no sabemos qué será.
 
 ## Generando contraseñas para humanos

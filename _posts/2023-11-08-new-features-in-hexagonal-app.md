@@ -3,8 +3,8 @@ layout: post
 title: Como añadir features en arquitectura hexagonal
 categories: [articles]
 tags: [good-practices, design-patterns, hexagonal]
+updated: 2026-05-25
 ---
-
 En un equipo de desarrollo orientado a producto las nuevas prestaciones solo tienen sentido si la usuaria o cliente puede usarlas.
 
 La mejor _definition of done_ que he conocido dice algo así como: _la usuaria o cliente puede usar la prestación_. Cualquier otra consideración es superflua... y he tenido la oportunidad de conocer algunas _defintions of done_ realmente complejas con un montón de requisitos. Por supuesto, hay que tener en cuenta que en algunos dominios altamente regulados, como puede ser el sector de la salud, sí que debemos fijarnos en cumplir ciertos requisitos antes de dar por terminada una historia de usuario. En cualquier caso, muchos de ellos podrían incluirse como tales en la propia especificación de la historia.

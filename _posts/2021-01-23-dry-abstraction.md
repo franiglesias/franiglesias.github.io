@@ -3,8 +3,8 @@ layout: post
 title: De abstracciones y duplicaciones
 categories: [articles]
 tags: [design-principles, good-practices]
+updated: 2026-05-25
 ---
-
 De vez en cuando encuentro algunos debates sobre el tema de que es mejor una duplicación que una mala abstracción. [Como esta en twitter, por ejemplo](https://twitter.com/c0rvid0/status/1350826080639324161).
 
 ![Veo a gente diciendo "duplicar es más barato que una mala abstracción" y mira... MIRA... Pa empezar, una mala abstracción no existe. O es una abstracción o es un truño. A lo mejor es que no sabéis abstraer y aquí tenemos el problema.](/assets/images/twitter-abstractions.png)

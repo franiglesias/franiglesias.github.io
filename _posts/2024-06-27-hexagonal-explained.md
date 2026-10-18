@@ -3,8 +3,8 @@ layout: post
 title: Hexagonal Architecture Explained
 categories: [articles]
 tags: [hexagonal, books, software-design]
+updated: 2026-05-25
 ---
-
 ¡Por fin! 
 
 La publicación de este libro ha sido una gran alegría por varios motivos. Uno de ellos [es personal](/farewell_juan_manuel/), como te habrás podido imaginar si sigues este blog. El otro motivo es que por fin tenemos una guía de referencia autorizada del patrón.

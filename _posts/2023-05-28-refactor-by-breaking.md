@@ -3,8 +3,8 @@ layout: post
 title: Refactoriza rompiendo cosas
 categories: [articles]
 tags: [refactoring, good-practices]
+updated: 2026-05-25
 ---
-
 En el artículo anterior sobre la técnica [Uplift conditional](/uplift-conditional/) comenté que mostraría alguna otra técnica de refactoring alternativa sobre el mismo problema. Esta vez, la propone ni más ni menos que la gran Sandi Metz, aunque le voy a dar un par de _twists_ de mi cosecha.
 
 La técnica en cuestión se puede ver en la charla [All the Little Things](https://youtu.be/8bZh5LMaSmE) en la RailsConf de 2014. Y sigue siendo una de las mejores charlas que puedas ver sobre programación orientada a objetos.

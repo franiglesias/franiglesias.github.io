@@ -3,8 +3,8 @@ layout: post
 title: Como funciona un bus de mensajes
 categories: [articles]
 tags: [design-patterns]
+updated: 2026-05-25
 ---
-
 Hace un tiempo que se me ocurrió la idea de explicar algunos componentes relativamente comunes de las aplicaciones construyéndolos. Y me apetecía hacerlo con los buses de mensajes.
 
 Creo que la inspiración lejana de esto viene de una serie de artículos de Fabien Potencier, el creador de Symfony, sobre [cómo construir tu propio framework](https://symfony.com/doc/current/create_framework/index.html). No pretendo llegar a tanto, pero es verdad que es una forma genial de entender cómo funcionan las cosas.

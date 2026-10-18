@@ -4,8 +4,8 @@ title: Refactoring dirigido por métricas
 categories: [ articles ]
 tags: [ refactoring, good-practices ]
 recommended: true
+updated: 2026-05-28
 ---
-
 Lejos de ser una cuestión estética o academicista, el refactoring es una herramienta de control de costes del desarrollo de software. Incluso en tiempos de Inteligencia Artificial.
 
 La calidad del software es medible, aunque sus métricas no siempre son fáciles de gestionar. Por lo general, decimos que la calidad está relacionada con la baja complejidad y la facilidad de cambio y mantenimiento, que implican a su vez una gran inteligibilidad. Un software fácil de cambiar, es un software que se puede adaptar rápidamente a las necesidades de negocios en transformación constante. Por tanto, cuanto más podamos hacer hoy por mejorar su calidad, mejores serán las condiciones que nos encontraremos en el futuro para trabajar con él.

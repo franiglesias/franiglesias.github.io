@@ -3,8 +3,8 @@ layout: micro-post
 title: Breaking out of legacy with 3P
 categories: [articles]
 tags: [tb-list, refactoring]
+updated: 2026-05-25
 ---
-
 Me ha llamado la atención esta receta 3P de Johan Martinsson. A la hora de iniciar el trabajo en una historia de usuario o tarea:
 
 * Empezaremos protegiendo el comportamiento existente con los tests que sean necesarios (Protect). 

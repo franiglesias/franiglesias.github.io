@@ -3,8 +3,8 @@ layout: micro-post
 title: Software development is a learning process
 categories: [articles]
 tags: [tb-list]
+updated: 2026-05-25
 ---
-
 Vlad Khononov citando a Alberto Brandolini en su libro "Learning Domain Driven Design":
 
 > Software development is a learning process; working code is a side effect

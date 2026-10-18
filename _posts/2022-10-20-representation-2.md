@@ -4,8 +4,8 @@ title: Generar representaciones de un objeto sin exponer getters
 series: design-patterns
 categories: [articles]
 tags: [good-practices, oop, php]
+updated: 2026-05-25
 ---
-
 El problema: como obtener representaciones de un objeto, como DTO, serializaciones, etc., sin exponer _getters_ que únicamente se usarían para esa tarea.
 
 **Actualización 7/3/2025:** He cambiado los ejemplos para evitar una ambigüedad en el nombre del método `PersonName->fill` y el de la interfaz `Fillabe->fill` que podía dar la impresión de que el código estaba mal construido. [He actualizado los ejemplos también en el repositorio](https://github.com/franiglesias/representation-pattern). Gracias a [Manuel Rivero](https://www.linkedin.com/in/manuel-rivero-54411271/) por señalarlo.

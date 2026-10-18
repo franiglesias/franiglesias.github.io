@@ -3,8 +3,8 @@ layout: post
 title: De condicionales a polimorfismo
 categories: [articles]
 tags: [refactoring, good-practices]
+updated: 2026-05-25
 ---
-
 Con este artículo vamos a finalizar el trabajo de refactorizar el código de Gilded Rose.
 
 En los artículos anteriores hemos visto cómo poner un código complicado bajo test usando Golden Master, después hemos presentado dos formas de refactorizarlo para hacerlo más fácil de comprender. Finalmente, vamos a avanzar un paso más y convertirlo en código orientado a objetos.

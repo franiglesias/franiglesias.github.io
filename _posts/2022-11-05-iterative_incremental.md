@@ -3,8 +3,8 @@ layout: post
 title: Desarrollo iterativo e incremental
 categories: [articles]
 tags: [good-practices]
+updated: 2026-05-25
 ---
-
 El desarrollo de software ágil va más allá de frameworks como _Scrum_. En realidad, no los necesita. La clave está en entender qué significa _ágil_.
 
 Agilidad se refiere a la facilidad para cambiar de dirección y a la capacidad de entregar valor de forma constante. No tiene que ver con velocidad, pues una vez que se establece un ritmo regular, esta métrica deja de tener importancia.

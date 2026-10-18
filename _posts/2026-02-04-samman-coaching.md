@@ -3,8 +3,8 @@ layout: micro-post
 title: Samman Coaching
 categories: [articles]
 tags: [tb-list, refactoring, tdd, good-practices]
+updated: 2026-05-25
 ---
-
 Buscando katas para un curso, encontré esta web de la Samman Technical Coaching Society. Es un recurso muy valioso para cualquier persona que se dedique de una forma u otra a la formación técnica, ya sea dentro de equipos de empresas, en coding-dojos, etc.
 
 > Technical coaches work with software development teams to help them adopt better coding practices. The Samman method

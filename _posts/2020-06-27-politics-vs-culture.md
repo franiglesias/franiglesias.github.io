@@ -3,8 +3,8 @@ layout: post
 title: Acerca de la cultura
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
 Muchas empresas presumen de su cultura, pero ¿qué es la cultura y cuáles son sus límites?
 
 **Cuando ~~la política~~ el poder entra por la puerta la cultura salta por la ventana.** Por mucho que una empresa saque pecho sobre sus valores, la política está por encima de todo. Hablo de la política entendida como la forma en que se abordan los asuntos comunes de la organización y las relaciones de poder que se establecen y que pueden coincidir o no con el organigrama.

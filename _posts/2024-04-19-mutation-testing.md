@@ -3,9 +3,8 @@ layout: post
 title: Mutation Testing
 categories: [articles]
 tags: [testing]
+updated: 2026-05-25
 ---
-
-
 Mutation testing es una técnica que sirve para analizar la capacidad de una suite de tests para reaccionar ante cambios no deseados del comportamiento del sistema. 
 
 ## Como funciona mutation testing

@@ -4,8 +4,8 @@ title: Mi código en producción ya es legacy
 categories: [articles]
 tags: [legacy, good-practices]
 recommended: true
+updated: 2026-05-31
 ---
-
 Artículo que [versiona la charla](/peum-conf-2020).
 
 Todo código es *legacy*. Esto no es malo, sino una cuestión de cuán *legacy* es o le dejamos ser.

@@ -3,8 +3,8 @@ layout: post
 title: Consistencia de objetos
 categories: [articles]
 tags: [design-principles]
+updated: 2026-05-25
 ---
-
 El último artículo me dejó con un poco de mal sabor de boca porque la solución propuesta al problema de tratar casos especiales en una colección de objetos que estábamos construyendo a partir de datos obtenidos de una API externa cojea en algún punto.
 
 Lo bueno es que eso me da pie para tratar un asunto interesante como es el de la necesidad de construir objetos que sean consistentes y válidos, así como el de definir qué es lo que hace consistente a un objeto, lo que debería ser inmutable y lo que puede variar.

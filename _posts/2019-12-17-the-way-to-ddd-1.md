@@ -3,8 +3,8 @@ layout: post
 title: De directory driven a DDD paso a paso
 categories: [articles]
 tags: [good-practices, design-principles, ddd]
+updated: 2026-05-25
 ---
-
 Muchas bases de código que han sido creadas tratando de seguir la metodología DDD se quedan atascadas en ese falso DDD que solemos llamar "directory driven development", que es básicamente una aplicación de la Arquitectura Hexagonal. Esto es, utilizan la típica distribución de carpetas Domain, Application e Infrastructure, pero el código en ellas está mal organizado y mal distribuido porque en su día no se tenía una comprensión completa de lo que implica Domain Driven Design.
 
 El resultado es que en lugar de la proverbial *Big Ball of Mud* ahora tenemos tres *Big Balls of Mud* que, en parte, es algo mejor pero no suficiente.

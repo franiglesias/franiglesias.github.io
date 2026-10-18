@@ -3,8 +3,8 @@ layout: post
 title: Alien Value Object para traducir valores entre sistemas
 categories: [articles]
 tags: [good-practices, design-principles]
+updated: 2026-05-25
 ---
-
 *Alien Value Object* es una propuesta de patrón para convertir valores entre sistemas.
 
 ## ¿Cuántas dependencias son demasiadas dependencias? 

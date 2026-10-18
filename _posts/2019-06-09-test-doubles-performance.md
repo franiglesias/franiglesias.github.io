@@ -3,8 +3,8 @@ layout: post
 title: La performance de los métodos para crear test doubles
 categories: [articles]
 tags: [testing]
+updated: 2026-05-25
 ---
-
 Hace algunos meses estuve haciendo análisis sobre la performance de los diversos métodos para crear test doubles y cómo impactan en nuestras suites de tests. Ahora lo he retomado con mejores herramientas.
 
 La suite de tests de Holaluz ha crecido mucho y me preocupa un poco cómo compaginar su crecimiento en número de tests y cobertura, manteniendo un tiempo de ejecución razonable.

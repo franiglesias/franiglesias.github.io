@@ -4,8 +4,8 @@ title: Representation pattern (obsoleto)
 series: design-patterns
 categories: [articles]
 tags: [php, design-patterns]
+updated: 2026-05-25
 ---
-
 O cómo resolver el problema de mover información entre las capas de una aplicación sin violar las leyes de dependencia ni exponer el dominio en infraestructura.
 
 **Obsoleto:** Este artículo está obsoleto y no refleja mi pensamiento actual, aunque ya se acerca bastante. Lo dejo aquí por si tiene interés para entender mi evolución. En su lugar, te recomiendo [este otro artículo en el que explico un patrón más adecuado](/representation-2/).

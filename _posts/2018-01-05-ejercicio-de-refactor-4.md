@@ -3,8 +3,8 @@ layout: post
 title: Ejercicio de refactoring (4) Finalizando
 categories: [articles]
 tags: [refactoring, testing, legacy]
+updated: 2026-05-25
 ---
-
 En el artículo anterior quedaron pendientes algunos refactors en nuestro proyecto. En esta entrega mi intención es tratar de rematarlos, así como hacer alguna reflexión sobre los resultados obtenidos y sus consecuencias.
 
 La serie **Ejercicio de refactoring** consta de los siguientes artículos:

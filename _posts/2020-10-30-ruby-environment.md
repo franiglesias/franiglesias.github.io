@@ -3,8 +3,8 @@ layout: post
 title: Entorno de desarrollo sencillo para Ruby
 categories: [articles]
 tags: [ruby]
+updated: 2026-05-25
 ---
-
 Hace un tiempo que estoy estudiando algo de Ruby y estoy tratando de encontrar o preparar un entorno de desarrollo sencillo para practicar.
 
 Creo que ya lo habrás notado porque en algunas entradas anteriores he estado poniendo ejemplos en Ruby. La verdad es que en un lenguaje muy agradable con el que trabajar y tengo la impresión de que es especialmente interesante para mejorar en el área de orientación a objetos.

@@ -3,8 +3,8 @@ layout: post
 title: El nano framework de test con el que aprendo javascript
 categories: [articles]
 tags: [tdd, javascript]
+updated: 2026-05-25
 ---
-
 Llevo un tiempo volviendo a aprender Javascript y estoy empezando a entender este lenguaje. Casi hasta me gusta.
 
 Gracias a Iván Nieto, que me presentó el libro [Eloquent Javascript](http://eloquentjavascript.net) estoy volviendo a retomar de forma ordenada la programación con Javascript.

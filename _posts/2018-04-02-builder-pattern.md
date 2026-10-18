@@ -3,8 +3,8 @@ layout: post
 title: Builder pattern
 categories: [articles]
 tags: [php, design-patterns]
+updated: 2026-05-25
 ---
-
 Estos últimos días he trabajado bastante con el patrón Builder, así que toca escribir algo sobre su utilidad para la creación de objetos complicados.
 
 Veamos. En PHP podemos crear o instanciar objetos utilizando `new`, ¿verdad?:

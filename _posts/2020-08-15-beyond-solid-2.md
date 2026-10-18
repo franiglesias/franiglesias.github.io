@@ -3,8 +3,8 @@ layout: post
 title: Más allá de SOLID, los cimientos
 categories: [articles]
 tags: [design-principles, good-practices]
+updated: 2026-05-25
 ---
-
 A veces, cuando se habla de principios de diseño de software parece que solo existiesen estos cinco. Así que los repasaremos con un poco de contexto.
 
 Los principios SOLID son cinco principios en el diseño orientado a objetos compilados por Robert C. Martin. Puedes encontrarlos [aquí](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod), con enlaces a los artículos originales.

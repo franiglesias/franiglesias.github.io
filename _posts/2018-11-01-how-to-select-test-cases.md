@@ -3,6 +3,7 @@ layout: post
 title: La elección de los casos para testear
 categories: [articles]
 tags: [php, testing, good-practices]
+updated: 2026-05-25
 ---
 Aprovechando que estoy preparando material para organizar formaciones en testing, dejo aquí este resumen de técnicas básicas para seleccionar casos para probar.
 

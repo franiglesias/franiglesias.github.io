@@ -3,8 +3,8 @@ layout: post
 title: De ddd a DDD paso a paso 2. Del repositorio al dominio.
 categories: [articles]
 tags: [good-practices, design-principles, ddd]
+updated: 2026-05-25
 ---
-
 Un caso particular de conocimiento del dominio que suele estar fuera de sitio es el de los repositorios que lo implementan en Infraestructura. En este artículo veremos cómo poner cada cosa en su lugar.
 
 ## Mover reglas de negocio de los repositorios a dominio

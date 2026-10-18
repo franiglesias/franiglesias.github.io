@@ -3,8 +3,8 @@ layout: post
 title: Presenter pattern (obsoleto)
 categories: [articles]
 tags: [php, design-patterns]
+updated: 2026-05-25
 ---
-
 Existen una serie de patrones de diseño de sóftware básicos, pero nada nos impide crear nuevos patrones a partir de alguno de los clásicos, con el fin de adaptarlos a situaciones más específicas. Sencillamente, son patrones menos generales.
 
 **Obsoleto:** Este artículo está obsoleto y no refleja mi pensamiento actual. Lo dejo aquí por si tiene interés para entender mi evolución. En su lugar, te recomiendo [este otro artículo en el que explico un patrón más adecuado](/representation-2/).

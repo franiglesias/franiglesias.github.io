@@ -3,8 +3,8 @@ layout: post
 title: Dos semanas
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
 Mañana miércoles se cumplen dos semanas de mi nueva etapa profesional.
 
 El miércoles 16 de agosto fue mi primer día en [Atrápalo](http://www.atrapalo.com). Es muy difícil resumir en unas pocas líneas todo lo que estoy experimentando en estos días. Para algunas personas que leéis esto, puede no sonar tan especial, pero para mi es un cambio de vida radical.

@@ -3,8 +3,8 @@ layout: post
 title: TDD en PHP. Un ejemplo con colecciones (2)
 categories: [articles]
 tags: [tdd, php]
+updated: 2026-05-25
 ---
-
 Ahora que tenemos una clase Collection a la que podemos añadir objetos de un tipo determinado o sus descendientes, vamos a desarrollar algo de comportamiento. Al fin y al cabo, queremos nuestras colecciones para hacer algo con sus elementos, no solo para admirarlas… (ejem!).
 
 ## Testing dirigido por Checklist

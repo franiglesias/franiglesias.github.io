@@ -3,8 +3,8 @@ layout: post
 title: Katando PHPSpec 2
 categories: [articles]
 tags: [tdd, bdd]
+updated: 2026-05-25
 ---
-
 Continuamos con la kata iniciada en el artículo anterior.
 
 La serie **Katando PHPSpec** consta de los siguientes artículos:

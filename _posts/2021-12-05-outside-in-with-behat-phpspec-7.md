@@ -3,8 +3,8 @@ layout: post
 title: Outside-in y Behavior Driven Development 7 
 categories: [articles]
 tags: [tdd, php, bdd]
+updated: 2026-05-25
 ---
-
 En esta entrega veremos cómo usar un cliente HTTP de forma que los tests de aceptación sean independientes del código de aplicación.
 
 1. [Introducción, herramientas y ejemplo](/outside-in-with-behat-phpspec/)

@@ -3,8 +3,8 @@ layout: post
 title: Outside-in y Behavior Driven Development 6 
 categories: [articles]
 tags: [tdd, php, bdd]
+updated: 2026-05-25
 ---
-
 Consideraciones sobre el desarrollo con Behavior Driven Development
 
 1. [Introducción, herramientas y ejemplo](/outside-in-with-behat-phpspec/)

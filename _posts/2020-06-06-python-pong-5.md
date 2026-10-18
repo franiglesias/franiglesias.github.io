@@ -3,8 +3,8 @@ layout: post
 title: Pong en Python. Mejorando la aplicación
 categories: [articles]
 tags: [python, good-practices]
+updated: 2026-05-25
 ---
-
 Ahora que ya hemos estructurado mejor la aplicación, estamos en condiciones de añadir nueva funcionalidad de manera más sencilla.
 
 ## Bienvenida

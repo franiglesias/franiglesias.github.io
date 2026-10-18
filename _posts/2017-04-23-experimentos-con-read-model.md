@@ -3,8 +3,8 @@ layout: post
 title: Experimentos con read-model
 categories: [articles]
 tags: [design-patterns]
+updated: 2026-05-25
 ---
-
 En los últimos días he estado trabajando ya en módulos específicos de la aplicación. En concreto la parte del CMS por ser la más visible y conceptualmente bastante sencilla. Así puedo hacer algunos experimentos interesantes en la separación de responsabilidades entre capas.
 
 En principio escribí una capa de dominio para el CMS con entidades y repositorios para artículos y blogs, mientras van surgiendo Value Objects aquí y allá (autores, contenido, etc.). De momento, el dominio no es lo bastante complejo para que merezca mucho la pena y las entidades quedan un poco anémicas. Sin embargo, es interesante hacer la separación por lo que pueda venir más adelante al desarrollar la parte específica de creación y mantenimiento de artículos.

@@ -3,8 +3,8 @@ layout: post
 title: Pong en Python. Desarrollo ágil
 categories: [articles]
 tags: [python, good-practices]
+updated: 2026-05-25
 ---
-
 Agile debería ser una forma de pensar, un *mindset*, no una metodología de gestión de proyectos.
 
 El [Manifiesto agile](https://agilemanifesto.org) surgió para reivindicar un cambio en los modelos tradicionales de desarrollo de los proyectos de software. No voy a entrar en la discusión de "en qué se ha convertido *agile*". El objetivo de este artículo es intentar mostrar cómo introducir una forma de trabajar de buen/alto rendimiento en un proyecto, pero de una forma un poco más sistemática.

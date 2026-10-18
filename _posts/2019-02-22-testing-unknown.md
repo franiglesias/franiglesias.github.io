@@ -3,8 +3,8 @@ layout: post
 title: Testeando lo desconocido (1)
 categories: [articles]
 tags: [testing]
+updated: 2026-05-25
 ---
-
 Recientemente he comenzado a trabajar en otro proyecto dentro de la empresa ayudando con el testing. Es una parte del negocio que conozco poco todavía y la aplicación con la que estoy trabajando es, por supuesto, distinta, aunque similar en planteamiento.
 
 En esta ocasión voy a hablar sobre cómo estoy afrontando el testeo de un código que apenas conozco.

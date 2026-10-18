@@ -3,8 +3,8 @@ layout: post
 title: Pong en Python. Reubicar el legacy y automatizar los tests
 categories: [articles]
 tags: [python, good-practices]
+updated: 2026-05-25
 ---
-
 En esta etapa, introducimos conceptos nuevos que nos forzarán a ir desmontando el legacy.
 
 Al final, considerar el código de prototipo de como legacy está resultando un ejercicio interesante porque, sin pretenderlo realmente, he conseguido montar un proyecto que representa, a pequeña escala, el tipo de problemas que implica modernizar un código legacy mientras lo mantenemos en producción.

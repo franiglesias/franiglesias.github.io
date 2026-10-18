@@ -4,8 +4,8 @@ title: Evita el acoplamiento fuerte con configurable dependency
 series: design-patterns
 categories: [articles]
 tags: [software-design, pulpoCon]
+updated: 2026-05-25
 ---
-
 Seguramente conozcas el Principio de Inversión de Dependencias. Sí, ese mismo: la D de SOLID. El que dice que todo debe depender de abstracciones. Pues no vamos a hablar de él como principio, sino de su aplicación práctica.
 
 Eso de que todo tenga que depender de abstracciones está muy bien, pero no siempre resulta sencillo caer en la cuenta de la potencia que tiene esa idea para lograr un código fácil de mantener y reducir el riesgo en el proceso. Por eso, vamos a hablar de este principio como si fuese un patrón que, como sabrás, nos permite describir un problema conocido asociado a una solución probada.

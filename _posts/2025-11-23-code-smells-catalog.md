@@ -3,8 +3,8 @@ layout: micro-post
 title: Code Smells Catalog
 categories: [articles]
 tags: [tb-list, software-design, code-smells]
+updated: 2026-05-25
 ---
-
 Un amplio catálogo compilado por Marcel Jerzyk. Los code smells aparecen categorizados con una interfaz que permite usar el catálogo de forma interactiva. Cada smell se ilustra con un ejemplo, explicando sus causas y otros smells relacionados. También explica los refactors que pueden ser aplicados para solucionarlos.
 
 > Code Smells—a concept not fully understood among programmers, crucial to the code quality, and yet unstandardized in the scientific literature.

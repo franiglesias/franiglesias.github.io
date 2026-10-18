@@ -3,8 +3,8 @@ layout: post
 title: Junior (Blogtober2019)
 categories: [articles]
 tags: [blogtober19]
+updated: 2026-05-25
 ---
-
 Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) va a hacer un dibujo cada día del mes sobre una palabra propuesta en twitter. Y aquí vamos a intentar escribir [un post por cada una de ellas](https://franiglesias.github.io/blogtober19-status/).
 
 <blockquote class="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="pt" dir="ltr">4. Junior <a href="https://twitter.com/si_ayer_estaba?ref_src=twsrc%5Etfw">@si_ayer_estaba</a> <a href="https://twitter.com/hashtag/Inktober2019?src=hash&amp;ref_src=twsrc%5Etfw">#Inktober2019</a> <a href="https://twitter.com/hashtag/linkitober2019?src=hash&amp;ref_src=twsrc%5Etfw">#linkitober2019</a> <a href="https://t.co/I8eKIx3Pq2">pic.twitter.com/I8eKIx3Pq2</a></p>&mdash; Maybe (@Linkita) <a href="https://twitter.com/Linkita/status/1180263992671035392?ref_src=twsrc%5Etfw">October 4, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

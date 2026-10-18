@@ -3,8 +3,8 @@ layout: post
 title: Psicología del testing
 categories: [articles]
 tags: [tdd, testing]
+updated: 2026-05-25
 ---
-
 Mi primer contacto con los tests, con el propio concepto de test para ser precisos, fue de todo menos una epifanía.
 
 Al principio conseguí desarrollar una noción bastante vaga de la idea y necesidad de testear software, la cual, afortunadamente, fui elaborando y perfeccionando con el tiempo. Aún hoy sigo trabajando en refinarla.

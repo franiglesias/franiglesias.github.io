@@ -3,8 +3,8 @@ layout: post
 title: Añadir una migración Doctrine en un proyecto
 categories: [articles]
 tags: [php, bbdd, tools]
+updated: 2026-05-25
 ---
-
 Cuando llega el momento de aplicar cambios a la base de datos siempre me preocupo un poco. Como nuestro ORM y acceso a la base de datos es mediante Doctrine en Symfony utilizamos las migraciones de Doctrine para cualquier actualización del esquema.
 
 Es una operación que tiene ciertos riesgos y después de un tiempo de práctica encuentro que seguir un pequeño protocolo ayuda a reducirlo. Este protocolo es más o menos el que sigue:

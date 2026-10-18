@@ -3,8 +3,8 @@ layout: post
 title: Tests y excepciones
 categories: [articles]
 tags: [testing, good-practices]
+updated: 2026-05-25
 ---
-
 Habitualmente no usamos las excepciones en los tests. Como mucho, esperamos que la unidad bajo prueba lance una excepción y ahí se queda todo:
 
 ```php

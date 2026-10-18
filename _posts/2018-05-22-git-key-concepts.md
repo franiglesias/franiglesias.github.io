@@ -5,8 +5,8 @@ published: true
 categories: [articles]
 author: [paula, fran]
 tags: [tools]
+updated: 2026-05-25
 ---
-
 Some key concepts explained to know what's happening when you work with this VCS.
 
 ### Repository

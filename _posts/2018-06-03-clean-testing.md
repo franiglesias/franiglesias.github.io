@@ -3,8 +3,8 @@ layout: post
 title: Clean testing
 categories: [articles]
 tags: [php, testing, tdd, good-practices]
+updated: 2026-05-25
 ---
-
 Algunas estrategias con las que intento que mis tests sean cada vez más limpios y legibles y, por tanto, más capaces de comunicar lo que hace el software que escribo.
 
 Escribo bastantes tests en mi trabajo y tiendo a hacerlo en modo TDD siempre que puedo. Aún así, no estoy especialmente orgulloso de mis tests, pienso que tengo un gran espacio de mejora en esa área. Hay dos aspectos que me preocupan en particular:

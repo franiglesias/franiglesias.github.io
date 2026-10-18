@@ -3,8 +3,8 @@ layout: post
 title: El patrón Result
 categories: [articles]
 tags: [software-design, design-patterns, typescript]
+updated: 2026-05-25
 ---
-
 El patrón Result nos proporciona una forma explícita de gestionar los errores que se producen en el código.
 
 ## Gestión de errores

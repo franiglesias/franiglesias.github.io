@@ -3,8 +3,8 @@ layout: post
 title: Historia de una reescritura (6) autoload sin namespaces
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
 Como añadir autoload a un proyecto sin namespaces.
 
 La serie **Historia de una reescritura** está compuesta de los siguientes artículos

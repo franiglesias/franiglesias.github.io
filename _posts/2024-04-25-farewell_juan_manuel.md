@@ -3,9 +3,8 @@ layout: post
 title: Gracias Juan Manuel
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
-
 En memoria de Juan Manuel Garrido
 
 Esta mañana temprano me llegó la noticia del fallecimiento hace unos días de Juan Manuel Garrido de Paz. Ha sido todo un mazazo. Llevo todo el día tratando de asimilarlo.

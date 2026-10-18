@@ -3,8 +3,8 @@ layout: post
 title: Refactor para quienes no refactorizan 2
 categories: [articles]
 tags: [good-practices, refactoring, ruby]
+updated: 2026-05-25
 ---
-
 Segunda entrega de esta serie de introducción al refactoring, si es que no refactorizas. O si quieres impulsar esta práctica en tu equipo.
 
 En la entrada anterior he intentado caracterizar el refactoring como una práctica técnica, deliberada, sistemática y metódica. En esta entrega me gustaría hablar de la oportunidad de la misma.

@@ -4,8 +4,8 @@ series: calisthenics
 title: No user getters, setters o propiedades públicas
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 Una serie de restricciones que te ayudarán a escribir mejor código. La última regla consiste en no usar getters, setters o propiedades públicas.
 
 ## Qué es object calisthenics

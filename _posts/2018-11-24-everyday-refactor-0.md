@@ -4,8 +4,8 @@ title: Refactor cotidiano
 categories: [articles]
 tags: [good-practices, refactoring]
 recommended: false
+updated: 2026-06-06
 ---
-
 Presentamos el primer curso/guía de The Talking Bit.
 
 En The Talking Bit hemos [escrito bastante sobre refactor](/tag/refactoring/), principalmente porque nos parece que es una de las mejores cosas que podemos hacer con nuestro código, sea nuevo o legacy.

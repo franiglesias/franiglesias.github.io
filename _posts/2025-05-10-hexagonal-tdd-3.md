@@ -5,8 +5,8 @@ title: Comparativa práctica y conclusiones
 categories: [articles]
 series: outside-in-ha
 tags: [software-design, design-patterns, typescript, tdd, hexagonal]
+updated: 2026-05-25
 ---
-
 En esta entrega comparo mis impresiones sobre ambas escuelas de TDD outside-in.
 
 <!-- TOC -->

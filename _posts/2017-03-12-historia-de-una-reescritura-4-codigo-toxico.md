@@ -3,8 +3,8 @@ layout: post
 title: Historia de una reescritura (4) el código tóxico
 categories: [articles]
 tags: [legacy]
+updated: 2026-05-25
 ---
-
 A medida que la primera fase del proyecto avanza voy observando cosas en las que habrá que trabajar más a fondo.
 
 La serie **Historia de una reescritura** está compuesta de los siguientes artículos

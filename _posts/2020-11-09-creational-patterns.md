@@ -4,8 +4,8 @@ title: New no. Lo siguiente
 series: design-patterns
 categories: [articles]
 tags: [design-patterns]
+updated: 2026-05-25
 ---
-
 Artículo transcripción de la charla.
 
 PHP, como todos los lenguajes orientados a objetos, tiene una forma canónica de instanciar objetos: la palabra clave `new`.

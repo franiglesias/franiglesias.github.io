@@ -3,8 +3,8 @@ layout: post
 title: Buscando trabajo como desarrollador. El final de la historia
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
 Mi historia ha tenido final feliz: a mediados de agosto me incorporo como desarrollador a una empresa genial.
 
 He contado los avatares de esta historia en dos artículos ([éste](/buscando-trabajo-como-desarrollador-php/) y [éste](/buscando-trabajo-sobre-los-rechazos/)). Justo en el anterior hablaba acerca de algunos de los rechazos y cómo el proceso de búsqueda parecía un poco estancado y empezaba a reclamar algún tipo de cambio en mi estrategia.

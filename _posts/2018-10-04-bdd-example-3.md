@@ -3,8 +3,8 @@ layout: post
 title: Introducción a Behavior Driven Development en PHP (3)
 categories: [articles]
 tags: [php, bdd, testing]
+updated: 2026-05-25
 ---
-
 En el [primer artículo de la serie](/bdd-example-1) comenzamos introduciendo el concepto de BDD, el lenguaje Gherkin y la herramienta behat. En el [segundo](/bdd-example-2), utilizamos `PHPSpec` para comenzar a desarrollar nuestra feature, partiendo de un *Use Case* y descubriendo las clases colaboradoras necesarias a medida que identificamos responsabilidades. En esta tercera entrega pretendemos a empezar a unir las piezas.
 
 Al final de la fase anterior conseguimos desarrollar el *Use Case* `UpdatePricesFromUploadedFile` y descubrimos las interfaces de sus colaboradores. Es un buen momento para volver a `FeatureContext` y completar el test de aceptación. Para eso, tenemos que revisar las interfaces generadas, implementar varias cosas y tomar algunas decisiones.

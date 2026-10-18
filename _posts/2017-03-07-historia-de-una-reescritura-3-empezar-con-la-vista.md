@@ -3,8 +3,8 @@ layout: post
 title: Historia de una reescritura (3) empezar con la vista
 categories: [articles]
 tags: [legacy]
+updated: 2026-05-25
 ---
-
 Cuando analizas tu código antiguo es casi como analizar el código de otro desarrollador. En realidad es un poco peor, porque sabes que tú eres el responsable de esa masa de lodo. Esta es la tercera entrega de una [serie sobre mi proyecto para abordar una aplicación legacy](https://talkingbit.wordpress.com/2017/03/05/historia-de-una-reescritura-2-el-problema-con-mvc/).
 
 La serie **Historia de una reescritura** está compuesta de los siguientes artículos

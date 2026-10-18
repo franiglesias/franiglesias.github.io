@@ -3,8 +3,8 @@ layout: post
 title: Historia de una reescritura (5) tests
 categories: [articles]
 tags: [legacy]
+updated: 2026-05-25
 ---
-
 Mientras el proceso de reescribir vistas avanza, vamos a darle vueltas a una cuestión importante.
 
 La serie **Historia de una reescritura** está compuesta de los siguientes artículos

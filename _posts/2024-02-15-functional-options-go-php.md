@@ -3,8 +3,8 @@ layout: post
 title: Opciones funcionales en Go y en PHP
 categories: [articles]
 tags: [golang, php]
+updated: 2026-05-25
 ---
-
 Las opciones funcionales son un patrón bastante habitual en Go... que se puede usar también en PHP.
 
 Escribir la librería de _snapshot testing_ [Golden](https://github.com/franiglesias/golden) en Go ha sido y está siendo una forma muy interesante de aprender no solamente sobre el lenguaje como tal, sino sobre técnicas del paradigma funcional que posiblemente no me hubiese planteado en otro contexto.

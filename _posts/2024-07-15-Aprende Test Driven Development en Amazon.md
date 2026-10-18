@@ -3,8 +3,8 @@ layout: micro-post
 title: Aprende Test Driven Development en Amazon
 categories: [articles]
 tags: [tb-list, books, tdd]
+updated: 2026-05-25
 ---
-
 ¡Sorpresa! Después de tenerlo un tiempo disponible para impresión bajo demanda en Lulu y aprovechando unos días lluviosos de vacaciones, estuve haciendo algunos arreglos en el libro _Aprende Test Driven Development_ y lo he vuelto a publicar, pero esta vez en Amazon.
 
 El motivo de este cambio es que quería encontrar una alternativa de impresión a demanda un poco más ágil que Lulu, ya que la copia puede tardar un mes en llegar a la compradora. La calidad es muy buena, de eso no cabe duda, pero ese tiempo de espera puede ser muy frustrante. El servicio _Kindle Direct Publishing_ es la mejor alternativa que he sido capaz de encontrar.

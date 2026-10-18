@@ -4,8 +4,8 @@ title: El configurador y la aplicación
 series: outside-in-ha
 categories: [articles]
 tags: [software-design, design-patterns, typescript, tdd, hexagonal]
+updated: 2026-05-25
 ---
-
 El patrón de Arquitectura Hexagonal no determina nada acerca de como implementar el configurador, más allá de ser el lugar donde la aplicación se cose y se prepara para funcionar.
 
 El configurador es el quinto elemento del patrón, junto con la aplicación, los actores, los puertos y los adaptadores. Al igual que ocurre con esos otros elementos, no se prescriben muchas cosas acerca de cómo implementarlo. Esto deja libertad para elegir el tipo de solución que más nos convenga en cada caso. Como es de suponer, el configurador debería ser sensible al entorno de ejecución, permitiendo construir la aplicación con las dependencias adecuadas. Siguiendo las prácticas habituales, leerá esta información de archivos .env para poder tomar decisiones.

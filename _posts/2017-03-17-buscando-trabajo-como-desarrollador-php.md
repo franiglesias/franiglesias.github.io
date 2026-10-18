@@ -3,8 +3,8 @@ layout: post
 title: Buscando trabajo como desarrollador
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
 Este año 2017 tengo como objetivo conseguir un nuevo trabajo como desarrollador PHP y esto es lo que estoy aprendiendo.
 
 (Al final del artículo hay una actualización)

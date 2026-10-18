@@ -4,8 +4,8 @@ series: design-patterns
 title: El patrón visitante
 categories: [articles]
 tags: [php, design-patterns]
+updated: 2026-05-25
 ---
-
 El patrón visitante es uno de los que más difícil me ha resultado entender y aplicar, así que voy a escribir sobre él para afianzar el concepto.
 
 En esencia, el patrón Visitante sirve para resolver un problema como el siguiente:

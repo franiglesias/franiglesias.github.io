@@ -4,8 +4,8 @@ title: Como introducir o aumentar el testing en tu aplicación
 categories: [articles]
 author: [fran]
 tags: [testing, good-practices]
+updated: 2026-05-25
 ---
-
 Supongamos que te planteas introducir testing en un proyecto que no lo tiene o que no está suficientemente testeado.
 
 En el podcast [Programar es una mierda](https://www.programaresunamierda.com/) [han entrevistado a Mavi Jiménez](https://www.programaresunamierda.com/2019/03/episodio-44-paparajotest.html), que es nuestra Lead en [HolaluzEng](https://twitter.com/holaluzeng?lang=es), y han estado hablando de testing[^fn3] y este artículo ha surgido en parte de ahí.

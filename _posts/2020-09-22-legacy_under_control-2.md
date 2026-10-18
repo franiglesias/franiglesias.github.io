@@ -4,8 +4,8 @@ title: Extracción de conceptos
 subtitle: Trabajar con legacy y entender el dominio (2)
 categories: [articles]
 tags: [design-principles, good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 En el artículo anterior el código ha quedado algo mejor estructurado de lo que estaba y, sobre todo, las dependencias están ahora bajo nuestro control. En esta ocasión querríamos avanzar un poco más en esa misma área de organización de código y, sobre todo, conseguir que la capa de domino sea capaz de contarnos la historia acerca de qué trata la aplicación.
 
 Esta primera parte nos ha servido sobre todo para poner el código en un estado en que lo podemos testear sin riesgo de provocar efectos en producción. Nos quedaría poder ejecutarlo en local con esa misma seguridad. En este punto no nos quedaría más remedio que definir alguna forma de que la aplicación al construirse sepa en qué entorno está corriendo. Actualmente solemos hacerlo con un archivo `.env`.

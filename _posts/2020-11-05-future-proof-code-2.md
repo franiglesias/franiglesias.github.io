@@ -3,8 +3,8 @@ layout: post
 title: Escribir código a prueba de futuro 2
 categories: [articles]
 tags: [good-practices, refactoring, python]
+updated: 2026-05-25
 ---
-
 Aprovechando el refactor del juego de Pong, vamos a ver más ejemplos de cómo orientarlo para mejorar su solidez y capacidad de cambio futuro.
 
 Consideremos esta clase `ComputerControlEngine`, que desciende de `ControlEngine` y que contiene la lógica que mueve al jugador controlado por la máquina:

@@ -3,8 +3,8 @@ layout: post
 title: Testing (Blogtober2019)
 categories: [articles]
 tags: [blogtober19]
+updated: 2026-05-25
 ---
-
 Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) va a hacer un dibujo cada día del mes sobre una palabra propuesta en twitter. Y aquí vamos a intentar escribir [un post por cada una de ellas](https://franiglesias.github.io/blogtober19-status/).
 
 <blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">10. Testing <a href="https://twitter.com/vgaltes?ref_src=twsrc%5Etfw">@vgaltes</a> <a href="https://twitter.com/hashtag/inktober?src=hash&amp;ref_src=twsrc%5Etfw">#inktober</a> <a href="https://twitter.com/hashtag/inktober10?src=hash&amp;ref_src=twsrc%5Etfw">#inktober10</a> <a href="https://twitter.com/hashtag/linkitober?src=hash&amp;ref_src=twsrc%5Etfw">#linkitober</a> <a href="https://t.co/ITxhSUybaX">pic.twitter.com/ITxhSUybaX</a></p>&mdash; Maybe (@Linkita) <a href="https://twitter.com/Linkita/status/1182725159997923329?ref_src=twsrc%5Etfw">October 11, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

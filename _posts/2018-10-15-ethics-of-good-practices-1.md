@@ -5,8 +5,8 @@ categories: [articles]
 author: [paula, fran]
 tags: [testing, soft-skills, ethics]
 recommended: true
+updated: 2026-06-06
 ---
-
 La ética es la rama de la filosofía que se ocupa del "buen vivir". Pero no en el sentido hedonista que podrías imaginar por la expresión, sino en el sentido de la manera correcta de vivir.
 
 Esto es, dado que las personas estamos dotadas de libre albedrío: ¿qué criterios debemos seguir cuando decidimos qué comportamientos adoptar? ¿De dónde salen esos criterios? ¿Cómo se aplican?

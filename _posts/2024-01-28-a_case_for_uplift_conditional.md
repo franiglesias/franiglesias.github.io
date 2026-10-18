@@ -3,8 +3,8 @@ layout: post
 title: Un caso de Uplift Conditional
 categories: [articles]
 tags: [golang, refactoring]
+updated: 2026-05-25
 ---
-
 El refactor _uplift conditional_ puede ayudarnos a estructurar mejor un código cuajado de condicionales.
 
 El siguiente código pertenece a la librería Golden, una librería que estoy creando para snapshot testing en Go. La librería está a punto de salir en su primera versión estable, por lo que estoy haciendo las últimas pruebas para comprobar que funciona como debería. En una de estas pruebas me he dado cuenta de que falta una funcionalidad que, si bien no es crítica, es lo bastante importante como para que esté presente en esta v1.

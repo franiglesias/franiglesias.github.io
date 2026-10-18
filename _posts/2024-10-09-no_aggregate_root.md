@@ -3,8 +3,8 @@ layout: post
 title: No extiendas de AggregateRoot
 categories: [articles]
 tags: [software-design]
+updated: 2026-05-25
 ---
-
 Extender de AggregateRoot contamina el dominio, es mentiroso e incumple SOLID, ¿cómo te quedas?
 
 ## ¿A qué me estoy refiriendo?

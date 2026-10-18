@@ -3,8 +3,8 @@ layout: post
 title: Refactor cotidiano (3). Acondiciona las condicionales
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 La tercera entrega de la guía del refactor cotidiano trata sobre cómo mejorar las estructuras condicionales.
 
 Es bastante obvio que si hay algo que añade complejidad a un software es la toma de decisiones y, por tanto, las estructuras condicionales con las que la expresamos.

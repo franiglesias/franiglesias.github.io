@@ -3,8 +3,8 @@ layout: post
 title: ¿Cuantos parámetros por función?
 categories: [articles]
 tags: [good-practices, refactoring, typescript, ruby]
+updated: 2026-05-25
 ---
-
 Menos es más. O más es menos.
 
 La firma o signatura de una función (o método) debería tener la menor cantidad de parámetros posible, especialmente si

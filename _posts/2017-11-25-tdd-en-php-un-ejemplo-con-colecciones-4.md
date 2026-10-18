@@ -3,9 +3,8 @@ layout: post
 title: TDD en PHP. Un ejemplo con colecciones (4)
 categories: [articles]
 tags: [tdd, php]
+updated: 2026-05-25
 ---
-
-
 Con lo pequeñita que es la clase Collection y está dando para un montón de artículos. En esta cuarta entrega voy a intentar desarrollar el método `filter`, el cual también nos dará un punto de partida para otros métodos.
 
 Y nuestra lista de tareas había quedado así:

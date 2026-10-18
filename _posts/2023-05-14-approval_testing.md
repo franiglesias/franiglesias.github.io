@@ -3,8 +3,8 @@ layout: post
 title: Cobertura de test rápida con Golden Master
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 La técnica _Golden Master_ nos puede ayudar a conseguir cobertura de tests rápida en códigos problemáticos, de modo que podamos empezar a refactorizar sin miedo.
 
 Este artículo es mi versión de [técnicas propuestas por Llewellyn Falco](https://youtu.be/wp6oSVDdbXQ) y [Emily Bache](https://youtu.be/zyM2Ep28ED8), que derivan del trabajo fundamental de Michael Feathers, [Working Effectively with Legacy Code](https://www.oreilly.com/library/view/working-effectively-with/0131177052/).

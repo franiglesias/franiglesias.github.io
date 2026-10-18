@@ -3,8 +3,8 @@ layout: post
 title: Uniones de tablas en SQL
 categories: [articles]
 tags: [bbdd, sql]
+updated: 2026-05-25
 ---
-
 Este es un artículo rescatado del olvido. Lo escribí en 2010, como forma de aprender el funcionamiento de las uniones de tablas en SQL.
 
 Una de las claves para sacar partido a una base de datos es dominar las *queries* complejas que incluyen uniones de tablas. Pero no todas las uniones son iguales y, en consecuencia, no nos dan los mismos resultados.

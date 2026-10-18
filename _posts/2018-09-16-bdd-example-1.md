@@ -3,8 +3,8 @@ layout: post
 title: Introducción a Behavior Driven Development en PHP (1)
 categories: [articles]
 tags: [php, bdd, testing]
+updated: 2026-05-25
 ---
-
 Como desarrolladores nos gusta que las historias de usuario que definen nuestros Product Owners estén bien escritas, de modo que podamos implementar lo que se nos pide. Lo mejor de todo es que existe una herramienta conceptual y técnica para lograr eso.
 
 Behavior Driven Development comenzó siendo una variedad de TDD que ponía el foco en el comportamiento de los sistemas de software para responder a las demandas del negocio. Sin embargo, ha evolucionado a lo que podríamos considerar una metodología de trabajo que permite establecer un diálogo entre negocio y el equipo de desarrollo

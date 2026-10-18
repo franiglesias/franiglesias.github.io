@@ -1,0 +1,20 @@
+{% assign widget_limit = include.limit | default: 5 %}
+{% assign widget_shown = 0 %}
+{% assign updated_posts = site.posts | where_exp: "post", "post.updated" | sort: "updated" | reverse %}
+
+<section class="widget widget--featured">
+  <h2 class="widget__title">{{ include.title }}</h2>
+  <ul class="widget__list">
+    {% for post in updated_posts %}
+      {% unless post.tags contains 'dungeon' or post.tags contains 'tb-list' or post.hide %}
+        {% if widget_shown < widget_limit %}
+          <li class="widget__item">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <time datetime="{{ post.updated | date_to_xmlschema }}">{{ post.updated | date: "%d/%m/%Y" }}</time>
+          </li>
+          {% assign widget_shown = widget_shown | plus: 1 %}
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+  </ul>
+</section>

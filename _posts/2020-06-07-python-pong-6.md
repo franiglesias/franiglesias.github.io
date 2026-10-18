@@ -3,8 +3,8 @@ layout: post
 title: Pong en Python. Eliminando deuda técnica.
 categories: [articles]
 tags: [python, good-practices]
+updated: 2026-05-25
 ---
-
 Vamos a seguir mejorando el manejo de textos para tener más agilidad en el futuro.
 
 Estamos dedicando bastante tiempo a un tema un poco menor, como es el renderizado de texto. Sin embargo, es algo que puede ocurrir en cualquier proyecto. En ocasiones tenemos que ir despacio, o sea detenernos en algún desarrollo que nos ayude a mejorar cómo hacemos cosas, para poder entregar más rápido valor en el futuro próximo.

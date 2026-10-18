@@ -3,8 +3,8 @@ layout: post
 title: Ejercicio de refactor (2) Extraer hasta la última gota
 categories: [articles]
 tags: [refactoring, legacy]
+updated: 2026-05-25
 ---
-
 Una vez que hemos conseguido describir con tests el comportamiento del método que nos interesa, llega el momento de refactorizar. Queremos cambiar la implementación, pero no alterar el comportamiento público del método. Por lo tanto, los tests han de permanecer en verde tras cada cambio, procurando que la fase roja dure lo menos posible, lo que implica realizar baby-steps y no grandes refactors de una sentada.
 
 La serie **Ejercicio de refactoring** consta de los siguientes artículos:

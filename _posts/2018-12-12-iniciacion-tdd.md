@@ -4,8 +4,8 @@ title: La kata del DNI para aprender TDD
 categories: [articles]
 tags: [tdd, testing]
 recommended: false
+updated: 2026-06-06
 ---
-
 Una vez que comprendemos el concepto, no es difícil hacer TDD. Pero ese primer paso necesario para arrancar suele necesitar ayuda. Lo mejor es encontrar un ejercicio de programación que sea sencillo sin ser trivial y que ayude a poner de manifiesto los elementos más importantes de la metodología TDD.
 
 TDD es más una disciplina que una técnica específica. Para aprender y mejorar en ella lo recomendable es practicar mucho. Los ejercicios de TDD suelen denominarse *katas*, como las de las artes marciales. Se trata de automatizar el proceso de crear un test, escribir código para que el test pase y refactorizar. Por eso, conviene hacer y repetir ejercicios, ya sea en solitario, ya sea en *pairing* con otra persona, o en grupo, o incluso presenciar cómo lo hacen otras personas.

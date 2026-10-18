@@ -3,8 +3,8 @@ layout: post
 title: Object Calisthenics para mejorar el diseño de las clases
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 En este artículo presentamos un ejercicio que puede servir para adquirir soltura a la hora de reconocer patrones que nos permitan organizar objetos complejos mediante value objects.
 
 Un problema típico para una aplicación de *e-commerce* es el de requerir una **dirección de envío** y una **dirección de facturación** para cada pedido. Ambas son muy similares estructuralmente, pero diferentes en cuanto a significado. La dirección de envío es relevante para el sistema logístico y puede requerir un extra de instrucciones especiales, mientras que las de facturación es relevante en términos de legalidad fiscal.

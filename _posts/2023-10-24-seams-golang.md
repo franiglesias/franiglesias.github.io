@@ -3,8 +3,8 @@ layout: post
 title: Seams en Golang
 categories: [articles]
 tags: [testing, golang]
+updated: 2026-05-25
 ---
-
 Introducir _seams_ o costuras es una de las herramientas que usamos para resolver algunos tests complicados. Un seam es un lugar del código en el que podemos hacer un cambio de comportamiento pero sin modificar el original. Habitualmente, aplicamos esta técnica cuando queremos que la unidad bajo test no haga uso de dependencias que son caras de utilizar en entorno de testing.
 
 Normalmente, para obtener un _seam_ lo que necesitamos es aislar primero el fragmento de código cuyo comportamiento queremos cambiar. En lenguajes OOP es muy fácil extraer ese código a un método, que definiremos con visibilidad _protected_. Así podemos usarlo en clases que descienden de la clase original y, en consecuencia, nos permite sobreescribirlo en las clases derivadas.

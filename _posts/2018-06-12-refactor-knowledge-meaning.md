@@ -4,8 +4,8 @@ title: Refactorizar trata sobre conocimiento y significado
 categories: [articles]
 tags: [php, good-practices, legacy]
 recommended: true
+updated: 2026-05-25
 ---
-
 Refactorizar es más que una tarea técnica. Refactorizar tiene valor de negocio porque su función principal es asegurar que el lenguaje y el conocimiento del negocio están reflejados en el código.
 
 ## Legacy es código sin tests

@@ -4,8 +4,8 @@ title: Los principios SOLID
 categories: [articles]
 tags: [design-principles, oop]
 recommended: false
+updated: 2026-06-06
 ---
-
 Los principios SOLID son cinco principios en el diseño orientado a objetos compilados por Robert C. Martin, aunque quien primero se refirió a ellos con este nombre fue Michael Feathers. Martin los tomó como base para sus trabajos "Clean Code" y "Clean Architecture" y les dio la formulación más conocida. 
 
 Se trata de cinco principios que nos proporcionan una guía para crear código que sea reutilizable y se pueda mantener con facilidad. Como tales principios, nos aportan unos criterios con los que evaluar nuestras decisiones de diseño y una guía para avanzar en el trabajo. El código que los respeta es más fácil de reutilizar y mantener que el código que los ignora. Obviamente, no tienen una forma completa de implementarse y, en cada caso, pueden tener una interpretación algo diferente. No son recetas detalladas para aplicar ciegamente, sino que requieren de nosotros una reflexión profunda sobre el código que estamos escribiendo.

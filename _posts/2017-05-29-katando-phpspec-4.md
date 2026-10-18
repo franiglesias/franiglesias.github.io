@@ -3,8 +3,8 @@ layout: post
 title: Katando PHPSpec 4
 categories: [articles]
 tags: [tdd, bdd]
+updated: 2026-05-25
 ---
-
 En las entregas anteriores de la serie he tratado de explicar cómo hacer TDD usando PHPSpec. En esta última, voy a mostrar cómo dar un "salto" en el desarrollo, usando los test existentes como protección.
 
 La serie **Katando PHPSpec** consta de los siguientes artículos:

@@ -3,8 +3,8 @@ layout: post
 title: Test doubles (2) Principios de diseño
 categories: [articles]
 tags: [testing, php]
+updated: 2026-05-25
 ---
-
 Los principios de diseño están muy relacionados con el testing de tal forma que son tanto objetivo de diseño como herramienta para lograrlo.
 
 En el [artículo anterior](/test-doubles-1/), hicimos un repaso de los test-doubles y sus tipos. En este, reflexionaremos sobre la aplicación de principios de diseño y el uso de test-doubles.

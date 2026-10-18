@@ -3,8 +3,8 @@ layout: post
 title: No hagas estos tests
 categories: [articles]
 tags: [testing, tdd]
+updated: 2026-05-25
 ---
-
 O al menos, no de esta manera.
 
 ## Objetos mensaje

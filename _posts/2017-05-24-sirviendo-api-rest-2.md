@@ -3,8 +3,8 @@ layout: post
 title: Sirviendo API rest (2)
 categories: [articles]
 tags: [api]
+updated: 2026-05-25
 ---
-
 En esta entrega, voy a empezar a mostrar algo de código de un controlador que maneja una API.
 
 Esta serie sobre **API Rest** tiene los siguientes artículos:

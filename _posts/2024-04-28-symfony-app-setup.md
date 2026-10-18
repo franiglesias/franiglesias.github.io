@@ -4,8 +4,8 @@ title: Preparando un proyecto Symfony para experimentar con Vertical Slice Archi
 categories: [articles]
 series: vsa
 tags: [php, design-patterns]
+updated: 2026-05-25
 ---
-
 A raíz de una pregunta sobre Vertical Slice Architecture estaba intentando empezar a escribir una pequeña aplicación para investigar la propuesta y voy a tratar de documentar el proceso.
 
 Por las razones que sea, quise empezar el proyecto en PHP, usando Symfony. Este es el framework PHP que más me convence y por eso es mi primera opción.

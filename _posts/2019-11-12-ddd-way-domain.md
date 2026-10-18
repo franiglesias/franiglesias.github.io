@@ -3,8 +3,8 @@ layout: post
 title: DDD, identificando el dominio y los subdominios
 categories: [articles]
 tags: [good-practices, design-principles, ddd]
+updated: 2026-05-25
 ---
-
 Domain Driven Design no puede tomarse como una guía con instrucciones para ir de un punto a otro siguiendo una ruta determinada. Es más bien, un conjunto de estrategias, métodos y tácticas para orientarse en un territorio desconocido y moverse hacia un objetivo deseado que, para mayor dificultad, es móvil.
 
 Parte de la complejidad que el DDD nos ayuda abordar reside en que tanto el dominio como el conocimiento que tenemos de él es algo cambiante: las necesidades del negocio evolucionan, la precisión y la resolución con las que definimos los conceptos cambian, aprendemos a distinguir y descubrir nuevos matices y ramificaciones. Por simple que pueda parecer un dominio o un subdominio en una primera aproximación, a medida que aumenta nuestra comprensión, aumenta también nuestra capacidad de descubrir nuevas posibilidades, nuevas ramas. Y como no vivimos aislados en el mundo, el entorno hace que el negocio tenga que evolucionar, generando nuevas necesidades y requiriendo nuevas respuestas.

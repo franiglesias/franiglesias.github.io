@@ -3,8 +3,8 @@ layout: micro-post
 title: No, Domain-Application-Infrastructure no es arquitectura hexagonal
 categories: [articles]
 tags: [tb-list, design-patterns]
+updated: 2026-05-25
 ---
-
 No pasa un día en que no me encuentre con un post, un vídeo o un comentario en alguna red en la que alguien diga algo así como: "en mi equipo estamos haciendo arquitectura hexagonal y tenemos la capa de dominio, la de aplicación y la de infraestructura".
 
 Pues no. No estáis haciendo arquitectura hexagonal. Eso que mencionas es una arquitectura de tres capas que recoge conceptos comunes de las arquitecturas limpias:

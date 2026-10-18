@@ -3,8 +3,8 @@ layout: post
 title: Del ojímetro al tdd
 categories: [articles]
 tags: [tdd, testing]
+updated: 2026-05-25
 ---
-
 Porque todos tenemos spaghetti apestando en el armario.
 
 Cuando empiezas a programar en PHP (y cualquier otro lenguaje, para el caso) sin tener una formación sistemática muchas veces te guías por "arroutadas", es decir por ocurrencias: abres un editor y comienzas a picar código como si te fuera la vida en ello. Al final del día obtienes una gran bola de lodo que, más o menos, funciona y que a ti te parece la versión informática de la Gioconda. O algo así.

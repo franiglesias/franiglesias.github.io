@@ -3,8 +3,8 @@ layout: post
 title: Al menos uno
 categories: [articles]
 tags: [tips, refactoring]
+updated: 2026-05-25
 ---
-
 Un ejemplo sencillo que refleja el proceso de refinamiento iterativo que es escribir software.
 
 Supongamos que tenemos un array en el que tenemos que comprobar que al menos uno de los elementos cumpla una condición. Un caso que suelo encontrarme es tener que hacer un test para ver si entre los eventos publicados por un cierto proceso se incluye uno en el que estoy interesado.

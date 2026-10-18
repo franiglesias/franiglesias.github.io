@@ -4,8 +4,8 @@ title: El patrón decorador
 series: design-patterns
 categories: [articles]
 tags: [design-patterns]
+updated: 2026-05-25
 ---
-
 El patrón decorador tiene como objetivo permitirnos modificar el comportamiento de un objeto en tiempo de ejecución, esto es, de manera dinámica.
 
 En muchas ocasiones sabemos que un objeto va a tener variantes de comportamiento, pero no podemos predecir cuáles serán éstas, sino que se producirán en tiempo de ejecución, dependiendo de configuraciones, elecciones del usuario y otros motivos. Puede, incluso, que esas variantes sean ortogonales entre sí, de manera que se generen muchas combinaciones de comportamientos posibles.

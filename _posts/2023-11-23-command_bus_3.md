@@ -3,9 +3,8 @@ layout: post
 title: Mensajería variada
 categories: [articles]
 tags: [design-patterns]
+updated: 2026-05-25
 ---
-
-
 En este artículo voy a saltar directamente de los comandos a los eventos.
 
 Al fin y al cabo, las queries son como comandos que devolviesen respuesta. Sin embargo, los eventos son lo bastante diferentes como para merecer un tratamiento aparte. Y no solo eso, ya que los eventos tiene una proyección mucho más amplia en el diseño de aplicaciones modernas.

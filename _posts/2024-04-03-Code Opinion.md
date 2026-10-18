@@ -3,8 +3,8 @@ layout: micro-post
 title: Code Opinion
 categories: [articles]
 tags: [tb-list, good-practices, design-patterns]
+updated: 2026-05-25
 ---
-
 Derek Comartin tiene este blog y canal de Youtube en el que trata numerosos temas relacionados con el diseño y
 arquitectura de software con una aproximación crítica, dedicando muchos posts y vídeos al tema de las arquitecturas Event-Driven, pero también a cuestiones más básicas de diseño. Creo que no hay ni un solo vídeo que no quiera ver en algún momento.
 

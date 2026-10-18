@@ -5,8 +5,8 @@ title: Sad paths, validaciones y robustez en los tests
 categories: [articles]
 series: outside-in-ha
 tags: [software-design, design-patterns, typescript, tdd, hexagonal]
+updated: 2026-05-25
 ---
-
 En esta ocasión, vamos a centrarnos en los sad-paths, validación y gestión de errores.
 
 <!-- TOC -->

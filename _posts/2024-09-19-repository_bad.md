@@ -4,8 +4,8 @@ title: A donde vamos, no necesitamos repositorios
 series: design-patterns
 categories: [articles]
 tags: [software-design, design-patterns, pulpoCon]
+updated: 2026-05-25
 ---
-
 La aplicación ciega de metodologías, principios de diseño o patrones, puede llevarnos a generar más problemas que soluciones. Tomemos por ejemplo, el patrón repositorio.
 
 ## El patrón repositorio

@@ -4,8 +4,8 @@ title: El falso dilema. Calidad versus velocidad
 categories: [articles]
 tags: [misc, good-practices]
 recommended: true
+updated: 2026-05-25
 ---
-
 De vez en cuando me encuentro con artículos o comentarios que mencionan la idea de que, a veces, tenemos que aparcar las buenas prácticas al programar en aras a cumplir un plazo de entrega o salir a producción.
 
 La primera víctima suelen ser los tests, ya que no hay tiempo para hacerlos. En parte, porque ese código está muy acoplado y dificulta la creación de los tests que lo verifiquen.

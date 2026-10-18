@@ -3,8 +3,8 @@ layout: post
 title: Más allá de SOLID, los consejos prácticos
 categories: [articles]
 tags: [design-principles, good-practices]
+updated: 2026-05-25
 ---
-
 Los principios SOLID están sobrevalorados y otras perlas de sabiduría práctica.
 
 Los principios SOLID constituyen un buen sistema de principios, son muy coherentes, pero incompletos en mi opinión. En realidad, creo que faltan dos para tener un juego de criterios realmente potentes.

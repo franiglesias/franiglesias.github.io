@@ -4,8 +4,8 @@ title: Vertical Slice Architecture
 categories: [articles]
 series: vsa
 tags: [design-patterns]
+updated: 2026-05-25
 ---
-
 En este artículo plasmo mis primeras reflexiones acerca de _Vertical Slice Architecture_. No trato de hacer una descripción de la propuesta como tal, que tampoco es que esté muy definida que digamos.
 
 Hace algún tiempo que empecé a interesarme un poco por el concepto de _Vertical Slice Architecture_ (o _Feature Architecture_), pero una pregunta que me hicieron recientemente me ha motivado para investigar más en profundidad. La cuestión es; ¿hay profundidad que investigar?

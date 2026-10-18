@@ -3,8 +3,8 @@ layout: post
 title: Aislarse del sistema de archivos y una técnica de testing
 categories: [articles]
 tags: [golang, good-practices]
+updated: 2026-05-25
 ---
-
 Evitar depender directamente del sistema de archivos nos permite construir aplicaciones más fáciles de testear.
 
 En el artículo anterior hablé sobre cómo hacer un _Spike_ nos permite explorar los problemas que podemos encontrar a la hora de implementar una funcionalidad en un proyecto. Un spike no es necesariamente un prototipo, sino más bien una prueba de concepto, o conjunto de ellas, en la que ponemos a prueba nuestras ideas y, de paso, exploramos sus posibilidades, pero también las dificultades que pueden presentar.

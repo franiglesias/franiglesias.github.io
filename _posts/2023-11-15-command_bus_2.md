@@ -3,8 +3,8 @@ layout: post
 title: Disfrutando del Command Bus
 categories: [articles]
 tags: [design-patterns, ruby]
+updated: 2026-05-25
 ---
-
 En el artículo anterior, presentamos el concepto de _Command Bus_ y construimos uno sencillo para introducirlo 
 
 Antes de empezar la segunda parte de esta serie voy a organizar un poco el código en un repositorio y darle un poco de estructura.

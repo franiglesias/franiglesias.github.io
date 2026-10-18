@@ -3,8 +3,8 @@ layout: post
 title: Cláusulas de guarda con asserts
 categories: [articles]
 tags: [tips, good-practices]
+updated: 2026-05-25
 ---
-
 Las cláusulas de guarda nos permiten asegurar que se cumplen las condiciones necesarias para ejecutar un método.
 
 En el código, las cláusulas de guarda son habitualmente estructuras if que lanzan una excepción si una cierta condición requerida no se cumple. La idea es despejar el terreno de casos no válidos para ejecutar el algoritmo contenido en el método solo con valores válidos.

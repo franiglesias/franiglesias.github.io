@@ -5,8 +5,8 @@ title: Walking Skeleton y vía intermedia pragmática
 categories: [articles]
 series: outside-in-ha
 tags: [software-design, design-patterns, typescript, tdd, hexagonal]
+updated: 2026-05-25
 ---
-
 Retomo en este artículo el repaso al desarrollo de una aplicación diseñada con Arquitectura Hexagonal y dirigida por tests.
 
 

@@ -3,8 +3,8 @@ layout: post
 title: Splat operator
 categories: [articles]
 tags: [php, tips]
+updated: 2026-05-25
 ---
-
 Aunque está entre nosotros desde la versión 5.6 de PHP, splat operator es relativamente desconocido y su uso no deja de ser un poco confuso.
 
 *Splat operator* se expresa con el símbolo `...` y tiene dos utilidades principales:

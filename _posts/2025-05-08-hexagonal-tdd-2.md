@@ -5,8 +5,8 @@ title: London School, doble ciclo y comparativa
 categories: [articles]
 series: outside-in-ha
 tags: [software-design, design-patterns, typescript, tdd, hexagonal]
+updated: 2026-05-25
 ---
-
 [En el artículo anterior](/hexagonal-tdd-1/), vimos cómo aplicar TDD clásica a un caso de uso simple utilizando la
 arquitectura hexagonal. En este artículo, vamos a aplicar TDD London School.
 

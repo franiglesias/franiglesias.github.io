@@ -4,8 +4,8 @@ title: Poner el código bajo test
 subtitle: Trabajar con legacy y entender el dominio (1)
 categories: [articles]
 tags: [design-principles, good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 Todo código en producción es legacy, al final es una cuestión de grado.
 
 Imagina que llegas a un equipo nuevo. El código es totalmente desconocido para ti, la distancia entre el conocimiento representado en ese código y el que tienes de ese dominio será la máxima posible.  O imagina que te presentan el típico proyecto legacy, que está funcionando en producción pero que nadie se atreve a tocar, de tal modo que se ha decidido empezar de cero con un proyecto que lo reemplace.

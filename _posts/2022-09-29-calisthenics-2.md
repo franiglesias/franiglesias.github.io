@@ -4,8 +4,8 @@ series: calisthenics
 title: No usar la palabra clave ELSE
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 Una serie de restricciones que te ayudarán a escribir mejor código. En esta ocasión, evitaremos usar la clave `ELSE`.
 
 ## Qué es object calisthenics

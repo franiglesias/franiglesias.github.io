@@ -3,8 +3,8 @@ layout: micro-post
 title: Does One Line Fix Google?
 categories: [articles]
 tags: [tb-list, tools]
+updated: 2026-05-25
 ---
-
 ¿Recuerdas cuando Google molaba? Un pequeño truco puede permitirte usar el buscador quitando la mayor parte del ruido. Se puede aplicar a varios navegadores, incluyendo Chrome y Firefox, aunque no a Safari.
 
 Consiste en añadir el parámetro “udm=14” a la url de la búsqueda. En el artículo encontrarás enlaces a instrucciones concretas para usarlo.

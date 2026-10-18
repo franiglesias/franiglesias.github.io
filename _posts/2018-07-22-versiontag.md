@@ -3,8 +3,8 @@ layout: post
 title: Automatiza tags de version semántica con git
 categories: [articles]
 tags: [tools]
+updated: 2026-05-25
 ---
-
 Acabo de desarrollar una pequeña herramienta puede ayudarte a automatizar la creación de tags de versión semántica con git.
 
 Os presento **versiontag** una utilidad de línea de comandos para automatizar el versionado semántico en git.

@@ -3,8 +3,8 @@ layout: post
 title: Un doble para SplFileObject
 categories: [articles]
 tags: [testing, tips]
+updated: 2026-05-25
 ---
-
 La _Standard PHP Library_ incluye unas cuantas clases que merece la pena conocer, entre ellas `SplFileObject` de la cual nos ocupamos en este artículo. Sin embargo, a veces tienen alguna sorpresa oculta.
 
 Esta semana he estado trabajando en un comando para importar datos de un archivo CSV así que, en consonancia con la forma en que estamos tratando caos similares, he usado `SplFileObject` para acceder al contenido del archivo. `SplFileObject` es una clase de la librería estándar que ofrece tratar un archivo mediante una interfaz orientada a objetos.

@@ -4,8 +4,8 @@ title: Dependencias y acoplamiento
 categories: [articles]
 tags: [php, good-practices]
 recommended: true
+updated: 2026-05-25
 ---
-
 Cómo aplicar el principio de inversión de dependencias, entendiendo qué es dependencia y qué acoplamiento. ¡Ah! Y cómo saber cuándo necesitamos usar inyección o instanciación al crear objetos.
 
 En programación decimos que se establece una **dependencia** cuando un módulo de software utiliza otro para realizar su trabajo. Si hablamos de clases, decimos que una clase (Cliente) tiene una dependencia de otra (Servicio) cuando _Cliente_ usa _Servicio_ para llevar a cabo sus propias responsabilidades. La dependencia se manifiesta porque la clase _Cliente_ no puede funcionar sin la clase _Servicio_.

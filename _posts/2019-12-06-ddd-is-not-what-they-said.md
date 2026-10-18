@@ -3,8 +3,8 @@ layout: post
 title: DDD no es lo que te han contado
 categories: [articles]
 tags: [good-practices, design-principles, ddd]
+updated: 2026-05-25
 ---
-
 Acabo de leerme, por fin, **El Libro** sobre *Domain Driven Design* de Eric Evans. Después de mucho tiempo leyendo de segunda mano sobre el tema, mi conclusión es: DDD no es exactamente lo que nos han contado.
 
 Por alguna razón las referencias que había escuchado sobre el libro eran bastante negativas. Y es una pena porque he ido posponiendo su lectura más de lo debido, aunque también es verdad que he priorizado otros que tenía más accesibles. Pero, en resumen: el libro me ha gustado mucho y el contenido me ha ayudado a darle sentido a muchas cosas.

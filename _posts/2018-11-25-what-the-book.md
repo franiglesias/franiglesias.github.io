@@ -3,8 +3,8 @@ layout: post
 title: What the book
 categories: [articles]
 tags: [misc, testing, tdd]
+updated: 2026-05-25
 ---
-
 Después de darle vueltas a la idea una temporada hemos agrupado varios artículos del blog sobre testing en un libro.
 
 Aunque el libro no va a contener mucho material que no esté en el blog, lo cierto es que muchas personas se sienten más cómodas teniendo todo el material reunido en un solo lugar que sea fácil de manejar y buscar.

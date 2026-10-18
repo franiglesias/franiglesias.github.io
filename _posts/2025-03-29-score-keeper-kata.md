@@ -4,8 +4,8 @@ title: Lecciones aprendidas del patrón observer
 series: design-patterns
 categories: [articles]
 tags: [software-design, design-patterns, typescript]
+updated: 2026-05-25
 ---
-
 En una de las últimas sesiones del Coding Dojo de CraftersVigo propusimos la kata ScoreKeeper, un ejercicio aparentemente trivial, pero al que añadimos la propuesta de usar el patrón _Observer_.
 
 Los ejercicios de código son herramientas poderosas de aprendizaje. Al no tener las presiones de un proyecto real, podemos explorar soluciones que, de otra forma, podrían conllevar un nivel de riesgo poco aceptable. Por otro, lado, el hecho de que los problemas que buscamos solucionar en estos ejercicios sean bastante sencillos, nos dejan explorar los básicos de los patrones que queremos aprender. Gracias a esto, nos podemos preparar mejor para aplicarlos en situaciones más complejas.

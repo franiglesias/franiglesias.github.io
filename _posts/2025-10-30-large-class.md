@@ -4,8 +4,8 @@ title: Large Class
 categories: [articles]
 series: code-smells
 tags: [code-smells, refactoring, typescript, design-principles]
+updated: 2026-05-25
 ---
-
 Otro _code smell_ bastante habitual es tener clases muy grandes, que van acumulando muchas responsabilidades no relacionadas.
 
 ## Definición

@@ -3,8 +3,8 @@ layout: post
 title: Usar el code coverage para mejorar los tests
 categories: [articles]
 tags: [testing]
+updated: 2026-05-25
 ---
-
 El code coverage es una métrica que conviene coger con pinzas y examinar con mucho cuidado.
 
 En principio, el code coverage nos indica las líneas de código cubiertas por la ejecución de tests y lo deseable sería, sobre el papel, acercarnos lo más posible al 100%.

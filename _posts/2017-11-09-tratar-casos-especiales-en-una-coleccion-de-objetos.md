@@ -3,8 +3,8 @@ layout: post
 title: Tratar casos especiales en una colección de objetos
 categories: [articles]
 tags: [legacy, refactoring]
+updated: 2026-05-25
 ---
-
 A veces tenemos que hacer cosas específicamente con algunos objetos de una colección. En este artículo planteo una forma de encarar este problema.
 
 Hace unos días tuve que examinar un código que consume la API de uno de nuestros proveedores para construir un array de objetos a partir de los resultados. En algunos de esos objetos había que aplicar un tratamiento específico, ya fuera por razones comerciales o para corregir algunos errores en la fuente de datos.

@@ -3,8 +3,8 @@ layout: post
 title: Huyendo del database-first
 categories: [php, articles]
 tags: [bbdd]
+updated: 2026-05-25
 ---
-
 Database-first: al principio puede parecer fácil y hasta lógico. Es como el reverso tenebroso de la Fuerza, pero con datos.
 
 Muchas veces los frameworks MVC proponen una aproximación a partir de la base de datos para generar tus modelos y, partir de ahí, el resto de la aplicación.

@@ -4,8 +4,8 @@ series: calisthenics
 title: Mantener todas las entidades pequeñas
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 Una serie de restricciones que te ayudarán a escribir mejor código. En esta ocasión hablaremos de reducir el tamaño de todas las entidades.
 
 ## Qué es object calisthenics

@@ -3,8 +3,8 @@ layout: post
 title: 99 bottles of OOP. Sandi Metz.
 categories: [articles]
 tags: [books, design-principles, ruby, php, javascript]
+updated: 2026-05-25
 ---
-
 Otro libro imprescindible de Sandi Metz, que puedes conseguir en versiones para ruby, php y javascript.
 
 *99 bottles* es una canción en inglés similar a nuestra *Un elefante se balanceaba*, en las que el mismo verso se repite cambiando el número en cuenta atrás o adelante. Esta canción le sirve a Sandi Metz para explicar el proceso de desarrollo orientado a objetos de una forma completísima, abordando todos los puntos clave.

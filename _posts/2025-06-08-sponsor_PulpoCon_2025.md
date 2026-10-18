@@ -3,8 +3,8 @@ layout: micro-post
 title: ¿Como? ¿No estás patrocinando la PulpoCon 2025?
 categories: [articles]
 tags: [tb-list, pulpoCon]
+updated: 2026-05-25
 ---
-
 Los días 18, 19 y 20, se celebrará la quinta edición de la PulpoCon. Y no deberías perder la oportunidad de participar. Especialmente, como patrocinador. PulpoCon es una conferencia sobre desarrollo de software que es muy especial. 
 
 – Claro, eso dicen todas las conferencias de cualquier tema o sector.

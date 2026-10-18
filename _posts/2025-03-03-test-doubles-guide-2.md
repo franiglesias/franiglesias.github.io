@@ -3,8 +3,8 @@ layout: post
 title: La guía definitiva de los dobles de test 2
 categories: [articles]
 tags: [testing, tdd, typescript]
+updated: 2026-05-25
 ---
-
 Vamos por la segunda parte de este artículo en la que seguimos explicando como usar dobles de test.
 
 En esta ocasión vamos a analizar un caso un poco más complejo de dependencia totalmente acoplada y luego nos centraremos en los dobles que simulan errores.

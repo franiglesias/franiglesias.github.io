@@ -4,8 +4,8 @@ title: Cómo poner nombres
 categories: [articles]
 tags: [php, good-practices]
 recommended: true
+updated: 2026-05-25
 ---
-
 ¿Por qué razón poner nombres a las cosas se considera uno de los aspectos más difíciles de la programación?
 
 [En esta pregunta de Quora](https://www.quora.com/Why-is-naming-things-hard-in-computer-science-and-how-can-it-can-be-made-easier) se proponen algunas ideas de por qué resulta difícil poner nombres. Los tipos de respuesta se podrían agrupar en:

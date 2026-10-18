@@ -3,8 +3,8 @@ layout: post
 title: Commit (Blogtober 2019)
 categories: [articles]
 tags: [blogtober19]
+updated: 2026-05-25
 ---
-
 Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) va a hacer un dibujo cada día del mes sobre una palabra propuesta en twitter. Y aquí vamos a intentar escribir [un post por cada una de ellas](https://franiglesias.github.io/blogtober19-status/).
 
 ## Commit

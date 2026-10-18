@@ -3,8 +3,8 @@ layout: post
 title: Más allá de SOLID, principios básicos
 categories: [articles]
 tags: [good-practices, design-principles]
+updated: 2026-05-25
 ---
-
 Los principios de diseño de software no son recetas ni objetivos, son guías para la toma de decisiones y para la evaluación.
 
 ## Qué es buen código

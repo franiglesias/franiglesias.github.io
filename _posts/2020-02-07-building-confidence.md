@@ -3,8 +3,8 @@ layout: post
 title: Construir confianza en el código, test a test
 categories: [articles]
 tags: [testing, good-practices]
+updated: 2026-05-25
 ---
-
 En general, cuando creamos software, confiamos en que haga aquello para lo cual lo hemos programado. Es un poco de Perogrullo, pero es también evidente que necesitamos poder tener esa confianza.
 
 Una forma de entender esta idea de la confianza en el software es pensar que el código es una representación del conocimiento del negocio. En este caso, una representación ejecutable que produce efectos en el mundo. En este sentido, la confianza se puede equiparar a la seguridad que tenemos de que se trata de una representación lo más exacta posible.

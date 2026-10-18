@@ -5,8 +5,8 @@ published: true
 categories: [articles]
 author: [paula, fran]
 tags: [php, tips]
+updated: 2026-05-25
 ---
-
 El operador ternario comparte con null coalesce el símbolo de la interrogación, pero ahí se acaba el parecido.
 
 El tema nos ha dado para alguna discusión por lo que me arriesgo a que nos acusen de escribir sobre nuestros dramas técnicos ;), pero creo que el tema lo merece.

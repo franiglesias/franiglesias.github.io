@@ -3,8 +3,8 @@ layout: post
 title: Commits, tags y branches en git
 categories: [articles]
 tags: [tools]
+updated: 2026-05-25
 ---
-
 Trabajar de forma individual hace que, a veces, descuides aspectos del flujo de trabajo que son cruciales en equipos. Uno de estos aspectos es la gestión de versiones y la ramificación de proyectos.
 
 Hasta hace un tiempo llevaba la gestión de versiones con SVN, pero al empezar a desarrollar el proyecto [milhojas](https://github.com/franiglesias/milhojas), decidí hacerlo con Git, que al fin y al cabo se ha convertido prácticamente en el estándar.

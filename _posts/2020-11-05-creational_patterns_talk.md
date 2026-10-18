@@ -4,8 +4,8 @@ title: Charla. New no, lo siguiente.
 series: design-patterns
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
 El pasado martes (3/11/2020) hice una charla en el meetup de PHPVigo.
 
 Aquí tienes el vídeo. Trata sobre cómo abordar distintas situaciones a la hora de instanciar objetos usando varios patrones creacionales.

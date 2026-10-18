@@ -3,8 +3,8 @@ layout: post
 title: Escribir código a prueba de futuro
 categories: [articles]
 tags: [good-practices, refactoring, python]
+updated: 2026-05-25
 ---
-
 Estas ideas pueden aplicarse tanto al escribir código nuevo como ser usadas como guía para refactoring.
 
 Como hemos señalado en ocasiones anteriores, es difícil definir lo que es buen código. Sin embargo, es más fácil describir lo que hace malo al código. Y una de las características de un código malo es que sea difícil de cambiar. O dicho de otro modo, un código que no pueda evolucionar fácilmente con los cambios del negocio.

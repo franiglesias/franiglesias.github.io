@@ -3,8 +3,8 @@ layout: post
 title: Pong en Python. Los prototipos como punto de partida de un proyecto de software
 categories: [articles]
 tags: [python, good-practices]
+updated: 2026-05-25
 ---
-
 Una mezcla de cosas me ha traído aquí. Este fin de semana he empezado un proyecto para recrear el juego Pong! en Python.
 
 He visto en twitter que [Ron Jeffries está recreando el viejo arcade Astoroids](https://ronjeffries.com/articles/020-asteroids/asteroids-1/) y esa quizá haya sido el último toque que necesitaba para hacer mi propio experimento.

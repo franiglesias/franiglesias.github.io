@@ -4,8 +4,8 @@ series: calisthenics
 title: Un punto por línea
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 Una serie de restricciones que te ayudarán a escribir mejor código. En este artículo veremos como aplicar la regla de un solo punto por línea.
 
 ## Qué es object calisthenics

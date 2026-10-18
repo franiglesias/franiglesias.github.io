@@ -3,8 +3,8 @@ layout: post
 title: So long, and thanks for all the fish
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
 Lo he intentado, pero The Talking Bit se acaba aquí.
 
 Ya comenté hace unos meses que la actividad del proyecto se iba a ralentizar. Desde entonces he publicado dos notas y no he sido capaz de terminar otros tres o cuatro artículos que tenía iniciados. Es un indicador de que no tengo la energía, motivación, o las ganas de escribir. 

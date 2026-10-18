@@ -3,8 +3,8 @@ layout: post
 title: Pong en Python. Agilidad y prioridades
 categories: [articles]
 tags: [python, good-practices]
+updated: 2026-05-25
 ---
-
 En este artículo voy a intentar simular el desarrollo durante un sprint.
 
 ## Planificación

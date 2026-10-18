@@ -3,8 +3,8 @@ layout: post
 title: La guía definitiva de los dobles de test
 categories: [articles]
 tags: [testing, tdd, typescript]
+updated: 2026-05-25
 ---
-
 En este artículo vamos a explicar todo lo que necesitas saber para utilizar dobles en tus tests.
 
 Para empezar, tenemos que tocar algunas cuestiones teóricas, algo por lo que no me voy a disculpar, pues son imprescindibles para usar correctamente y beneficiarse del uso de dobles. Finalmente, veremos como abordar un caso que nos requiere utilizar distintos tipos de doble para abordar el testeo de un servicio.

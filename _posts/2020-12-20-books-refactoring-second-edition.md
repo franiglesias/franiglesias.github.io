@@ -3,8 +3,8 @@ layout: post
 title: Refactoring second edition. Martin Fowler.
 categories: [articles]
 tags: [books, refactoring, javascript]
+updated: 2026-05-25
 ---
-
 Habrán pasado unos tres años desde que leí la primera edición de Refactoring. Esta actualización de 2019 ha rejuvenecido el material original, sin perder una pizca de utilidad.
 
 El libro está estructurado entre dos grandes bloques, una parte introductoria sobre refactoring, smells y testing y el catálogo de refactors propiamente dicho. La primera parte se puede leer de forma bastante lineal, mientras que el catálogo es un material de referencia en el que puedes ir hojeando o consultar cuando necesites ejecutar algún refactor concreto.

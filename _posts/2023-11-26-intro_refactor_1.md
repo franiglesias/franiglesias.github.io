@@ -3,8 +3,8 @@ layout: post
 title: Refactoring para quienes no refactorizan
 categories: [articles]
 tags: [good-practices, refactoring, ruby]
+updated: 2026-05-25
 ---
-
 Me he dado cuenta de que no había escrito nunca un artículo sobre _refactoring_ dirigido a personas que no saben lo que es, o que no lo entienden correctamente.
 
 _Refactoring_ es una práctica de ingeniería de software que consiste en modificar un código de tal forma que no se altera lo que hace. El objetivo es conseguir que ese código tenga un mejor diseño, que se entienda mejor cómo funciona y que sea más barato modificar su comportamiento o añadir funcionalidades en el futuro.

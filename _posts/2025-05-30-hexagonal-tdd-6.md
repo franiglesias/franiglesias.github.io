@@ -5,8 +5,8 @@ title: Añadiendo funcionalidad y resolviendo problemas
 series: outside-in-ha
 categories: [articles]
 tags: [software-design, design-patterns, typescript, tdd, hexagonal]
+updated: 2026-05-25
 ---
-
 En esta entrega vamos a intentar terminar las features de añadir y retirar cantidades de producto del inventario. Pero antes, debemos resolver algunos problemas que todavía no hemos afrontado.
 
 Tenemos que resolver algunos problemas antes de seguir. El desarrollo no marcha mal, pero es conveniente abordar algunos problemas a los que no hemos necesitado prestar mucha atención hasta ahora. De este modo, el trabajo futuro será mucho más fácil. Y también será más fácil resolverlos ahora, que cuando tengamos más código y hayamos invertido más esfuerzo.

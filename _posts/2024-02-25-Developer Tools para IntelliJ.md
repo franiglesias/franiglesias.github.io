@@ -3,8 +3,8 @@ layout: micro-post
 title: Developer Tools para IntelliJ
 categories: [articles]
 tags: [tb-list, tools]
+updated: 2026-05-25
 ---
-
 Se trata de un plugin para IntelliJ que ofrece una especie de caja de herramientas en la que tendremos acceso a un montón de utilidades, codificadores/decodificadores, generadores, etc. Muchas de ellas son las típicas que buscamos online, pero que aquí nos aparecen integradas en el IDE ahorrando tiempo y clics.
 
 Incluye herramientas como:

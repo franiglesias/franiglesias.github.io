@@ -3,8 +3,8 @@ layout: post
 title: Pong en Python. Separando el legacy en Scenes
 categories: [articles]
 tags: [python, good-practices]
+updated: 2026-05-25
 ---
-
 En este artículo vamos a empezar a transformar en profundidad la parte legacy.
 
 ## Scene

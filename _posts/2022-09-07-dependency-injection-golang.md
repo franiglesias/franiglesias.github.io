@@ -3,8 +3,8 @@ layout: post
 title: OOP e Inyección de dependencias en Go
 categories: [articles]
 tags: [golang]
+updated: 2026-05-25
 ---
-
 Golang es un lenguaje multiparadigma. Puedes trabajar con orientación a objetos y, por tanto, aplicar patrones y principios de este paradigma. Pero a Golang le gusta hacerlo a su manera.
 
 En realidad esta manera no es tan diferente de la de otros lenguajes como Java o PHP, salvando las distancias. La cuestión es que Golang no tiene el concepto de clase. En su lugar, nos ofrece el tipo `struct`, con el cual podemos crear nuestros propios tipos complejos.

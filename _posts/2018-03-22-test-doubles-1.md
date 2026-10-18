@@ -4,8 +4,8 @@ title: Test doubles (1)
 categories: [articles]
 tags: [testing, php]
 recommended: true
+updated: 2026-05-25
 ---
-
 Estaba pensando en comenzar el artículo con la manida metáfora de los *test doubles* como especialistas de cine, los que doblan a los actores en ciertas escenas, no necesariamente peligrosas. Pero cuando más vueltas le doy, menos claro tengo que sea un buen símil.
 
 Al fin y al cabo, los *test doubles* son más bien figurantes que, a veces, tienen una o dos líneas de diálogo en la escena, mientras que nuestra unidad bajo test es la protagonista y la que tiene que llevar el peso de la actuación: no la podemos sustituir por otra. En cambio, de los *test doubles* preferimos que no hagan nada especial y que, si lo hacen, no se salgan del guión ni un milímetro.

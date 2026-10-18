@@ -3,8 +3,8 @@ layout: post
 title: Cruzando fronteras con Meaningful Objects
 categories: [articles]
 tags: [software-design, design-patterns]
+updated: 2026-05-25
 ---
-
 Una aplicación es un artefacto de software que permite a sus usuarios alcanzar ciertos objetivos.
 
 La arquitectura de una aplicación puede adoptar distintas formas dependiendo de los patrones que hayamos decidido aplicar. En cualquier caso, existen algunos principios que son comunes:

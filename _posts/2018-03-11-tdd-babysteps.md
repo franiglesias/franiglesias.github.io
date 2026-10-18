@@ -3,8 +3,8 @@ layout: post
 title: TDD no es solo testear antes de escribir código
 categories: [articles]
 tags: [tdd, php]
+updated: 2026-05-25
 ---
-
 Ya han pasado más de siete meses desde que llegué a Barcelona, acabo de cumplir mis dos primeras semanas en una [nueva empresa](https://www.holaluz.com) y estoy muy contento en [mi nuevo equipo](https://twitter.com/holaluzeng?lang=es), con quienes ya he empezado a aprender un montón de cosas y, de paso, desoxidarme un poco.
 
 Precisamente en los pocos días que llevo trabajando aquí ya han comenzado a surgir cosas interesantes con el código y me gustaría contar algunas de ellas.

@@ -4,8 +4,8 @@ title: Long method
 categories: [articles]
 series: code-smells
 tags: [code-smells, refactoring, typescript, testing]
+updated: 2026-05-25
 ---
-
 Un code smell en el que es fácil caer es _Long Method_. Añades líneas y más líneas a una función o método hasta que empieza a ser difícil de leer y de intervenir. Y un método largo, requiere un artículo largo.
 
 ## Definición

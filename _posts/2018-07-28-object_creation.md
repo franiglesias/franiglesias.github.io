@@ -4,8 +4,8 @@ title: Patrones de creación de objetos
 series: design-patterns
 categories: [articles]
 tags: [php]
+updated: 2026-05-25
 ---
-
 Cada vez que necesitamos instanciar objetos en una aplicación tenemos que resolver un pequeño problema.
 
 ## El buen y viejo `new`

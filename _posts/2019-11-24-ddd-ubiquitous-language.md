@@ -3,8 +3,8 @@ layout: post
 title: DDD, el lenguaje ubicuo
 categories: [articles]
 tags: [good-practices, design-principles, ddd]
+updated: 2026-05-25
 ---
-
 Creo que una de las cosas que provocan que se *haga bola* la parte estratégica del DDD tiene que ver con que se trata de una metodología muy orgánica. Es difícil incluso definir un principio y un final del proceso. De hecho, diría que el DDD bien entendido no termina nunca mientras el negocio evoluciona.
 
 Con frecuencia se *despacha* el DDD con la aplicación de los llamados patrones tácticos, es decir, todo lo que tiene que ver con la implementación del modelo en código. Sin embargo, esto puede llevarnos a lo que se suele llamar *Directory Driven Development*, como si el diseño consistiera en poco más que aplicar arquitectura hexagonal y ya. Y lo mismo se puede decir de otros patrones útiles en torno al DDD, como CQRS, event-driven o incluso Microservicios. DDD no ofrece recetas.

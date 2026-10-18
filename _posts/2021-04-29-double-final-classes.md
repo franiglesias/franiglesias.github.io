@@ -3,8 +3,8 @@ layout: post
 title: Dobles de tests y clases finales
 categories: [articles]
 tags: [testing, tdd]
+updated: 2026-05-25
 ---
-
 Las clases marcadas como `final` indican que no pueden ser extendidas. Eso añade un extra de dificultad en ciertos tests.
 
 En general, [marcar las clases como finales es una buena práctica](https://matthiasnoback.nl/2018/09/final-classes-by-default-why/). Tanto es así, que una recomendación sería incluirlo en las plantillas y generadores de código de tu IDE. De este modo, tienes que decidir si necesitas quitarla y te ayudará a no usar la herencia cuando no es apropiada. Por defecto, [usa `final`](https://ocramius.github.io/blog/when-to-declare-classes-final/).

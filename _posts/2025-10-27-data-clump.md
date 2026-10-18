@@ -4,8 +4,8 @@ title: Data Clump
 series: code-smells
 categories: [articles]
 tags: [code-smells, refactoring, typescript, design-patterns]
+updated: 2026-05-25
 ---
-
 Aprovechando material que he preparado para un curso de Refactoring, voy a empezar una serie de artículos sobre code smells. El primero que vamos a tratar es el Data Clump.
 
 ## Definición

@@ -4,8 +4,8 @@ title: TDD outside-in y testing inside-out
 categories: [articles]
 series: vsa
 tags: [testing]
+updated: 2026-05-25
 ---
-
 Una de las preguntas sobre TDD _outside-in_ que más me hacen es acerca del uso de los _mocks_. Al fin y al cabo, acoplan los tests a la implementación y eso no está bien.
 
 La respuesta corta es que, normalmente, esos tests no los dejo así, sino que vuelvo sobre ellos y los modifico para que sean más útiles.

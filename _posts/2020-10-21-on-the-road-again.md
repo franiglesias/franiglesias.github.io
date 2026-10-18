@@ -3,8 +3,8 @@ layout: post
 title: Buscando nuevo trabajo
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
 Pues aquí estamos, en el trabajo de buscar un nuevo trabajo.
 
 Hace algo más de tres años contaba mi experiencia cuando decidí dar un giro a mi vida laboral e introducirme profesionalmente en el campo del desarrollo de software.

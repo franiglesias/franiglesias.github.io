@@ -3,8 +3,8 @@ layout: post
 title: Automatizando el contenedor de dependencias de Symfony con tags y CompilerPass
 categories: [articles]
 tags: [tips]
+updated: 2026-05-25
 ---
-
 No es frecuente que escriba este tipo de artículos, pero seguro que me viene bien para el futuro.
 
 En el proyecto en que estoy trabajando últimamente necesito que un servicio se inicialice con un conjunto de objetos. Se trata de un mapeador para traducir eventos entre distintos buses y al construirlo se le pasa una serie de mapeadores específicos. Esta lista de mapeadores se incrementa cada vez que introducimos un nuevo evento que debe ser traducido.

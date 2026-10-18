@@ -3,8 +3,8 @@ layout: post
 title: Historia de una reescritura (2) el problema con MVC
 categories: [articles]
 tags: [legacy]
+updated: 2026-05-25
 ---
-
 Esta es la segunda parte del relato del proceso que estoy siguiendo para reescribir una aplicación "legacy".
 
 La serie **Historia de una reescritura** está compuesta de los siguientes artículos

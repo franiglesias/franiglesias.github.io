@@ -4,8 +4,8 @@ title: El patrón State
 series: design-patterns
 categories: [articles]
 tags: [design-patterns, good-practices]
+updated: 2026-05-25
 ---
-
 Cómo modelar propiedades de estado de una entidad y sus transformaciones.
 
 Un problema bastante habitual que nos encontramos es el modelado de los estados por los que puede pasar una entidad. Hay multitud de ejemplos:

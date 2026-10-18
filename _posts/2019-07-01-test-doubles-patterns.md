@@ -3,8 +3,8 @@ layout: post
 title: Patrones de uso de dobles de test
 categories: [articles]
 tags: [testing]
+updated: 2026-05-25
 ---
-
 En este artículo proponemos varios patrones prácticos para crear y utilizar test doubles.
 
 ## Usar o no usar dobles

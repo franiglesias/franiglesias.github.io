@@ -3,8 +3,8 @@ layout: post
 title: Haciendo un spike para crear una librería de Go
 categories: [articles]
 tags: [golang, good-practices]
+updated: 2026-05-25
 ---
-
 He iniciado un side project para hacer una librería de snapshot testing en Go.
 
 Siempre se dice que no hay mejor forma de aprender un lenguaje que desarrollar un proyecto. La verdad es que yo no suelo tener facilidad para generar buenas ideas de proyectos, pero dado que tengo algunos problemas de trabajo que me gustaría resolver, he visto una oportunidad.

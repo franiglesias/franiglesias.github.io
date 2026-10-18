@@ -3,8 +3,8 @@ layout: micro-post
 title: Messaging Flavours
 categories: [articles]
 tags: [tb-list, design-patterns]
+updated: 2026-05-25
 ---
-
 Siempre acabo volviendo a este artículo de Mathias Verraes en el que explica brevemente los diferentes tipos de
 mensajes con los que pueden comunicarse las aplicaciones.
 

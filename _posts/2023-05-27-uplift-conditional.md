@@ -3,8 +3,8 @@ layout: post
 title: Despejar una maraña de condicionales
 categories: [articles]
 tags: [refactoring]
+updated: 2026-05-25
 ---
-
 Aprovechando que al hablar de _Approval Test_ y la técnica _Golden Master_ utilizamos la kata _Gilded Rose_, vamos a hablar de una técnica muy ingeniosa para reorganizar estructuras condicionales extremadamente intrincadas.
 
 _Uplift condition_ es el nombre de una técnica propuesta por Llewellyn Falco y que aplica muy bien al problema de la kata Gilded Rose. ¿Y cuál es este problema? Pues un código en el que se han ido añadiendo reglas de negocio en forma de condiciones anidadas en otras condiciones, de tal forma que la estructura resultante es confusa, difícil de seguir y con bastante riesgo de romper el comportamiento actual en caso de intentar modificarla.

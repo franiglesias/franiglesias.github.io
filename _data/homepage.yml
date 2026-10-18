@@ -8,6 +8,10 @@ widgets:
     title: "Últimas entradas"
     limit: 8
 
+  - type: updated
+    title: "Actualizados recientemente"
+    limit: 5
+
   - type: books
     title: "Mis libros"
     description: "Disponibles en Leanpub"

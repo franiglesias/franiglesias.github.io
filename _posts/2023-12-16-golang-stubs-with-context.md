@@ -3,8 +3,8 @@ layout: post
 title: Dobles de test en Golang usando Context
 categories: [articles]
 tags: [golang, testing]
+updated: 2026-05-25
 ---
-
 Llevo tiempo buscando como mejorar los tests que hago en Golang y estos días he descubierto algunas ideas que parecen ir por ese camino.
 
 En esta ocasión me voy a centrar en dobles de test y en usar el contexto, cuando tiene sentido, para hacer stubs con los valores que me interesan.

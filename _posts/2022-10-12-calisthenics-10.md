@@ -4,8 +4,8 @@ series: calisthenics
 title: Comentarios finales
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 En este artículo reviso algunas cuestiones que se han planteado y exploro algunas líneas de desarrollo que quedaban pendientes.
 
 ## Qué es object calisthenics

@@ -3,8 +3,8 @@ layout: post
 title: Aprendiendo Go con TDD 2
 categories: [articles]
 tags: [golang, tdd]
+updated: 2026-05-25
 ---
-
 Vamos con la segunda entrega de este diario de aprendizaje de Golang con TDD.
 
 En la entrega anterior hemos visto los elementos básicos de testing en Go, así como algunas características de este lenguaje. No hemos entrado en muchas profundidades.

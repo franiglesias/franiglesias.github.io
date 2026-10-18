@@ -3,8 +3,8 @@ layout: post
 title: Refactor cotidiano (8). Dónde poner el conocimiento
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 En anteriores entregas hemos propuesto refactorizar código a Value Objects o aplicar principios como la *ley de Demeter* o *Tell, don't ask* para mover código a un lugar más adecuado. En este capítulo vamos a analizarlo desde un punto de vista más general.
 
 Solemos decir que refactorizar tiene que ver con el **conocimiento** y el **significado**. Fundamentalmente, porque lo que hacemos es aportar significado al código con el objetivo de que éste represente de una manera fiel y dinámica el conocimiento cambiante que tenemos del negocio del que nos ocupamos.

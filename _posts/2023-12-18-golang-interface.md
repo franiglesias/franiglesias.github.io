@@ -3,8 +3,8 @@ layout: post
 title: Interfaces en Go
 categories: [articles]
 tags: [good-practices, design-patterns, golang]
+updated: 2026-05-25
 ---
-
 Las interfaces en Go pueden ser un poco desconcertantes cuando vienes de otros lenguajes, como Java o PHP, pero es una de las cosas que más me está gustando últimamente.
 
 Las interfaces pueden entenderse como una especia de contrato que los objetos de una clase se comprometen a cumplir, siendo así que pueden recibir determinados mensajes y responderlos con su comportamiento particular.

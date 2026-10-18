@@ -4,8 +4,8 @@ title: Introducción a Behavior Driven Development en PHP (4)
 published: true
 categories: [articles]
 tags: [php, bdd, testing]
+updated: 2026-05-25
 ---
-
 Ya llevamos tres capítulos de esta serie sobre BBD en PHP. En el [primer artículo de la serie](/bdd-example-1) dimos una visión general de BDD y behat. [En el segundo](/bdd-example-2) y [el tercero](/bdd-example-3) revisamos el proceso de desarrollo de una Feature desde la historia de usuario hasta tener un código funcional usando la metodología y herramientas BDD.
 
 Y en este cuarto capítulo vamos a refinar unos cuantos puntos para mejorar los tests de aceptación y su gestión.

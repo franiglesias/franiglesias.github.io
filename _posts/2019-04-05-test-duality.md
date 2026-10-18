@@ -3,8 +3,8 @@ layout: post
 title: La dualidad del testing
 categories: [articles]
 tags: [good-practices, testing]
+updated: 2026-05-25
 ---
-
 Para ser una disciplina dedicada a que el software se comporte correctamente, lo cierto es que cuando hablamos de testing usamos el lenguaje con muy poca precisión.
 
 Y eso suele significar que el mapa conceptual del testing está desorganizado, con los conceptos poco articulados y vacíos importantes entre ellos.

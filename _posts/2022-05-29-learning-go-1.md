@@ -3,8 +3,8 @@ layout: post
 title: Aprendiendo Go con TDD 1
 categories: [articles]
 tags: [golang, tdd]
+updated: 2026-05-25
 ---
-
 Pues nada, que me ha dado por aprender **Golang** y para ilustrar algunas de las ideas de este lenguaje he pensado en hacerlo mediante _katas_ de TDD.
 
 Empecemos por algo sencillo. Personalmente, hay dos ejercicios que me gusta usar para iniciación en TDD: son la _Leap Year_ y _FizzBuzz_. La definición del problema no tiene ningún misterio y las reglas de negocio son muy simples. Tampoco requieren estructuras de datos complejas. Esto permite completar el _challenge_ en una sesión breve y así ver el proceso completo.

@@ -3,8 +3,8 @@ layout: post
 title: Tipos vs Value Objects
 categories: [articles]
 tags: [design-patterns, oop]
+updated: 2026-05-25
 ---
-
 Todos los lenguajes de programación nos proporcionan tipos de datos para representar la información en nuestros desarrollos. Sin embargo, no siempre son suficientes.
 
 Al comenzar a estudiar un lenguaje casi podemos dar por hecho que nos encontraremos varios tipos nativos. Por lo general, damos por sentado que podremos contar con:

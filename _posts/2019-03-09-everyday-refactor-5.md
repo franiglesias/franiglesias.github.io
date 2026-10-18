@@ -3,8 +3,8 @@ layout: post
 title: Refactor cotidiano (5). Refactoriza a Enumerables
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 Los **enumerables** son tipos de datos que cuentan con un número finito de valores posibles.
 
 Supongamos el típico problema de representar los estados de alguna entidad o proceso. Habitualmente usamos un *string* o un número para ello. La primera opción ayuda a que el valor sea legible por humanos, mientras que la representación numérica puede ser más compacta aunque más difícil de entender.

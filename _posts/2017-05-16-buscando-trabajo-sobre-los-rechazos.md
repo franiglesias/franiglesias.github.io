@@ -3,8 +3,8 @@ layout: post
 title: Buscando trabajo como desarrollador. Sobre los rechazos
 categories: [articles]
 tags: [misc]
+updated: 2026-05-25
 ---
-
 Nadie dijo que encontrar trabajo como desarrollador PHP fuese fácil, mucho menos a los 49 años y con un perfil atípico. Pero hay rechazos que duelen especialmente.
 
 Ya conté en [un artículo anterior](/buscando-trabajo-como-desarrollador-php) que estaba en un proceso de selección para un puesto fantabuloso. Pues ya se acabó el sueño: soy muy bueno, pero me falta experiencia en proyectos internacionales.

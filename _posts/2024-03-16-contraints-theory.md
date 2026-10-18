@@ -4,8 +4,8 @@ title: Teoría de constraints y mejora de equipos
 categories: [articles]
 tags: [misc, good-practices]
 recommended: true
+updated: 2026-05-25
 ---
-
 La teoría de los limitadores (mi traducción de Theory of Constraints) puede utilizarse como un framework para analizar y mejorar la productividad de un equipo de desarrollo de software. 
 
 Hace tiempo, utilizamos esta técnica para analizar y mejorar el trabajo en equipos de desarrollo en la empresa en la que estaba trabajando. A partir de esa experiencia, preparé un guion para ayudar a otros equipos a llevar a cabo el mismo análisis. Hace unos días me encontré con ese material y me pareció que podría ser interesante hacer un artículo sobre el tema.

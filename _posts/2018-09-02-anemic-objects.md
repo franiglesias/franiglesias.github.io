@@ -4,8 +4,8 @@ title: El drama de los objetos anémicos
 categories: [articles]
 tags: [php, design-principles, good-practices]
 recommended: true
+updated: 2026-05-25
 ---
-
 Pululan por nuestras bases de código como almas en pena, transportando datos de un lugar a otro. Sin embargo, podrían dar esplendor a nuestras aplicaciones si les damos un poco de atención.
 
 En domain driven design se suele hablar del anti-patrón o *smell* del **modelo anémico**. Este anti-patrón ocurre cuando las entidades de dominio están diseñadas de tal modo que no son más que simples DTO, objetos que contienen estado, pero que no tienen apenas comportamiento de negocio, o simplemente no tienen ninguno en absoluto.

@@ -3,8 +3,8 @@ layout: post
 title: Value Objects con Doctrine
 categories: [articles]
 tags: [php, bbdd, good-practices]
+updated: 2026-05-25
 ---
-
 Como xa saberedes, os Value Objects son obxectos do dominio que representan conceptos que nos interesan polo ser valor, son inmutables, non teñen identidade, nin ciclo de vida.
 
 A primeira razón para usar Value Objects e combatir o fedor, ou *smell*, *Primitive Obsession*. Trátase de reemplazar a representación destes valores con tipos escalares polos Value Objects. Isto é especialmente útil cando o valor non se pode representar cunha soa variable, como ocorre con aquelas magnitudes que precisan unidades.

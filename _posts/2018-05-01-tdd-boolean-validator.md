@@ -4,8 +4,8 @@ title: TDD de un validador de NIF
 published: true
 categories: [articles]
 tags: [php, tdd]
+updated: 2026-05-25
 ---
-
 Hay validadores de NIF a espuertas, pero escribir uno con TDD resulta ser un interesante ejercicio con el que desarrollar algunas estrategias de test.
 
 Un DNI es un identificador que consta de ocho cifras numéricas y una letra que actúa como dígito de control. Existen algunos casos particulares en los que el primer número se sustituye por una letra y ésta, a su vez, por un número para el cómputo de validez que viene a continuación.

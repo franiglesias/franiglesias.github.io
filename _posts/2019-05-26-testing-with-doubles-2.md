@@ -3,8 +3,8 @@ layout: post
 title: Guía para testear con dobles (2)
 categories: [articles]
 tags: [testing]
+updated: 2026-05-25
 ---
-
 En esta continuación hablaremos de los *mocks* y los *spies*.
 
 En la entrega anterior decíamos que *mocks* y *spies* son exactamente iguales a los *dummies* y *stubs* en lo que respecta al comportamiento. La diferencia estriba en que podemos verificar si *mocks* y *spies* han sido usados de tal o cual manera por la unidad bajo test.

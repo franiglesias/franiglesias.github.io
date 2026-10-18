@@ -3,8 +3,8 @@ layout: micro-post
 title: Functional options en Go
 categories: [articles]
 tags: [tb-list, golang, good-practices]
+updated: 2026-05-25
 ---
-
 En relación con el artículo anterior, Joan López tiene esta buena explicación en castellano sobre el uso de opciones
 funcionales en Go.
 

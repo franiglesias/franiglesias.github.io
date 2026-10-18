@@ -3,8 +3,8 @@ layout: post
 title: Decoradores en Python
 categories: [articles]
 tags: [python, good-practices]
+updated: 2026-05-25
 ---
-
 El proyecto Dungeon me está sirviendo para aprender Python más a fondo, así que voy a dedicar algunos artículos a cuestiones específicas que me interesan más allá del proyecto en sí. En esta ocasión hablaré de los decoradores en Python.
 
 En primer lugar, señalar que no hay que confundir los decoradores de Python con el patrón _decorator_, aunque ambos se basan en explotar la composición para cambiar el comportamiento de una función en tiempo de ejecución. 

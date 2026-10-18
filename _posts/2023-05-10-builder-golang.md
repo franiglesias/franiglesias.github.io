@@ -4,9 +4,8 @@ title: Patrón Builder en Golang
 series: design-patterns
 categories: [articles]
 tags: [golang, design-patterns]
+updated: 2026-05-25
 ---
-
-
 Ya he tratado anteriormente el [patrón Builder en PHP](/builder_pattern/). La mayor parte de las ideas generales siguen siendo válidas.
 
 ## El problema de construir objetos

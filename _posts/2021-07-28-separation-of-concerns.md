@@ -4,8 +4,8 @@ title: Principio de separación de intereses
 categories: [articles]
 tags: [design-principles]
 recommended: false
+updated: 2026-06-06
 ---
-
 [Edsger W. Dijkstra](https://es.wikipedia.org/wiki/Edsger_Dijkstra) (1930-2002) es todo un personaje en el campo de las ciencias de la computación, no solo por la cantidad y calidad de sus aportaciones, sino también por su particular carácter y algunas frases lapidarias.
 
 Entre otras cosas, suyos son el algoritmo del camino más corto o algoritmo de Dijkstra, [la notación polaca inversa](https://es.wikipedia.org/wiki/Notación_polaca_inversa), [el sistema THE](https://es.wikipedia.org/wiki/THE), el algoritmo del banquero o el concepto de semáforo en sistemas multi-proceso. También cuenta en su haber con contribuciones a la idea de la [programación estructurada](https://es.wikipedia.org/wiki/Programación_estructurada), como su famoso [artículo sobre la sentencia GOTO](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf).

@@ -3,8 +3,8 @@ layout: post
 title: TDD en PHP. Un ejemplo con colecciones (1)
 categories: [articles]
 tags: [tdd, php]
+updated: 2026-05-25
 ---
-
 Arrays… 
 
 En PHP hemos utilizado arrays para todo tipo de cosas: listas, diccionarios, persistencia en memoria, registros y un largo etcétera.

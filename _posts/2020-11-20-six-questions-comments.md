@@ -3,6 +3,7 @@ layout: post
 title: Las seis preguntas para comentar tu código
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
 La **técnica de las seis preguntas** (ó 5 según la fuente) es una especie de framework que se utiliza en algunas disciplinas para determinar si una cierta fuente proporciona una información completa.
 

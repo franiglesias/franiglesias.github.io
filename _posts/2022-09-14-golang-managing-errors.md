@@ -3,8 +3,8 @@ layout: post
 title: Mis problemas gestionando errores en Golang
 categories: [articles]
 tags: [golang, good-practices]
+updated: 2026-05-25
 ---
-
 El manejo de errores en Golang es uno de los puntos que más me cuesta de este lenguaje. Y, a juzgar por comentarios y artículos, es uno de los puntos que más le cuesta a casi todo el mundo. Y eso que es, aparentemente, sencillo.
 
 Si hay un elemento característico de Golang es la idea de que una función o método en el que ocurre un error, debe devolver el error y este debe manejarse inmediatamente. Golang no hace uso de excepciones que cortan el flujo de ejecución, sino que obliga a tomar una decisión explícita sobre los errores. Incluso si esa decisión es ignorar el error.

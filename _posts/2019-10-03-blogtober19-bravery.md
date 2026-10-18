@@ -3,8 +3,8 @@ layout: post
 title: Bravery (Blogtober2019)
 categories: [articles]
 tags: [blogtober19]
+updated: 2026-05-25
 ---
-
 Mi compañera y manager en Holaluz [Mavi Jiménez](https://twitter.com/Linkita) va a hacer un dibujo cada día del mes sobre una palabra propuesta en twitter. Y aquí vamos a intentar escribir [un post por cada una de ellas](https://franiglesias.github.io/blogtober19-status/).
 
 <blockquote class="twitter-tweet" data-conversation="none" data-theme="dark"><p lang="en" dir="ltr">3. Bravery <a href="https://twitter.com/bertadevant?ref_src=twsrc%5Etfw">@bertadevant</a> <a href="https://twitter.com/hashtag/Inktober2019?src=hash&amp;ref_src=twsrc%5Etfw">#Inktober2019</a> <a href="https://twitter.com/hashtag/linkitober2019?src=hash&amp;ref_src=twsrc%5Etfw">#linkitober2019</a> <a href="https://t.co/gO85iDVipq">pic.twitter.com/gO85iDVipq</a></p>&mdash; Maybe (@Linkita) <a href="https://twitter.com/Linkita/status/1179857193518223361?ref_src=twsrc%5Etfw">October 3, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

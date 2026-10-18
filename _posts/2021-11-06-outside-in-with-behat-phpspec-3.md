@@ -3,8 +3,8 @@ layout: post
 title: Outside-in y Behavior Driven Development 3 
 categories: [articles]
 tags: [tdd, php, bdd]
+updated: 2026-05-25
 ---
-
 En esta entrega, veremos cómo completar el segundo y tercer escenario de nuestra feature.
 
 1. [Introducción, herramientas y ejemplo](/outside-in-with-behat-phpspec/)

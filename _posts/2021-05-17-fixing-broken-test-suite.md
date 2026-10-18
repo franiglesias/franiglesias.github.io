@@ -3,8 +3,8 @@ layout: post
 title: Arreglando una suite de tests rota
 categories: [articles]
 tags: [testing, good-practices]
+updated: 2026-05-25
 ---
-
 En este artículo intentaré contar como suelo "entrar" en un proyecto.
 
 Hoy por hoy, es necesario tener una buena batería de tests de desarrollo que nos permitan tener una red de seguridad tanto para añadir nuevas prestaciones como para refactorizar el código.

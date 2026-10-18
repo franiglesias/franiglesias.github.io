@@ -3,8 +3,8 @@ layout: post
 title: Métodos largos
 categories: [articles]
 tags: [design-principles, refactoring]
+updated: 2026-05-25
 ---
-
 No hace mucho dejé caer en twitter que tener métodos de más de 10 líneas me parecía un smell. Por supuesto se levantó cierta polémica y hubo algunas respuestas a favor y en contra.
 
 En este artículo intentaré explicar mi postura con detalle. Por supuesto, esto no es una prescripción. La longitud de diez líneas es un límite arbitrario que remite a la idea de que los métodos o funciones largas pueden ser problemáticos para la comprensión del código y su mantenimiento. Distintas personas sitúan este límite en una cifra diferente, que parece oscilar entre las 5 y las 200 líneas. Este gran abanico da una idea de lo controvertida que puede ser cualquier opinión al respecto.

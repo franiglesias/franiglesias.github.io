@@ -4,8 +4,8 @@ title: Dar estructura a la aplicación
 subtitle: Trabajar con legacy y entender el dominio (3)
 categories: [articles]
 tags: [design-principles, good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 Seguimos estirando la kata QuoteBot. Ya que estamos, vamos a intentar llevar esta aplicación a un nuevo nivel.
 
 Se puede argumentar que hemos aumentado la complejidad de la solución. Esto es relativamente cierto, ha aumentado la cantidad de archivos, pero a cambio hemos introducido muchos puntos de articulación. Recuerda: al principio este software no se podía siquiera ejecutar y ahora puede ejecutarse de forma adecuada para cada entorno. Antes no era testeable y ahora sí. El beneficio de la complejidad añadida es enorme. Además, el código, en muchos aspectos ha mejorado su expresividad, aunque todavía nos falta desarrollar esta parte.

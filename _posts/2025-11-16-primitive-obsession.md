@@ -4,8 +4,8 @@ title: Primitive Obsession
 categories: [articles]
 series: code-smells
 tags: [code-smells, refactoring, typescript, ddd, design-patterns]
+updated: 2026-05-25
 ---
-
 _Primitive Obsession_ es el último de los _bloaters_, una categoría de _code smells_ que se caracterizan por hacer que nuestro código sea grande y complejo, introduciendo muchas oportunidades para la aparición de bugs y comportamiento inconsistente.
 
 ## Definición

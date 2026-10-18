@@ -4,6 +4,7 @@ title: Programar sin ifs
 published: true
 categories: [articles]
 tags: [php, good-practices]
+updated: 2026-05-25
 ---
 If/then es una de las estructuras de control básicas de la programación, pero su abuso puede multiplicar la complejidad de un algoritmo y la dificultad de mantenerlo. En este artículo exploraremos alguna estrategias para usar los if con cabeza.
 

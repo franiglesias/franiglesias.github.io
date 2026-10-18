@@ -4,8 +4,8 @@ title: TalkingBit testing booklets
 published: true
 categories: [articles]
 tags: [tdd, testing]
+updated: 2026-05-25
 ---
-
 Here you have some resources to help in testing and tdd workshops. Hope you will find them useful.
 
 This is the first one, about the basics of Test Driven Development, and the red-green-refactor cycle.

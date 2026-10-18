@@ -3,8 +3,8 @@ layout: post
 title: Refactor cotidiano (1). Fuera comentarios
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 La primera entrega de la guía del refactor cotidiano trata sobre los comentarios.
 
 ## Comentarios y documentación

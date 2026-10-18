@@ -4,8 +4,8 @@ title: Ejemplos para tus tests con Object Mother
 series: design-patterns
 categories: [articles]
 tags: [testing, tdd]
+updated: 2026-05-25
 ---
-
 El patrón Object Mother nos ayuda a tener ejemplos de entidades y value objects coherentes en toda la suite.
 
 [Versión actualizada](/object-mother-2/)

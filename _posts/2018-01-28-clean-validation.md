@@ -3,8 +3,8 @@ layout: post
 title: Clean Validation
 categories: [articles]
 tags: [design-principles, php]
+updated: 2026-05-25
 ---
-
 La validación es el proceso mediante el cual nos aseguramos de que los datos introducidos al sistema cumplen ciertas condiciones necesarias para poder utilizarlos sin peligro, sin provocar errores, y con la posibilidad de proporcionar resultados, al mantenerse dentro de los límites de tolerancia de los algoritmos que los emplean.
 
 La regla de oro de la validación dice que, cuando no lo hemos generado nosotros, debemos desconfiar de cualquier dato que llegue a nuestro código, particularmente si lo proporcionan los usuarios, sean seres humanos o consumidores de nuestras apis.

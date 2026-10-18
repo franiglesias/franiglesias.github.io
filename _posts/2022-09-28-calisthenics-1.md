@@ -4,8 +4,8 @@ series: calisthenics
 title: Solo un nivel de indentación.
 categories: [articles]
 tags: [good-practices, refactoring]
+updated: 2026-05-25
 ---
-
 Una serie de restricciones que te ayudarán a escribir mejor código. Empezamos por la primera: un sólo nivel de indentación por método.
 
 ## Qué es object calisthenics

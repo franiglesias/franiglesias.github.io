@@ -3,8 +3,8 @@ layout: post
 title: Más allá de la pirámide de tests
 categories: [articles]
 tags: [tdd, testing, good-practices]
+updated: 2026-05-25
 ---
-
 Un repaso a la(s) pirámide(s) de tests y un vistazo al testing minimalista de Sandi Metz.
 
 Soy muy fan de las charlas de Sandi Metz y, de vez en cuando, reviso alguna. Me ayudan mucho a clarificar y consolidar conceptos. Por ejemplo, tras volver a ver esta sobre [tests unitarios](https://www.youtube.com/watch?v=qPfQM4w4I04) recuperé una idea que llevaba un tiempo rumiando acerca de la pirámide de los tests y qué testear, especialmente en el contexto de TDD.

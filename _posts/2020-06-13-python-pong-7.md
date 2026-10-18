@@ -3,8 +3,8 @@ layout: post
 title: Pong en Python. Nuevas features, nuevos tests
 categories: [articles]
 tags: [python, good-practices]
+updated: 2026-05-25
 ---
-
 Después de un tiempo con foco en otras tareas, llega el momento de introducir nuevas capacidades en el juego.
 
 De momento nuestro juego es un poco aburrido ya que el movimiento de la pelota es siempre el mismo y la habilidad del oponente ordenador es bastante limitada. Para hacer el juego más interesante vamos a introducir variaciones en los goles a la pelota con la raqueta.

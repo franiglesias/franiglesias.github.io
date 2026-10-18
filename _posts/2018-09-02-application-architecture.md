@@ -3,8 +3,8 @@ layout: post
 title: Arquitectura de una aplicación PHP
 categories: [articles]
 tags: [php, design-principles, good-practices]
+updated: 2026-05-25
 ---
-
 Arquitectura es el análisis y diseño de la estructura, organización de los componentes y sus relaciones en un sistema de software.
 
 ## Capas

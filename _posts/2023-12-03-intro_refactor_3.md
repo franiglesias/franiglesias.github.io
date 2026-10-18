@@ -3,8 +3,8 @@ layout: post
 title: Refactoring para quienes no refactorizan 3
 categories: [articles]
 tags: [good-practices, ruby, refactoring]
+updated: 2026-05-25
 ---
-
 En las entregas anteriores hemos mencionado varias veces la necesidad de mantener el tiempo de refactoring bajo control, evitando la tentación de llevarlo demasiado lejos.
 
 Esta precaución es necesaria porque corremos el riesgo de dar al código una forma que no sea adecuada a su evolución futura. Esto es, aunque podamos tener unas expectativas razonables sobre la evolución de nuestro negocio, en realidad no sabemos que nos deparará el futuro. Tomar decisiones sobre la estructura del código que no estén apoyadas por una necesidad puede llevarnos a mayores costes cuando tengamos que desandar ese camino.

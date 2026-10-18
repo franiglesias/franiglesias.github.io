@@ -3,8 +3,8 @@ layout: post
 title: Lidiando con el (anti)patrón single exit point
 categories: [articles]
 tags: [legacy, refactoring]
+updated: 2026-05-25
 ---
-
 Los patrones se convierten en anti-patrones si los llevamos más allá de sus límites de aplicabilidad.
 
 ## Un patrón de otra época

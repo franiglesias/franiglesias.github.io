@@ -3,6 +3,7 @@ layout: post
 title: Un año en Barcelona
 categories: [articles]
 tags: [misc, soft-skills]
+updated: 2026-05-25
 ---
 O las aventuras de un junior de 50 años.
 

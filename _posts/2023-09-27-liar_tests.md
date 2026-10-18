@@ -3,8 +3,8 @@ layout: post
 title: Los tests mentirosos
 categories: [articles]
 tags: [testing, good-practices]
+updated: 2026-05-25
 ---
-
 Hacerse trampas al solitario para conseguir una _vanity metric_: la cobertura de tests.
 
 Existen varias maneras de conseguir tener una cobertura de tests cercana al 100%. Por ejemplo, mediante TDD, ya que todo el código que añades responde a un test que, de alguna forma, reclama su existencia.

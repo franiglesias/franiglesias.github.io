@@ -3,8 +3,8 @@ layout: post
 title: Constructores limpios 
 categories: [articles]
 tags: [java, good-practices]
+updated: 2026-05-25
 ---
-
 Después de haber leído los dos volúmenes de [Elegant Objects](https://www.yegor256.com/elegant-objects.html), tengo un montón de ideas dando vueltas en la cabeza. Así que para darles salida he empezado a dedicar un rato a practicar algunas de las recomendaciones de la obra. O, al menos, intentarlo.
 
 En general, diría que existe bastante acuerdo en que hacemos mal la Programación Orientada a Objetos y que se ha perdido mucho de su intención original.

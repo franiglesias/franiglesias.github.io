@@ -3,8 +3,8 @@ layout: post
 title: La paradoja de las colecciones
 categories: [articles]
 tags: [software-design, php, refactoring]
+updated: 2026-05-25
 ---
-
 Las reglas de Object Calisthenics nos piden encapsular todas las estructuras de datos que representan alguna colección
 en objetos. Pero, en contra de lo que nos sugiere el nombre, estos objetos no tienen por qué ser en sí mismos
 colecciones. De hecho, no es especialmente recomendable que lo sean.

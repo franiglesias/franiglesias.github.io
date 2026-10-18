@@ -3,8 +3,8 @@ layout: post
 title: Código mentiroso (2) más ejemplos
 categories: [articles]
 tags: [design-principles, refactoring, php]
+updated: 2026-05-25
 ---
-
 Este artículo es una continuación del anterior sobre [Código mentiroso](/codigo_mentiroso), y en él tocaremos algunos problemas derivados del uso insuficiente de las posibilidades expresivas del lenguaje.
 
 Más que código mentiroso, habría que hablar de código inexpresivo o ambiguo, que puede llevarnos a una interpretación errónea de sus intenciones, especialmente en situaciones de herencia en las que no quedaría bien claro qué comportamiento debe mantenerse común a la jerarquía de clases y qué comportamiento debe reimplementarse en las clases derivadas.

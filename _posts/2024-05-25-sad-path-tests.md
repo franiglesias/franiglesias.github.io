@@ -4,8 +4,8 @@ title: Testeando lo que puede ir mal
 categories: [articles]
 series: vsa
 tags: [testing, php]
+updated: 2026-05-25
 ---
-
 Este artículo puede considerarse una continuación del [que publicamos sobre reemplazar mocks por implementaciones alternativas](/outside-in-inside-out/). La diferencia es que esta vez, necesitamos simular los problemas, en lugar de los éxitos.
 
 Cuando se desarrolla usando TDD lo normal es tener una buena cobertura de tests, pero eso no siempre significa que tengamos una buena cobertura de los posibles flujos que puede seguir el código. Hay que tener en cuenta las veces en que algo puede fallar y es necesario incluir tests que reflejen esas situaciones y como deben reaccionar a ellas los distintos componentes del software.

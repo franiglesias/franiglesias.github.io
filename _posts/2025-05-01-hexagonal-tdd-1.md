@@ -5,8 +5,8 @@ title: Enfoque clásico, paso a paso y reflexiones
 categories: [articles]
 series: outside-in-ha
 tags: [software-design, design-patterns, typescript, tdd, hexagonal]
+updated: 2026-05-25
 ---
-
 A medida que profundizo en Arquitectura Hexagonal más me parece que es uno de los patrones arquitectónicos más útiles y versátiles. Es cierto que se suele hacer muy mal, pero si sigues el patrón tal como está definido tienes muchas garantías de llegar a construir una aplicación fácil para desarrollar y mantener.
 
 Una de sus grandes ventajas es la testabilidad. De hecho, el patrón está diseñado, entre otras cosas, para que la aplicación se pueda poner fácilmente bajo test. Es algo que sus autores han incluido de forma explícita en su definición: los tests son actores que han de poder usar la aplicación a través de sus puertos.

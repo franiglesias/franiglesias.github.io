@@ -4,6 +4,7 @@ title: Refactor 101. The camp rule
 published: true
 categories: [articles]
 tags: [refactoring, good-practices]
+updated: 2026-05-25
 ---
 A booklet with tips to refactor on a daily basis.
 

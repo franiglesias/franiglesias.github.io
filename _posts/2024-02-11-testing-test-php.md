@@ -3,8 +3,8 @@ layout: post
 title: Poniendo un test bajo test en PHP
 categories: [articles]
 tags: [php, testing]
+updated: 2026-05-25
 ---
-
 Explorando cómo portar la librería Golden a PHP y aprendiendo algunas cosas curiosas.
 
 Esto que aquí ves es un test que testea un test. Parece una tontería, pero para mí ha sido todo un descubrimiento.

@@ -3,8 +3,8 @@ layout: post
 title: Cuando y como testear métodos privados
 categories: [articles]
 tags: [testing, good-practices, hexagonal]
+updated: 2026-05-25
 ---
-
 Esta es una pregunta que me encuentro con cierta frecuencia desde hace tiempo. Así que he pensado en reunir aquí mis ideas sobre el tema.
 
 ## Respuesta corta

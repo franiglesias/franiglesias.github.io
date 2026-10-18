@@ -7,6 +7,8 @@ tags: [tools]
 
 Si trabajas con un buen IDE puede que te quedes con la sensación de que no necesitas nada más, pero todo ayuda.
 
+Actualización: 2018-02-20. Añado una entrada sobre MacMD Viewer.
+
 Después de muchos años desarrollando acabas creando unos hábitos en torno a un conjunto de herramientas. La primera, por supuesto, es el IDE. En mi caso, como en el de muchísimos más, el elegido es PHPStorm, de JetBrains. La verdad es que es tan completo que prácticamente no necesitas otra cosa. Además de la gestión del proyecto, integración con diversos frameworks de aplicación y de testing y todo lo necesario para trabajar en PHP, tienes terminal, cliente HTTP, integración con gestores de versiones, bases de datos, etc. Puedes pasarte la jornada de trabajo sin salir del entorno.
 
 Sin embargo, ya sea por comodidad o por tener herramientas más orientadas a ciertas tareas, muchas veces merece la pena tener aplicaciones especializadas a las que recurrir.
@@ -49,7 +51,15 @@ Si escribes habitualmente documentación o posts en Markdown, este pequeño y li
 
 Es el hermano pequeño de BBEdit, uno de los editores de texto para programadores histórico del entorno Mac. Posiblemente el de más solera y uno de los mejores de todos los tiempos. Es útil para revisar de manera ágil archivos sin tener que abrir el IDE completo.
 
-[Text Wrangler](https://www.barebones.com/products/textwrangler/)
+[Text Wrangler](https://www.barebones.com/products/textwrangler/
+
+### MacMD Viewer
+
+En realidad, no es un editor de texto, sino un visor, pero con el auge de la IA y el uso masivo de Markdown, hace necesario disponer de herramientas específicas que nos permitan una lectura ágil de todo tipo de documentos, ya sean skills, plugins, documentación generada, etc.
+
+Esto es lo que propone Arthur Teboul, con [MacMD Viewer](https://macmdviewer.com/features) ($19.99), una aplicación lectora de Markdown con soporte de Mermaid para los diagramas, coloreado de sintaxis, tabla de contenidos, ampliación, y otras prestaciones. Además, incluye una extensión de QuickLook, por lo que puedes empezar desde el Finder pulsando la barra espaciadora y saltar a la aplicación para disponer del juego completo.
+
+Se puede argumentar que hay varias alternativas gratuitas que pueden hacer lo mismo, pero últimamente me doy cuenta de lo central que se está haciendo la gestión de Markdown en el día a día, hasta el punto de que paso más tiempo trabajando con este formato que con código. 
 
 ## Desarrollo
 
@@ -61,7 +71,7 @@ Aunque PHPStorm integra un cliente de HTTP muy práctico, en alguna ocasión me 
 
 ### Postman
 
-Javier Esteban nos recuerda Postman como herramienta para desarrollar APIs, que incluye la capacidad de testearlas enrte otras muchas utilidades.
+Javier Esteban nos recuerda Postman como herramienta para desarrollar API, que incluye la capacidad de testearlas entre otras muchas utilidades.
 
 [Postman](https://app.getpostman.com/app/download/osx64)
 
@@ -86,6 +96,7 @@ El cliente de Github es ligero y va muy bien en bastantes casos en los que no qu
 Es el gestor de paquetes con el que instalar utilidades y programas en línea de comandos. Simplifica mucho su mantenimiento. He visto que hay también una utilidad GUI, que puede ser interesante.
 
 [Homebrew](https://brew.sh/es)
+
 [CakeBrew](https://www.cakebrew.com)
 
 ### Oh my zsh

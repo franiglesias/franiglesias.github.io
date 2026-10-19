@@ -8,13 +8,15 @@ layout: basic
 </div>
 
 <div class="posts tb-list">
-    {% for post in site.tags[page.tag] %}
+    {% if site.tblist %}
+    {% assign sorted_tblist = site.tblist | sort: "date" | reverse %}
+    {% for post in sorted_tblist %}
     <article class="post">
         <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
         <div class="entry">
             {{ post.content }}
-            <p class="metadata">({{ post.date | date: "%Y/%m/%d" }})</p>
         </div>
     </article>
     {% endfor %}
+    {% endif %}
 </div>

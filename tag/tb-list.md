@@ -1,5 +1,5 @@
 ---
-layout: tblist
-title: "The talking list"
-tag: tb-list
+layout: redirect
+redir_to: /tblist/
+permalink: /tag/tb-list/
 ---

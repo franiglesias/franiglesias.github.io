@@ -1,0 +1,44 @@
+---
+layout: drifting-layout
+---
+<article class="post full-post drifting-post">
+    <header class="post-header" {% if page.image %}style="background-image: url('/assets/{{ page.image }}')" {% endif %}>
+        {% if page.subtitle %}
+        <h2 class="subtitle">{{ page.subtitle }}</h2>
+        {% endif %}
+        <h1>{{ page.title }}</h1>
+    </header>
+    <div class="authors">
+        <p>por
+            {% if page.author %}
+            {% for author in page.author %}
+            {{ site.data.authors[author].name }}&nbsp;
+            {% endfor %}
+            {% else %}
+            {{ site.data.authors.fran.name }}
+            {% endif %}
+        </p>
+    </div>
+    <div class="entry">
+        {% if page.update_notice %}
+            {% if page.update_notice.text %}
+                {% include post_update.html title=page.update_notice.title date=page.update_notice.date text=page.update_notice.text %}
+            {% else %}
+                {% include post_update.html date=page.updated text=page.update_notice %}
+            {% endif %}
+        {% endif %}
+        {{ content }}
+    </div>
+
+    <div class="metadata">
+        <p>Publicado: {{ page.date | date: "%B %e, %Y" }}</p>
+        <p id="self-link">Enlace: <span class="self-link__url">{{site.url}}{{page.url}}</span>
+            <button type="button" class="tag" onclick="copyAsQuote(event)" title="Copia con fecha: {{site.url}}{{page.url}}">Copiar con fecha</button>
+            <button type="button" class="tag" onclick="copyLink(event)" title="Copia el link: {{site.url}}{{page.url}}">Copiar</button>
+        </p>
+        <script src="/assets/js/copy-link.js"></script>
+    </div>
+</article>
+{% include comments.html %}
+<script src="/assets/js/code-blocks.js"></script>
+<script src="/assets/js/code-labels.js"></script>

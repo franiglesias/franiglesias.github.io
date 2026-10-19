@@ -1,0 +1,33 @@
+<section class="sidebar-widget sidebar-widget--archive">
+  <h2 class="sidebar-widget__title">Archivo</h2>
+  {% if site.drifting and site.drifting.size > 0 %}
+  <p><a href="/drifting/archive/">Ver archivo cronológico</a></p>
+  {% assign years_str = "" %}
+  {% for post in site.drifting %}
+    {% unless post.hide %}
+      {% assign post_year = post.date | date: "%Y" %}
+      {% assign year_tag = post_year | append: "," %}
+      {% unless years_str contains year_tag %}
+        {% assign years_str = years_str | append: year_tag %}
+      {% endunless %}
+    {% endunless %}
+  {% endfor %}
+  {% assign year_list = years_str | split: "," %}
+  <ul class="drifting-archive-years">
+    {% for y in year_list %}
+      {% if y != "" %}
+        {% assign count = 0 %}
+        {% for post in site.drifting %}
+          {% assign post_year = post.date | date: "%Y" %}
+          {% if post_year == y and post.hide != true %}
+            {% assign count = count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        <li><a href="/drifting/archive/#year-{{ y }}">{{ y }} ({{ count }})</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p><a href="/drifting/archive/">Ver archivo cronológico</a></p>
+  {% endif %}
+</section>

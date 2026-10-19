@@ -1597,6 +1597,26 @@ div.footnotes {
   margin-top: 0.15rem;
 }
 
+.drifting-archive-years {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 0 0;
+
+  li {
+    margin-bottom: 0.35rem;
+
+    a {
+      color: $primary-light;
+      text-decoration: none;
+
+      &:hover {
+        color: $accent;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 // === Post Update Section ===
 
 .post-update {

@@ -1,0 +1,29 @@
+---
+layout: null
+permalink: /drifting/feed.xml
+---
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>The Drifting Bit</title>
+        <description>Bitácora personal de The Talking Bit</description>
+        <link>{{ site.url }}/drifting/</link>
+        <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+        <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+        <ttl>1800</ttl>
+
+        {% if site.drifting %}
+        {% assign sorted_drifting = site.drifting | sort: "date" | reverse %}
+        {% for post in sorted_drifting %}
+        <item>
+            <title>{{ post.title }}</title>
+            <description>{{ post.content | xml_escape }}</description>
+            <link>{{ site.url }}{{ post.url }}</link>
+            <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+            <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        </item>
+        {% endfor %}
+        {% endif %}
+
+    </channel>
+</rss>

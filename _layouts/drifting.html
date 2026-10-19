@@ -1,0 +1,29 @@
+---
+layout: drifting-layout
+---
+
+<div class="posts drifting-posts">
+    {% if site.drifting %}
+    {% assign sorted_drifting = site.drifting | sort: "date" | reverse %}
+    {% for post in sorted_drifting %}
+    {% unless post.hide %}
+    <article class="post">
+        <header class="post-header">
+            <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+            <div class="metadata">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %e, %Y" }}</time>
+            </div>
+        </header>
+        <div class="entry">
+            {% if post.excerpt %}
+            {{ post.excerpt }}
+            <p><a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Continuar leyendo...</a></p>
+            {% else %}
+            {{ post.content }}
+            {% endif %}
+        </div>
+    </article>
+    {% endunless %}
+    {% endfor %}
+    {% endif %}
+</div>

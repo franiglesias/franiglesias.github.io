@@ -33,8 +33,7 @@
     <nav>
         {% include menu.html %}
         {% include theme-toggle.html %}
-        <li class="title"><a href="{{ '/' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a>
-        </li>
+        {% include global_sites.html %}
     </nav>
 </div><!-- end header -->
 <div class="wrapper">
@@ -50,7 +49,6 @@
             <span class="credits"><a href="/series/">Series</a></span>
             <span class="credits"><a href="/about/">About me</a></span>
             <span class="credits"><a href="/about/es/">Acerca de mi</a></span>
-            <span class="credits"><a href="/tblist/">The Talking List</a></span>
         </div>
     </div>
 

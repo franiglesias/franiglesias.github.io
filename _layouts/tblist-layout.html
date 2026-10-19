@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('theme');
+                var pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', saved || pref);
+            } catch (e) {}
+        })();
+    </script>
+    <title>{% if page.title %}{{ site.short }}: {{ page.title }}{% else %}The Talking List{% endif %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500&family=JetBrains+Mono:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/tb.css?v=' | append: site.github.build_revision | relative_url }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="{{ '/assets/css/ie.css' | relative_url }}">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+<div id="header">
+    <nav>
+        {% include menu.html %}
+        {% include theme-toggle.html %}
+        <li class="title"><a href="{{ '/' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a>
+        </li>
+    </nav>
+</div><!-- end header -->
+<div class="wrapper">
+
+    <div id="title">
+        <h1>The talking list</h1>
+        <p>El micro-blog de The Talking Bit</p>
+        <hr>
+        <div class="credits-bar">
+            <span class="credits">Blog de <a
+                    href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
+            <span class="credits"><a href="/">The Talking Bit</a></span>
+            <span class="credits"><a href="/archive/">Archivo</a></span>
+            <span class="credits"><a href="/series/">Series</a></span>
+            <span class="credits"><a href="/about/">About me</a></span>
+            <span class="credits"><a href="/about/es/">Acerca de mi</a></span>
+            <span class="credits"><a href="/tblist/">The Talking List</a></span>
+        </div>
+    </div>
+
+    <div class="page-body">
+        <section class="main-content">
+            {{ content }}
+        </section>
+
+        <aside class="sidebar">
+            {% include widget_search.html json_url="/tblist/search.json" placeholder="Buscar en The Talking List..." aria_label="Buscar en The Talking List" search_id="tblist-search" %}
+            <section id="tags">
+                <h2>Temas</h2>
+                {% include widget_tblist_tags.html %}
+            </section>
+            {% include widget_about.html %}
+        </aside>
+    </div>
+
+</div>
+
+<script src="/assets/js/theme.js" defer></script>
+</body>
+</html>

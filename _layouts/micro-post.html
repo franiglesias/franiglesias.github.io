@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: tblist-layout
 ---
 <article class="post micro-post">
     <header class="post-header">
@@ -14,10 +14,12 @@ layout: basic
         <p>Publicado: {{ page.date | date: "%B %e, %Y" }}</p>
         <p>Etiquetas:
             {% for tag in page.tags %}
+            {% unless tag == "tb-list" %}
             {% capture tag_name %}{{ tag }}{% endcapture %}
-            <a href="/tag/{{ tag_name }}"><span class="tag">
+            <a href="/tblist/tag/{{ tag_name }}/"><span class="tag">
                 <nobr>{{ tag_name }}</nobr>
             </span>&nbsp;</a>
+            {% endunless %}
             {% endfor %}
         </p>
     </div>

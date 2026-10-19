@@ -13,5 +13,17 @@ layout: basic
         </li>
         {% endfor %}
     </ul>
+    {% if site.tblist %}
+    {% assign tblist_tagged = site.tblist | where_exp: "item", "item.tags contains page.tag" %}
+    {% if tblist_tagged.size > 0 %}
+    <br>
+    <p>The Talking List con {{ page.tag }}</p>
+    <ul>
+        {% for post in tblist_tagged %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date | date_to_string }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
 </div>
 <hr>

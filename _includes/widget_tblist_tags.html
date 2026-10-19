@@ -1,0 +1,30 @@
+<div class="tag-cloud">
+{% assign all_tags = "" %}
+{% if site.tblist %}
+  {% for post in site.tblist %}
+    {% for tag in post.tags %}
+      {% unless tag == "tb-list" %}
+        {% assign all_tags = all_tags | append: tag | append: " " %}
+      {% endunless %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+{% assign tag_list = all_tags | split: " " | compact | uniq | sort %}
+
+{% for tag in tag_list %}
+  {% if tag != "" %}
+    {% assign count = 0 %}
+    {% for post in site.tblist %}
+      {% if post.tags contains tag %}
+        {% assign count = count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    {% if count >= 10 %}{% assign cloud_size = "cloud--xl" %}
+    {% elsif count >= 5 %}{% assign cloud_size = "cloud--lg" %}
+    {% elsif count >= 3 %}{% assign cloud_size = "cloud--md" %}
+    {% elsif count >= 2 %}{% assign cloud_size = "cloud--sm" %}
+    {% else %}{% assign cloud_size = "cloud--xs" %}{% endif %}
+    <a href="/tblist/tag/{{ tag }}/" class="tag-cloud__item {{ cloud_size }}" title="{{ count }} micro-posts">{{ tag }}</a>
+  {% endif %}
+{% endfor %}
+</div>

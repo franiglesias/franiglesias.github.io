@@ -1,0 +1,21 @@
+---
+layout: null
+permalink: /tblist/search.json
+---
+[
+  {% assign first = true %}
+  {% if site.tblist %}
+  {% for post in site.tblist %}
+    {% unless post.hide %}
+      {% if first %}{% assign first = false %}{% else %},{% endif %}
+      {
+        "title"    : {{ post.title | jsonify }},
+        "url"      : {{ post.url | relative_url | jsonify }},
+        "tags"     : {{ post.tags | join: ", " | jsonify }},
+        "date"     : {{ post.date | date: "%d/%m/%Y" | jsonify }},
+        "content"  : {{ post.content | strip_html | strip_newlines | truncatewords: 50 | jsonify }}
+      }
+    {% endunless %}
+  {% endfor %}
+  {% endif %}
+]

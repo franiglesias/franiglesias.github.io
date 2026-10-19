@@ -428,6 +428,37 @@ dt:where(:not([style*="font-family"])) {
         font-size: 1rem;
       }
 
+      &.global-site {
+        border-right: 1px solid rgba($neutral-400, 0.4);
+        padding: 0.3rem 0.45rem;
+        font-size: 1.3rem;
+        display: inline-flex;
+        align-items: center;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        &.global-site--first,
+        &:first-of-type {
+          margin-left: auto;
+        }
+
+        a {
+          padding: 0.15rem 0.35rem;
+          border-radius: 3px;
+          line-height: 1.2;
+          font-weight: 500;
+          color: $neutral-300;
+          transition: color 0.2s ease, background-color 0.2s ease;
+
+          &:hover {
+            color: $neutral-100;
+            background-color: rgba(255, 255, 255, 0.08);
+          }
+        }
+      }
+
       a {
         color: $neutral-300;
         border: none;

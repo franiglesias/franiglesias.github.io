@@ -16,15 +16,15 @@ Tras el inesperado éxito popular de la novela, trufada de digresiones históric
 
 De forma bastante coherente con lo anterior, la reacción del autor a la versión cinematográfica de la novela me parece elegante. Para empezar, no participó en, ni supervisó, la escritura del guion, salvo requerir que tuviese un tono "europeo" y no _hollywoodiense_. Cuando habló con Annaud, le dijo que tenía que hacer su propia película, pues él ya había escrito su novela. Así pues, tampoco llegó a pronunciarse nunca con una valoración artística del largometraje, más allá de afirmar que reconocía que la obra se sostiene por sí misma y tiene su propia vida.
 
-https://www.elmundo.es/cultura/cine/2026/07/05/6a4a5421fdddff004f8b456f.html
+[https://www.elmundo.es/cultura/cine/2026/07/05/6a4a5421fdddff004f8b456f.html](https://www.elmundo.es/cultura/cine/2026/07/05/6a4a5421fdddff004f8b456f.html)
 
-https://elpais.com/diario/1986/10/20/cultura/530146812_850215.html
+[https://elpais.com/diario/1986/10/20/cultura/530146812_850215.html](https://elpais.com/diario/1986/10/20/cultura/530146812_850215.html)
 
 Tampoco asistió al estreno, pues se consideraba de algún modo un espectador no válido para esa ocasión. Hay que mencionar que desarrolló una buena relación personal con el director. Incluso asistió al rodaje para conocer a Sean Connery, actor al que no veía como Guillermo de Baskerville, pero que resultó ser el intérprete perfecto, pese a tener una conversación reducida al fútbol. Eco había pensado en Robert de Niro, el cual quería tener un duelo de espadas entre Guillermo y Bernardo, lo que aconsejaba mantenerlo lejos de la producción.
 
 También reconoció que Annaud no había tenido más remedio que seleccionar. Introdujo una metáfora que lo explica muy bien: la novela es un sandwich con muchos ingredientes. Para la película tienes que reducir el número y quedarte con uno o dos. El director decidió centrar la obra en la parte puramente policíaca, la sucesión de crímenes en la abadía. Sin embargo, la crítica italiana la puso a caer de un burro. Tanto es así, que se la ocultaron en su día.
 
-https://www.sputnikdos.com/2016/02/umberto-eco-el-novelista-el-lector-el.html
+[https://www.sputnikdos.com/2016/02/umberto-eco-el-novelista-el-lector-el.html](https://www.sputnikdos.com/2016/02/umberto-eco-el-novelista-el-lector-el.html)
 
 La película me parece buena, aunque no es excepcional, y se sostiene por sí misma. No necesitas haber leído el libro para seguirla. El argumento es bastante fiel al libro, exceptuando el final. Hay quien lo considera demasiado feliz, pero yo diría que simplemente es algo menos triste, pues la campesina sobrevive y Bernardo Gui muere. Sin embargo, también se trata de cerrar estas tramas. En el libro sabemos que la campesina será quemada como bruja para ejemplarizar al pueblo, y que Bernardo se ha marchado de la Abadía satisfecho con sus propios triunfos: desbaratar la reunión y llevarse algunos trofeos que exhibir. Mientras tanto, Guillermo y Adso vuelven a sus vidas habiendo encontrado al asesino, incapaces de celebrarlo por la pérdida de los valiosos tesoros de la Biblioteca y de las vidas de los monjes.
 

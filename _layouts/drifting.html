@@ -10,9 +10,6 @@ layout: drifting-layout
     <article class="post">
         <header class="post-header">
             <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-            <div class="metadata">
-                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %e, %Y" }}</time>
-            </div>
         </header>
         <div class="entry">
             {% if post.excerpt %}
@@ -21,6 +18,7 @@ layout: drifting-layout
             {% else %}
             {{ post.content }}
             {% endif %}
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %e, %Y" }}</time>
         </div>
     </article>
     {% endunless %}
